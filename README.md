@@ -1,4 +1,4 @@
-# Lecture_DataScience-Basic-
+# Lecture_DataScience
 
 (In Japanese) 
 
