@@ -4,8 +4,30 @@
 
 このレポジトリには、[データサイエンス入門]および[実践データサイエンス]用のサンプルコード・データなどをまとめます。  
 
-Google Colab自体の簡単な使い方は以下のとおりです
-https://github.com/SotaYoshida/Lecture_DataScience/blob/master/GoogleColabの使い方.ipynb
+Google Colab自体の簡単な使い方はこちら-> [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/GoogleColabの使い方.ipynb)  
+
+1章 Pythonの基礎その1 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter1_Introduction.ipynb)  
+2章 Pythonの基礎その2 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter2_ListLoop.ipynb)  
+3章 関数と戻り値(返り値), 変数のスコープ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter3_Function.ipynb)  
+4章 ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter4_Matplotlib.ipynb)  
+5章 ファイル操作 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter5_handling_files.ipynb)  
+6章 相関回帰分析 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter6_Regression.ipynb)  
+7章 最適化問題の基礎[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter7_Optimization.ipynb)  
+8章 時系列データ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter8_TimeSeries.ipynb)  
+9章 確率と疑似乱数
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter9_Probability.ipynb)  
+おまけ  
+機械学習: ニューラルネットワークによる回帰 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_ArtificialNeuralNetwork.ipynb)  
+ベイズ的最適化による実験計画法 (のノリ) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_BayesianOptimization.ipynb)  
+クラスタリング [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_Clustering.ipynb)  
+Webスクレイピング
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_WebScraping.ipynb)  
+音声ファイルの圧縮
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_ResizeAudio.ipynb)  
+StyleGAN2による顔写真生成
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_StyleGAN2.ipynb)  
+
+
 
 なお、使用されているデータ等の著作権等には配慮していますが、万が一お気づきの点等があればお知らせください。  
 
