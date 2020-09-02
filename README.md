@@ -17,7 +17,6 @@ Google Colabの使い方-> [![Open In Colab](https://colab.research.google.com/a
 8章 時系列データ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter8_TimeSeries.ipynb)  
 9章 確率と疑似乱数
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter9_Probability.ipynb)  
-#### おまけ  
 機械学習: ニューラルネットワークによる回帰 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_ArtificialNeuralNetwork.ipynb)  
 ベイズ的最適化による実験計画法 (のノリ) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_BayesianOptimization.ipynb)  
 クラスタリング [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_Clustering.ipynb)  
