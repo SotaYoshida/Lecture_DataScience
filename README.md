@@ -27,5 +27,10 @@
 
 なお、使用されているデータ等の著作権等には配慮していますが、万が一お気づきの点等があればお知らせください。  
 
-本リポジトリに含まれるプログラムは(原則)、[MITライセンス](https://opensource.org/licenses/MIT)で提供します。
-The source codes in this repository are licensed under [the MIT License](https://opensource.org/licenses/MIT) (unless otherwise mentioned).
+Copyright (C) 2020 Sota Yoshida  
+
+ノートブック内の文章と絵はクリエイティブ・コモンズ 4.0 表示 (CC-BY 4.0) で提供する。  
+Text and pictures in the notebooks are licensed under a Creative Commons Attribution 4.0 International License.  
+
+ソースコード(notebook内含む)は(原則)、[MITライセンス](https://opensource.org/licenses/MIT)で提供します。  
+The source codes (including ones in Jupyter notebooks) are licensed under [the MIT License](https://opensource.org/licenses/MIT) (unless otherwise mentioned).
