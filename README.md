@@ -5,7 +5,7 @@
 このレポジトリには、[データサイエンス入門]および[実践データサイエンス]用のサンプルコード・データなどをまとめます。  
 
 ***
-#### 実践データサイエンス (完成度は70%くらいです(2020/09/01時点))
+#### 実践データサイエンス  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/GoogleColabの使い方.ipynb)　Google Colabの使い方  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter1_Introduction.ipynb)　1章 Pythonの基礎その1   
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter2_ListLoop.ipynb)　2章 Pythonの基礎その2  
