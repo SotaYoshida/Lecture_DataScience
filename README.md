@@ -29,7 +29,7 @@
 
 Copyright (C) 2020 Sota Yoshida  
 
-ノートブック内の文章と絵はクリエイティブ・コモンズ 4.0 表示 (CC-BY 4.0) で提供する。  
+ノートブック内の文章と絵は[クリエイティブ・コモンズ 4.0 表示](https://creativecommons.org/licenses/by/4.0/deed.ja) [(CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.en)で提供する。  
 Text and pictures in the notebooks are licensed under a Creative Commons Attribution 4.0 International License.  
 
 ソースコード(notebook内含む)は(原則)、[MITライセンス](https://opensource.org/licenses/MIT)で提供します。  
