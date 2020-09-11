@@ -34,3 +34,11 @@ Text and pictures in the notebooks are licensed under a Creative Commons Attribu
 
 ソースコード(notebook内含む)は(原則)、[MITライセンス](https://opensource.org/licenses/MIT)で提供します。  
 The source codes (including ones in Jupyter notebooks) are licensed under [the MIT License](https://opensource.org/licenses/MIT) (unless otherwise mentioned).
+
+
+#### 今後の加筆予定 
+(実践DSで使う予定はないので、時期未定)
+* Monotonicなニューラルネットワーク
+* ガウス過程の微分と積分による再構成
+* 変分混合ガウス分布
+* 固有値問題と関連アルゴリズム(Lanczos法,Rayleigh-Ritzの方法, etc.)
