@@ -37,7 +37,7 @@ The source codes (including ones in Jupyter notebooks) are licensed under [the M
 
 
 ####  本レポジトリの今後の加筆予定 
-(宇大の実践DSで使う予定は今の所ないので、時期未定)
+(宇大のDS入門,実践DSで使う予定は今の所ないので、時期未定)
 * Monotonicなニューラルネットワーク
 * ガウス過程の微分と積分による再構成
 * 変分混合ガウス分布
