@@ -27,16 +27,18 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_StyleGAN2.ipynb)　StyleGAN2による顔写真生成
 ***
 
-
-なお、使用されているデータ等の著作権等には配慮していますが、万が一お気づきの点等があればお知らせください。  
-
 Copyright (C) 2020 Sota Yoshida  
 
-ノートブック内の文章と絵は[クリエイティブ・コモンズ 4.0 表示](https://creativecommons.org/licenses/by/4.0/deed.ja) [(CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.en)で提供する。  
+ノートブック内の文章と手書きの絵等は[クリエイティブ・コモンズ 4.0 表示](https://creativecommons.org/licenses/by/4.0/deed.ja) [(CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.en)で提供する。  
 Text and pictures in the notebooks are licensed under a Creative Commons Attribution 4.0 International License.  
 
 ソースコード(notebook内含む)は(原則)、[MITライセンス](https://opensource.org/licenses/MIT)で提供します。  
 The source codes (including ones in Jupyter notebooks) are licensed under [the MIT License](https://opensource.org/licenses/MIT) (unless otherwise mentioned).
+
+これらのノートブックは、Google Colab.上での使用を想定しています。  
+ノートブック内一部の画像がGithub上では表示されない場合があります。  
+
+なお、使用されているデータ等の著作権等には配慮していますが、万が一お気づきの点等があればお知らせください。  
 
 
 ####  本レポジトリの今後の加筆予定 
