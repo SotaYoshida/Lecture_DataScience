@@ -18,6 +18,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter8_TimeSeries.ipynb)　8章 時系列データ  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter9_Probability.ipynb)　9章 確率と疑似乱数  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_numpy.ipynb)　Numpyモジュールについて  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_Pandas.ipynb)　Pandasの使い方(基礎)    
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_Bayesian_linear_regression.ipynb)　ベイズ線形回帰  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_ArtificialNeuralNetwork.ipynb)　機械学習: ニューラルネットワークによる回帰  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_BayesianOptimization.ipynb)　ベイズ的最適化による実験計画法 (のノリ)  
