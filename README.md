@@ -27,9 +27,8 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_Clustering.ipynb)　クラスタリング(k平均法)  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_chapter_WebScraping.ipynb)　Webスクレイピング  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_ResizeAudio.ipynb)　音声ファイルの圧縮  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_StyleGAN2.ipynb)　StyleGAN2による顔写真生成
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]
-(https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_python_environment.ipynb)　Pythonの環境構築
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_StyleGAN2.ipynb)　StyleGAN2による顔写真生成  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/master/Python_misc_python_environment.ipynb)　Pythonの環境構築
 ***
 
 Copyright (C) 2020 Sota Yoshida  
