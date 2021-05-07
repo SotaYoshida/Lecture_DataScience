@@ -30,12 +30,12 @@ def forURL():
                 tl=tl.replace("nce/blob/master/","nce/tree/2021/notebooks/")
             print(tl,file=oupf)
         oupf.close()
-forURL()
+#forURL()
 def README():
     inp=open("README.md","r")
     lines=inp.readlines()
     inp.close()
-    oupf=open("tREADME.md","w")
+    oupf=open("README.md","w")
     for line in lines:
         tl = line.rstrip()
         if "Lecture_DataScience/blob/master/" in tl:
