@@ -1,6 +1,6 @@
 #### 実践データサイエンス2021
 (In Japanese)  
-このレポジトリには、[実践データサイエンス]用のサンプルコード・データなどをまとめます。
+本レポジトリでは、[実践データサイエンス]用のJupyterNotebookなどをまとめています。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/GoogleColabの使い方.ipynb)　Google Colabの使い方  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_Error.ipynb)　よくあるエラー集  
