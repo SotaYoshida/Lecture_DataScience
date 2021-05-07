@@ -26,11 +26,11 @@ def forURL():
         oupf = open(inpf,"w")
         for line in lines:
             tl = line.rstrip()
-            if "Lecture_DataScience/blob/master/" in tl:
-                tl=tl.replace("nce/blob/master/","nce/tree/2021/notebooks/")
+            if "Lecture_DataScience/tree/2021/" in tl:
+                tl=tl.replace("nce/tree/2021/","nce/blob/2021/")
             print(tl,file=oupf)
         oupf.close()
-#forURL()
+forURL()
 def README():
     inp=open("README.md","r")
     lines=inp.readlines()
@@ -38,8 +38,8 @@ def README():
     oupf=open("README.md","w")
     for line in lines:
         tl = line.rstrip()
-        if "Lecture_DataScience/blob/master/" in tl:
-            tl = tl.replace("nce/blob/master/","nce/tree/2021/notebooks/")
+        if "Lecture_DataScience/tree/2021/" in tl:
+            tl=tl.replace("nce/tree/2021/","nce/blob/2021/")
         print(tl,file=oupf)
     oupf.close()
 README()
