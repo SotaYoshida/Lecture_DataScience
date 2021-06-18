@@ -15,23 +15,27 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter7_Optimization.ipynb)　7章 最適化問題の基礎  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter8_Probability.ipynb)　8章 確率と疑似乱数  
 
-**Appendix**  
+**補足**  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_numpy.ipynb)　Numpyモジュールについて  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_integral.ipynb
-)　数値積分  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_Pandas.ipynb)　Pandasの使い方(基礎)  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_Bayesian_linear_regression.ipynb)　ベイズ線形回帰  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb)　機械学習: ニューラルネットワークによる回帰  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_BayesianOptimization.ipynb)　ベイズ的最適化による実験計画法 (のノリ)  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_Clustering.ipynb)　クラスタリング(k平均法)  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_WebScraping.ipynb)　Webスクレイピング  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_ResizeAudio.ipynb)　音声ファイルの圧縮  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_BayesianOptimization.ipynb)　ベイズ的最適化による実験計画法 (のノリ)  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_StyleGAN2.ipynb)　StyleGAN2による顔写真生成  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_ObjectDetection.ipynb)　機械学習を用いた画像認識・物体検知の概要+YOLOv5  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_BrowserOperation.ipynb)　ブラウザ操作  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_ObjectDetection.ipynb)　機械学習を用いた画像認識・物体検知の概要
++YOLOv5  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_environment.ipynb)　Pythonの環境構築  
 ***
 
+**おまけ**  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_integral.ipynb
+)　数値積分  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_Bayesian_linear_regression.ipynb)　ベイズ線形回帰  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb)　機械学習: ニューラルネットワークによる回帰  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_chapter_Clustering.ipynb)　クラスタリング(k平均法)  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_ResizeAudio.ipynb)　音声ファイルの圧縮  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_BrowserOperation.ipynb)　ブラウザ操作  
+
+---
 Copyright (C) 2021 Sota Yoshida
 
 ノートブック内の文章と手書きの絵等は[クリエイティブ・コモンズ 4.0 表示](https://creativecommons.org/licenses/by/4.0/deed.ja) [(CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.en)で提供する。
