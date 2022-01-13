@@ -25,7 +25,7 @@ JupyterNotebookなどをまとめています。
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_ObjectDetection.ipynb)　機械学習を用いた画像認識・物体検知の概要
 +YOLOv5  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_environment.ipynb)　Pythonの環境構築  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_env_forWin11.ipynb)　Pythonの環境構築(Windows11)  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_env_forWin11.ipynb)　Pythonの環境構築(Windows11)  
 
 **おまけ**  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_PCA.ipynb)　PCA(主成分分析)  
