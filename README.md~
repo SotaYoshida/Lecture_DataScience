@@ -1,8 +1,8 @@
-#### 実践データサイエンス
+#### 実践データサイエンス2021
 (In Japanese)  
-本レポジトリでは、宇都宮大学の基盤教育科目[実践データサイエンス]用資料などをまとめています。
-*2022年度からJupyterBook形式への以降を予定しています。
-※都内容が度変更される場合があります。  
+本レポジトリでは、宇都宮大学の基盤教育科目[実践データサイエンス]用の  
+JupyterNotebookなどをまとめています。  
+※都度変更される場合があります。  
 ※古い年度のものはブランチが残っていれば閲覧できますが、更新の予定はありません。  
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/GoogleColabの使い方.ipynb)　Google Colabの使い方  
