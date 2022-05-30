@@ -1,0 +1,34 @@
+# Table of contents
+ 
+format: jb-book
+root: index
+
+parts: 
+- caption: Pythonの基本文法
+  numbered: true
+  chapters:
+    - file: notebooks/Python_chapter1_Introduction
+    - file: notebooks/Python_chapter2_ListLoop
+    - file: notebooks/Python_chapter3_Function
+- caption: ライブラリと可視化
+  numbered: true
+  chapters:
+    - file: notebooks/Python_chapter4_Matplotlib
+- caption: データ分析の基礎
+  numbered: true
+  chapters:
+    - file: notebooks/Python_chapter5_Probability.ipynb
+    - file: notebooks/Python_chapter6_Regression.ipynb
+    - file: notebooks/Python_chapter7_Optimization.ipynb
+    - file: notebooks/Python_chapter8_handling_files.ipynb
+- caption: Tips&環境構築
+  chapters:
+    - file: notebooks/Python_misc_Error.ipynb 
+    - file: notebooks/Python_misc_python_environment.ipynb
+    - file: notebooks/Python_misc_python_env_forWin11.ipynb
+- caption: おまけ
+  chapters:
+    - file: notebooks/Python_misc_Pandas.ipynb
+    - file: notebooks/Python_misc_numpy.ipynb
+    #- file: notebooks/Python_misc_StyleGAN2.ipynb
+  
