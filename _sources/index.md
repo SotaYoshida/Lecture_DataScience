@@ -27,9 +27,6 @@ Google Colab.上でノートブックを開くには、各章の冒頭に用意�
 (第1章のノートブックで試してみてください)
 ![](notebooks/pic_for_notebook/pic_0_0.png)
 
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_0_0.jpg" width = 80%>
-
-
 #### 数式の挿入
 
 Jupyter Nootebookでは$\LaTeX$形式の数式をサポートしていてドルマークで囲むと、数式を表示させることが出来る。  
