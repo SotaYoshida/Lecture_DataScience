@@ -25,6 +25,7 @@ Jupyter Notebookを編集・実行するための環境はいくつかありま�
 
 Google Colab.上でノートブックを開くには、各章の冒頭に用意された"Open in Colab"というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして"Colab"から開きます。
 (第1章のノートブックで試してみてください)
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_0_0.jpg" width = 80%>
 
 
 #### 数式の挿入
@@ -39,6 +40,8 @@ $f(x) = \frac{1}{2}\exp{(-2x^2 + 3x + 5)}$
 :::
 
 Google Colaboratory上でノートブックを開くと、下記のような画面が開きます。
+
+ユーザーは
 - テキストセル
 - コードセル
 
