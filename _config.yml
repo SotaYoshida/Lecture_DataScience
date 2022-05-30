@@ -3,6 +3,8 @@
 
 title: 実践データサイエンス
 author: ""
+logo: logo.png
+
 exclude_patterns: [_build, README.md, .DS_Store, org_src]
 only_build_toc_files: true
 
