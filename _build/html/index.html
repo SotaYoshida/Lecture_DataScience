@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>資料の使い方 &#8212; 実践データサイエンス</title>
+    <title>実践データサイエンス &#8212; 実践データサイエンス</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -88,7 +88,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   資料の使い方
+   実践データサイエンス
   </a>
  </li>
 </ul>
@@ -280,45 +280,52 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   ブック
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   ノートブック
+   資料の使い方
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     ブック
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     数式の挿入
+     ノートブック
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colaboratory">
-   Google Colaboratoryの使い方
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     重要な注
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       数式の挿入
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     なんか挙動が変だな、と思ったら。
+    <a class="reference internal nav-link" href="#google-colaboratory">
+     Google Colaboratoryの使い方
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-drive">
-     Google Driveからファイルのインポート
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     シェルコマンドとドライブ内のファイルのパス
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       重要な注
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       なんか挙動が変だな、と思ったら。
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-drive">
+       Google Driveからファイルのインポート
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       シェルコマンドとドライブ内のファイルのパス
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -334,17 +341,19 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>資料の使い方<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>実践データサイエンス<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>資料の使い方<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>本講義で用いる資料には幾つか種類(≒ファイル形式)がある。
 慣れないうちは混同するかと思うので、ここに資料自体の説明と各種アプリケーションやサービスの説明をまとめておく。</p>
-<div class="section" id="id2">
-<h2>ブック<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>ブック<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>本資料は<a class="reference external" href="https://github.com/jupyter/notebook">Jupyter Notebook</a>形式の資料を<a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a>を用いて作成されたコンテンツです。
 授業内では<strong>ブック</strong>ないし”Book”と表記・呼称します。<br />
 概要を理解したり復習する際にはこちらのブックを閲覧してください。</p>
 </div>
-<div class="section" id="id3">
-<h2>ノートブック<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>ノートブック<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://github.com/jupyter/notebook">Jupyter Notebook</a>とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行環境とを提供するアプリケーションで、授業資料は<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>という拡張子を持つ、Jupyter Notebook形式のファイルとして作成されています。<br />
 またGitHubと呼ばれるサービスを利用してソースファイルの管理と共有を行っています。<br />
 (この授業を受講する上で、皆さんがGitHubのアカウントを取得したりする必要はありません)</p>
@@ -352,14 +361,14 @@
 <p><strong>ブック</strong>は概要をとらえたり復習をするときには便利ですが、実際に自身でコードを実行したりプログラムを書く場合には
 <strong>Google Colaboratory上でJupyter Notebookを開く</strong>ことになります。</p>
 <p>Google Colab.上でノートブックを開くには、各章の冒頭に用意された”Open in Colab”というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして”Colab”から開きます。</p>
-<div class="section" id="id4">
-<h3>数式の挿入<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>数式の挿入<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Jupyter Nootebookでは<span class="math notranslate nohighlight">\(\LaTeX\)</span>形式の数式をサポートしていてドルマークで囲むと、数式を表示させることが出来る。<br />
 <span class="math notranslate nohighlight">\(f(x) = \frac{1}{2}\exp{(-2x^2 + 3x + 5)}\)</span></p>
 </div>
 </div>
 <div class="section" id="google-colaboratory">
-<h2>Google Colaboratoryの使い方<a class="headerlink" href="#google-colaboratory" title="Permalink to this headline">¶</a></h2>
+<h3>Google Colaboratoryの使い方<a class="headerlink" href="#google-colaboratory" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>以下の内容は、Google Colaboratoryや関連サービスのアップデートに伴い、数ヶ月経つと微妙に設定の文言が変更されている場合があります。適宜対応するものに置き換えて読んでいただけると助かります。</p>
@@ -370,8 +379,8 @@
 <li><p>コードセル</p></li>
 </ul>
 <p>の２つを駆使して、自分だけのノートブックを作成したり、他者が作成した<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>形式のファイルを開いてGoogle Colab.上でプログラムを実行したりできます。</p>
-<div class="section" id="id5">
-<h3>重要な注<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4>重要な注<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>ブックから開いたノートブック</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -394,8 +403,8 @@
 <p>Windowsなら<code class="docutils literal notranslate"><span class="pre">Ctrl+</span> <span class="pre">S</span></code>, Macなら<code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">S</span></code>を押すことで随時Google Driveにバックアップを保存することができます。<br />
 誤った内容に編集してしまった場合もGoogle Colaboratoryの”最終編集: X月Y日”といったところやGoogle Drive上でファイルの上で右クリック→”版を管理”から復元することができます。</p>
 </div>
-<div class="section" id="id6">
-<h3>なんか挙動が変だな、と思ったら。<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>なんか挙動が変だな、と思ったら。<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>複数のセルにまたがるコードを実行していくうちに変数に意図しないものが入っていたりなんか変だな、挙動が怪しいな、と思ったら[ランタイム]や[編集]などから下記の操作を行ってみましょう。</p>
 <ul class="simple">
 <li><p>セルの実行を停止したい場合: [ランタイム]→[実行の中断]で中断 (or [セッションの管理]から不要なセッションを削除する)</p></li>
@@ -404,7 +413,7 @@
 </ul>
 </div>
 <div class="section" id="google-drive">
-<h3>Google Driveからファイルのインポート<a class="headerlink" href="#google-drive" title="Permalink to this headline">¶</a></h3>
+<h4>Google Driveからファイルのインポート<a class="headerlink" href="#google-drive" title="Permalink to this headline">¶</a></h4>
 <p>Google Colaboratoryでは、Google Driveに保存されたファイルの内容を読み込んだり、逆にコードでテキストファイル,エクセルファイルや画像,音声などを作成しGoogle Driveに保存することができます。</p>
 <p>お使いのアカウントのDriveをGoogle colab.から操作する方法は主に2通りあります。</p>
 <p>1つめ:<br />
@@ -432,8 +441,8 @@ google drive直下にあるXXX.pngというファイルを指定したい場合�
 <p>などとすれば良い。<br />
 また、driveを一度マウントした後でパスがわからなくなったときには左の[ファイル]からdriveに相当するフォルダにマウスオーバーして縦3点<span class="math notranslate nohighlight">\(\vdots\)</span>から[パスをコピー]で、パスをクリップボードにコピーすることができます。</p>
 </div>
-<div class="section" id="id7">
-<h3>シェルコマンドとドライブ内のファイルのパス<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4>シェルコマンドとドライブ内のファイルのパス<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>Google Colab.では先頭にエクスクラメーションマークをつけることで</p>
 <ul class="simple">
 <li><p>ls (リスト,ファイル等表示)</p></li>
@@ -446,6 +455,7 @@ google drive直下にあるXXX.pngというファイルを指定したい場合�
 </div>
 <p>とすればよい。
 なお、半角のアスタリスクはワイルドカード記号「対象を任意に」という命令になっている。</p>
+</div>
 </div>
 </div>
 <div class="toctree-wrapper compound">
