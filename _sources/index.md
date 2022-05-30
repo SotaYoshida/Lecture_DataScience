@@ -1,4 +1,4 @@
-# 資料:実践データサイエンス
+# 実践データサイエンス
 
 本コンテンツは宇都宮大学の基盤科目「実践データサイエンス」の授業資料です。
 
@@ -25,7 +25,10 @@ Jupyter Notebookを編集・実行するための環境はいくつかありま�
 
 Google Colab.上でノートブックを開くには、各章の冒頭に用意された"Open in Colab"というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして"Colab"から開きます。
 (第1章のノートブックで試してみてください)
-![](notebooks/pic_for_notebook/pic_0_0.png)
+![](notebook/pic_for_notebook/pic_0_0.jpg \"１章の例\")
+
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_0_0.jpg" width = 80%>
+
 
 #### 数式の挿入
 
