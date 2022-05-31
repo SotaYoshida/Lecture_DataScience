@@ -6,7 +6,7 @@ root: index
 parts: 
 - caption: プログラムの実行方法
   chapters:
-  - file: notebooks/Python_chapter0_HowToUse
+  - file: notebooks/Python_chapter0_HowToUse.ipynb
 - caption: Pythonの基本文法
   numbered: true
   chapters:
