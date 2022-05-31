@@ -20,10 +20,11 @@
 
 Jupyter Notebookを編集・実行するための環境はいくつかありますが、本授業では環境構築やそれにかかるトラブルシューティングを最小化するために、Google Colaboratoryというサービスを利用して**Googleのクラウド環境上でJupyter Nootebookを編集・実行する方式**を採用します。**授業に先立ってGoogleのアカウントの新規取得をお願いします!**
 
-**ブック**は概要をとらえたり復習をするときには便利ですが、実際に自身でコードを実行したりプログラムを書く場合には**Google Colaboratory上でJupyter Notebookを開く**ことになります。
+**ブック**は概要をとらえたり復習をするときには見やすくて便利ですが、実際に自身でコードを実行したりプログラムを書く場合には**Google Colaboratory上でJupyter Notebookを開く**ことになります。
 
 Google Colab.上でノートブックを開くには、各章の冒頭に用意された"Open in Colab"というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして"Colab"から開きます。
 ("Google Colaboratoryの使い方"や第1章のノートブックで試してみてください)
+下は参考画像です:
 ![](notebooks/pic_for_notebook/pic_0_0.png)
 
 
