@@ -683,11 +683,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>:  真偽値 (下で説明します)</p></li>
 </ul>
 <p>くらいでしょうか。この他にも様々な型が存在しています。</p>
-<p>たとえば上で定義した<code class="docutils literal notranslate"><span class="pre">a</span></code>の型は<code class="docutils literal notranslate"><span class="pre">type</span></code>という関数を使うことで調べることができます。</p>
+<p>たとえば以下のように変数の型は<code class="docutils literal notranslate"><span class="pre">type()</span></code>という関数を使うことで調べることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">2.0</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -696,17 +697,8 @@
 <p class="sidebar-title">関数の添字</p>
 <p>いい加減な理解としては、”実数値”に近い概念だと思ってください。</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">a</span></code>(=2.0)は<code class="docutils literal notranslate"><span class="pre">float</span></code>、つまり浮動小数点(floating point)です。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="mi">2</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">b</span></code>は<code class="docutils literal notranslate"><span class="pre">int</span></code>型、つまり整数値です。
-Pythonでは特定の型同士のみに許された特殊な演算等もあります。変数の型が調べたくなったときは<code class="docutils literal notranslate"><span class="pre">type</span></code>関数を使いましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code>(=2.0)は<code class="docutils literal notranslate"><span class="pre">float</span></code>、つまり浮動小数点(floating point)です。一方で<code class="docutils literal notranslate"><span class="pre">b</span></code>は<code class="docutils literal notranslate"><span class="pre">int</span></code>型、つまり整数値です。</p>
+<p>Pythonでは特定の型同士のみに許された特殊な演算等もあります。変数の型が調べたくなったときは<code class="docutils literal notranslate"><span class="pre">type</span></code>関数を使いましょう。</p>
 <div class="section" id="id5">
 <h3><span class="section-number">1.5.1. </span>プログラムでの実数の取り扱い<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>整数としての2(つまり<code class="docutils literal notranslate"><span class="pre">int</span></code>型の2)は理想的な整数2であるのに対して、<code class="docutils literal notranslate"><span class="pre">float</span></code>型の2.0というのは、<br />
