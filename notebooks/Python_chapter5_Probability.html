@@ -426,9 +426,7 @@
 <div class="section" id="python">
 <h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Pythonではrandomモジュールを使えば簡単に乱数を使用することができる。<br />
-また、numpyにも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、<br />
-以下のrandomをnumpy.randomとしても多くの場合では互換性があるはず。<br />
-<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うならnp.randomに置き換えて試してみよう。</p>
+また、numpyにも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、以下の<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性があるはず。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
@@ -441,7 +439,7 @@
 </div>
 </div>
 </div>
-<p>のようにrandom.randint(最小値,最大値)とすると,<br />
+<p>のように<code class="docutils literal notranslate"><span class="pre">random.randint(最小値,最大値)</span></code>とすると,<br />
 指定した閉区間の整数値をランダムに生成することができる。<br />
 上のコードセルを実行するたびに答えが変わること(ランダム性)も確かめよう。</p>
 <p>今の場合、最小値に1、最大値に6を採用したことで、<br />
