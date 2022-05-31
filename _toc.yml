@@ -4,6 +4,9 @@ format: jb-book
 root: index
 
 parts: 
+- caption: プログラムの実行方法
+  chapters:
+  - file: notebooks/Python_chapter0_HowToUse
 - caption: Pythonの基本文法
   numbered: true
   chapters:
