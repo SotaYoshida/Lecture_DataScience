@@ -439,11 +439,8 @@
 </div>
 </div>
 </div>
-<p>のように<code class="docutils literal notranslate"><span class="pre">random.randint(最小値,最大値)</span></code>とすると,<br />
-指定した閉区間の整数値をランダムに生成することができる。<br />
-上のコードセルを実行するたびに答えが変わること(ランダム性)も確かめよう。</p>
-<p>今の場合、最小値に1、最大値に6を採用したことで、<br />
-この乱数をサイコロの出目とみなすことができる。<br />
+<p>のように<code class="docutils literal notranslate"><span class="pre">random.randint(最小値,最大値)</span></code>とすると指定した閉区間の整数値をランダムに生成することができる。上のコードセルを実行するたびに答えが変わること(ランダム性)も確かめよう。</p>
+<p>今の場合、最小値に1、最大値に6を採用したことで、この乱数をサイコロの出目とみなすことができる。<br />
 (<code class="docutils literal notranslate"><span class="pre">range</span></code>などと違い、最大値の6も含まれていることに注意! 紛らわしい…)</p>
 <p>100個のサイコロの出目を保持しておきたければ</p>
 <div class="cell docutils container">
@@ -459,8 +456,7 @@
 </div>
 </div>
 </div>
-<p>などとすればよい。<br />
-30回,1000回,50万回サイコロを振った場合の出目をそれぞれヒストグラムにしてみると…</p>
+<p>などとすればよい。30回,1000回,50万回サイコロを振った場合の出目をそれぞれヒストグラムにしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Na</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">Nb</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">Nc</span><span class="o">=</span><span class="mi">500000</span> <span class="c1">#サンプルの数を指定</span>
@@ -487,14 +483,11 @@
 </div>
 <p>1-6の出る目の頻度が確率から期待される振る舞いに漸近していく事がわかる.<br />
 c.f. 大数の法則</p>
-<p>Matplotlibに関してもう少し細かい事を言うと、<br />
-今のようなサンプル数が大きく異るヒストグラムを比較する場合、<br />
-縦軸のスケールを揃えて比較するほうが良い。<br />
-<strong>相対的な頻度</strong>になおしてみよう。</p>
-<p>そのためには、<code class="docutils literal notranslate"><span class="pre">density</span></code>というオプションをオン(True)にするか、<br />
-明示的に各サンプルの”重み”を<code class="docutils literal notranslate"><span class="pre">weights</span></code>でリスト(ndarray)として与える。</p>
+<p>Matplotlibに関してもう少し細かい事を言うと、今のようなサンプル数が大きく異るヒストグラムを比較する場合、縦軸のスケールを揃えて比較するほうが良い。</p>
+<p><strong>相対的な頻度</strong>になおしてみよう。</p>
+<p>そのためには、<code class="docutils literal notranslate"><span class="pre">density</span></code>というオプションをオン(<code class="docutils literal notranslate"><span class="pre">True</span></code>)にするか、明示的に各サンプルの”重み”を<code class="docutils literal notranslate"><span class="pre">weights</span></code>でリスト(<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>)として与える。</p>
 <p><span class="math notranslate nohighlight">\(\clubsuit\)</span> 進んだ注:<br />
-後者は確率分布などを扱うときに便利なオプションとなるが、この授業では扱わない。<br />
+後者は確率分布などを扱うときに便利なオプションとなるが、この授業では扱わない。
 <code class="docutils literal notranslate"><span class="pre">density=True</span></code>は”各サンプルの重みを等価にする”という<code class="docutils literal notranslate"><span class="pre">weights</span></code>の特別な場合に相当する.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,7 +511,7 @@ c.f. 大数の法則</p>
 </div>
 </div>
 <hr class="docutils" />
-<p>以下では、randomモジュールのよく使う(?)機能をいくつか紹介する.</p>
+<p>以下では、<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールのよく使う(?)機能をいくつか紹介する.</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -562,7 +555,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 </div>
 </div>
-<p>(上の関数のreplace=True/Falseを変えて何回か実行してみて、抽出された数に重複があるかどうかを確かめてみよう)</p>
+<p>(上の関数の<code class="docutils literal notranslate"><span class="pre">replace=True</span></code> or <code class="docutils literal notranslate"><span class="pre">replace=False</span></code>を変えて何回か実行してみて、抽出された数に重複があるかどうかを確かめてみよう)</p>
 <p>ちなみに選んだものをソートしたければ以下のようにする:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
