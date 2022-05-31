@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. 最適化問題の基礎 &#8212; 実践データサイエンス</title>
+    <title>7. 最適化問題の基礎 &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. ファイル・文字列操作" href="Python_chapter8_handling_files.html" />
-    <link rel="prev" title="5. 相関・回帰分析" href="Python_chapter6_Regression.html" />
+    <link rel="next" title="8. ファイル・文字列操作" href="Python_chapter8_handling_files.html" />
+    <link rel="prev" title="6. 相関・回帰分析" href="Python_chapter6_Regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,13 +117,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   1. Pythonの基本 その２:
+   2. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter3_Function.html">
-   2. 関数
+   3. 関数
   </a>
  </li>
 </ul>
@@ -135,7 +140,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -147,22 +152,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter5_Probability.html">
-   4. 確率と疑似乱数
+   5. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter6_Regression.html">
-   5. 相関・回帰分析
+   6. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. 最適化問題の基礎
+   7. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter8_handling_files.html">
-   7. ファイル・文字列操作
+   8. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -319,36 +324,36 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   6.1. 考えたい問題のイメージ
+   7.1. 考えたい問題のイメージ
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.1. 簡単な例でのプログラム
+     7.1.1. 簡単な例でのプログラム
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   6.2. 勾配の計算について
+   7.2. 勾配の計算について
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     6.2.1. 解析的に微分が計算できる場合
+     7.2.1. 解析的に微分が計算できる場合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     6.2.2. 数値的に勾配を計算する場合
+     7.2.2. 数値的に勾配を計算する場合
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clubsuit">
-   6.3.
+   7.3.
    <span class="math notranslate nohighlight">
     \(\clubsuit\)
    </span>
@@ -357,12 +362,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   6.4. 数学的準備: 微分
+   7.4. 数学的準備: 微分
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     6.4.1. 微分の基本的な考え方
+     7.4.1. 微分の基本的な考え方
     </a>
    </li>
   </ul>
@@ -380,7 +385,7 @@
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter7_Optimization.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">6. </span>最適化問題の基礎<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>最適化問題の基礎<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 最適化問題のイメージを掴み、一次元の単峰的な関数の最小値を探索できるようになる。</p>
 <p>種々のデータ解析や学術的分野での計算をはじめ<br />
@@ -395,7 +400,7 @@
 <p>高校で微分を勉強していないという方に向けて末尾に数学的準備の項を設けてあります.<br />
 (よく知っているという方もさっと目を通してみてください)</p>
 <div class="section" id="id2">
-<h2><span class="section-number">6.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>以下で考えたい問題のポンチ絵です</p>
 <img src="https://drive.google.com/uc?export=view&id=1dvnzljSpB7ht4RDr8WXTP8kH9KCMBCBA" width=70%>
 <blockquote>
@@ -496,7 +501,7 @@ c.f. ベイズ最適化(授業でも扱います)</p>
 <p>このようにスケールの異なる量が出てくる状況下では<br />
 目的関数(誤差関数, 損失関数, etc.)などの定義を考え直す必要がある。</p>
 <div class="section" id="id3">
-<h3><span class="section-number">6.1.1. </span>簡単な例でのプログラム<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>簡単な例でのプログラム<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>下に凸な二次関数の最小値を、勾配降下法で求めてみましょう.<br />
 もちろん二次関数の場合は、極値を与える<span class="math notranslate nohighlight">\(x\)</span>の値は、<br />
 プログラムを書くまでもなく平方完成で求められますが、数値計算になれるためです。</p>
@@ -36153,9 +36158,9 @@ gg==\
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">6.2. </span>勾配の計算について<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>勾配の計算について<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">6.2.1. </span>解析的に微分が計算できる場合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span>解析的に微分が計算できる場合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>たとえば以下の例のように<br />
 例1: <span class="math notranslate nohighlight">\(f(x)= \sum^p_{i=0} a_i x^i\)</span> (多項式)<br />
 例2: <span class="math notranslate nohighlight">\(f(x)= \exp{(-ax^2+bx+c)}\)</span> (指数関数)<br />
@@ -36175,7 +36180,7 @@ gg==\
 SympyなどのモジュールやMathematicaなどのツールを使うのも一つの手です.</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.2.2. </span>数値的に勾配を計算する場合<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span>数値的に勾配を計算する場合<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(f(x)\)</span>が具体的な<span class="math notranslate nohighlight">\(x\)</span>の形で書き下せない場合もあります.</p>
 <p>たとえば「<span class="math notranslate nohighlight">\(f(x)\)</span>が条件<span class="math notranslate nohighlight">\(x\)</span>のもとで行った何らかの測定結果である場合」などがこれにあてはまります。</p>
 <p>より具体的な例をあげるなら、
@@ -36254,7 +36259,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 </div>
 </div>
 <div class="section" id="clubsuit">
-<h2><span class="section-number">6.3. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の話題<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の話題<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h2>
 <p>冒頭にも書いたとおり、我々の身の回りにある多くの問題は<br />
 最適化問題に帰着される。</p>
 <p>もう少し細かいことをいうと、今回考えたような連続的な変数に対して<br />
@@ -36263,7 +36268,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <p>組合せ最適化には、巡回セールスマン問題やナップサック問題などが含まれる。</p>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">6.4. </span>数学的準備: 微分<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>数学的準備: 微分<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>日本では、中学校(2年?)で傾きと切片を学習する。</p>
 <p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<br />
 <span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。</p>
@@ -36281,7 +36286,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <p>時間があったら、ヨビノリさんの<a class="reference external" href="https://youtu.be/4p1rwfXbCoY">「中学数学からはじめる微分積分」</a>を視聴していただけると、イメージがつくかと思います。</p>
 <p>補足資料: <a class="reference external" href="https://drive.google.com/file/d/1ZKi8DJFSg00xir1IoEQiw3z9vxmejeCv/view">講義ノート</a>の4章[数学的準備]</p>
 <div class="section" id="id8">
-<h3><span class="section-number">6.4.1. </span>微分の基本的な考え方<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>微分の基本的な考え方<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>定義: ある変数<span class="math notranslate nohighlight">\(x\)</span>について関数<span class="math notranslate nohighlight">\(f(x)\)</span>が与えられているとき、<br />
 関数<span class="math notranslate nohighlight">\(f(x)\)</span>の<span class="math notranslate nohighlight">\(x=a\)</span>での微分を<br />
 <span class="math notranslate nohighlight">\(f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}\)</span>と定義する.</p>
@@ -36387,13 +36392,13 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>相関・回帰分析</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>相関・回帰分析</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Python_chapter8_handling_files.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>ファイル・文字列操作</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>ファイル・文字列操作</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

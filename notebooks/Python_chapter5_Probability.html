@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. 確率と疑似乱数 &#8212; 実践データサイエンス</title>
+    <title>5. 確率と疑似乱数 &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. 相関・回帰分析" href="Python_chapter6_Regression.html" />
-    <link rel="prev" title="3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)" href="Python_chapter4_Matplotlib.html" />
+    <link rel="next" title="6. 相関・回帰分析" href="Python_chapter6_Regression.html" />
+    <link rel="prev" title="4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)" href="Python_chapter4_Matplotlib.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,13 +117,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   1. Pythonの基本 その２:
+   2. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter3_Function.html">
-   2. 関数
+   3. 関数
   </a>
  </li>
 </ul>
@@ -135,7 +140,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -147,22 +152,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   4. 確率と疑似乱数
+   5. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter6_Regression.html">
-   5. 相関・回帰分析
+   6. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter7_Optimization.html">
-   6. 最適化問題の基礎
+   7. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter8_handling_files.html">
-   7. ファイル・文字列操作
+   8. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -319,32 +324,32 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   4.1. 疑似乱数について
+   5.1. 疑似乱数について
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python">
-   4.2. Pythonでの乱数生成
+   5.2. Pythonでの乱数生成
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   4.3. 無作為抽出
+   5.3. 無作為抽出
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   4.4. 一様分布からの乱数生成
+   5.4. 一様分布からの乱数生成
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     4.4.1. じゃんけん関数
+     5.4.1. じゃんけん関数
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     4.4.2.
+     5.4.2.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -355,22 +360,22 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   4.5. 正規分布からの乱数生成
+   5.5. 正規分布からの乱数生成
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#seed">
-   4.6. 乱数の種(seed)の固定
+   5.6. 乱数の種(seed)の固定
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   4.7. 正規分布に関して
+   5.7. 正規分布に関して
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     4.7.1.
+     5.7.1.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -379,7 +384,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     4.7.2.
+     5.7.2.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -401,7 +406,7 @@
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter5_Probability.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">4. </span>確率と疑似乱数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>確率と疑似乱数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 コンピュータで確率・乱数を扱う概要を学ぶ。</p>
 <p>この章では、確率と擬似乱数について扱います。</p>
@@ -416,7 +421,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">4.1. </span>疑似乱数について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>疑似乱数について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>コンピュータで何かの処理を実現したいときや、自然科学や統計学などで様々なことをシミュレーションしたいとき、[確率的な事象]を考えたくなることがよくあります。</p>
 <p>たとえば人◯ゲームや◯鉄のようなゲームを作るときにもサイコロの出目が必要になりますし、技が急所に当たる確率や色違いのポ◯モンが出現する確率などを設定しなければなりません.</p>
 <p>真に理想的なサイコロならば1から6の目が出る確率は等しく1/6ですが、このような”理想的な”サイコロは、現実世界でも、コンピュータの上でも実現することはできず、我々人間が乱数をシミュレーションして扱う際には、何らかの確定的な方法で乱数列(<strong>十分ランダムだとみなせる数の集合</strong>)を生成することになります。</p>
@@ -431,7 +436,7 @@
 <p>また[モンテカルロ法]と検索すると(主に学術的な分野で)乱数がどのように活用されているか、雰囲気を味わうことができます。</p>
 </div>
 <div class="section" id="python">
-<h2><span class="section-number">4.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Pythonではrandomモジュールを使えば簡単に乱数を使用することができる。<br />
 また、numpyにも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、以下の<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性があるはず。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。</p>
 <div class="cell docutils container">
@@ -520,7 +525,7 @@ c.f. 大数の法則</p>
 <p>以下では、<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールのよく使う(?)機能をいくつか紹介する.</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">4.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>リストやrangeなどからランダムに要素を選びたいとき<br />
 には<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>が便利です。<br />
 (たとえば[出席番号のリストからランダムに選ぶ]などをイメージ)</p>
@@ -578,7 +583,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">4.4. </span>一様分布からの乱数生成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4. </span>一様分布からの乱数生成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>上記のような離散的な乱数とは異なり、連続的な数について乱数が必要になる場合もあります。</p>
 <p>その一つの例である一様乱数は、ある”有限”区間での確率(密度)が等しい確率に従う乱数です。<br />
 <code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code>関数を使えば、指定した区間での一様乱数を生成することができます。</p>
@@ -619,7 +624,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">4.4.1. </span>じゃんけん関数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.1. </span>じゃんけん関数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>乱数を使ってじゃんけんをする関数を作ってみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -676,7 +681,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 毎週土曜や日曜にドラ◯もんやサザ◯さんを倒す関数を作ってみるのも面白そうです。</p>
 </div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">4.4.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>プログラミングでド定番の、乱数を使って円周率を求める方法も<br />
 Pythonならサクッと実装することができます。</p>
 <div class="cell docutils container">
@@ -744,7 +749,7 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">4.5. </span>正規分布からの乱数生成<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.5. </span>正規分布からの乱数生成<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>正規分布は多くの特徴的な性質を有しています.<br />
 それらは後述するとして…正規分布に従う乱数を生成するには<br />
 <code class="docutils literal notranslate"><span class="pre">random.gauss()</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">random.normalvariate()</span></code>  を用いればよい.<br />
@@ -795,7 +800,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 <p>サンプル数が増えるにつれて、正規分布に収束していく様子が見られます.</p>
 </div>
 <div class="section" id="seed">
-<h2><span class="section-number">4.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h2>
 <p>これまでのプログラムでは、実行の度に答えが変わりました。</p>
 <p>擬似的にでもランダム性が担保されているというのは便利だが、<br />
 実際にプログラミングで乱数を使って何かの作業を実装したいときは、<br />
@@ -851,7 +856,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 メタル◯ライムに会心の一撃を食らわせてレベルアップしまくる動画などが昔はやりました(今も時々ある)。</p>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">4.7. </span>正規分布に関して<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>正規分布に関して<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>この授業は確率・統計の授業ではないので、深入りはしませんが、<br />
 正規分布(ガウス分布,ガウシアン)に少し触れておきます.<br />
 (厳密性は少々犠牲にし、変数が1次元の場合の正規分布に限る)</p>
@@ -949,7 +954,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 平均と標準偏差を計算したときに、いつでも1シグマの中に<br />
 全体の68%が分布しているわけではありません。</p>
 <div class="section" id="id8">
-<h3><span class="section-number">4.7.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>上の正規分布の考え方を拡張して、多変数の場合を考えることもできます。</p>
 <p>2つ以上の変数であることを明示的に表すため、
 多次元正規分布や多変数正規分布などと呼ばれることが多いです。</p>
@@ -1091,7 +1096,7 @@ x,yのメッシュ点をいっぱいつくって、各点でのzの値を定義�
 z=f(x,y)の値に応じて色をつけている.</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">4.7.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>ここまでの乱数の生成方法を応用すると、ランダムウォーク(酔歩)と呼ばれるものを実装することもできます。</p>
 <p>あなたは原点(0,0)に立っていて、毎秒ごとに[-1,1]の一様乱数に従ってx方向とy方向に移動するとします。<br />
 T秒後に立ってる場所や、軌跡をプロットしてみましょう。</p>
@@ -1169,13 +1174,13 @@ c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Python_chapter6_Regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>相関・回帰分析</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>相関・回帰分析</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

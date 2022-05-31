@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib) &#8212; 実践データサイエンス</title>
+    <title>4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib) &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. 確率と疑似乱数" href="Python_chapter5_Probability.html" />
-    <link rel="prev" title="2. 関数" href="Python_chapter3_Function.html" />
+    <link rel="next" title="5. 確率と疑似乱数" href="Python_chapter5_Probability.html" />
+    <link rel="prev" title="3. 関数" href="Python_chapter3_Function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,13 +117,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   1. Pythonの基本 その２:
+   2. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter3_Function.html">
-   2. 関数
+   3. 関数
   </a>
  </li>
 </ul>
@@ -135,7 +140,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -147,22 +152,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter5_Probability.html">
-   4. 確率と疑似乱数
+   5. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter6_Regression.html">
-   5. 相関・回帰分析
+   6. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter7_Optimization.html">
-   6. 最適化問題の基礎
+   7. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter8_handling_files.html">
-   7. ファイル・文字列操作
+   8. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -319,22 +324,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy">
-   3.1. Numpy
+   4.1. Numpy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   3.2. Matplotlibを用いた作図
+   4.2. Matplotlibを用いた作図
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     3.2.1. 棒グラフ
+     4.2.1. 棒グラフ
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
-       3.2.1.1.
+       4.2.1.1.
        <strong>
         練習
        </strong>
@@ -344,22 +349,22 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.2.2. 円グラフ
+     4.2.2. 円グラフ
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot">
-     3.2.3. plot: 線の描画
+     4.2.3. plot: 線の描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scatter">
-     3.2.4. scatter: 散布図の描画
+     4.2.4. scatter: 散布図の描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit-ax-matplotlib-axes">
-     3.2.5.
+     4.2.5.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -375,17 +380,17 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-drivegoogle-colab">
-     3.2.6. Google Driveのマウントと、Google Colab.上で作ったグラフの保存
+     4.2.6. Google Driveのマウントと、Google Colab.上で作ったグラフの保存
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gif">
-     3.2.7. gifアニメーションの作成
+     4.2.7. gifアニメーションの作成
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     3.2.8.
+     4.2.8.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -407,7 +412,7 @@
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter4_Matplotlib.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="matplotlib">
-<h1><span class="section-number">3. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]</p>
 <ul class="simple">
 <li><p>[ライブラリ]という概念の獲得</p></li>
@@ -446,7 +451,7 @@
 </div>
 <p>注:sin(π)は厳密に0になるべきですが1章で述べたように実数が有限の精度なので微小な量0からずれています</p>
 <div class="section" id="numpy">
-<h2><span class="section-number">3.1. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
 <p>データ分析などで非常によく使われるNumpyというライブラリがあります。</p>
 <p>簡単な作業ならリストでも代用できるので必須ではありませんが<br />
 コードを大幅に簡略化することができるので<br />
@@ -467,7 +472,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">3.2. </span>Matplotlibを用いた作図<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Matplotlibを用いた作図<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>以降ではMatplotlibと呼ばれるモジュールを使って、<br />
 各種のグラフを作成する方法を見ていきましょう.</p>
 <p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<br />
@@ -547,7 +552,7 @@ Successfully installed japanize-matplotlib-1.1.3
 徐々に望むようなグラフにしていきます。</p>
 <p>以下では代表的なグラフを例に、Matplotlibを使った作画を試してみましょう。</p>
 <div class="section" id="id2">
-<h3><span class="section-number">3.2.1. </span>棒グラフ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.1. </span>棒グラフ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Aさんの共通テストの得点をリスト(括弧[ ]内に、数字カンマで区切る)に格納します。<br />
 順番(各科目の名前(ラベル))は、国語,英語,数IA,数IIB,化学,物理,世界史として…</p>
 <div class="cell docutils container">
@@ -604,14 +609,14 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 意図しない絵になることがあります)</p></li>
 </ul>
 <div class="section" id="id3">
-<h4><span class="section-number">3.2.1.1. </span><strong>練習</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.2.1.1. </span><strong>練習</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>国語と英語の得点を100点満点に換算し、<br />
 いくつかの得点や棒グラフの色を変えてプロットしてみましょう。</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id4">
-<h3><span class="section-number">3.2.2. </span>円グラフ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.2. </span>円グラフ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>世の中には多くの円グラフの誤用が溢れています。<br />
 ワイドショーなどで総和が100%になっていなかったり、<br />
 円に対して占める割合が明らかに間違っていたりと、ひどい有様です。</p>
@@ -664,7 +669,7 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 <p>こっちの棒グラフのほうが良い気がする</p>
 </div>
 <div class="section" id="plot">
-<h3><span class="section-number">3.2.3. </span>plot: 線の描画<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.3. </span>plot: 線の描画<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
 <p>説明変数<span class="math notranslate nohighlight">\(x\)</span>と目的変数<span class="math notranslate nohighlight">\(y\)</span>があって、<br />
 とくに**<span class="math notranslate nohighlight">\(x\)</span>に対する<span class="math notranslate nohighlight">\(y\)</span>の振る舞い**に興味がある場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>を使います。</p>
 <p>たとえば、日付(<span class="math notranslate nohighlight">\(x\)</span>)に対するコロナウイルス感染者(<span class="math notranslate nohighlight">\(y\)</span>)の推移をプロットしてみましょう。</p>
@@ -721,7 +726,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 その中から”x”(バツ印)以外の好きなシンボルを選んで上のグラフの二番目をプロットしてみましょう。</p>
 </div>
 <div class="section" id="scatter">
-<h3><span class="section-number">3.2.4. </span>scatter: 散布図の描画<a class="headerlink" href="#scatter" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.4. </span>scatter: 散布図の描画<a class="headerlink" href="#scatter" title="Permalink to this headline">¶</a></h3>
 <p>xとy、２つの量があって、どちらにも興味がある、<br />
 あるいは両者の間の相関に興味がある場合、<br />
 散布図を描くと、見通しやすくなることが多いです。</p>
@@ -817,7 +822,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 簡単に計算を記述することができます。</p>
 </div>
 <div class="section" id="clubsuit-ax-matplotlib-axes">
-<h3><span class="section-number">3.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">(matplotlib.axes)</span> </code><a class="headerlink" href="#clubsuit-ax-matplotlib-axes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">(matplotlib.axes)</span> </code><a class="headerlink" href="#clubsuit-ax-matplotlib-axes" title="Permalink to this headline">¶</a></h3>
 <p>上では、axという見慣れないものが導入されました。</p>
 <p>キャンバスの上に小さな作業領域<code class="docutils literal notranslate"><span class="pre">axes</span></code>を指定するための<br />
 <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>や<code class="docutils literal notranslate"><span class="pre">add_axes</span></code>といった関数があります。
@@ -855,7 +860,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="section" id="google-drivegoogle-colab">
-<h3><span class="section-number">3.2.6. </span>Google Driveのマウントと、Google Colab.上で作ったグラフの保存<a class="headerlink" href="#google-drivegoogle-colab" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.6. </span>Google Driveのマウントと、Google Colab.上で作ったグラフの保存<a class="headerlink" href="#google-drivegoogle-colab" title="Permalink to this headline">¶</a></h3>
 <p>プログラムを実行して絵を描けるようになったら、<br />
 次にそれを保存して、レポートに貼り付けたり、<br />
 誰かに送ったりする必要が出てくると思います。</p>
@@ -949,7 +954,7 @@ matplotlibはファイル名を変えるだけで<br />
 データを自由に足してみながら、plt.show()を書き換えてファイルに出力してみましょう。</p>
 </div>
 <div class="section" id="gif">
-<h3><span class="section-number">3.2.7. </span>gifアニメーションの作成<a class="headerlink" href="#gif" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.7. </span>gifアニメーションの作成<a class="headerlink" href="#gif" title="Permalink to this headline">¶</a></h3>
 <p>「なんだこの程度のグラフならExcelでも簡単にできるじゃん…」<br />
 と思った皆さんのために、もう少し凝ったことをやってみましょう。<br />
 gifアニメーション(パラパラ漫画)を作ってみます。</p>
@@ -998,7 +1003,7 @@ GDPvsWomenInSchoolというフォルダを置いたとします</p>
 <img src="https://drive.google.com/uc?export=view&id=1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k" width = 40%>
 </div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">3.2.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>その他のグラフ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1099,13 +1104,13 @@ from pylab import rcParams
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>関数</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>関数</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Python_chapter5_Probability.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>確率と疑似乱数</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>確率と疑似乱数</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
