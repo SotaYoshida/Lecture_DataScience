@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -53,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Pythonの基本 その１:" href="notebooks/Python_chapter1_Introduction.html" />
+    <link rel="next" title="Google Colaboratoryの使い方" href="notebooks/Python_chapter0_HowToUse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -99,23 +97,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Pythonの基本文法
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter2_ListLoop.html">
-   2. Pythonの基本 その２:
+   1. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter3_Function.html">
-   3. 関数
+   2. 関数
   </a>
  </li>
 </ul>
@@ -127,7 +132,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -139,22 +144,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
+   4. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter6_Regression.html">
-   6. 相関・回帰分析
+   5. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
+   6. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
+   7. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -307,40 +312,6 @@
     <a class="reference internal nav-link" href="#id4">
      ノートブック
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       数式の挿入
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory">
-     Google Colaboratoryの使い方
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       重要な注
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       なんか挙動が変だな、と思ったら。
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-drive">
-       Google Driveからファイルのインポート
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       シェルコマンドとドライブ内のファイルのパス
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -376,105 +347,11 @@
 <p>Jupyter Notebookを編集・実行するための環境はいくつかありますが、本授業では環境構築やそれにかかるトラブルシューティングを最小化するために、Google Colaboratoryというサービスを利用して<strong>Googleのクラウド環境上でJupyter Nootebookを編集・実行する方式</strong>を採用します。</p>
 <p><strong>ブック</strong>は概要をとらえたり復習をするときには便利ですが、実際に自身でコードを実行したりプログラムを書く場合には<strong>Google Colaboratory上でJupyter Notebookを開く</strong>ことになります。</p>
 <p>Google Colab.上でノートブックを開くには、各章の冒頭に用意された”Open in Colab”というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして”Colab”から開きます。
-(第1章のノートブックで試してみてください)
+(第0章や第1章のノートブックで試してみてください)
 <img alt="" src="_images/pic_0_0.png" /></p>
-<div class="section" id="id5">
-<h4>数式の挿入<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<p>Jupyter Nootebookでは<span class="math notranslate nohighlight">\(\LaTeX\)</span>形式の数式をサポートしていてドルマークで囲むと、数式を表示させることが出来る。<br />
-<span class="math notranslate nohighlight">\(f(x) = \frac{1}{2}\exp{(-2x^2 + 3x + 5)}\)</span></p>
 </div>
 </div>
-<div class="section" id="google-colaboratory">
-<h3>Google Colaboratoryの使い方<a class="headerlink" href="#google-colaboratory" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>以下の内容は、Google Colaboratoryや関連サービスのアップデートに伴い、数ヶ月経つと微妙に設定の文言が変更されている場合があります。適宜対応するものに置き換えて読んでいただけると助かります。</p>
-</div>
-<p>Google Colaboratory上でノートブックを開くと、下記のような画面が開きます。</p>
-<p>ユーザーは</p>
-<ul class="simple">
-<li><p>テキストセル</p></li>
-<li><p>コードセル</p></li>
-</ul>
-<p>の２つを駆使して、自分だけのノートブックを作成したり、他者が作成した<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>形式のファイルを開いてGoogle Colab.上でプログラムを実行したりできます。</p>
-<div class="section" id="id6">
-<h4>重要な注<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>ブックから開いたノートブック</p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>ノートブックの実体(ソースファイル)は<a class="reference external" href="https://github.com/SotaYoshida/Lecture_DataScience">GitHub上</a>にあります</p>
-</div>
-<p>は、皆さんがコピーをするなどしない限り、実行はできますが保存はできません。<br />
-<strong>必ず、[ファイル]から[ドライブにコピーを保存]し、ご自身のファイルを編集・保存するようにしてください</strong></p>
-<p>ノートブックのファイル名の横にGitHubのロゴ(タコ足猫)が表示されている場合、皆さんが開いているのはGitHubからインポートされたノートブックであって、皆さん自身のファイルではありません。<br />
-途中でうっかりタブやブラウザを閉じてしまうと作業内容が消えてしまいます。</p>
-<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1cs1XEAz0qbG2RtOqt1eIPGGiO9fngUE-" /></p>
-<p>私も一連の講義資料作成時にGitHubから開いたノートブックを直接編集して数時間分の作業内容を消してしまったことが何度もあります…。辛いです。</p>
-<p>コピーを編集している場合は、左上のノートブック名の隣がGoogle driveのロゴになっているはずです。<br />
-この場合、編集されたものはGoogle Driveに一定時間で自動でバックアップされるので安心ですし、いつでもどの端末からでも開いて作業を再開することができます。<br />
-<img alt="" src="https://drive.google.com/uc?export=view&amp;id=1IibFQS1TVq6xDhG62AP9yG2Sy0c89Zut" /></p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>MS Officeなど、他の多くのソフトでも共通のショートカットなので、こまめに保存する手クセを付けておきましょう。
-保存!保存!!保存!!!</p>
-</div>
-<p>Windowsなら<code class="docutils literal notranslate"><span class="pre">Ctrl+</span> <span class="pre">S</span></code>, Macなら<code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">S</span></code>を押すことで随時Google Driveにバックアップを保存することができます。<br />
-誤った内容に編集してしまった場合もGoogle Colaboratoryの”最終編集: X月Y日”といったところやGoogle Drive上でファイルの上で右クリック→”版を管理”から復元することができます。</p>
-</div>
-<div class="section" id="id7">
-<h4>なんか挙動が変だな、と思ったら。<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>複数のセルにまたがるコードを実行していくうちに変数に意図しないものが入っていたりなんか変だな、挙動が怪しいな、と思ったら[ランタイム]や[編集]などから下記の操作を行ってみましょう。</p>
-<ul class="simple">
-<li><p>セルの実行を停止したい場合: [ランタイム]→[実行の中断]で中断 (or [セッションの管理]から不要なセッションを削除する)</p></li>
-<li><p>再起動したい場合: [ランタイム]→[ランタイムを再起動]</p></li>
-<li><p>出力をいったん全部消したい: [編集]→[出力をすべて消去]</p></li>
-</ul>
-</div>
-<div class="section" id="google-drive">
-<h4>Google Driveからファイルのインポート<a class="headerlink" href="#google-drive" title="Permalink to this headline">¶</a></h4>
-<p>Google Colaboratoryでは、Google Driveに保存されたファイルの内容を読み込んだり、逆にコードでテキストファイル,エクセルファイルや画像,音声などを作成しGoogle Driveに保存することができます。</p>
-<p>お使いのアカウントのDriveをGoogle colab.から操作する方法は主に2通りあります。</p>
-<p>1つめ:<br />
-以下を実行し、出てくるURLに遷移<br />
-authorization codeをコピーし枠内に貼り付けてEnterを押す<br />
-(Google colabからgoogle driveのファイルにアクセスできるようになります)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive/&#39;</span><span class="p">)</span> <span class="c1">##google driveを/content/という場所にマウント (２番めと整合するようにパスを選びましたが、マウントする場所は自由に選べます)</span>
-</pre></div>
-</div>
-<p>たとえばgoogle drive直下にあるXXX.pngというファイルを指定したい場合は</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/XXX.png&quot;</span>
-</pre></div>
-</div>
-<p>とすれば良い。</p>
-<p>2つめ:<br />
-Google Colabの左側にあるフォルダマークをクリックし、(「ファイルのブラウジングを有効にするには、ランタイムに接続してください。」と出る場合は、少し待ってください)<br />
-次に、Google driveのロゴがついたフォルダをクリックする(画像の、[ファイル]というところの右下にある、driveのロゴがついたグレーがかったフォルダマーク)<br />
-<img alt="" src="https://drive.google.com/uc?export=view&amp;id=1RMjCaZN7emkVBqlYF-gFMcG8FRnw-9Xv" /></p>
-<p>この場合は自動で<code class="docutils literal notranslate"><span class="pre">/content/drive</span></code>という場所にマウントされるので(仕様が変更になる可能性あり)<br />
-google drive直下にあるXXX.pngというファイルを指定したい場合はやはり</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/XXX.png&quot;</span>
-</pre></div>
-</div>
-<p>などとすれば良い。<br />
-また、driveを一度マウントした後でパスがわからなくなったときには左の[ファイル]からdriveに相当するフォルダにマウスオーバーして縦3点<span class="math notranslate nohighlight">\(\vdots\)</span>から[パスをコピー]で、パスをクリップボードにコピーすることができます。</p>
-</div>
-<div class="section" id="id8">
-<h4>シェルコマンドとドライブ内のファイルのパス<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Google Colab.では先頭にエクスクラメーションマークをつけることで</p>
-<ul class="simple">
-<li><p>ls (リスト,ファイル等表示)</p></li>
-<li><p>mkdir (ディレクトリ作成)</p></li>
-</ul>
-<p>などのLinux/Unixで用いられるコマンドを実行することもできる。<br />
-たとえばGoogle Driveをマウントした後にマイドライブ直下にあるpng画像のリストを表示させたければ</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!ls /content/drive/MyDrive/*.png 
-</pre></div>
-</div>
-<p>とすればよい。
-なお、半角のアスタリスクはワイルドカード記号「対象を任意に」という命令になっている。</p>
-</div>
-</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -513,10 +390,10 @@ google drive直下にあるXXX.pngというファイルを指定したい場合�
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="notebooks/Python_chapter1_Introduction.html" title="next page">
+    <a class='right-next' id="next-link" href="notebooks/Python_chapter0_HowToUse.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Pythonの基本 その１:</p>
+        <p class="prev-next-title">Google Colaboratoryの使い方</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

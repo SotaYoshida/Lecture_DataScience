@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Pythonの基本 その２: &#8212; 実践データサイエンス</title>
+    <title>1. Pythonの基本 その２: &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. 関数" href="Python_chapter3_Function.html" />
-    <link rel="prev" title="1. Pythonの基本 その１:" href="Python_chapter1_Introduction.html" />
+    <link rel="next" title="2. 関数" href="Python_chapter3_Function.html" />
+    <link rel="prev" title="Google Colaboratoryの使い方" href="Python_chapter0_HowToUse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -100,23 +100,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Pythonの基本文法
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. Pythonの基本 その２:
+   1. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter3_Function.html">
-   3. 関数
+   2. 関数
   </a>
  </li>
 </ul>
@@ -128,7 +135,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -140,22 +147,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
+   4. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter6_Regression.html">
-   6. 相関・回帰分析
+   5. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
+   6. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
+   7. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -312,17 +319,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   2.1. リスト
+   1.1. リスト
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     2.1.1. リストの結合
+     1.1.1. リストの結合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     2.1.2.
+     1.1.2.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -331,12 +338,12 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.1.3. スライスを用いた部分リストの取得
+     1.1.3. スライスを用いた部分リストの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.1.4.
+     1.1.4.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -347,37 +354,37 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#if">
-   2.2. 条件分岐 (if文)
+   1.2. 条件分岐 (if文)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#for">
-   2.3. for文(ループ処理)
+   1.3. for文(ループ処理)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.3.1. 簡単なfor文
+     1.3.1. 簡単なfor文
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.3.2. ブロックとインデント
+     1.3.2. ブロックとインデント
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     2.3.3. リスト内包表記
+     1.3.3. リスト内包表記
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#break">
-     2.3.4. break ループ処理を途中で抜けたい場合
+     1.3.4. break ループ処理を途中で抜けたい場合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuitwhile">
-     2.3.5.
+     1.3.5.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -386,7 +393,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit-continue">
-     2.3.6.
+     1.3.6.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -395,14 +402,14 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     2.3.7. 例外処理
+     1.3.7. 例外処理
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   2.4.
+   1.4.
    <span class="math notranslate nohighlight">
     \(\clubsuit\)
    </span>
@@ -411,12 +418,12 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tuple">
-     2.4.1. タプル(tuple)型, 丸括弧
+     1.4.1. タプル(tuple)型, 丸括弧
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     2.4.2. 辞書型, 波括弧
+     1.4.2. 辞書型, 波括弧
     </a>
    </li>
   </ul>
@@ -434,11 +441,11 @@
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter2_ListLoop.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="python-2">
-<h1><span class="section-number">2. </span>Pythonの基本 その２:<a class="headerlink" href="#python-2" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Pythonの基本 その２:<a class="headerlink" href="#python-2" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 プログラミングで非常に重要な概念である配列や繰り返し処理について学ぶ。</p>
 <div class="section" id="id1">
-<h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>実際にいろんなデータを扱う際には、  値や変数をまとめて処理したくなります。<br />
 こうしたときに必要になるのが以下で扱う[リスト]型の変数です。</p>
 <p>リスト型は、値や変数などを括弧[ ]で括り、カンマで区切ることで作ることができます。</p>
@@ -551,7 +558,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </ol>
 <hr class="docutils" />
 <div class="section" id="id2">
-<h3><span class="section-number">2.1.1. </span>リストの結合<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.1. </span>リストの結合<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>２つのリストを結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +664,7 @@ ndarray型と呼ばれるものにすれば簡単に実行できます</p>
 </div>
 </div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">2.1.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> インデックスの取得<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> インデックスの取得<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -679,7 +686,7 @@ ndarray型と呼ばれるものにすれば簡単に実行できます</p>
 <p>複雑なデータを扱う際に「あれ、あの要素ってどこの番地にあるんだっけ？」といった状況に便利な関数です。</p>
 </div>
 <div class="section" id="id3">
-<h3><span class="section-number">2.1.3. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.3. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,7 +722,7 @@ ndarray型と呼ばれるものにすれば簡単に実行できます</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">2.1.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、<br />
 ググれば自分でだいたい解決することができます。<br />
 ただしこの項目で述べることは(とくに初学者にとって)<br />
@@ -815,7 +822,7 @@ tmpの更新を通してdata2の要素いずれもに影響します。</p>
 </div>
 </div>
 <div class="section" id="if">
-<h2><span class="section-number">2.2. </span>条件分岐 (if文)<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>条件分岐 (if文)<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">if</span></code>文では、書かれた条件が成立した場合、後に続くブロックを実行します。</p>
 <p>if文を使って命題の真偽を判定することで、条件分岐を表現することができます。</p>
 <div class="cell docutils container">
@@ -900,10 +907,10 @@ aが奇数の場合、3の倍数かそうでないかで処理を変える事を
 </div>
 </div>
 <div class="section" id="for">
-<h2><span class="section-number">2.3. </span>for文(ループ処理)<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>for文(ループ処理)<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
 <p>for文(ループ処理)は、プログラミングの中で<strong>最も重要な概念の一つ</strong>です。</p>
 <div class="section" id="id5">
-<h3><span class="section-number">2.3.1. </span>簡単なfor文<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.1. </span>簡単なfor文<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>まず以下のコードを実行してみましょう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,7 +991,7 @@ iにrange()で指定した数値の範囲(リストみたいなもの)を<br />
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>ブロックとインデント<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>さて、上のfor文のコードには、関数の前に半角スペースが4つあるのに気がついたでしょうか?<br />
 Pythonでは、for文を始め様々な処理の際に一連の作業”ブロック”を、<br />
 半角スペース4つ分インデントを下げることで表現します。</p>
@@ -1099,7 +1106,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 コードをスッキリさせる上で重要です。</p>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">2.3.3. </span>リスト内包表記<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.3. </span>リスト内包表記<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>for文別の使い方として、リスト内包表記と呼ばれる書き方があります。<br />
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
@@ -1112,7 +1119,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <div class="section" id="break">
-<h3><span class="section-number">2.3.4. </span>break ループ処理を途中で抜けたい場合<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.4. </span>break ループ処理を途中で抜けたい場合<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
 <p>breakはfor文を途中で抜け出すのに使います。<br />
 用途としては[目的を果たしたのでもうループを繰り返す必要がないとき]や<br />
 [予期せぬ事が起きた場合にループ処理を終わらせてプログラムを終了するとき]などに使います.</p>
@@ -1143,7 +1150,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <div class="section" id="clubsuitwhile">
-<h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>While文<a class="headerlink" href="#clubsuitwhile" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>While文<a class="headerlink" href="#clubsuitwhile" title="Permalink to this headline">¶</a></h3>
 <p>for文に似た概念としてWhile文が存在します。</p>
 <blockquote>
 <div><p>While文は、原理的にはfor文とbreakを組み合わせたコードでも実装可能なので<br />
@@ -1197,7 +1204,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 (十亀選手(ライオンズ)と松田選手(ホークス)の驚異的な相性を元に作られた対戦シミュレータ)</p>
 </div>
 <div class="section" id="clubsuit-continue">
-<h3><span class="section-number">2.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Permalink to this headline">¶</a></h3>
 <p>continue文は、forやwhile文の中で[以降の処理を無視する]のに使います.<br />
 具体的な用途としては[特定の条件を満たす場合にのみ適用する処理を書きたい]場合などがあります.<br />
 再びカジノの例で考えてみましょう.</p>
@@ -1276,7 +1283,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">2.3.7. </span>例外処理<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.7. </span>例外処理<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1324,13 +1331,13 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">2.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>発展的な内容です。<br />
 以下のタプル・辞書型は使いこなせれば便利ですが、<br />
 授業では必ずしも必要ではない(リストで代用できる)ので、<br />
 興味に応じて学習してください。</p>
 <div class="section" id="tuple">
-<h3><span class="section-number">2.4.1. </span>タプル(tuple)型, 丸括弧<a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.1. </span>タプル(tuple)型, 丸括弧<a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h3>
 <p>リストに似た型としてタプルと辞書があります。</p>
 <p>タプルは”immutable”(要素が変更不可)なリストと覚えておけばよいでしょう。<br />
 リストは要素を[]で囲むことで作ることができました。<br />
@@ -1399,7 +1406,7 @@ timeというライブラリを使って2つの作業に係る時間を調べて
 リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">2.4.2. </span>辞書型, 波括弧<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.2. </span>辞書型, 波括弧<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>辞書型は、キーと値の２つの要素をあわせ持つ型です.<br />
 リストにいれたものをいっぺんに扱うときに、<br />
 毎回番地を指定したりループで要素を回して、望むものを持ってくるのは面倒です。</p>
@@ -1498,17 +1505,17 @@ valueは様々な型が使えます。</p>
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Python_chapter1_Introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Python_chapter0_HowToUse.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Pythonの基本 その１:</p>
+            <p class="prev-next-title">Google Colaboratoryの使い方</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Python_chapter3_Function.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>関数</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>関数</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

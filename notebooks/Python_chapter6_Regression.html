@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. 相関・回帰分析 &#8212; 実践データサイエンス</title>
+    <title>5. 相関・回帰分析 &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. 最適化問題の基礎" href="Python_chapter7_Optimization.html" />
-    <link rel="prev" title="5. 確率と疑似乱数" href="Python_chapter5_Probability.html" />
+    <link rel="next" title="6. 最適化問題の基礎" href="Python_chapter7_Optimization.html" />
+    <link rel="prev" title="4. 確率と疑似乱数" href="Python_chapter5_Probability.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -100,23 +100,30 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Pythonの基本文法
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   2. Pythonの基本 その２:
+   1. Pythonの基本 その２:
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter3_Function.html">
-   3. 関数
+   2. 関数
   </a>
  </li>
 </ul>
@@ -128,7 +135,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+   3. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
   </a>
  </li>
 </ul>
@@ -140,22 +147,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
+   4. 確率と疑似乱数
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. 相関・回帰分析
+   5. 相関・回帰分析
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
+   6. 最適化問題の基礎
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
+   7. ファイル・文字列操作
   </a>
  </li>
 </ul>
@@ -312,29 +319,29 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   6.1. 相関分析 (復習)
+   5.1. 相関分析 (復習)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.1. 相関分析と因果関係
+     5.1.1. 相関分析と因果関係
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   6.2. 回帰分析
+   5.2. 回帰分析
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#polyfit-poly1d">
-     6.2.1. polyfit/poly1d関数
+     5.2.1. polyfit/poly1d関数
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     6.2.2.
+     5.2.2.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -343,12 +350,12 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     6.2.3. (余談1) 100メートル走のタイム
+     5.2.3. (余談1) 100メートル走のタイム
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     6.2.4. (余談2) 新型コロナウイルス感染症の陽性者数の推移に関して
+     5.2.4. (余談2) 新型コロナウイルス感染症の陽性者数の推移に関して
     </a>
    </li>
   </ul>
@@ -366,7 +373,7 @@
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter6_Regression.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">6. </span>相関・回帰分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>相関・回帰分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><em>相関関係は因果関係を含意しない (Correlation does not imply causation)</em></p>
 <p>[この章の目的]
 初歩的な相関分析と回帰分析がPythonで出来るようになる。</p>
@@ -383,7 +390,7 @@ import numpy as np
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">6.1. </span>相関分析 (復習)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>相関分析 (復習)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>1年生前期の必修科目[DS入門]でも(多くの学科で)[相関分析]を学習しました。</p>
 <p>解析したいデータが２種類だけなら、プログラムを使うありがたみはそれほど感じられないと思いますが<br />
 「多くのデータ間の相関関係を系統的に調べたい」<br />
@@ -518,7 +525,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 値が正しいかどうかを確かめておくのは、式(考え方)とプログラミング<br />
 双方の理解を深める上で非常に重要なプロセスです</strong></p>
 <div class="section" id="id3">
-<h3><span class="section-number">6.1.1. </span>相関分析と因果関係<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.1. </span>相関分析と因果関係<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>前章のファイル操作では、エクセルファイルからデータを読み込んで<br />
 系統的に相関分析を行うコードを紹介しました。</p>
 <p>以下では、そのうちの一つのグラフを見ながら、<br />
@@ -551,7 +558,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">6.2. </span>回帰分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>回帰分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>以下では自分が立てたモデルを表現する関数のことを<em>モデル関数</em>、<br />
 モデル関数とデータとの齟齬を最小化するようにモデル関数の係数を決定することを<strong>回帰</strong>、<br />
 そして回帰に基づく分析を指して<strong>回帰分析</strong>と呼ぶことにします。</p>
@@ -615,7 +622,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりします。</p>
 </div></blockquote>
 <div class="section" id="polyfit-poly1d">
-<h3><span class="section-number">6.2.1. </span>polyfit/poly1d関数<a class="headerlink" href="#polyfit-poly1d" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.1. </span>polyfit/poly1d関数<a class="headerlink" href="#polyfit-poly1d" title="Permalink to this headline">¶</a></h3>
 <p>たとえば今のデータを３次式でフィットしたければ、以下のようにします</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,7 +709,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 回帰に用いる関数の妥当性が検証できるという点に注意しましょう。</p>
 </div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">6.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> モデルの複雑さとモデル選択<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> モデルの複雑さとモデル選択<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>上の多項式回帰では、たとえば9次式はデータをピッタリと再現している一方で<br />
 真の関数(sin関数)の振る舞いよりもむしろ、測定誤差のようなものにまで過適合してしまっています。</p>
 <p>ここで過適合を防ぐためにデータとの整合性(二乗誤差)だけでなく<br />
@@ -745,7 +752,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <p>参考→正則化でググってみよう.</p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">6.2.3. </span>(余談1) 100メートル走のタイム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3. </span>(余談1) 100メートル走のタイム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>上記のことに関連して、こういう例を考えてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,7 +805,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 データの背景やドメイン知識が不可欠である、という好例です。</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.2.4. </span>(余談2) 新型コロナウイルス感染症の陽性者数の推移に関して<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4. </span>(余談2) 新型コロナウイルス感染症の陽性者数の推移に関して<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>回帰分析に関連して、この話題も取り上げておきましょう。</p>
 <p>我々が現実世界で観測することのできる種々の[値]というのは、<br />
 何らかの関数<span class="math notranslate nohighlight">\(f(x)\)</span>の、ある<span class="math notranslate nohighlight">\(x\)</span>での(実現)値と言えるかと思います。<br />
@@ -854,13 +861,13 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>確率と疑似乱数</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>確率と疑似乱数</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Python_chapter7_Optimization.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>最適化問題の基礎</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>最適化問題の基礎</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
