@@ -23,7 +23,7 @@ Jupyter Notebookを編集・実行するための環境はいくつかありま�
 **ブック**は概要をとらえたり復習をするときには便利ですが、実際に自身でコードを実行したりプログラムを書く場合には**Google Colaboratory上でJupyter Notebookを開く**ことになります。
 
 Google Colab.上でノートブックを開くには、各章の冒頭に用意された"Open in Colab"というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして"Colab"から開きます。
-(第0章や第1章のノートブックで試してみてください)
+("Google Colaboratoryの使い方"や第1章のノートブックで試してみてください)
 ![](notebooks/pic_for_notebook/pic_0_0.png)
 
 
