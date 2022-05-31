@@ -320,31 +320,19 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   よくあるエラー集
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   構文エラー
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     構文エラー
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     ランタイムエラー
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     論理エラー
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#license">
-   LICENSE
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   ランタイムエラー
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   論理エラー
   </a>
  </li>
 </ul>
@@ -361,24 +349,20 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Error.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>よくあるエラー集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Pythonを触っていてよく起こりがちなエラーの例をまとめます</p>
-<p><strong>皆さんの手元で起こったエラーの例も共有したいので、ぜひ教えてください</strong></p>
-<p>エラーには、いろいろな分類の仕方がありますが<br />
-代表的なものは以下のとおりです:</p>
+<p>このノートブックにはPythonを触っていてよく起こりがちなエラーの例をまとめます.<br />
+<strong>皆さんの手元で起こったエラーの例も共有したいので、ぜひ教えてください</strong></p>
+<p>エラーには、いろいろな分類の仕方がありますが代表的なものは以下のとおりです:</p>
 <ul class="simple">
 <li><p>構文エラー (syntax error)</p></li>
 <li><p>ランタイムエラー (runtime error) または 例外 (exception)</p></li>
 <li><p>論理エラー (logic error)</p></li>
 </ul>
 <p>これらの代表的な例を以下で紹介します。</p>
-<p>pythonのようなインタプリタ言語では、<br />
-実行時にコードの有効性が検証されるため、<br />
-構文エラーはランタイムエラーとも言えますが、<br />
-エラーメッセージに従って分類することにします。</p>
+<p>pythonのようなインタプリタ言語では、実行時にコードの有効性が検証されるため、構文エラーはランタイムエラーとも言えますが、エラーメッセージに従って分類することにします。</p>
 <div class="section" id="id2">
 <h2>構文エラー<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>構文エラーとは、プログラミング言語の文法・構文規則に違反していることによるエラーです。</p>
-<p>代表的なものは</p>
+<p>構文エラーとは、プログラミング言語の文法・構文規則に違反していることによるエラーです。<br />
+代表的なものは</p>
 <ul class="simple">
 <li><p>括弧や引用符の閉じ忘れ</p></li>
 <li><p>コロンのつけ忘れ</p></li>
@@ -454,9 +438,7 @@
 </div>
 </div>
 <p><strong>全角記号の使用</strong></p>
-<p>これは見た目では気が付きづらいので、<br />
-「”invalid character”というSyntaxErrorが出たときは、全角を疑う」<br />
-というのもおすすめです。</p>
+<p>これは見た目では気が付きづらいので、<strong>”invalid character”というSyntaxErrorが出たときは、全角を疑う</strong>というのもおすすめです。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">１</span>　<span class="c1">#後ろの1が全角になっている</span>
@@ -714,12 +696,8 @@ SyntaxError: invalid character in identifier
 </div>
 <div class="section" id="id4">
 <h2>論理エラー<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>論理エラーとは、文法的にもOK(syntax errorなし)で、<br />
-ランタイムエラーも無く、最後までプログラムが実行されるが、<br />
-「意図した通りに動かない」というものを指します。</p>
-<p>たとえば「aが負かつ正なら文字列を表示する」という以下のコードは、<br />
-論理的にはおかしい命令ですが、<br />
-構文エラーにもランタイムエラーにもなりません</p>
+<p>論理エラーとは、文法的にもOK(syntax errorなし)で、ランタイムエラーも無く、最後までプログラムが実行されるが、「意図した通りに動かない」というものを指します。</p>
+<p>たとえば「aが負かつ正なら文字列を表示する」という以下のコードは、論理的にはおかしい命令ですが、構文エラーにもランタイムエラーにもなりません</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>
@@ -729,15 +707,9 @@ SyntaxError: invalid character in identifier
 </div>
 </div>
 </div>
-<p>人間側のエラーとも言えそうですね。</p>
-<p>第１章で説明したように、print文を使ったりしながら<br />
-こうした論理エラーが無いか調べることもときに必要です。</p>
+<p>人間側のエラーとも言えそうですね。<br />
+第1章で説明したように、print文を使ったりしながらこうした論理エラーが無いか調べることもときに必要です。</p>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="license">
-<h1>LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
-<p>Copyright (C) 2021 Sota Yoshida</p>
-<p><a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.ja">ライセンス:クリエイティブ・コモンズ 4.0 表示 (CC-BY 4.0)</a></p>
 </div>
 
     <script type="text/x-thebe-config">
