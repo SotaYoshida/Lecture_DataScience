@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StyleGAN2による顔写真生成 &#8212; 実践データサイエンス</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="ベイズ最適化による実験計画法" href="Python_chapter_BayesianOptimization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">実践データサイエンス</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   資料:実践データサイエンス
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pythonの基本文法
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter2_ListLoop.html">
+   2. Pythonの基本 その２:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter3_Function.html">
+   3. 関数
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ライブラリと可視化
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ分析の基礎
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter5_Probability.html">
+   5. 確率と疑似乱数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter6_Regression.html">
+   6. 相関・回帰分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter7_Optimization.html">
+   7. 最適化問題の基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter8_handling_files.html">
+   8. ファイル・文字列操作
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tips&amp;環境構築
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Error.html">
+   よくあるエラー集
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_environment.html">
+   Pythonの環境構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
+   Pythonの環境構築 (Windows11版)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  おまけ
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Pandas.html">
+   Pandasの使い方 (基礎)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_numpy.html">
+   Numpy モジュールについて
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
+   ベイズ最適化による実験計画法
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   StyleGAN2による顔写真生成
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
+                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_StyleGAN2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
+                    class="fab fa-github"></i>リポジトリ</button></a>
+        <a class="issues-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_StyleGAN2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
+        title="全画面モード"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_StyleGAN2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_StyleGAN2.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="stylegan2">
+<h1>StyleGAN2による顔写真生成<a class="headerlink" href="#stylegan2" title="Permalink to this headline">¶</a></h1>
+<p>このノートブックでは、StyleGAN2を用いた顔写真生成をデモンストレーションする。<br />
+*ランタイムタイプはGPUによる実行が推奨</p>
+<p>参考:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/parthsuresh/stylegan2-colab">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://bit.ly/2PyVCsw">Notebook</a></p></li>
+</ul>
+<p>論文:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1812.04948">arXiv:1812.04948</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1912.04958">arXiv:1912.04958</a></p></li>
+</ul>
+<p><strong>StyleGAN2のライセンス</strong></p>
+<p>StyleGAN2はNVIDIAが著作権を保持していて以下のライセンスで提供されている。<br />
+以下のコードを実行したりする分には問題はないが、別の用途で用いる際にはライセンスの詳細を参照し遵守すること.</p>
+<p>Copyright © 2019, NVIDIA Corporation. All rights reserved.<br />
+This work is made available under the Nvidia Source Code License-NC. To view a copy of this license, visit <a class="reference external" href="https://nvlabs.github.io/stylegan2/license.html">https://nvlabs.github.io/stylegan2/license.html</a></p>
+<p>まずはTensorflowとStyleGAN2を読み込む</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%tensorflow_version 1.x
+import tensorflow as tf
+
+# GitHubからstyleganをDownload 
+!git clone https://github.com/NVlabs/stylegan2.git
+%cd stylegan2
+!nvcc test_nvcc.cu -o test_nvcc -run
+print(&#39;Tensorflow version: {}&#39;.format(tf.__version__) )
+!nvidia-smi -L
+print(&#39;GPU Identified at: {}&#39;.format(tf.test.gpu_device_name()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#画像生成に使うモジュールをインポートしておく</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">PIL.Image</span>
+<span class="kn">import</span> <span class="nn">dnnlib</span>
+<span class="kn">import</span> <span class="nn">dnnlib.tflib</span> <span class="k">as</span> <span class="nn">tflib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">IPython.display</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="kn">import</span> <span class="nn">pretrained_networks</span>
+
+<span class="n">network_pkl</span> <span class="o">=</span> <span class="s2">&quot;gdrive:networks/stylegan2-ffhq-config-f.pkl&quot;</span> <span class="c1"># 他の学習済みネットワークも指定可能</span>
+<span class="c1"># たとえば上の stylegan2-ffhq-config-f.pkl を stylegan2-cat-config-f.pkl　に置き換えると猫の画像の生成ができる</span>
+
+<span class="c1">#pklファイルのダウンロードに失敗する場合は、別途ダウンロードしたpklファイルをgoogle driveにアップして使うこともできる</span>
+<span class="c1"># network_pkl = &quot;/content/drive/My Drive/GAN/stylegan2-ffhq-config-f.pkl&quot; #たとえばColabの[ファイル]からgoogle driveをマウントした場合はこんな感じ</span>
+<span class="n">_G</span><span class="p">,</span> <span class="n">_D</span><span class="p">,</span> <span class="n">Gs</span> <span class="o">=</span> <span class="n">pretrained_networks</span><span class="o">.</span><span class="n">load_networks</span><span class="p">(</span><span class="n">network_pkl</span><span class="p">)</span>
+<span class="n">noise_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">Gs</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">synthesis</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;noise&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_images_in_w_space</span><span class="p">(</span><span class="n">dlatents</span><span class="p">,</span> <span class="n">truncation_psi</span><span class="p">):</span>
+    <span class="n">Gs_kwargs</span> <span class="o">=</span> <span class="n">dnnlib</span><span class="o">.</span><span class="n">EasyDict</span><span class="p">()</span>
+    <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">output_transform</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">tflib</span><span class="o">.</span><span class="n">convert_images_to_uint8</span><span class="p">,</span> <span class="n">nchw_to_nhwc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">randomize_noise</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">truncation_psi</span> <span class="o">=</span> <span class="n">truncation_psi</span>
+    <span class="n">dlatent_avg</span> <span class="o">=</span> <span class="n">Gs</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s1">&#39;dlatent_avg&#39;</span><span class="p">)</span> <span class="c1"># [component]</span>
+
+    <span class="n">imgs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">dlatent</span> <span class="ow">in</span> <span class="n">log_progress</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">dlatents</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Generating images&quot;</span><span class="p">):</span>
+        <span class="c1">#row_dlatents = (dlatent[np.newaxis] - dlatent_avg) * np.reshape(truncation_psi, [-1, 1, 1]) + dlatent_avg</span>
+        <span class="n">dl</span> <span class="o">=</span> <span class="p">(</span><span class="n">dlatent</span><span class="o">-</span><span class="n">dlatent_avg</span><span class="p">)</span><span class="o">*</span><span class="n">truncation_psi</span>   <span class="o">+</span> <span class="n">dlatent_avg</span>
+        <span class="n">row_images</span> <span class="o">=</span> <span class="n">Gs</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">synthesis</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dlatent</span><span class="p">,</span>  <span class="o">**</span><span class="n">Gs_kwargs</span><span class="p">)</span>
+        <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">row_images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;RGB&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">imgs</span>       
+
+<span class="k">def</span> <span class="nf">generate_images</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span> <span class="n">truncation_psi</span><span class="p">):</span>
+    <span class="n">Gs_kwargs</span> <span class="o">=</span> <span class="n">dnnlib</span><span class="o">.</span><span class="n">EasyDict</span><span class="p">()</span>
+    <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">output_transform</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">tflib</span><span class="o">.</span><span class="n">convert_images_to_uint8</span><span class="p">,</span> <span class="n">nchw_to_nhwc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">randomize_noise</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">truncation_psi</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">truncation_psi</span> <span class="o">=</span> <span class="p">[</span><span class="n">truncation_psi</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+        
+    <span class="n">imgs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">z_idx</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">log_progress</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">zs</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">zs</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Generating images&quot;</span><span class="p">):</span>
+        <span class="n">Gs_kwargs</span><span class="o">.</span><span class="n">truncation_psi</span> <span class="o">=</span> <span class="n">truncation_psi</span><span class="p">[</span><span class="n">z_idx</span><span class="p">]</span>
+        <span class="n">noise_rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># fix noise</span>
+        <span class="n">tflib</span><span class="o">.</span><span class="n">set_vars</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="n">noise_rnd</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">())</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">noise_vars</span><span class="p">})</span> <span class="c1"># [height, width]</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">Gs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">Gs_kwargs</span><span class="p">)</span> <span class="c1"># [minibatch, height, width, channel]</span>
+        <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;RGB&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">imgs</span>
+
+<span class="k">def</span> <span class="nf">generate_zs_from_seeds</span><span class="p">(</span><span class="n">seeds</span><span class="p">):</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">seed_idx</span><span class="p">,</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seeds</span><span class="p">):</span>
+        <span class="n">rnd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">rnd</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">Gs</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="c1"># [minibatch, component]</span>
+        <span class="n">zs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">zs</span>
+
+<span class="c1"># Generates a list of images, based on a list of seed for latent vectors (Z), and a list (or a single constant) of truncation_psi&#39;s.</span>
+<span class="k">def</span> <span class="nf">generate_images_from_seeds</span><span class="p">(</span><span class="n">seeds</span><span class="p">,</span> <span class="n">truncation_psi</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">generate_images</span><span class="p">(</span><span class="n">generate_zs_from_seeds</span><span class="p">(</span><span class="n">seeds</span><span class="p">),</span> <span class="n">truncation_psi</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">saveImgs</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">log_progress</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Saving images&quot;</span><span class="p">):</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">location</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">jpeg_fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+  <span class="n">str_file</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+  <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">str_file</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+  <span class="n">im_data</span> <span class="o">=</span> <span class="n">str_file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">im_data</span><span class="p">))</span>
+  <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">jpeg_fallback</span> <span class="ow">and</span> <span class="nb">format</span> <span class="o">!=</span> <span class="s1">&#39;jpeg&#39;</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Warning: image was too large to display in format &quot;</span><span class="si">{}</span><span class="s1">&quot;; &#39;</span>
+             <span class="s1">&#39;trying jpeg instead.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">imshow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span>
+  <span class="k">return</span> <span class="n">disp</span>
+
+<span class="k">def</span> <span class="nf">showarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+    <span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
+
+        
+<span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">maximum</span><span class="p">))</span>
+    
+<span class="k">def</span> <span class="nf">drawLatent</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">latents</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)):</span>
+  <span class="n">buffer</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+   
+  <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+  <span class="n">cy</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">y2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+  <span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">],</span><span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">180</span><span class="p">),</span> <span class="n">outline</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">latents</span><span class="p">)):</span>
+    <span class="n">mx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">latents</span><span class="p">))</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">latents</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">0.1</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">clamp</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">cy</span><span class="o">-</span><span class="n">y2</span><span class="p">,</span><span class="n">y2</span><span class="o">-</span><span class="n">cy</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="n">mx</span><span class="p">,</span><span class="n">cy</span><span class="o">+</span><span class="n">h</span><span class="p">),</span><span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">alpha_composite</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">buffer</span><span class="p">)</span>
+             
+  
+<span class="k">def</span> <span class="nf">createImageGrid</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+   <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+   <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">scale</span><span class="p">)</span>
+   <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">scale</span><span class="p">)</span>
+   <span class="n">height</span> <span class="o">=</span> <span class="n">rows</span><span class="o">*</span><span class="n">h</span>
+   <span class="n">cols</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">/</span> <span class="n">rows</span><span class="p">)</span>
+   <span class="n">width</span> <span class="o">=</span> <span class="n">cols</span><span class="o">*</span><span class="n">w</span>
+   <span class="n">canvas</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">),</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+   <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">img</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+     <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">ANTIALIAS</span><span class="p">)</span>
+     <span class="n">canvas</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">cols</span><span class="p">),</span> <span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="n">cols</span><span class="p">)))</span> 
+   <span class="k">return</span> <span class="n">canvas</span>
+
+<span class="k">def</span> <span class="nf">convertZtoW</span><span class="p">(</span><span class="n">latent</span><span class="p">,</span> <span class="n">truncation_psi</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">truncation_cutoff</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+  <span class="n">dlatent</span> <span class="o">=</span> <span class="n">Gs</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">latent</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># [seed, layer, component]</span>
+  <span class="n">dlatent_avg</span> <span class="o">=</span> <span class="n">Gs</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s1">&#39;dlatent_avg&#39;</span><span class="p">)</span> <span class="c1"># [component]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">truncation_cutoff</span><span class="p">):</span>
+    <span class="n">dlatent</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dlatent</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">dlatent_avg</span><span class="p">)</span><span class="o">*</span><span class="n">truncation_psi</span> <span class="o">+</span> <span class="n">dlatent_avg</span>
+    
+  <span class="k">return</span> <span class="n">dlatent</span>
+
+<span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+   <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+     <span class="n">fraction</span> <span class="o">=</span> <span class="n">index</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> 
+     <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">fraction</span> <span class="o">+</span> <span class="n">zs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fraction</span><span class="p">))</span>
+   <span class="k">return</span> <span class="n">out</span>
+
+<span class="c1"># Taken from https://github.com/alexanderkuk/log-progress</span>
+<span class="k">def</span> <span class="nf">log_progress</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">every</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Items&#39;</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">IntProgress</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">VBox</span>
+    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+    <span class="n">is_iterator</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">is_iterator</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">every</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">every</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="mi">200</span><span class="p">)</span>     <span class="c1"># every 0.5%</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">every</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;sequence is iterator, set every&#39;</span>
+
+    <span class="k">if</span> <span class="n">is_iterator</span><span class="p">:</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="n">IntProgress</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">progress</span><span class="o">.</span><span class="n">bar_style</span> <span class="o">=</span> <span class="s1">&#39;info&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="n">IntProgress</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">()</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">label</span><span class="p">,</span> <span class="n">progress</span><span class="p">])</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">%</span> <span class="n">every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">is_iterator</span><span class="p">:</span>
+                    <span class="n">label</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">: </span><span class="si">{index}</span><span class="s1"> / ?&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">index</span><span class="o">=</span><span class="n">index</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">progress</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">index</span>
+                    <span class="n">label</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">: </span><span class="si">{index}</span><span class="s1"> / </span><span class="si">{size}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+                        <span class="n">size</span><span class="o">=</span><span class="n">size</span>
+                    <span class="p">)</span>
+            <span class="k">yield</span> <span class="n">record</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">progress</span><span class="o">.</span><span class="n">bar_style</span> <span class="o">=</span> <span class="s1">&#39;danger&#39;</span>
+        <span class="k">raise</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">progress</span><span class="o">.</span><span class="n">bar_style</span> <span class="o">=</span> <span class="s1">&#39;success&#39;</span>
+        <span class="n">progress</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{name}</span><span class="s2">: </span><span class="si">{index}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">index</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span> <span class="ow">or</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate some random seeds</span>
+<span class="n">seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seeds</span><span class="p">)</span>
+
+<span class="c1"># show the seeds</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">createImageGrid</span><span class="p">(</span><span class="n">generate_images_from_seeds</span><span class="p">(</span><span class="n">seeds</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="mf">0.7</span> <span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple (Z) interpolation</span>
+<span class="n">zs</span> <span class="o">=</span> <span class="n">generate_zs_from_seeds</span><span class="p">([</span><span class="mi">5015289</span> <span class="p">,</span> <span class="mi">9148088</span> <span class="p">])</span>
+
+<span class="n">latent1</span> <span class="o">=</span> <span class="n">zs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">latent2</span> <span class="o">=</span> <span class="n">zs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">number_of_steps</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">imgs</span> <span class="o">=</span> <span class="n">generate_images</span><span class="p">(</span><span class="n">interpolate</span><span class="p">([</span><span class="n">latent1</span><span class="p">,</span><span class="n">latent2</span><span class="p">],</span><span class="n">number_of_steps</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">number_of_images</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">createImageGrid</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="mf">0.4</span> <span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Python_chapter_BayesianOptimization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">ベイズ最適化による実験計画法</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          <div class="extra_footer">
+            © Copyright 2022 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
