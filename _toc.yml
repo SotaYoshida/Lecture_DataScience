@@ -30,5 +30,6 @@ parts:
   chapters:
     - file: notebooks/Python_misc_Pandas.ipynb
     - file: notebooks/Python_misc_numpy.ipynb
-    #- file: notebooks/Python_misc_StyleGAN2.ipynb
+    - file: notebooks/Python_chapter_BayesianOptimization.ipynb
+    - file: notebooks/Python_misc_StyleGAN2.ipynb
   
