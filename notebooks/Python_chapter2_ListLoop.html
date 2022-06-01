@@ -479,7 +479,7 @@
 </div>
 </div>
 </div>
-<p>リストに入っている要素の数は、len関数(lengthの略)で見ることができます。</p>
+<p>リストに入っている要素の数は、<code class="docutils literal notranslate"><span class="pre">len()</span></code>関数(lengthの略)で見ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaは&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -504,7 +504,7 @@
 <p><code class="docutils literal notranslate"> <span class="pre">[</span> <span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,66],</span> <span class="pre">[&quot;Bさん&quot;,</span> <span class="pre">180,</span> <span class="pre">70]</span> <span class="pre">]</span></code></p>
 <p>リストの中の要素にアクセスするときは、半角括弧を使って[整数]といった形で”番地”を指定します。<br />
 このときの番地(あるいは座標といっても良いですが)を指定する整数のことをインデックス(index)と呼びます。<br />
-Pythonでは、要素にアクセスするためのインデックスは１からではなく、0からカウントします。</p>
+<strong>Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします</strong>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
@@ -515,7 +515,7 @@ Pythonでは、要素にアクセスするためのインデックスは１か�
 </div>
 </div>
 </div>
-<p>ですので、a[3]にアクセスしようとすると、</p>
+<p>ですので、<code class="docutils literal notranslate"><span class="pre">a[3]</span></code>にアクセスしようとすると、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
@@ -523,13 +523,9 @@ Pythonでは、要素にアクセスするためのインデックスは１か�
 </div>
 </div>
 </div>
-<p>list index out of range (リストのインデックスが用意された範囲(range)を逸脱している)というエラーが出ます。</p>
-<p>慣れないうちは0からカウントするのを変に思うかもしれませんが、<br />
-これはプログラミング言語の仕様によるもので、Pythonの他にもC/C++なども0からカウントします。</p>
-<p>(ちなみにFORTRAN, Juliaなどは1からカウントします。)</p>
-<p>ググると、こうした0-based indexingと呼ばれる言語の利点がいくつか出てきます。<br />
-(正直私の好みは1-based indexingです)<br />
-代表的なものは負のインデックスが自然に使えることでしょうか？</p>
+<p>list index out of range (リストのインデックスが用意された範囲(range)を逸脱している)というエラーが出ます。<br />
+慣れないうちは0からカウントするのを変に思うかもしれませんが、これはプログラミング言語の仕様によるもので、Pythonの他にもC/C++なども0からカウントします。(ちなみにFORTRAN, Juliaなどは1からカウントします。)</p>
+<p>ググると、こうした0-based indexingと呼ばれる言語の利点がいくつか出てきます。代表的なものは負のインデックスが自然に使えることでしょうか？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
@@ -541,7 +537,7 @@ Pythonでは、要素にアクセスするためのインデックスは１か�
 </div>
 </div>
 </div>
-<p>[-1]でアクセスすれば末尾の要素に、[-2]番目の要素は後ろから二番目といった具合です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">[-1]</span></code>でアクセスすれば末尾の要素に、<code class="docutils literal notranslate"><span class="pre">[-2]</span></code>番目の要素は後ろから二番目といった具合です。</p>
 <p>長いリストを作って「えっとこれ前から何番目の要素だったっけ…？」というときに、<br />
 後ろから３番目の要素をサクッと取得できるのが便利なときもあります。</p>
 <p>入れ子にしたリストの要素を見たり、使いたいときには、少々慣れが必要です。<br />
