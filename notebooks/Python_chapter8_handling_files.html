@@ -448,16 +448,9 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">8.2. </span>テキストファイルの操作<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>膨大な行のテキストファイルに対して、<br />
-人間が手で操作をするというのは時として非現実的です。</p>
-<p>誤変換を置換するくらいなら、<br />
-どのテキスト/メモ帳アプリやwordでもできますが、<br />
-全行(数千とか数万)に対して、決まった操作が必要な場合、<br />
-プログラムにしてしまったほうが遥かに便利です。</p>
-<p>以下ではGoogle Driveのマイドライブの<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>の下<br />
-に作った<code class="docutils literal notranslate"><span class="pre">chapter5_data</span></code>というフォルダに<br />
-ファイルを保存したと仮定して話を進めますので、<br />
-<strong>適宜皆さんの場合に置き換えて使用してください</strong></p>
+<p>膨大な行のテキストファイルに対して、人間が手で操作をするというのは時として非現実的です。</p>
+<p>誤変換を置換するくらいなら、どのテキスト/メモ帳アプリやwordでもできますが、全行(数千とか数万)に対して、決まった操作が必要な場合、プログラムにしてしまったほうが遥かに便利です。</p>
+<p>以下ではGoogle Driveのマイドライブの<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>の下に作った<code class="docutils literal notranslate"><span class="pre">chapter5_data</span></code>というフォルダにファイルを保存したと仮定して話を進めますので、<strong>適宜皆さんの場合に置き換えて使用してください</strong></p>
 <p>まずはgoogle driveに保存した<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>という名前のファイルを読み込んでみましょう。<br />
 既に何回かやったようにgoogle driveをマウントします。</p>
 <div class="cell docutils container">
@@ -488,8 +481,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 <code class="docutils literal notranslate"><span class="pre">test.txt</span></code>が見つかったでしょうか？(DriveにアップロードしてColabから読み込みできるまでに少し時間がかかる場合があります)</p>
 <p><strong>ファイルパスの概念に不慣れな方は、このノートの後半を参照してください</strong></p>
 <p>では次に、このファイルに書かれているテキストを取得してみましょう。<br />
-方法はいくつかありますが、最もポピュラーなものとして、<br />
-ファイルを開いてテキストを取得する方式を採用します。</p>
+方法はいくつかありますが、最もポピュラーなものとして、ファイルを開いてテキストを取得する方式を採用します。</p>
 <div class="section" id="id4">
 <h3><span class="section-number">8.2.1. </span>テキストファイルを開いて内容を読み出す<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -503,9 +495,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 <p>1行目でファイル名(正確にはファイルのパス)を指定し<code class="docutils literal notranslate"><span class="pre">filename</span></code>という名前に格納しました。</p>
-<p>2行目では、指定したパスにあるファイルを開いています。<br />
-今はファイルに書き込むのではなく、既にあるファイルを開いて読み込むので<code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code>というオプションを指定します。他には<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>(書き出し,上書き), <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>(書き出し,追記)などがあります。<br />
-新しく上書きでファイルを作成したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>,すでにあるファイルの内容は消さずに追記したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>を指定します。</p>
+<p>2行目では、指定したパスにあるファイルを開いています。今はファイルに書き込むのではなく、既にあるファイルを開いて読み込むので<code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code>というオプションを指定します。他には<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>(書き出し,上書き), <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>(書き出し,追記)などがあります。新しく上書きでファイルを作成したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>,すでにあるファイルの内容は消さずに追記したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>を指定します。</p>
 <p>3行目では、<code class="docutils literal notranslate"><span class="pre">inp</span></code>(ファイルをopenしたオブジェクト)に対して、<code class="docutils literal notranslate"><span class="pre">readlines</span></code>という操作を適用しています。
 これは、ファイルに書かれているテキストを[全行に渡って]読み込む関数です。</p>
 <div class="cell docutils container">
@@ -515,8 +505,8 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 </div>
-<p>とすると、全ての行が読み込まれ、変数<code class="docutils literal notranslate"><span class="pre">lines</span></code>に格納されていることがわかります。</p>
-<p>ここで<code class="docutils literal notranslate"><span class="pre">\n</span></code>は改行記号を意味します。ループを回して一行ずつ表示させると</p>
+<p>とすると、全ての行が読み込まれ、変数<code class="docutils literal notranslate"><span class="pre">lines</span></code>に格納されていることがわかります。<br />
+ここで<code class="docutils literal notranslate"><span class="pre">\n</span></code>は改行記号を意味します。ループを回して一行ずつ表示させると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
@@ -528,8 +518,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 <p>といった感じです(改行については後で説明します)。</p>
 <p>必要な行番号が分かっている場合は、<code class="docutils literal notranslate"><span class="pre">nlines</span> <span class="pre">=</span> <span class="pre">lines[2:10]</span></code>などとして要らないところは捨てて解析・操作してもOKです。(リストのスライスについては2章を参照)</p>
 <p>次に、もう少し具体的なテキスト操作をしてみましょう。
-まず、上の1行ずつ表示するコードでは、改行コードを明示的に含む文字列を一行ずつ表示したため、改めて<code class="docutils literal notranslate"><span class="pre">print</span></code>すると余分なスペースが空いてしまいました。(これは<code class="docutils literal notranslate"><span class="pre">print</span></code>関数がデフォルトで末尾に改行<code class="docutils literal notranslate"><span class="pre">\n</span></code>を挿入するため、<br />
-ファイルにある改行記号と合わさってしまうためです→<a class="reference external" href="https://docs.python.org/ja/3/library/functions.html#print">参考リンク</a>)</p>
+まず、上の1行ずつ表示するコードでは、改行コードを明示的に含む文字列を一行ずつ表示したため、改めて<code class="docutils literal notranslate"><span class="pre">print</span></code>すると余分なスペースが空いてしまいました。(これは<code class="docutils literal notranslate"><span class="pre">print</span></code>関数がデフォルトで末尾に改行<code class="docutils literal notranslate"><span class="pre">\n</span></code>を挿入するため、ファイルにある改行記号と合わさってしまうためです→<a class="reference external" href="https://docs.python.org/ja/3/library/functions.html#print">参考リンク</a>)</p>
 </div>
 <div class="section" id="strip">
 <h3><span class="section-number">8.2.2. </span>strip関数<a class="headerlink" href="#strip" title="Permalink to this headline">¶</a></h3>

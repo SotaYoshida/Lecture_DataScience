@@ -357,15 +357,11 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter3_Function.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1><span class="section-number">3. </span>関数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>[この章の目的]
-プログラム内での関数と戻り値,スコープの概念を獲得する。</p>
-<p>このノートでは、Pythonにおける関数の定義と、<br />
-関数が返す値[戻り値(返り値とも呼ぶ)]と、<br />
-ややテクニカルですが重要な点である変数のスコープについて説明します。</p>
+<p>[この章の目的]プログラム内での関数と戻り値,スコープの概念を獲得する。</p>
+<p>ここでは、Pythonにおける関数の定義と関数が返す値[戻り値(返り値とも呼ぶ)]、ややテクニカルですが重要な点である変数のスコープについて説明します。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">3.1. </span>関数の定義<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>既に現れた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などはPythonに備え付けられた[組み込み関数]と呼ばれるものの一種です。<br />
-以下に示すように、組み込み関数とは別にユーザーが独自の関数を定義することができます。</p>
+<p>既に現れた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などはPythonに備え付けられた[組み込み関数]と呼ばれるものの一種です。以下に示すように、組み込み関数とは別にユーザーが独自の関数を定義することができます。</p>
 <p>たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -377,9 +373,7 @@
 </div>
 </div>
 </div>
-<p>といったようなリスト(ある点の<span class="math notranslate nohighlight">\(x,y,z\)</span>座標だと思ってください)が<br />
-たくさん(たとえば100個)あったときに、<br />
-任意の２つの点の距離を求める操作が必要だったとします。</p>
+<p>といったようなリスト(ある点の<span class="math notranslate nohighlight">\(x,y,z\)</span>座標だと思ってください)がたくさん(たとえば100個)あったときに、任意の２つの点の距離を求める操作が必要だったとします。</p>
 <p>そんなとき<span class="math notranslate nohighlight">\({}_{100}C_2=4950\)</span>通りに対して毎回</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -388,10 +382,9 @@
 </div>
 </div>
 </div>
-<p>などと書くのは面倒です。</p>
-<p>何回も必要になる処理は、関数として定義しておけば呼び出して簡単に使うことができます。</p>
-<p>任意の長さが3の数値リストに対して<br />
-3次元空間での距離を計算する関数を自作してみましょう。</p>
+<p>などと書くのは面倒です。<br />
+何回も必要になる処理は、関数として定義しておけば呼び出して簡単に使うことができます。</p>
+<p>「任意の長さが3の数値リストに対して3次元空間での距離を計算する関数」を自作してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
@@ -408,17 +401,10 @@
 </div>
 </div>
 </div>
-<p>calc_dは自作した関数の名前で、関数名の後ろのカッコには引数(ひきすう)を指定します。</p>
-<p>リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<br />
-<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、<br />
-というのが上のコードで行っていることです。</p>
-<p>コロン(:)以下の操作はインデントされていて、<br />
-どこまでが関数のブロックかわかるようになっています。<br />
-(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
-<p>使用する際には、この関数<code class="docutils literal notranslate"><span class="pre">calc_d()</span></code>に必要な引数(変数,今の場合リスト)<br />
-<code class="docutils literal notranslate"><span class="pre">l1,l2</span></code>を指定して使います。<br />
-引数は一般に関数の中だけで使う変数名なので、<br />
-関数に入れる際にl1,l2という名前にあわせる必要はありません。</p>
+<p><code class="docutils literal notranslate"><span class="pre">calc_d</span></code>は自作した関数の名前で、関数名の後ろのカッコには引数(ひきすう)を指定します。<br />
+リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、というのが上のコードで行っていることです。</p>
+<p>コロン(<code class="docutils literal notranslate"><span class="pre">:</span></code>)以下の操作はインデントされていて、どこまでが関数のブロックかわかるようになっています。(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
+<p>定義した関数を使用する際には、この関数<code class="docutils literal notranslate"><span class="pre">calc_d()</span></code>に必要な引数(変数,今の場合リスト)<code class="docutils literal notranslate"><span class="pre">l1,l2</span></code>を指定して使います。引数は一般に関数の中だけで使う変数名なので、関数に入れる引数を<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせる必要はありません。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p100</span><span class="p">))</span> <span class="c1">#←これでも使えるし</span>
@@ -459,13 +445,8 @@
 <p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>)に対して距離を計算することが出来る。<br />
 上で使われているインデックス(<span class="math notranslate nohighlight">\(j,i\)</span>)の模式図:<br />
 <img src="https://drive.google.com/uc?export=view&id=1d_MB8x20a2OE-WwLWqJCM1LRM-to6AoO" width = 30%></p>
-<p>引数は通常関数の中で行う操作に必要な変数を指定します。<br />
-上の例では２つのリストを引数としました。</p>
-<p>関数内の操作に関数外からの情報(インプット)が必要ない場合は<br />
-引数なしの関数でも構いませんし、<br />
-関数の外に値を渡す(アウトプット)必要がなければ<br />
-return文を明示的に書かなくても大丈夫です。<br />
-return文がない場合は<code class="docutils literal notranslate"><span class="pre">None</span></code>(値なし)が返されます。</p>
+<p>引数は通常関数の中で行う操作に必要な変数を指定します。上の例では２つのリストを引数としました。</p>
+<p>関数内の操作に関数外からの情報(インプット)が必要ない場合は引数なしの関数でも構いませんし、関数の外に値を渡す(アウトプット)必要がなければreturn文を明示的に書かなくても大丈夫です。<code class="docutils literal notranslate"><span class="pre">return</span></code>文がない場合は<code class="docutils literal notranslate"><span class="pre">None</span></code>(値なし)が返されます。</p>
 <p>幾つか例を作って、挙動を理解してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,8 +477,7 @@ myname_return()の返り値→ 私は吉田です
 </div>
 </div>
 </div>
-<p>戻り値<code class="docutils literal notranslate"><span class="pre">return</span></code>は単一の値や文字列に限らず、<br />
-複数の値でも可能ですし、リストを返すことも出来ます。</p>
+<p>戻り値<code class="docutils literal notranslate"><span class="pre">return</span></code>は単一の値や文字列に限らず、複数の値でも可能ですし、リストを返すことも出来ます。</p>
 <p>先程の自作関数<code class="docutils literal notranslate"><span class="pre">calc_d</span></code>の場合、戻り値はfloat(実数値)ですが</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,9 +506,7 @@ myname_return()の返り値→ 私は吉田です
 </div>
 </div>
 <p>といったように、様々な返り値を持つ関数を定義できます。</p>
-<p>関数を定義するときに、<br />
-引数にデフォルト値(とくに値を指定しなければこの値が選ばれる)を<br />
-設定することも出来ます。</p>
+<p>関数を定義するときに、引数にデフォルト値(とくに値を指定しなければこの値が選ばれる)を設定することも出来ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#数値リストの要素のp乗和を計算する関数</span>
@@ -552,10 +530,7 @@ p=3 100000.0
 </div>
 </div>
 </div>
-<p>今の場合、引数を指定する際に<span class="math notranslate nohighlight">\(p=\)</span>　は書いても欠かなくてもOKですが、<br />
-デフォルト値が複数設定されている関数を作った場合には、<br />
-どの変数を指定しているのかを明示的にするため、<br />
-<span class="math notranslate nohighlight">\(p=3\)</span>などと引数に入力します。</p>
+<p>上の場合、引数を指定する際に<code class="docutils literal notranslate"><span class="pre">p=</span></code>などは書いても書かなくてもなくてもOKですが、デフォルト値が複数設定されている関数を作った場合には、どの変数を指定しているのかを明示的にするため、<code class="docutils literal notranslate"><span class="pre">p=3</span></code>などと引数に入力します。</p>
 <p>関数を定義することで作業を”パッケージ化”し、コードを簡略化することができます。<br />
 「繰り返しの操作は関数にする」ことを心がけましょう。</p>
 </div>
@@ -563,10 +538,7 @@ p=3 100000.0
 <h2><span class="section-number">3.2. </span>変数のスコープについて<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>以下の内容は、これまで学習したfor文や関数のインデントとも関連した話題です。<br />
 非常に重要な反面、初学者がつまづきやすい点でもあります。</p>
-<p>一般に、プログラミングでは[グローバル変数]と[ローカル変数]と呼ばれるものがあります。<br />
-その名(global/local)が示すとおり、<br />
-グローバル変数とはどこからでも参照できる変数で、<br />
-ローカル変数とは、ある有効範囲(たとえば関数内)のみで参照できる変数です。</p>
+<p>一般に、プログラミングでは[グローバル変数]と[ローカル変数]と呼ばれるものがあります。その名(global/local)が示すとおりグローバル変数とはどこからでも参照できる変数で、ローカル変数とは、ある有効範囲(たとえば関数内)のみで参照できる変数です。</p>
 <p>例を見ながら理解していきましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,8 +548,8 @@ p=3 100000.0
 </div>
 </div>
 </div>
-<p>のように、関数内での代入などではない場合、変数はグローバル変数として定義されます。</p>
-<p>そのため、一度定義されれば関数に引数として渡さなくても参照することができます</p>
+<p>のように、関数内での代入などではない場合、変数はグローバル変数として定義されます。<br />
+そのため、一度定義されれば関数に引数として渡さなくても参照することができます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
@@ -619,7 +591,7 @@ p=3 100000.0
 </div>
 </div>
 </div>
-<p>では、次のコードを実行すると、最後に表示されるaはどうなるでしょうか？<br />
+<p>では、次のコードを実行すると、最後に表示される<code class="docutils literal notranslate"><span class="pre">a</span></code>の値はどうなるでしょうか？<br />
 2でしょうか？それとも5でしょうか？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,12 +666,8 @@ abc 5
 </div>
 <p>といったように、関数の中で使う変数をグローバル変数として宣言すれば、<br />
 関数の外でもその変数を使うことができます。</p>
-<p>ただし、このようなコードの書き方は、処理が複雑化してくると<br />
-どこでその変数が定義されたり更新されたりしているかがわかりづらく、<br />
-予期しない挙動の原因にもなりますのであまりオススメしません。<br />
-[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本です。</p>
-<p>global変数の宣言を使うべき場合としては…コードの中で一度計算して、<br />
-二度と変更する必要が無いような値にのみ使うようにしましょう。</p>
+<p>ただし、このようなコードの書き方は、処理が複雑化してくるとどこでその変数が定義されたり更新されたりしているかがわかりづらく、予期しない挙動の原因にもなりますのであまりオススメしません。[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本です。</p>
+<p>global変数の宣言を使うべき場合としては…コードの中で一度計算して、二度と変更する必要が無いような値にのみ使うようにしましょう。</p>
 <p>関数を用いる際に、変数のスコープに関して混乱を避ける方法としては…</p>
 <p>メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
 たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、<br />
