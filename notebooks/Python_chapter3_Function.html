@@ -666,6 +666,12 @@ abc 5
 </div>
 <p>といったように、関数の中で使う変数をグローバル変数として宣言すれば、<br />
 関数の外でもその変数を使うことができます。</p>
+<div class="margin sidebar">
+<p class="sidebar-title">プログラミング言語とスコープ</p>
+<p>Pythonでは、インデントでブロックを定義したりすることで短いコードを書くことができますが、一方で変数のスコープが分かりづらいことがしばしばあります。関数やメソッド内で必要な変数・構造体などは引数として渡す、他所で使う変数は<code class="docutils literal notranslate"><span class="pre">return</span></code>するなどの他言語に慣れていると混乱する事がよくあります(逆も然り)。
+たとえば関数内で定義されていない変数を用いたコードがあればPythonは「global変数にあるのでは？」と考えますが、このことを「気が利いている」と感じる人もいれば「余計なバグの温床になる」と、見る人によって違う捉え方になったりします。
+これらのプログラミング言語ごとの微妙な仕様の違いについては、知っておいても良いと思います。</p>
+</div>
 <p>ただし、このようなコードの書き方は、処理が複雑化してくるとどこでその変数が定義されたり更新されたりしているかがわかりづらく、予期しない挙動の原因にもなりますのであまりオススメしません。[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本です。</p>
 <p>global変数の宣言を使うべき場合としては…コードの中で一度計算して、二度と変更する必要が無いような値にのみ使うようにしましょう。</p>
 <p>関数を用いる際に、変数のスコープに関して混乱を避ける方法としては…</p>
@@ -686,8 +692,7 @@ abc 5
 </div>
 <div class="section" id="clubsuit">
 <h3><span class="section-number">3.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 関数内でのリスト更新<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
-<p>上では、数値(float)と関数を例に説明しましたが、<br />
-リストの場合はもう少し挙動が複雑です。</p>
+<p>上では、数値(float)と関数を例に説明しましたが、リストの場合はもう少し挙動が複雑です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
@@ -709,8 +714,7 @@ abc 5
 </div>
 </div>
 </div>
-<p>リストオブジェクト自体のidは引き継がれていて、<br />
-リスト内要素(0番目)の更新が反映されていることがわかります。</p>
+<p>リストオブジェクト自体のidは引き継がれていて、リスト内要素(0番目)の更新が反映されていることがわかります。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
