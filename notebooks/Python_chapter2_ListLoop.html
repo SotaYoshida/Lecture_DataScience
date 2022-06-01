@@ -1111,7 +1111,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>While文<a class="headerlink" href="#clubsuitwhile" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>に似た概念として<code class="docutils literal notranslate"><span class="pre">while</span></code>が存在します。</p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかもしれない。</p>
+<div><p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかも…</p>
 </div></blockquote>
 <p>プログラムを書いていくうちに、繰り返しの数が前もってわからないケースに遭遇するかと思います.</p>
 <p>たとえば</p>
@@ -1119,12 +1119,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <li><p>[連続で6が5回でるまでサイコロをふる]</p></li>
 <li><p>[利益がある値を超えるまで株の売買をくりかえす]</p></li>
 </ul>
-<p>といったイメージです。<br />
-この様な場合は、何回処理を繰り返せば良いか予め知ることはほとんど不可能です。</p>
-<p>サイコロの例の場合だと、たとえば5回ふっただけで6が連続で出る奇跡的な状況も有りえますし、<br />
-1000回ふっても100万回降っても連続で5回は出ないかもしれません。<br />
-(某漫画の地下チンチロ編のようなイカサマサイコロを使用するとグッと確率はあがります)</p>
-<p>このような処理を実装したい場合にはwhile文を使います.</p>
+<p>といったイメージです。この様な場合は、何回処理を繰り返せば良いか予め知ることはほとんど不可能です。</p>
+<p>サイコロの例の場合だと、たとえば5回ふっただけで6が連続で出る奇跡的な状況も有りえますし、1000回ふっても100万回降っても連続で5回は出ないかもしれません。(某漫画の地下チンチロ編のようなイカサマサイコロを使用するとグッと確率はあがります)このような処理を実装したい場合には<code class="docutils literal notranslate"><span class="pre">while</span></code>文を使います.</p>
 <p>さっきのAさんとカジノのギャンブルを例に</p>
 <blockquote>
 <div><p>手持ち100万からゲームを開始して
@@ -1152,19 +1148,18 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
-<p>といった具合です. 使用例が思い浮かばなければ[while文なんてのがある]とだけ覚えておけば当面はOKです.</p>
-<p>上のコードはrandomモジュールの(疑似)乱数を用いているので、<br />
-実行ごとに買ったり負けたり結果が変わります。<br />
-何度か実行して見てください。</p>
-<p>[余談] これを応用すると↓のようなものを作って遊ぶこともできます(作者は私ではありません)。<br />
+<p>といった具合です. 使用例が思い浮かばなければ「<code class="docutils literal notranslate"><span class="pre">while</span></code>なんてのがある」とだけ覚えておけば当面はOKです.<br />
+ちなみに上のコードは<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールの(疑似)乱数を用いているので、実行ごとに買ったり負けたり結果が変わります。何度か実行してみてください。</p>
+<blockquote>
+<div><p>余談 これを応用すると↓のようなものを作って遊ぶこともできます(作者は私ではありません)。<br />
 十亀vs松田シミュレータ <a class="reference external" href="https://mattz.xii.jp/yakiu/yakiu.html">https://mattz.xii.jp/yakiu/yakiu.html</a><br />
 (十亀選手(ライオンズ)と松田選手(ホークス)の驚異的な相性を元に作られた対戦シミュレータ)</p>
+</div></blockquote>
 </div>
 <div class="section" id="clubsuit-continue">
 <h3><span class="section-number">2.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Permalink to this headline">¶</a></h3>
-<p>continue文は、forやwhile文の中で[以降の処理を無視する]のに使います.<br />
-具体的な用途としては[特定の条件を満たす場合にのみ適用する処理を書きたい]場合などがあります.<br />
-再びカジノの例で考えてみましょう.</p>
+<p><code class="docutils literal notranslate"><span class="pre">continue</span></code>文は、<code class="docutils literal notranslate"><span class="pre">for</span></code>や<code class="docutils literal notranslate"><span class="pre">while</span></code>文の中で[以降の処理を無視する]のに使います.<br />
+具体的な用途としては[特定の条件を満たす場合にのみ適用する処理を書きたい]場合などがあります.再びカジノの例で考えてみましょう.</p>
 <p>まず、Aさんに勝負のたびに所持金を叫ばせるコードは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1182,10 +1177,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
-<p>となります。これに少しずつ、より複雑な条件を加えていくことにしましょう.<br />
-最初の掛け金を一旦5万円にすることにして<br />
-[連続で勝った場合、コインを投げて表が出たら掛け金を2倍にする]という条件をいれてみましょう。<br />
-これをプログラムで表現するのには以下のような実装が考えられます.</p>
+<p>となります。これに少しずつ、より複雑な条件を加えていくことにしましょう.</p>
+<p>最初の掛け金を一旦5万円にすることにして[連続で勝った場合、コインを投げて表が出たら掛け金を2倍にする]という条件をいれてみましょう。これをプログラムで表現するのには以下のような実装が考えられます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -1209,8 +1202,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
-<p>さらに[掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ]<br />
-という条件を実装するのにcontinueを使ってみましょう</p>
+<p>さらに[掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ]という条件を実装するのにcontinueを使ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -1254,17 +1246,15 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
-<p>しかし、あるところでsの値が負になってしまい、sqrtが計算できなくなってしまいます<br />
-(虚数を導入すれば定義できますが、mathのsqrt関数は非負の引数に対して定義されていますのでエラーが出ます)</p>
-<p>エラーが出る(≒予期しないことが起こる)とプログラムがそこで止まってしまいます。<br />
-通常はそれで良い(問題があればエラーが起きないと対処しようがない)のですが、<br />
-複雑な状況になると[エラーを無視してとにかくプログラムを最後まで実行させたい]<br />
-[エラーが起こるときにエラーを回避するような仕組みをプログラム自体に実装したい]<br />
-といった状況も起こりえます.</p>
-<p>上の例でいうと[sの値が正なら平方根を表示して、負の場合はエラーメッセージだけを表示してエラーが起きた回数をカウントする]という作業が必要な場合は以下のように<br />
-<code class="docutils literal notranslate"><span class="pre">try:</span></code> 試行したい処理のブロック<br />
-<code class="docutils literal notranslate"><span class="pre">except:</span></code> 例外(エラー）が起こった場合の処理のブロック<br />
-という２つの予約語を駆使することで、最後までプログラムを実行させることができます.</p>
+<p>しかし、あるところでsの値が負になってしまい、sqrtが計算できなくなってしまいます(虚数を導入すれば定義できますが、<code class="docutils literal notranslate"><span class="pre">math</span></code>の<code class="docutils literal notranslate"><span class="pre">sqrt()</span></code>関数は非負の引数に対して定義されていますのでエラーが出ます)</p>
+<p>エラーが出る(≒予期しないことが起こる)とプログラムはそこで止まってしまいます。<br />
+通常はそれで良い(問題があればエラーが起きないと対処しようがない)のですが、複雑な状況になると「エラーを無視してとにかくプログラムを最後まで実行させたい」「エラーが起こるときにエラーを回避するような仕組みをプログラム自体に実装したい」といった状況も起こりえます.</p>
+<p>上の例でいうと「<code class="docutils literal notranslate"><span class="pre">s</span></code>の値が正なら平方根を表示して、負の場合はエラーメッセージだけを表示してエラーが起きた回数をカウントする」という作業が必要な場合は以下のように</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">try:</span></code> 試行したい処理のブロック</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">except:</span></code> 例外(エラー）が起こった場合の処理のブロック<br />
+という２つの操作(<code class="docutils literal notranslate"><span class="pre">try</span></code>,<code class="docutils literal notranslate"><span class="pre">except</span></code>ともに予約語)を駆使することで、最後までプログラムを実行させることができます.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1282,23 +1272,18 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
-<p>このノートブックでは説明しませんがexceptの後に具体的な例外を指定して<br />
-例外の種類に応じた操作を行うことも出来ます。<br />
-<a class="reference external" href="https://docs.python.org/ja/3/library/exceptions.html">https://docs.python.org/ja/3/library/exceptions.html</a></p>
+<p>このノートブックでは説明しませんがexceptの後に具体的な例外を指定して例外の種類に応じた操作を行うことも出来ます。<a class="reference external" href="https://docs.python.org/ja/3/library/exceptions.html">https://docs.python.org/ja/3/library/exceptions.html</a></p>
 </div>
 </div>
 <div class="section" id="id10">
 <h2><span class="section-number">2.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>発展的な内容です。<br />
-以下のタプル・辞書型は使いこなせれば便利ですが、<br />
-授業では必ずしも必要ではない(リストで代用できる)ので、<br />
-興味に応じて学習してください。</p>
+以下のタプル・辞書型は使いこなせれば便利ですが、授業では必ずしも必要ではない(リストで代用できる)ので、興味に応じて学習してください。</p>
 <div class="section" id="tuple">
 <h3><span class="section-number">2.4.1. </span>タプル(tuple)型, 丸括弧<a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h3>
-<p>リストに似た型としてタプルと辞書があります。</p>
-<p>タプルは”immutable”(要素が変更不可)なリストと覚えておけばよいでしょう。<br />
-リストは要素を[]で囲むことで作ることができました。<br />
-タプルは丸括弧()で囲むことで作ることができます</p>
+<p>リストに似た型としてタプルと辞書があります。<br />
+タプルは”immutable”(要素が変更不可)なリストと覚えておけばよいでしょう。
+リストは要素を<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲むことで作ることができました。タプルは丸括弧<code class="docutils literal notranslate"><span class="pre">()</span></code>で囲むことで作ることができます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
@@ -1310,8 +1295,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <p>値をリストのように格納しておきたい、という状況下かつ、リストの値を後で変更することがないなら
-タプルを使うのも一つの手です.</p>
-<p>タプルを使うメリットとしては以下の通りです:</p>
+タプルを使うのも一つの手です.<br />
+タプルを使うメリットとしては以下の通りです:</p>
 <ul class="simple">
 <li><p>(予期せず)値を更新しようとするとエラーを吐いて教えてくれる</p></li>
 <li><p>(場合によりけりですが)リストよりも早く処理が実行される(ことがある)</p></li>
@@ -1327,15 +1312,13 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 <p>↑エラーがでたかと思います。</p>
-<p>次に中身が同じ(1から5000までの整数)リストとタプルを用意して、<br />
-1万回要素の和を計算するという計算をしてみましょう.<br />
-(計算自体に意味はありません)<br />
-timeというライブラリを使って2つの作業に係る時間を調べてみると…</p>
+<p>次に中身が同じ(1から5000までの整数)リストとタプルを用意して、1万回要素の和を計算するという計算をしてみましょう.
+この計算自体に意味はありません。<br />
+<code class="docutils literal notranslate"><span class="pre">time</span></code>というライブラリを使って2つの作業に係る時間を調べてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> <span class="c1">#時間を計測するためのライブラリをインポート</span>
 <span class="n">itnum</span><span class="o">=</span><span class="mi">10000</span> <span class="c1">#繰り返す回数を設定</span>
-
 
 <span class="c1">#リストを使った計算</span>
 <span class="n">t0</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
@@ -1358,35 +1341,30 @@ timeというライブラリを使って2つの作業に係る時間を調べて
 </div>
 </div>
 <p>タプルの方が実行時間が短い事がわかります.<br />
-今の例では差は人間にとっては気にならない程度の差ですが、<br />
-複雑な処理になってコードがなかなか計算を完了しないときには、<br />
-リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
+今の例では差は人間にとっては気にならない程度の差ですが、複雑な処理になってコードがなかなか計算を完了しないときには、リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
 </div>
 <div class="section" id="id11">
 <h3><span class="section-number">2.4.2. </span>辞書型, 波括弧<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>辞書型は、キーと値の２つの要素をあわせ持つ型です.<br />
-リストにいれたものをいっぺんに扱うときに、<br />
-毎回番地を指定したりループで要素を回して、望むものを持ってくるのは面倒です。</p>
+リストにいれたものをいっぺんに扱うときに、毎回番地を指定したりループで要素を回して、望むものを持ってくるのは面倒です。</p>
 <p>たとえば以下の名前と年齢のリスト</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>があったとき、これまで習った方法だけを駆使して<br />
-Bさんの年齢を取得するには例えば以下のようなコードになります</p>
+<p>があったとき、これまで習った方法だけを駆使してBさんの年齢を取得するには例えば以下のようなコードになります</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
 
-<span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Bさん&quot;</span> <span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bさんの年齢=&quot;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Bさん&quot;</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bさんの年齢=&quot;</span><span class="p">,</span> <span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>このようなfor文とif文などを組み合わせた要素の探索が面倒なら<br />
-予め名前と年齢という２つの関係のある量を辞書として定義してしまえばよいのです。</p>
-<p>辞書型は波括弧{}で囲むことで構成できます.</p>
+<p>このようなfor文とif文などを組み合わせた要素の探索が面倒なら、予め名前と年齢という２つの関係のある量を辞書として定義してしまえばよいのです。</p>
+<p>辞書型は波括弧<code class="docutils literal notranslate"><span class="pre">{}</span></code>で囲むことで構成できます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
@@ -1407,11 +1385,9 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;key&quot;</span> <span class="p">:</span> <span class="n">value</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>とkeyとvalueをコロン:をつかって区切り、複数要素を入れる際はカンマで区切ります.<br />
-keyは文字列や数字(たとえば小中学校の出席番号とか)を使用することができ、<br />
-valueは様々な型が使えます。</p>
-<p>値(value)として、リストを保持することもできます.<br />
-次のように年齢と出身県のリストを値にもつ辞書にしてみましょう.</p>
+<p>と<code class="docutils literal notranslate"><span class="pre">key</span></code>と<code class="docutils literal notranslate"><span class="pre">value</span></code>をコロン:をつかって区切り、複数要素を入れる際はカンマで区切ります.<br />
+<code class="docutils literal notranslate"><span class="pre">key</span></code>は文字列や数字(たとえば小中学校の出席番号とか)を使用することができ<code class="docutils literal notranslate"><span class="pre">value</span></code>は様々な型が使えます。</p>
+<p>値(<code class="docutils literal notranslate"><span class="pre">value</span></code>)として、リストを保持することもできます.次のように年齢と出身県のリストを値にもつ辞書にしてみましょう.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;栃木県&quot;</span><span class="p">],</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="s2">&quot;茨城県&quot;</span><span class="p">],</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;群馬県&quot;</span><span class="p">]}</span>
@@ -1428,11 +1404,7 @@ valueは様々な型が使えます。</p>
 </div>
 </div>
 <p>とすればいいことがわかります.</p>
-<p>慣れないうちはタプルや辞書を使わずリストだけ覚えておけば問題ないのですが<br />
-(私も簡単なコードだと、面倒だからリストでやっちゃう)<br />
-複雑な処理になるとパフォーマンス差が顕著になったり、<br />
-コードの可読性が低くなったり、  ミスの原因になるので<br />
-タプルや辞書型もうまく組み合わせながら使えると素晴らしいですね。</p>
+<p>慣れないうちはタプルや辞書を使わずリストだけ覚えておけば問題ないのですが(私も簡単なコードだと、面倒だからリストでやっちゃう)複雑な処理になると(タプルにしないと)パフォーマンス差が顕著になったり(辞書にしないと)コードの可読性が低くなったりミスの原因になるので、タプルや辞書型もうまく組み合わせながら使えると良いです。</p>
 </div>
 </div>
 </div>
