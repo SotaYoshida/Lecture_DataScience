@@ -634,8 +634,8 @@
 </div>
 </div>
 </div>
-<p>理由は、<code class="docutils literal notranslate"><span class="pre">num</span></code>という変数が定義されていない(not defined/undefined)のに、その値を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしたからです。</p>
-<p>もちろん<code class="docutils literal notranslate"><span class="pre">num=2</span></code>の代入部分を含むコードを実行した後ならエラーは出ません。</p>
+<p>理由は、<code class="docutils literal notranslate"><span class="pre">num</span></code>という変数が定義されていない(not defined/undefined)のに、その値を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしたからです。<br />
+もちろん<code class="docutils literal notranslate"><span class="pre">num=2</span></code>の代入部分を含むコードを実行した後ならエラーは出ません。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="mi">2</span>
@@ -649,7 +649,7 @@
 </div>
 </div>
 </div>
-<p>とくにGoogle Colab(Jupyter Notebook環境)では、<strong>セルをまたいでコードを実行することがあるので、意図した変数の値がきちんと引き継がれているか注意が必要</strong>です。また<strong>変数のスコープ</strong>という概念にも注意が必要です(“関数”の章で解説します)</p>
+<p>とくにGoogle Colab(Jupyter Notebook)環境では、<strong>セルをまたいでコードを実行することがあるので、意図した変数の値がきちんと引き継がれているか注意が必要</strong>です。また<strong>変数のスコープ</strong>という概念にも注意が必要です(“関数”の章で解説します)</p>
 <p>Jupyter Notebook環境では、セルのコードを逐次実行した場合<strong>コードセルの左側に表示される括弧[ ]内の整数でコードの実行順を確認することができる</strong>。コードやノートが複雑になってくると、正しい順番で実行しないとエラーが出たり、エラーは出ないけれど意図した出力にならないといった事が起こりえるので、注意が必要。慣れないうちは、処理(プログラム)をあまりバラバラのセルに書かず、一つにまとめて書くのがオススメ</p>
 <p><strong>良い例</strong></p>
 <div class="cell docutils container">
