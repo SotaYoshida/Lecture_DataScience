@@ -455,7 +455,7 @@ Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開�
 <p>簡単な作業ならリストでも代用できるので必須ではありませんが<br />
 コードを大幅に簡略化することができるので<br />
 今後ノートブックでもたびたびNumpyが用いられます。</p>
-<p>詳しくは<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照してください.</p>
+<p>詳しくは<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照してください.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#先程のmathもnumpyで置き換え可</span>
@@ -943,9 +943,8 @@ Google driveを開くとColab_picというディレクトリが作成されて�
 matplotlibはファイル名を変えるだけで<br />
 指定した拡張子で描画してくれるので色々試してみましょう<br />
 (.jpg,.pdf,.eps,.pngなど)</p>
-<p><strong>余談</strong></p>
-<p>スライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfやeps)がおすすめです。<br />
-(それか、高解像度でjpegやpngを作ってスライドで使って、誰かにスライドを渡すときは軽量化する)<br />
+<p><strong>余談</strong><br />
+プレゼンのスライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfやepsなど)がおすすめです。(それか、高解像度でjpegやpngを作ってスライドで使って、誰かにスライドを渡すときは軽量化する)<br />
 プレゼンで図が滲んでいるスライドを見せていると「あぁ配慮が足りないんだな」と思われて損をしてしまうかもしれません。<br />
 論文でラスタ画像を使う場合は「トンデモ論文だと思われて誰にも読まれない危険性」を理解して使いましょう。</p>
 <p><strong>練習</strong>
@@ -965,30 +964,30 @@ gifアニメーション(パラパラ漫画)を作ってみます。</p>
 <li><p>まずこれをダウンロードしてください。</p></li>
 <li><p>ZIP形式で保存されるので、それを解凍してください</p></li>
 <li><p>解凍したフォルダを自身のGoogle Driveの好きな場所にアップロードしてください<br />
-※以下のコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS2021</span></code>というディレクトリを作ってその下にアップロード</p></li>
+※以下のコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というディレクトリを作ってその下にアップロード</p></li>
 </ol>
-<p>たとえば私のようにGoogle Driveのマイドライブ直下のAdDS2021というフォルダの下に<br />
+<p>たとえば私のようにGoogle Driveのマイドライブ直下のAdDSというフォルダの下に<br />
 GDPvsWomenInSchoolというフォルダを置いたとします</p>
-<p>参考スクリーンショット:<br />
+<p>参考スクリーンショット(ディレクトリ名が古い(AdDS2021)ので注意):<br />
 <img alt="" src="https://drive.google.com/uc?export=view&amp;id=12v-XLgCHTpOehkJ2pmJIZ7zcaGIH4OZv" /></p>
 <p>年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみましょう</p>
 <p>先程のグラフがgoogle driveに保存されているかどうかは、<br />
 以下のコマンドで確認できます(アップロードして直後はファイルが見つからないことがあります)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls  ./drive/MyDrive/AdDS2021/GDPvsWomenInSchool/*.png
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls  ./drive/MyDrive/AdDS/GDPvsWomenInSchool/*.png
 </pre></div>
 </div>
 </div>
 </div>
-<p>AdDS2021/GDPvsWomenInSchool/の部分は皆さんのフォルダ名に適宜変更してください.</p>
+<p>AdDS/GDPvsWomenInSchool/の部分は皆さんのフォルダ名に適宜変更してください.</p>
 <p>pngファイルをまとめてgifにするコードは以下のとおりです。(処理にしばし時間がかかります)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 
-<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/AdDS2021/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> <span class="c1">##まとめたいpngをワイルドカードで指定</span>
+<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/AdDS/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> <span class="c1">##まとめたいpngをワイルドカードで指定</span>
 <span class="n">images</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">files</span><span class="p">))</span>
 
 <span class="n">oupf</span> <span class="o">=</span> <span class="s1">&#39;./drive/My Drive/Colab_pic/GDPvsWomen.gif&#39;</span> <span class="c1">##出力名と保存場所を指定する</span>
