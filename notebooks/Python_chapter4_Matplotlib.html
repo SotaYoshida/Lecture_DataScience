@@ -416,17 +416,16 @@
 <p>[この章の目的]</p>
 <ul class="simple">
 <li><p>[ライブラリ]という概念の獲得</p></li>
-<li><p>Pythonを用いた各種プロットをやってみる</p></li>
+<li><p>Pythonを用いた各種グラフの描画</p></li>
 </ul>
-<p>Pythonでは(他のプログラミング言語と同様)特定の作業がパッケージ化されたプログラム群が用意されていて、これらをライブラリ,パッケージ,モジュールなどと呼ぶ</p>
-<blockquote>
-<div><p>授業では、ライブラリ,モジュール,パッケージという名前が混在しているかと思います。<br />
-正確な定義としてはライブラリ/パッケージ/モジュールの順に、<br />
-より上位の集合を指すようですが、境界はあいまいな印象です。</p>
-</div></blockquote>
-<p>Pythonのライブラリの多くはGitHub上で開発・公開されていて、簡単にインストールしたりインポートして使うことができる。</p>
+<div class="margin sidebar">
+<p class="sidebar-title">ライブラリ/パッケージ/モジュール</p>
+<p>授業では呼び方が混在しているかと思います。正確な定義としてはライブラリ/パッケージ/モジュールの順に、より上位の集合を指しますが境界はあいまいな印象です。</p>
+</div>
+<p>Pythonでは(他のプログラミング言語と同様)特定の作業がパッケージ化されたプログラム群が用意されていてこれらをライブラリ/パッケージ/モジュールなどと呼ぶ
+Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開されていて、簡単にインストールしたりインポートして使うことができる。</p>
 <p>データ分析, AI・機械学習, エクセル等の操作, Webスクレイピングなど、非常に多岐にわたるライブラリが存在していて誰でも気軽に使うことができますし、幾つかのライブラリ/モジュールは標準で組み込まれているため、インストール作業をすることなく、以下のように簡単にインポートして使うことができます。</p>
-<p>たとえばmathという名前のモジュールをインポートする際には</p>
+<p>たとえば<code class="docutils literal notranslate"><span class="pre">math</span></code>という名前のモジュールをインポートする際には</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -452,7 +451,7 @@
 <p>注:sin(π)は厳密に0になるべきですが1章で述べたように実数が有限の精度なので微小な量0からずれています</p>
 <div class="section" id="numpy">
 <h2><span class="section-number">4.1. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
-<p>データ分析などで非常によく使われるNumpyというライブラリがあります。</p>
+<p>データ分析などで非常によく使われるNumpyというパッケージがあります。</p>
 <p>簡単な作業ならリストでも代用できるので必須ではありませんが<br />
 コードを大幅に簡略化することができるので<br />
 今後ノートブックでもたびたびNumpyが用いられます。</p>
@@ -473,22 +472,20 @@
 </div>
 <div class="section" id="id1">
 <h2><span class="section-number">4.2. </span>Matplotlibを用いた作図<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>以降ではMatplotlibと呼ばれるモジュールを使って、<br />
-各種のグラフを作成する方法を見ていきましょう.</p>
-<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<br />
-<strong>細かい部分は分からなくても心配は不要です</strong><br />
-「こういうおまじないを唱える(書くと)こうなる」<br />
-というざっくりとした理解でまずは大丈夫です。</p>
-<p>はじめはネットに転がっている誰かが書いたコードを少しずつ流用し、<br />
-自分の目的のためにどうすれば良いか類推しながら改良していって、<br />
-自分の描きたいグラフに近づけていくのが良いでしょう。<br />
-(私もよく過去の自分が作成したコードを流用して作図しています)</p>
-<p>慣れてくるといろんな図を作ったり、細かいところにこだわったりしたくなります。<br />
-そんなときは以下のチートシートが役に立ちます.<br />
+<p>以降ではMatplotlibと呼ばれるパッケージを使って、各種のグラフを作成する方法を見ていきましょう.</p>
+<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<strong>細かい部分は分からなくても心配は不要です</strong><br />
+「こういうおまじないを唱える(書くと)こうなる」というざっくりとした理解でまずは大丈夫です。</p>
+<div class="margin sidebar">
+<p class="sidebar-title">ライブラリの使い方を調べる</p>
+<p>Pythonのパッケージの細かな使い方を調べる時、真っ先に思いつくのが<strong>ググる</strong>ことだ。
+Qiitaなどの日本語で書かれた情報に気軽にアクセスできるのは良いことだが、(この授業資料同様)不正確な記述が含まれていてかえって理解を遠ざける危険性もある。なにか困ったときに一番頼りになるのは大元のライブラリ/パッケージの公式ドキュメント以外ありえない。だって開発者が作ってんだから。</p>
+</div>
+<p>はじめはネットに転がっている誰かが書いたコードを少しずつ流用し、自分の目的のためにどうすれば良いか類推しながら改良していって、<br />
+自分の描きたいグラフに近づけていくのが良いでしょう。(私もよく過去の自分が作成したコードを流用して作図しています)</p>
+<p>慣れてくるといろんな図を作ったり、細かいところにこだわったりしたくなります。 そんなときは以下のチートシートが役に立ちます.<br />
 <a class="reference external" href="https://github.com/matplotlib/cheatsheets">https://github.com/matplotlib/cheatsheets</a></p>
-<p>まず、以下のコードを実行して、matplotlib内のpyplotをインポートします</p>
-<p>matplot.pyplotだと名前が長いので<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前で使えるようにしています<br />
-そのためには<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">XXX</span> <span class="pre">as</span> <span class="pre">YY</span></code> などとします</p>
+<p>まず、以下のコードを実行して、<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>内の<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>モジュールをインポートします.<br />
+<code class="docutils literal notranslate"><span class="pre">matplot.pyplot</span></code>だと名前が長いので<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前で使えるように<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">XXX</span> <span class="pre">as</span> <span class="pre">YY</span></code> などとします.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
@@ -504,12 +501,14 @@
 </div>
 </div>
 <p>いくつかのライブラリにはディレクトリのように</p>
-<p>LibraryA<br />
-├ <a class="reference external" href="http://module1.py">module1.py</a><br />
-│   └─ sub_module1_1.py<br />
-│   └─ sub_module1_2.py<br />
-├ <a class="reference external" href="http://module2.py">module2.py</a><br />
-︙</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LibraryA  
+├ module1.py  
+│   └─ sub_module1_1.py   
+│   └─ sub_module1_2.py  
+├ module2.py  
+︙  
+</pre></div>
+</div>
 <p>という階層構造があり”子”はピリオドで指定します.<br />
 上の<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>はその一例です.</p>
 <p>次に、Matplotlibは標準だと日本語が文字化けして豆腐のように表示されてしまうので、<br />
@@ -707,8 +706,8 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_34_0.png" src="../_images/Python_chapter4_Matplotlib_34_0.png" />
-<img alt="../_images/Python_chapter4_Matplotlib_34_1.png" src="../_images/Python_chapter4_Matplotlib_34_1.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_33_0.png" src="../_images/Python_chapter4_Matplotlib_33_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_33_1.png" src="../_images/Python_chapter4_Matplotlib_33_1.png" />
 </div>
 </div>
 <p>下のグラフはy軸の対数スケールをとってみました。</p>
@@ -748,7 +747,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_40_0.png" src="../_images/Python_chapter4_Matplotlib_40_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_39_0.png" src="../_images/Python_chapter4_Matplotlib_39_0.png" />
 </div>
 </div>
 <p>相関係数などの情報を含んだもう少しかっこいい図を作ってみましょう。</p>
@@ -790,7 +789,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_42_0.png" src="../_images/Python_chapter4_Matplotlib_42_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_41_0.png" src="../_images/Python_chapter4_Matplotlib_41_0.png" />
 </div>
 </div>
 <p><strong>注:</strong>   x,yのデータをnumpy.array()を使ってndarray型に変換しました.<br />
@@ -855,7 +854,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_50_0.png" src="../_images/Python_chapter4_Matplotlib_50_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_49_0.png" src="../_images/Python_chapter4_Matplotlib_49_0.png" />
 </div>
 </div>
 </div>
