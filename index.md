@@ -16,8 +16,7 @@
 
 ### ノートブック
 
-[Jupyter Notebook](https://github.com/jupyter/notebook)とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行環境とを提供する環境で、授業資料は`.ipynb`という拡張子を持つJupyter Notebook形式のファイルとして作成されている。  
-授業内では**ノートブック/Notebook**などと表記・呼称する。
+[Jupyter Notebook](https://github.com/jupyter/notebook)とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行環境とを提供する環境で、授業資料は`.ipynb`という拡張子のファイルとして作成されており、これを**ノートブック/Notebook**などと表記・呼称することにする。
 
 またこれらのソースファイルの管理と共有には、GitHubと呼ばれる環境を利用している
 (この授業を受講したりプログラムを実行するのに皆さんがGitHubのアカウントを取得したりする必要はありません)
