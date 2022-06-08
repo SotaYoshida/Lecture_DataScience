@@ -31,4 +31,10 @@ Jupyter Notebookを編集・実行するための環境はいくつかあるが�
 Google Colab.上でノートブックを開くには、各章の冒頭に用意された"Open in Colab"というボタンをクリックするか、上のロケットの形をしたボタンにマウスオーバーして"Colab"から開く。左の"Google Colaboratoryの使い方"や第1章のノートブックで試してみてください。下は参考画像:
 ![](notebooks/pic_for_notebook/pic_0_0.png)
 
+##不具合報告または問い合わせ
 
+本講義資料に関する不具合(リンク切れなど)の報告や、問い合わせについては下記のフォームより記載をお願いいたします。
+授業受講者からの不具合報告・質問に関しては授業やCL等でお答えいたします。
+それ以外の問い合わせについては、お答え出来ない場合もありますので予めご了承ください。
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe9kSorMjkJPhbHqDWUwBNykaZ1yVDZ1eGl-5goFnNS-vQsQA/viewform?embedded=true" width="800" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
