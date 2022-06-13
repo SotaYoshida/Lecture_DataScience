@@ -434,7 +434,9 @@
 実際の多くの問題ではそうは上手く行かず、数値計算が必要となる。</p>
 <p>以下では、主として<span class="math notranslate nohighlight">\(dx/dt = f(x,t)\)</span>を考えるが、<br />
 高階の微分を含む場合も、</p>
-<div class="highlight-math notranslate"><div class="highlight"><pre><span></span>\left[
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
 \begin{matrix} 
 x_1 \\ 
 x_2 \\
@@ -450,9 +452,10 @@ dx/dt \\
 \vdots \\
 d^{r-1}x/dt^{r-1}
 \end{matrix} \right]
-$
-と置き換えれば、連立1階常微分方程式:
-$
+\end{split}\]</div>
+<p>と置き換えれば、連立1階常微分方程式:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \left[
 \begin{matrix} 
 x_2 \\ 
@@ -470,8 +473,7 @@ x_2 \\
 \vdots \\
 x_{r-1} 
 \end{matrix} \right]
-</pre></div>
-</div>
+\end{split}\]</div>
 <p>とみなすことが出来る。</p>
 <p>常微分方程式の解を求めるためには、
 適切な条件(初期条件や境界条件)を設定しなければならない。</p>

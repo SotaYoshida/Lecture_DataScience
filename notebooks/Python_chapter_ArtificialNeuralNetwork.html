@@ -356,13 +356,11 @@
   <a class="reference internal nav-link" href="#id3">
    勾配降下法
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adam">
-     Adam
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adam">
+   Adam
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
@@ -733,8 +731,9 @@
 と思うかもしれませんが、学習率を単純に大きくしてしまうと、明後日の方向にパラメータを更新するせいで目的関数が発散してしまいます。(eta=0.1などとして試してみてください)</p>
 <p>注) 勾配降下法を拡張した、データを部分的に使うことで学習が停滞することを防ぐ、確率的勾配降下法(Stochastic Gradient Descent; SGD)は現在もよく使われています。</p>
 <p>以下では、Adamと呼ばれる別の最適化手法を試してみましょう。</p>
+</div>
 <div class="section" id="adam">
-<h3>Adam<a class="headerlink" href="#adam" title="Permalink to this headline">¶</a></h3>
+<h2>Adam<a class="headerlink" href="#adam" title="Permalink to this headline">¶</a></h2>
 <p>Adamは、勾配降下法の様にその都度の勾配の情報だけを使うのではなく、
 以前の勾配の情報も有効活用する手法です。</p>
 <p>Adamは2014年に提唱された比較的新しい手法で、以降の機械学習の論文では、Adamが最もよく使われています。(*最も”良い”という意味では必ずしもありません)</p>
@@ -825,7 +824,6 @@
 <p>実際には、ニューラルネットワークの精度(良さ)は、前述のような検証データに対する汎化性能で評価します。</p>
 <p>上で示した例では、3層のニューラルネットワークにデータからそれらしい関数を学習させてみました。</p>
 <p>ニューラルネットワークの構造をより複雑化したりしながら、より複雑で高次元な回帰問題に応用したり、回帰問題だけではなく分類問題・画像生成・物体検知などなど、各種の楽しい実社会の問題に応用していきます。 (例: 第2回で説明した敵対的生成ネットワーク)</p>
-</div>
 </div>
 <div class="section" id="id4">
 <h2>最適化手法に関するまとめ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
