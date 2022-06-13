@@ -344,6 +344,11 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
+   データの下処理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
    勾配降下法
   </a>
   <ul class="nav section-nav flex-column">
@@ -355,7 +360,7 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    最適化手法に関するまとめ
   </a>
  </li>
@@ -459,7 +464,8 @@
 </div>
 <p>上ではcalc_tlossの引数にacfという変数を指定し、acfにsigmoidを指定しました。<br />
 この様にしておくと、sigmoid関数以外の活性化関数を使う際にも、上のcalc_tloss関数が使いまわせますね。</p>
-<p>####データの下処理</p>
+<div class="section" id="id2">
+<h2>データの下処理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>機械学習などの分析では、データの値を中心0,分散1に変換して扱うのが基本です。</p>
 <p>このことを、データの標準化と呼びます。</p>
 <div class="cell docutils container">
@@ -534,18 +540,19 @@
 </div>
 </div>
 <p>当然ですが、全然だめですね。</p>
-<p>状況を改善するためにニューラルネットワークのパラメータを徐々に更新(学習)していきましょう。</p>
-<p>そのためには、まず勾配を計算する関数を用意しておきます。</p>
+<p>状況を改善するためにニューラルネットワークのパラメータを徐々に更新(学習)していきましょう。<br />
+そのためには、まず勾配を計算する関数を用意しておきます。</p>
 <p>loss functionを<span class="math notranslate nohighlight">\(f\)</span>と書くことにすると、必要な勾配は4種類で
 <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial W}, \frac{\partial f}{\partial V}, \frac{\partial f}{\partial b}, \frac{\partial f}{\partial b_0}\)</span>です。<br />
 プログラムではそれぞれ<code class="docutils literal notranslate"><span class="pre">dw,dv,dbs,db0</span></code>とでも名前をつけることにして、勾配を返り値として与える関数を定義します。</p>
 <p>以下では、勾配降下法, Adamの2通りの最適化手法を用いてパラメータを更新することとします。</p>
-<div class="section" id="id2">
-<h2>勾配降下法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>勾配降下法とは、目的関数を微分した勾配の値のみを使ってパラメータを更新する方法です。</p>
-<p>たとえば,重み<span class="math notranslate nohighlight">\(W\)</span>の<span class="math notranslate nohighlight">\(i\)</span>番目を更新する際には、</p>
-<p><span class="math notranslate nohighlight">\(W_i := W_i - \eta \frac{\partial f}{\partial W_i}\)</span></p>
-<p>とします。(<span class="math notranslate nohighlight">\(f\)</span>は目的関数で、<span class="math notranslate nohighlight">\(\eta\)</span>は学習率(パラメータ更新のスケールを決めるパラメータ)です。)</p>
+</div>
+<div class="section" id="id3">
+<h2>勾配降下法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>勾配降下法とは、目的関数を微分した勾配の値のみを使ってパラメータを更新する方法です。<br />
+たとえば,重み<span class="math notranslate nohighlight">\(W\)</span>の<span class="math notranslate nohighlight">\(i\)</span>番目を更新する際には<br />
+<span class="math notranslate nohighlight">\(W_i := W_i - \eta \frac{\partial f}{\partial W_i}\)</span><br />
+とします。(<span class="math notranslate nohighlight">\(f\)</span>は目的関数で、<span class="math notranslate nohighlight">\(\eta\)</span>は学習率(パラメータ更新のスケールを決めるパラメータ)です。)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_der</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">):</span>
@@ -815,8 +822,8 @@
 <p>ニューラルネットワークの構造をより複雑化したりしながら、より複雑で高次元な回帰問題に応用したり、回帰問題だけではなく分類問題・画像生成・物体検知などなど、各種の楽しい実社会の問題に応用していきます。 (例: 第2回で説明した敵対的生成ネットワーク)</p>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>最適化手法に関するまとめ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>最適化手法に関するまとめ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>ニューラルネットワークの学習がうまく進むかどうかは一般に</p>
 <ol class="simple">
 <li><p>ネットワークの構造(アーキテクチャとも言ったりします)や活性化関数(とその微分)の持つ性質</p></li>
