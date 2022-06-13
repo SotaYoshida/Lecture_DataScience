@@ -347,92 +347,47 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   常微分方程式の数値解法
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   常微分方程式
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     常微分方程式
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   代表定期な数値解法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler">
+     オイラー(Euler)法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rk4">
+     4次のルンゲクッタ法 (RK4)
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#left-begin-matrix-x-1-x-2-vdots-x-r-end-matrix-right">
-   $\left[
-\begin{matrix}
-x_1 \
-x_2 \
-\vdots \
-x_r
-\end{matrix}
-\right]
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   積分を用いた解法
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#left-begin-matrix-x-dx-dt-vdots-d-r-1-x-dt-r-1-end-matrix-right-1-left-begin-matrix-x-2-x-3-vdots-x-r-end-matrix-right">
-   \left[
-\begin{matrix}
-x \
-dx/dt \
-\vdots \
-d^{r-1}x/dt^{r-1}
-\end{matrix} \right]
-   <span class="math notranslate nohighlight">
-    \(
-と置き換えれば、連立1階常微分方程式:
-\)
-   </span>
-   \left[
-\begin{matrix}
-x_2 \
-x_3 \
-\vdots \
-x_{r}
-\end{matrix}
-\right]
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     代表定期な数値解法
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adams-bashforth">
+     Adams-Bashforth法
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#euler">
-       オイラー(Euler)法
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rk4">
-       4次のルンゲクッタ法 (RK4)
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     積分を用いた解法
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adams-moulton">
+     Adams-Moulton法
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adams-bashforth">
-       Adams-Bashforth法
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adams-moulton">
-       Adams-Moulton法
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adams-bashforth-moulton">
-       Adams-Bashforth-Moulton法
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adams-bashforth-moulton">
+     Adams-Bashforth-Moulton法
+    </a>
    </li>
   </ul>
  </li>
@@ -479,47 +434,45 @@ x_{r}
 実際の多くの問題ではそうは上手く行かず、数値計算が必要となる。</p>
 <p>以下では、主として<span class="math notranslate nohighlight">\(dx/dt = f(x,t)\)</span>を考えるが、<br />
 高階の微分を含む場合も、</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="left-begin-matrix-x-1-x-2-vdots-x-r-end-matrix-right">
-<h1>$\left[
-\begin{matrix}
-x_1 \
-x_2 \
-\vdots \
+<div class="highlight-math notranslate"><div class="highlight"><pre><span></span>\left[
+\begin{matrix} 
+x_1 \\ 
+x_2 \\
+\vdots \\
 x_r
 \end{matrix}
-\right]<a class="headerlink" href="#left-begin-matrix-x-1-x-2-vdots-x-r-end-matrix-right" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="left-begin-matrix-x-dx-dt-vdots-d-r-1-x-dt-r-1-end-matrix-right-1-left-begin-matrix-x-2-x-3-vdots-x-r-end-matrix-right">
-<h1>\left[
-\begin{matrix}
-x \
-dx/dt \
-\vdots \
+\right]
+= 
+\left[
+\begin{matrix} 
+x \\ 
+dx/dt \\
+\vdots \\
 d^{r-1}x/dt^{r-1}
 \end{matrix} \right]
-<span class="math notranslate nohighlight">\(
+$
 と置き換えれば、連立1階常微分方程式:
-\)</span>
+$
 \left[
-\begin{matrix}
-x_2 \
-x_3 \
-\vdots \
+\begin{matrix} 
+x_2 \\ 
+x_3 \\
+\vdots \\
 x_{r}
 \end{matrix}
-\right]<a class="headerlink" href="#left-begin-matrix-x-dx-dt-vdots-d-r-1-x-dt-r-1-end-matrix-right-1-left-begin-matrix-x-2-x-3-vdots-x-r-end-matrix-right" title="Permalink to this headline">¶</a></h1>
-<p>\frac{d}{dx}
+\right]
+= 
+\frac{d}{dx}
 \left[
-\begin{matrix}
-x_1 \
-x_2 \
-\vdots \
-x_{r-1}
+\begin{matrix} 
+x_1 \\ 
+x_2 \\
+\vdots \\
+x_{r-1} 
 \end{matrix} \right]
-$
-とみなすことが出来る。</p>
+</pre></div>
+</div>
+<p>とみなすことが出来る。</p>
 <p>常微分方程式の解を求めるためには、
 適切な条件(初期条件や境界条件)を設定しなければならない。</p>
 <p>そのうち、変数<span class="math notranslate nohighlight">\(t\)</span>の最初の値(初期値,初期条件)<span class="math notranslate nohighlight">\(t_0\)</span>と<br />
@@ -534,6 +487,7 @@ $
 以下では<span class="math notranslate nohighlight">\(||\cdot||\)</span>はユークリッドノルムとし、<span class="math notranslate nohighlight">\(K\)</span>をリプシッツ定数と呼ぶ。</p>
 <p>この<span class="math notranslate nohighlight">\(K\)</span>が存在しているとき、<br />
 前述の常微分方程式の初期値問題は一意の解を持つ。</p>
+</div>
 <div class="section" id="id3">
 <h2>代表定期な数値解法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="euler">
