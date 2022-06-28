@@ -5,21 +5,17 @@
 
 ## 資料の使い方
 
-本講義で用いる資料には幾つか種類(≒ファイル形式)や利用する外部サービス等がある。
+本講義では資料(≒ファイル形式)や利用する外部サービス等が幾つかある。
 慣れないうちは混同するかと思うので、ここに資料自体の説明と各種アプリケーションやサービスの説明をまとめておく。
 
 ### ブック
-本資料は[Jupyter Notebook](https://github.com/jupyter/notebook)形式で作成されたソースファイルを[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて変換することで作成されたコンテンツになっている。この形式の資料を授業内では**ブック**ないし**Book**と表記・呼称する。  
-
-:::{note}
-概要を理解したり復習する際にはこちらのブックを閲覧してください。
-:::
+本資料は[Jupyter Notebook](https://github.com/jupyter/notebook)形式で作成されたソースファイルを[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて変換することで作成されたコンテンツになっている。この形式の資料を授業内では**ブック**ないし**Book**と表記・呼称する。概要を理解したり復習する際にはこちらのブックを閲覧してください。
 
 ### ノートブック
 
 [Jupyter Notebook](https://github.com/jupyter/notebook)とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行環境を提供する環境で、授業資料は`.ipynb`という拡張子のJupyterNotebook用ファイルとして作成されている。授業ではこれを**ノートブック**や**Notebook**などと表記・呼称する。
 
-`.ipynb`形式のソースファイルの管理と共有には、GitHubと呼ばれる環境を利用していて、ソースファイルは[こちら](https://github.com/SotaYoshida/Lecture_DataScience)からも閲覧できる(この授業を受講したりプログラムを実行するのに皆さんがGitHubのアカウントを取得したりする必要はありません)。
+`.ipynb`形式のソースファイルの管理と共有には、GitHubと呼ばれる環境を利用していて、ソースファイルは[こちら](https://github.com/SotaYoshida/Lecture_DataScience)からも閲覧できる(この授業を受講したりプログラムを実行するのに皆さんがGitHubのアカウントを取得したりこのリンクを開いたりする必要は特段ありません)。
 Jupyter Notebookを編集・実行するための環境はいくつかあるが、本授業では環境構築やそれにかかるトラブルシューティングを最小化するために、Google Colaboratoryというサービスを利用して**Googleのクラウド環境上でJupyter Nootebookを編集・実行する方式**を採用している。
 
 :::{note}
