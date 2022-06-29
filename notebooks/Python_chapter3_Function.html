@@ -398,30 +398,30 @@
 <p>ここでは、Pythonにおける関数の定義と関数が返す値[戻り値(返り値とも呼ぶ)]、ややテクニカルですが重要な点である変数のスコープについて説明します。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">3.1. </span>関数の定義<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>既に現れた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などはPythonに備え付けられた[組み込み関数]と呼ばれるものの一種です。以下に示すように、組み込み関数とは別にユーザーが独自の関数を定義することができます。</p>
+<p>既に現れた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などはPythonに備え付けられた”組み込み関数”と呼ばれるものの一種です。以下に示すように、組み込み関数とは別にユーザーが独自の関数を定義することができます。</p>
 <p>たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">]</span>
 <span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">]</span>
-<span class="c1">#...</span>
+<span class="c1">#...中略</span>
 <span class="n">p100</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.5</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>といったようなリスト(ある点の<span class="math notranslate nohighlight">\(x,y,z\)</span>座標だと思ってください)がたくさん(たとえば100個)あったときに、任意の２つの点の距離を求める操作が必要だったとします。</p>
-<p>そんなとき<span class="math notranslate nohighlight">\({}_{100}C_2=4950\)</span>通りに対して毎回</p>
+<p>といったようなリスト(ある点の<span class="math notranslate nohighlight">\(x,y,z\)</span>座標だと思ってください)がたくさん(たとえば100個)あったときに、任意の２つの点の距離を求める操作が必要だったとします。
+そんなとき<span class="math notranslate nohighlight">\({}_{100}C_2=4950\)</span>通りに対して毎回</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_1_2</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="n">d_1_100</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p100</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p100</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p100</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>などと書くのは面倒です。<br />
-何回も必要になる処理は、関数として定義しておけば呼び出して簡単に使うことができます。</p>
-<p>「任意の長さが3の数値リストに対して3次元空間での距離を計算する関数」を自作してみましょう。</p>
+<p>などと書くのは面倒です。このように、何回も必要になる処理は、<strong>関数</strong>として定義しておけば呼び出して簡単に使うことができます。</p>
+<p>例として「任意の長さが3の数値リストに対して3次元空間での距離を計算する関数」を自作してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
@@ -438,14 +438,15 @@
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">calc_d</span></code>は自作した関数の名前で、関数名の後ろのカッコには引数(ひきすう)を指定します。<br />
-リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、というのが上のコードで行っていることです。</p>
-<p>コロン(<code class="docutils literal notranslate"><span class="pre">:</span></code>)以下の操作はインデントされていて、どこまでが関数のブロックかわかるようになっています。(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
-<p>定義した関数を使用する際には、この関数<code class="docutils literal notranslate"><span class="pre">calc_d()</span></code>に必要な引数(変数,今の場合リスト)<code class="docutils literal notranslate"><span class="pre">l1,l2</span></code>を指定して使います。引数は一般に関数の中だけで使う変数名なので、関数に入れる引数を<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせる必要はありません。</p>
+<p><code class="docutils literal notranslate"><span class="pre">calc_d</span></code>は自作した関数の名前で、関数名の後ろのカッコには<strong>引数</strong>(ひきすう)を指定します。</p>
+<p>リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、というのが上のコードで行っていることです。
+コロン<code class="docutils literal notranslate"><span class="pre">:</span></code>は「以下で関数の中身を記述するブロックが開始する」ことを意味していて、インデントによってどこまでが関数のブロックかわかるようになっています。(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
+<p>定義した関数を使用する際には、この関数<code class="docutils literal notranslate"><span class="pre">calc_d()</span></code>に必要な引数(変数,今の場合リスト)<code class="docutils literal notranslate"><span class="pre">l1,l2</span></code>を代入して使います。
+関数に入れる引数は代名詞のようなもので、関数に入れるものを<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はありません。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p100</span><span class="p">))</span> <span class="c1">#←これでも使えるし</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">([</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">5.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span><span class="mf">5.5</span><span class="p">]))</span> <span class="c1">#←などとしても使える</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">([</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">5.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span><span class="mf">5.5</span><span class="p">]))</span> <span class="c1">#←などとして名前をつけなくても使える</span>
 </pre></div>
 </div>
 </div>
@@ -460,10 +461,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> 
-<span class="n">lists</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span> <span class="c1">#座標点をランダムに100個作っている</span>
+<span class="n">lists</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span> <span class="c1">#3次元の座標点をランダムに100個作っている n,iはダミー変数(特に使ってない)</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span> <span class="c1"># i&gt;j</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="n">calc_d</span><span class="p">(</span> <span class="n">lists</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">lists</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="c1">#print(j,i, distance) # 4950回文の計算結果をprintすると邪魔なのでコメントアウトした</span>
         <span class="n">hit</span> <span class="o">+=</span> <span class="mi">1</span> 
@@ -481,7 +482,7 @@
 </div>
 <p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>)に対して距離を計算することが出来る。<br />
 上で使われているインデックス(<span class="math notranslate nohighlight">\(j,i\)</span>)の模式図:<br />
-<img src="https://drive.google.com/uc?export=view&id=1d_MB8x20a2OE-WwLWqJCM1LRM-to6AoO" width = 30%></p>
+<img src="https://drive.google.com/uc?export=view&id=1d_MB8x20a2OE-WwLWqJCM1LRM-to6AoO" width = 15%></p>
 <p>引数は通常関数の中で行う操作に必要な変数を指定します。上の例では２つのリストを引数としました。</p>
 <p>関数内の操作に関数外からの情報(インプット)が必要ない場合は引数なしの関数でも構いませんし、関数の外に値を渡す(アウトプット)必要がなければreturn文を明示的に書かなくても大丈夫です。<code class="docutils literal notranslate"><span class="pre">return</span></code>文がない場合は<code class="docutils literal notranslate"><span class="pre">None</span></code>(値なし)が返されます。</p>
 <p>幾つか例を作って、挙動を理解してみましょう。</p>
@@ -515,7 +516,7 @@ myname_return()の返り値→ 私は吉田です
 </div>
 </div>
 <p>戻り値<code class="docutils literal notranslate"><span class="pre">return</span></code>は単一の値や文字列に限らず、複数の値でも可能ですし、リストを返すことも出来ます。</p>
-<p>先程の自作関数<code class="docutils literal notranslate"><span class="pre">calc_d</span></code>の場合、戻り値はfloat(実数値)ですが</p>
+<p>先程の自作関数<code class="docutils literal notranslate"><span class="pre">calc_d</span></code>の場合、戻り値は<code class="docutils literal notranslate"><span class="pre">float</span></code>(実数値)ですが</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_d_print</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>
@@ -523,7 +524,7 @@ myname_return()の返り値→ 私は吉田です
 
 <span class="k">def</span> <span class="nf">zahyo_and_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">calc_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">)</span> <span class="c1">#関数の中で、先程の自作関数を呼んでいる</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">],</span><span class="n">d</span> <span class="c1">#座標を結合したリストと距離を返す</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">],</span><span class="n">d</span>  <span class="c1">#座標を結合したリストと距離を返す</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">calc_d_print</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;関数calc_d_print→&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
@@ -552,9 +553,9 @@ myname_return()の返り値→ 私は吉田です
 
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">40.0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">))</span> <span class="c1">#pを指定しなければp=2が選ばれる</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=1&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=2&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=3&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=1&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=2&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=3&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -567,16 +568,14 @@ p=3 100000.0
 </div>
 </div>
 </div>
-<p>上の場合、引数を指定する際に<code class="docutils literal notranslate"><span class="pre">p=</span></code>などは書いても書かなくてもなくてもOKですが、デフォルト値が複数設定されている関数を作った場合には、どの変数を指定しているのかを明示的にするため、<code class="docutils literal notranslate"><span class="pre">p=3</span></code>などと引数に入力します。</p>
-<p>関数を定義することで作業を”パッケージ化”し、コードを簡略化することができます。<br />
-「繰り返しの操作は関数にする」ことを心がけましょう。</p>
+<p>上の場合、引数を指定する際に<code class="docutils literal notranslate"><span class="pre">p=</span></code>などは書いても書かなくてもなくてもOKですが、デフォルト値が複数設定されている関数を作った場合には、どの変数を指定しているのかを明示的にするため、<code class="docutils literal notranslate"><span class="pre">p=3</span></code>などと引数に入力します。
+関数を定義することで作業を<em>パッケージ化</em>し、コードを簡略化することができます。「繰り返しの操作は関数にする」ことを心がけましょう。</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">3.2. </span>変数のスコープについて<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>以下の内容は、これまで学習したfor文や関数のインデントとも関連した話題です。<br />
-非常に重要な反面、初学者がつまづきやすい点でもあります。</p>
-<p>一般に、プログラミングでは[グローバル変数]と[ローカル変数]と呼ばれるものがあります。その名(global/local)が示すとおりグローバル変数とはどこからでも参照できる変数で、ローカル変数とは、ある有効範囲(たとえば関数内)のみで参照できる変数です。</p>
-<p>例を見ながら理解していきましょう。</p>
+<p>以下の内容は、これまで学習したfor文や関数のインデントとも関連した話題です。非常に重要な反面、初学者がつまづきやすい点でもあります。</p>
+<p>一般に、プログラミングでは[グローバル変数]と[ローカル変数]と呼ばれるものがあります。その名(global/local)が示すとおりグローバル変数とはどこからでも参照できる変数で、ローカル変数とは、ある有効範囲(たとえば関数内)のみで参照できる変数です。
+例を見ながら理解していきましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
@@ -605,7 +604,7 @@ p=3 100000.0
 </div>
 <p>一方、関数の中で定義(代入)されるローカル変数は、関数の外で参照することはできません。<br />
 (注: あとで説明するように関数内でglobal変数であることを宣言すれば関数の外でも参照できます)</p>
-<p>以下のコードを実行して,関数の中で定義された変数abcdをprintしようとしてもエラーが起こってしまいます。</p>
+<p>以下のコードを実行して,関数の中で定義された変数<code class="docutils literal notranslate"><span class="pre">abcd</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしてもエラーが起こってしまいます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
@@ -646,11 +645,8 @@ p=3 100000.0
 </div>
 </div>
 </div>
-<p>となり<code class="docutils literal notranslate"><span class="pre">a</span></code>の値は更新されません。<br />
-これは、testfuncの中で定義されている<code class="docutils literal notranslate"><span class="pre">a</span></code>は、<br />
-関数の内部で定義(代入)される変数であるため、<br />
-ローカル変数とみなされて処理が行われるためです。</p>
-<p>実際、idをprintさせてみると、関数の内と外とでidが異なることも分かります。</p>
+<p>となり<code class="docutils literal notranslate"><span class="pre">a</span></code>の値は更新されません。これは<code class="docutils literal notranslate"><span class="pre">testfunc</span></code>の中で定義されている<code class="docutils literal notranslate"><span class="pre">a</span></code>は、関数の内部で定義(代入)される変数であるため、ローカル変数とみなされて処理が行われるためです。
+実際<code class="docutils literal notranslate"><span class="pre">id</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>させてみると、関数の内と外とで<code class="docutils literal notranslate"><span class="pre">id</span></code>が異なることも分かります。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
@@ -708,14 +704,12 @@ abc 5
 <p>ただし、このようなコードの書き方は、処理が複雑化してくるとどこでその変数が定義されたり更新されたりしているかがわかりづらく、予期しない挙動の原因にもなりますのであまりオススメしません。[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本です。</p>
 <p>といったように、関数の中で使う変数をグローバル変数として宣言すれば、関数の外でもその変数を使うことができます。
 <code class="docutils literal notranslate"><span class="pre">global</span></code>変数の宣言を使うべき場合としては…コードの中で一度計算して、二度と変更する必要が無いような値にのみ使うようにしましょう。</p>
-<p>関数を用いる際に、変数のスコープに関して混乱を避ける方法としては…<br />
-メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
-たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、<br />
-関数の引数にはアルファベットを使うなどの工夫がオススメです。</p>
+<p>関数を用いる際に、変数のスコープに関して混乱を避ける方法としては…メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
+たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、関数の引数にはアルファベットを使うなどの工夫がオススメです。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_join</span><span class="p">(</span><span class="n">listA</span><span class="p">,</span><span class="n">listB</span><span class="p">):</span> <span class="c1">#リストを結合して返す関数</span>
-    <span class="k">return</span> <span class="n">listA</span> <span class="o">+</span> <span class="n">listB</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_join</span><span class="p">(</span><span class="n">listA</span><span class="p">,</span><span class="n">listB</span><span class="p">):</span> <span class="c1">#特殊なリストの結合をして返す関数</span>
+    <span class="k">return</span> <span class="n">listA</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">listB</span> 
 
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">2.0</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">18.0</span><span class="p">]</span>
 <span class="n">list2</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">9.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">8.0</span><span class="p">]</span>
