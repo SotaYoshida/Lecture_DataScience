@@ -409,7 +409,7 @@
 <div class="section" id="id1">
 <h2><span class="section-number">1.1. </span>変数の定義と簡単な演算<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>「”値”に固有の名前（識別子）を付したもの」</strong> を<strong>変数</strong>と定義する。</p>
-<p>どのようなものが”値”として扱えるかは後で見ていくことにして、まずは代表的な値(実数値,整数)を変数に代入してみましょう。</p>
+<p>どのようなものが”値”として扱えるかは後で見ていくことにして、まずは代表的な値(実数値,整数)を変数として定義してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span> 
@@ -418,13 +418,13 @@
 </div>
 </div>
 </div>
-<p>これで変数<code class="docutils literal notranslate"><span class="pre">a</span></code>と変数<code class="docutils literal notranslate"><span class="pre">b</span></code>に値が代入された。<br />
+<p>これで変数<code class="docutils literal notranslate"><span class="pre">a</span></code>と変数<code class="docutils literal notranslate"><span class="pre">b</span></code>に値が代入され”定義”された。<br />
 プログラムでは通常、等号記号(<code class="docutils literal notranslate"><span class="pre">=</span></code>)は代入に使用される。値の代入は、等号の左に変数(値を入れたいものの名前)、等号の右に値を書くことで行う。</p>
-<p>注: よく書籍などでは変数を箱と見立てて箱の中に数値や文字列を入れる説明もよく見られるがPythonの変数は値を格納する箱というよりは値が保管される住所(id)を示すものというのが正確。関連した話題としては、次の章の<strong>リスト操作の注意点</strong>を参照.</p>
+<p>注: よく書籍などでは変数を箱と見立てて箱の中に数値や文字列を入れる説明もよく見られるが、Pythonの変数は値を格納する箱というよりは値が保管される住所を示すものというのが正確。関連した話題としては、次の章の<strong>リスト操作の注意点</strong>を参照.</p>
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">1.2. </span>簡単な演算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>次にこれらを使って、四則演算をしてみましょう。</p>
+<p>次に、上で定義された変数を使って四則演算をしてみまよう。</p>
 <p>足し算</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -546,13 +546,15 @@
 <p>は一見問題ないように見えるが、<code class="docutils literal notranslate"><span class="pre">print</span></code>関数の右側の括弧が全角になっているため、これもSyntaxErrorとなる。
 細かな文法やエラーの原因の特定については、一緒に少しずつ慣れていこう。</p>
 <p>一度定義した変数は、値を更新することもできる。<br />
-<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>は、aに2を加えたものでaを再定義することを表す。
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>は、”aに2を加えた値”でaを再定義することを表す。
 また、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+=</span> <span class="pre">2</span> </code>と書いても同じ結果が得られる。(<code class="docutils literal notranslate"><span class="pre">+=</span></code> を用いた書き方のほうがシンプルなので、今後多用します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span> 
-<span class="n">a</span> <span class="o">+=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;二行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">## セミコロン(半角)で、複数のコードを１行に書くことができる</span>
-<span class="n">a</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;三行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">## セミコロン(半角)で、複数のコードを１行に書くことができる</span>
+<span class="n">a</span> <span class="o">-=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">*=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">/=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
