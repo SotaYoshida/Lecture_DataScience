@@ -494,13 +494,13 @@
 <div class="section" id="id1">
 <h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>実際にいろんなデータを扱う際には、  値や変数をまとめて処理したくなります。<br />
-こうしたときに必要になるのが以下で扱う[リスト]型の変数です。</p>
-<p>リスト型は、値や変数などを括弧[ ]で括り、カンマで区切ることで作ることができます。
+こうしたときに必要になるのが以下で扱う<strong>リスト</strong>型の変数です。</p>
+<p>リストは、値や変数などを括弧[ ]で括り、カンマで区切ることで作ることができます。
 例: <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0,</span> <span class="pre">3.0]</span></code><br />
 また好きな名前の変数にリストを代入する(リストに名前を割り振る)こともできます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変数aの型(type)は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># 変数aの型をprint</span>
 </pre></div>
@@ -510,7 +510,7 @@
 <p>リストの要素にできるのは数値だけではなく、文字列のリストも作ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span> <span class="s2">&quot;宇大太郎さん&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span> <span class="s2">&quot;宇大太郎さん&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -518,7 +518,7 @@
 <p>リストに入っている要素の数は、<code class="docutils literal notranslate"><span class="pre">len()</span></code>関数(lengthの略)で見ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaは&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaは&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -527,7 +527,7 @@
 <p>当然、長さに名前をつけて適当な変数に突っ込むこともできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaの長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
 </pre></div>
 </div>
@@ -542,7 +542,7 @@
 <strong>Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします</strong>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -553,7 +553,7 @@
 <p>ですので、<code class="docutils literal notranslate"><span class="pre">a[3]</span></code>にアクセスしようとすると、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -563,7 +563,7 @@
 <p>ググると、こうした0-based indexingと呼ばれる言語の利点がいくつか出てきます。代表的なものは負のインデックスが自然に使えることでしょうか？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
@@ -599,7 +599,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>テキストセルの内容をコードセルなどにコピー&amp;ペーストしたければ、対象をドラッグして、Ctrl+Cでコピー,Ctrl+Vでペースト出来ます。(Macの場合はCtrlを⌘に置き換えてください)</p>
+<p>テキストセルの内容をコードセルなどにコピー&amp;ペーストしたければ、対象をドラッグして、<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>でコピー,<code class="docutils literal notranslate"><span class="pre">Ctrl+V</span></code>でペースト出来ます(Macの場合は<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>を<code class="docutils literal notranslate"><span class="pre">⌘</span></code>に置き換えてください)</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="id2">
@@ -607,7 +607,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>２つのリストを結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">c</span><span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -615,14 +615,14 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<p>上のリストを”座標”だと思えば、要素ごとの和になってほしいような気もしますが、リストの足し算は要素ごとの和ではなく、リストの結合を意味します。</p>
+<p>上のリストを”座標”だと思えば、要素ごとの和になってほしいような気もしますが、リストの足し算は要素ごとの和ではなく”リストの結合”を意味します。</p>
 <blockquote>
 <div><p>補足: 要素ごとの和のような、数学などで必要な演算は以降で扱う<code class="docutils literal notranslate"><span class="pre">numpy</span></code>というモジュールを使って<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型と呼ばれるものにすれば簡単に実行できます</p>
 </div></blockquote>
 <p>長さや階層の異なる2つのリストでも可能です.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Aさん&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Aさん&quot;</span><span class="p">]</span>
 <span class="n">d</span><span class="o">=</span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
 <span class="n">c</span><span class="o">+</span><span class="n">d</span>
 </pre></div>
@@ -636,7 +636,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 そんなときは <code class="docutils literal notranslate"><span class="pre">append</span></code>関数か<code class="docutils literal notranslate"><span class="pre">+=</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> 
 <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;O型&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 
@@ -647,11 +647,11 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<p>厳密には両者は違うのですが、この授業では見た目がスッキリするので後者を使います。<br />
+<p>厳密には両者は違うのですが、この授業では見た目がスッキリするので後者をよく使います。<br />
 入れ子のリストを作るときは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 <span class="n">data</span> <span class="o">+=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="p">]</span>
 <span class="n">data</span> <span class="o">+=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
@@ -659,11 +659,11 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<p>などとする。<br />
-+= でリストに要素を追加するときは「１番外側の<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>に囲まれたものを左辺の変数の最上位の階層に加える」と覚えておけば、リストを追加したいときに［ ］が二重に必要な理由がわかる。</p>
+<p>などとする。空リストに既存(新規)のリストを追加したいときに、上のように<code class="docutils literal notranslate"><span class="pre">［</span> <span class="pre">］</span></code>が二重に必要な理由はリスト同士の和の演算が結合となることから理解できる。
+実際に1重の括弧で試してみよう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 <span class="n">data2</span> <span class="o">+=</span>  <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="c1"># １重カッコ これだと右辺のリストを空リストに結合することになる</span>
 <span class="n">data2</span> <span class="o">+=</span>  <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="c1"># これも同様</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
@@ -672,12 +672,11 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<p>上のコードだと、人ごとにデータが区切られていないので扱うのに不便です。<br />
-リストに格納する情報に血液型を加えたりなんかして、同じ様なことを手元でも是非やってみましょう。
-どんどん試すのが一番です.</p>
+<p>こうしてしまう(リスト同士の単なる結合)と、人ごとにデータが区切られていないので扱うのに不便となる。</p>
+<p>リストに格納する情報に血液型を加えたりする際は以下のようにすればよい</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### 名前,身長,体重,血液型,住んでる市区町村のリストを</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### 名前,身長,体重,血液型,住んでる市区町村のリストを</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="s2">&quot;A型&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;宇都宮市&quot;</span><span class="p">]</span>
@@ -689,7 +688,16 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>リストの要素は後から更新することもできます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span>  <span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span>  <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">start</span> <span class="n">the</span> <span class="n">Kernel</span><span class="o">.</span> 
+
+<span class="n">The</span> <span class="n">Jupyter</span> <span class="n">notebook</span> <span class="n">server</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">launch</span> <span class="ow">in</span> <span class="n">time</span><span class="o">.</span> 
+
+<span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -697,8 +705,37 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>というリストがあったとして、Aさんの体重を修正したければ、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1">#Aさんの体重を更新</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1">#Aさんの体重を更新</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#リストを表示</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">start</span> <span class="n">the</span> <span class="n">Kernel</span><span class="o">.</span> 
+
+<span class="n">The</span> <span class="n">Jupyter</span> <span class="n">notebook</span> <span class="n">server</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">launch</span> <span class="ow">in</span> <span class="n">time</span><span class="o">.</span> 
+
+<span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>血液型を追加したければ以下のようにすればよい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;A型&quot;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;B型&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Failed</span> <span class="n">to</span> <span class="n">start</span> <span class="n">the</span> <span class="n">Kernel</span><span class="o">.</span> 
+
+<span class="n">The</span> <span class="n">Jupyter</span> <span class="n">notebook</span> <span class="n">server</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">launch</span> <span class="ow">in</span> <span class="n">time</span><span class="o">.</span> 
+
+<span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -709,7 +746,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">]</span>
 <span class="n">tlist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;りんご&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -718,7 +755,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>重複する要素がある場合、初めにヒットしたインデックスを返します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tlist2</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">,</span><span class="s2">&quot;りんご&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tlist2</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">,</span><span class="s2">&quot;りんご&quot;</span><span class="p">]</span>
 <span class="n">tlist2</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;りんご&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -731,7 +768,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -739,7 +776,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>始点,コロン,終点でインデックスの範囲を指定して、部分的に取り出すことが出来ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -747,7 +784,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>終点のインデックスに相当する要素は取り出されないことに注意しましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -756,7 +793,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>負のインデックスを使用することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -765,11 +802,11 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <div class="section" id="id5">
 <h3><span class="section-number">2.1.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、ググれば自分でだいたい解決することができます。<br />
-ただしこの項目で述べることは(とくに初学者にとって)「明らかにバグがある(何かがオカシイ,意図しない振る舞いをする)のだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。<br />
-例を見せるために、以下の2種類のリストを用意します.</p>
+ただしこの項目で述べることは(とくに初学者にとって)「明らかにバグがある(何かがオカシイ,意図しない振る舞いをする)のだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
+<p>例を見せるために、以下の2種類のリストを用意します.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 <span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span><span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="p">]</span> 
 
@@ -782,7 +819,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">data2</span></code>のようにまず雛形のリスト<code class="docutils literal notranslate"><span class="pre">tmp</span></code>を作って人数分の長さを持つリストを作ってから中身を編集しようと考えた場合、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Bさん&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Bさん&quot;</span>
 <span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">180</span>
 <span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">70</span>
 </pre></div>
@@ -792,17 +829,17 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>という操作を思いつきます。このとき、<code class="docutils literal notranslate"><span class="pre">data2</span></code>の2つ目(０から数えて1番目)の要素だけを編集したつもりでも<code class="docutils literal notranslate"><span class="pre">data2</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>すると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>data2の最初の要素(Aさんのままであってほしいリスト)まで上書きされてしまっています。<br />
 これは直感に反しているという点で、初学者が陥りやすい落とし穴です。</p>
-<p>「変数は値を格納する場所ではなく、値の保管される場所(id)を格納するものだ」と1章の注で書きました。</p>
+<p>「値を格納する箱というよりは値が保管される住所を示すもの」と1章の[変数の定義と簡単な演算]のところで書きました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span><span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="p">]</span> 
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1">#それぞれのidを調べてprint</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idが等しいか&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1">#id()は変数のidを確認する関数</span>
@@ -817,7 +854,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 これは<code class="docutils literal notranslate"><span class="pre">copy</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">copy</span></code>関数を用いて配列のコピーを作成することで回避できます。(モジュールについては4章で説明します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
 <span class="n">tmp</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">tmp</span><span class="p">),</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">tmp</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># ← data2の0番目と1番目のidが同じ(参照元が同じ)だと困るのでFalseであってほしい</span>
@@ -829,7 +866,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 
 <span class="n">copydata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -852,7 +889,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">if</span></code>文を使って命題の真偽を判定することで、条件分岐を表現することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=-</span><span class="mf">0.3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=-</span><span class="mf">0.3</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aはbよりも大きい&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span>
@@ -864,7 +901,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>条件を満たすときはA,満たさないときはBをしたい、という場合には<code class="docutils literal notranslate"><span class="pre">else</span></code>を使う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aはbよりも小さい&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&gt;=b&quot;</span><span class="p">)</span> 
@@ -876,7 +913,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>たとえば、もし条件1が満たされればAを実行、条件1は満たされないが条件2が満たされればBを、さらに1も２も満たされない場合はCを実行するという場合は下記のようなコードになる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span> <span class="c1">#条件1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span> <span class="c1">#条件1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&lt;b&quot;</span><span class="p">)</span>
 <span class="k">elif</span>  <span class="n">a</span> <span class="o">==</span><span class="n">b</span><span class="p">:</span> <span class="c1">#条件２</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a=b&quot;</span><span class="p">)</span>
@@ -890,7 +927,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>たとえば<code class="docutils literal notranslate"><span class="pre">a</span></code>が偶数の場合は値をそのまま表示して、<code class="docutils literal notranslate"><span class="pre">a</span></code>が奇数の場合は3の倍数かそうでないかで処理を変える事を考えると、以下のようになる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
@@ -911,7 +948,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>と書いてしまうと、<code class="docutils literal notranslate"><span class="pre">a=0</span></code>の場合、<code class="docutils literal notranslate"><span class="pre">if</span></code>文を２つともすり抜けてしまい、バグの原因になることがあります。はじめのうちは少々面倒でも<code class="docutils literal notranslate"><span class="pre">else</span></code>を使って、意図しないすり抜けがないかチェックするのが良いでしょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#aをいろんな値に変えて実行してみてください</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#aをいろんな値に変えて実行してみてください</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#aが0より大きい場合</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;処理1:a+2=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>    
@@ -931,7 +968,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>まず以下のコードを実行してみましょう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -946,7 +983,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 なお<code class="docutils literal notranslate"><span class="pre">range</span></code>関数の引数を<code class="docutils literal notranslate"><span class="pre">range(始点,終点,間隔)</span></code>と3つにすると、より複雑な整数の集合を作ることもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#やはり6は含まれないことに注意</span>
 </pre></div>
 </div>
@@ -956,7 +993,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>次に、リストの中身を順番に表示させてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kudamono</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span><span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">]</span> <span class="c1">#リストを定義</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kudamono</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span><span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">]</span> <span class="c1">#リストを定義</span>
 <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">kudamono</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 </pre></div>
@@ -972,7 +1009,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>で、上のコードは2.に相当します。上の例で、1.の方法を採る場合は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">kudamono</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">kudamono</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span> <span class="n">kudamono</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -982,7 +1019,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>インデックスと要素を同時に取得して使いたいときには<code class="docutils literal notranslate"><span class="pre">enumerate</span></code>関数を使って</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kudamono</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kudamono</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -991,7 +1028,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>とします。これによって○泉○次郎構文を作ることもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kudamono</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kudamono</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="s2">&quot;は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;番目です&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;番目というのは0から数えて&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;番だということです。&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1005,7 +1042,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p>下のように、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を使っているにも関わらず正しくインデントされていない場合はエラーが出ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1018,7 +1055,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 A. 8回 B. 11回 C. 13回</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1033,7 +1070,7 @@ A. 8回 B. 11回 C. 13回</p>
 <p>慣れないうちは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1047,7 +1084,7 @@ A. 8回 B. 11回 C. 13回</p>
 コードを編集しているうちに</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1070,7 +1107,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 ヒント2: total=0.0を定義して、体重の二乗×身長をfor文を使ってどんどん足していく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###以下は、不完全なコードです。これにあと３行ほど書き足してみましょう。 </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">###以下は、不完全なコードです。これにあと３行ほど書き足してみましょう。 </span>
 <span class="c1">###ちなみに答えは 2156493です.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span><span class="mi">55</span><span class="p">]]</span>
 <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1084,7 +1121,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>他にも、たとえば、 1, 10, 100, 1000, 10000,…というループを回したい時、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1093,7 +1130,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>と書くのではなく、べき乗に対するループを回す</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1107,7 +1144,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="c1">## i を1から999まで2ずつ変えていったときの値を詰めたリストを作成</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="c1">## i を1から999まで2ずつ変えていったときの値を詰めたリストを作成</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1127,7 +1164,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 コードで表現する場合、以下のようなコードになります:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span> <span class="c1"># random.choice([True,False])は1/2の確率でTrue/Falseを与える関数になっている、つまり勝ち負けに&quot;対応&quot;させられる!</span>
@@ -1166,7 +1203,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>を作ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
 
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span> <span class="c1">#手元に50万以上-150万未満ある限り賭け続ける</span>
@@ -1200,7 +1237,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>まず、Aさんに勝負のたびに所持金を叫ばせるコードは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span>
@@ -1218,7 +1255,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>最初の掛け金を一旦5万円にすることにして[連続で勝った場合、コインを投げて表が出たら掛け金を2倍にする]という条件をいれてみましょう。これをプログラムで表現するのには以下のような実装が考えられます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#連続勝数を記録する変数hitを定義</span>
 <span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c1">#掛け金をセット</span>
@@ -1242,7 +1279,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>さらに[掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ]という条件を実装するのにcontinueを使ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#連続勝数を記録する変数hitを定義</span>
 <span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c1">#掛け金をセット</span>
@@ -1273,7 +1310,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
 <span class="c1">#for i in range(20):</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1294,7 +1331,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
@@ -1323,7 +1360,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 リストは要素を<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲むことで作ることができました。タプルは丸括弧<code class="docutils literal notranslate"><span class="pre">()</span></code>で囲むことで作ることができます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">##要素にアクセスするときはタプルのときでもやはり角括弧を使う</span>
@@ -1340,7 +1377,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##たとえば...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">##たとえば...</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="c1">##たとえば...2つ目の2.0を4.0に変更しようとすると....</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.0</span>
@@ -1354,7 +1391,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <code class="docutils literal notranslate"><span class="pre">time</span></code>というライブラリを使って2つの作業に係る時間を調べてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> <span class="c1">#時間を計測するためのライブラリをインポート</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> <span class="c1">#時間を計測するためのライブラリをインポート</span>
 <span class="n">itnum</span><span class="o">=</span><span class="mi">10000</span> <span class="c1">#繰り返す回数を設定</span>
 
 <span class="c1">#リストを使った計算</span>
@@ -1391,7 +1428,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>があったとき、これまで習った方法だけを駆使してBさんの年齢を取得するには例えば以下のようなコードになります</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
 
 <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Bさん&quot;</span> <span class="p">:</span>
@@ -1404,7 +1441,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>辞書型は波括弧<code class="docutils literal notranslate"><span class="pre">{}</span></code>で囲むことで構成できます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1412,7 +1449,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>Bさんの値(今は年齢)を知りたければ以下のように一行で取得可能です.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span><span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span><span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1427,7 +1464,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>値(<code class="docutils literal notranslate"><span class="pre">value</span></code>)として、リストを保持することもできます.次のように年齢と出身県のリストを値にもつ辞書にしてみましょう.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;栃木県&quot;</span><span class="p">],</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="s2">&quot;茨城県&quot;</span><span class="p">],</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;群馬県&quot;</span><span class="p">]}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;栃木県&quot;</span><span class="p">],</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="s2">&quot;茨城県&quot;</span><span class="p">],</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;群馬県&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
@@ -1435,7 +1472,7 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p>Cさんの個人情報にアクセスする際は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
