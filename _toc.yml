@@ -7,6 +7,9 @@ parts:
 - caption: プログラムの実行方法
   chapters:
   - file: notebooks/Python_chapter0_HowToUse.ipynb
+- caption: 練習帳
+  chapters:
+  - file: notebooks/Python_practice.ipynb
 - caption: Pythonの基本文法
   numbered: true
   chapters:
