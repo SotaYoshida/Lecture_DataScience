@@ -9,7 +9,10 @@
 慣れないうちは混同するかと思うので、ここに資料自体の説明と各種アプリケーションやサービスの説明をまとめておく。
 
 ### ブック
-本資料は[Jupyter Notebook](https://github.com/jupyter/notebook)形式で作成されたソースファイルを[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて変換することで作成されたコンテンツになっている。この形式の資料を授業内では**ブック**ないし**Book**と表記・呼称する。概要を理解したり復習する際にはこちらのブックを閲覧してください。
+:::{margin}
+概要を理解したり復習する際にはこちらのブックを閲覧してください
+:::
+本資料は[Jupyter Notebook](https://github.com/jupyter/notebook)形式で作成されたソースファイルを[Jupyter Book](https://jupyterbook.org/en/stable/intro.html)を用いて変換することで作成されたコンテンツになっている。この形式の資料を授業内では**ブック**ないし**Book**と表記・呼称する。
 
 ### ノートブック
 
