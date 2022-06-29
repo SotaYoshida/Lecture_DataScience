@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pythonの環境構築 (Windows11版) &#8212; 実践データサイエンス</title>
+    <title>練習帳&amp;リアクションシート(編集中) &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pandasの使い方 (基礎)" href="Python_misc_Pandas.html" />
-    <link rel="prev" title="Pythonの環境構築" href="Python_misc_python_environment.html" />
+    <link rel="next" title="1. Pythonの基本 その１:" href="Python_chapter1_Introduction.html" />
+    <link rel="prev" title="Google Colaboratoryの使い方" href="Python_chapter0_HowToUse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,9 +113,9 @@
   練習帳
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_practice.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    練習帳&amp;リアクションシート(編集中)
   </a>
  </li>
@@ -186,7 +186,7 @@
   Tips&amp;環境構築
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_misc_Error.html">
    よくあるエラー集
@@ -197,8 +197,8 @@
    Pythonの環境構築
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
    Pythonの環境構築 (Windows11版)
   </a>
  </li>
@@ -295,7 +295,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_python_env_forWin11.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/Python_practice.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -315,7 +315,7 @@
                 data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
                     class="fab fa-github"></i>リポジトリ</button></a>
         <a class="issues-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_python_env_forWin11.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_practice.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
         
@@ -338,7 +338,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_env_forWin11.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_practice.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -357,20 +357,64 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#windows">
-   Windowsターミナルの導入
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   練習帳&amp;リアクションシート(編集中)
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     練習帳のノートブックの共有の仕方
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wsl2">
-   WSL2の導入
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   練習帳
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wslpython">
-   WSL下でのPython環境の構築
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     第3回 (第1章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     第4回 (第2章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     第5回 (第3章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     第6回 (第4章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     第7回 (第5章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     第8回 (第6章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     第9回 (第7章)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     第10回 (第8章)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -383,177 +427,73 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="python-windows11">
-<h1>Pythonの環境構築 (Windows11版)<a class="headerlink" href="#python-windows11" title="Permalink to this headline">¶</a></h1>
-<p>いくつかの方針が考えられるが、下記の導入を推奨とする。</p>
+  <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_practice.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>練習帳&amp;リアクションシート(編集中)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>このノートブックでは、1-8章で抑えておくべき基本事項を確認するための練習問題を与える。</p>
+<p>CLで収集する授業のリアクションシートには、</p>
 <ul class="simple">
-<li><p>Windowsターミナル</p></li>
-<li><p>Windows Subsystem for Linux2(WSL2)</p></li>
+<li><p>練習帳のURL</p></li>
+<li><p>授業や資料でわからなかったこと</p></li>
+<li><p>なければ適当な感想(最近ハマっていることやお昼ごはんなど)</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>授業の受講者で環境構築を希望される方は、事前に相談することを強く推奨します。
-とくにWindowsの場合、作成者(吉田)はWindowsユーザーではないので幾つかの情報が古い恐れがあります。</p>
+<p>を当該の週の水曜17:00までに提出すること。これをもって出席とみなす。</p>
+<p>この練習帳の目的は、皆さんが自分自身の理解・疑問点を確認するためであって
+練習帳で書いているコードなどが正しいかどうかは一切授業の評点には関係がない。</p>
+<p>友人に見せてもらったり相談をして体裁を整える必要はまったくない。
+教員やTAへの質問を円滑にするための連絡帳のようなものだと思ってもらえれば良い。</p>
+<div class="section" id="id2">
+<h2>練習帳のノートブックの共有の仕方<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>以下の手順にならってください。
+1-3は1度やれば再び行う必要はありません。</p>
+<ol class="simple">
+<li><p>まずノートブックのコピーを作成し、ファイル名を適当に編集する: 例: 練習帳_123456X.ipynb (123456Xは学籍番号のつもり)</p></li>
+<li><p>右上の共有ボタンを押し、「制限付き」を「リンクを知っている全員」に変更
+(共有ボタンが見えない場合、編集権限がないつまり「ノートブックのコピーをつくる」というお約束を忘れていることを意味する)</p></li>
+<li><p>「リンクを知っている全員」の右にある「閲覧者」を「編集者」に変更する</p></li>
+<li><p>最後に、リンクをコピーし、どこかにメモっておこう(2回目以降はCLで一度提出した過去のURLをコピーするのが手っ取り早い)</p></li>
+</ol>
 </div>
-<div class="section" id="windows">
-<h2>Windowsターミナルの導入<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<p>ターミナルとは、CUI(Character User Interface)、つまり<br />
-コマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉です。</p>
-<p>CUIに対して、普段我々が使っているポインタやウィンドウなどは<br />
-GUI(Graphical User Interface)に相当します。</p>
-<p>何故現代においてもCUIが必要なのか、<br />
-つまりマウスでポインタを動かしたりクリックするのではなく<br />
-一見不便そうな文字列だらけのインターフェースが用いられるのか、<br />
-そこには<em>単に映画やドラマでハッカーの邪悪さを演出する</em>以上の理由があります。</p>
-<p>計算機(コンピュータ)の発展の歴史的側面、パフォーマンス的側面から<br />
-その理由をすべて説明することはしませんが例えば授業で用いた<br />
-<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドなどはCUIの利便性を表す一例になっていて、<br />
-こうしたいわゆる”機械的”な操作についてはCUIに軍配が挙がります。</p>
-<p>Windows Terminalは、2019年にマイクロソフトがリリースしたターミナルで<br />
-コマンドプロンプトやPowerShellといったWindows独自のCUIに加えて<br />
-後述のWSLを統合的に扱うことができる環境となっています。</p>
-<ul>
-<li><p>Windows10の場合</p>
-<p>後々のことも考えてこれを導入しておこう。<br />
-MS storeでWindows terminalと検索し、 入手を押す</p>
-</li>
-<li><p>Windows11の場合</p>
-<p>標準で入っているのでWindowsボタンで開くメニューから<br />
-「terminal」などと検索すると出てくる</p>
-</li>
-</ul>
 </div>
-<div class="section" id="wsl2">
-<h2>WSL2の導入<a class="headerlink" href="#wsl2" title="Permalink to this headline">¶</a></h2>
-<p>オペレーティングシステム(OS)の源流を遡ると、大まかには2つに大別される。<br />
-1つがUnix系で歴史が古い。そしてもう１つはお使いのWindowsである。</p>
-<p>Unixはあるところで枝分かれし、LinuxやMac OSなどもUnix系に含まれる。<br />
-サーバー用途のマシンや、スパコンなどの計算機環境では基本的にLinuxがOSとして採用されている。<br />
-コンピュータの”計算機”としての側面や歴史的経緯から<br />
-プログラミング言語・開発環境などもUnix/Linuxとともに発展してきた部分が大きい。</p>
-<p>一方でWindowsは、一般家庭でのコンピュータの需要拡大とともに独自の進化を遂げてきた。</p>
-<p>Windowsユーザーが、プログラミング環境の構築やLinux-likeな作業をしたい場合<br />
-方法は幾つかあるが最近だとWindows Subsystem for Linux (通称WSL)を使うのが<br />
-最も簡単かつ安全な方法の１つとされている。</p>
-<p>この授業ではLinuxの中のUbuntuというディストリビューションを用意して使うことにしよう。<br />
-Ubuntu自体はLinux OSの中ではGUI環境も良く出来ているディストリビューションで人気が高い。<br />
-~日本語のシステムフォントがひどいWなんとかというOSよりはフォント・レンダリングも美しい~</p>
-<ul>
-<li><p><strong>手順1. WSLと仮想マシンプラットフォームの有効化</strong></p>
-<p>スタートメニューから「コントロールパネル」を検索して開く<br />
-<img src="https://drive.google.com/uc?export=view&id=1OcM-XPNm33NOtQ5n8BJclhWlzrm8_K6X" width=60%></p>
-<p>コントロールパネルの[プログラム]&gt;[Windowsの機能の有効化または無効化] を選択し</p>
-<ul class="simple">
-<li><p>「Linux用Windowsサブシステム」</p></li>
-<li><p>「仮想マシン プラットフォーム」</p></li>
-</ul>
-<p>の２つにチェックを入れて有効化する(再起動が必要)</p>
-</li>
-<li><p><strong>手順2. Windows TerminalからWSLのインストール</strong></p>
-<p>スタートメニューからterminalなどと打ち込んで<br />
-Windows Terminalで右クリックして[管理者として実行]する<br />
-このアプリがデバイスに変更を加えることを許可しますか→[はい]</p>
-<p>ターミナルに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="n">install</span>
-</pre></div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id3">
+<h1>練習帳<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>レイアウトは好きに改変してOK.
+コードセル・テキストセルともに自由に追加して構わない。</p>
+<div class="section" id="id4">
+<h2>第3回 (第1章)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>身長と体重に相当する変数を適当に定義し、BMI(体重kg ÷ 身長mの二乗)を計算した上でprintせよ (自身の身長体重を用いる必要はない)</p></li>
+<li><p>上で計算したBMIに対応する変数とstr関数を用いて文字列を連結し、”AさんのBMIは22.0です”などと表示させよ。</p></li>
+</ol>
 </div>
-<p>と打ち込んで実行(Enter)する</p>
-  <img src="https://drive.google.com/uc?export=view&id=15stSBQnBN_3aqVuXxkhTrDSKgNdXaLqt" width=60%>
-<p>大量にヘルプが表示される場合は、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="n">install</span> <span class="o">-</span><span class="n">d</span> <span class="n">Ubuntu</span>
-</pre></div>
+<div class="section" id="id5">
+<h2>第4回 (第2章)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>要素に身長(単位:cm)と体重(単位:kg)を持つ適当なリストを定義し、5人のデータ(リスト)を要素にもつ入れ子のリストを作成せよ。ただし3人目の身長と体重は必ず175,60とすること(それ以外は適当で構わない)。</p></li>
+<li><p>上のリストから、5人の身長の平均と体重をそれぞれ計算するコードを作成せよ。</p></li>
+<li><p>上のリストについて、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて全員のBMI(体重kg ÷ 身長mの二乗)を計算し、一人ずつBMIを表示させよ。(単位に注意)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文のブロック内で<code class="docutils literal notranslate"><span class="pre">if</span></code>と<code class="docutils literal notranslate"><span class="pre">break</span></code>を用いて、「BMIが20.0以下ならループを終了する」という処理を実現せよ。</p></li>
+</ol>
 </div>
-<p>と明示的にUbuntuを指定してインストールする</p>
-</li>
-<li><p><strong>手順3. Ubuntuの起動</strong></p>
-<p>Ubuntuのウィンドウが開く※ので<br />
-指示(Press any key to continue…)に従って適当なキーを押す。</p>
-<p>※RyzenのCPUが搭載されたマシンを使っていて<br />
-ウィンドウが開いたときにerror: 0x800701bcが発生している場合は
-<a class="reference external" href="https://docs.microsoft.com/ja-jp/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">このページ</a>を参考に<br />
-「Linux カーネル更新プログラム パッケージ」をダウンロードして実行した後、手順1→2を再度行う。</p>
-</li>
-<li><p><strong>手順4. Ubuntuの初期設定</strong></p>
-<p>しばらくすると<code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">new</span> <span class="pre">UNIX</span> <span class="pre">username:</span> </code><br />
-とLinuxシステム用のusernameを求められるので<br />
-適当なものを入力してEnterを押す<br />
-usernameは半角英数字にしよう。あとは…短い方があとあと便利。</p>
-<p>その後
-<code class="docutils literal notranslate"><span class="pre">NewPassword</span></code>
-とパスワードの設定を求められるので打ち込んでEnter</p>
-<p><code class="docutils literal notranslate"><span class="pre">Retype</span> <span class="pre">new</span> <span class="pre">password</span></code>(もっかい打て)と言われるのでもう一度</p>
-<p>ユーザー名が緑色で表示されていて、エラーメッセージ等がなければOK</p>
-  <img src="https://drive.google.com/uc?export=view&id=1WZ1TbZM4LsGl72mgaWTmZ-_A4dqVQihj" width=60%>
-</li>
-</ul>
-<p>上記の手順以降は、スタートメニューからUbuntuと検索してUbuntuを開いても良いし<br />
-Windows terminalのタブの”+”のさらに右にある∨マークから<br />
-Ubuntuを選択すると(あるいはショートカットで)、Windows terminalの上でUbuntuが開く。</p>
-<p>なお、デフォルトの設定だとUbuntuを開くとUbuntuのホームディレクトリで開くし<br />
-Windows terminalから開くと、Windows側のホームディレクトリにいる状態で開く</p>
-<img src="https://drive.google.com/uc?export=view&id=1PZlzK_cuWwYz07Msb8ymtfb5EF6RTiRb" width=60%> </div>
-<div class="section" id="wslpython">
-<h2>WSL下でのPython環境の構築<a class="headerlink" href="#wslpython" title="Permalink to this headline">¶</a></h2>
-<p>※以下では、直接/Windows TerminalのどちらでUbuntu環境を開いている場合も<br />
-便宜上”Ubuntuターミナル”と呼ぶことにしよう。</p>
-<p>WSL下にPython環境構築をする方法は以下の通り</p>
-<ul>
-<li><p><strong>手順1. aptのupdate/upgrade</strong></p>
-<p>Ubuntuターミナルで以下を入力し実行する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update
-$sudo apt upgrade
-</pre></div>
+<div class="section" id="id6">
+<h2>第5回 (第3章)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>注:上の<code class="docutils literal notranslate"><span class="pre">$</span></code>は打ち込むのではなく、 Ubuntuターミナルの末尾にある<code class="docutils literal notranslate"><span class="pre">$</span></code>を指し<br />
-Pythonの対話モードなどで打ち込む場合と区別するための表記。</p>
-<p>sudoはコマンドの頭につけることで管理者権限で実行する、という命令を意味します。<br />
-実行時に、Ubuntu用に設定したパスワードが要求されます<br />
-入力しても画面には表示されないので注意しながら打ち込んでEnterを押す。<br />
-(間違っても再度入力を求めてくれますし、やめたければCtrl+C)</p>
-<p>aptはLinux(Debian系)のパッケージ管理システムです。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install xxxx
-</pre></div>
+<div class="section" id="id7">
+<h2>第6回 (第4章)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>などとして、様々なものを簡単にインストールすることが出来ます。</p>
-<p>※PCの時刻設定がきちんと行われていないと、aptのupdateやupgradeに失敗します。</p>
-</li>
-<li><p><strong>手順2. Pythonのインストール</strong></p>
-<p>Ubuntuには初めからPython3系が含まれていますが、</p>
-<p>pythonの最新バージョンをpip込みでインストールしましょう。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip -y
-</pre></div>
+<div class="section" id="id8">
+<h2>第7回 (第5章)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>これでpython3.xとpython用のパッケージマネージャpipがインストールされます。</p>
-</li>
-<li><p><strong>手順3. Pythonの対話モードに入ってみよう</strong></p>
-<p>インストールが終わったら<code class="docutils literal notranslate"><span class="pre">python3</span></code>と打ち込んでEnterを押すと<br />
-Pythonの対話モードに入ります。対話モードの中で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="id9">
+<h2>第8回 (第6章)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>などと打ち込んで実行してみましょう。</p>
-<p>打ちかけの作業を消したり、処理を中断する際はCtrl+Cを、<br />
-対話モードから抜けたければCtrl+Dを入力します<br />
-(書きかけのコードがあったり処理が実行されているときは先にCtrl+Cで中断してからCtrl+d)</p>
-</li>
-<li><p><strong>手順4. ライブラリのインストール</strong></p>
-<p>ライブラリ・モジュールをインストールしたければUbuntuターミナルから</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$pip3 install matplotlib
-$pip3 install pandas
-$pip3 install Selenium
-</pre></div>
+<div class="section" id="id10">
+<h2>第9回 (第7章)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>などを実行します。</p>
-<p>Google Colab環境では毎度</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
-</pre></div>
-</div>
-<p>などとしましたが、一度インストールしておけば<br />
-コードの実行のたびにpipでインストール作業を行う必要はありません。<br />
-(ライブラリのimportはセッションごとに必要です)</p>
-</li>
-</ul>
-<p>その他、Linuxコマンドの使い方等については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_environment.ipynb">元のノートブック</a>を参照</p>
+<div class="section" id="id11">
+<h2>第10回 (第8章)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -582,17 +522,17 @@ $pip3 install Selenium
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Python_misc_python_environment.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Python_chapter0_HowToUse.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pythonの環境構築</p>
+            <p class="prev-next-title">Google Colaboratoryの使い方</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Python_misc_Pandas.html" title="next page">
+    <a class='right-next' id="next-link" href="Python_chapter1_Introduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pandasの使い方 (基礎)</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Pythonの基本 その１:</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
