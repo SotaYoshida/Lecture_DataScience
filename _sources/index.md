@@ -2,7 +2,6 @@
 
 本コンテンツは宇都宮大学の基盤科目「実践データサイエンス」の授業資料です。
 
-
 ## 資料の使い方
 
 本講義では資料(≒ファイル形式)や利用する外部サービス等が幾つかある。
@@ -56,4 +55,4 @@ Google Colab.上でノートブックを開くには、各章の冒頭に用意�
 本講義資料に関する不具合(リンク切れなど)の報告や問い合わせについては下記のフォームよりお願いします。
 授業受講者からの不具合報告関しては授業やCL等で返答します。授業外の問い合わせについては、お答え出来ない場合もありますので予めご了承ください。
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe9kSorMjkJPhbHqDWUwBNykaZ1yVDZ1eGl-5goFnNS-vQsQA/viewform?embedded=true" width="800" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe9kSorMjkJPhbHqDWUwBNykaZ1yVDZ1eGl-5goFnNS-vQsQA/viewform?embedded=true" width="850" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
