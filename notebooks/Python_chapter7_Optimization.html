@@ -256,6 +256,11 @@
    主成分分析
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
+   ニュートン法
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -546,7 +551,7 @@ c.f. ベイズ最適化(授業でも扱います)</p>
 <span class="math notranslate nohighlight">\(x\)</span>についての微分はもちろん<span class="math notranslate nohighlight">\(\frac{df(x)}{dx}=10x -4\)</span>になります。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span>  <span class="o">+</span> <span class="mf">3.0</span>
 <span class="k">def</span> <span class="nf">dfdx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span><span class="mf">4.0</span>
@@ -558,7 +563,7 @@ c.f. ベイズ最適化(授業でも扱います)</p>
 勾配降下法でパラメータを100回更新してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">etas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">5.e-2</span><span class="p">,</span> <span class="mf">1.e-2</span><span class="p">,</span> <span class="mf">1.e-3</span><span class="p">]</span>
 <span class="n">x_and_f</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">etas</span><span class="p">))]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">etas</span><span class="p">)):</span> 
@@ -574,7 +579,7 @@ c.f. ベイズ最適化(授業でも扱います)</p>
 <p>アニメーションで見てみると… (少し実行に時間がかかります)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s1">&#39;jshtml&#39;</span><span class="p">)</span>
@@ -36210,8 +36215,7 @@ gg==\
 ([有限の値をもつ場合]と限定したのは、微分が発散してしまうとパラメータの更新には実用上意味をなさないため)</p>
 <p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)が手で計算できるなら数値計算する必要がないですし、<br />
 根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ありません。</p>
-<p>最も単純な求根アルゴリズムであるニュートン法についての説明については<br />
-<a class="reference external" href="https://github.com/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_NewtonsMethod.ipynb">こちらのノートブック</a>に記載があります。</p>
+<p>最も単純な求根アルゴリズムであるニュートン法についての説明についてはおまけのニュートン法の章に記載があります。</p>
 <p>大量の関数を考えて微分した表式が必要な場合は、<br />
 いちいち関数の微分形を導出してコードにするのは面倒なので、<br />
 SympyなどのモジュールやMathematicaなどのツールを使うのも一つの手です.</p>
@@ -36235,7 +36239,7 @@ SympyなどのモジュールやMathematicaなどのツールを使うのも一�
 <span class="math notranslate nohighlight">\(x=5\)</span>から<span class="math notranslate nohighlight">\(\epsilon\)</span>だけずらした点での値を使って数値微分してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mf">3.0</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span><span class="mf">1.0</span>
 <span class="k">def</span> <span class="nf">fp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">eps</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">eps</span>
@@ -36269,7 +36273,7 @@ eps	 1.0e-15 	f&#39;(5)	  227.3736754432320 	 diff. 1.7e+00
 <p>このことは、テイラー展開から示すこともできます<a class="reference external" href="https://ja.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86">→参考</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fp2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">eps</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fp2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">eps</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">eps</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;分割する区間の中央をxに揃える方式&quot;</span><span class="p">)</span>
@@ -36348,7 +36352,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <p>a=2.0,b=4.0,c=5.0とでもして、図をかいてみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">yr</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">xr</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">xr</span> <span class="o">+</span> <span class="mf">5.0</span>
@@ -36366,7 +36370,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <p>微分の値もplotしてみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">yr</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">xr</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">xr</span> <span class="o">+</span> <span class="mf">5.0</span>
 <span class="n">yp</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">xr</span> <span class="o">+</span> <span class="mf">4.0</span> 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
