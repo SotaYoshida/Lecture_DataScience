@@ -43,3 +43,4 @@ parts:
     - file: notebooks/Python_chapter_WebScraping.ipynb
     - file: notebooks/Python_misc_ODE.ipynb
     - file: notebooks/Python_misc_PCA.ipynb
+    - file: notebooks/Python_misc_NewtonsMethod.ipynb
