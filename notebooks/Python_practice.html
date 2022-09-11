@@ -256,7 +256,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_misc_NewtonsMethod.html">
-   ニュートン法
+   ニュートン法による
+   <span class="math notranslate nohighlight">
+    \(n\)
+   </span>
+   次元多項式の求根
   </a>
  </li>
 </ul>
@@ -406,37 +410,27 @@
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     第8回 (第6章)
+     第8回(第6章)-第10回
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     第9回 (第7章)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     第10回 (第8章)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
      最終課題
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       テンプレ課題1: オープンデータの収集と可視化
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       テンプレ課題2: 機械学習を用いた画像認識/画像生成
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id13">
-       固定課題1: 政府統計のデータ収集と可視化
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id14">
-       固定課題2: 機械学習を用いた画像認識
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id15">
-       固定課題3: 簡単なゲーム開発
+       テンプレ課題3: 簡単なゲーム開発
       </a>
      </li>
     </ul>
@@ -511,36 +505,87 @@
 </div>
 <div class="section" id="id6">
 <h2>第5回 (第3章)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。</p></li>
+<li><p>1.で作った自作関数を1つの変数で受け取り(例<code class="docutils literal notranslate"><span class="pre">ret_value=myfunction(mylist)</span></code>)そのtmpの型を調べよ。</p></li>
+</ol>
 </div>
 <div class="section" id="id7">
 <h2>第6回 (第4章)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol>
+<li><p>授業で扱った<code class="docutils literal notranslate"><span class="pre">math</span></code>,<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の何れかを使って、任意の半径<code class="docutils literal notranslate"><span class="pre">r</span></code>について円の面積と球の体積を計算する自作関数を作成せよ。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>を用いて、好きな図を作成させノートブック上に表示させよ。その際、<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>(とくに<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>)の使い方を調べて</p>
+<ul class="simple">
+<li><p>色をカラーコードで指定する</p></li>
+<li><p>グラフを構成するオブジェクトの透過度を設定する</p></li>
+</ul>
+<p>など、授業で指定していないオプションを試してみよう。</p>
+</li>
+</ol>
 </div>
 <div class="section" id="id8">
 <h2>第7回 (第5章)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>0からn-1(nは適当な整数)までのn個の整数から、重複なくランダムにn個選ぶ(つまり0からn-1の無作為な並べかえをする)コードを作成せよ。(<code class="docutils literal notranslate"><span class="pre">numpy.random.choice</span></code>を使うとよい)</p></li>
+<li><p>1.を用いて、任意の文字列のリスト(例: 名前のリスト <code class="docutils literal notranslate"><span class="pre">[&quot;Aさん&quot;,&quot;Bさん&quot;,...]</span></code>)をランダムに並び替えて出力するコードを作成せよ。</p></li>
+</ol>
 </div>
 <div class="section" id="id9">
-<h2>第8回 (第6章)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>第8回(第6章)-第10回<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>中間レポートのため、練習問題はありません。質問はCLなどから送ってください。</p>
+<p>くどいですが、レポートの着手はくれぐれもお早めに…。</p>
 </div>
 <div class="section" id="id10">
-<h2>第9回 (第7章)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-</div>
+<h2>最終課題<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>授業の第12-15回で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わないが<br />
+一方で「教員やTAに相談したくない」「レポートの得点が比較的低かった方」という方には自由課題は正直オススメできない。</p>
+<p>以下では、テンプレ的な課題を3つほど用意してある。「これをやれ!!」という訳ではもちろんなく、一種の救済措置のようなものだと捉えてほしい。</p>
 <div class="section" id="id11">
-<h2>第10回 (第8章)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h3>テンプレ課題1: オープンデータの収集と可視化<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>政府統計などのオープンデータをなるべく多く取得して、可視化したり考察をしてみよう。</p>
+<ol class="simple">
+<li><p>まずは、ほしいデータの種類と収集方法を考えよう。政府統計ならe-Stat,他にも各地方自治体などがデータを提供していることも多い。</p></li>
+<li><p>データの種類と収集先の目処が経ったら、まずは利用規約を読んでスクレイピング等を禁止していないかを調べる。</p></li>
+<li><p>問題がないことを確認したら、データの収集にあたる。APIなどのデータ取得用の窓口があれば必ずそちらを利用する。</p></li>
+<li><p>次に得られたデータを時系列や他のデータとの相関、年代ごとの棒グラフなど様々な方法で可視化する。</p></li>
+<li><p>可視化されることで得られる理解や予想、その背景について考察を行う。</p></li>
+</ol>
 </div>
 <div class="section" id="id12">
-<h2>最終課題<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>授業の第12-15回で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わないが<br />
-一方で、第1回・第2回の小レポートの結果を勘案して「自由課題とすると課題の取り組みで困りそうだな…」という方に向けて
-予め決まった課題を3つほど用意してある。「これをやれ!!」という訳ではもちろんなく、一種の救済措置のようなものだと捉えてほしい。</p>
-<p>(以下編集中)</p>
+<h3>テンプレ課題2: 機械学習を用いた画像認識/画像生成<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>画像認識や画像生成を行う機械学習モデルについて概観し、授業を受講している他の学生に説明できるよう解説する。
+その際、情報の参照元は論文が望ましいが、難しければ日本語等の解説を参照して構わない。(注:もちろんレポート内では適切に引用・参照すること)</p></li>
+<li><p>次に、それらの機械学習モデルの中から、PythonがインターフェースとなっていてGoogleColab上で容易に実行ができそうなものを選ぶ。例えば…</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ultralytics/yolov5">YOLOv5</a>: CNNを用いた画像認識のパッケージ</p></li>
+<li><p><a class="reference external" href="https://github.com/CompVis/stable-diffusion">StableDiffusion</a>: 潜在拡散モデルを用いた画像生成モデル</p></li>
+</ul>
+</li>
+<li><p>これらを実際に動かして画像認識や画像生成を実行してみる。</p></li>
+<li><p>関連するサービスや企業での導入事例などを調べると同時に、機械学習モデルによる画像認識/画像生成を用いる上で起こり得るトラブルや問題点について記述する。</p></li>
+</ol>
+</div>
 <div class="section" id="id13">
-<h3>固定課題1: 政府統計のデータ収集と可視化<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id14">
-<h3>固定課題2: 機械学習を用いた画像認識<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id15">
-<h3>固定課題3: 簡単なゲーム開発<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3>テンプレ課題3: 簡単なゲーム開発<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>数あてゲームやブラックジャックやババ抜きといったトランプを用いたゲーム、オセロなどを作る。
+(Pythonにはゲーム作成のためのライブラリなどもあるが、これらは自由課題にあたる)</p>
+<ol>
+<li><p>そのために、まずはターンや盤面の状態を表現するための方法を考えよう。例えば…</p>
+<ul class="simple">
+<li><p>山札/場、人数分のリストを用意しておいて手札や盤面などを表現する</p></li>
+<li><p>ターンが進行するたびに絵をplotする仕組みにして、視覚的に表現する</p></li>
+</ul>
+<p>など、考え方は色々ある。参考までに、コードの中に適宜入力を受け取るプログラムを記述しておけば入力に応じて</p>
+</li>
+<li><p>ゲーム開始の状況を表現するための方法を考える(山札をランダムに配る, 駒の初期配置など)</p></li>
+<li><p>比較的簡単な状況(参加人数はできるだけ少なくルールも単純化する)でプログラムを作ってみる。例えばオセロだと4×4にする。</p></li>
+<li><p>特殊な場合(ババ抜きで配った瞬間誰かがあがってしまう, パスが必要)に対する対策を講じる。</p></li>
+<li><p>他人に遊んでもらえるようルールを説明するテキスト部分を用意する。(オセロの例なら、どうやって置く駒の座標を指定するか。キーボードなのかクリックなのかなど。)</p></li>
+</ol>
 </div>
 </div>
 </div>
