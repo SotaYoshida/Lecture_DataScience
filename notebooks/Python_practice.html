@@ -384,33 +384,43 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python">
+     第3回 (第1章:Pythonの基礎)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python2">
+     第4回 (第2章:Pythonの基礎2)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     第3回 (第1章)
+     第5回 (第3章:関数)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     第4回 (第2章)
+     第6回 (第4章:ライブラリ)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     第5回 (第3章)
+     第7回 (第5章:確率と擬似乱数)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     第6回 (第4章)
+     第8回(第6章:相関・回帰分析)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     第7回 (第5章)
+     第9回 (第7章:最適化問題)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     第8回(第6章)-第10回
+     第10回 (第8章:ファイル操作)
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -485,16 +495,16 @@
 <h1>練習問題<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
 <p>レイアウトは好きに改変してOK.
 コードセル・テキストセルともに自由に追加して構わない。</p>
-<div class="section" id="id4">
-<h2>第3回 (第1章)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h2>第3回 (第1章:Pythonの基礎)<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>身長と体重に相当する変数を適当に定義し、BMI(体重kg ÷ 身長mの二乗)を計算した上でprintせよ (自身の身長体重を用いる必要はない)</p></li>
 <li><p>上で計算したBMIに対応する変数とstr関数を用いて文字列を連結し、”AさんのBMIは22.0です”などと表示させよ。</p></li>
 </ol>
 </div>
-<div class="section" id="id5">
-<h2>第4回 (第2章)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python2">
+<h2>第4回 (第2章:Pythonの基礎2)<a class="headerlink" href="#python2" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>要素に身長(単位:cm)と体重(単位:kg)を持つ適当なリストを定義し、5人のデータ(リスト)を要素にもつ入れ子のリストを作成せよ。ただし3人目の身長と体重は必ず175,60とすること(それ以外は適当で構わない)。</p></li>
@@ -503,16 +513,16 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文のブロック内で<code class="docutils literal notranslate"><span class="pre">if</span></code>と<code class="docutils literal notranslate"><span class="pre">break</span></code>を用いて、「BMIが20.0以下なら、値を表示したあとにループを終了する」という処理を実現せよ。</p></li>
 </ol>
 </div>
-<div class="section" id="id6">
-<h2>第5回 (第3章)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>第5回 (第3章:関数)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。</p></li>
 <li><p>1.で作った自作関数を1つの変数で受け取り(例<code class="docutils literal notranslate"><span class="pre">ret_value=myfunction(mylist)</span></code>)そのtmpの型を調べよ。</p></li>
 </ol>
 </div>
-<div class="section" id="id7">
-<h2>第6回 (第4章)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>第6回 (第4章:ライブラリ)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol>
 <li><p>授業で扱った<code class="docutils literal notranslate"><span class="pre">math</span></code>,<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の何れかを使って、任意の半径<code class="docutils literal notranslate"><span class="pre">r</span></code>について円の面積と球の体積を計算する自作関数を作成せよ。</p></li>
@@ -525,18 +535,54 @@
 </li>
 </ol>
 </div>
-<div class="section" id="id8">
-<h2>第7回 (第5章)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>第7回 (第5章:確率と擬似乱数)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>0からn-1(nは適当な整数)までのn個の整数から、重複なくランダムにn個選ぶ(つまり0からn-1の無作為な並べかえをする)コードを作成せよ。(<code class="docutils literal notranslate"><span class="pre">numpy.random.choice</span></code>を使うとよい)</p></li>
 <li><p>1.を用いて、任意の文字列のリスト(例: 名前のリスト <code class="docutils literal notranslate"><span class="pre">[&quot;Aさん&quot;,&quot;Bさん&quot;,...]</span></code>)をランダムに並び替えて出力するコードを作成せよ。</p></li>
 </ol>
 </div>
+<div class="section" id="id7">
+<h2>第8回(第6章:相関・回帰分析)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>以下のデータ<code class="docutils literal notranslate"><span class="pre">x</span></code>(宇都宮市の月別平均気温)と<code class="docutils literal notranslate"><span class="pre">y</span></code>(アイスクリーム・シャーベットの消費量)のうち、8月のデータ(気温か消費量のいずれか)をランダムな値に変更し相関係数がどうなるか5通りほどで示せ。なお、値を変更する際は手でリストを書き換えるのではなく、リストの要素を書き換えるコードにすること。</p></li>
+<li><p>疑似相関について調べ例をあげよ。(できれば自身の興味に近いものや日本の事例などを調べてみること)</p></li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h2>第9回 (第7章:最適化問題)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>以下に示したデータ(<code class="docutils literal notranslate"><span class="pre">x</span></code>:年, <code class="docutils literal notranslate"><span class="pre">y</span></code>:男子100m走の世界記録(秒))について、6章で出てきたpolyfitを使って1-5次式までの多項式でフィッティングしてみよう。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">10.06</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">9.95</span><span class="p">,</span><span class="mf">9.93</span><span class="p">,</span> <span class="mf">9.92</span><span class="p">,</span><span class="mf">9.9</span><span class="p">,</span> <span class="mf">9.86</span><span class="p">,</span><span class="mf">9.85</span><span class="p">,</span> <span class="mf">9.84</span><span class="p">,</span> <span class="mf">9.79</span><span class="p">,</span> <span class="mf">9.78</span><span class="p">,</span> <span class="mf">9.77</span><span class="p">,</span> <span class="mf">9.74</span><span class="p">,</span><span class="mf">9.72</span><span class="p">,</span><span class="mf">9.69</span><span class="p">,</span><span class="mf">9.58</span> <span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1999</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="id9">
-<h2>第8回(第6章)-第10回<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>中間レポートのため、練習問題はありません。質問はCLなどから送ってください。<br />
-くどいですが、レポートの着手はくれぐれもお早めに…。</p>
+<h2>第10回 (第8章:ファイル操作)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>練習問題:</p>
+<ol class="simple">
+<li><p>Google Colaboratoryから授業で使ったノートを参照し、Google Driveをマウントしtest.txtファイルの中身を表示せよ。その際、Unix/Linuxaコマンドであるcatを用いればよい</p></li>
+<li><p>matplotlibを用いて適当なグラフを描きGoogleドライブに保存せよ。</p></li>
+</ol>
+<p>この問題はDriveのマウント・パスの指定などの一連の作業が理解できているかを確認するものなので、エラーが出た場合はそのログや自身が試した工程についてスクリーンショットなども活用しながらできるだけ詳細に報告すること。特に問題なく作業ができた場合は、2の図を送るなどはしなくて構わない。<br />
+また、プライベートなGoogleアカウントを使用している(※授業では非推奨)場合、相談の際にはプログラムの出力やスクリーンショットなどで他人に見られて困るものが映っていないか配慮すること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#1.のコードのヒント
+!cat path_to_yourfile/test.text
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="id10">
 <h2>最終課題<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
