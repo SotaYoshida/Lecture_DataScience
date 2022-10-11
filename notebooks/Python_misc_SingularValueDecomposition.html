@@ -423,7 +423,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+  <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_SingularValueDecomposition.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>特異値分解と情報削減<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>このノートブックでは、行列の特異値分解と、その応用例として画像データの”低ランク近似”について説明する。</p>
 <p>関連する線形代数の知識、とくに諸定理の証明については、適宜線形代数の教科書等を参照すること。</p>
@@ -433,7 +434,7 @@
 <div class="section" id="singular-value-decomposition-svd">
 <h2>特異値分解 (Singular Value Decomposition, SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h2>
 <p>特異値分解は、線形代数の中でも応用上非常に重要である。<br />
-本ノートで説明するような画像処理や情報削減の方法として機械学習などで用いられるだけでなく、量子多体系(物性や素粒子・原子核などの物理学,量子化学などが対象とする系)の計算手法である密度行列くりこみ群(DMRG)法など、自然科学分野の理論計算などの根幹にもなっている。</p>
+本ノートで説明するような画像処理や情報削減の方法として用いられるだけでなく、量子多体系(物性や素粒子・原子核などの物理学,量子化学などが対象とする系)の計算手法である密度行列くりこみ群(DMRG)法など、自然科学分野の理論計算などの根幹にもなっている汎用性の高い手法である。</p>
 <p><strong>特異値分解定理</strong>:<br />
 任意のランク<span class="math notranslate nohighlight">\(r=[0,\min(m,n)]\)</span>の<span class="math notranslate nohighlight">\(m \times n\)</span>行列<span class="math notranslate nohighlight">\(A\)</span>は</p>
 <ul class="simple">
@@ -610,7 +611,7 @@ sample_data  u_ta.jpg
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_misc_SingularValueDecomposition_7_0.png" src="../_images/Python_misc_SingularValueDecomposition_7_0.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_8_0.png" src="../_images/Python_misc_SingularValueDecomposition_8_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -645,23 +646,23 @@ sample_data  u_ta.jpg
 rank 9  Fnorm  3371.396392985502  # of m.e.  4743
 </pre></div>
 </div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_1.png" src="../_images/Python_misc_SingularValueDecomposition_8_1.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_9_1.png" src="../_images/Python_misc_SingularValueDecomposition_9_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 19  Fnorm  1837.5080112082685  # of m.e.  10013
 </pre></div>
 </div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_3.png" src="../_images/Python_misc_SingularValueDecomposition_8_3.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_9_3.png" src="../_images/Python_misc_SingularValueDecomposition_9_3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 39  Fnorm  883.9820242926976  # of m.e.  20553
 </pre></div>
 </div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_5.png" src="../_images/Python_misc_SingularValueDecomposition_8_5.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_9_5.png" src="../_images/Python_misc_SingularValueDecomposition_9_5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 58  Fnorm  513.8683243934796  # of m.e.  30566
 </pre></div>
 </div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_7.png" src="../_images/Python_misc_SingularValueDecomposition_8_7.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_9_7.png" src="../_images/Python_misc_SingularValueDecomposition_9_7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 196  Fnorm  8.531916171225453e-11  # of m.e.  103292
 </pre></div>
 </div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_9.png" src="../_images/Python_misc_SingularValueDecomposition_8_9.png" />
+<img alt="../_images/Python_misc_SingularValueDecomposition_9_9.png" src="../_images/Python_misc_SingularValueDecomposition_9_9.png" />
 </div>
 </div>
 <p>幾つかのrankについて元のグレースケール画像との差分(フロベニウスノルム)と、陽に必要な行列要素の数、近似後の画像を表示させてみた。</p>
