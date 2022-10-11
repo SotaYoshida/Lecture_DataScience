@@ -569,13 +569,14 @@ USVd@rank1 =&gt; [[2.27747026 8.71226915 5.9321303 ]
 </ul>
 <p>ことで、自然と行列とみなすことができる。</p>
 <p>適当な写真をもってきて、簡単のためグレースケールに変換した後、特異値分解をしてみよう。</p>
+<p>宇都宮大学オリジナルキャラクター「宇～太」の写真を用いる(※大学の許可を得て使用しています)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import requests
 from PIL import Image
 from IPython.display import display
 
-!wget &quot;https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/u_ta.jpeg&quot; -O u_ta.jpeg
+!wget &quot;https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/u_ta.png&quot; -O u_ta.png
 # ls コマンドでファイルを表示
 !ls 
 </pre></div>
@@ -594,9 +595,9 @@ from IPython.display import display
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#画像ファイルを読み込み</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;u_ta.jpeg&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;u_ta.png&#39;</span><span class="p">)</span>
 <span class="n">gray_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
-<span class="n">gray_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;u_ta.jpeg&#39;</span><span class="p">)</span>
+<span class="n">gray_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;u_ta_mono.png&#39;</span><span class="p">)</span>
 <span class="n">gray_img</span> <span class="o">=</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">gray_img</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">#画像をリサイズ</span>
 <span class="n">gray_img</span> 
 </pre></div>
