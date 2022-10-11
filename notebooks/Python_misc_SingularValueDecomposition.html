@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>特異値分解と情報削減 &#8212; 実践データサイエンス</title>
+    <title>&lt;no title&gt; &#8212; 実践データサイエンス</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -210,7 +208,7 @@
   おまけ
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Python_misc_Pandas.html">
    Pandasの使い方 (基礎)
@@ -254,11 +252,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="Python_misc_PCA.html">
    主成分分析
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   特異値分解と情報削減
   </a>
  </li>
  <li class="toctree-l1">
@@ -347,22 +340,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_SingularValueDecomposition.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -372,46 +349,7 @@
                 <i class="fas fa-list"></i> 目次
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#singular-value-decomposition-svd">
-   特異値分解 (Singular Value Decomposition, SVD)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     発展的な注
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       余談:
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-scipysvd">
-   Numpy&amp;Scipyを用いたSVD
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   画像データの特異値分解
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     練習問題
-    </a>
-   </li>
-  </ul>
- </li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -423,261 +361,7 @@
         
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_SingularValueDecomposition.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>特異値分解と情報削減<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>このノートブックでは、行列の特異値分解と、その応用例として画像データの”低ランク近似”について説明する。</p>
-<p>関連する線形代数の知識、とくに諸定理の証明については、適宜線形代数の教科書等を参照すること。</p>
-<p><em>純然たる</em>(≒形式的な？)線形代数の教科書には意外とSVDは載っていなかったりするので、工学であるとか数値計算など、応用を意識した教科書を参照するのが良い。</p>
-<p>Webで無料のものが良ければ、Mathematics for Machine Learningもいいかもしれない<br />
-※<a class="reference external" href="https://mml-book.com">著者らのページのリンク</a>からPDFがダウンロードできる。</p>
-<div class="section" id="singular-value-decomposition-svd">
-<h2>特異値分解 (Singular Value Decomposition, SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this headline">¶</a></h2>
-<p>特異値分解は、線形代数の中でも応用上非常に重要である。<br />
-本ノートで説明するような画像処理や情報削減の方法として用いられるだけでなく、量子多体系(物性や素粒子・原子核などの物理学,量子化学などが対象とする系)の計算手法である密度行列くりこみ群(DMRG)法など、自然科学分野の理論計算などの根幹にもなっている汎用性の高い手法である。</p>
-<p><strong>特異値分解定理</strong>:<br />
-任意のランク<span class="math notranslate nohighlight">\(r=[0,\min(m,n)]\)</span>の<span class="math notranslate nohighlight">\(m \times n\)</span>行列<span class="math notranslate nohighlight">\(A\)</span>は</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(m \times m\)</span>のユニタリ行列 <span class="math notranslate nohighlight">\(U\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(m \times n\)</span>の対角行列<span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(n \times n\)</span>のユニタリ行列 <span class="math notranslate nohighlight">\(V\)</span></p></li>
-</ul>
-<p>を用いて<span class="math notranslate nohighlight">\(
-A = U \Sigma V^\dagger
-\)</span>
-と分解できる。<br />
-上は<span class="math notranslate nohighlight">\(A\)</span>が複素行列の場合の表記で、実行列の場合は、<span class="math notranslate nohighlight">\(U,V\)</span>は直交行列であり、随伴操作(複素共役かつ転置)<span class="math notranslate nohighlight">\(\dagger\)</span>は転置<span class="math notranslate nohighlight">\(T\)</span>となり、対角行列<span class="math notranslate nohighlight">\(\Sigma\)</span>の各成分は非負となる。</p>
-<p>以下では、特に断らない限り実行列の場合のみを考える。<br />
-<span class="math notranslate nohighlight">\(\Sigma\)</span>の各対角成分を<strong>特異値</strong>と呼び、慣例的に<span class="math notranslate nohighlight">\(\sigma_1 \geq \sigma_2 \geq ... \geq \sigma_r \geq 0\)</span>となるよう並べられる。<br />
-※一般の<span class="math notranslate nohighlight">\(m \neq n\)</span>の場合は長方行列となるので、上での”対角行列”は正確には、対角ブロックとゼロ行列ブロックを含むような行列を指す。</p>
-<p><span class="math notranslate nohighlight">\(m&lt;n\)</span>の場合は例えば以下のような形:<br />
-<span class="math notranslate nohighlight">\(
-\begin{pmatrix}
-\sigma_1 &amp; 0 &amp;0 &amp; 0 &amp; ... &amp; 0\\
-0&amp; \ddots &amp; 0 &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \sigma_r &amp; 0&amp; ... &amp; 0 
-\end{pmatrix}
-\)</span></p>
-<p>ここで、特異値の数<span class="math notranslate nohighlight">\(r\)</span>は行列の階数(ランク)と一致する。<br />
-値の大きな<span class="math notranslate nohighlight">\(\sigma_1\)</span>から<span class="math notranslate nohighlight">\(\sigma_k\)</span>まで(<span class="math notranslate nohighlight">\(k\leq r\)</span>)を保持することで、行列の低ランク近似を得ることができる。</p>
-<p>もう少し”低ランク近似”と見なせるように、上の表式を<span class="math notranslate nohighlight">\(U,V\)</span>の列ベクトル<span class="math notranslate nohighlight">\(u_1,...,u_m\)</span>, <span class="math notranslate nohighlight">\(v_1,...,v_n\)</span>を用いて書き換えてみよう:</p>
-<p>行列の列ベクトルを用いた表記は
-<span class="math notranslate nohighlight">\(
-A = 
-\begin{pmatrix}
-u_1 &amp; u_2 &amp; \cdots &amp; u_n
-\end{pmatrix}
-\begin{pmatrix}
-\sigma_1 &amp; ... &amp; 0  \\
-0 &amp; \ddots &amp;  0  \\
-0 &amp; ... &amp;  \sigma_n 
-\end{pmatrix}
-\begin{pmatrix}
-v_1 &amp; v_2 &amp; \cdots &amp; v_n
-\end{pmatrix}^T=\sigma_1 u_1 v_1^T + \sigma_2 u_2 v_2^T + ... + \sigma_r u_r v_r^T  
-\)</span>
-となる(<span class="math notranslate nohighlight">\(r\leq n \)</span>)。</p>
-<p>この表式と各<span class="math notranslate nohighlight">\(\sigma_i\)</span>が非負であることから、<span class="math notranslate nohighlight">\(A\)</span>を表現するのに、<span class="math notranslate nohighlight">\(\sigma_1\)</span>から<span class="math notranslate nohighlight">\(\sigma_r\)</span>を保持すればもとの<span class="math notranslate nohighlight">\(A\)</span>の情報が保たれるし、<span class="math notranslate nohighlight">\(k &lt; r\)</span>までを保持すれば行列のある種の近似を与えていることが理解できる。</p>
-<p>また、仮にrank <span class="math notranslate nohighlight">\(k\)</span>まででもとの行列<span class="math notranslate nohighlight">\(A\)</span>の”良い”※近似になっているならば、
-保持すべき行列要素はもとの<span class="math notranslate nohighlight">\(mn\)</span>から、<span class="math notranslate nohighlight">\((m+n)r + r\)</span>となり、<span class="math notranslate nohighlight">\(r \ll m,n\)</span>のときメモリの使用量を削減することもできる。<br />
-機械学習で現れる行列演算は行列のサイズ”<span class="math notranslate nohighlight">\(N\)</span>に対して典型的には<span class="math notranslate nohighlight">\(\mathcal{O}(N^2-N^3)\)</span>を要するため、行列のサイズは小さいのに越したことはない。</p>
-<p>※”良い”というのは曖昧な表現なので、なにか定義が必要である</p>
-<div class="section" id="clubsuit">
-<h3><span class="math notranslate nohighlight">\(\clubsuit\)</span>発展的な注<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
-<p>なお、<span class="math notranslate nohighlight">\(\sigma_k\)</span>までを保持(<span class="math notranslate nohighlight">\(\sigma_{k+1}=\ldots=\sigma_{n}=0\)</span>)した行列を<span class="math notranslate nohighlight">\(\Sigma'\)</span>とし計算した<span class="math notranslate nohighlight">\(A' = U\Sigma'V^T\)</span>は、フロベニウスノルムの意味で行列<span class="math notranslate nohighlight">\(A\)</span>のrank <span class="math notranslate nohighlight">\(k\)</span>における最良の近似を与えることが知られている:<br />
-<span class="math notranslate nohighlight">\(||A-A'||_F = \sqrt{  \sum^m_i \sum^n_j (A_{ij} - A'_{ij} )^2 } \)</span></p>
-<p>上記の右辺から、近似が無い<span class="math notranslate nohighlight">\(A=A'\)</span>場合は0(最小)になることがわかる</p>
-<p>特異値分解自体を自身で実装して使うのはたいへん教育的であるが実用的にはあまりオススメしない。<br />
-というのも、数値誤差への配慮や数値計算の”コツ”を抑えなければ正しく実装するのは難しいだろう。<br />
-(私はSVDのコードを自作したことはないが、Cholesky分解の実装で数値誤差の取り扱いで大変な苦労をした覚えがある)</p>
-<p>Pythonを始め多くの数値計算に適したプログラミング言語では、代表的な線形代数のアルゴリズムはBLAS(Basic Linear Algebra Subprograms) やLAPACK(Linear Algebra PACKage)と呼ばれるライブラリを読む形で実装されているので、これらをありがたく使わせてもらうのが安全だ。</p>
-<div class="section" id="id2">
-<h4>余談:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>吉田が大学１年生で線形代数を初めて勉強したとき、教科書を前から読んだだけでは(代数としての色が強い本だったこともあり)何に使えるのかわからず、なかなか勉強するモチベーションがわかなかった。<br />
-その後、物理や計算機科学の分野において,線形代数の種々の概念が現れることを知り少しずつ理解が得られ、今では「理系の大学生に何を勉強すべきかと問われたら「線形代数をやれ」と言うね!」と主張するに至った。特に”空間を張る”とか”基底”といった概念は、2年生になり量子力学を勉強するようになり腑に落ちた覚えがある。</p>
-<p>行列分解も何のことはない、<span class="math notranslate nohighlight">\(100 \times 100\)</span>のピクセルを持つ画像ファイルを表現するのに、100個の線形独立なベクトル(長さ=100)が必ずしも必要な訳ではなく、少数(<span class="math notranslate nohighlight">\(&lt;100\)</span>)の基底で表現することが出来る、と言っているだけだ。
-なぜなら、画像の背景部分などをイメージするとわかるように、画像のある行とある行(またはある列とある列)が互いに線形独立でない部分があるためである。</p>
-</div>
-</div>
-</div>
-<div class="section" id="numpy-scipysvd">
-<h2>Numpy&amp;Scipyを用いたSVD<a class="headerlink" href="#numpy-scipysvd" title="Permalink to this headline">¶</a></h2>
-<p>かんたんな行列の例とPythonのライブラリを用いてSVDを実行してみよう。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">svd</span><span class="p">,</span> <span class="n">matrix_rank</span>
-
-<span class="c1"># 適当な3×3行列(rank(A)=3)を作成して表示</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">rank&quot;</span><span class="p">,</span> <span class="n">matrix_rank</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
-
-<span class="c1"># SVD(特異値分解)を実行</span>
-<span class="n">U</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span> <span class="n">Vd</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;それぞれの行列(U,S,Vd)の形状を確認 =&gt;&#39;</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Sigma</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Vd</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;特異値 =&gt; &#39;</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">)</span> <span class="c1">#Sigmaは対角成分のみをベクトルのように持っている事がわかる。</span>
-
-<span class="c1">#積がもとのAと一致するかcheck</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;USVd =&gt;&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma</span><span class="p">),</span><span class="n">Vd</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
-
-<span class="c1">#Sigmaをrank2で近似してみる ≒ 行列の(2,2)成分を0にする</span>
-<span class="n">Sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">USVd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma</span><span class="p">),</span><span class="n">Vd</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;USVd@rank2 =&gt;&quot;</span><span class="p">,</span>  <span class="n">USVd</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;||A-USVd||_F &quot;</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">USVd</span><span class="p">,</span><span class="s2">&quot;fro&quot;</span><span class="p">))</span>
-<span class="c1">#Sigmaをrank1で近似してみる ≒ 行列の(1,1)&amp;(2,2)成分を0にする</span>
-<span class="n">Sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">USVd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma</span><span class="p">),</span><span class="n">Vd</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;USVd@rank1 =&gt;&quot;</span><span class="p">,</span>  <span class="n">USVd</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;||A-USVd||_F &quot;</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">USVd</span><span class="p">,</span><span class="s2">&quot;fro&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
- [[1 9 6]
- [2 4 6]
- [3 8 3]] 
-rank 3
-それぞれの行列(U,S,Vd)の形状を確認 =&gt; (3, 3) (3,) (3, 3)
-特異値 =&gt;  [15.52961563  3.39284204  1.82199376]
-USVd =&gt; [[1. 9. 6.]
- [2. 4. 6.]
- [3. 8. 3.]]
-USVd@rank2 =&gt; [[2.27571625 8.70200595 5.94787683]
- [1.22318899 4.18145497 6.03173892]
- [2.04499401 8.22307947 3.0390196 ]]
-||A-USVd||_F  1.8219937599763407
-USVd@rank1 =&gt; [[2.27747026 8.71226915 5.9321303 ]
- [1.46888535 5.61909622 3.82600794]
- [1.84748528 7.06739811 4.81214776]]
-||A-USVd||_F  3.8511087217022104
-</pre></div>
-</div>
-</div>
-</div>
-<p>確かに特異値分解ができているが、これだけではどんな恩恵があるのか、<br />
-なぜ低ランク近似を考えるのかあまりピンとこないだろう。</p>
-</div>
-<div class="section" id="id3">
-<h2>画像データの特異値分解<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>では次に行列として、より具体的なもの、画像を考えてみよう。画像データは</p>
-<ul class="simple">
-<li><p>縦横に並ぶピクセルの数を行列の行と列の数に対応させる</p></li>
-<li><p>各ピクセルの画素値(8ビット,グレースケールで表現するなら、0が黒255が白の256階調)を各”番地”での行列要素の値に対応させる</p></li>
-</ul>
-<p>ことで、自然と行列とみなすことができる。</p>
-<p>適当な写真をもってきて、簡単のためグレースケールに変換した後、特異値分解をしてみよう。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import requests
-from PIL import Image
-from IPython.display import display
-
-#ゆるキャラグランプリhttps://www.yurugp.jp/jp/vote/detail.php?id=00003299の宇〜太のjpgをダウンロード
-!wget &quot;https://www.yurugp.jp/img/uploads/character/650/00003299.jpg&quot; -O u_ta.jpg
-# ls コマンドでファイルを表示
-!ls 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-11 02:30:15--  https://www.yurugp.jp/img/uploads/character/650/00003299.jpg
-Resolving www.yurugp.jp (www.yurugp.jp)... 118.27.62.38
-Connecting to www.yurugp.jp (www.yurugp.jp)|118.27.62.38|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 146087 (143K) [image/jpeg]
-Saving to: ‘u_ta.jpg’
-
-u_ta.jpg            100%[===================&gt;] 142.66K   322KB/s    in 0.4s    
-
-2022-10-11 02:30:16 (322 KB/s) - ‘u_ta.jpg’ saved [146087/146087]
-
-sample_data  u_ta.jpg
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#画像ファイルを読み込み</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;u_ta.jpg&#39;</span><span class="p">)</span>
-<span class="n">gray_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
-<span class="n">gray_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;u_ta_mono.jpg&#39;</span><span class="p">)</span>
-<span class="n">gray_img</span> <span class="o">=</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">gray_img</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">#画像をリサイズ</span>
-<span class="n">gray_img</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_misc_SingularValueDecomposition_8_0.png" src="../_images/Python_misc_SingularValueDecomposition_8_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SVDを実行</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">gray_img</span><span class="p">)</span>
-<span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">fullrank</span> <span class="o">=</span> <span class="n">matrix_rank</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;full rank =&gt; &quot;</span><span class="p">,</span> <span class="n">fullrank</span><span class="p">)</span>
-
-<span class="c1"># 陽に必要な行列要素の数を計算する関数</span>
-<span class="k">def</span> <span class="nf">num_of_me</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">rank</span><span class="p">):</span>
-    <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">shape</span>
-    <span class="k">return</span> <span class="n">m</span> <span class="o">*</span> <span class="n">rank</span> <span class="o">+</span> <span class="n">rank</span> <span class="o">+</span> <span class="n">rank</span><span class="o">*</span><span class="n">n</span>
-
-<span class="c1">#低ランク近似を得る</span>
-<span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
-    <span class="n">rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">factor</span><span class="o">*</span><span class="n">fullrank</span><span class="p">)</span>
-    <span class="n">ur</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">]</span>
-    <span class="n">sr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">diagsvd</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="n">rank</span><span class="p">],</span> <span class="n">rank</span><span class="p">,</span><span class="n">rank</span><span class="p">))</span>
-    <span class="n">vr</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ur</span><span class="o">*</span><span class="n">sr</span><span class="o">*</span><span class="n">vr</span><span class="p">)</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-    <span class="n">USVd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span><span class="n">vr</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rank&quot;</span><span class="p">,</span><span class="n">rank</span><span class="p">,</span> <span class="s2">&quot; Fnorm &quot;</span><span class="p">,</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">USVd</span><span class="p">,</span><span class="s2">&quot;fro&quot;</span><span class="p">),</span> <span class="s2">&quot; # of m.e. &quot;</span><span class="p">,</span> <span class="n">num_of_me</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>full rank =&gt;  196
-rank 9  Fnorm  3371.396392985502  # of m.e.  4743
-</pre></div>
-</div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_9_1.png" src="../_images/Python_misc_SingularValueDecomposition_9_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 19  Fnorm  1837.5080112082685  # of m.e.  10013
-</pre></div>
-</div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_9_3.png" src="../_images/Python_misc_SingularValueDecomposition_9_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 39  Fnorm  883.9820242926976  # of m.e.  20553
-</pre></div>
-</div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_9_5.png" src="../_images/Python_misc_SingularValueDecomposition_9_5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 58  Fnorm  513.8683243934796  # of m.e.  30566
-</pre></div>
-</div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_9_7.png" src="../_images/Python_misc_SingularValueDecomposition_9_7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rank 196  Fnorm  8.531916171225453e-11  # of m.e.  103292
-</pre></div>
-</div>
-<img alt="../_images/Python_misc_SingularValueDecomposition_9_9.png" src="../_images/Python_misc_SingularValueDecomposition_9_9.png" />
-</div>
-</div>
-<p>幾つかのrankについて元のグレースケール画像との差分(フロベニウスノルム)と、陽に必要な行列要素の数、近似後の画像を表示させてみた。</p>
-<p>元の行列(rank=196, 行列要素の数103292)に対して
-rank=39, 58などでの近似を用いることで、大体2-3万の行列要素で画像を表現できる事がわかる。</p>
-<p>今の場合は一枚の写真のみでサイズもたかがしれているものの、例えば画像認識タスクを行う機械学習モデルの訓練の場合には、一般に大量の画像データ(とラベル等)が必要になるため、近似で削減できる情報が数分の１スケールだとしても馬鹿にはできない。</p>
-<p>実際にはSVDを計算するコストも勘定に入れなければフェアな評価は難しく、SVDを陽に用いたアーキテクチャがやりたいタスクに対して最適である保証はないが、実際に画像認識モデルを作り学習を行う際には一考の余地はあると言えるだろう。</p>
-<div class="section" id="id4">
-<h3>練習問題<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>上では、<code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code>にある<code class="docutils literal notranslate"><span class="pre">svd</span></code>でSVDを実装し、<code class="docutils literal notranslate"><span class="pre">scipy</span></code>の<code class="docutils literal notranslate"><span class="pre">linalg.diagsvd</span></code>関数を用いて低ランク近似を計算した。
-かんたんな行列の例を参考にSVDの結果得られる<span class="math notranslate nohighlight">\(\Sigma\)</span>の行列要素を書き換えて、もとの行列の低ランク近似を計算し、ライブラリの出力と一致するか確かめてみよう。※SVDや行列積などはnumpyを用いて良い。</p>
-</div>
-</div>
-</div>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
