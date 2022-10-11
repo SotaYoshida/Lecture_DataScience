@@ -569,25 +569,34 @@ USVd@rank1 =&gt; [[2.27747026 8.71226915 5.9321303 ]
 </ul>
 <p>ことで、自然と行列とみなすことができる。</p>
 <p>適当な写真をもってきて、簡単のためグレースケールに変換した後、特異値分解をしてみよう。</p>
-<p>宇都宮大学オリジナルキャラクター「宇～太」の写真を用いる(※大学の許可を得て使用しています)</p>
+<p>宇都宮大学オリジナルキャラクター「宇～太」の写真を用いる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import requests
 from PIL import Image
 from IPython.display import display
 
-!wget &quot;https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/u_ta.png&quot; -O u_ta.png
+!wget &quot;https://raw.githubusercontent.com/SotaYoshida/Lecture_DataScience/main/notebooks/pic_for_notebook/u_ta.jpeg&quot; -O u_ta.jpeg
 # ls コマンドでファイルを表示
 !ls 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>カーネルを起動できませんでした。 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-11 06:41:42--  https://raw.githubusercontent.com/SotaYoshida/Lecture_DataScience/main/notebooks/pic_for_notebook/u_ta.jpeg
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 146087 (143K) [image/jpeg]
+Saving to: ‘u_ta.jpeg’
 
-カーネル Python 3.9.13 64-bit は使用できません。詳細については、Jupyter 出力タブを確認してください。. 
 
-詳細については、Jupyter [ログ] (command:jupyter.viewOutput) を参照してください。
+u_ta.jpeg             0%[                    ]       0  --.-KB/s               
+u_ta.jpeg           100%[===================&gt;] 142.66K  --.-KB/s    in 0.008s  
+
+2022-10-11 06:41:43 (17.1 MB/s) - ‘u_ta.jpeg’ saved [146087/146087]
+
+sample_data  u_ta.jpeg
 </pre></div>
 </div>
 </div>
@@ -595,9 +604,9 @@ from IPython.display import display
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#画像ファイルを読み込み</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;u_ta.png&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;u_ta.jpeg&#39;</span><span class="p">)</span>
 <span class="n">gray_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
-<span class="n">gray_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;u_ta_mono.png&#39;</span><span class="p">)</span>
+<span class="n">gray_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;u_ta_mono.jpeg&#39;</span><span class="p">)</span>
 <span class="n">gray_img</span> <span class="o">=</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="n">gray_img</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">gray_img</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">#画像をリサイズ</span>
 <span class="n">gray_img</span> 
 </pre></div>
