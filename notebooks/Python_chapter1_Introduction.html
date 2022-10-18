@@ -380,35 +380,40 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   1.3. Pythonでの文字列操作
+  <a class="reference internal nav-link" href="#id3">
+   1.3. 変数名に関する約束
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   1.4. プログラムの実行順
+  <a class="reference internal nav-link" href="#python">
+   1.4. Pythonでの文字列操作
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   1.5. 変数の型
+   1.5. プログラムの実行順
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.6. 変数の型
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     1.5.1. プログラムでの実数の取り扱い
+    <a class="reference internal nav-link" href="#id6">
+     1.6.1. プログラムでの実数の取り扱い
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   1.6. 予約語
+  <a class="reference internal nav-link" href="#id7">
+   1.7. 予約語
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bool">
-   1.7. ブール(bool)
+   1.8. ブール(bool)
   </a>
  </li>
 </ul>
@@ -426,7 +431,8 @@
 <div class="tex2jax_ignore mathjax_ignore section" id="python-1">
 <h1><span class="section-number">1. </span>Pythonの基本 その１:<a class="headerlink" href="#python-1" title="Permalink to this headline">¶</a></h1>
 <p>授業の冒頭で説明するように「プログラミングを学ぶこと」「プログラミングでDSを学ぶこと」は、複雑なデータの取り扱いを簡単にしてくれたり系統的な作業を可能にしミス(精度)をコントロールすることが出来たりと利点が多い。しかし、その恩恵を受けるためには基本的な事項をまず学修しなくてはならない。</p>
-<p>この授業で重視するのは<strong>Pythonの文法や作法、テクニックではない</strong>。というのも、自分が実現したい操作・作業をきちんと<strong>言語化</strong>することさえできれば、授業で扱う程度の内容であればググればだいたいのことは解決できる(さらにいうとそれを英語で検索できればウェブ上で収集できる情報は何倍にも膨れ上がる)し、インターフェース(見た目)が違ったとしても別のプログラミング言語やデータ解析ツールにも応用が効く。</p>
+<p>この授業で重視するのは<strong>Pythonの文法や作法、テクニックではない</strong>。というのも、自分が実現したい操作・作業をきちんと<strong>言語化</strong>することさえできれば、授業で扱う程度の内容であればググればだいたいのことは解決できる※し、インターフェース(見た目)が違ったとしても別のプログラミング言語やデータ解析ツールにも応用が効く。<br />
+※さらにいうとそれを英語で検索できればウェブ上で収集できる情報は何倍にも膨れ上がる.</p>
 <p>したがって、以降では「なんのためにXXXなんてものを導入(定義)するのか？」を意識しながら学習していくことにしよう。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">1.1. </span>変数の定義と簡単な演算<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -442,7 +448,7 @@
 </div>
 <p>これで変数<code class="docutils literal notranslate"><span class="pre">a</span></code>と変数<code class="docutils literal notranslate"><span class="pre">b</span></code>に値が代入され”定義”された。<br />
 プログラムでは通常、等号記号(<code class="docutils literal notranslate"><span class="pre">=</span></code>)は代入に使用される。値の代入は、等号の左に変数(値を入れたいものの名前)、等号の右に値を書くことで行う。</p>
-<p>注: よく書籍などでは変数を箱と見立てて箱の中に数値や文字列を入れる説明もよく見られるが、Pythonの変数は値を格納する箱というよりは値が保管される住所を示すものというのが正確。関連した話題としては、次の章の<strong>リスト操作の注意点</strong>を参照.</p>
+<p>注: よく書籍などでは変数を箱と見立てて箱の中に数値や文字列を入れる説明もよく見られるが、変数は値が保管されるメモリ上の住所を示すものというのが正確。関連した話題としては、次の章の<strong>リスト操作の注意点</strong>を参照.</p>
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">1.2. </span>簡単な演算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -515,7 +521,8 @@
 </div>
 </div>
 </div>
-<p>変数の値を確認することは、プログラムが正しく動いているかを確認する最も単純かつ強力な方法である。慣れないうちは「値はなんだっけな？」「何かおかしい、意図した動きと違うな」と思ったら<code class="docutils literal notranslate"><span class="pre">print</span></code>してみよう。</p>
+<p>変数の値を確認することは、プログラムが正しく動いているかを確認する最も単純かつ強力な方法である。<br />
+慣れないうちは「値はなんだっけな？」「何かおかしい、意図した動きと違うな」と思ったら<code class="docutils literal notranslate"><span class="pre">print</span></code>してみよう。</p>
 <p>またコード部分に<code class="docutils literal notranslate"><span class="pre">#</span></code>(半角シャープ記号)をつけるとその行の<code class="docutils literal notranslate"><span class="pre">#</span></code>以降に書かれたことは無視されるのでコメント(注釈)を書いたりすることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -581,9 +588,10 @@
 </div>
 </div>
 </div>
-<p><strong>約束</strong></p>
-<p>変数名に全角文字(ひらがな・カタカナ・漢字)はできるだけ使わない!!<br />
-全角文字を使うのは文字列だけ!!</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">1.3. </span>変数名に関する約束<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>この授業では「変数名に全角文字(ひらがな・カタカナ・漢字)はできるだけ使わず、文字列にのみ使う」と約束をしよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#非推奨</span>
@@ -594,6 +602,7 @@
 </div>
 </div>
 <p>上記のように、変数名にひらがな等を使用することは可能です。Google Colaboratoryでは何も特別なことをしなくてもひらがなが使えますし最近の多くのプログラミング言語は全角文字をサポートしています。ただファイルの互換性などを考慮すると、一般にはひらがなや漢字など全角文字を変数に指定することは避けたほうが無難です。</p>
+<p>また、変数名などにひらがなを使うことに由来して起こりがちなバグとしては「括弧()を間違って全角にしてしまってそれに気が付かない」といったことがある。</p>
 <p>以降ではこの慣例にならって、変数名に全角文字は使いません。変数名は基本的に半角英数字, アンダースコア”_”, のみで定義しましょう。<code class="docutils literal notranslate"><span class="pre">+-%/=</span></code>などの記号も使うことができません。たとえば<code class="docutils literal notranslate"><span class="pre">-</span></code>は既に引き算という演算を表すのに使用されているので、<code class="docutils literal notranslate"><span class="pre">a-b</span></code> という名前の変数を定義しようとしても、コンピュータにとっては変数ではなく[a マイナス b]という演算だと認識されてしまいます。また変数の頭に数字を使うこともできません。 例: <code class="docutils literal notranslate"><span class="pre">2a</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,10 +627,10 @@
 </div>
 </div>
 </div>
-<p>その他、よくあるエラーについては<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Error.ipynb">こちらのノートブック</a>を参照</p>
+<p>その他、よくあるエラーについては<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_Error.html">こちら</a>を参照</p>
 </div>
 <div class="section" id="python">
-<h2><span class="section-number">1.3. </span>Pythonでの文字列操作<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Pythonでの文字列操作<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Pythonでは、数値はもちろん文字列も”値”として扱うことができます。<br />
 簡単に文字列の操作ができることも、Pythonが愛される理由の一つでしょう。</p>
 <div class="cell docutils container">
@@ -659,10 +668,10 @@
 以降の”ファイル・文字列操作”の章で扱います。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h2><span class="section-number">1.4. </span>プログラムの実行順<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><span class="section-number">1.5. </span>プログラムの実行順<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>基本的にプログラミングでは、上から処理が実行されます。<br />
-(より正確には[ブロックごとに上から]が正しいですが、このあたりは追々見ていくことにしましょう)</p>
+(ループや関数とが導入されると少し事情が異なります。この点については、追々見ていくことにしましょう)</p>
 <p>以下の2行のコードは、実行するとエラーが出ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,9 +737,9 @@
 </div>
 <p>このようにコードを分けてしまうと、<code class="docutils literal notranslate"><span class="pre">f</span></code>では最後に<code class="docutils literal notranslate"><span class="pre">a</span></code>に代入された値を用いて計算が行われるので、<code class="docutils literal notranslate"><span class="pre">a=5</span></code>のセルを実行し忘れると、意図した値にならない。(あるいは未定義ならエラーとなる)</p>
 </div>
-<div class="section" id="id4">
-<h2><span class="section-number">1.5. </span>変数の型<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>プログラムの中で扱う変数には様々な”型”(<code class="docutils literal notranslate"><span class="pre">type</span></code>, タイプ)が存在します。<br />
+<div class="section" id="id5">
+<h2><span class="section-number">1.6. </span>変数の型<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>プログラムの中で扱う変数には様々な”型”(<code class="docutils literal notranslate"><span class="pre">type</span></code>, タイプ)が存する。
 代表的なものとしては、</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>:    実数</p></li>
@@ -738,8 +747,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>:    文字列 (stringの略)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>:  真偽値 (下で説明します)</p></li>
 </ul>
-<p>くらいでしょうか。この他にも様々な型が存在しています。</p>
-<p>たとえば以下のように変数の型は<code class="docutils literal notranslate"><span class="pre">type()</span></code>という関数を使うことで調べることができます。</p>
+<p>が挙げられ、この他にも様々な型が存在している。</p>
+<p>たとえば以下のように変数の型は<code class="docutils literal notranslate"><span class="pre">type()</span></code>という関数を使うことで調べることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">2</span>
@@ -754,13 +763,13 @@
 <p>いい加減な理解としては、”実数値”に近い概念だと思ってください。
 “いい加減な理解”というのは”厳密には違う”という意味で、それについては後で説明します。</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">a=2</span></code>は<code class="docutils literal notranslate"><span class="pre">int</span></code>(整数)型で、<code class="docutils literal notranslate"><span class="pre">b</span></code>(=2.0)は<code class="docutils literal notranslate"><span class="pre">float</span></code>、つまり浮動小数点(floating point)です。</p>
-<p>Pythonでは特定の型同士のみに許された特殊な演算等もあります。変数の型が調べたくなったときは<code class="docutils literal notranslate"><span class="pre">type</span></code>関数を使いましょう。</p>
-<div class="section" id="id5">
-<h3><span class="section-number">1.5.1. </span>プログラムでの実数の取り扱い<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">a=2</span></code>は<code class="docutils literal notranslate"><span class="pre">int</span></code>(整数)型で、<code class="docutils literal notranslate"><span class="pre">b</span></code>(=2.0)は<code class="docutils literal notranslate"><span class="pre">float</span></code>、つまり浮動小数点(floating point)。</p>
+<p>Pythonでは特定の型同士のみに許された特殊な演算等もある。変数の型が調べたくなったときは<code class="docutils literal notranslate"><span class="pre">type</span></code>関数を使ってみよう。</p>
+<div class="section" id="id6">
+<h3><span class="section-number">1.6.1. </span>プログラムでの実数の取り扱い<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>整数としての2(つまり<code class="docutils literal notranslate"><span class="pre">int</span></code>型の2)は理想的な整数2であるのに対して、<code class="docutils literal notranslate"><span class="pre">float</span></code>型の2.0というのは、<br />
-「コンピュータが扱える有限の精度のもとで十分2.0とみなせる値」という意味しか持ちません。</p>
-<p>変数<code class="docutils literal notranslate"><span class="pre">a</span></code>に以下の値を代入して<code class="docutils literal notranslate"><span class="pre">print</span></code>してみましょう。</p>
+「コンピュータが扱える有限の精度のもとで十分2.0とみなせる値」という意味しか持たない。</p>
+<p>変数<code class="docutils literal notranslate"><span class="pre">a</span></code>に以下の値を代入して<code class="docutils literal notranslate"><span class="pre">print</span></code>してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.00000000000000000000055511151231257827021181583404541015625</span>
@@ -769,9 +778,9 @@
 </div>
 </div>
 </div>
-<p>コンピュータで実数値を表現する際、小数点以下の桁数を無限桁考慮するのは、機械にとっても大変ですから、ある程度の精度で打ち切ることが必要になります。</p>
+<p>コンピュータで実数値を表現する際、小数点以下の桁数を無限桁考慮するのは、機械にとっても大変なので、ある程度の精度で打ち切ることが必要になる。</p>
 <p>Pythonで扱う実数値は、現在の世界標準である<a class="reference external" href="https://ja.wikipedia.org/wiki/IEEE_754">IEEE 754</a>という規格のもとで、十進数に換算して16桁程度の精度(倍精度実数の場合)の近似となっている、とザックリ理解しておけば当面は問題ないでしょう。</p>
-<p>たとえば、<code class="docutils literal notranslate"><span class="pre">0.3</span></code>と<code class="docutils literal notranslate"><span class="pre">0.1+0.1+0.1</span></code>は、コンピュータが無限の精度を持っていれば(つまり0.3や0.1のあとに無限に0が続く数を扱うことができれば)等しい数になるべきですが、有限の精度を採用している都合上</p>
+<p>たとえば、<code class="docutils literal notranslate"><span class="pre">0.3</span></code>と<code class="docutils literal notranslate"><span class="pre">0.1+0.1+0.1</span></code>は、コンピュータが無限の精度を持っていれば(つまり0.3や0.1のあとに無限に0が続く数を扱うことができれば)等しい数になるべきだが、有限の精度を採用している都合上</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
@@ -784,9 +793,9 @@
 </div>
 </div>
 </div>
-<p>というように差をとると極小の値だけずれている事が分かります。</p>
-<p>授業で扱う対象の場合は、この有限精度が実用上のトラブルを起こすことは無いはずです。
-一方で(研究等で)いわゆる数値計算を行う場合は、このようなごく小さな誤差が掛け算によって増幅されて無視できない影響を引き起こすことがしばしばあるので、工夫や適切な処理が必要になることがあります。</p>
+<p>というように差をとると極小の値だけずれている事が分かる。</p>
+<p>授業で扱う対象の場合は、この有限精度が実用上のトラブルを起こすことは無いはず。
+一方で(研究等で)いわゆる数値計算を行う場合は、このようなごく小さな誤差が掛け算によって増幅され無視できない影響を引き起こすことがしばしばあるので、工夫や適切な処理が必要になることもある。</p>
 <p><span class="math notranslate nohighlight">\(\clubsuit\)</span> さらに進んだ注</p>
 <p>コンピューターでは、0か1の二値を取るビット(bit)を最小単位として数値など各種の情報を表現して扱います。
 たとえば整数値は、ビットを用いた表現と1対1対応させることができます。ビットが２つ使えるとするならば、[00]が1, [01]が2,[10]が3,[11]が4といった具合です。</p>
@@ -794,8 +803,8 @@
 この近似の方法として通常用いられるのが、<strong>浮動小数点</strong>という考え方でありその標準を定めたものが前述のIEEE754となります。</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2><span class="section-number">1.6. </span>予約語<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2><span class="section-number">1.7. </span>予約語<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Pythonには、あらかじめ役割が与えられている言葉(<strong>予約語</strong>)があり変数名として使う事はできません。</p>
 <p>実際にコード用のセルにこれらの語句を入力すると下記のように黒ではなく別の色で表示されます。このような場合は<strong>変数に別の名前をつける</strong>ようにしましょう。</p>
 <div class="cell docutils container">
@@ -813,7 +822,7 @@
 <p>予約語の役割については登場したその都度説明します。</p>
 </div>
 <div class="section" id="bool">
-<h2><span class="section-number">1.7. </span>ブール(bool)<a class="headerlink" href="#bool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8. </span>ブール(bool)<a class="headerlink" href="#bool" title="Permalink to this headline">¶</a></h2>
 <p>真偽値(<code class="docutils literal notranslate"><span class="pre">bool</span></code>,ブール)は<code class="docutils literal notranslate"><span class="pre">True</span></code>(真)と<code class="docutils literal notranslate"><span class="pre">False</span></code>(偽)の二値を取る型です。たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
