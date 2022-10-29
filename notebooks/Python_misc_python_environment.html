@@ -403,6 +403,11 @@
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wslmatplotlibshow">
+       WSL環境でMatplotlibのshow()などを使う
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id3">
        2-2.の方法
       </a>
@@ -688,16 +693,17 @@ GUIを伴う処理を行いたい場合、WSLのバージョンを2にする必�
 にアクセスし<br />
 x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージをダウンロードする。<br />
 ダウンロードが終わったらパッケージを起動して、案内にしたがって実行する</p></li>
-<li><p>PowerShellに戻り、</p></li>
-</ol>
+<li><p>PowerShellに戻り、</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">version</span> <span class="n">Ubuntu</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>を実行しwslのバージョンを2に変更する(そこそこ時間がかかる)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;img src=&quot;https://drive.google.com/uc?export=view&amp;id=1c0IgD0x2-m8eG7ZRUiceyJC1IfOqc-7m&quot; width=30%&gt;
-</pre></div>
+<img src="https://drive.google.com/uc?export=view&id=1c0IgD0x2-m8eG7ZRUiceyJC1IfOqc-7m" width=30%>
+</li>
+</ol>
 </div>
-<p>###WSL環境でMatplotlibのshow()などを使う</p>
+<div class="section" id="wslmatplotlibshow">
+<h3>WSL環境でMatplotlibのshow()などを使う<a class="headerlink" href="#wslmatplotlibshow" title="Permalink to this headline">¶</a></h3>
 <p>WSL(今はUbuntu)では、そのままでplt.show()などの<br />
 ウィンドウを開くような操作が使えない。</p>
 <p>その場合はx11とtkinterを含むpython3をインストールしよう</p>
@@ -720,8 +726,7 @@ $ sudo apt install python3-tk
   <img src="https://drive.google.com/uc?export=view&id=1dw6VgF0mqkFOXuN3yZtxXC2Gya8qK4zb" width=20%>
 <p>道なりに進んでAdditional parameters for VcXsrvの欄に-acを入力し進む</p>
 </li>
-<li><p>“Save Configuration”を選択してショートカットを作成することで
-　次回以降同様の作業をしなくても良いようにできる</p></li>
+<li><p>“Save Configuration”を選択してショートカットを作成することで、次回以降同様の作業をしなくても良いようにできる</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$xlogo
 </pre></div>
@@ -800,8 +805,9 @@ Xcodeのサイズがでかいので安定したネットワーク下で実行す
 </div>
 <p>などとすると、python用のモジュールがインストールされ、<br />
 pythonからいつでもインポートして使うことができる。</p>
-<p>MacにDocker環境を入れておけば、<code class="docutils literal notranslate"><span class="pre">apt</span></code>で色々揃うので<br />
-(とくにPython以外の)レガシーコードの動作確認等には役に立つ。</p>
+<p>MacにDocker環境を入れておけば、<code class="docutils literal notranslate"><span class="pre">apt</span></code>で色々揃うので、レガシーコードの動作確認等にも役に立つ。</p>
+<p>M1以降のApple制のCPUを搭載している場合、Pythonのパッケージ管理やDockerの導入などはやや難易度が上がる。
+(※英語で調べれば必要な情報は出てくる)</p>
 </div>
 <div class="section" id="linux">
 <h2>Linuxの場合<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
