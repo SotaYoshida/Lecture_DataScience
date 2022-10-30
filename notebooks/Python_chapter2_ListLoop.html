@@ -812,7 +812,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <div class="section" id="id5">
 <h3><span class="section-number">2.1.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、ググれば自分でだいたい解決することができます。<br />
-ただしこの項目で述べることは(とくに初学者にとって)「明らかにバグがある(何かがオカシイ,意図しない振る舞いをする)のだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
+ただしこの項目で述べることは(初学者にとって)「直感に反するのだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
 <p>例を見せるために、以下の2種類のリストを用意します.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,7 +845,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <p>data2の最初の要素(Aさんのままであってほしいリスト)まで上書きされてしまっています。<br />
-これは直感に反しているという点で、初学者が陥りやすい落とし穴です。</p>
+これは直感に反しているという点で、初学者が陥りやすい落とし穴です。
+※C言語などを学習していれば、参照渡し(ポインタ渡し)などである程度馴染みがあるかもしれません。</p>
 <p>「値を格納する箱というよりは値が保管される住所を示すもの」と1章の[変数の定義と簡単な演算]のところで書きました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
