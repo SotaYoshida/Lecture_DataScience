@@ -498,11 +498,10 @@ Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開�
 <p>注:sin(π)は厳密に0になるべきですが1章で述べたように実数が有限の精度なので微小な量0からずれています</p>
 <div class="section" id="numpy">
 <h2><span class="section-number">4.1. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
-<p>データ分析などで非常によく使われるNumpyというパッケージがあります。</p>
-<p>簡単な作業ならリストでも代用できるので必須ではありませんが<br />
-コードを大幅に簡略化することができるので<br />
-今後ノートブックでもたびたびNumpyが用いられます。</p>
-<p>詳しくは<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照してください.</p>
+<p>データ分析などで非常によく使われるNumpyというパッケージがあります。<br />
+Numpyの大きな特徴に、数値を要素に持つ配列の計算・演算を高速に行うことが可能という点があります。</p>
+<p>簡単な作業ならリストでも代用できるので必須ではありませんが、コードを大幅に簡略化することもできるため、今後ノートブックでもたびたびNumpyが用いられます。
+詳しくは<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照してください.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#先程のmathもnumpyで置き換え可</span>
@@ -512,6 +511,19 @@ Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開�
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>以降、数値を要素に持つリストを使って演算やグラフを描画するときは、<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型というものに変更して使う事が多いです。<br />
+リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.23</span><span class="p">,</span> <span class="mf">9341.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.33</span><span class="p">]</span> 
+<span class="n">list_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -753,8 +765,8 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_33_0.png" src="../_images/Python_chapter4_Matplotlib_33_0.png" />
-<img alt="../_images/Python_chapter4_Matplotlib_33_1.png" src="../_images/Python_chapter4_Matplotlib_33_1.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_35_0.png" src="../_images/Python_chapter4_Matplotlib_35_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_35_1.png" src="../_images/Python_chapter4_Matplotlib_35_1.png" />
 </div>
 </div>
 <p>下のグラフはy軸の対数スケールをとってみました。</p>
@@ -794,7 +806,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_39_0.png" src="../_images/Python_chapter4_Matplotlib_39_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_41_0.png" src="../_images/Python_chapter4_Matplotlib_41_0.png" />
 </div>
 </div>
 <p>相関係数などの情報を含んだもう少しかっこいい図を作ってみましょう。</p>
@@ -836,7 +848,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_41_0.png" src="../_images/Python_chapter4_Matplotlib_41_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_43_0.png" src="../_images/Python_chapter4_Matplotlib_43_0.png" />
 </div>
 </div>
 <p><strong>注:</strong>   x,yのデータをnumpy.array()を使ってndarray型に変換しました.<br />
@@ -901,7 +913,7 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_49_0.png" src="../_images/Python_chapter4_Matplotlib_49_0.png" />
+<img alt="../_images/Python_chapter4_Matplotlib_51_0.png" src="../_images/Python_chapter4_Matplotlib_51_0.png" />
 </div>
 </div>
 </div>
