@@ -490,14 +490,14 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </ul>
 <p>以下のコードをそのまま使いたいという方は、<br />
 マイドライブ直下にAdDSというフォルダを作り<br />
-さらにその中に<code class="docutils literal notranslate"><span class="pre">chapter5_data</span></code>というフォルダを作成し、<br />
+さらにその中に<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダを作成し、<br />
 ファイルをいれてください。</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">8.2. </span>テキストファイルの操作<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>膨大な行のテキストファイルに対して、人間が手で操作をするというのは時として非現実的です。</p>
 <p>誤変換を置換するくらいなら、どのテキスト/メモ帳アプリやwordでもできますが、全行(数千とか数万)に対して、決まった操作が必要な場合、プログラムにしてしまったほうが遥かに便利です。</p>
-<p>以下ではGoogle Driveのマイドライブの<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>の下に作った<code class="docutils literal notranslate"><span class="pre">chapter5_data</span></code>というフォルダにファイルを保存したと仮定して話を進めますので、<strong>適宜皆さんの場合に置き換えて使用してください</strong></p>
+<p>以下ではGoogle Driveのマイドライブの<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>の下に作った<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダにファイルを保存したと仮定して話を進めますので、<strong>適宜皆さんの場合に置き換えて使用してください</strong></p>
 <p>まずはgoogle driveに保存した<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>という名前のファイルを読み込んでみましょう。<br />
 既に何回かやったようにgoogle driveをマウントします。</p>
 <div class="cell docutils container">
@@ -510,7 +510,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls /content/drive/MyDrive/AdDS/chapter5_data/*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls /content/drive/MyDrive/AdDS/chapter8_data/*
 </pre></div>
 </div>
 </div>
@@ -519,12 +519,12 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 *.拡張子 などとして使うのも便利です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls /content/drive/MyDrive/AdDS/chapter5_data/*txt 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls /content/drive/MyDrive/AdDS/chapter8_data/*txt 
 </pre></div>
 </div>
 </div>
 </div>
-<p>とするとマイドライブ/AdDS/chapter5_data/にある<code class="docutils literal notranslate"><span class="pre">.txt</span></code>形式のファイル一覧を表示させることができます。<br />
+<p>とするとマイドライブ/AdDS/chapter8_data/にある<code class="docutils literal notranslate"><span class="pre">.txt</span></code>形式のファイル一覧を表示させることができます。<br />
 <code class="docutils literal notranslate"><span class="pre">test.txt</span></code>が見つかったでしょうか？(DriveにアップロードしてColabから読み込みできるまでに少し時間がかかる場合があります)</p>
 <p><strong>ファイルパスの概念に不慣れな方は、このノートの後半を参照してください</strong></p>
 <p>では次に、このファイルに書かれているテキストを取得してみましょう。<br />
@@ -533,7 +533,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 <h3><span class="section-number">8.2.1. </span>テキストファイルを開いて内容を読み出す<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter5_data/test.txt&quot;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/test.txt&quot;</span> 
 <span class="n">inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="c1"># &quot;r&quot;はread(読み出し)を意味するオプション</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -726,7 +726,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 上の文字列で、敬称を”さん”から”様”に置換したテキストを作成して、それを別ファイルとして保存してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter5_data/test_replace.txt&quot;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/test_replace.txt&quot;</span> 
 <span class="n">oup</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>  <span class="c1">## oup は&quot;output&quot;の気持ち...</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;さん&quot;</span><span class="p">,</span><span class="s2">&quot;様&quot;</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">oup</span><span class="p">)</span> <span class="c1"># file=[openしたファイル]にすることで、printする先をファイルに指定できます。</span>
@@ -784,7 +784,7 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS2021/chapter5_data/python_handling_test.csv&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/python_handling_test.csv&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
 </pre></div>
 </div>
 </div>
@@ -900,7 +900,7 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 <p>※もともとはxlrdというライブラリを使って実装していましたが.xlsx形式をサポートしなくなるとのことで、pandasライブラリを用いた実装に変更しました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter5_data/kakei.xlsx&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/kakei.xlsx&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
 </pre></div>
 </div>
 </div>
@@ -963,7 +963,7 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 画像がいっぱい生成されると面倒なので画像を保存するフォルダを作成しておく
-!mkdir /content/drive/MyDrive/AdDS/chapter5_data/kakei_cor_pic 
+!mkdir /content/drive/MyDrive/AdDS/chapter8_data/kakei_cor_pic 
 </pre></div>
 </div>
 </div>
@@ -1098,8 +1098,8 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
     <span class="n">ti</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">T</span><span class="o">=</span><span class="kc">True</span><span class="p">;</span> <span class="n">F</span><span class="o">=</span><span class="kc">False</span>
 
-    <span class="n">inpf</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS2021/chapter5_data/kakei.xlsx&quot;</span>
-    <span class="n">oupdir</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS2021/chapter5_data/kakei_cor_pic/&quot;</span> <span class="c1">#適宜置き換える</span>
+    <span class="n">inpf</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS2021/chapter8_data/kakei.xlsx&quot;</span>
+    <span class="n">oupdir</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS2021/chapter8_data/kakei_cor_pic/&quot;</span> <span class="c1">#適宜置き換える</span>
     <span class="n">iT</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># iT=6: 日平均気温</span>
     <span class="n">printlog</span><span class="o">=</span> <span class="n">F</span> <span class="c1">#条件にhitした都市の品目と気候データを逐次printするかどうか. (Fを推奨)</span>
     <span class="n">pthre</span><span class="o">=</span> <span class="mf">0.90</span> <span class="c1">## corrplotを描く相関係数のthreshold </span>
