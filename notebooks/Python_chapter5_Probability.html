@@ -429,16 +429,16 @@
      おまけ: 多変数正規分布
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     5.7.2.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     ランダムウォーク(酔歩)
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.8.
+   <span class="math notranslate nohighlight">
+    \(\clubsuit\)
+   </span>
+   ランダムウォーク(酔歩)
+  </a>
  </li>
 </ul>
 
@@ -459,7 +459,7 @@
 <p>この章では、確率と擬似乱数について扱います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ライブラリをインポートしておきましょう</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#ライブラリをインポートしておきましょう</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -474,62 +474,68 @@
 <p>真に理想的なサイコロならば1から6の目が出る確率は等しく1/6ですが、このような”理想的な”サイコロは、現実世界でも、コンピュータの上でも実現することはできず、我々人間が乱数をシミュレーションして扱う際には、何らかの確定的な方法で乱数列(<strong>十分ランダムだとみなせる数の集合</strong>)を生成することになります。</p>
 <p>真の意味での乱数と区別する意味で、我々が普段ゲームなどで扱う乱数は擬似乱数と呼ばれるべきものです。以下ではめんどくさいので、単に乱数と呼ぶことにします。</p>
 <p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span> 細かな注</strong></p>
-<p>乱数を生成する方法はいくつもあるが代表的なものは[メルセンヌツイスタ]です。</p>
+<p>乱数を生成する方法はいくつもあるが代表的なものはメルセンヌツイスタと呼ばれる方法で、多くのプログラミング言語でも採用されている。</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>私がこれまで書いた論文でもどれも(広義の)モンテカルロ法を使用しています。<br />
-ちなみにモンテカルロはカジノで有名なモナコの地名Monte Carloに由来。</p>
+<p>ちなみにモンテカルロはカジノで有名なモナコの地名Monte Carloに由来。</p>
 </div>
 <p>また[モンテカルロ法]と検索すると(主に学術的な分野で)乱数がどのように活用されているか、雰囲気を味わうことができます。</p>
 </div>
 <div class="section" id="python">
 <h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<p>Pythonではrandomモジュールを使えば簡単に乱数を使用することができる。<br />
-また、numpyにも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、以下の<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性があるはず。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。</p>
+<p>Pythonでは<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールを使えば簡単に乱数を使用することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
 </div>
-<p>のように<code class="docutils literal notranslate"><span class="pre">random.randint(最小値,最大値)</span></code>とすると指定した閉区間の整数値をランダムに生成することができる。上のコードセルを実行するたびに答えが変わること(ランダム性)も確かめよう。</p>
-<p>今の場合、最小値に1、最大値に6を採用したことで、この乱数をサイコロの出目とみなすことができる。(<code class="docutils literal notranslate"><span class="pre">range</span></code>などと違い、最大値の6も含まれていることに注意! 紛らわしい…)</p>
-<p>100個のサイコロの出目を保持しておきたければ</p>
+<p>のように<code class="docutils literal notranslate"><span class="pre">random.randint(最小値,最大値)</span></code>とすると指定した閉区間の整数値をランダムに生成することができる。<br />
+上のコードセルを実行するたびに答えが変わること(ランダム性)も確かめよう。</p>
+<p>今の場合、最小値に1、最大値に6を採用したことで、この乱数をサイコロの出目とみなすことができる。<br />
+(<code class="docutils literal notranslate"><span class="pre">range</span></code>などと違い、最大値の6も含まれていることに注意! 紛らわしい…。)</p>
+<p>100個のサイコロの出目を保持しておきたければ、２章で学習したリスト内包表記を用いて</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6, 4, 3, 3, 3, 3, 4, 3, 5, 4, 6, 2, 2, 2, 3, 4, 5, 4, 4, 1, 3, 2, 6, 3, 3, 6, 3, 4, 3, 5, 5, 3, 1, 3, 6, 3, 3, 2, 3, 6, 1, 1, 5, 6, 3, 3, 4, 5, 5, 2, 6, 4, 2, 3, 2, 4, 3, 1, 1, 6, 2, 1, 6, 4, 1, 1, 5, 2, 4, 4, 1, 5, 6, 3, 4, 2, 6, 5, 4, 2, 4, 5, 1, 1, 1, 3, 2, 2, 5, 2, 1, 3, 3, 4, 4, 5, 4, 3, 6, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 5, 3, 4, 2, 2, 5, 5, 6, 1, 2, 6, 3, 2, 4, 3, 6, 6, 5, 5, 6, 4, 4, 2, 3, 3, 5, 4, 6, 6, 6, 6, 4, 3, 2, 1, 5, 6, 4, 3, 2, 5, 2, 6, 4, 3, 6, 1, 3, 5, 2, 6, 3, 2, 3, 3, 3, 1, 4, 1, 5, 2, 6, 4, 4, 4, 3, 2, 3, 6, 6, 3, 1, 2, 6, 1, 3, 1, 6, 2, 5, 2, 6, 5, 2, 1, 1, 4, 1, 2, 3, 1, 2, 5, 2, 3, 6, 2, 3]
 </pre></div>
 </div>
 </div>
 </div>
-<p>などとすればよい。30回,1000回,50万回サイコロを振った場合の出目をそれぞれヒストグラムにしてみると…</p>
+<p>などとすればよい。<span class="math notranslate nohighlight">\(10^p\)</span>回 (<span class="math notranslate nohighlight">\(p=1,2,...,6)\)</span>回サイコロを振った場合の出目をそれぞれヒストグラムにしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Na</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">Nb</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">Nc</span><span class="o">=</span><span class="mi">500000</span> <span class="c1">#サンプルの数を指定</span>
-<span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="n">Na</span><span class="p">,</span><span class="n">Nb</span><span class="p">,</span><span class="n">Nc</span><span class="p">]</span>
-<span class="n">results</span> <span class="o">=</span><span class="p">[</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ns</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ns</span><span class="p">))]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># サンプルの数を指定し、それぞれのサイコロの出目を用意して入れ子のリストにする</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span> <span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span><span class="p">[</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Ns</span> <span class="p">]</span>
 
-<span class="n">tbin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#binの始点,終点,ステップを定義</span>
+<span class="c1"># ヒストグラムのビンの始点,終点,ステップを定義</span>
+<span class="n">tbin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">axs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)]</span>
+<span class="c1"># 作図 (axを用いて、一つのグラフに6つの領域を用意して作画する)</span>
+<span class="c1"># add_subplit(n,m,i)で、縦n個, 横m個の領域を用意した場合の　i番目(列方向,行方向の順番にカウントする. a行b列の小領域は i = (a-1)*m + b)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="p">)</span> <span class="p">]</span> <span class="c1">#データの個数に応じて小領域の数を自動で変えたい場合は&quot;(2,3&quot;部分の工夫が必要。</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axs</span><span class="p">)):</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Roll&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;n=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Ns</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">tbin</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$n=10^&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> <span class="c1">#$$で囲むとlatex表記を用いることができる</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">tbin</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1">#ヒストグラムを描画</span>
+<span class="c1">#グラフ間の縦の間隔hspaceをdefault値(0.3)から少し大きく調整</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.45</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -539,26 +545,27 @@
 <img alt="../_images/Python_chapter5_Probability_11_0.png" src="../_images/Python_chapter5_Probability_11_0.png" />
 </div>
 </div>
-<p>1-6の出る目の頻度が確率から期待される振る舞いに漸近していく事がわかる.<br />
-c.f. 大数の法則</p>
-<p>Matplotlibに関してもう少し細かい事を言うと、今のようなサンプル数が大きく異るヒストグラムを比較する場合、縦軸のスケールを揃えて比較するほうが良い。</p>
-<p><strong>相対的な頻度</strong>になおしてみよう。</p>
-<p>そのためには、<code class="docutils literal notranslate"><span class="pre">density</span></code>というオプションをオン(<code class="docutils literal notranslate"><span class="pre">True</span></code>)にするか、明示的に各サンプルの”重み”を<code class="docutils literal notranslate"><span class="pre">weights</span></code>でリスト(<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>)として与える。</p>
-<p><span class="math notranslate nohighlight">\(\clubsuit\)</span> 進んだ注:<br />
-後者は確率分布などを扱うときに便利なオプションとなるが、この授業では扱わない。
-<code class="docutils literal notranslate"><span class="pre">density=True</span></code>は”各サンプルの重みを等価にする”という<code class="docutils literal notranslate"><span class="pre">weights</span></code>の特別な場合に相当する.</p>
+<p>1-6の出る目の頻度が確率から期待される振る舞いに漸近していく事がわかる.  c.f. 大数の法則</p>
+<p>今のようなサンプル数が大きく異なるヒストグラムを比較する場合、縦軸のスケールを揃えて比較するほうが良い。<strong>相対的な頻度</strong>になおしてみよう。<br />
+そのためには、<code class="docutils literal notranslate"><span class="pre">density</span></code>というオプションをオン(<code class="docutils literal notranslate"><span class="pre">True</span></code>)にするか、明示的に各サンプルの”重み”を<code class="docutils literal notranslate"><span class="pre">weights</span></code>でリスト(<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>)として与える。</p>
+<p>後者は確率分布などを扱うときに便利なオプションとなるが、この授業では扱わない。<br />
+<code class="docutils literal notranslate"><span class="pre">density=True</span></code>は”各サンプルの重みを等価にする”という<code class="docutils literal notranslate"><span class="pre">weights</span></code>の特別な場合に相当する.<br />
+つまりサンプル数が<span class="math notranslate nohighlight">\(N\)</span>ならweights=[すべての要素が<span class="math notranslate nohighlight">\(1/N\)</span>の配列(リストやndarray)]とするのと等価。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">axs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span> <span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span><span class="p">[</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Ns</span> <span class="p">]</span>
+<span class="n">tbin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axs</span><span class="p">)):</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Roll&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;n=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Ns</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">tbin</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
-    <span class="c1">#axs[i].hist(results[i],bins=tbin,rwidth=0.5,weights=[1/Ns[i] for n in range(Ns[i])], density=True)  #これでもOK</span>
-    <span class="c1"># 1/6のところに線を引いてみる</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$n=10^&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> 
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="n">tbin</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#density=Trueオプションを指定</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span> <span class="c1">#ココを追加した</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.45</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -570,30 +577,38 @@ c.f. 大数の法則</p>
 </div>
 <hr class="docutils" />
 <p>以下では、<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールのよく使う(?)機能をいくつか紹介する.</p>
+<blockquote>
+<div><p>また、<code class="docutils literal notranslate"><span class="pre">numpy</span></code>にも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、  <code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性がある。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。<br />
+※ <code class="docutils literal notranslate"><span class="pre">randint</span></code>の場合は、<code class="docutils literal notranslate"><span class="pre">np.random.randint</span></code>だと終点を含まないなど、微妙な違いがあるので注意。モジュールの使い方や実装については<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html?highlight=randint#numpy.random.randint">公式Document</a>を参考にすること。これは<code class="docutils literal notranslate"><span class="pre">numpy</span></code>に限らない。</p>
+</div></blockquote>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>リストやrangeなどからランダムに要素を選びたいとき<br />
-には<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>が便利です。<br />
-(たとえば[出席番号のリストからランダムに選ぶ]などをイメージ)</p>
+<p>リストやrangeなどからランダムに要素を選びたいときには<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>が便利だ。<br />
+(たとえば[出席番号のリストからランダムに選ぶ]などをイメージしよう)</p>
 <p>ループに入れて5回くらい実行してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1">## 引数(リスト)からランダムに要素を抽出する</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1">## 引数(range,0から99)からランダムに要素を抽出する</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;日本&quot;</span><span class="p">,</span><span class="s2">&quot;アメリカ&quot;</span><span class="p">,</span><span class="s2">&quot;中国&quot;</span><span class="p">])</span> <span class="c1">## 引数(リスト)からランダムに要素を抽出する</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1">## 引数(リスト)からランダムに要素を抽出する</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> 
 
+    <span class="c1">## 引数(range,0から99)からランダムに要素を抽出する</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> 
+
+    <span class="c1">## 引数(リスト)からランダムに要素を抽出する</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;日本&quot;</span><span class="p">,</span><span class="s2">&quot;アメリカ&quot;</span><span class="p">,</span><span class="s2">&quot;中国&quot;</span><span class="p">])</span>     
+    
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a=&gt;&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">b=&gt;&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">c=&gt;&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a=&gt; 1 	b=&gt; 4 	c=&gt; 日本
-a=&gt; 5 	b=&gt; 67 	c=&gt; 日本
-a=&gt; 6 	b=&gt; 81 	c=&gt; 中国
-a=&gt; 5 	b=&gt; 82 	c=&gt; 中国
-a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a=&gt; 6 	b=&gt; 75 	c=&gt; 日本
+a=&gt; 1 	b=&gt; 13 	c=&gt; アメリカ
+a=&gt; 1 	b=&gt; 88 	c=&gt; 中国
+a=&gt; 6 	b=&gt; 10 	c=&gt; 中国
+a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </pre></div>
 </div>
 </div>
@@ -602,13 +617,13 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>の<code class="docutils literal notranslate"><span class="pre">choice</span></code>関数を使うのがよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># replace = True/Falseで重複を認めるかどうかを指定できる </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([67, 53, 45, 41,  7, 91, 72, 37, 44, 74])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([86, 28, 99, 31, 17, 92, 89, 50, 76, 69])
 </pre></div>
 </div>
 </div>
@@ -617,13 +632,15 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 <p>ちなみに選んだものをソートしたければ以下のようにする:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="nb">sorted</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">sorted_array</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_array</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 17, 31, 36, 38, 51, 58, 69, 76, 82]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 13, 17, 36, 48, 49, 75, 84, 96, 97]
 </pre></div>
 </div>
 </div>
@@ -631,17 +648,17 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">5.4. </span>一様分布からの乱数生成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>上記のような離散的な乱数とは異なり、連続的な数について乱数が必要になる場合もあります。</p>
-<p>その一つの例である一様乱数は、ある”有限”区間での確率(密度)が等しい確率に従う乱数です。<br />
-<code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code>関数を使えば、指定した区間での一様乱数を生成することができます。</p>
+<p>上記のような離散的な乱数とは異なり、連続的な数について乱数が必要になる場合もある。</p>
+<p>その一つの例である一様乱数は、ある”有限”区間での確率(密度)が等しい確率に従う乱数で、<br />
+<code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code>関数を使えば、指定した区間での一様乱数を生成することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#[1,10)または[1,10]からの一様乱数 (randomモジュールでは半開区間/閉区間どちらになるかはroundingに依存するらしい)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#[1,10)または[1,10]からの一様乱数 (randomモジュールでは半開区間/閉区間どちらになるかはroundingに依存するらしい)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.086865202180393
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6791118523291146
 </pre></div>
 </div>
 </div>
@@ -649,25 +666,44 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 <p>xとyの値を[-1,1]の範囲でランダムに10000サンプル生成してplotしてみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">10000</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span>
 
+<span class="c1"># 3つの領域に、散布図・ｘのヒストグラム・yのヒストグラムを描く</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="p">[</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)]</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span> <span class="c1">#散布図</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span> 
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">);</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="c1">#xのヒストグラム (binの数50はいい加減に選んだ)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="c1">#yのヒストグラム</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="c1">#yのヒストグラム 同じく</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_28_0.png" src="../_images/Python_chapter5_Probability_28_0.png" />
+<img alt="../_images/Python_chapter5_Probability_30_0.png" src="../_images/Python_chapter5_Probability_30_0.png" />
+</div>
+</div>
+<p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span></strong> 散布図とヒストグラムをまとめて描く</p>
+<p>もうちょっとかっこよく描きたければ<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>というモジュールの<code class="docutils literal notranslate"><span class="pre">jointplot</span></code>を用いると良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning
+</pre></div>
+</div>
+<img alt="../_images/Python_chapter5_Probability_32_1.png" src="../_images/Python_chapter5_Probability_32_1.png" />
 </div>
 </div>
 <div class="section" id="id5">
@@ -675,7 +711,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 <p>乱数を使ってじゃんけんをする関数を作ってみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
     <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span><span class="s2">&quot;パー&quot;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> 
 </pre></div>
@@ -684,7 +720,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Janken</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Janken</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -696,11 +732,10 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#あるいは、手を0,1,2として計算する関数と分ける</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#あるいは、手を0,1,2として計算する関数とじゃんけんの手に反映させる部分を分けても良い</span>
 
 <span class="k">def</span> <span class="nf">Janken</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    
 <span class="n">RPS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span> <span class="s2">&quot;パー&quot;</span><span class="p">]</span>  <span class="c1">#integer to Rock-Paper-Scissors</span>
 
 <span class="c1">#5回手を表示させてみる</span>
@@ -710,21 +745,18 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>グー
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>パー
+パー
+パー
 グー
-グー
-グー
-チョキ
+パー
 </pre></div>
 </div>
 </div>
 </div>
-<p>今の場合<code class="docutils literal notranslate"><span class="pre">Janken()</span></code>は、単に1/3の確率で手を選ぶ関数ですが、これを拡張していけば<br />
-確率を1/3から変動させたじゃんけんの実装もできます。<br />
-たとえば、0から1の区間から一様乱数を発生させて、<br />
-ある領域に含まれたらグー、ある領域に含まれたらチョキ、残りはパー、とすればよいですよね？</p>
-<p>じゃんけん関数を工夫したり、<br />
-サザ◯さんやドラ◯もんのじゃんけんのパターンを解析することで、<br />
+<p>今の場合<code class="docutils literal notranslate"><span class="pre">Janken()</span></code>は、単に1/3の確率で手を選ぶ関数ですが、これを拡張していけば確率を1/3から変動させたじゃんけんの実装もできます。<br />
+たとえば、0から1の区間から一様乱数を発生させて、ある領域に含まれたらグー、ある領域に含まれたらチョキ、残りはパー、とすればよいですよね？</p>
+<p>じゃんけん関数を工夫したり、サザ◯さんやドラ◯もんのじゃんけんのパターンを解析することで、<br />
 毎週土曜や日曜にドラ◯もんやサザ◯さんを倒す関数を作ってみるのも面白そうです。</p>
 </div>
 <div class="section" id="clubsuit">
@@ -733,7 +765,7 @@ a=&gt; 5 	b=&gt; 83 	c=&gt; アメリカ
 Pythonならサクッと実装することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -744,7 +776,7 @@ Pythonならサクッと実装することができます。</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14232
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13704
 </pre></div>
 </div>
 </div>
@@ -756,7 +788,7 @@ Pythonならサクッと実装することができます。</p>
 <p>乱数により生成するサンプルの数を増やしていって、精度が改善する様子を見てみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 <span class="nb">sum</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span> <span class="c1">#サンプル数を一桁ずつ増やす</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -769,7 +801,7 @@ Pythonならサクッと実装することができます。</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Sample number&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Diff. in log10&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">sum</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">sum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">sum</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -786,13 +818,37 @@ p= 7 	 pi_approx 3.1410364 log10(abs(diff)) -3.254727173274235
 p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 </pre></div>
 </div>
-<img alt="../_images/Python_chapter5_Probability_39_1.png" src="../_images/Python_chapter5_Probability_39_1.png" />
+<img alt="../_images/Python_chapter5_Probability_43_1.png" src="../_images/Python_chapter5_Probability_43_1.png" />
 </div>
 </div>
 <p>あまり効率は良くない(<span class="math notranslate nohighlight">\(10^8\)</span>サンプルあっても４桁くらいしか合っていない)。<br />
-(上のコードはメモリを食うので、これ以上<span class="math notranslate nohighlight">\(p\)</span>を増やすとおそらくGoogle Colab上では計算できなくなる)</p>
-<p>2つの領域に生成された乱数の比から円周率を計算する方法では、<br />
-領域の面積が近くなるような設定で計算する方が精度が良い。</p>
+ちなみに2つの領域に生成された乱数の比から円周率を計算する方法では、領域の面積が近くなるような設定で計算する方が精度が良い。</p>
+<p>なお、上のコードはメモリを食うので、これ以上<span class="math notranslate nohighlight">\(p\)</span>を増やすとだんだんGoogle Colab上では計算が厳しくなってくる。それまでの作業にも依存するが、<span class="math notranslate nohighlight">\(p\geq9\)</span>にして実行するとクラッシュする。このように場合によってはメモリ使用量も気にする必要がある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">pi_approx_mem</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;のとき =&gt; ndarrayのサイズは~&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">nbytes</span><span class="o">+</span><span class="n">y</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">**</span><span class="mi">3</span> <span class="p">,</span> <span class="s2">&quot; GB程度&quot;</span><span class="p">)</span>
+    <span class="k">return</span>  <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">num</span>
+
+<span class="n">pi_approx_mem</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">pi_approx_mem</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p=7のとき =&gt; ndarrayのサイズは~ 0.16  GB程度
+p=8のとき =&gt; ndarrayのサイズは~ 1.6  GB程度
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14164512
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="id6">
@@ -803,7 +859,7 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 ※両者は基本的に同じだが、前者のほうが高速らしい</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="c1">#平均0.0,標準偏差1.0の正規分布からの乱数生成</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="c1">#平均0.0,標準偏差1.0の正規分布からの乱数生成</span>
 </pre></div>
 </div>
 </div>
@@ -811,7 +867,7 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 <p>サンプル数を何通りか作って、正規分布になっているかチェック</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Na</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">Nb</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">Nc</span> <span class="o">=</span> <span class="mi">100000</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Na</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">Nb</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">Nc</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Na</span><span class="p">)]</span> 
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nb</span><span class="p">)]</span> 
 <span class="n">c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nc</span><span class="p">)]</span> 
@@ -835,11 +891,11 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_45_0.png" src="../_images/Python_chapter5_Probability_45_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu,sigma a: -0.03547201558953872 1.0952589819941076
-mu,sigma b: 0.02769557864501665 0.9836343234365098
-mu,sigma c: -0.0027663236686774916 0.9955633195757101
-mu,sigma c: 0.0008906876771568085 0.9974780899397998
+<img alt="../_images/Python_chapter5_Probability_50_0.png" src="../_images/Python_chapter5_Probability_50_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu,sigma a: 0.0067173334130862326 1.005917217916256
+mu,sigma b: -0.062043437506205806 0.9809649613610115
+mu,sigma c: 0.0029861824182547607 1.0029708839095104
+mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </pre></div>
 </div>
 </div>
@@ -859,12 +915,12 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 たとえばサイコロの例でいうと</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 2, 3, 3, 4, 5, 6, 3, 1, 5]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 3, 4, 2, 3, 3, 2, 6, 2, 6]
 </pre></div>
 </div>
 </div>
@@ -872,7 +928,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 <p>は実行する度に答えが変わるが</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> 
 <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -894,8 +950,8 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </pre></div>
 </div>
 <p>などとすると、乱数を生成する前に毎回seedが1に固定されるので<br />
-毎回同じ乱数になってしまう。</p>
-<p>(余談)<br />
+毎回同じ乱数になってしまうので、意図した挙動になるブロックで使うこと。</p>
+<p><strong>余談</strong><br />
 古いゲームだと、起動してからの経過時間が乱数の種になっていることが多いようで、<br />
 このパターンを調べることができれば、<br />
 原理的には(1/30~1/60秒程度の正確な入力が可能なら)望むようにゲームをスイスイ攻略することもできます。</p>
@@ -908,14 +964,12 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 正規分布(ガウス分布,ガウシアン)に少し触れておきます.<br />
 (厳密性は少々犠牲にし、変数が1次元の場合の正規分布に限る)</p>
 <p>正規分布が重要である理由はいくつかありますが、</p>
-<ol class="simple">
+<ul class="simple">
 <li><p>世の中に(近似的に)正規分布に従う確率変数がたくさんある</p></li>
 <li><p>“性質が良い”(扱いやすい)確率分布である</p></li>
-</ol>
+</ul>
 <p>の２点が代表的なところでしょうか。<br />
-たとえば、身長や体重の分布や、<br />
-大学入試センター試験の得点の分布なども、<br />
-正規分布に近いことが知られています。</p>
+たとえば、身長や体重の分布や、大学入試センター/共通試験の得点の分布なども、正規分布に近いことが知られています。</p>
 <p>ある変数<span class="math notranslate nohighlight">\(x\)</span>が中心<span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差<span class="math notranslate nohighlight">\(\sigma\)</span>の正規分布に従うとき、<br />
 <span class="math notranslate nohighlight">\(x\)</span>の確率密度関数<span class="math notranslate nohighlight">\(f(x)\)</span>は、以下の様に表現されます.</p>
 <p><span class="math notranslate nohighlight">\(f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp{(-\frac{(x-\mu)^2}{2\sigma^2})}\)</span></p>
@@ -926,13 +980,13 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 <p>実際に、上の<span class="math notranslate nohighlight">\(x\)</span>についての関数<span class="math notranslate nohighlight">\(f(x)\)</span>の値を、<span class="math notranslate nohighlight">\(\mu\)</span>や<span class="math notranslate nohighlight">\(\sigma\)</span>を変えながらplotしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">yr1</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">xr</span><span class="p">);</span> <span class="n">yr2</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="n">xr</span><span class="p">);</span> <span class="n">yr3</span><span class="o">=</span><span class="n">gaussian</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="n">xr</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span><span class="n">yr1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;mu=0.0, sigma=1.0&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span><span class="n">yr2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;mu=1.0, sigma=2.0&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span><span class="n">yr3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;mu=-2.0, sigma=0.5&quot;</span><span class="p">)</span>
@@ -944,30 +998,27 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_54_0.png" src="../_images/Python_chapter5_Probability_54_0.png" />
+<img alt="../_images/Python_chapter5_Probability_59_0.png" src="../_images/Python_chapter5_Probability_59_0.png" />
 </div>
 </div>
 <p>こんな感じ。このような形状の分布を示すデータ(量)が世の中には溢れています。</p>
 <p>指数関数<span class="math notranslate nohighlight">\(\exp\)</span>の前についている係数<span class="math notranslate nohighlight">\(1/\sqrt{2\pi \sigma^2}\)</span>は、<br />
-この関数をあらゆるxの値で足し上げたときに、<br />
-その値が1になるようにつけてあります.<br />
-つまり、x軸と関数<span class="math notranslate nohighlight">\(f(x)\)</span>が囲む領域の面積=xの全区間での積分<br />
-<span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty}f(x) dx \)</span>が1になります.<br />
-これを規格化と言ったりします。</p>
+この関数をあらゆるxの値で足し上げたときに、その値が1になるようにつけてあります.<br />
+つまり、x軸と関数<span class="math notranslate nohighlight">\(f(x)\)</span>が囲む領域の面積=xの全区間での積分<span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty}f(x) dx \)</span>が1になります.</p>
 <p>こうしておけばどの<span class="math notranslate nohighlight">\(\mu,\sigma\)</span>を持つ正規分布を考えたときにでも、<br />
-「どこからどこまでの区間の面積が全体に占める割合が何%だ」といった表現が可能になります。</p>
-<p>つまり、確率として扱いやすくなります。</p>
-<ul class="simple">
-<li><p>ちなみに関数<span class="math notranslate nohighlight">\(\exp{(-\frac{(x-\mu)^2}{2\sigma^2})}\)</span>は、<span class="math notranslate nohighlight">\(x\)</span>に対する有限区間での積分を解析的に求めることはできず(数値的に求めることはできる)、<span class="math notranslate nohighlight">\(x \in [-\infty,\infty]\)</span>で積分した場合にのみ、閉じた形で書き下すことができます。<br />
-その際、積分値<span class="math notranslate nohighlight">\(\int^\infty_{-\infty}\exp{(-\frac{(x-\mu)^2}{2\sigma^2})}\)</span>が、<span class="math notranslate nohighlight">\(\sqrt{2\pi \sigma^2}\)</span>になります。 c.f. ガウス積分</p></li>
-</ul>
+「どこからどこまでの区間の面積が全体に占める割合が何%だ」といった表現が可能になります。<br />
+つまり、確率として扱いやすくなります。</p>
+<blockquote>
+<div><p>ちなみに関数<span class="math notranslate nohighlight">\(\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>は、<span class="math notranslate nohighlight">\(x\)</span>に対する有限区間での積分を解析的に求めることはできず(数値的に求めることはできる)、<span class="math notranslate nohighlight">\(x \in [-\infty,\infty]\)</span>で積分した場合にのみ、閉じた形で書き下すことができます。<br />
+その際、積分値<span class="math notranslate nohighlight">\(\int^\infty_{-\infty}\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>が、<span class="math notranslate nohighlight">\(\sqrt{2\pi \sigma^2}\)</span>になります。 c.f. ガウス積分</p>
+</div></blockquote>
 <p>以下では<span class="math notranslate nohighlight">\(\mu=0.0\)</span>, <span class="math notranslate nohighlight">\(\sigma=1.0\)</span>のみを考えることにして、もう少し正規分布の特徴的な性質について見てみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)]</span>
 <span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">yr</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">xr</span><span class="p">)</span>
@@ -986,10 +1037,11 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_57_0.png" src="../_images/Python_chapter5_Probability_57_0.png" />
+<img alt="../_images/Python_chapter5_Probability_62_0.png" src="../_images/Python_chapter5_Probability_62_0.png" />
 </div>
 </div>
-<p>上の図では、<span class="math notranslate nohighlight">\(\mu \pm 1\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 3\sigma\)</span>の領域での正規分布とx軸とが囲む領域を、それぞれ赤色、青色、緑色で塗りつぶしました。(1シグマ, 2シグマ, 3シグマと呼んだりします)</p>
+<p>上の図では、<span class="math notranslate nohighlight">\(\mu \pm 1\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 3\sigma\)</span>の領域での正規分布とx軸とが囲む領域を、それぞれ赤色、青色、緑色で塗りつぶしました。<br />
+(1シグマ, 2シグマ, 3シグマと呼んだりします)</p>
 <p>これらが占める面積は、それぞれ0.6827, 0.9545,0.9973(いずれも”約”)となり、<br />
 68%,95%,99%区間などと呼ぶことも多いです。<br />
 このことは、任意の<span class="math notranslate nohighlight">\(\mu,\sigma\)</span>を持つ1次元の正規分布について成立します。</p>
@@ -1016,7 +1068,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 <p>二次元の場合に、適当な<span class="math notranslate nohighlight">\(\mu\)</span>と<span class="math notranslate nohighlight">\(\Sigma\)</span>を取って、多次元正規分布からサンプルしてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mu1</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mu1</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
 <span class="n">cov1</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],[</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]]</span>
 <span class="n">mu2</span> <span class="o">=</span> <span class="p">[</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span> <span class="p">]</span>
 <span class="n">cov2</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]]</span>
@@ -1034,7 +1086,7 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 <p>散布図にすると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;sample 1&quot;</span><span class="p">)</span>
@@ -1048,14 +1100,14 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_63_0.png" src="../_images/Python_chapter5_Probability_63_0.png" />
+<img alt="../_images/Python_chapter5_Probability_68_0.png" src="../_images/Python_chapter5_Probability_68_0.png" />
 </div>
 </div>
 <p>こんな感じ。</p>
 <p>二次元のヒストグラムにすると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -1076,14 +1128,14 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_65_0.png" src="../_images/Python_chapter5_Probability_65_0.png" />
+<img alt="../_images/Python_chapter5_Probability_70_0.png" src="../_images/Python_chapter5_Probability_70_0.png" />
 </div>
 </div>
 <p>中心付近にたくさん分布している様子が見て取れます。</p>
 <p>各サンプルごとに、<span class="math notranslate nohighlight">\(x\)</span>,<span class="math notranslate nohighlight">\(y\)</span>の分散、共分散を計算してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample1&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample1&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;var(x)&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="s2">&quot;var(y)&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y1</span><span class="p">),</span> <span class="s2">&quot;cov(x,y)&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample2&quot;</span><span class="p">)</span>
@@ -1093,9 +1145,9 @@ mu,sigma c: 0.0008906876771568085 0.9974780899397998
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample1
-var(x) 1.0025166455532277 var(y) 1.0014921338632927 cov(x,y) 0.7045916369459987
+var(x) 0.994590632112357 var(y) 0.9890686124916055 cov(x,y) 0.6931785449875472
 Sample2
-var(x) 0.5996299297359444 var(y) 0.9950097135263223 cov(x,y) -0.2995668212465575
+var(x) 0.5996593224718298 var(y) 0.996967770694425 cov(x,y) -0.29333540781674877
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1158,7 @@ var(x) 0.5996299297359444 var(y) 0.9950097135263223 cov(x,y) -0.2995668212465575
 式から計算される値をつかって3次元の図を描くと</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmesh</span><span class="o">=</span> <span class="mi">1024</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nmesh</span><span class="o">=</span> <span class="mi">1024</span> 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">nmesh</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">nmesh</span><span class="p">)</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1119,7 +1171,7 @@ var(x) 0.5996299297359444 var(y) 0.9950097135263223 cov(x,y) -0.2995668212465575
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">axL</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 <span class="n">axR</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
@@ -1135,21 +1187,22 @@ var(x) 0.5996299297359444 var(y) 0.9950097135263223 cov(x,y) -0.2995668212465575
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_71_0.png" src="../_images/Python_chapter5_Probability_71_0.png" />
+<img alt="../_images/Python_chapter5_Probability_76_0.png" src="../_images/Python_chapter5_Probability_76_0.png" />
 </div>
 </div>
 <p>こんな感じ。<br />
 x,yのメッシュ点をいっぱいつくって、各点でのzの値を定義に則って計算し、<br />
 z=f(x,y)の値に応じて色をつけている.</p>
 </div>
+</div>
 <div class="section" id="id9">
-<h3><span class="section-number">5.7.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">5.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>ここまでの乱数の生成方法を応用すると、ランダムウォーク(酔歩)と呼ばれるものを実装することもできます。</p>
 <p>あなたは原点(0,0)に立っていて、毎秒ごとに[-1,1]の一様乱数に従ってx方向とy方向に移動するとします。<br />
 T秒後に立ってる場所や、軌跡をプロットしてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">])</span> <span class="c1">#開始地点</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#stepの数</span>
 
@@ -1171,24 +1224,21 @@ T秒後に立ってる場所や、軌跡をプロットしてみましょう。<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter5_Probability_76_0.png" src="../_images/Python_chapter5_Probability_76_0.png" />
+<img alt="../_images/Python_chapter5_Probability_81_0.png" src="../_images/Python_chapter5_Probability_81_0.png" />
 </div>
 </div>
 <p>今の場合、x方向y方向いずれも、<br />
 特別な方向への指向はなく完全にランダムですが、<br />
 獲得関数や勾配といったものが定義されるとさらなる応用が考えられます。</p>
 <p>たとえば、地図に載っていない山があったと仮定して、<br />
-その山の頂上にたどり着くためには、<br />
-上のようなランダムウォークでは効率が悪いので、<br />
-山の傾斜の情報(勾配)を利用しながらランダムな大きさで進む、<br />
-といった方法が思いつきますね。</p>
-<p>大きさをランダムにすることで、局所的な峠に捕まることを<br />
-避けることもできるかもしれません(場合によりけり).</p>
-<p>進んだ注) ランダムウォークやその派生の方法は、<br />
+その山の頂上にたどり着くためには、上のようなランダムウォークでは効率が悪いので、<br />
+山の傾斜の情報(勾配)を利用しながらランダムな大きさで進む、といった方法が思いつきます。</p>
+<p>大きさをランダムにすることで、局所的な峠に捕まることを避けることもできるかもしれません(場合によりけり).</p>
+<p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span>進んだ注</strong></p>
+<p>ランダムウォークやその派生の方法は、<br />
 最適化や確率分布からのサンプリングが必要な状況下でよく用いられ、<br />
 統計学、自然科学、機械学習など様々な分野で活躍しています。<br />
 c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
-</div>
 </div>
 </div>
 
