@@ -473,8 +473,8 @@ import numpy as np
 </div>
 </div>
 <p>「平均気温とアイスの消費には相関がありそう」という直感の通り、正の相関があることが見て取れる。</p>
-<p>では”どれほどの”相関を持つかを表す量として相関係数を算出してみましょう。<br />
-相関係数<span class="math notranslate nohighlight">\(r\)</span>は以下のように定義されます。
+<p>では”どれほどの”相関を持つかを表す量として相関係数を算出してみよう。<br />
+相関係数<span class="math notranslate nohighlight">\(r\)</span>は以下のように定義され
 <span class="math notranslate nohighlight">\(r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 \sum^n_i (y_i-\bar{y})^2} }\)</span><br />
 <span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>はそれぞれ<span class="math notranslate nohighlight">\(x,y\)</span>の平均値で<span class="math notranslate nohighlight">\(\bar{x} = \frac{1}{n} \sum^n_i x_i \)</span>,　<span class="math notranslate nohighlight">\(\bar{y} = \frac{1}{n} \sum^n_i y_i \)</span><br />
 と書ける。</p>
@@ -611,11 +611,11 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <p><span class="math notranslate nohighlight">\(D\)</span>個の点<span class="math notranslate nohighlight">\(\{x_1,x_2,...,x_D\}\)</span>でのyの値<span class="math notranslate nohighlight">\(\{y_1,y_2,...,y_D\}\)</span>が観測されているとき、<br />
 最小二乗法とは、ある決められたモデル関数<span class="math notranslate nohighlight">\(f(x)\)</span>との齟齬<span class="math notranslate nohighlight">\(\chi^2 = \sum^D_{i=1} (y_i - f(x_i))^2\)</span>を<br />
 最小化するように関数<span class="math notranslate nohighlight">\(f\)</span>の係数を調整すること。</p>
-<p><span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題ですが、授業では深入りしません。<br />
-たとえば回帰を行う関数として、ニューラルネットワークを採用する立場を採ることも可能です。<br />
+<p><span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。<br />
+たとえば回帰を行う関数として、ニューラルネットワークを採用する立場を採ることも可能。<br />
 参照: <a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_chapter_ArtificialNeuralNetwork.html">おまけのノートブック: ニューラルネットワークによる回帰</a></p>
-<p>以下では、<span class="math notranslate nohighlight">\(f(x)\)</span>として単純な多項式のみを考えることにします。<br />
-まず回帰を学ぶために、適当なデータを生成しておきましょう。</p>
+<p>以下では、<span class="math notranslate nohighlight">\(f(x)\)</span>として単純な多項式のみを考えることにする。<br />
+まず回帰を学ぶために、適当なデータを生成しておく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -654,12 +654,12 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </div>
 </div>
 <p>こんな感じ。</p>
-<p>このデータを、<span class="math notranslate nohighlight">\(p\)</span>次元の多項式(p=0,1,2,…)を最適化することを考えてみよう。
+<p>このデータを、<span class="math notranslate nohighlight">\(p\)</span>次元の多項式(p=0,1,2,…)を最適化することを考えてみよう。<br />
 <span class="math notranslate nohighlight">\(p\)</span>次式(<span class="math notranslate nohighlight">\(p\)</span>次元多項式)は、<span class="math notranslate nohighlight">\(p+1\)</span>個の係数, <span class="math notranslate nohighlight">\(a_0\)</span>から<span class="math notranslate nohighlight">\(a_p\)</span>を使って
-<span class="math notranslate nohighlight">\(a_0 + a_1x + a_2x^2\cdots +a_p x^p \)</span>と書くことが出来ます。</p>
-<p>上で定義した最小二乗法は、この関数と各データ点の齟齬が二乗誤差を最小にする係数<span class="math notranslate nohighlight">\(a_0,a_1,...,a_p\)</span>を求めることに相当します。</p>
-<p><span class="math notranslate nohighlight">\(p\)</span>次元の多項式のは最適化、実はnumpyにある関数<code class="docutils literal notranslate"><span class="pre">polyfit()</span></code>を利用すれば一瞬で行えます。<br />
-他にもscikit-learnなどのライブラリもより高度な関数のフィッティングが可能です。</p>
+<span class="math notranslate nohighlight">\(a_0 + a_1x + a_2x^2\cdots +a_p x^p \)</span>と書くことが出来る。</p>
+<p>上で定義した最小二乗法は、この関数と各データ点の齟齬が二乗誤差を最小にする係数<span class="math notranslate nohighlight">\(a_0,a_1,...,a_p\)</span>を求めることに相当する。</p>
+<p><span class="math notranslate nohighlight">\(p\)</span>次元の多項式の最適化は、実はnumpyにある関数<code class="docutils literal notranslate"><span class="pre">polyfit()</span></code>を利用すれば簡単に実行できる。<br />
+他にもscikit-learnなどのライブラリもより高度な関数のフィッティングが可能。</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\clubsuit\)</span>進んだ注:<br />
 多項式で回帰を行う場合には、実はパラメータの最適解は”閉じた形”で与えられる。<br />
@@ -668,7 +668,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 たとえば 行列<span class="math notranslate nohighlight">\(A\)</span>、ベクトル<span class="math notranslate nohighlight">\(\vec{x},\vec{y}\)</span>,スカラー<span class="math notranslate nohighlight">\(\lambda\)</span>について方程式<span class="math notranslate nohighlight">\(A\vec{x}=\lambda \vec{y}\)</span>が成り立つとき、<br />
 <span class="math notranslate nohighlight">\(A\)</span>の逆行列をどうやって求めるか(数値的にやるのか解析的に求めるのか)はさておき、<br />
 <span class="math notranslate nohighlight">\(\vec{x} = \lambda A^{-1}\vec{y}\)</span>と書き直せるので<br />
-「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりします。</p>
+「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりもする。</p>
 </div></blockquote>
 <div class="section" id="polyfit-poly1d">
 <h3><span class="section-number">6.2.1. </span>polyfit/poly1d関数<a class="headerlink" href="#polyfit-poly1d" title="Permalink to this headline">¶</a></h3>
@@ -761,12 +761,12 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 真の関数というのは一般に[神のみぞ知る]で、<br />
 人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
 その背後にあるメカニズム(の主要部分)を解明することと言える.</p>
-<p>一般に、関数をどんどん複雑なものにしていくにつれて、関数の表現力(表現できるデータの幅)は大きく拡がる。
+<p>一般に、関数をどんどん複雑なものにしていくにつれて、関数の表現力(表現できるデータの幅)は大きく拡がる。<br />
 その一方で、用意した関数がデータに過度に適合するあまり、<br />
 <strong>未知の点での値の予測精度(汎化性能)が著しく損なわれている危険性</strong>がある。<br />
-このことを予言能力がない(データに<strong>過適合</strong>している) と言ったりします。<br />
+このことを予言能力がない(データに<strong>過適合</strong>している) と言う。<br />
 データの背後にあるメカニズムが何かを考えたり理論的な解析をして初めて、<br />
-回帰に用いる関数の妥当性が検証できるという点に注意しましょう。</p>
+回帰に用いる関数の妥当性が検証できるという点に注意しよう。</p>
 </div>
 <div class="section" id="clubsuit">
 <h3><span class="section-number">6.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> モデルの複雑さとモデル選択<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
@@ -861,28 +861,26 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 と気がつくことが出来る。</p>
 <p><strong>でも、他のデータではどうでしょう？</strong></p>
 <p>データを分析するためには、データの値だけをみて闇雲に分析するだけではダメで、<br />
-データの背景やドメイン知識が不可欠である、という好例です。</p>
+データの背景やドメイン知識が不可欠である、という好例。</p>
 </div>
 <div class="section" id="id6">
 <h3><span class="section-number">6.2.4. </span>(余談2) 新型コロナウイルス感染症の陽性者数の推移に関して<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>関連して、この話題も取り上げておきましょう。</p>
 <p>我々が現実世界で観測することのできる種々の”値”というのは、<br />
 何らかの関数<span class="math notranslate nohighlight">\(f(x)\)</span>の、ある<span class="math notranslate nohighlight">\(x\)</span>での(実現)値と言える。</p>
-<p>コロナウイルスの感染者数の推移も日付に対する関数として示される事が多い。</p>
-<p>日付に対して陽性者数の推移をプロットして変動の予想を立てることは簡単だが、<br />
+<p>コロナウイルスの感染者数の推移は日付に対する関数として示される事が多い。<br />
+日付に対して陽性者数の推移をプロットして変動の予想を立てることは簡単だが、<br />
 コロナウイルスの感染者数の推移も単なる時間に対する１変数の関数であるはずなどがなく、<br />
-たとえば検査数や我々の外出自粛や国・都道府県ごとの取り組み・政策、<br />
+たとえば検査数や我々の外出自粛や”空気感”、国・都道府県ごとの取り組み・政策、<br />
 ウイルスの変異,その他様々な要素に左右される。</p>
 <p>我々人間がグラフにして理解できるのはたかだか３次元(３つの変数がある状況)まで。<br />
-言い換えれば、人間は物事を理解するときに本来D次元(D&gt;&gt;3, Dは３よりずっと大きい)<br />
-の変数で定義される関数を、3次元以下に射影した「影」をみて理解しようとする生き物だということは、<br />
-意識しておくべきだろう。</p>
+言い換えれば、人間は物事を理解するときに本来D次元(D&gt;&gt;3, Dは３よりずっと大きい)の変数で定義される関数を<br />
+3次元以下に射影した「影」をみて理解しようとする生き物だということは意識しておくべきだろう。</p>
 <p>緊急事態宣言が出され報道が加熱していた頃には、安易な感染者数予測で危険を煽ったり、<br />
-あるいは逆に「心配する必要がない」などと主張したりする専門家・非専門家が数多くいました。<br />
-また事態が収束したあとに「私のモデルはこんなに正しかった」という人も現れることでしょう。<br />
-ですが、それは極めて高い蓋然性で偶然です。<br />
-無限の数の関数を考えれば、データに適合するものが存在してもおかしくはありません。<br />
-何にでも言えることですが、モデルを立てて終わり、ではなく検証し続ける姿勢が重要です。</p>
+あるいは逆に「心配する必要がない」などと極端な主張をする人が数多く現れた。<br />
+また事態が収束したあとに「私のモデルはこんなに正しかった」という人も現れることだろう。<br />
+だが、それは極めて高い蓋然性で偶然だろう。<br />
+無限の数の関数を考えれば、データに適合するものが存在してもおかしくはない。<br />
+何にでも言えることだが、モデルを立てて終わり、ではなく検証し続ける姿勢が重要。</p>
 </div>
 </div>
 </div>
