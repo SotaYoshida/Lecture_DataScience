@@ -462,8 +462,11 @@
 最適化問題とは、大雑把に言えば「ある量の最小値/最大値とそれを与える変数/パラメータの値を知ること」と言い換えられる.</p>
 <p>「人生も、何らかの目的関数<span class="math notranslate nohighlight">\(f(x)\)</span>(一般に<span class="math notranslate nohighlight">\(x\)</span>は多次元),たとえば幸福感(不幸感)を最大化(最小化)すること<br />
 という意味では、最適化問題を考えていることに相当する」というと少し大げさでしょうか。</p>
-<p>この章では、関数の最適化の初歩について学んでいくことにしよう..</p>
-<p>高校で微分を勉強していないという方に向けて末尾に数学的準備の項を設けてあるのでチェックしてください.<br />
+<p>この章では、最適化の基礎について学んでいくことにしよう。<br />
+授業では実際に最適化で必要な数学的な操作をするコードを作ったりする訳ではないが<br />
+「ライブラリに入れてポンッ」ではなく、背後にあるモチベーションや概念を理解しておくことは<br />
+自分が興味のある問題を最適化問題に帰着させて解くためには不可欠だ。</p>
+<p>※高校で微分を勉強していないという方に向けて末尾に数学的準備の項を設けてあるのでチェックしてください.<br />
 (よく知っているという方もさっと目を通してみてください)</p>
 <div class="section" id="id2">
 <h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -474,34 +477,34 @@
 また、図中に<strong>緑の線で示したような<span class="math notranslate nohighlight">\(f(x)\)</span>の振る舞いを予め知ることはできず<br />
 都度<span class="math notranslate nohighlight">\(x\)</span>を変えて調べることで初めて対応する<span class="math notranslate nohighlight">\(y\)</span>の値が分かる</strong>状況を考えよう。<br />
 (そのことを点線で表現しています)<br />
-このとき、<span class="math notranslate nohighlight">\(x\)</span>を変えながら<span class="math notranslate nohighlight">\(f(x)\)</span>が最小となる点を探すには<br />
-一般にどうすればよいだろうか？</p>
+このとき、<span class="math notranslate nohighlight">\(x\)</span>を変えながら<span class="math notranslate nohighlight">\(f(x)\)</span>が最小となる点を探すには一般にどうすればよいだろうか？</p>
 </div></blockquote>
 <p>変数が2次元(やそれ以上)の場合も、<br />
 (実際上の難しさが違うとはいえ)基本的なアイデアは同様なので、<br />
-以下では１次元の場合のみ扱います.</p>
+以下では１次元の場合のみ扱うことにする.</p>
 <img src="https://drive.google.com/uc?export=view&id=1PGkcncbgSOQpG_mGyqV58d2FvMdJeI7K" width=60%>
 <hr class="docutils" />
 <p>さて、1次元の場合に話を戻して…(図を再掲)</p>
-<img src="https://drive.google.com/uc?export=view&id=1dvnzljSpB7ht4RDr8WXTP8kH9KCMBCBA" width=50%>
+<img src="https://drive.google.com/uc?export=view&id=1dvnzljSpB7ht4RDr8WXTP8kH9KCMBCBA" width=60%>
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を<span class="math notranslate nohighlight">\(t\)</span>から更新していく方法として、色んな方法が考えられる。たとえば…</p>
 <ol class="simple">
 <li><p>ランダムに探索する(例:サイコロを振って、目が1-3なら<span class="math notranslate nohighlight">\(x\)</span>を適当な値だけ減らし出目が4-6なら<span class="math notranslate nohighlight">\(x\)</span>を増やしていく)</p></li>
 <li><p>xを適当な区間に分割(10等分,100等分, etc.)その点で値を調べる</p></li>
 </ol>
 <p>などなど。</p>
-<p>でも、<span class="math notranslate nohighlight">\(x\)</span>が薬品の濃度で<span class="math notranslate nohighlight">\(f(x)\)</span>が薬品の副作用だとしたときには、<br />
+<p>でも、<span class="math notranslate nohighlight">\(x\)</span>が薬品の濃度で<span class="math notranslate nohighlight">\(f(x)\)</span>が薬品の副作用だとしたとき(※)には、<br />
 <span class="math notranslate nohighlight">\(x\)</span>を変えて<span class="math notranslate nohighlight">\(f(x)\)</span>の値を調べると言っても限界がある。</p>
-<p>1.の方法では、同じところを何度か行き来するので明らかに無駄が多いし、<br />
-2.の方法では分割が少なすぎると十分な精度で最適解が見つからない。<br />
-一方、分割が多すぎると、コストがかさむ。</p>
-<p>したがって、できるだけ少ない試行回数で最適な値を見つける効率のよい探索方法が必要となる。<br />
-そこで重要なのが、<span class="math notranslate nohighlight">\(x\)</span>を変えたときに関数<span class="math notranslate nohighlight">\(f(x)\)</span>がどのように変化するか、つまり微分(勾配)の情報。</p>
-<p>注) そもそも<span class="math notranslate nohighlight">\(f(x)\)</span>の式の形がわかっていて<br />
-<span class="math notranslate nohighlight">\(f'(x)=0\)</span>となる(つまりf(x)が極値を持つ)<span class="math notranslate nohighlight">\(x\)</span>の値が計算できるのなら<br />
+<p>※「1変数の関数であるはずがない」ことは一旦忘れることにして、イメージしやすいようこの例にした</p>
+<p>1.の方法では、<strong>同じところを何度か行き来するので明らかに無駄が多い</strong>し、<br />
+2.の方法では<strong>分割が少なすぎると十分な精度で最適解が見つからない</strong><br />
+<strong>かといって分割が多すぎるとコストがかさむ</strong>。</p>
+<p>したがって、<strong>できるだけ少ない試行回数で最適な値を見つける効率のよい探索方法</strong>が必要となる。<br />
+そこで重要なのが、<span class="math notranslate nohighlight">\(x\)</span>を変えたときに関数<span class="math notranslate nohighlight">\(f(x)\)</span>がどのように変化するか、つまり微分(勾配)の情報である。</p>
+<p><strong>注意</strong><br />
+そもそも<span class="math notranslate nohighlight">\(f(x)\)</span>の式の形がわかっていて<span class="math notranslate nohighlight">\(f'(x)=0\)</span>となる(つまり極値を持つ)<span class="math notranslate nohighlight">\(x\)</span>の値が計算できるのなら<br />
 わざわざ<span class="math notranslate nohighlight">\(x\)</span>を更新するなどという手続きは必要ない。<br />
-一般の問題では、<span class="math notranslate nohighlight">\(f'(x)\)</span>の式が書き下せて<span class="math notranslate nohighlight">\(x\)</span>に値を代入した場合の<span class="math notranslate nohighlight">\(f'(x)\)</span>の値を知ることができても、<br />
-<span class="math notranslate nohighlight">\(f'(x)=0\)</span>となる<span class="math notranslate nohighlight">\(x\)</span>の値(解/根とも言う)を解析的に解くことができなかったりする.<br />
+一般の問題では、関数やその勾配がそもそも書き下せなかったり<br />
+極値を与える<span class="math notranslate nohighlight">\(x\)</span>(<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解)を解析的に解けなかったりする。<br />
 そんなときは以下で考えるような、<span class="math notranslate nohighlight">\(x\)</span>を更新した探索が必要となる。</p>
 </div>
 <div class="section" id="id3">
@@ -512,8 +515,7 @@
 <p>この様な場合、斜面の傾きに沿ってパラメータを更新していけばいずれ<span class="math notranslate nohighlight">\(f(x)\)</span>の最小値が見つかりそうだ。<br />
 点<span class="math notranslate nohighlight">\(x=t\)</span>での勾配は(あえて)偏微分で書くと<span class="math notranslate nohighlight">\(\frac{\partial f(x)}{\partial x}|_{x=t}\)</span>となる。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を更新する際に、更新前の値を<span class="math notranslate nohighlight">\(x_{old}\)</span>,更新後の値を<span class="math notranslate nohighlight">\(x_{new}\)</span>と書くことにすると、<br />
-<span class="math notranslate nohighlight">\(x_{new} = x_{old} -\eta \frac{\partial f(x)}{\partial x}|_{x=x_{old}}\)</span><br />
-と更新する。</p>
+<span class="math notranslate nohighlight">\(x_{new} = x_{old} -\eta \frac{\partial f(x)}{\partial x}|_{x=x_{old}}\)</span> と更新する。</p>
 <blockquote>
 <div><p>注) <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x}|_{x=t}\)</span>という表記に慣れていない方は、<span class="math notranslate nohighlight">\(f'(x=t)\)</span>のことと思って頂いて結構です</p>
 </div></blockquote>
@@ -523,31 +525,25 @@
 <p>最小化でなく最大化を考える場合はマイナス符号は不要で<code class="docutils literal notranslate"><span class="pre">+</span></code>となる。<br />
 (上と同じように考えてみましょう)</p>
 <p>上では、<span class="math notranslate nohighlight">\(\eta\)</span>という係数(正の値)を導入したが、<br />
-これは[傾いてる方向にどれくらいのスケールで<span class="math notranslate nohighlight">\(x\)</span>を更新するか]<br />
-をコントロールするパラメータで、<br />
-機械学習などの分野で[学習率]と呼ばれるものに対応している。</p>
-<p>今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分。</p>
-<p>ただし、上の<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎたり小さすぎたりすると、<br />
-なかなか効率的に<span class="math notranslate nohighlight">\(f(x)\)</span>の最適解を見つけられないことがある。</p>
-<p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷をまたいでしまい<br />
-なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
+これは<strong>傾いてる方向にどれくらいのスケールで<span class="math notranslate nohighlight">\(x\)</span>を更新するか</strong>をコントロールするパラメータで、<br />
+機械学習などの分野で[学習率]と呼ばれるものに対応している。<br />
+今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分。</p>
+<p>ただし、上の<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎたり小さすぎたりすると、なかなか効率的に<span class="math notranslate nohighlight">\(f(x)\)</span>の最適解を見つけられないことがある。</p>
+<p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷をまたいでしまい、なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
 <img src="https://drive.google.com/uc?export=view&id=1f1t1Bvs9NgHn5Fp1k84Ihs7F7SedM5OU" width = 65%>
 <p>一方で<span class="math notranslate nohighlight">\(\eta\)</span>が小さすぎると、なかなか更新が進まず<br />
 これまた効率の悪い探索となってしまう。</p>
 <img src="https://drive.google.com/uc?export=view&id=1ChsZeoNFnHHuZKsATDvS2q6KITmgjoaS" width = 65%>
 <p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<br />
 <span class="math notranslate nohighlight">\(\eta\)</span>が小さいと局所的な谷に捕まってしまってなかなか大局的な谷にたどり着けない、<br />
-かといって<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎるとあらぬ方向に飛んでいってしまう、<br />
-といったことが起こりえる。</p>
-<p>その様な場合にはもう少し”賢い”最適化の手法を応用したり、<br />
-更新の幅を徐々に減衰させるなどの工夫が必要になる。</p>
+かといって<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎるとあらぬ方向に飛んでいってしまう、といったことが起こりえる。</p>
+<p>その様な場合にはもう少し”賢い”最適化の手法を応用したり、更新の幅を徐々に減衰させるなどの工夫が必要になる。</p>
 <div class="section" id="clubsuit">
 <h3><span class="section-number">7.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。<br />
 最適化を詳しくやろうとするとそれだけで半期の授業じゃ足りないくらいなので<br />
 興味がある方は下記のキーワードなどで調べてみよう。</p>
-<p>たとえば機械学習では、勾配の情報だけでなく<br />
-それまでの更新の履歴を活用した各種の最適化手法がよく用いられる。<br />
+<p>たとえば機械学習では、勾配の情報だけでなくそれまでの更新の履歴を活用した各種の最適化手法がよく用いられる。<br />
 c.f. AdaGrad, Adam, etc.</p>
 <p>また、物理学から着想を得た最適化手法もよく用いられる<br />
 c.f. 焼きなまし法(Simulated Annealing)</p>
@@ -570,12 +566,11 @@ c.f. ベイズ最適化(授業でも紹介します)</p>
 データの数値に対する誤差が占める割合に着目すれば<br />
 前者は2倍(100%)ずれていて、後者は1%しかずれていない。</p>
 <p>このようにスケールの異なる量が出てくる状況下では<br />
-目的関数(誤差関数, 損失関数, etc.)などの定義を考え直す必要がある。</p>
+目的関数(誤差関数, 損失関数, etc.)の定義で対数を取ったりする場合もある。</p>
 </div>
 <div class="section" id="id5">
 <h3><span class="section-number">7.2.3. </span>簡単な例でのプログラム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>下に凸な二次関数の最小値を、勾配降下法で求めてみよう.<br />
-もちろん二次関数の場合は、極値を与える<span class="math notranslate nohighlight">\(x\)</span>の値は、<br />
+<p>下に凸な二次関数の最小値を、勾配降下法で求めてみよう. もちろん二次関数の場合は、極値を与える<span class="math notranslate nohighlight">\(x\)</span>の値は、<br />
 プログラムを書くまでもなく平方完成で求められるが、目的は数値計算になれるためなので気にしないことにする。</p>
 <p><span class="math notranslate nohighlight">\(f(x)=5x^2 -4x + 3\)</span>とでもしましょう。<br />
 <span class="math notranslate nohighlight">\(x\)</span>についての微分はもちろん<span class="math notranslate nohighlight">\(\frac{df(x)}{dx}=10x -4\)</span>になる。</p>
@@ -36339,12 +36334,11 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 </div>
 <div class="section" id="id10">
 <h2><span class="section-number">7.5. </span>数学的準備: 微分<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>日本では、中学校(2年?)で傾きと切片を学習する。</p>
 <p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<br />
 <span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。</p>
 <p>一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、<br />
 それを式で表現しようと思うと、様々な関数の形を考える必要がある。<br />
-(たとえば何かの値の季節変動などをイメージしてください)</p>
+(たとえば何かの値の季節変動などをイメージしよう)</p>
 <p>そこで、直線の場合の[傾き]を、直線以外の関数に”拡張”しようと考えるのは<br />
 至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
 <p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが<br />
@@ -36353,7 +36347,7 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <p>以下の内容は、全学向けの授業ということもあって<br />
 厳密性はかなり犠牲にして微分の概念を導入している<br />
 (もちろん、大学の数学の教科書に載っている関数の連続性や微分の厳密な定義は非常に重要です).</p>
-<p>時間があったら、ヨビノリさんの<a class="reference external" href="https://youtu.be/4p1rwfXbCoY">「中学数学からはじめる微分積分」</a>を視聴していただけると、イメージがつくかと思います。</p>
+<p>時間があったら、ヨビノリたくみ氏の<a class="reference external" href="https://youtu.be/4p1rwfXbCoY">「中学数学からはじめる微分積分」</a>を視聴していただけると、イメージがつくかと思います。</p>
 <div class="section" id="id11">
 <h3><span class="section-number">7.5.1. </span>微分の基本的な考え方<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>定義: ある変数<span class="math notranslate nohighlight">\(x\)</span>について関数<span class="math notranslate nohighlight">\(f(x)\)</span>が与えられているとき、<br />
