@@ -639,7 +639,7 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statslist</span>
 <span class="n">statslist</span> <span class="o">=</span> <span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  <span class="c1"># サービス産業動向調査</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">statslist</span><span class="p">)</span>
+<span class="n">statslist</span>
 </pre></div>
 </div>
 </div>
@@ -703,7 +703,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <p>その<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)と<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>(タイトル)だけを表示してみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">statslist</span><span class="p">[[</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">,</span> <span class="s2">&quot;TITLE&quot;</span><span class="p">]]</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span><span class="p">[[</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">,</span> <span class="s2">&quot;TITLE&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -726,7 +726,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statsdata</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">read_statsdata</span><span class="p">(</span><span class="s2">&quot;0003191203&quot;</span><span class="p">)</span>  
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -837,7 +837,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <span class="n">ndf</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">)</span>
 
 <span class="c1">#必要なところだけ抽出すると...</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ndf</span><span class="p">[[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">]])</span>
+<span class="n">ndf</span><span class="p">[[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -915,7 +915,8 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-pack
 上記のコードの対応するIDなどを変更すればよいし<br />
 コードを拡張して、データ,分類・属性等の一覧表などを適宜表示しながら、<br />
 特定のキーワードを含むものに絞ってデータを取得したりもできる。</p>
-<p>ちなみに、プルダウンでデータ,分類・属性等を選んでプロットする、<br />
+<p>ちなみに、GoogleColabで提供されているコードスニペット(テンプレートのようなもの)<br />
+を用いることで、プルダウンでデータ,分類・属性等を選んでプロットする、<br />
 といったようにGoogle Colab.上で自分だけのe-Stat分析ツールを作ることもできる<br />
 (最終課題で取り組むのも良い)</p>
 </div>
