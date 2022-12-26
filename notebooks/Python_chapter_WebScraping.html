@@ -447,10 +447,11 @@ HTMLで記述されています。</p>
 <p>JavaScriptの実行などがないページならこれでだいたい十分かと思います.<br />
 また<code class="docutils literal notranslate"><span class="pre">BeutifulSoup4</span></code>というライブラリを使うと、HTMLを構文解析して、<br />
 タグなどを取り除くといった操作が比較的容易に行えます。</p>
+<p>1つ目の例として、<a class="reference external" href="https://stopcovid19.metro.tokyo.lg.jp/">東京都 新型コロナウイルス感染症対策サイト</a>の公開データを取得して<br />
+それをグラフにして可視化してみましょう。まずは必要なライブラリをインポートしておきます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#必要なライブラリをインポートしておこう。
-import requests
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import requests
 import json
 import datetime
 import matplotlib.pyplot as plt
@@ -568,7 +569,7 @@ import japanize_matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_WebScraping_17_0.png" src="../_images/Python_chapter_WebScraping_17_0.png" />
+<img alt="../_images/Python_chapter_WebScraping_18_0.png" src="../_images/Python_chapter_WebScraping_18_0.png" />
 </div>
 </div>
 </div>
@@ -921,7 +922,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-pack
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_WebScraping_47_0.png" src="../_images/Python_chapter_WebScraping_47_0.png" />
+<img alt="../_images/Python_chapter_WebScraping_48_0.png" src="../_images/Python_chapter_WebScraping_48_0.png" />
 </div>
 </div>
 <p>新型コロナウイルスの感染拡大を受けて2020年の1月ごろから<br />
