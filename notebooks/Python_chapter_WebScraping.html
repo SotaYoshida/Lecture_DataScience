@@ -369,7 +369,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   国立感染症研究所からのインフルエンザの患者報告数の取得
+   東京都の新型コロナウイルス関連情報の取得
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -441,118 +441,136 @@ HTMLで記述されています。</p>
 最悪の場合、偽計業務妨害罪などの罪に問われる可能性があります。</p></li>
 </ul>
 <div class="section" id="id1">
-<h2>国立感染症研究所からのインフルエンザの患者報告数の取得<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>東京都の新型コロナウイルス関連情報の取得<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>スクレイピングを可能とするライブラリは多数存在する。<br />
-代表的なものは<code class="docutils literal notranslate"><span class="pre">requests</span></code>や<code class="docutils literal notranslate"><span class="pre">urllib</span></code></p>
-<p>以下では<code class="docutils literal notranslate"><span class="pre">requests</span></code>を使います。<br />
-JavaScriptの実行などがないページならこれでだいたい十分かと思います.<br />
+代表的なものは<code class="docutils literal notranslate"><span class="pre">requests</span></code>や<code class="docutils literal notranslate"><span class="pre">urllib</span></code>。以下では<code class="docutils literal notranslate"><span class="pre">requests</span></code>を使います。</p>
+<p>JavaScriptの実行などがないページならこれでだいたい十分かと思います.<br />
 また<code class="docutils literal notranslate"><span class="pre">BeutifulSoup4</span></code>というライブラリを使うと、HTMLを構文解析して、<br />
 タグなどを取り除くといった操作が比較的容易に行えます。</p>
-<p><a class="reference external" href="https://nesid4g.mhlw.go.jp/Hasseidoko/Levelmap/flu/">国立感染症研究所のインフルエンザ流行レベルマップ</a>から<br />
-各週のインフルエンザ患者数を抽出する以下のコードを実行してみましょう。</p>
-<p>ややいい加減な実装ですが、以下の方針で情報を取得します。</p>
-<ol class="simple">
-<li><p>URL
-<a class="reference external" href="https://nesid4g.mhlw.go.jp/Hasseidoko/Levelmap/flu/">https://nesid4g.mhlw.go.jp/Hasseidoko/Levelmap/flu/</a>
-にアクセスしてページ構造をなんとなく把握する</p></li>
-<li><p>予め決めた年・週の区間に対してループを回して、対応するURLにアクセスする</p></li>
-<li><p>ページにアクセスして、HTMLを取得する <code class="docutils literal notranslate"><span class="pre">requests.get(url)</span></code></p></li>
-<li><p>HTMLをテキストに変換して、[患者報告数]という語句のあとの文字列から数値を取得し、患者報告数の絶対数だとみなす</p></li>
-</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import requests
-!pip install cchardet
-import cchardet
-import time
-import re #正規表現というものを使うためのモジュール
-
-def exnum(a): #文字列から数値を抽出する関数
-    pattern = r&#39;(\d{1,3}(,\d{3})*)&#39;
-    return re.findall(pattern,a)
-
-# 7を&quot;07&quot;といった表現に直す関数
-def week_str(week):
-    if week &lt; 10:
-        return &quot;0&quot;+str(week)
-    else:
-        return str(week)
-
-#スクレイピングする区間の指定
-years = range(2016,2017)
-#years = range(2013,2020)
-sw = 35; ew = 28
-t0 = time.time()
-weeks = [j for j in range(sw,53)] + [i for i in range(1,ew)]
-hit =0 
-for s_year in years: # s_yearは○○-△△年シーズンの○○に相当
-    tlist = []
-    for week in weeks:
-        c_week = week_str(week)
-        tw=&quot;&quot;
-        if s_year &lt; 2007:
-            tw= str(c_week)            
-        if week &lt;=ew :
-            c_year = str(s_year+1)
-        else:
-            c_year = str(s_year)
-        time.sleep(0.5) ###サイトに負荷をかけないように0.5秒スリープ(なにもしない)
-        url = &#39;https://nesid4g.mhlw.go.jp/Hasseidoko/Levelmap/flu/&#39;+str(s_year)+&#39;_&#39;+str(s_year+1)+&#39;/&#39;+c_year+&#39;_&#39;+c_week+&#39;/jmap&#39;+tw+&#39;.html&#39;
-        ctext = str(c_year)+&quot;年&quot;+c_week+&quot;週目: &quot;
-        num = &quot;&quot;
-        try : 
-            #urlにアクセスしてhtmlを取得する
-            response = requests.get(url) 
-            # htmlの文字コードを判別する
-            response.encoding = cchardet.detect(response.content)[&quot;encoding&quot;]
-            #htmlをテキスト(文字列)に変換
-            lines = response.text           
-            #&quot;患者報告数&quot;という文字列以降のテキストを取得
-            tmp = lines.split(&quot;患者報告数&quot;)
-            #そこから20文字くらい読んで、その中に含まれる数値を取得する  
-            num = exnum(tmp[1][:20])[0] 
-            try :
-                if type(num) is tuple: #数値が複数ある場合は0番目を患者数とみなす
-                    num = num[0]
-                ctmp = str( int(num.replace(&quot;,&quot;,&quot;&quot;)))
-                ctext += ctmp
-            except:
-                print(&quot;error&quot;)
-        except:
-            continue
-        tlist += [ ctext  ]     
-    print(tlist)
-t1 = time.time()
-print(&quot;経過時間&quot;,t1-t0)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#必要なライブラリをインポートしておこう。
+import requests
+import json
+import datetime
+import matplotlib.pyplot as plt
+!pip install japanize-matplotlib 
+import japanize_matplotlib 
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://stopcovid19.metro.tokyo.lg.jp/">東京都 新型コロナウイルス感染症対策サイト</a>の<a class="reference external" href="https://github.com/tokyo-metropolitan-gov/covid19">レポジトリ</a>で公開されているデータ(json形式)を読み出す。</p>
+<p>指定したurlにリクエストを送り、レスポンスをjson形式で取得する</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/tokyo-metropolitan-gov/covid19/development/data/data.json&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上の<code class="docutils literal notranslate"><span class="pre">data</span></code>を直接<code class="docutils literal notranslate"><span class="pre">print</span></code>すると表示が冗長になるため<br />
+代わりに、jsonのキーとして何があるかを見てみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cchardet in /usr/local/lib/python3.7/dist-packages (2.1.7)
-[&#39;2016年44週目: 2903&#39;, &#39;2016年45週目: 4133&#39;, &#39;2016年46週目: 6843&#39;, &#39;2016年47週目: 8843&#39;, &#39;2016年48週目: 12334&#39;, &#39;2016年49週目: 16404&#39;, &#39;2016年50週目: 24857&#39;, &#39;2016年51週目: 41428&#39;, &#39;2016年52週目: 41438&#39;, &#39;2017年01週目: 52082&#39;, &#39;2017年02週目: 75576&#39;, &#39;2017年03週目: 142144&#39;, &#39;2017年04週目: 195501&#39;, &#39;2017年05週目: 189231&#39;, &#39;2017年06週目: 141666&#39;, &#39;2017年07週目: 118696&#39;, &#39;2017年08週目: 83714&#39;, &#39;2017年09週目: 67273&#39;, &#39;2017年10週目: 55004&#39;, &#39;2017年11週目: 50976&#39;, &#39;2017年12週目: 38231&#39;, &#39;2017年13週目: 33608&#39;, &#39;2017年14週目: 25048&#39;, &#39;2017年15週目: 19730&#39;, &#39;2017年16週目: 20127&#39;, &#39;2017年17週目: 15467&#39;, &#39;2017年18週目: 10001&#39;, &#39;2017年19週目: 6786&#39;, &#39;2017年20週目: 5184&#39;, &#39;2017年21週目: 3344&#39;, &#39;2017年22週目: 2100&#39;]
-経過時間 34.30348491668701
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;contacts&#39;, &#39;querents&#39;, &#39;patients_summary&#39;, &#39;inspections_summary&#39;, &#39;lastUpdate&#39;, &#39;main_summary&#39;])
 </pre></div>
 </div>
 </div>
 </div>
-<p>実は、このコードでは全てのデータを完全に抽出することは出来ていない。<br />
-これはコードの”対応力”の問題でもある。<br />
-実際、ホームページの階層構造を解析するコードにすれば<br />
-URLの取得等の精度を改善することもできる。</p>
-<p>一方で、以下のようにデータのフォーマットが統一できてないことも原因といえる。</p>
+<p>それぞれ</p>
 <ul class="simple">
-<li><p>2007年以前と以降とで、urlの命名規則が微妙に変更されている(上のコードではこれには対応した)</p></li>
-<li><p>幾つかの週では[患者報告数]ではなく、<br />
-[定点あたり報告数のみ]の記載となっていて、<br />
-保健所数を別途取得しなければ絶対数が計算できない。</p></li>
-<li><p>2016年の01週は、[患年者報告数]となっていて<br />
-誤字がある場合への例外処理が別途必要になる</p></li>
+<li><p>contacts: 新型コロナコールセンター相談件数</p></li>
+<li><p>querents: 帰国者・接触者電話相談センター相談件数</p></li>
+<li><p>patients_summary: 陽性患者数</p></li>
+<li><p>inspections_summary: 検査実施日別状況</p></li>
+<li><p>lastUpdate: 最終更新日時</p></li>
+<li><p>main_summary: (これはよくわからない)</p></li>
 </ul>
-<p>一方、以下で扱うe-Statは、河野太郎 行政改革担当大臣(当時)が</p>
-<blockquote>
-<div><p>各省庁がネット上で公開する統計を機械判読可能にするために、データの表記方法を統一させます。「政府統計の総合窓口（e-Stat）」で本日から１２月１日までの間、表記方法案に関する意見照会を行います。研究者をはじめ、皆様のご意見をお待ちしています。</p>
-</div></blockquote>
-<p>との旨を先日(2020年11月25日)表明し、データのフォーマットの統一化が進められるようです。</p>
+<p>に対応している。</p>
+<p>陽性患者数のデータの構造を調べつつ結果を可視化してみよう。<br />
+まずは型を調べてみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>辞書型とわかったのでキーの一覧を見てみよう</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;date&#39;, &#39;data&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>同様にして<code class="docutils literal notranslate"><span class="pre">data['patients_summary'][&quot;data&quot;]</span></code>が”日付”と”小計”をキーに持つ辞書のリストだと分かる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;日付&#39;: &#39;2020-01-24T08:00:00.000Z&#39;, &#39;小計&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>日付と陽性患者数をリストに直して、描画してみよう</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#　&quot;2022-01-01&quot;のような文字列をdatetimeに変換する関数</span>
+<span class="k">def</span> <span class="nf">str_to_dt</span><span class="p">(</span><span class="n">tstr</span><span class="p">):</span>
+    <span class="n">tdatetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">tstr</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">tdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">tdatetime</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tdate</span>
+    
+<span class="n">tdat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tdat</span><span class="p">)</span>
+<span class="n">tdat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span> <span class="n">str_to_dt</span><span class="p">(</span><span class="n">tdat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;日付&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">num_patients</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tdat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;小計&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_patients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;東京都&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;日付&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;陽性者数[人]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span><span class="n">num_patients</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python_chapter_WebScraping_17_0.png" src="../_images/Python_chapter_WebScraping_17_0.png" />
+</div>
+</div>
 </div>
 <div class="section" id="e-stat">
 <h2>e-Statのデータを取得する<a class="headerlink" href="#e-stat" title="Permalink to this headline">¶</a></h2>
@@ -903,7 +921,7 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-pack
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_WebScraping_35_0.png" src="../_images/Python_chapter_WebScraping_35_0.png" />
+<img alt="../_images/Python_chapter_WebScraping_47_0.png" src="../_images/Python_chapter_WebScraping_47_0.png" />
 </div>
 </div>
 <p>新型コロナウイルスの感染拡大を受けて2020年の1月ごろから<br />
