@@ -416,6 +416,11 @@
      試してみよう
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copilot">
+     練習相手・チューターとしてのCopilot
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -460,13 +465,12 @@
 <li><p>Storeまたは<a class="reference external" href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">Webページ</a>からインストールする</p>
 <img src="pic_for_notebook/pic_vscode_1.png" width=30%>
 </li>
-<li><p>起動すると、日本語化を提案してくれるので<br />
-日本語で使いたければ、インストールして再起動をクリック
-<img src="pic_for_notebook/pic_vscode_2.png" width=30%></p></li>
-<li><p>ターミナルから新しいターミナルを開くと規定のターミナルが開く<br />
-(Windowsの場合だとpowershell?)
-∨記号から、Ubuntu(WSL)を選択すると<br />
-Ubuntu(Linux)ターミナルを起動することが出来る</p>
+<li><p>起動すると、日本語化を提案してくれるので日本語で使いたければ、インストールして再起動をクリック</p></li>
+</ol>
+   <img src="pic_for_notebook/pic_vscode_2.png" width=30%>
+<ol>
+<li><p>ターミナルから新しいターミナルを開くと規定のターミナルが開く(Windowsの場合だとpowershell?)
+∨記号から、Ubuntu(WSL)を選択すると、Ubuntu(Linux)ターミナルを起動することが出来る</p>
 <img src="pic_for_notebook/pic_vscode_3.png" width=20%>
 <img src="pic_for_notebook/pic_vscode_4.png" width=30%>
 <img src="pic_for_notebook/pic_vscode_5.png" width=30%>
@@ -478,7 +482,7 @@ Ubuntu(Linux)ターミナルを起動することが出来る</p>
 <h3>Pythonコードの編集<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>適当なPythonファイルを作成してみよう。[ファイル]→[新しいファイル]で新規ファイルを作成する。<br />
-その際<strong>ファイルの種類を入力するか、ファイル名を入力してください</strong>などという表示がでるのでpythonと打ち、Pythonファイルを作成する。
+その際<strong>ファイルの種類を入力するか、ファイル名を入力してください</strong>などという表示がでるのでpythonと打ち、Pythonファイルを作成する。<br />
 Untitled-1などというファイルが作成されるので、<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>で保存しようとすると、ファイル名を入力するように促される。<br />
 その際、適当な名前をつけてみよう。例えば<code class="docutils literal notranslate"><span class="pre">sample_code.py</span></code>などとする。</p></li>
 <li><p>ファイルを編集したら、保存(<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>)しよう。編集内容が残っている場合は(標準では)ファイル名の横に丸◯が表示されるので、わかりやすい。
@@ -572,8 +576,8 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 ただし、GitHub Copilotが生成するコードは完璧ではないため、使う際は、提案されたコードを注意深く確認し、必要に応じて修正を行う必要があることは言うまでもない。</p>
 <p>GitHub Copilotを使うには、まず、GitHub Copilotのベータ版に登録する必要がある。<br />
 学生(や教職員)は、学生証などを提出することで、無料で登録・使用することができる。<br />
-上手く使いこなせれば、かなりの生産性向上が期待できるツールであり、私も日々の研究において活用している。
-もちろん、自身の意図を100%反映したコードを生成してくれるわけではないが、
+上手く使いこなせれば、かなりの生産性向上が期待できるツールであり、私も日々の研究において活用している。</p>
+<p>もちろん、自身の意図を100%反映したコードを生成してくれるわけではないが、
 コードの骨組みを作ってくれるため大幅に作業が楽になることも多い。<br />
 ときに「こんな書き方もあるのか」という気づきを与えてくれたりもする。</p>
 <div class="section" id="vs-code">
@@ -590,9 +594,81 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 </div>
 <div class="section" id="id4">
 <h3>試してみよう<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>試しに「一次元井戸型ポテンシャルの固有状態を計算するコードは以下のようになる」などと打つと…</p>
-<p>以下のように、本文よりも薄い色のコードが提案される。
-Copilotの提案を受け入れるには<code class="docutils literal notranslate"><span class="pre">Tab</span></code>キーを押し、棄却する場合には<code class="docutils literal notranslate"><span class="pre">Esc</span></code>を押せば良い。複数行に渡る場合も同様である。</p>
+<p>試しに著者の環境(VS Code)で「適当な二次元データのヒートマップを描画するコードは以下のようになる」などと打つと…<br />
+以下のように、自身で入力した際よりも薄い色でコード(場合によっては複数行)が提案される。</p>
+<img src="pic_for_notebook/pic_copilot_1.jpeg" width=30%>
+<p>Copilotの提案を受け入れるには<code class="docutils literal notranslate"><span class="pre">Tab</span></code>キーを押し、棄却する場合には<code class="docutils literal notranslate"><span class="pre">Esc</span></code>を押せば良い。複数行に渡る場合も同様である。
+こうした作業を繰り返して生成されたコードを実行してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#適当な二次元データのヒートマップを描画するコードは以下のようになる:</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># 2次元データの生成</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># ヒストグラムの描画</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python_misc_VScode_3_0.png" src="../_images/Python_misc_VScode_3_0.png" />
+</div>
+</div>
+<p>もう少し具体的にカラーマップも指定してみよう。以下のコード例は
+「適当な二次元データのヒートマップを作成するコード、但しカラーマップはjetを用いる。」と入力したあとに提案されたコードである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+
+<span class="c1">#データの作成</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1">#ヒートマップの作成</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Python_misc_VScode_5_0.png" src="../_images/Python_misc_VScode_5_0.png" />
+</div>
+</div>
+<p>1回目は<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>ライブラリを使っていたのに対し、２回目では<code class="docutils literal notranslate"><span class="pre">matplotlib.cm</span></code>からカラーマップ<code class="docutils literal notranslate"><span class="pre">cm</span></code>を呼んでいる事がわかる。<br />
+ランダムなデータの作り方も１回目と２回目、あるいはユーザーの実行ごとに変わったりすることに注意しよう。</p>
+<p>繰り返しになるが、GitHub Copilotの提案が本当に自身の意図したものとなっているかについては、常にユーザーである我々が注意して確認する必要があることは肝に命じておこう。</p>
+</div>
+<div class="section" id="copilot">
+<h3>練習相手・チューターとしてのCopilot<a class="headerlink" href="#copilot" title="Permalink to this headline">¶</a></h3>
+<p>この授業を履修する皆さんにはぜひ、GitHub CopilotやChat GPTを、自身の学習のための練習相手や24時間対応のチューターとして活用してもらいたい。<br />
+大規模言語モデルを使用したチャットボット(Chat GPT)は、プロンプトと呼ばれる指示文を適切に与えることで、その文脈に沿った文章を生成してくれる(かもしれない)という性質のものである。</p>
+<p>自分が望むような文章を生成するためには、プロンプトの与え方に工夫が必要だが、プログラミング学習に活用するための適切な
+プロンプトを工夫することは、それ自体が「自身のやりたい作業を言語化する」という作業になっていて、一定の学習効果が期待される。</p>
+<p>「何がわからないのかも分からない」状態では質問のしようがないのと同様、指示が漠然としているとおそらく有効な回答を引き出す蓋然性は低くなってしまう。</p>
+<p>皆さんの主体的な学習にむけて、幾つかChat GPTの使用例を紹介してみよう。</p>
+<ol>
+<li><p>最初の指示文を与えてみる
+<img src="pic_for_notebook/pic_copilot_2" width=30%>
+　　もちろん、具体的なファイルを与えているわけではないので正しく動く保証はないが、ここでは概ねもっともらしいコードを生成してくれています。</p></li>
+<li><p>うまく行かないとき、うまく行かない理由と関連していそうな情報を与えてやったりすることで、解決策を提示してきたり、補足知識を与えてくれたりします。</p>
+ <img src="pic_for_notebook/pic_copilot_3" width=30%>
+ <img src="pic_for_notebook/pic_copilot_4" width=30%>
+</li>
+</ol>
+<p>実はここで挙げた例は、実際にPythonでcsvやエクセルファイルを読み書きしようとする際に、よく遭遇するエラーの例になっていて<br />
+(私は)そのことを知っているため、上のようなある種”誘導的な”プロンプトを与えることで、より有用な回答を得られるようになっています。</p>
 </div>
 </div>
 </div>
