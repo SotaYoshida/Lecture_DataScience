@@ -657,21 +657,16 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 <p>自分が望むような文章を生成する、あるいは文章生成を”回答”とみなし活用するためには、プロンプトの与え方に工夫が必要になる。<br />
 「何がわからないのかも分からない」状態では質問のしようがないのと同様、指示が漠然としているとおそらく有効な回答を引き出す蓋然性は低くなってしまう。
 プログラミング学習に活用するための適切なプロンプトを工夫することは、それ自体が「自身のやりたい作業を言語化する」という作業になっていて、一定の学習効果が期待される。</p>
-<p>皆さんの主体的な学習にむけて、幾つかChat GPTの使用例を紹介してみよう。</p>
-<ol>
-<li><p>最初の指示文を与えてみる</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_2.jpeg?raw=true" width=50%>
-</li>
-</ol>
-<p>もちろん、具体的なファイルを与えているわけではないので正しく動く保証はないが、ここでは概ねもっともらしいコードを生成してくれている。</p>
-<ol>
-<li><p>うまく行かないとき、うまく行かない理由と関連していそうな情報を与えてやったりすることで、解決策を提示してきたり、補足知識を与えてくれたりする。</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_3.jpeg?raw=true" width=50%>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_4.jpeg?raw=true" width=50%>
-</li>
-</ol>
+<p>皆さんの主体的な学習にむけて、幾つかChat GPTの使用例を紹介してみよう。<br />
+適当な指示文を与えてみる。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_2.jpeg?raw=true" width=50%>
+　　
+もちろん、ここでは具体的なファイルを与えているわけではないので正しく動く保証はないが、ここでは概ねもっともらしいコードを生成してくれている。
+<p>仮に提案されたコードがうまく動かない/使えないとき、うまく行かない理由と関連していそうな情報を与えてやったりすることで、解決策を提示してきたり、補足知識を与えてくれたりする例を見せよう。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_3.jpeg?raw=true" width=50%>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_4.jpeg?raw=true" width=50%>
 <p>細かいことを言うと、2.の1つめの画像の提案(<code class="docutils literal notranslate"><span class="pre">encoding=&quot;SHIFT-JIS&quot;</span></code>)は、サポートされていないオプションの指定となりエラーになるが、(言語モデルはPythonの文法を”理解”しているわけではないため)推論としては真っ当なものになっている。</p>
-<p>実はここで挙げた例は、実際にPythonでcsvやエクセルファイルを読み書きしようとする際に、よく遭遇するエラーの例になっていて<br />
+<p>実は上の画像でで挙げた例は、実際にPythonでcsvやエクセルファイルを読み書きしようとする際に、よく遭遇するエラーの例になっていて<br />
 (私は)そのことを知っているため、上のようなある種”誘導的な”プロンプトを与えることで、より有用な回答を得られるよう仕向けている。
 2.の2つめの画像で、より適切なオプションを指定するためにもう少しヒントをあげているという訳だ。</p>
 <p>“自身の理解やこれまでの思考・試行を開示した上で質問をする”ことが、他人に質問する際に有効な回答を引き出すための近道であることと同じで、
