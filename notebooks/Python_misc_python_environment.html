@@ -202,6 +202,11 @@
    Pythonの環境構築 (Windows11版)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_VScode.html">
+   コードの編集環境とGitHub Copilot
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -434,18 +439,6 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
      Linuxのホームディレクトリの変更
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   ソースコードの編集
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vs-code">
-     VS codeの導入
     </a>
    </li>
   </ul>
@@ -980,61 +973,6 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
 </pre></div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="id5">
-<h1>ソースコードの編集<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
-<p>メモ帳などでも可だが、予約語などの色を区別して表示してくれるエディタを使うのがおすすめ。<br />
-Visual Studio code (VS code)が人気。</p>
-<p>たとえばWindows内Ubuntu環境を構築した(2-1の)場合、<br />
-プログラムをファイルとして保存する方法は大まかに2通りで</p>
-<ol class="simple">
-<li><p>UbuntuのCUI上で使えるエディタ(vi, emacsなど)を使う</p>
-<ul class="simple">
-<li><p>メリット: CUI環境で全て済む, 太古のコンピュータやリモート環境でも使える, ファイルの移動などもコマンドで楽ちん</p></li>
-<li><p>デメリット: 専用のコマンドを覚えないといけない</p></li>
-</ul>
-</li>
-<li><p>Windowsでエディタ(たとえば上記のVS Code)を用意してファイルを作成する</p>
-<ul class="simple">
-<li><p>メリット: GUIで操作できるので直観的</p></li>
-<li><p>デメリット: Windowsで作成したファイルをLinuxの作業ディレクトリに移動させる(あるいはその逆の)手間が必要になる。<br />
-(一度フォルダをVS Codeで開いたりVS code上のターミナルを使うのがオススメ)</p></li>
-</ul>
-</li>
-</ol>
-<div class="section" id="vs-code">
-<h2>VS codeの導入<a class="headerlink" href="#vs-code" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Storeまたは<a class="reference external" href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">Webページ</a>からインストールする</p>
- <img src="https://drive.google.com/uc?export=view&id=17ddbJnoRCXUCTJ6wBDiYl2jNCPiZBCku" width=30%>
-</li>
-<li><p>起動すると、日本語化を提案してくれるので<br />
-日本語で使いたければ、インストールして再起動をクリック</p>
-<img src="https://drive.google.com/uc?export=view&id=1HHYmX_qhRk7yye8WbkEYsmXaQJ1SjeTc" width=30%>
-</li>
-<li><p>ターミナルから新しいターミナルを開くと規定のターミナルが開く<br />
-(Windowsの場合だとpowershell?)
-∨記号から、Ubuntu(WSL)を選択すると<br />
-Ubuntu(Linux)ターミナルを起動することが出来る</p>
- <img src="https://drive.google.com/uc?export=view&id=1ZE86voVIuoBkVzfhpcNAyR74V0aUTdmy" width=20%>
- <img src="https://drive.google.com/uc?export=view&id=16FtPi8hZdJFIQeAEOmoWBX1FMkGjuHlj" width=30%>
- <img src="https://drive.google.com/uc?export=view&id=1eF142yiGsHmEHHQNy9J9A_RjUohonPP-" width=30%>
-</li>
-<li><p>左のタブからフォルダを開いておくと一覧からファイルを開けるので便利<br />
-たとえばWindowsのデスクトップなどにAdDSとかpython_codesなどとディレクトリを作っておいて<br />
-その作業ディレクトリをVS codeで開いておく、といった使い方ができる</p>
- <img src="https://drive.google.com/uc?export=view&id=1MkUs9THCg4B_lXs8p9zBHb5wUFqPc7f6" width=30%>
-</li>
-<li><p>あとはVS codeを使って新規ファイルを.py拡張子で作ったり<br />
-既存のpythonコードのファイルを開いて編集し、</p>
-<p>編集したファイルのパスを指定してLinuxターミナルで</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$python3 PathToFIle/hogehoge.py 
-</pre></div>
-</div>
-<p>などとすればファイルに書かれた内容を実行できる。</p>
-</li>
-</ol>
 </div>
 </div>
 
