@@ -596,7 +596,7 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 <h3>試してみよう<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>試しに著者の環境(VS Code)で「適当な二次元データのヒートマップを描画するコードは以下のようになる」などと打つと…<br />
 以下のように、自身で入力した際よりも薄い色でコード(場合によっては複数行)が提案される。</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_1.jpeg?raw=true" width=30%>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_1.jpeg?raw=true" width=70%>
 <p>Copilotの提案を受け入れるには<code class="docutils literal notranslate"><span class="pre">Tab</span></code>キーを押し、棄却する場合には<code class="docutils literal notranslate"><span class="pre">Esc</span></code>を押せば良い。複数行に渡る場合も同様である。
 こうした作業を繰り返して生成されたコードを実行してみよう。</p>
 <div class="cell docutils container">
@@ -660,18 +660,17 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 <p>皆さんの主体的な学習にむけて、幾つかChat GPTの使用例を紹介してみよう。</p>
 <ol>
 <li><p>最初の指示文を与えてみる</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_2.jpeg?raw=true" width=30%>
+ <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_2.jpeg?raw=true" width=50%>
 </li>
 </ol>
 <p>もちろん、具体的なファイルを与えているわけではないので正しく動く保証はないが、ここでは概ねもっともらしいコードを生成してくれている。</p>
 <ol>
 <li><p>うまく行かないとき、うまく行かない理由と関連していそうな情報を与えてやったりすることで、解決策を提示してきたり、補足知識を与えてくれたりする。</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_3.jpeg?raw=true" width=30%>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_4.jpeg?raw=true" width=30%>
+ <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_3.jpeg?raw=true" width=50%>
+ <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_4.jpeg?raw=true" width=50%>
 </li>
 </ol>
-<p>細かいことを言うと、2.の1つめの画像の提案(<code class="docutils literal notranslate"><span class="pre">encoding=&quot;SHIFT-JIS&quot;</span></code>)は、サポートされていないオプションの指定となりエラーになるが、
-(言語モデルはPythonの文法を”理解”しているわけではないため)推論としては真っ当なものになっている。</p>
+<p>細かいことを言うと、2.の1つめの画像の提案(<code class="docutils literal notranslate"><span class="pre">encoding=&quot;SHIFT-JIS&quot;</span></code>)は、サポートされていないオプションの指定となりエラーになるが、(言語モデルはPythonの文法を”理解”しているわけではないため)推論としては真っ当なものになっている。</p>
 <p>実はここで挙げた例は、実際にPythonでcsvやエクセルファイルを読み書きしようとする際に、よく遭遇するエラーの例になっていて<br />
 (私は)そのことを知っているため、上のようなある種”誘導的な”プロンプトを与えることで、より有用な回答を得られるよう仕向けている。
 2.の2つめの画像で、より適切なオプションを指定するためにもう少しヒントをあげているという訳だ。</p>
