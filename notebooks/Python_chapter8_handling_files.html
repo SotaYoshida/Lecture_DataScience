@@ -1059,10 +1059,13 @@ S1からS12までが気候データになっていて<br />
 
 <span class="k">class</span> <span class="nc">ebook</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inpf</span> <span class="o">=</span> <span class="n">inpf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wb</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="n">inpf</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sheets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wb</span><span class="o">.</span><span class="n">sheets</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wb</span><span class="o">.</span><span class="n">nsheets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wb</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sname</span> <span class="o">=</span> <span class="n">sheet_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sheet_names</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pandas: シート名&quot;</span><span class="p">,</span><span class="n">sheet_names</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;self.ns&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">)</span>
+
         <span class="n">s_kikou</span><span class="o">=</span><span class="p">[];</span> <span class="n">s_kakei</span><span class="o">=</span><span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sheetname</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">):</span>
             <span class="k">if</span> <span class="s2">&quot;Sheet&quot;</span> <span class="ow">in</span> <span class="n">sheetname</span> <span class="p">:</span>
@@ -1073,27 +1076,26 @@ S1からS12までが気候データになっていて<br />
     <span class="k">def</span> <span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kakei</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kikou</span>
     <span class="k">def</span> <span class="nf">readkakei</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikakei</span><span class="p">)</span> <span class="p">:</span>
-        <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wb</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="n">ikakei</span><span class="p">)</span>
-        <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">nrows</span><span class="p">;</span> <span class="n">nc</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">ncols</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikakei</span><span class="p">])</span>
+        <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">premode</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">):</span> 
-            <span class="n">trow</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">row_values</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+            <span class="n">trow</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
             <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">if</span> <span class="n">premode</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">jj</span><span class="p">,</span><span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trow</span><span class="p">):</span>
-                    <span class="k">try</span> <span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
                         <span class="k">if</span> <span class="s2">&quot;市&quot;</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
                             <span class="n">hit</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="k">except</span><span class="p">:</span>
-                        <span class="n">hit</span> <span class="o">=</span> <span class="n">hit</span>
                 <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
                     <span class="n">premode</span><span class="o">=</span><span class="kc">False</span>
                     <span class="n">i_kakei</span><span class="o">=</span><span class="p">[];</span><span class="n">p_kakei</span><span class="o">=</span><span class="p">[]</span>
                     <span class="k">for</span> <span class="n">jj</span><span class="p">,</span><span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trow</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="s2">&quot;市&quot;</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
-                            <span class="n">i_kakei</span> <span class="o">+=</span> <span class="p">[</span><span class="n">jj</span><span class="p">]</span>
-                            <span class="n">p_kakei</span> <span class="o">+=</span><span class="p">[</span> <span class="n">tmp</span> <span class="p">]</span> 
+                        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="s2">&quot;市&quot;</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+                                <span class="n">i_kakei</span> <span class="o">+=</span> <span class="p">[</span><span class="n">jj</span><span class="p">]</span>
+                                <span class="n">p_kakei</span> <span class="o">+=</span><span class="p">[</span> <span class="n">tmp</span> <span class="p">]</span> 
                     <span class="n">v_kakei</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>                    
                 <span class="k">if</span> <span class="n">ii</span> <span class="o">&gt;=</span> <span class="mi">22</span><span class="p">:</span>
@@ -1102,14 +1104,14 @@ S1からS12までが気候データになっていて<br />
                         <span class="n">items</span> <span class="o">+=</span> <span class="p">[</span><span class="n">trow</span><span class="p">[</span><span class="mi">8</span><span class="p">]]</span>                         
         <span class="k">return</span> <span class="n">i_kakei</span><span class="p">,</span> <span class="n">p_kakei</span><span class="p">,</span> <span class="n">v_kakei</span><span class="p">,</span><span class="n">items</span>
     <span class="k">def</span> <span class="nf">readkikou</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikikou</span><span class="p">):</span>
-        <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wb</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="n">ikikou</span><span class="p">)</span>
-        <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">nrows</span><span class="p">;</span> <span class="n">nc</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">ncols</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikikou</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">quantities</span> <span class="o">=</span> <span class="p">[];</span><span class="n">v_kikou</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">premode</span><span class="o">=</span><span class="kc">True</span>
         <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">):</span> 
-            <span class="n">trow</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">row_values</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+            <span class="n">trow</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">premode</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="s2">&quot;市&quot;</span> <span class="ow">in</span> <span class="n">tmp</span> <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">trow</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="s2">&quot;市&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">trow</span><span class="p">]):</span>
                     <span class="n">Tplaces</span> <span class="o">=</span> <span class="n">trow</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
                     <span class="n">premode</span><span class="o">=</span><span class="kc">False</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1203,19 +1205,13 @@ S1からS12までが気候データになっていて<br />
 </div>
 <div class="section" id="id7">
 <h2><span class="section-number">8.5. </span>余談: 電子ファイルのフォーマット<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>プログラムでデータを機械的に読み出して活用することは<br />
-人間が到底出来ないような作業効率を実現することができる…<br />
+<p>プログラムでデータを機械的に読み出して活用することで、人間が到底出来ないような作業効率を実現することができる場合も多い。
 そんな光の側面ばかりなら良いが、実際にはそう上手くは行かないことも多い。</p>
-<p>業務のデジタル化・デジタルトランスフォーメーションなどといった標語とは裏腹に<br />
-世の中にあふれるcsv,スプレッドシートなどは<br />
-機械判読を全く想定していないデータの書き方・並べ方となっているものが多く<br />
-プログラムを書ける人にとっては苦痛な状況も多い。</p>
-<p>総務省統計局は令和2年2月に、政府統計(e-Stat)に関して<br />
-<a class="reference external" href="https://www.soumu.go.jp/menu_news/s-news/01toukatsu01_02000186.html">統計表における機械判読可能なデータの表記方法の統一ルールの策定</a>というものを出している。</p>
-<p>これが最適な提案かはさておき、データの記述に<br />
-法則性と機械判読性をもたせる意識を全員が持つことが重要なように思う。</p>
-<p>お掃除ロボットが床を綺麗にするためには、まずお掃除ロボットが走れるよう<br />
-掃除する(床に物が散乱していない)という条件が求められる、という話だ(そうなの？)。</p>
+<p>業務のデジタル化・デジタルトランスフォーメーションなどといった標語とは裏腹に、世の中にあふれるcsv,スプレッドシートなどは、
+csvと謳っておいて、実際にはカンマ区切りではなくタブ区切りであったり、機械判読を全く想定していないデータの書き方・並べ方となっているものが多く、プログラムを書ける人にとっては苦痛な状況も多い。</p>
+<p>総務省統計局は令和2年2月に、政府統計(e-Stat)に関して<a class="reference external" href="https://www.soumu.go.jp/menu_news/s-news/01toukatsu01_02000186.html">統計表における機械判読可能なデータの表記方法の統一ルールの策定</a>というものを出している。
+これが最適な提案かはさておき、データの記述に法則性と機械判読性をもたせる意識を全員が持つことが重要なように思う。</p>
+<p>お掃除ロボットが床を綺麗にするためには、まずお掃除ロボットが走れるよう掃除する(床に物が散乱していない)という条件が求められる、という話だ(そうなの？)。</p>
 </div>
 <div class="section" id="id8">
 <h2><span class="section-number">8.6. </span>パスの指定<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
