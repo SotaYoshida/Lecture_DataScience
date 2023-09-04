@@ -391,65 +391,48 @@
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python">
-     第3回 (第1章:Pythonの基礎)
+     第1章:Pythonの基礎
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#python2">
-     第4回 (第2章:Pythonの基礎2)
+     第2章:Pythonの基礎2
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     第5回 (第3章:関数)
+     第3章:関数
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     第6回 (第4章:ライブラリ)
+     第4章:ライブラリ
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     第7回 (第5章:確率と擬似乱数)
+     第5章:確率と擬似乱数
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     第8回(第6章:相関・回帰分析)
+     第6章:相関・回帰分析
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     第9回 (第7章:最適化問題)
+     第7章:最適化問題
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     第10回 (第8章:ファイル操作)
+     第8章:ファイル操作
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
      最終課題
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id11">
-       テンプレ課題1: オープンデータの収集と可視化
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id12">
-       テンプレ課題2: 機械学習を用いた画像認識/画像生成
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id13">
-       テンプレ課題3: 簡単なゲーム開発
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -468,17 +451,18 @@
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>練習帳<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>このノートブックでは、1-8章で抑えておくべき基本事項を確認するための練習問題を与える。</p>
-<p>CLで収集する授業のリアクションシート(第3回10/24-第9回12/5)には、</p>
+<p>CLで収集する授業のリアクションシートには、</p>
 <ul class="simple">
 <li><p>練習帳のURL</p></li>
-<li><p>授業や資料でわからなかったこと</p></li>
-<li><p>なければ適当な感想(最近ハマっていることやお昼ごはんなど)</p></li>
+<li><p>質問: 授業や資料でわからなかったこと (なければ所感のみでOK)</p></li>
+<li><p>所感: その回で理解した/できるようになったことを完結にまとめる</p></li>
+<li><p>適当な雑談: 最近ハマっていること</p></li>
 </ul>
-<p>を当該の週の水曜17:00までに提出すること。これをもって出席とみなす。</p>
+<p>を<strong>当該の週の水曜17:00まで</strong>に提出すること。これをもって出席とみなす。</p>
 <p>この練習帳の目的は、皆さんが自分自身の理解・疑問点を確認するためであって
-練習帳で書いているコードなどが正しいかどうかは一切授業の評点には関係がない。
-したがって友人に見せてもらったり相談をして体裁を整える必要はまったくないので
-教員やTAへの質問を円滑にするための連絡帳のようなものだと思ってもらえれば良い。</p>
+<strong>練習帳で書いているコードや記述が正しいかどうかは一切授業の評点には関係がない</strong>。</p>
+<p>したがって友人に見せてもらったり相談をして体裁を整える必要はまったく無い。
+質問やその返答を円滑にするための連絡帳のようなものだと思ってもらえれば良い。</p>
 <p>また、質問の見落としを防ぐためリアクションシート(CL)の方で</p>
 <blockquote>
 <div><p>練習帳に詳細な質問とコードを書きました</p>
@@ -486,14 +470,13 @@
 <p>などと教えてもらえるとスムーズな対応が可能になります。</p>
 <div class="section" id="id2">
 <h2>練習帳のノートブックの共有の仕方<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>以下の手順にならってください。
-1-3は1度やれば再び行う必要はありません。</p>
+<p>以下の手順にならってください。1-3は1度やれば再び行う必要はありません。</p>
 <ol class="simple">
-<li><p>まずノートブックのコピーを作成し、ファイル名を適当に編集する: 例: 練習帳_123456X.ipynb (123456Xは学籍番号のつもり)</p></li>
+<li><p>まずノートブックのコピーを作成し、ファイル名を適当に編集する: 例: 練習帳_氏名_123456X.ipynb (123456Xは学籍番号のつもり)</p></li>
 <li><p>右上の共有ボタンを押し、「制限付き」を「リンクを知っている全員」に変更
 (共有ボタンが見えない場合、編集権限がないつまり「ノートブックのコピーをつくる」というお約束を忘れていることを意味する)</p></li>
 <li><p>「リンクを知っている全員」の右にある「閲覧者」を「編集者」に変更する</p></li>
-<li><p>最後に、リンクをコピーし、どこかにメモっておこう(2回目以降はCLで一度提出した過去のURLをコピーするのが手っ取り早い)</p></li>
+<li><p>最後に、ブックマークするか、リンクをコピーしどこかに保存しておこう(2回目以降はCLで一度提出した過去のURLをコピーするのが手っ取り早い)</p></li>
 </ol>
 </div>
 </div>
@@ -502,7 +485,7 @@
 <p>レイアウトは好きに改変してOK.
 コードセル・テキストセルともに自由に追加して構わない。</p>
 <div class="section" id="python">
-<h2>第3回 (第1章:Pythonの基礎)<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<h2>第1章:Pythonの基礎<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>身長と体重に相当する変数を適当に定義し、BMI(体重kg ÷ 身長mの二乗)を計算した上でprintせよ (自身の身長体重を用いる必要はない)</p></li>
@@ -510,7 +493,7 @@
 </ol>
 </div>
 <div class="section" id="python2">
-<h2>第4回 (第2章:Pythonの基礎2)<a class="headerlink" href="#python2" title="Permalink to this headline">¶</a></h2>
+<h2>第2章:Pythonの基礎2<a class="headerlink" href="#python2" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>要素に身長(単位:cm)と体重(単位:kg)を持つ適当なリストを定義し、5人のデータ(リスト)を要素にもつ<strong>入れ子構造のリスト</strong>を作成せよ。ただし3人目の身長と体重は必ず175,60とすること(それ以外は適当で構わない)。</p></li>
@@ -520,7 +503,7 @@
 </ol>
 </div>
 <div class="section" id="id4">
-<h2>第5回 (第3章:関数)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>第3章:関数<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。</p></li>
@@ -528,7 +511,7 @@
 </ol>
 </div>
 <div class="section" id="id5">
-<h2>第6回 (第4章:ライブラリ)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>第4章:ライブラリ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol>
 <li><p>授業で扱った<code class="docutils literal notranslate"><span class="pre">math</span></code>,<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の何れかを使って、任意の半径<code class="docutils literal notranslate"><span class="pre">r</span></code>について円の面積と球の体積を計算する自作関数を作成せよ。</p></li>
@@ -542,7 +525,7 @@
 </ol>
 </div>
 <div class="section" id="id6">
-<h2>第7回 (第5章:確率と擬似乱数)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>第5章:確率と擬似乱数<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>0からn-1(nは適当な整数)までのn個の整数から、重複なくランダムにn個選ぶ(つまり0からn-1の無作為な並べかえをする)コードを作成せよ。(<code class="docutils literal notranslate"><span class="pre">numpy.random.choice</span></code>を使うとよい)</p></li>
@@ -550,15 +533,23 @@
 </ol>
 </div>
 <div class="section" id="id7">
-<h2>第8回(第6章:相関・回帰分析)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>第6章:相関・回帰分析<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>以下のデータ<code class="docutils literal notranslate"><span class="pre">x</span></code>(宇都宮市の月別平均気温)と<code class="docutils literal notranslate"><span class="pre">y</span></code>(アイスクリーム・シャーベットの消費量)のうち、8月のデータ(気温か消費量のいずれか)をランダムな値に変更し相関係数がどうなるか5通りほどで示せ。なお、値を変更する際は手でリストを書き換えるのではなく、リストの要素を書き換えるコードにすること。</p></li>
 <li><p>疑似相関について調べ例をあげよ。(できれば自身の興味に近いものや日本の事例などを調べてみること)</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
+<span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="id8">
-<h2>第9回 (第7章:最適化問題)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>第7章:最適化問題<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>以下に示したデータ(<code class="docutils literal notranslate"><span class="pre">x</span></code>:年, <code class="docutils literal notranslate"><span class="pre">y</span></code>:男子100m走の世界記録(秒))について、6章で出てきたpolyfitを使って1-5次式までの多項式でフィッティングしてみよう。</p></li>
@@ -573,14 +564,14 @@
 </div>
 </div>
 <div class="section" id="id9">
-<h2>第10回 (第8章:ファイル操作)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>第8章:ファイル操作<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>Google Colaboratoryから授業で使ったノートを参照し、Google Driveをマウントしtest.txtファイルの中身を表示せよ。その際、Unix/Linuxコマンドである<code class="docutils literal notranslate"><span class="pre">cat</span></code>を用いれば良い。</p></li>
 <li><p>matplotlibを用いて適当なグラフを描きGoogleドライブに保存せよ。</p></li>
 </ol>
-<p>この問題はDriveのマウント・パスの指定などの一連の作業が理解できているかを確認するものなので、エラーが出た場合はそのログや自身が試した工程についてスクリーンショットなども活用しながらできるだけ詳細に報告すること。特に問題なく作業ができた場合は、2の図を送るなどはしなくて構わない。<br />
-また、プライベートなGoogleアカウントを使用している(※授業では非推奨)場合、相談の際にはプログラムの出力やスクリーンショットなどで他人に見られて困るものが映っていないか配慮すること。</p>
+<p>この問題はDriveのマウント・パスの指定などの一連の作業が理解できているかを確認するものなので、エラーが出た場合はそのログや自身が試した工程について、スクリーンショットなども活用しながらできるだけ詳細に報告すること。特に問題なく作業ができた場合は、2の図を送るなどはしなくて構わない。</p>
+<p>また、プライベートなGoogleアカウントを使用している(※授業では非推奨)場合、相談の際にはプログラムの出力結果やスクリーンショットなどに他人に見られて困るものが映っていないか配慮すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#1.のコードのヒント
@@ -592,55 +583,43 @@
 </div>
 <div class="section" id="id10">
 <h2>最終課題<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>授業の第12-15回で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わない。
-一方で「教員やTAに相談したくない」「レポートの得点が比較的低かった」という方には自由課題は正直オススメできない。</p>
-<p>自由課題に困っている方に向けて予めテンプレ的な課題を3つほど用意してある。自由課題/テンプレ課題の選択で得点が異なることはない。<br />
-「これをやれ!!」という訳ではもちろんなく、課題が思いつかない方への一種の救済措置のようなものだと捉えてほしい。<br />
-以下の例はあくまで必要な情報の例で、加えて分析・考察・機能などを追加すると、もちろん加点対象となる。</p>
-<div class="section" id="id11">
-<h3>テンプレ課題1: オープンデータの収集と可視化<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>政府統計などのオープンデータをなるべく多く取得して、可視化したり考察をしてみよう。</p>
-<ol class="simple">
-<li><p>まずは、ほしいデータの種類と収集方法を考えよう。政府統計ならe-Stat,他にも各地方自治体などがデータを提供していることも多い。</p></li>
-<li><p>データの種類と収集先の目処が経ったら、まずは利用規約を読んでスクレイピング等を禁止していないかを調べる。</p></li>
-<li><p>問題がないことを確認したら、データの収集にあたる。APIなどのデータ取得用の窓口があれば必ずそちらを利用する。</p></li>
-<li><p>次に得られたデータを時系列や他のデータとの相関、年代ごとの棒グラフなど様々な方法で可視化する。</p></li>
-<li><p>可視化されることで得られる理解や予想、その背景について考察を行う。</p></li>
-</ol>
-</div>
-<div class="section" id="id12">
-<h3>テンプレ課題2: 機械学習を用いた画像認識/画像生成<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>画像認識や画像生成を行う機械学習モデルについて概観し、授業を受講している他の学生に説明できるよう解説する。
-その際、情報の参照元は論文が望ましいが、難しければ日本語等の解説を参照して構わない。(注:もちろんレポート内では適切に引用・参照すること)</p></li>
-<li><p>次に、それらの機械学習モデルの中から、PythonがインターフェースとなっていてGoogleColab上で容易に実行ができそうなものを選ぶ。例えば…</p>
+<p>授業の後半で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わない。
+条件としては、以下のようなものが挙げられる:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ultralytics/yolov5">YOLOv5</a>: CNNを用いた画像認識のパッケージ</p></li>
-<li><p><a class="reference external" href="https://github.com/CompVis/stable-diffusion">StableDiffusion</a>: 潜在拡散モデルを用いた画像生成モデル</p></li>
+<li><p>1人(ないし２名ペア)で取り組むこと</p></li>
+<li><p>ペアの場合は、それぞれの寄与を明確にし、一人の寄与が十分に認められること</p></li>
+<li><p>都度、教員に相談しながら、計画的に進めること</p></li>
+<li><p>事前に教員に確認すべき課題の例</p>
+<ul>
+<li><p>個人情報(例えば自営業をしている実家のデータを分析するなど)を含む場合は、それをマスクする処理が可能であること</p></li>
+<li><p>特定のサービス・ソフトウェア・アプリに関する分析(ゲームのデータなどは著作権等の理由から多くの場合不可)</p></li>
+<li><p>アカウントの作成やライセンス等の購入が必要な外部サービスを使用する課題でないこと(≒教員が特段の手続きを経ずとも、課題作成者のサポートや採点・評価が可能なものであること)</p></li>
 </ul>
 </li>
-<li><p>これらを実際に動かして画像認識や画像生成を実行してみる。</p></li>
-<li><p>機械学習モデルによる画像認識/画像生成の技術について、サービスや企業での導入事例などを調べると同時に、こうした技術の使用に際して起こり得るトラブルや問題点について考察する。</p></li>
-</ol>
-</div>
-<div class="section" id="id13">
-<h3>テンプレ課題3: 簡単なゲーム開発<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p>数あてゲームやブラックジャックやババ抜きといったトランプを用いたゲーム、オセロなどを作る。
-(Pythonにはゲーム作成のためのライブラリなどもあるが、これらは自由課題にあたる)</p>
-<ol>
-<li><p>そのために、まずはターンや盤面の状態を表現するための方法を考えよう。例えば…</p>
-<ul class="simple">
-<li><p>山札/場、人数分のリストを用意しておいて手札や盤面などを表現する</p></li>
-<li><p>ターンが進行するたびに絵をplotする仕組みにして、視覚的に表現する</p></li>
 </ul>
-<p>など、考え方は色々ある。(参考:コードの実行中に適宜入力を受け取るようなことももちろんできる。)</p>
+<p>その他、教員が不適切と判断した課題については、課題の変更を求めることがある。</p>
+<p>何もないところから課題を設計するのは難しい。以下の例を参考に、計画をたてよう:</p>
+<p><strong>公開データを元に、栃木県のデータを可視化・分析したい</strong>とする。
+その際に必要な工程や、分析を行うために学修すべき事項を列挙しながら、課題を設計していく。</p>
+<ul class="simple">
+<li><p>データの収集: 興味のあるデータがオープンデータとして公開されているかを調べる。</p>
+<ul>
+<li><p>例1: <a class="reference external" href="https://www.e-stat.go.jp/">e-Stat</a></p></li>
+<li><p>例2: <a class="reference external" href="https://odcs.bodik.jp/090000/">オープンデータ・ベリーとちぎ</a></p></li>
+</ul>
 </li>
-<li><p>ゲーム開始の状況を表現するための方法を考える(山札をランダムに配る, 駒の初期配置など)</p></li>
-<li><p>比較的簡単な状況(参加人数はできるだけ少なくルールも単純化する)でプログラムを作ってみる。例えばオセロだと4×4にする。</p></li>
-<li><p>特殊な場合(ババ抜きで配った瞬間誰かがあがってしまう, パスが必要)に対する対策を講じる。</p></li>
-<li><p>他人に遊んでもらえるようルールを説明するテキスト部分を用意する。(オセロの例なら、どうやって置く駒の座標を指定するか。キーボードで操作するのかクリックなのかなど。)</p></li>
-</ol>
-</div>
+<li><p>地図を描き、市町村ごとに特定のデータをカラーマップとして表示する事を考える。</p>
+<ul>
+<li><p>そのためには、市町村の境界線のデータが必要になる。例えば、<a class="reference external" href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v2_3.html">国土数値情報ダウンロードサービス</a>からデータを収集するとする。</p></li>
+<li><p>得られたデータを地図上で可視化するために、使えそうなライブラリを探す。例えば、<a class="reference external" href="https://geopandas.org/">geopandas</a>や<a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>が使えそうである。</p></li>
+<li><p>簡単なデータから初めて、ライブラリの使い方を学びながら、地図を描くことを目指す。</p></li>
+<li><p>その他、地図上に関連する(例えば…特定の商業施設やLRTの停留所など)ピンを打ってみる</p></li>
+</ul>
+</li>
+<li><p>実際のデータを元に、分析を行う</p></li>
+<li><p>問題点が生じた場合、その原因を特定し、解決するために必要な知識を学ぶ。(以下試行錯誤…)</p></li>
+</ul>
+<p>といった具合だ。あくまで、例であるので、自身の興味に合わせて課題を設計していくこと。</p>
 </div>
 </div>
 

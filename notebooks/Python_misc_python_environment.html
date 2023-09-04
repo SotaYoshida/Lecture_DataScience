@@ -440,6 +440,13 @@
     <a class="reference internal nav-link" href="#id4">
      Linuxのホームディレクトリの変更
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dot-files">
+       隠しファイル/隠しフォルダ(dot files)について
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -972,6 +979,49 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
 </pre></div>
+</div>
+<div class="section" id="dot-files">
+<h3>隠しファイル/隠しフォルダ(dot files)について<a class="headerlink" href="#dot-files" title="Permalink to this headline">¶</a></h3>
+<p>Linuxでは、ファイル名の先頭に<code class="docutils literal notranslate"><span class="pre">.</span></code>がついているものは隠しファイルと呼ばれ、通常の<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドなどの表示対象外となる。
+隠しファイルを表示するには、<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドに<code class="docutils literal notranslate"><span class="pre">-a</span></code>オプションをつければよい。</p>
+<p>とくに、ホームディレクトリには、特定のアプリケーションの設定ファイルなどが隠しファイルとして保存されていることが多く、
+数値計算ライブラリの開発や使用、ソースコードの編集・実行などの際には、隠しファイルを扱うこともある。</p>
+<p>これら隠しファイルや隠しフォルダは、dot filesと呼ばれることもあり、
+新しい端末を購入したときの設定ファイルの移行などにも使われる。</p>
+<p>特に複数台の端末を使用している人などは、GitHubなどのリポジトリに自身のdot filesをアップロードしておき、
+新しい端末を購入した際には、そのリポジトリからdot filesをダウンロードして使用することで、
+移行をスムーズにしているようである(私は割とイチから設定するのが好きだったりします)。</p>
+<p>以下では、代表的なものを少し紹介しておく:</p>
+<p><strong>.bashrc</strong> : bashの設定ファイル</p>
+<p>エイリアスの設定などを書くことができる. エイリアスとは、例えばコマンドでpythonを使う際、いちいち<code class="docutils literal notranslate"><span class="pre">python</span></code>とか<code class="docutils literal notranslate"><span class="pre">python3.9</span></code>などを
+指定しなくてもお目当てのpython環境を使用できるようにするためのもの. 例えば、.bashrcに</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">py</span><span class="o">=</span><span class="n">python3</span><span class="mf">.9</span>
+</pre></div>
+</div>
+<p>などと書いておけば、<code class="docutils literal notranslate"><span class="pre">py</span></code>と打つだけでpython3.9が起動/使用できるようになる.</p>
+<p>注意としては</p>
+<ol class="simple">
+<li><p>使用しているシェルによって、設定ファイルの名前が異なることがある. 例えば、bashの場合は<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>だが、zshの場合は<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>となる.</p></li>
+<li><p>設定ファイルを変更した場合は、<code class="docutils literal notranslate"><span class="pre">source</span></code>コマンドを実行することで、変更を反映させる必要がある. 例えば、<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>を変更した場合は、</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
+</pre></div>
+</div>
+<p>とするか、ターミナルを再起動する必要がある.</p>
+<p><strong>エディタの設定ファイル</strong></p>
+<p>CUI/GUIを問わず、エディタの設定ファイルもホームディレクトリ直下の隠しディレクトリとして保存されることが多い.</p>
+<p>例えば私の環境だと、<code class="docutils literal notranslate"><span class="pre">~/.emacs</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.vim</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.vscode</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.atom</span></code>など、今は使っていないものも含めて、
+エディタの設定ファイルが保存されている。</p>
+<p><strong>sshの設定ファイル</strong></p>
+<p>SSHとは、スーパーサイエンスハイスクール…ではなく、Secure Shellの略で、ネットワーク上で安全にリモートコンピュータにログインしたり、
+ファイルを転送したりするためのプロトコルである。</p>
+<p>例えば研究室内に置かれたワークステーションやスパコンなど別の環境にログインして重い計算を回す、といったときには基本的にはssh公開鍵認証を用いてローカル環境からリモート環境にログインすることになるが、
+その際に使用する鍵や、リモート環境へのログインに必要な情報などが、ホームディレクトリ直下の隠しディレクトリ<code class="docutils literal notranslate"><span class="pre">~/.ssh</span></code>に保存される。</p>
+<p>例えば、(sshを使ったことがある場合は)<code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>に、接続先のホスト名やポート番号などが記載されたり、
+逆にリモート側では、<code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code>に、接続を許可する公開鍵が記載されていたりする。</p>
+<p>なお、公開鍵認証とは、リモート環境にログインする際に、公開鍵と秘密鍵のペアを用いて認証を行う方式で、
+秘密鍵はローカル環境に、公開鍵はリモート環境に置いておくことで、安全にログインを行うことができるものである。
+秘密鍵の取り扱いに注意が必要であることは言うまでもない。</p>
 </div>
 </div>
 </div>
