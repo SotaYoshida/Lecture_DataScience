@@ -34,6 +34,5 @@ Google Colab.上でノートブックを開くには、各章の冒頭に用意�
 本講義資料に関する不具合(リンク切れなど)の報告や問い合わせについては下記のフォームよりお願いします。
 授業受講者からの不具合報告関しては授業やCL等で返答します。授業外の問い合わせについては、お答え出来ない場合もありますので予めご了承ください。
 
-2022/09/30: 一部資料(とくに後半)について、年次変更に伴うリンクやパス等の変更が反映されていないことがありますが、順次変更を行いますのでご安心ください。
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe9kSorMjkJPhbHqDWUwBNykaZ1yVDZ1eGl-5goFnNS-vQsQA/viewform?embedded=true" width="900" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
