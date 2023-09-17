@@ -395,6 +395,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   3.3. 関数とメソッド
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -783,6 +788,26 @@ ret [&#39;BBB&#39;, 0, 1, 2] 139900671867152 139900673209136
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">3.3. </span>関数とメソッド<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>これまで登場してきた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などの関数は、Pythonに組み込まれている関数で、<code class="docutils literal notranslate"><span class="pre">関数()</span></code>という自作関数と同じ方法で呼び出せた。</p>
+<p>一方で、リストや文字列などのオブジェクトに対して、<code class="docutils literal notranslate"><span class="pre">オブジェクト.関数()</span></code>という形で呼び出せる関数がある。
+これらは<strong>メソッド</strong>と呼ばれ、オブジェクト(正確にはクラス)に対して定義された関数になっている。</p>
+<p>たとえば、リストに対して<code class="docutils literal notranslate"><span class="pre">append</span></code>というメソッドを呼び出すと、リストの末尾に要素を追加することができた</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>関数もメソッドも、引数を取り何らかの操作をするという点では同じだが、両者はその設計思想が異なるため、混乱しないように注意する必要がある。
+大雑把に言えば、<strong>関数は引数を取り、何らかの操作を行い、戻り値を返す</strong>という設計思想であるのに対し、<strong>メソッドはオブジェクトに対して何らかの操作を行う</strong>という設計思想である。</p>
+<p>この授業では、クラスについての説明を行わないため、自分でクラスないしメソッドを定義することはないとは思うが、
+ライブラリ等で用意されているクラス・メソッドを用いることも多いため、混乱した場合はこの違いを意識するようにすると良い。</p>
 </div>
 </div>
 

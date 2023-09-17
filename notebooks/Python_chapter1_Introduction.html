@@ -435,14 +435,17 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter1_Introduction.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="python-1">
 <h1><span class="section-number">1. </span>Pythonの基本 その１:<a class="headerlink" href="#python-1" title="Permalink to this headline">¶</a></h1>
-<p>授業の冒頭で説明するように「プログラミングを学ぶこと」「プログラミングでDSを学ぶこと」は、複雑なデータの取り扱いを簡単にしてくれたり系統的な作業を可能にしミス(精度)をコントロールすることが出来たりと利点が多い。しかし、その恩恵を受けるためには基本的な事項をまず学修しなくてはならない。</p>
-<p>この授業で重視するのは<strong>Pythonの文法や作法、テクニックではない</strong>。というのも、自分が実現したい操作・作業をきちんと<strong>言語化</strong>することさえできれば、授業で扱う程度の内容であればググればだいたいのことは解決できる※し、インターフェース(見た目)が違ったとしても別のプログラミング言語やデータ解析ツールにも応用が効く。<br />
-※さらにいうとそれを英語で検索できればウェブ上で収集できる情報は何倍にも膨れ上がる.</p>
-<p>したがって、以降では「なんのためにXXXなんてものを導入(定義)するのか？」を意識しながら学習していくことにしよう。</p>
+<p>授業の冒頭で説明するように、プログラミングによるデータ分析は、複雑なデータの取り扱いを簡単にしてくれたり、系統的な作業を可能にしミス(精度)をコントロールすることが出来たりと利点が多い。しかし、その恩恵を受けるためには基本的な事項をまず学修しなくてはならない。</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>さらにいうと英語で検索できればウェブ上で収集できる情報は何倍にも膨れ上がる.</p>
+</div>
+<p>この授業で重視するのは<strong>Pythonの文法や作法、テクニックではない</strong>。というのも、自分が実現したい操作・作業をきちんと<strong>言語化</strong>することさえできれば、授業で扱う程度の内容であればググればだいたいのことは解決できるし、インターフェース(見た目)が違ったとしても別のプログラミング言語やデータ解析ツールにも応用が効く。</p>
+<p>したがって、以降では「いったいなんのためにホニャララなんてものを導入(定義)するのか？」を意識しながら学習していくことにしよう。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">1.1. </span>変数の定義と簡単な演算<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>「”値”に固有の名前（識別子）を付したもの」</strong> を<strong>変数</strong>と定義する。</p>
-<p>どのようなものが”値”として扱えるかは後で見ていくことにして、まずは代表的な値(実数値,整数)を変数として定義してみよう。</p>
+<p>どのようなものが”値”として扱えるかは後で見ていくことにして、まずは代表的な値である<strong>実数値</strong>,<strong>整数</strong>を変数として定義してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span> 
@@ -457,7 +460,7 @@
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">1.2. </span>簡単な演算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>次に、上で定義された変数を使って四則演算をしてみまよう。</p>
+<p>次に、上で定義された変数を使って四則演算をしてみよう。</p>
 <p>足し算</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -484,7 +487,7 @@
 </div>
 </div>
 </div>
-<p>掛け算 掛け算記号は*(アスタリスク)です</p>
+<p>掛け算 掛け算記号は<code class="docutils literal notranslate"><span class="pre">*</span></code>(アスタリスク)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
@@ -505,7 +508,7 @@
 </div>
 </div>
 </div>
-<p>演算した結果を別の変数cに代入して保存しておくこともできます。</p>
+<p>演算した結果を別の変数<code class="docutils literal notranslate"><span class="pre">c</span></code>として定義したり代入して保存しておくこともできる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> 
@@ -513,7 +516,7 @@
 </div>
 </div>
 </div>
-<p>cの値が後で知りたいと思ったときは、以下のように<code class="docutils literal notranslate"><span class="pre">print</span></code>関数というものを使う</p>
+<p><code class="docutils literal notranslate"><span class="pre">c</span></code>の値が後で知りたいと思ったときは、以下のように<code class="docutils literal notranslate"><span class="pre">print</span></code>関数というものを使う</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -536,12 +539,7 @@
 </div>
 </div>
 </div>
-<p>なれないうちは</p>
-<ul class="simple">
-<li><p>どういった計算をするのか</p></li>
-<li><p>その行をいつ編集したのか</p></li>
-</ul>
-<p>などコメントを逐一書いておくのも良い。</p>
+<p>なれないうちは<strong>どういった計算をするのか</strong>、<strong>その行をいつ編集したのか</strong>などコメントを逐一書いておくのも良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## 10月1日に編集</span>
@@ -577,15 +575,14 @@
 </div>
 </div>
 </div>
-<p>は一見問題ないように見えるが、<code class="docutils literal notranslate"><span class="pre">print</span></code>関数の右側の括弧が全角になっているため、これもSyntaxErrorとなる。
+<p>は一見問題ないように見えるが、<code class="docutils literal notranslate"><span class="pre">print</span></code>関数の右側の括弧<code class="docutils literal notranslate"><span class="pre">（</span></code>が全角になっているため、これもSyntaxErrorとなる。
 細かな文法やエラーの原因の特定については、一緒に少しずつ慣れていこう。</p>
-<p>一度定義した変数は、値を更新することもできる。<br />
-<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>は、”aに2を加えた値”でaを再定義することを表す。
-また、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+=</span> <span class="pre">2</span> </code>と書いても同じ結果が得られる。(<code class="docutils literal notranslate"><span class="pre">+=</span></code> を用いた書き方のほうがシンプルなので、今後多用します)</p>
+<p>一度定義した変数は、値を更新することもできる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">2</span></code>は、”aに2を加えた値”でaを再定義することを表し、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+=</span> <span class="pre">2</span> </code>と書いても同じ結果が得られる。(<code class="docutils literal notranslate"><span class="pre">+=</span></code> を用いた書き方のほうがシンプルなので、今後多用します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span> 
-<span class="n">a</span> <span class="o">+=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">## セミコロン(半角)で、複数のコードを１行に書くことができる</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mf">4.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> 
 <span class="n">a</span> <span class="o">-=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">*=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">/=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5行目&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -593,10 +590,11 @@
 </div>
 </div>
 </div>
+<p>上では、セミコロン()<code class="docutils literal notranslate"><span class="pre">;</span></code>)で、複数のコードを１行に書くことができる機能を用いた。</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">1.3. </span>変数名に関する約束<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>この授業では「変数名に全角文字(ひらがな・カタカナ・漢字)はできるだけ使わず、文字列にのみ使う」と約束をしよう。</p>
+<p>この授業では<strong>変数名に全角文字(ひらがな・カタカナ・漢字)は使わず、文字列かコメントにのみ使う</strong>と約束をしよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#非推奨</span>
@@ -606,9 +604,12 @@
 </div>
 </div>
 </div>
-<p>上記のように、変数名にひらがな等を使用することは可能です。Google Colaboratoryでは何も特別なことをしなくてもひらがなが使えますし最近の多くのプログラミング言語は全角文字をサポートしています。ただファイルの互換性などを考慮すると、一般にはひらがなや漢字など全角文字を変数に指定することは避けたほうが無難です。</p>
-<p>また、変数名などにひらがなを使うことに由来して起こりがちなバグとしては「括弧()を間違って全角にしてしまってそれに気が付かない」といったことがある。</p>
-<p>以降ではこの慣例にならって、変数名に全角文字は使いません。変数名は基本的に半角英数字, アンダースコア”_”, のみで定義しましょう。<code class="docutils literal notranslate"><span class="pre">+-%/=</span></code>などの記号も使うことができません。たとえば<code class="docutils literal notranslate"><span class="pre">-</span></code>は既に引き算という演算を表すのに使用されているので、<code class="docutils literal notranslate"><span class="pre">a-b</span></code> という名前の変数を定義しようとしても、コンピュータにとっては変数ではなく[a マイナス b]という演算だと認識されてしまいます。また変数の頭に数字を使うこともできません。 例: <code class="docutils literal notranslate"><span class="pre">2a</span></code></p>
+<p>上記のように、変数名にひらがな等を使用すること自体は可能で、Google Colaboratoryでも何も特別なことをしなくてもひらがなが使える。また、最近の多くのプログラミング言語は全角文字をサポートしている。
+ただファイルの互換性などを考慮すると、一般にはひらがなや漢字など全角文字を変数に指定することは避けたほうが無難である。</p>
+<p>また、変数名などにひらがなを使うことに由来して起こりがちなバグとしては「括弧()を間違って全角にしてしまってそれに気が付かない」といったことがある。コードを編集する際に日本語の変数などを利用していると、半角・全角の切り替え忘れなどが生じうるので、コードセルではなるべく半角英数字のみを使うというのが、ミスを防ぐための一つの方法にもなっている。</p>
+<p>以降ではこの慣例にならって、変数名に全角文字は使わない。変数名は基本的に半角英数字, アンダースコア<code class="docutils literal notranslate"><span class="pre">_</span></code>のみで定義しよう。
+<code class="docutils literal notranslate"><span class="pre">+-%/=</span></code>などの記号も使うことができない。たとえば<code class="docutils literal notranslate"><span class="pre">-</span></code>は既に引き算という演算を表すのに使用されているので、<code class="docutils literal notranslate"><span class="pre">a-b</span></code> という名前の変数を定義しようとしても、コンピュータにとっては変数ではなく[a マイナス b]という演算だと認識されてしまう。
+また変数の頭に数字を使うこともできない。 例: <code class="docutils literal notranslate"><span class="pre">2a</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">5.0</span>
@@ -636,8 +637,7 @@
 </div>
 <div class="section" id="python">
 <h2><span class="section-number">1.4. </span>Pythonでの文字列操作<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<p>Pythonでは、数値はもちろん文字列も”値”として扱うことができます。<br />
-簡単に文字列の操作ができることも、Pythonが愛される理由の一つでしょう。</p>
+<p>Pythonでは、数値はもちろん文字列も<strong>値</strong>として扱うことができる。文字列は<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>(ダブルクォーテーション)か<code class="docutils literal notranslate"><span class="pre">''</span></code>(シングルクォーテーション)で囲むことで定義することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;私の名前はXXXです&quot;</span> <span class="c1">## XXXのところを自分の名前にしてみましょう。</span>
@@ -646,8 +646,7 @@
 </div>
 </div>
 </div>
-<p>文字列と文字列同士では、足し算や掛け算が適用できます。
-たとえば</p>
+<p>文字列と文字列同士では、足し算や掛け算が適用できる。たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text1</span> <span class="o">=</span> <span class="s2">&quot;ティッシュ配りの&quot;</span>
@@ -657,7 +656,8 @@
 </div>
 </div>
 </div>
-<p>とすれば、<code class="docutils literal notranslate"><span class="pre">text1</span></code>と<code class="docutils literal notranslate"><span class="pre">text2</span></code>にそれぞれ代入した２つの文字列を連結した一つの文字列として表示することができます。また、</p>
+<p>とすれば、<code class="docutils literal notranslate"><span class="pre">text1</span></code>と<code class="docutils literal notranslate"><span class="pre">text2</span></code>にそれぞれ代入した２つの文字列を連結した一つの文字列を表示することができる。
+また、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
@@ -666,18 +666,19 @@
 </div>
 </div>
 </div>
-<p>とすれば、<code class="docutils literal notranslate"><span class="pre">text2</span></code>部分を５回繰り返して他の文字列とつなぎ合わせた長い文字列を作ることができます。ここで、整数値を代入した<code class="docutils literal notranslate"><span class="pre">a</span></code>を文字列として他の文字列と結合したいときは、<code class="docutils literal notranslate"><span class="pre">str()</span></code>関数(<code class="docutils literal notranslate"><span class="pre">str</span></code>はstringの略)を使って、文字列に変換してやらなくてはいけません。これに関連して後で<strong>型</strong>というものを勉強します。<br />
-また足し算と掛け算は定義できますが、文字列に対して引き算や割り算を行おうとするとエラーを吐きます。</p>
-<p><strong>もう少し詳細な文字列操作</strong>
-<code class="docutils literal notranslate"><span class="pre">replace</span></code>関数,<code class="docutils literal notranslate"><span class="pre">split</span></code>関数,<code class="docutils literal notranslate"><span class="pre">strip</span></code>関数なども便利ですが、この章では省略します。
-以降の”ファイル・文字列操作”の章で扱います。</p>
+<p>とすれば、<code class="docutils literal notranslate"><span class="pre">text2</span></code>部分を５回繰り返して他の文字列とつなぎ合わせた長い文字列を作ることもできる。</p>
+<p>１点注意点としては、整数値を代入した<code class="docutils literal notranslate"><span class="pre">a</span></code>を文字列として他の文字列と結合したいときは、
+<code class="docutils literal notranslate"><span class="pre">str()</span></code>関数(<code class="docutils literal notranslate"><span class="pre">str</span></code>はstringの略)を使って、文字列に変換してやらなくてはならない。
+これに関連して、後ほど変数の<strong>型</strong>というものを勉強する。</p>
+<p>また足し算と掛け算は定義できるが、文字列に対して引き算や割り算を行おうとするとエラーを吐く。</p>
+<p><strong>※もう少し詳細な文字列操作</strong>
+<code class="docutils literal notranslate"><span class="pre">replace</span></code>関数,<code class="docutils literal notranslate"><span class="pre">split</span></code>関数,<code class="docutils literal notranslate"><span class="pre">strip</span></code>関数なども便利ですが、この章では省略します。以降の”ファイル・文字列操作”の章で扱います。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id4">
 <h2><span class="section-number">1.5. </span>プログラムの実行順<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>基本的にプログラミングでは、上から処理が実行されます。<br />
-(ループや関数とが導入されると少し事情が異なります。この点については、追々見ていくことにしましょう)</p>
-<p>以下の2行のコードは、実行するとエラーが出ます。</p>
+<p>基本的にプログラミングでは、上から処理が実行される。<br />
+(ループや関数が導入されると少し事情が異なり、ブロックと呼ばれる処理単位でまとめて実行されることもあるが、この点については、２・３章以降で追々見ていくことにしましょう)</p>
+<p>以下の2行のコードは、実行するとエラーが出る。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -697,8 +698,8 @@
 </div>
 </div>
 </div>
-<p>理由は、<code class="docutils literal notranslate"><span class="pre">num</span></code>という変数が定義されていない(not defined/undefined)のに、その値を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしたからです。<br />
-もちろん<code class="docutils literal notranslate"><span class="pre">num=2</span></code>の代入部分を含むコードを実行した後ならエラーは出ません。</p>
+<p>理由は、エラーメッセージを読むと分かるように、<code class="docutils literal notranslate"><span class="pre">num</span></code>という変数が定義されていない(not defined/undefined)のに、その値を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしたからである。</p>
+<p>もちろん<code class="docutils literal notranslate"><span class="pre">num=2</span></code>の代入部分を含むコードを実行した後ならエラーはでない。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span><span class="o">=</span><span class="mi">2</span>
@@ -712,7 +713,7 @@
 </div>
 </div>
 </div>
-<p>とくにGoogle Colab(Jupyter Notebook)環境では、<strong>セルをまたいでコードを実行することがあるので、意図した変数の値がきちんと引き継がれているか注意が必要</strong>です。また<strong>変数のスコープ</strong>という概念にも注意が必要です(“関数”の章で解説します)</p>
+<p>とくにGoogle Colab(Jupyter Notebook)環境では、<strong>セルをまたいでコードを実行することがあるので、意図した変数の値がきちんと引き継がれているか注意が必要</strong>になる。また<strong>変数のスコープ</strong>という概念にも注意が必要となる(関数を扱う第３章で解説します).</p>
 <p>Jupyter Notebook環境では、セルのコードを逐次実行した場合<strong>コードセルの左側に表示される括弧[ ]内の整数でコードの実行順を確認することができる</strong>。コードやノートが複雑になってくると、正しい順番で実行しないとエラーが出たり、エラーは出ないけれど意図した出力にならないといった事が起こりえるので、注意が必要。慣れないうちは、処理(プログラム)をあまりバラバラのセルに書かず、一つにまとめて書くのがオススメ</p>
 <p><strong>良い例</strong></p>
 <div class="cell docutils container">

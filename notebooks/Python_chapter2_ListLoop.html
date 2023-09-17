@@ -380,32 +380,33 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#index">
+     2.1.1. リストの要素にアクセスする, インデックス(index)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     2.1.1. リストの結合
+     2.1.2. リストの結合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.1.2. リストに要素を加える
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     2.1.3.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     インデックスの取得
+     2.1.3. リストに要素を加える
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.1.4. スライスを用いた部分リストの取得
+     2.1.4. インデックスの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.1.5.
+     2.1.5. スライスを用いた部分リストの取得
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit">
+     2.1.6.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -420,13 +421,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#for">
-   2.3. for文(ループ処理)
+  <a class="reference internal nav-link" href="#id6">
+   2.3. ループ処理
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     2.3.1. 簡単なfor文
+    <a class="reference internal nav-link" href="#for">
+     2.3.1. for文
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -508,16 +509,20 @@
 プログラミングで非常に重要な概念である配列や繰り返し処理について学ぶ。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>実際にいろんなデータを扱う際には、  値や変数をまとめて処理したくなります。<br />
-こうしたときに必要になるのが以下で扱う<strong>リスト</strong>型の変数です。</p>
+<p>実際にいろんなデータを扱う際には、値や変数をまとめて処理したくなります。
+こうしたときに必要になるのが以下で扱う<strong>リスト</strong>型を始めとする<strong>配列</strong>です。</p>
 <p>リストは、値や変数などを括弧[ ]で括り、カンマで区切ることで作ることができます。
 例: <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0,</span> <span class="pre">3.0]</span></code><br />
 また好きな名前の変数にリストを代入する(リストに名前を割り振る)こともできます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変数aの型(type)は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># 変数aの型をprint</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
+
+<span class="c1"># 変数heightsをprint</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+
+<span class="c1"># 変数heightsの型をprint</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変数aの型(type)は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">heights</span><span class="p">))</span>  
 </pre></div>
 </div>
 </div>
@@ -533,17 +538,18 @@
 <p>リストに入っている要素の数は、<code class="docutils literal notranslate"><span class="pre">len()</span></code>関数(lengthの略)で見ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaは&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストnamesは&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>当然、長さに名前をつけて適当な変数に突っ込むこともできます。</p>
+<p>当然、長さに名前をつけて適当な変数として定義することもできます。
+<strong>関数の出力の結果を何度も後で再利用する場合</strong>などは、このように変数に代入しておくと便利です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaの長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaの長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
 </pre></div>
 </div>
 </div>
@@ -552,9 +558,11 @@
 例：名前、身長、体重 =&gt; <code class="docutils literal notranslate"><span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,</span> <span class="pre">66]</span></code></p>
 <p>また、これを拡張して、入れ子に(リストのリストを作成)することもできます。
 <code class="docutils literal notranslate"> <span class="pre">[</span> <span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,66],</span> <span class="pre">[&quot;Bさん&quot;,</span> <span class="pre">180,</span> <span class="pre">70]</span> <span class="pre">]</span></code></p>
+<div class="section" id="index">
+<h3><span class="section-number">2.1.1. </span>リストの要素にアクセスする, インデックス(index)<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
 <p>リストの中の要素にアクセスするときは、半角括弧を使って[整数]といった形で”番地”を指定します。<br />
-このときの番地(あるいは座標といっても良いですが)を指定する整数のことをインデックス(index)と呼びます。<br />
-<strong>Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします</strong>。</p>
+このときの番地(あるいは座標といっても良いですが)を指定する整数のことをインデックス(index)と呼びます。</p>
+<p><strong>【重要】Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします!</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
@@ -575,7 +583,8 @@
 </div>
 <p>list index out of range (リストのインデックスが用意された範囲(range)を逸脱している)というエラーが出ます。<br />
 慣れないうちは0からカウントするのを変に思うかもしれませんが、これはプログラミング言語の仕様によるもので、Pythonの他にもC/C++なども0からカウントします。(ちなみにFORTRAN, Juliaなどは1からカウントします。)</p>
-<p>ググると、こうした0-based indexingと呼ばれる言語の利点がいくつか出てきます。代表的なものは負のインデックスが自然に使えることでしょうか？</p>
+<p>こうした0-based indexingと呼ばれる言語の利点はいくつかありますが、代表的なものは負のインデックスが自然に使えることでしょうか？</p>
+<p>理工系分野では、教科書などで行列やベクトルの要素を指定するのに1-based indexingを使うことも多いため、混乱するかもしれません。慣れるまでは注意が必要です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
@@ -589,7 +598,7 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">[-1]</span></code>でアクセスすれば末尾の要素に、<code class="docutils literal notranslate"><span class="pre">[-2]</span></code>番目の要素は後ろから二番目といった具合です。</p>
 <p>長いリストを作って「えっとこれ前から何番目の要素だったっけ…？」というときに、<br />
-後ろから３番目の要素をサクッと取得できるのが便利なときもあります。</p>
+後ろからX番目の要素といったように、サクッと取得できるのが便利なときもあります。</p>
 <p>入れ子にしたリストの要素を見たり、使いたいときには、少々慣れが必要です。<br />
 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">[</span> <span class="pre">[[1,2],</span> <span class="pre">[3,4]],</span> <span class="pre">5,</span> <span class="pre">6]</span></code><br />
 このような場合では、一番外側の括弧から数えて、<br />
@@ -599,8 +608,8 @@
 <div class="margin sidebar">
 <p class="sidebar-title">変数名の規則</p>
 <p>授業の資料のように、一時的な変数を使う場合は<code class="docutils literal notranslate"><span class="pre">a</span></code>や<code class="docutils literal notranslate"><span class="pre">tmp</span></code>といった意味のない変数名で十分なのですが
-自身でいろんなコードを書くときは<strong>後で自分(他人)が見たときになんの変数のつもりか分かる</strong>ような変数名にしましょう。
-5日後の自分は他人です。</p>
+自身でいろんなコードを書くときは<strong>後で自分や他人が見たときになんの変数のつもりか分かる</strong>ような変数名にしましょう。
+5日後の自分も他人のようなものです。</p>
 </div>
 <ol class="simple">
 <li><p>[+コード]でセルを以下に追加し、下のリストを作成する<br />
@@ -616,9 +625,9 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p class="admonition-title">Note</p>
 <p>テキストセルの内容をコードセルなどにコピー&amp;ペーストしたければ、対象をドラッグして、<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>でコピー,<code class="docutils literal notranslate"><span class="pre">Ctrl+V</span></code>でペースト出来ます(Macの場合は<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>を<code class="docutils literal notranslate"><span class="pre">⌘</span></code>に置き換えてください)</p>
 </div>
-<hr class="docutils" />
+</div>
 <div class="section" id="id2">
-<h3><span class="section-number">2.1.1. </span>リストの結合<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>リストの結合<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>２つのリストを結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,7 +655,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <div class="section" id="id3">
-<h3><span class="section-number">2.1.2. </span>リストに要素を加える<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.3. </span>リストに要素を加える<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>リストにあとから要素を加えたくなるときもあります.<br />
 そんなときは <code class="docutils literal notranslate"><span class="pre">append</span></code>関数か<code class="docutils literal notranslate"><span class="pre">+=</span></code>を使います。</p>
 <div class="cell docutils container">
@@ -756,8 +765,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="clubsuit">
-<h3><span class="section-number">2.1.3. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> インデックスの取得<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3><span class="section-number">2.1.4. </span>インデックスの取得<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,8 +787,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 <p>複雑なデータを扱う際に「あれ、あの要素ってどこの番地にあるんだっけ？」といった状況に便利な関数です。</p>
 </div>
-<div class="section" id="id4">
-<h3><span class="section-number">2.1.4. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><span class="section-number">2.1.5. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -788,7 +797,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<p>始点,コロン,終点でインデックスの範囲を指定して、部分的に取り出すことが出来ます。</p>
+<p>始点,コロン(<code class="docutils literal notranslate"><span class="pre">:</span></code>),終点でインデックスの範囲を指定して、部分的に取り出すことが出来ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -814,8 +823,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3><span class="section-number">2.1.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="clubsuit">
+<h3><span class="section-number">2.1.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、ググれば自分でだいたい解決することができます。<br />
 ただしこの項目で述べることは(初学者にとって)「直感に反するのだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
 <p>例を見せるために、以下の2種類のリストを用意します.</p>
@@ -850,8 +859,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <p>data2の最初の要素(Aさんのままであってほしいリスト)まで上書きされてしまっています。<br />
-これは直感に反しているという点で、初学者が陥りやすい落とし穴です。
-※C言語などを学習していれば、参照渡し(ポインタ渡し)などである程度馴染みがあるかもしれません。</p>
+これは直感に反しているという点で、初学者が陥りやすい落とし穴です。</p>
+<p>※C言語などを学習していれば、参照渡し(ポインタ渡し)などである程度馴染みがあるかもしれません。</p>
 <p>「値を格納する箱というよりは値が保管される住所を示すもの」と1章の[変数の定義と簡単な演算]のところで書きました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,11 +985,12 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="for">
-<h2><span class="section-number">2.3. </span>for文(ループ処理)<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
-<p>for文(ループ処理)は、プログラミングの中で<strong>最も重要な概念の一つ</strong>です。</p>
 <div class="section" id="id6">
-<h3><span class="section-number">2.3.1. </span>簡単なfor文<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">2.3. </span>ループ処理<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>ループ処理は、プログラミングの中で<strong>最も重要な概念の一つ</strong>です。<br />
+ループ処理を使うことで、同じ処理を繰り返し行うことができます。</p>
+<div class="section" id="for">
+<h3><span class="section-number">2.3.1. </span>for文<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
 <p>まず以下のコードを実行してみましょう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,8 +1077,10 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p>さて簡単な例でブロックごとの処理の挙動を確認しておきましょう。</p>
 <p><strong>練習問題</strong></p>
 <p>以下のコードを実行すると、何回数字がprintされるでしょうか？<br />
-コードを実行する前に、三択で答えてみてください。<br />
-A. 8回 B. 11回 C. 13回</p>
+コードを実行する前に、三択で答えてみてください。</p>
+<p>A. 8回</p>
+<p>B. 11回</p>
+<p>C. 13回</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
@@ -1133,7 +1145,6 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 <p>さて、ループ(for文)の使い方がなんとなく分かったでしょうか？<br />
 どんどん使ってみて、なれておいてください。</p>
-<p><strong>第1回のレポートでも多用することになるはずです</strong></p>
 <p>他にも、たとえば、 1, 10, 100, 1000, 10000,…というループを回したい時、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1169,21 +1180,24 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 <div class="section" id="break">
 <h3><span class="section-number">2.3.4. </span>break ループ処理を途中で抜けたい場合<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">break</span></code>は<code class="docutils literal notranslate"><span class="pre">for</span></code>文を途中で抜け出すのに使います。<br />
-用途としては<strong>目的を果たしたのでもうループを繰り返す必要がないとき</strong>や<strong>予期せぬ事が起きた場合にループ処理を終わらせてプログラムを終了するとき</strong>などに使います.</p>
+<p><code class="docutils literal notranslate"><span class="pre">break</span></code>は<code class="docutils literal notranslate"><span class="pre">for</span></code>文を途中で抜け出すのに使います。用途としては<strong>目的を果たしたのでもうループを繰り返す必要がないとき</strong>や<strong>予期せぬ事が起きた場合にループ処理を終わらせてプログラムを終了するとき</strong>などに使います.</p>
 <p>以下のような状況を考えてみましょう</p>
 <blockquote>
 <div><p>Aさんは100万円を手にカジノにやってきて、<br />
 掛け金が20万かつ50%の確率で勝ったり負けたりするギャンブルに目をつけました。</p>
 </div></blockquote>
-<p>このAさんが [最大10回ゲームをやるが１回でも負ければ即座に賭けをやめたい]という状況を<br />
-コードで表現する場合、以下のようなコードになります:</p>
+<p>このAさんが [最大10回ゲームをやるが１回でも負ければ即座に賭けをやめたい]という状況をコードで表現する場合、以下のようなコードになります:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
+
+<span class="c1"># 最初の手持ち金を定義</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span> <span class="c1"># random.choice([True,False])は1/2の確率でTrue/Falseを与える関数になっている、つまり勝ち負けに&quot;対応&quot;させられる!</span>
+
+<span class="c1"># ゲームを開始, 最大10回まで繰り返すことをfor文で表現</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>   
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span> <span class="c1"># result==True, つまり勝った場合</span>
         <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!&quot;</span><span class="p">)</span>
     <span class="k">else</span> <span class="p">:</span>
@@ -1196,20 +1210,19 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">random.choice([True,False])</span></code>は1/2の確率で<code class="docutils literal notranslate"><span class="pre">True</span></code>か<code class="docutils literal notranslate"><span class="pre">False</span></code>を与える処理になっている。
+True/Falseをそれぞれ勝ち負けに対応させられるので、その結果に応じて処理を分岐させていることが分かる。</p>
 </div>
 <div class="section" id="clubsuitwhile">
 <h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>While文<a class="headerlink" href="#clubsuitwhile" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">for</span></code>に似た概念として<code class="docutils literal notranslate"><span class="pre">while</span></code>が存在します。</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかも…</p>
-</div></blockquote>
-<p>プログラムを書いていくうちに、繰り返しの数が前もってわからないケースに遭遇するかと思います.</p>
-<p>たとえば</p>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code>に似たものとして<code class="docutils literal notranslate"><span class="pre">while</span></code>もよく用いられる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかも…</p>
+<p>プログラムを書いていくうちに、繰り返しの数が前もってわからないケースに遭遇することがある。たとえば</p>
 <ul class="simple">
-<li><p>[連続で6が5回でるまでサイコロをふる]</p></li>
-<li><p>[利益がある値を超えるまで株の売買をくりかえす]</p></li>
+<li><p>連続で6が5回でるまでサイコロをふる</p></li>
+<li><p>利益がある値を超えるまで株の売買をくりかえす</p></li>
 </ul>
-<p>といったイメージです。この様な場合は、何回処理を繰り返せば良いか予め知ることはほとんど不可能です。</p>
+<p>といったイメージ。この様な場合は、何回処理を繰り返せば良いか予め知ることはほとんど不可能となる。</p>
 <p>サイコロの例の場合だと、たとえば5回ふっただけで6が連続で出る奇跡的な状況も有りえますし、1000回ふっても100万回降っても連続で5回は出ないかもしれません。(某漫画の地下チンチロ編のようなイカサマサイコロを使用するとグッと確率はあがります)このような処理を実装したい場合には<code class="docutils literal notranslate"><span class="pre">while</span></code>文を使います.</p>
 <p>さっきのAさんとカジノのギャンブルを例に</p>
 <blockquote>
@@ -1222,16 +1235,20 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
 
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span> <span class="c1">#手元に50万以上-150万未満ある限り賭け続ける</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span>  <span class="c1">## choice([True,False])でTrue(勝ち)とFalse(負け)をランダムに生成</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span> <span class="c1">#true 勝ちの場合</span>
+
+<span class="c1">#手元に50万以上-150万未満ある限り賭け続けることをwhile文で表現</span>
+<span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span> 
+    <span class="c1">## choice([True,False])でTrue(勝ち)とFalse(負け)をランダムに生成       </span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span> <span class="c1"># 勝ちの場合</span>
+        <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span> 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!&quot;</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span><span class="c1">#負けの場合 20万失う</span>
+    <span class="k">else</span> <span class="p">:</span> <span class="c1">#負けの場合 20万失う</span>
+        <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けた..&quot;</span><span class="p">)</span>
 
-<span class="c1">### 500000 &lt;= money &lt; 1500000がfalse つまりお金が50万以下か150万以上になったら</span>
-<span class="c1">### while文が終わり、以下のprint文が読まれる</span>
+<span class="c1"># 500000 &lt;= money &lt; 1500000部分が&quot;False&quot;、つまりお金が50万以下か150万以上になったら</span>
+<span class="c1"># while文が終わり、以下のprint文が読まれる</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1256,7 +1273,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
         <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span> 
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span>
@@ -1273,47 +1291,62 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#連続勝数を記録する変数hitを定義</span>
-<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c1">#掛け金をセット</span>
+
+<span class="c1"># 連続勝数を記録する変数hitを定義</span>
+<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="c1"># 掛け金をセット</span>
+<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> 
+
+<span class="c1"># メイン部分のコード</span>
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span><span class="c1">#勝ち負け50%</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="p">:</span>
         <span class="n">money</span> <span class="o">+=</span> <span class="n">bet</span> 
         <span class="n">hit</span> <span class="o">+=</span><span class="mi">1</span> <span class="c1">#勝ったら連勝数をプラス1する</span>
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">money</span> <span class="o">-=</span> <span class="n">bet</span>
         <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#負けたら連続勝ち数を0にリセット</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今の所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span> <span class="p">:</span> <span class="c1">#ここでのrandom.choiceはコインの表裏に相当</span>
+
+    <span class="c1"># コインの表裏を決める</span>
+    <span class="n">coin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">coin</span><span class="p">:</span> 
         <span class="n">bet</span> <span class="o">=</span> <span class="n">bet</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズだ!!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぜ&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズ!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぞ!!&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>さらに[掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ]という条件を実装するのにcontinueを使ってみましょう</p>
+<p>さらに<strong>掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ</strong>という、
+より複雑な条件を実装するのに<code class="docutils literal notranslate"><span class="pre">continue</span></code>を使ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#連続勝数を記録する変数hitを定義</span>
-<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c1">#掛け金をセット</span>
+
+<span class="c1">#連続勝数と掛け金を設定する</span>
+<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> 
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">]):</span><span class="c1">#勝ち負け50%</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
         <span class="n">money</span> <span class="o">+=</span> <span class="n">bet</span> 
-        <span class="n">hit</span> <span class="o">+=</span><span class="mi">1</span> <span class="c1">#勝ったら連勝数をプラス1する</span>
+        <span class="n">hit</span> <span class="o">+=</span><span class="mi">1</span> 
     <span class="k">else</span> <span class="p">:</span>
         <span class="n">money</span> <span class="o">-=</span> <span class="n">bet</span>
-        <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#負けたら連続勝ち数を0にリセット</span>
+        <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今の所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>    
+
+    <span class="c1"># ここから下が追加された部分</span>
     <span class="k">if</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">800000</span><span class="p">:</span>
         <span class="k">continue</span> <span class="c1"># もし所持金が80万未満ならcontinue(以下の処理は実行しない)</span>
 
-    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span> <span class="p">:</span> <span class="c1">#ここでのrandom.choiceはコインの表裏に相当</span>
+    <span class="n">coin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">coin</span> <span class="p">:</span>
         <span class="n">bet</span> <span class="o">=</span> <span class="n">bet</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズだ!!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぞ&quot;</span><span class="p">)</span>
-   
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズ!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぞ!!&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
 </pre></div>
