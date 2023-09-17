@@ -477,7 +477,7 @@
 </ol>
 <div class="section" id="windows-wsl">
 <h4>Windows+WSLの導入例<a class="headerlink" href="#windows-wsl" title="Permalink to this headline">¶</a></h4>
-<p>著者はWindowsユーザーではないので、情報が古い可能性があるがご了承頂きたい。</p>
+<p>著者はWindowsユーザーではないので、情報が古い可能性があるがご容赦頂きたい。</p>
 <ol>
 <li><p>Storeまたは<a class="reference external" href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">Webページ</a>からインストールする</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_vscode_1.png?raw=true" width=30%>
@@ -614,8 +614,7 @@ VS Codeでの.ipynbファイルの実行・編集も是非やってみてほし�
 <p>などとして、Jupyterをインストールしておく。</p>
 </li>
 <li><p>VS Codeを起動し、ダウンロードした<code class="docutils literal notranslate"><span class="pre">ipynb</span></code>ファイルを開く。</p></li>
-<li><p>コードセルを実行するには、<code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>を押す。または、コードセルの左側にある<code class="docutils literal notranslate"><span class="pre">▶︎</span></code>をクリックする。
-　　このとき、複数のPython環境がインストールされている場合は、どのPython環境で実行するかを選択する必要がある。</p></li>
+<li><p>コードセルを実行するには、<code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>を押す。または、コードセルの左側にある<code class="docutils literal notranslate"><span class="pre">▶︎</span></code>をクリックする。このとき、複数のPython環境がインストールされている場合は、どのPython環境で実行するかを選択する必要がある。</p></li>
 <li><p>コードセルの実行結果が表示される。</p></li>
 </ol>
 </div>
@@ -625,13 +624,9 @@ VS Codeでの.ipynbファイルの実行・編集も是非やってみてほし�
 <p>GitHub Copilotは、GitHubがOpenAIと共同で開発したコード補完ツールである。<br />
 背後には、GPT-3ベースのOpenAI Codexが動いており、文字通りcopilotとして様々なコードやスニペットを提案してくれる。</p>
 <p>GitHub Copilotは、VS Codeなどの拡張機能としても使用することができる。
-ただし、GitHub Copilotが生成するコードは完璧ではないため、使う際は、提案されたコードを注意深く確認し、必要に応じて修正を行う必要があることは言うまでもない。</p>
-<p>GitHub Copilotを使うには、まず、GitHub Copilotのベータ版に登録する必要がある。<br />
-学生は、学生証などを提出することで、無料で登録・使用することができる。<br />
-上手く使いこなせれば、かなりの生産性向上が期待できるツールであり、私も日々の研究において活用している。</p>
-<p>もちろん、自身の意図を100%反映したコードを生成してくれるわけではないが、
-コードの骨組みを作ってくれるため大幅に作業が楽になることも多い。<br />
-ときに「こんな書き方もあるのか」という気づきを与えてくれたりもする。</p>
+ただし、GitHub Copilotが生成するコードは完璧ではないため、使う際は、<strong>提案されたコードを注意深く確認し、必要に応じて修正を行う必要がある</strong>ことは言うまでもない。</p>
+<p>GitHub Copilotを使うには、まず、GitHub Copilotのベータ版に登録する必要がある。学生は、学生証などを提出することで、無料で登録・使用することができる。上手く使いこなせれば、かなりの生産性向上が期待できるツールであり、私も日々の研究において活用している。</p>
+<p>もちろん、自身の意図を100%反映したコードを生成してくれるわけではないが、コードの骨組みを作ってくれるため大幅に作業が楽になることも多い。ときに「こんな書き方もあるのか」という気づきを与えてくれたりもする。</p>
 <div class="section" id="vs-code">
 <h3>VS Codeへの導入<a class="headerlink" href="#vs-code" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
@@ -698,9 +693,9 @@ VS Codeでの.ipynbファイルの実行・編集も是非やってみてほし�
 <img alt="../_images/Python_misc_VScode_6_0.png" src="../_images/Python_misc_VScode_6_0.png" />
 </div>
 </div>
-<p>1回目は<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>ライブラリを使っていたのに対し、２回目では<code class="docutils literal notranslate"><span class="pre">matplotlib.cm</span></code>からカラーマップ<code class="docutils literal notranslate"><span class="pre">cm</span></code>を呼んでいる事がわかる。<br />
+<p>1回目は<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>ライブラリを使っていたのに対し、２回目では<code class="docutils literal notranslate"><span class="pre">matplotlib.cm</span></code>からカラーマップ<code class="docutils literal notranslate"><span class="pre">cm</span></code>を呼んでいる事がわかる。
 ランダムなデータの作り方も１回目と２回目、あるいはユーザーの実行ごとに変わったりすることに注意しよう。</p>
-<p>繰り返しになるが、GitHub Copilotの提案が本当に自身の意図したものとなっているかについては、常にユーザーである我々が注意して確認する必要があることは肝に命じておこう。</p>
+<p>繰り返しになるが、GitHub Copilotの提案が本当に自身の意図したものとなっているかについては、<strong>常にユーザーである我々が注意して確認する必要があること</strong>は肝に命じておこう。</p>
 </div>
 <div class="section" id="copilot-chat-gpt">
 <h3>練習相手・チューターとしてのCopilot/Chat GPT<a class="headerlink" href="#copilot-chat-gpt" title="Permalink to this headline">¶</a></h3>
@@ -712,11 +707,11 @@ VS Codeでの.ipynbファイルの実行・編集も是非やってみてほし�
 <p>皆さんの主体的な学習にむけて、幾つかChat GPTの使用例を紹介してみよう。<br />
 適当な指示文を与えてみる。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_2.jpeg?raw=true" width=50%>
-<p>もちろん、ここでは具体的なファイルを与えているわけではないので正しく動く保証はないが、概ねもっともらしいコードを生成してくれている。
+<p>もちろん、ここでは具体的なファイル構造を示したりファイルを与えているわけではないので、正しく動く保証も全く無いわけだが、概ねもっともらしいコードを生成してくれている。
 仮に提案されたコードがうまく動かない/使えないとき、うまく行かない理由と関連していそうな情報を与えてやったりすることで、解決策を提示してきたり、補足知識を与えてくれたりするという例も見せよう。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_3.jpeg?raw=true" width=50%>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_4.jpeg?raw=true" width=50%>
-<p>細かいことを言うと、2.の1つめの画像の提案(<code class="docutils literal notranslate"><span class="pre">encoding=&quot;SHIFT-JIS&quot;</span></code>)は、サポートされていないオプションの指定となりエラーになるが、(言語モデルはPythonの文法を”理解”しているわけではないため)推論としては真っ当なものになっている。</p>
+<p>細かいことを言うと、2.の1つめの画像の提案(<code class="docutils literal notranslate"><span class="pre">encoding=&quot;SHIFT-JIS&quot;</span></code>)は、サポートされていないオプションの指定となりエラーになるが、(言語モデルはPythonの文法、とくにPythonの中での文字コードの指定に相当するコードを”理解”しているわけではないため)推論としては真っ当なものになっている。</p>
 <p>実は上の画像で挙げた例は、実際にPythonでcsvやエクセルファイルを読み書きしようとする際に、よく遭遇するエラーの例になっていて、
 私はそのことを知っているため、上のようなある種”誘導的な”プロンプトを与えることで、より有用な回答を得られるよう仕向けている。
 2.の2つめの画像で、より適切なオプションを指定するためにもう少しヒントをあげているという訳だ。</p>
