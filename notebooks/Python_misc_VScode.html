@@ -402,7 +402,24 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#ipynb-vs-code">
+   授業資料(.ipynb)をVS codeで実行・編集する
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     授業資料のダウンロード方法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ipynbvs-code">
+     ipynb形式のファイルをVS Codeで開く&amp;実行する
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
    GitHub Copilot
   </a>
   <ul class="nav section-nav flex-column">
@@ -412,7 +429,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id5">
      試してみよう
     </a>
    </li>
@@ -568,8 +585,42 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 <p>(Linuxコマンドやシェルについての知識が少しだけ必要になるが)詳しい方法については「python コマンド エイリアス」などで検索してみよう。</p>
 </div>
 </div>
+<div class="section" id="ipynb-vs-code">
+<h2>授業資料(.ipynb)をVS codeで実行・編集する<a class="headerlink" href="#ipynb-vs-code" title="Permalink to this headline">¶</a></h2>
+<p>VS Codeを使うと、ローカル環境で.ipynbファイルを実行・編集することができる。
+著者も、この授業資料の作成にはVS Codeを使っている。</p>
+<p>以下で紹介するGitHub Copilotとの相性も良いので、今後プログラミング学習を継続するつもりだ、という方は、
+VS Codeでの.ipynbファイルの実行・編集も是非やってみてほしい。</p>
 <div class="section" id="id3">
-<h2>GitHub Copilot<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>授業資料のダウンロード方法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>本授業資料の.ipynbファイルは、GitHubのレポジトリかBookの各ページからダウンロードすることができる。</p>
+<ul>
+<li><p>方法1: GitHubの<a class="reference external" href="https://github.com/SotaYoshida/Lecture_DataScience">レポジトリ</a>からダウンロードする.
+<code class="docutils literal notranslate"><span class="pre">&lt;&gt;Code</span></code>という緑色のボタンをクリックし、<code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code>をクリックすると、全てのファイルをダウンロードできる。
+展開したフォルダ内の<code class="docutils literal notranslate"><span class="pre">notebooks</span></code>というディレクトリが、本授業資料の.ipynbファイルがある場所である。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/download_repozip.png?raw=true" width=30%>
+</li>
+<li><p>方法2: Bookの各ページからダウンロードする. ブックの各章の上部にダウンロードボタン(下向き矢印)があるので、そこから<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>形式を選択し、ダウンロードすれば良い。</p></li>
+</ul>
+</div>
+<div class="section" id="ipynbvs-code">
+<h3>ipynb形式のファイルをVS Codeで開く&amp;実行する<a class="headerlink" href="#ipynbvs-code" title="Permalink to this headline">¶</a></h3>
+<p>実行には当然Python環境が必要なので、インストール済みであるとする。</p>
+<ol class="simple">
+<li><p>ターミナルから</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install jupyter
+</pre></div>
+</div>
+<p>などとして、Jupyterをインストールしておく。
+2. VS Codeを起動し、ダウンロードした<code class="docutils literal notranslate"><span class="pre">ipynb</span></code>ファイルを開く。
+3. コードセルを実行するには、<code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>を押す。または、コードセルの左側にある<code class="docutils literal notranslate"><span class="pre">▶︎</span></code>をクリックする。
+　　このとき、複数のPython環境がインストールされている場合は、どのPython環境で実行するかを選択する必要がある。
+4. コードセルの実行結果が表示される。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>GitHub Copilot<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>GitHub Copilotは、GitHubがOpenAIと共同で開発したコード補完ツールである。<br />
 背後には、GPT-3ベースのOpenAI Codexが動いており、文字通りcopilotとして様々なコードやスニペットを提案してくれる。</p>
 <p>GitHub Copilotは、VS Codeなどの拡張機能としても使用することができる。
@@ -592,8 +643,8 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 <li><p>VS Codeの拡張機能タブから[GitHub Copilot]などと検索したのち、拡張機能をインストールする(2.でインストールが始まるかも)。その後指示に従い、インストールを完了する。</p></li>
 </ol>
 </div>
-<div class="section" id="id4">
-<h3>試してみよう<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>試してみよう<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>試しに著者の環境(VS Code)で「適当な二次元データのヒートマップを描画するコードは以下のようになる」などと打つと…<br />
 以下のように、自身で入力した際よりも薄い色でコード(場合によっては複数行)が提案される。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/pic_copilot_1.jpeg?raw=true" width=70%>
@@ -618,7 +669,7 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_misc_VScode_3_0.png" src="../_images/Python_misc_VScode_3_0.png" />
+<img alt="../_images/Python_misc_VScode_4_0.png" src="../_images/Python_misc_VScode_4_0.png" />
 </div>
 </div>
 <p>もう少し具体的にカラーマップも指定してみよう。以下のコード例は
@@ -643,7 +694,7 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_misc_VScode_5_0.png" src="../_images/Python_misc_VScode_5_0.png" />
+<img alt="../_images/Python_misc_VScode_6_0.png" src="../_images/Python_misc_VScode_6_0.png" />
 </div>
 </div>
 <p>1回目は<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>ライブラリを使っていたのに対し、２回目では<code class="docutils literal notranslate"><span class="pre">matplotlib.cm</span></code>からカラーマップ<code class="docutils literal notranslate"><span class="pre">cm</span></code>を呼んでいる事がわかる。<br />
@@ -724,7 +775,7 @@ Pythonをコマンドラインで使う際に毎回<code class="docutils literal
       <p>
         
           <div class="extra_footer">
-            © Copyright 2022 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
           </div>
       </p>
