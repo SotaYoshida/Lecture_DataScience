@@ -662,6 +662,13 @@ SyntaxError: invalid character in identifier
 </div>
 </div>
 </div>
+<p><strong>ノートブック特有の注意点</strong></p>
+<p>作業途中に定義していた変数がメモリに残っていて、そのおかげで動いているが、
+後日作業を再開した際(新しいセッションで実行したとき)にその変数が未定義となり動かなくなる。
+といったことも稀に起こります。
+とくに、セルを跨いで実行したりするノートブックの編集・実行においては、よく起こるミスです。
+こうしたエラーを避けるには、適宜ランタイムやカーネルなどを再起動して、
+新しいセッションで実行できるか確認するなどの対策が必要です。</p>
 <p>打ち間違いにも注意です</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

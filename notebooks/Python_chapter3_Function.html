@@ -452,11 +452,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>点1 [2.0, 4.0, -5.0] と点2 [1.0, 3.0, -4.0] の距離は 1.7320508075688772 です
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">calc_d</span></code>は自作した関数の名前で、関数名の後ろのカッコには<strong>引数</strong>(ひきすう)を指定します。</p>
 <p>リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、というのが上のコードで行っていることです。
@@ -467,12 +462,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p100</span><span class="p">))</span> <span class="c1">#←これでも使えるし</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">([</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">5.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span><span class="mf">5.5</span><span class="p">]))</span> <span class="c1">#←などとして名前をつけなくても使える</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.594810050208546
-24.45914961727002
 </pre></div>
 </div>
 </div>
@@ -491,11 +480,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="p">)</span> <span class="c1">#回数だけ表示しよう</span>
 <span class="c1">#上のjのループ内で、iはj+1から99までを回る。 j+1= 100つまり j=99のとき range(j+1,100)はちゃんと空になる</span>
 <span class="c1">#つまり、長さ100のリストにindex=100でアクセス(範囲外参照)したりすることはない。</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4950
 </pre></div>
 </div>
 </div>
@@ -525,15 +509,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>私は田中です
-name()の実行→ None
-私は吉田です
-myname()の返り値→ None
-myname_return()の返り値→ 私は吉田です
-</pre></div>
-</div>
-</div>
 </div>
 <p>戻り値<code class="docutils literal notranslate"><span class="pre">return</span></code>は単一の値や文字列に限らず、複数の値でも可能ですし、リストを返すことも出来ます。</p>
 <p>先程の自作関数<code class="docutils literal notranslate"><span class="pre">calc_d</span></code>の場合、戻り値は<code class="docutils literal notranslate"><span class="pre">float</span></code>(実数値)ですが</p>
@@ -556,12 +531,6 @@ myname_return()の返り値→ 私は吉田です
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>関数calc_d_print 距離は1.7320508075688772です &lt;class &#39;str&#39;&gt;
-関数zahyo:  ([[2.0, 4.0, -5.0], [1.0, 3.0, -4.0]], 1.7320508075688772) &lt;class &#39;tuple&#39;&gt; 座標の結合リスト [[2.0, 4.0, -5.0], [1.0, 3.0, -4.0]] 距離 1.7320508075688772
-</pre></div>
-</div>
-</div>
 </div>
 <p>といったように、様々な返り値を持つ関数を定義できます。</p>
 <p>関数を定義するときに、引数にデフォルト値(とくに値を指定しなければこの値が選ばれる)を設定することも出来ます。</p>
@@ -576,14 +545,6 @@ myname_return()の返り値→ 私は吉田です
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=1&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=2&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=3&quot;</span><span class="p">,</span> <span class="n">sump</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>default 3000.0
-p=1 100.0
-p=2 3000.0
-p=3 100000.0
 </pre></div>
 </div>
 </div>
@@ -616,11 +577,6 @@ p=3 100000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-</div>
 </div>
 <p>一方、関数の中で定義(代入)されるローカル変数は、関数の外で参照することはできません。<br />
 (注: あとで説明するように関数内でglobal変数であることを宣言すれば関数の外でも参照できます)</p>
@@ -634,18 +590,6 @@ p=3 100000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-36-e6f85c71f263&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">abcd</span> <span class="o">=</span> <span class="mf">1.000</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">testfunc</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">abcd</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;abcd&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>では、次のコードを実行すると、最後に表示される<code class="docutils literal notranslate"><span class="pre">a</span></code>の値はどうなるでしょうか？<br />
 2でしょうか？それとも5でしょうか？</p>
@@ -656,11 +600,6 @@ p=3 100000.0
 <span class="n">a</span><span class="o">=</span> <span class="mi">2</span>
 <span class="n">testfunc</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -680,13 +619,6 @@ p=3 100000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>関数の実行前 2 94412437125664
-関数の内部 5 94412437125760
-関数の実行後 2 94412437125664
-</pre></div>
-</div>
-</div>
 </div>
 <p>一方で、</p>
 <div class="cell docutils container">
@@ -703,16 +635,6 @@ p=3 100000.0
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;実行後&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1">#別の変数として再定義されていることが分かる</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="n">abc</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>実行前
-a 2 94412437125664
-94412437125728
-実行後
-a 4 94412437125728
-abc 5
 </pre></div>
 </div>
 </div>
@@ -754,14 +676,6 @@ abc 5
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>実行前 [&#39;SS&#39;, 1, 2, 3] 139900671706048 139900671819888
-実行後 [&#39;AAA&#39;, 1, 2, 3] 139900671706048 139900672697328
-実行前 [&#39;SS&#39;, 1, 2, 3] 139900671707888 139900671819888
-実行後 [&#39;AAA&#39;, 1, 2, 3] 139900671707888 139900672697328
-</pre></div>
-</div>
-</div>
 </div>
 <p>リストオブジェクト自体のidは引き継がれていて、リスト内要素(0番目)の更新が反映されていることがわかります。</p>
 <div class="cell docutils container">
@@ -776,13 +690,6 @@ abc 5
 <span class="n">ret</span> <span class="o">=</span> <span class="n">func_update_list</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;実行後&quot;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">tmp</span><span class="p">),</span><span class="nb">id</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ret&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">ret</span><span class="p">),</span><span class="nb">id</span><span class="p">(</span><span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>実行前 [&#39;SS&#39;, 1, 2, 3] 139900671827312 139900672968496
-実行後 [&#39;AAA&#39;, 1, 2, 3] 139900671827312 139900672697328
-ret [&#39;BBB&#39;, 0, 1, 2] 139900671867152 139900673209136
 </pre></div>
 </div>
 </div>

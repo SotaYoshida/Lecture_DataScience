@@ -15,7 +15,7 @@
 
 ### ノートブック
 
-[Jupyter Notebook](https://github.com/jupyter/notebook)とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行環境を提供する環境で、授業資料は`.ipynb`という拡張子のJupyterNotebook用ファイルとして作成されている。授業ではこれを**ノートブック**や**Notebook**などと表記・呼称する。
+[Jupyter Notebook](https://github.com/jupyter/notebook)とは、Markdownテキスト・数式・図などを含んだドキュメント作成とPythonなどのプログラミング実行を提供する環境で、授業資料は`.ipynb`という拡張子のJupyterNotebook用ファイルとして作成されている。授業ではこれを**ノートブック**や**Notebook**などと表記・呼称する。
 
 `.ipynb`形式のソースファイルの管理と共有には、GitHubと呼ばれる環境を利用していて、ソースファイルは[こちら](https://github.com/SotaYoshida/Lecture_DataScience)からも閲覧できる(この授業を受講したりプログラムを実行するのに皆さんがGitHubのアカウントを取得したりこのリンクを開いたりする必要は特段ありません)。
 Jupyter Notebookを編集・実行するための環境はいくつかあるが、本授業では環境構築やそれにかかるトラブルシューティングを最小化するために、Google Colaboratoryというサービスを利用して**Googleのクラウド環境上でJupyter Nootebookを編集・実行する方式**を採用している。
