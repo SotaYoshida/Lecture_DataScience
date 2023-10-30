@@ -446,7 +446,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuitwhile">
+    <a class="reference internal nav-link" href="#clubsuit-while">
      2.3.5.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
@@ -522,7 +522,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
 
 <span class="c1"># 変数heightsの型をprint</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変数aの型(type)は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">heights</span><span class="p">))</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;変数heightsの型(type)は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">heights</span><span class="p">))</span>  
 </pre></div>
 </div>
 </div>
@@ -549,7 +549,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストaの長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストnamesの長さは&quot;</span><span class="p">,</span> <span class="n">ln_a</span><span class="p">,</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
 </pre></div>
 </div>
 </div>
@@ -765,7 +765,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -773,7 +773,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>始点,コロン(<code class="docutils literal notranslate"><span class="pre">:</span></code>),終点でインデックスの範囲を指定して、部分的に取り出すことが出来ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -781,7 +781,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>終点のインデックスに相当する要素は取り出されないことに注意しましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +790,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>負のインデックスを使用することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1186,8 +1186,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 <p><code class="docutils literal notranslate"><span class="pre">random.choice([True,False])</span></code>は1/2の確率で<code class="docutils literal notranslate"><span class="pre">True</span></code>か<code class="docutils literal notranslate"><span class="pre">False</span></code>を与える処理になっている。
 True/Falseをそれぞれ勝ち負けに対応させられるので、その結果に応じて処理を分岐させていることが分かる。</p>
 </div>
-<div class="section" id="clubsuitwhile">
-<h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>While文<a class="headerlink" href="#clubsuitwhile" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="clubsuit-while">
+<h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> While文<a class="headerlink" href="#clubsuit-while" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>に似たものとして<code class="docutils literal notranslate"><span class="pre">while</span></code>もよく用いられる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかも…</p>
 <p>プログラムを書いていくうちに、繰り返しの数が前もってわからないケースに遭遇することがある。たとえば</p>
