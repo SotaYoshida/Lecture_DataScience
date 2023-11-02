@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -526,8 +528,15 @@ Chat GPTなどに尋ねてみるのも、<strong>疑問や問題を言語化し�
 <div class="section" id="id3">
 <h2>第3章:関数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
-<ol class="simple">
-<li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。</p></li>
+<ol>
+<li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。
+なお、分散の定義は下記の標本分散とする:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{1}{N}\sum^N_{i=1} (x_i - \bar{x})^2
+    \]</div>
+<p>なお、<span class="math notranslate nohighlight">\(N\)</span>はデータの個数、<span class="math notranslate nohighlight">\(x_i\)</span>が各データ、<span class="math notranslate nohighlight">\(\bar{x}\)</span>は平均を意味する。</p>
+</li>
 <li><p>1.で作った自作関数を1つの変数で受け取り(例<code class="docutils literal notranslate"><span class="pre">ret_value=myfunction(mylist)</span></code>)その返り値の型を調べよ。</p></li>
 </ol>
 <div class="cell docutils container">
