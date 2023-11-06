@@ -375,48 +375,48 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy">
-   4.1. Numpy
+  <a class="reference internal nav-link" href="#import">
+   4.1. ライブラリのインポート(import)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   4.2. Matplotlibを用いた作図
+   4.2. ライブラリのインストール
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy">
+   4.3. Numpy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.4. Matplotlibを用いた作図
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     4.2.1. 棒グラフ
+    <a class="reference internal nav-link" href="#id3">
+     4.4.1. Matplotlibのインポートと使い方
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       4.2.1.1.
-       <strong>
-        練習
-       </strong>
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     4.2.2. 円グラフ
+     4.4.2. 棒グラフ
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot">
-     4.2.3. plot: 線の描画
+     4.4.3. plot: 線の描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scatter">
-     4.2.4. scatter: 散布図の描画
+     4.4.4. scatter: 散布図の描画
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit-ax-matplotlib-axes">
-     4.2.5.
+     4.4.5.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -431,18 +431,35 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-drivegoogle-colab">
-     4.2.6. Google Driveのマウントと、Google Colab.上で作ったグラフの保存
+    <a class="reference internal nav-link" href="#google-drive-google-colab">
+     4.4.6. Google Drive上のファイル操作&amp;Google Colab.上で作ったグラフの保存
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gif">
-     4.2.7. gifアニメーションの作成
+     4.4.7. gifアニメーションの作成
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-drive">
+       4.4.7.1. 方法1: Google Driveを開いて直接操作する方法
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linuxpython">
+       4.4.7.2. 方法2: LinuxコマンドとPythonコードで行う方法
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pnggif">
+       4.4.7.3. pngファイルを読み込んでgifアニメーションを作成する
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     4.2.8.
+     4.4.8.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -476,40 +493,67 @@
 </div>
 <p>Pythonでは(他のプログラミング言語と同様)特定の作業がパッケージ化されたプログラム群が用意されていてこれらをライブラリ/パッケージ/モジュールなどと呼ぶ
 Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開されていて、簡単にインストールしたりインポートして使うことができる。</p>
-<p>データ分析, AI・機械学習, エクセル等の操作, Webスクレイピングなど、非常に多岐にわたるライブラリが存在していて誰でも気軽に使うことができますし、幾つかのライブラリ/モジュールは標準で組み込まれているため、インストール作業をすることなく、以下のように簡単にインポートして使うことができます。</p>
+<p>データ分析, AI・機械学習, エクセル等の操作, Webスクレイピングなど、非常に多岐にわたるライブラリが存在する。</p>
+<div class="section" id="import">
+<h2><span class="section-number">4.1. </span>ライブラリのインポート(import)<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h2>
+<p>幾つかのライブラリ/モジュールは標準で組み込まれているため、特段インストール作業をすることなく、以下のように簡単にインポートして使うことができる。</p>
 <p>たとえば<code class="docutils literal notranslate"><span class="pre">math</span></code>という名前のモジュールをインポートする際には</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>とします。簡単ですね。</p>
-<p>上のコードを実行し<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールを一度<code class="docutils literal notranslate"><span class="pre">import</span></code>してやれば、数学で多用される円周率<code class="docutils literal notranslate"><span class="pre">pi</span></code>,対数関数<code class="docutils literal notranslate"><span class="pre">log(),log10()</span></code>,指数関数<code class="docutils literal notranslate"><span class="pre">exp</span></code>,三角関数<code class="docutils literal notranslate"><span class="pre">sin,cos</span></code>などを使うことができます。</p>
-<p>モジュール内に用意されている関数を利用するときは通常<br />
-<code class="docutils literal notranslate"><span class="pre">モジュール名.関数</span></code>や<code class="docutils literal notranslate"><span class="pre">モジュール名.関数(引数)</span></code>といった形で使います。</p>
+<p>とする。カンタン。</p>
+<p>この<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールはPythonの標準ライブラリの一つで、数学関数を提供するモジュールである。</p>
+<p>上のコードを実行し<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールを一度<code class="docutils literal notranslate"><span class="pre">import</span></code>してやれば、以降のコードで、</p>
+<ul class="simple">
+<li><p>円周率<span class="math notranslate nohighlight">\(\pi\)</span>: <code class="docutils literal notranslate"><span class="pre">pi</span></code></p></li>
+<li><p>自然対数: <code class="docutils literal notranslate"><span class="pre">log</span></code></p></li>
+<li><p>常用対数: <code class="docutils literal notranslate"><span class="pre">log10</span></code></p></li>
+<li><p>指数関数: <code class="docutils literal notranslate"><span class="pre">exp</span></code></p></li>
+<li><p>三角関数: <code class="docutils literal notranslate"><span class="pre">sin</span></code>,<code class="docutils literal notranslate"><span class="pre">cos</span></code></p></li>
+</ul>
+<p>などを使うことができる。</p>
+<p>モジュール内に用意されている定数や関数を利用するときは通常、<code class="docutils literal notranslate"><span class="pre">モジュール名.定数</span></code>や<code class="docutils literal notranslate"><span class="pre">モジュール名.関数(引数)</span></code>といった形で使う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span> <span class="c1">#自然対数 </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1">#円周率pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> <span class="c1">#ネイピア数e</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span> <span class="c1">#自然対数 </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span> <span class="c1">#常用(底が10)対数</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span> <span class="c1">#指数関数</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1">#円周率pi (引数なし)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>  <span class="c1"># sin(pi)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>注:sin(π)は厳密に0になるべきですが1章で述べたように実数が有限の精度なので微小な量0からずれています</p>
+<p>注:sin(π)は本来0だが、1章で述べたように実数が有限の精度なので、<span class="math notranslate nohighlight">\(\pi\)</span>の値が厳密には円周率と異なるため、sin(π)の値も僅かに0からズレることになる。</p>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">4.2. </span>ライブラリのインストール<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Google Colaboratory環境では、Pythonの標準ライブラリ以外のライブラリを、<code class="docutils literal notranslate"><span class="pre">pip</span></code>コマンドを用いてインストールすることができる.</p>
+<p>コードセルで以下のようにすれば良い:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install package_name
+</pre></div>
+</div>
+<p>ただし、Google Colaboratory環境では、よく使われるライブラリは標準でインストールされているので、<br />
+特殊なライブラリや特定のバージョンを使用したいといった状況でなければ、別途インストールする必要はない。<br />
+また、ユーザーが別途インストールしたライブラリは、そのセッションが終了すると消えてしまうので、<br />
+時間を空けて作業を再開する場合などは、毎回インストールする必要がある。</p>
+</div>
 <div class="section" id="numpy">
-<h2><span class="section-number">4.1. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
-<p>データ分析などで非常によく使われるNumpyというライブラリがあります。<br />
-Numpyの大きな特徴に、数値を要素に持つ配列の計算・演算を高速に行うことが可能という点があります。</p>
-<p>簡単な作業ならリストでも代用できるので必須ではありませんが、コードを大幅に簡略化することもできるため、今後ノートブックでもたびたびNumpyが用いられます。
-詳しくは<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照してください.</p>
+<h2><span class="section-number">4.3. </span>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<p>データ分析などで非常によく使われるNumpyというライブラリがある。<br />
+Numpyはおもにベクトルや行列の演算などを高速に行うことが可能という利点があり、データ分析においては必須のライブラリと言っても過言ではない。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ndarray</span></code>と呼ばれるNumpy独自の配列を用いることで、ベクトルや行列の演算を高速に行うことができたり、グラフの描画に配列を使う際にも便利な機能が用意されている。
+簡単な作業ならリストでも代用できるので必須ではないが、コードを大幅に簡略化することもできるため、今後ノートブックでもたびたびNumpyが用いられる。</p>
+<p>Numpyの詳細については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb">こちらのノートブック</a>を参照。</p>
+<p>Numpyはmathとも多くの互換性があるため、上で行った操作はNumpyでも代用できる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#先程のmathもnumpyで置き換え可</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#先程のmathもnumpyで置き換え可</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#numpyをnpという名前で使う</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
@@ -520,41 +564,66 @@ Numpyの大きな特徴に、数値を要素に持つ配列の計算・演算を
 </div>
 </div>
 </div>
-<p>以降、数値を要素に持つリストを使って演算やグラフを描画するときは、<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型というものに変更して使う事が多いです。<br />
-リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用います。</p>
+<p>また、以下でやるように、数値を要素に持つリストを使って演算やグラフを描画するときは、データのリストなどを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換して使う事も多い。</p>
+<p>リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.23</span><span class="p">,</span> <span class="mf">9341.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.33</span><span class="p">]</span> 
-<span class="n">list_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_a</span><span class="p">))</span>
+<span class="n">ndarray_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ndarray_a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ndarray_a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>グラフの描画で便利な理由は以下のような入れ子のリストがあったときに、成分の転置を取ってx軸方向のデータ, y軸方向のデータに整形が容易となる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#身長体重のデータ</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">180</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span> <span class="p">[</span><span class="mi">160</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> <span class="p">[</span><span class="mi">170</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span> <span class="p">]</span>
+
+<span class="c1"># データをndarrayに変換</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 転置を行うメソッドを適用. 0列目が身長、1列目が体重と整形できる</span>
+<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="id1">
-<h2><span class="section-number">4.2. </span>Matplotlibを用いた作図<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>以降ではMatplotlibと呼ばれるライブラリを使って、各種のグラフを作成する方法を見ていきましょう.</p>
-<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<strong>細かい部分は分からなくても心配は不要です</strong><br />
-「こういうおまじないを唱える(書くと)こうなる」というざっくりとした理解でまずは大丈夫です。</p>
+</div>
+</div>
+<p>なお、numpyの<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>すると上のようにデータを区切るカンマを省略したり、データの数が多いときは省略して表示してくれる。
+これは、<code class="docutils literal notranslate"><span class="pre">print</span></code>関数が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型のデータを表示する際に、専用の表示方法を用いているためである。</p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">4.4. </span>Matplotlibを用いた作図<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>次に、<code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>と呼ばれるライブラリを使って、各種のグラフを作成する方法を見ていこう.</p>
+<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<strong>細かい部分は分からなくても心配は不要</strong>である.<br />
+「こういうおまじないを唱える(書くと)こうなる」というざっくりとした理解でまずはOK.少しずつ、グラフの詳細を調整する方法をマスターしていけば良い.</p>
 <div class="margin sidebar">
 <p class="sidebar-title">ライブラリの使い方を調べる</p>
 <p>Pythonのライブラリの細かな使い方を調べる時、真っ先に思いつくのが<strong>ググる</strong>ことだ。
 最近だと日本語で書かれた情報に気軽にアクセスできるのは良いことだが、(この授業資料同様)不正確な記述が含まれていてかえって理解を遠ざける危険性もある。
-なにか困ったときに一番頼りになるのは大元のライブラリの公式ドキュメント以外ありえない。なぜなら開発者が作ってんだから。</p>
+なにか困ったときに一番頼りになるのは大元のライブラリの公式ドキュメント以外ありえない。なぜなら開発者が作ってんだから。
+ページ内にあれこれと広告が貼り付けてあるようなブログ記事を見て不正確な情報に振り回されるくらいなら、公式ドキュメントを参照しよう.</p>
 </div>
-<p>はじめはネットに転がっている誰かが書いたコードを少しずつ流用し、自分の目的のためにどうすれば良いか類推しながら改良していって、<br />
-自分の描きたいグラフに近づけていくのが良いでしょう。(私もよく過去の自分が作成したコードを流用して作図しています)</p>
+<p>はじめは授業資料にあるコードなどを少しずつ流用し、自分の目的のためにどうすれば良いか類推しながら改良していって、<br />
+自分の描きたいグラフに近づけていくのが良い。(私もよく過去の自分が作成したコードを流用して作図しています)</p>
 <p>慣れてくるといろんな図を作ったり、細かいところにこだわったりしたくなります。 そんなときは以下のチートシートが役に立ちます.<br />
 <a class="reference external" href="https://github.com/matplotlib/cheatsheets">https://github.com/matplotlib/cheatsheets</a></p>
-<p>まず、以下のコードを実行して、<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>内の<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>モジュールをインポートします.<br />
+<p>あるいは、最近だとChat GPTに「二次元配列をプロットするPythonコードを書いてください」
+「さっきのコードをさらに拡張して、棒グラフにハッチをつけてください」などと聞いてみても良いかも.</p>
+<div class="section" id="id3">
+<h3><span class="section-number">4.4.1. </span>Matplotlibのインポートと使い方<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>まず、以下のコードを実行して、<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>内の<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>モジュールをインポートしよう.<br />
 <code class="docutils literal notranslate"><span class="pre">matplot.pyplot</span></code>だと名前が長いので<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前で使えるように<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">XXX</span> <span class="pre">as</span> <span class="pre">YY</span></code> などとします.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> <span class="c1">#でも同じ</span>
 </pre></div>
 </div>
@@ -569,63 +638,46 @@ Numpyの大きな特徴に、数値を要素に持つ配列の計算・演算を
 ︙  
 </pre></div>
 </div>
-<p>という階層構造があり”子”はピリオドで指定します.<br />
-上の<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>はその一例です.</p>
-<p>次に、Matplotlibは標準だと日本語が文字化けして豆腐のように表示されてしまうので、<br />
-日本語フォントを使うためのライブラリをGoogleのサーバにインストールします</p>
+<p>という階層構造があり、子,孫,…といった下位のものはピリオドで指定する.<br />
+上の<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>はその一例になっている.</p>
+<p>次に、Matplotlibは<strong>標準だと日本語が文字化けして豆腐のように表示されてしまう</strong>ので、日本語フォントを使うためのライブラリをGoogleのサーバにインストールする.</p>
+<p>この作業はGoogle Colaboratory環境で作業を再開するたびに行う必要があるので、日本語を含むグラフを描画したければコードに含めておくこと.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib #!から始めることでLinuxコマンドを使うことができる。
-import japanize_matplotlib
-import numpy as np  #ついでにコレもインポート
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting japanize-matplotlib
-  Downloading japanize-matplotlib-1.1.3.tar.gz (4.1 MB)
-     |████████████████████████████████| 4.1 MB 5.1 MB/s 
-?25hRequirement already satisfied: matplotlib in /usr/local/lib/python3.7/dist-packages (from japanize-matplotlib) (3.2.2)
-Requirement already satisfied: numpy&gt;=1.11 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (1.19.5)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (2.4.7)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (0.10.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (2.8.2)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (1.3.2)
-Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from cycler&gt;=0.10-&gt;matplotlib-&gt;japanize-matplotlib) (1.15.0)
-Building wheels for collected packages: japanize-matplotlib
-  Building wheel for japanize-matplotlib (setup.py) ... ?25l?25hdone
-  Created wheel for japanize-matplotlib: filename=japanize_matplotlib-1.1.3-py3-none-any.whl size=4120274 sha256=f4b79909d06560d80efbd01142270456e2403c260cad143b4647081c91d3a36c
-  Stored in directory: /root/.cache/pip/wheels/83/97/6b/e9e0cde099cc40f972b8dd23367308f7705ae06cd6d4714658
-Successfully built japanize-matplotlib
-Installing collected packages: japanize-matplotlib
-Successfully installed japanize-matplotlib-1.1.3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install japanize-matplotlib #!から始めることでLinuxコマンドを使うことができる。
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1">#ついでにNumpyもインポート</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pythonでグラフを作る際の基本は、<strong>データ(描画したいもの)が入ったリストを作ること</strong>です。</p>
-<p>リストに対して、線や棒、いろんな形のシンボルを描いたりして、どんどんグラフを構成する要素を足しながら、<br />
-それらの色や線種、透過度や太さ,背景色などを変えつつ徐々に望むようなグラフにしていきます。</p>
-<p>以下では代表的なグラフを例に、Matplotlibを使った作画を試してみましょう。</p>
-<div class="section" id="id2">
-<h3><span class="section-number">4.2.1. </span>棒グラフ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Aさんの共通テストの得点をリスト(括弧[ ]内に、数字カンマで区切る)に格納します。<br />
+<p>Pythonでグラフを作る際の基本は、<strong>データ(描画したいもの)が入ったリスト(と互換性のあるndarrayなどの型)を作ること</strong>になる.</p>
+<p>以下では、リスト-likeなデータ(例えば<code class="docutils literal notranslate"><span class="pre">range</span></code>関数で作ったリストや<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>など)を使って、グラフを描画する方法を見ていく.
+毎回リスト-likeと書くのは面倒なので、以降はリスト-likeなデータを単にリストと呼ぶことにするが、
+必ずしも描画につかうデータはリストに限らない.</p>
+<p>プログラムでグラフを描くのは、人間がグラフを描くのとは少し異なる.
+線や棒、いろんな形のシンボルを描いたりして、どんどんグラフを構成する要素を足しながら、<br />
+それらの色や線種、透過度や太さ,背景色などを変えつつ徐々に望むようなグラフにしていく作業になる.</p>
+<p>以下では代表的なグラフを例に、Matplotlibを使った作画を試してみよう.</p>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">4.4.2. </span>棒グラフ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Aさんの共通テスト？の得点をリストとして定義してみよう
 順番(各科目の名前(ラベル))は、国語,英語,数IA,数IIB,化学,物理,世界史として…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
 <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">,</span><span class="s2">&quot;英語&quot;</span><span class="p">,</span> <span class="s2">&quot;数IA&quot;</span><span class="p">,</span> <span class="s2">&quot;数IIB&quot;</span><span class="p">,</span> <span class="s2">&quot;化学&quot;</span><span class="p">,</span> <span class="s2">&quot;物理&quot;</span><span class="p">,</span> <span class="s2">&quot;世界史&quot;</span><span class="p">]</span>
 <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="c1">#print(&quot;合計得点は&quot;, total, &quot;点で、得点率は&quot;+str(total/900)+&quot;%です&quot;)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;合計得点は&quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="s2">&quot;点で、得点率は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%6.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span> <span class="n">total</span><span class="o">/</span><span class="mi">900</span><span class="p">))</span><span class="o">+</span><span class="s2">&quot;%です&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Aさん優秀ですね。これを棒グラフにでもしてみましょう。</p>
+<p>Aさん優秀。これを棒グラフにでもしてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;各科目&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Aさんの得点&quot;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
@@ -634,110 +686,57 @@ Successfully installed japanize-matplotlib-1.1.3
 </div>
 </div>
 </div>
-<p>棒グラフが描けたでしょうか。それぞれの行の意味を順に説明します。</p>
-<ul class="simple">
-<li><p>1行目:<br />
-<code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(10,2))</span>&#160; </code><br />
-ここでは、<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">figure</span></code>という関数を読んでいます。<br />
-上で<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>モジュール内の<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>というモジュールを<br />
-<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前でインポートしたので<code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>というのは、<br />
-<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">figure</span></code>という関数を使うことを意味します。<br />
-役割としては、図を描くキャンバスを用意しているようなイメージです。<br />
-ここでは<code class="docutils literal notranslate"><span class="pre">figsize=(10,2)</span></code>という引数を指定しました。<br />
-(指定しなければ自動で図のサイズが決まります)<br />
-figsize=(横,縦)で大きさが指定できます、figsizeを変えて試してみましょう</p></li>
-<li><p>2行目:<br />
-<code class="docutils literal notranslate"><span class="pre">plt.bar(label,data,align='center',width=0.5,color=&quot;red&quot;)</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">bar</span></code>という関数(棒グラフを描く関数)を使っています。<br />
-1つめの引数はx軸上の値で、2つめはy軸に対応する値です。<br />
-x軸用のリストが数値以外のときは整数値を割り当ててプロットしてくれます<br />
-(７個データがあれば、x=0,1,…,6に割り当てられる)</p></li>
-<li><p>3行目:<br />
-<code class="docutils literal notranslate"><span class="pre">plt.xlabel(&quot;各科目&quot;);</span> <span class="pre">plt.ylabel(&quot;Aさんの得点&quot;)</span>&#160; </code><br />
-ここではx軸とy軸のデータの種類(ラベル/labelと呼ぶ)を指定しています。</p></li>
-<li><p>4行目:<br />
-<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code><br />
-それまでに指定した条件で絵を描いて表示する</p></li>
-<li><p>5行目:<br />
-<code class="docutils literal notranslate"><span class="pre">plt.close()</span>&#160; </code>キャンバスを閉じる。<br />
-とくに一つのプログラムで複数絵を描くときはこれを書きましょう。<br />
-(closeしないと、どこまでがどのグラフのための指示かわからず<br />
-意図しない絵になることがあります)</p></li>
+<ul>
+<li><p>1行目: <code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(10,2))</span>&#160; </code></p>
+<blockquote>
+<div><p>ここでは、<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">figure</span></code>という関数を読んでいる。<br />
+上で<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>モジュール内の<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>というモジュールを<code class="docutils literal notranslate"><span class="pre">plt</span></code>という名前でインポートしたので<code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>というのは<code class="docutils literal notranslate"><span class="pre">pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">figure</span></code>という関数を使うことを意味する。その役割は、図を描くキャンバスを用意しているようなイメージ。<br />
+ここでは<code class="docutils literal notranslate"><span class="pre">figsize=(10,2)</span></code>という引数を指定した(指定しなければ自動で図のサイズが決まる).<br />
+figsize=(横,縦)で大きさが指定できるので、figsizeを変えて試してみよう</p>
+</div></blockquote>
+</li>
+<li><p>2行目: <code class="docutils literal notranslate"><span class="pre">plt.bar(label,data,align='center',width=0.5,color=&quot;red&quot;)</span></code></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pyplot</span></code>内の<code class="docutils literal notranslate"><span class="pre">bar</span></code>という関数(棒グラフを描く関数)を呼んでいる。1つめの引数はx軸上の値で、2つめはy軸に対応する値<br />
+x軸用のリストが数値以外のときは整数値を割り当ててプロットしてくれる(７個データがあれば、x=0,1,…,6に割り当てられる)。</p>
+</div></blockquote>
+</li>
+<li><p>3行目: <code class="docutils literal notranslate"><span class="pre">plt.xlabel(&quot;各科目&quot;);</span> <span class="pre">plt.ylabel(&quot;Aさんの得点&quot;)</span>&#160; </code></p>
+<blockquote>
+<div><p>ここではx軸とy軸のデータの種類(ラベル/labelと呼ぶ)を指定している。</p>
+</div></blockquote>
+</li>
+<li><p>4行目:  <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code></p>
+<blockquote>
+<div><p>それまでに指定した条件で絵を描いて表示する</p>
+</div></blockquote>
+</li>
+<li><p>5行目: <code class="docutils literal notranslate"><span class="pre">plt.close()</span>&#160; </code></p>
+<blockquote>
+<div><p>キャンバスを閉じる。とくに一つのプログラムで複数絵を描くときはこれを書く必要がある。
+(closeしないと、どこまでがどのグラフのための指示かわからず意図しない絵になることがあります)</p>
+</div></blockquote>
+</li>
 </ul>
-<div class="section" id="id3">
-<h4><span class="section-number">4.2.1.1. </span><strong>練習</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>国語と英語の得点を100点満点に換算し、<br />
-いくつかの得点や棒グラフの色を変えてプロットしてみましょう。</p>
-</div>
+<p>ライブラリを使用する際には、見慣れない関数がたくさん出てくるので、その全てについて今の段階でオプションの指定の仕方を覚える必要はない.
+とりあえず、既に指定されているオプションのいくつかを変更してみよう。</p>
+<p>その際、<code class="docutils literal notranslate"><span class="pre">color</span></code>や<code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">align</span></code>などから「widthは数値だから増減するとどうなるかな？」「<code class="docutils literal notranslate"><span class="pre">align=&quot;center&quot;</span></code>がいけるならleftとかrightもあるか？」「こう変えるとこうなるんじゃ…?」と類推しながらやってみよう。</p>
+<p><strong>練習</strong><br />
+いくつかの得点や、棒グラフの色・幅を変えてプロットしてみよう。<br />
+例えば<code class="docutils literal notranslate"><span class="pre">color</span></code>の場合、一般的な色の名前を指定するか、カラーコード(真っ黒=”#000000”など)やRGBの値(0~1の値を3つ並べたもの,例-&gt;(0.2,0.5,1))を指定することで色を変更できる。<br />
+※日本語が上手く表示されない場合、上の<code class="docutils literal notranslate"><span class="pre">japanize_matplotlib</span></code>をインストールする行の実行を忘れている.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h3><span class="section-number">4.2.2. </span>円グラフ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>世の中には多くの円グラフの誤用が溢れています。<br />
-ワイドショーなどで総和が100%になっていなかったり、<br />
-円に対して占める割合が明らかに間違っていたりと、ひどい有様です。</p>
-<p>他にも、奥行方向に傾いた円グラフも誤った印象を与えます。<br />
-このように、円グラフというのは作成する際に注意が必要ですし、<br />
-作成した円グラフがおかしいと「私は教養のない人です」<br />
-と言っているようなもので大変恥ずかしい思いをします。</p>
-<p>そもそも円グラフにしなきゃいけないデータってあるんでしょうか？<br />
-帯グラフなどのほうがよっぽど量の比較にも向いています。</p>
-<p>あれ…無くない？ということで円グラフはオマケとします。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#どうしても円グラフが描きたい方へ (下のコードを適当にいじって遊んでみてください)</span>
-<span class="n">tlabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aと答えた人&quot;</span><span class="p">,</span><span class="s2">&quot;Bと答えた人&quot;</span><span class="p">,</span><span class="s2">&quot;Cと答えた人&quot;</span><span class="p">]</span>
-<span class="n">ratio</span> <span class="o">=</span> <span class="p">[</span><span class="mi">513</span><span class="p">,</span><span class="mi">142</span><span class="p">,</span> <span class="mi">249</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">tlabels</span><span class="p">,</span><span class="n">counterclock</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%.1f%%</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
-<span class="c1"># labels=tlabelsは、 pie()関数の中のlabelsという引数にtlabelsを突っ込むという意味</span>
-<span class="c1"># label(ラベル)とは、凡例(legend)のこと。それぞれのオブジェクトが何を指すのか</span>
-<span class="c1"># counterclockは反時計回りのオプションをFalse(偽)とするのでつまり時計回り(回りくどいな...)</span>
-<span class="c1"># startangleは円グラフの始点を、x軸から見て何度のところにとるかで、今は90度(つまり12時の方向)と設定.</span>
-<span class="c1"># autopctは「値を%表記に直せ」というオプションで、 %.1f%%は小数点以下1桁まで出力しなさいという命令.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tlabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aと答えた人&quot;</span><span class="p">,</span><span class="s2">&quot;Bと答えた人&quot;</span><span class="p">,</span><span class="s2">&quot;Cと答えた人&quot;</span><span class="p">]</span>
-<span class="n">ratio</span> <span class="o">=</span> <span class="p">[</span><span class="mi">513</span><span class="p">,</span><span class="mi">142</span><span class="p">,</span> <span class="mi">249</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#plt.ylim(-1,1)でも可</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tlabels</span><span class="p">)):</span>
-    <span class="n">tx</span> <span class="o">=</span> <span class="n">ratio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">ty</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="n">ty</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="n">tx</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">tlabels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;(&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ratio</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot;人, &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%4.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">ratio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">ratio</span><span class="p">)))</span><span class="o">+</span><span class="s2">&quot;%)&quot;</span><span class="p">)</span>
-    <span class="n">xs</span> <span class="o">+=</span> <span class="n">ratio</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>こっちの棒グラフのほうが良い気がする</p>
-</div>
 <div class="section" id="plot">
-<h3><span class="section-number">4.2.3. </span>plot: 線の描画<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
-<p>説明変数<span class="math notranslate nohighlight">\(x\)</span>と目的変数<span class="math notranslate nohighlight">\(y\)</span>があって、<br />
-とくに**<span class="math notranslate nohighlight">\(x\)</span>に対する<span class="math notranslate nohighlight">\(y\)</span>の振る舞い**に興味がある場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>を使います。</p>
-<p>たとえば、日付(<span class="math notranslate nohighlight">\(x\)</span>)に対するコロナウイルス感染者(<span class="math notranslate nohighlight">\(y\)</span>)の推移をプロットしてみましょう。
+<h3><span class="section-number">4.4.3. </span>plot: 線の描画<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
+<p>説明変数<span class="math notranslate nohighlight">\(x\)</span>と目的変数<span class="math notranslate nohighlight">\(y\)</span>があって、とくに <strong><span class="math notranslate nohighlight">\(x\)</span>に対する<span class="math notranslate nohighlight">\(y\)</span>の振る舞い</strong> に興味がある場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>を使う。</p>
+<p>たとえば、日付(<span class="math notranslate nohighlight">\(x\)</span>)に対するコロナウイルス感染者(<span class="math notranslate nohighlight">\(y\)</span>)の推移をプロットしてみよう。
 日付は、WHOのSituation Reportが初めて発表された2019年1月20日を起点(ゼロ)とする経過日数として表すことにして…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 感染者数と重傷者数</span>
-<span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">282</span><span class="p">,</span><span class="mi">314</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">581</span><span class="p">,</span><span class="mi">846</span><span class="p">,</span><span class="mi">1320</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2798</span><span class="p">,</span><span class="mi">4593</span><span class="p">,</span> <span class="mi">6065</span><span class="p">,</span><span class="mi">7818</span><span class="p">,</span><span class="mi">9826</span><span class="p">,</span><span class="mi">11953</span><span class="p">,</span><span class="mi">14557</span><span class="p">,</span><span class="mi">17391</span><span class="p">,</span><span class="mi">20630</span><span class="p">,</span>
-    <span class="mi">24554</span><span class="p">,</span><span class="mi">28276</span><span class="p">,</span><span class="mi">31481</span><span class="p">,</span><span class="mi">34886</span><span class="p">,</span> <span class="mf">37558.40554</span><span class="p">,</span><span class="mi">43103</span><span class="p">,</span><span class="mi">45171</span><span class="p">]</span> <span class="c1">#2019年2月13日までのデータ</span>
-
-<span class="n">y_sev</span><span class="o">=</span><span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="mi">324</span><span class="p">,</span><span class="mi">461</span><span class="p">,</span><span class="mi">976</span><span class="p">,</span><span class="mi">1239</span><span class="p">,</span>
-       <span class="mi">1370</span><span class="p">,</span><span class="mi">1527</span><span class="p">,</span><span class="mi">1795</span><span class="p">,</span><span class="mi">2110</span><span class="p">,</span><span class="mi">2296</span><span class="p">,</span><span class="mi">2788</span><span class="p">,</span><span class="mi">3219</span><span class="p">,</span><span class="mi">3859</span><span class="p">,</span><span class="mi">4821</span><span class="p">,</span><span class="mi">6101</span><span class="p">,</span><span class="mi">6188</span><span class="p">,</span><span class="mi">6484</span><span class="p">,</span><span class="mi">7333</span><span class="p">,</span><span class="mi">8304</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 感染者数(y)と重傷者数(y_sev) #2019年2月13日までのデータ</span>
+<span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">282</span><span class="p">,</span><span class="mi">314</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">581</span><span class="p">,</span><span class="mi">846</span><span class="p">,</span><span class="mi">1320</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2798</span><span class="p">,</span><span class="mi">4593</span><span class="p">,</span><span class="mi">6065</span><span class="p">,</span><span class="mi">7818</span><span class="p">,</span><span class="mi">9826</span><span class="p">,</span><span class="mi">11953</span><span class="p">,</span><span class="mi">14557</span><span class="p">,</span><span class="mi">17391</span><span class="p">,</span><span class="mi">20630</span><span class="p">,</span><span class="mi">24554</span><span class="p">,</span><span class="mi">28276</span><span class="p">,</span><span class="mi">31481</span><span class="p">,</span><span class="mi">34886</span><span class="p">,</span> <span class="mf">37558.40554</span><span class="p">,</span><span class="mi">43103</span><span class="p">,</span><span class="mi">45171</span><span class="p">]</span> 
+<span class="n">y_sev</span><span class="o">=</span><span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="mi">324</span><span class="p">,</span><span class="mi">461</span><span class="p">,</span><span class="mi">976</span><span class="p">,</span><span class="mi">1239</span><span class="p">,</span><span class="mi">1370</span><span class="p">,</span><span class="mi">1527</span><span class="p">,</span><span class="mi">1795</span><span class="p">,</span><span class="mi">2110</span><span class="p">,</span><span class="mi">2296</span><span class="p">,</span><span class="mi">2788</span><span class="p">,</span><span class="mi">3219</span><span class="p">,</span><span class="mi">3859</span><span class="p">,</span><span class="mi">4821</span><span class="p">,</span><span class="mi">6101</span><span class="p">,</span><span class="mi">6188</span><span class="p">,</span><span class="mi">6484</span><span class="p">,</span><span class="mi">7333</span><span class="p">,</span><span class="mi">8304</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;2019年1月20日以降の経過日数&quot;</span><span class="p">)</span>
@@ -759,34 +758,34 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_35_0.png" src="../_images/Python_chapter4_Matplotlib_35_0.png" />
-<img alt="../_images/Python_chapter4_Matplotlib_35_1.png" src="../_images/Python_chapter4_Matplotlib_35_1.png" />
 </div>
-</div>
-<p>下のグラフはy軸の対数スケールをとってみました。<br />
-<em>データが無い日の値は0ではなくNone(値なし)にすることに注意しましょう</em></p>
+<p>下のグラフはy軸の対数スケールを取っている.
+データが無い日の値を0とするのは誤りである. ここではNone(値なし)にしている. こうした欠損値の取り扱いもデータ分析では重要な作業の一つである.</p>
+<p><strong>凡例の表示</strong></p>
+<p>複数のデータをプロットするときは、それぞれのデータに対して凡例を付けることができる.
+barやplot、以下でやるscatterなどそれぞれのグラフを構成するオブジェクトに対して、<code class="docutils literal notranslate"><span class="pre">label</span></code>という引数を指定することで凡例を付けることができる.</p>
+<p>つけた凡例は<code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code>で表示することができる.</p>
 <p><strong>注意</strong><br />
-当然ですが、x軸とy軸方向でデータの数が合っていないとエラーを起こします。</p>
-<p>「一緒にしているつもりなのにエラーが出る…」と言う場合は<br />
-len()関数などを実行してリストの長さ/要素の数をチェックしてみましょう。<br />
+当然だが、x軸とy軸方向でデータの数が合っていないとエラーとなる.<br />
+「一緒にしているつもりなのにエラーが出る…」と言う場合は、<code class="docutils literal notranslate"><span class="pre">len</span></code>関数を使うなどして、リストの長さ/要素の数をチェックしてみましょう。<br />
 カンマがピリオドになるなどして、意図しないリストになっているかもしれません。</p>
 <p>例:<br />
 (意図したリスト) [2,3,5]  ←長さ3のリスト<br />
-(間違えて作ったリスト) [2.3, 5] ←カンマがピリオドになっていて、長さ2のリストになっている</p>
+(間違えて作ったリスト) [2.3, 5] ←カンマがピリオドになっていて、長さ2のリストになっている.</p>
+<p>上記のようなミスを防ぐには、値を入力してカンマを打ったあと半角スペースを開けるようにすると分かりやすい, <code class="docutils literal notranslate"><span class="pre">[2,3,5]</span></code>→<code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">5]</span></code>.</p>
 <p><strong>練習</strong>:<br />
-「matplotlib marker」でWeb検索してみて、どんな形状のmarkerが使えるか調べてみましょう。<br />
-その中から”x”(バツ印)以外の好きなシンボルを選んで上のグラフの二番目をプロットしてみましょう。</p>
+「matplotlib marker」でWeb検索してみて、どんな形状のmarkerが使えるか調べてみよう.<br />
+また、その中から”x”(バツ印)以外の好きなシンボルを選んで上のグラフの二番目をプロットしよう。</p>
 </div>
 <div class="section" id="scatter">
-<h3><span class="section-number">4.2.4. </span>scatter: 散布図の描画<a class="headerlink" href="#scatter" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.4.4. </span>scatter: 散布図の描画<a class="headerlink" href="#scatter" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(y\)</span>、２つの量があって、どちらにも興味がある、<br />
 あるいは両者の間の相関に興味がある場合、散布図を描くと、見通しやすくなることが多いです。</p>
 <p>以下では、2017年の宇都宮の平均気温とアイスクリームの消費量の相関を見てみましょう。<br />
 気温・アイスクリームの消費量ともに、1月から12月に順番にリストに入れていくことにします。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
 <span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
@@ -799,20 +798,20 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_41_0.png" src="../_images/Python_chapter4_Matplotlib_41_0.png" />
-</div>
 </div>
 <p>相関係数などの情報を含んだもう少しかっこいい図を作ってみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#データをリスト形式で与える</span>
+<span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
 <span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1">## x,yの配列間の相関行列を計算します </span>
-<span class="n">corrcoef</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1">## 行列の非対角要素が相関係数です。  r[0,1], 0行目1列の値</span>
+<span class="c1"># Numpyを使ってx,yの配列間の相関行列を計算. 詳細は相関分析の際に.</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> 
+<span class="n">corrcoef</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> 
 
-<span class="k">def</span> <span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span> <span class="c1">#季節ごとに適当に色を塗ってみましょう</span>
+<span class="c1">#季節ごとに適当に色を塗るために、月を入力すると色を返す関数を定義</span>
+<span class="k">def</span> <span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">==</span><span class="mi">12</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;blue&quot;</span>
     <span class="k">elif</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">month</span> <span class="o">&lt;=</span><span class="mi">5</span><span class="p">:</span>
@@ -824,8 +823,9 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;month&quot;</span><span class="p">,</span><span class="n">month</span><span class="p">,</span> <span class="s2">&quot; is not supported&quot;</span><span class="p">)</span>
 
+<span class="c1"># 図の描画部分</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  <span class="c1">## 注2</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  <span class="c1">## =&gt; 注2</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#D3DEF1&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;宇都宮市&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;平均気温 (℃)&quot;</span><span class="p">)</span>
@@ -841,29 +841,25 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_43_0.png" src="../_images/Python_chapter4_Matplotlib_43_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="clubsuit-ax-matplotlib-axes">
-<h3><span class="section-number">4.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">(matplotlib.axes)</span> </code><a class="headerlink" href="#clubsuit-ax-matplotlib-axes" title="Permalink to this headline">¶</a></h3>
-<p>上では、axという見慣れないものが導入されました。</p>
-<p>キャンバスの上に小さな作業領域<code class="docutils literal notranslate"><span class="pre">axes</span></code>を指定するための<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>や<code class="docutils literal notranslate"><span class="pre">add_axes</span></code>といった関数があります。
-<code class="docutils literal notranslate"><span class="pre">ax</span></code>はこれらの関数で生成される作業領域に慣例的に用いる変数です。</p>
-<p>たとえばキャンバスを四分割して、似たようなグラフを4つ同時に描いたりするのに便利です。</p>
-<p><code class="docutils literal notranslate"><span class="pre">axes</span></code>を使いこなすのは少々テクニカルな点も多いので、よくわからない部分はとりあえず飛ばし読みで構いません。<br />
-慣れてくると、その便利さに気がつくはずです。<br />
-細かい図の書き方は追々、一緒に勉強していきましょう。</p>
-<p>axに関しては、日本語で書かれた以下の記事もおすすめです<br />
+<h3><span class="section-number">4.4.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> <code class="docutils literal notranslate"><span class="pre">ax</span> <span class="pre">(matplotlib.axes)</span> </code><a class="headerlink" href="#clubsuit-ax-matplotlib-axes" title="Permalink to this headline">¶</a></h3>
+<p>上では、axという見慣れないものが導入されている。</p>
+<p>キャンバスの上に小さな作業領域<code class="docutils literal notranslate"><span class="pre">axes</span></code>を指定するための<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>や<code class="docutils literal notranslate"><span class="pre">add_axes</span></code>といった関数がある。
+<code class="docutils literal notranslate"><span class="pre">ax</span></code>はこれらの関数で生成される作業領域に慣例的に用いる変数名で、とくに作業領域が一つの場合によく用いる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">axes</span></code>を使うと、キャンバス上に複数のグラフを描くことができるので、たとえばキャンバスを四分割して、似たようなグラフを4つ同時に描いたりするのに便利.<br />
+<code class="docutils literal notranslate"><span class="pre">axes</span></code>を使いこなすのは少々テクニカルな点も多いので、よくわからない部分はとりあえず飛ばし読みで構わない。</p>
+<p>使いこなせれば、論文に使う図表を作るなど、大変重宝するはずだ。細かい図の書き方は必要に応じて勉強していこう.</p>
+<p><code class="docutils literal notranslate"><span class="pre">axes</span></code>に関しては、日本語で書かれた以下の記事もおすすめ:
 <a class="reference external" href="https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9">https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mi">92</span><span class="p">,</span><span class="mi">88</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
 <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">,</span><span class="s2">&quot;英語&quot;</span><span class="p">,</span> <span class="s2">&quot;数IA&quot;</span><span class="p">,</span> <span class="s2">&quot;数IIB&quot;</span><span class="p">,</span> <span class="s2">&quot;化学&quot;</span><span class="p">,</span> <span class="s2">&quot;物理&quot;</span><span class="p">,</span> <span class="s2">&quot;世界史&quot;</span><span class="p">]</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">axTL</span><span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#TL: Top Leftのつもり</span>
+<span class="n">axTL</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#TL: Top Leftのつもり</span>
 <span class="n">axTR</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#TR: Top Rightのつもり </span>
 <span class="n">axBL</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#BL: Bottom Leftのつもり</span>
 <span class="n">axBR</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1">#BR: Bottom rightのつもり</span>
@@ -876,59 +872,51 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter4_Matplotlib_46_0.png" src="../_images/Python_chapter4_Matplotlib_46_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="google-drivegoogle-colab">
-<h3><span class="section-number">4.2.6. </span>Google Driveのマウントと、Google Colab.上で作ったグラフの保存<a class="headerlink" href="#google-drivegoogle-colab" title="Permalink to this headline">¶</a></h3>
-<p>プログラムを実行して絵を描けるようになったら、次にそれを保存して、レポートに貼り付けたり、<br />
-誰かに送ったりする必要が出てくると思います。</p>
-<p>Google Colab.では、同じGoogleのサービスであるGoogle drive上にファイルを保存したり(無料版で15GBまで)<br />
-保存したファイルを他人と共有することができます。</p>
-<p>皆さんのアカウントのGoogle DriveにあるファイルにGoogle Colab.からアクセスするためにはマウントという作業が必要です。</p>
+<div class="section" id="google-drive-google-colab">
+<h3><span class="section-number">4.4.6. </span>Google Drive上のファイル操作&amp;Google Colab.上で作ったグラフの保存<a class="headerlink" href="#google-drive-google-colab" title="Permalink to this headline">¶</a></h3>
+<p>プログラムを実行して絵を描けるようになったら、次にそれを保存して、レポートに貼り付けたり、誰かに送ったりする必要が出てくる。<br />
+Google Colab.では、同じGoogleのサービスであるGoogle drive上にファイルを保存したり保存したファイルを他人と共有することができる。</p>
+<p>皆さんのアカウントのGoogle Driveにあるファイルに、Google Colab.からアクセスするためにはマウントという作業が必要になる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>  <span class="c1"># ←のマウントする際の名前は好きに決められる。drive.mount(&#39;gdrive&#39;)とかでもOK</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>上のコードを実行し(複数アカウントを所持している方はアカウントの選択をして)
-ポップアップ等の指示に従い操作を行います。成功すると、Mounted at ほにゃららというメッセージが出ます。</p>
-<p>上のコードは「google driveをdriveという名前でマウントする」という操作を表しています。<br />
-マウントできていれば、以下のコードを実行すると、<br />
-皆さんのアカウントのマイドライブ直下のファイル一覧が表示されます。</p>
+<p>上のコードを実行し(複数アカウントを所持している方はアカウントの選択をして)ポップアップ等の指示に従い操作を行う。
+成功すると、Mounted at ほにゃららというメッセージが出る。</p>
+<p>上のコード2行目は「google driveをdriveという名前でマウントする」という操作を表していて、
+マウントできていれば、以下のコードを実行すると、皆さんのアカウントのマイドライブ直下のファイル一覧が表示される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!ls ./drive/MyDrive
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls ./drive/MyDrive
 </pre></div>
 </div>
 </div>
 </div>
-<p>Google Colab.からは、!マークをつけることでLinuxやMac(Unix)同様のコマンドが使えます。<br />
-上のlsというコマンドは(List Segmentsの略で)ファイルやディレクトリの情報を表示するコマンドです。</p>
-<p>半角のスラッシュ<code class="docutils literal notranslate"><span class="pre">/</span></code>はディレクトリ階層を意味していて、windowsで言うところの￥に相当します。</p>
-<p>コンピュータでディレクトリやパスを指定するときは通常このような<strong>パス</strong>と呼ばれるものを指定して扱います。<br />
-※パスについてはファイル操作のノートに詳しい記述があります。</p>
-<p>次に、GoogleDriveに、図を保存する用のフォルダを作っておきましょう.</p>
-<p>mkdir(make directoryの略)コマンドで、マイドライブ直下に<code class="docutils literal notranslate"><span class="pre">Colab_pic</span></code>というディレクトリを作ることにします.</p>
+<p>Google Colab.からは、!マークをつけることでLinuxコマンドが使える.<br />
+上の<code class="docutils literal notranslate"><span class="pre">ls</span></code>というコマンドは(List Segmentsの略で)ファイルやディレクトリの情報を表示するコマンド。</p>
+<p>半角のスラッシュ<code class="docutils literal notranslate"><span class="pre">/</span></code>はディレクトリ階層を意味していて、Windowsで言うところの￥に相当する。<br />
+コンピュータでディレクトリやパスを指定するときは通常このような<strong>パス</strong>と呼ばれるものを指定して扱う(※パスについてはファイル操作のノートに詳しい記述がある).</p>
+<p>次に、GoogleDriveに、図を保存する用のフォルダを作っておこう.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mkdir</span></code>(make directoryの略)コマンドで、マイドライブ直下に<code class="docutils literal notranslate"><span class="pre">Colab_pic</span></code>というディレクトリを作ることにします.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!mkdir &#39;./drive/MyDrive/Colab_pic&#39; 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir <span class="s1">&#39;./drive/MyDrive/Colab_pic&#39;</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>上のコードを実行後にエラーが出ていなければGoogle driveを開くとColab_picというディレクトリが作成されているかと思います。</p>
-<p>一度フォルダを作ってしまうと、２回目以降は上のコードを実行しても「既にフォルダありますよ！！」というメッセージがでますので<br />
-ノートを開くたびに実行する必要はありません。</p>
-<p>これで準備ができました。試しに以下のコードを実行して図を保存してみましょう。</p>
+<p>上のコードを実行後にエラーが出ていなければGoogle Driveを開くと<code class="docutils literal notranslate"><span class="pre">Colab_pic</span></code>というディレクトリが作成されているはず。</p>
+<p>一度フォルダを作ってしまうと、２回目以降は上のコードを実行しても「既にフォルダありますよ！！」というメッセージがでるため、ノートを開く度といったように複数回実行する必要はない。</p>
+<p>これで準備ができた。試しに以下のコードを実行して図を保存してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### 先程の図</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先程の図</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  
 <span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#D3DEF1&quot;</span><span class="p">)</span>
@@ -941,77 +929,131 @@ len()関数などを実行してリストの長さ/要素の数をチェック�
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">tcol</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;月&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;r=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">corrcoef</span><span class="p">),</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./drive/My Drive/Colab_pic/scatter_Utsunomiya_ice.pdf&quot;</span><span class="p">)</span> <span class="c1">#####  ここがさっきと違います！ </span>
-<span class="c1">#plt.show()</span>
+<span class="c1">###plt.show()の代わりに、savefigというメソッドを使い、グラフを保存する</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./drive/My Drive/Colab_pic/scatter_Utsunomiya_ice.pdf&quot;</span><span class="p">)</span>  
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Google drive上の指定したフォルダに、ファイルが作られたでしょうか？<br />
-matplotlibはファイル名を変えるだけで指定した拡張子で描画してくれるので色々試してみましょう<br />
-(.jpg,.pdf,.eps,.pngなど)</p>
-<p><strong>余談</strong><br />
-プレゼンのスライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfやepsなど)がおすすめです。<br />
-(それか、高解像度でjpegやpngを作ってスライドで使って、誰かにスライドを渡すときは軽量化する)<br />
-プレゼンで図が滲んでいるスライドを見せていると「あぁ配慮が足りないんだな」と思われて損をしてしまうかもしれません。<br />
+<p>上のコードを実行後にGoogle Drive上の指定したフォルダを確認してみよう.</p>
+<p>少しラグがあるかもしれないが、少し待つと、フォルダ内に<code class="docutils literal notranslate"><span class="pre">scatter_Utsunomiya_ice.pdf</span></code>というpdfファイルが出来る。</p>
+<p>Matplotlibはファイル名を変えるだけで、指定した拡張子で描画してくれるので色々試してみよう(.jpg,.pdf,.eps,.pngなど)</p>
+<p><strong>余談</strong></p>
+<p>プレゼンのスライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfなど)がおすすめです.
+(あるいは、高解像度でjpegやpngを作ってスライドを作り、誰かにスライドを渡すときは軽量化する)
+線がガビガビの図だらけスライドを使ったスライドは「あぁ配慮が足りないんだな」と思われて損をしてしまうかもしれない。
+例えば、プレプリントサーバーであるarXivには毎日多くの論文がアップロードされているが、
+論文の体を為していない文章や、いわゆる「トンデモ論文」といって、科学的なプロセスを踏んでいない論文も稀にある。
+そうした論文に共通する特徴の一つとして、図がガビガビになっていることが挙げられる。
 論文でラスタ画像を使う場合は「トンデモ論文だと思われて誰にも読まれない危険性」を理解して使いましょう。</p>
-<p><strong>練習</strong>
-これまでの(棒グラフ,円グラフ,１次元図,散布図)のグラフを描画したコード部分で、<br />
-データを自由に足してみながら、plt.show()を書き換えてファイルに出力してみましょう。</p>
+<p><strong>練習</strong></p>
+<p>これまでの(棒グラフ,円グラフ,１次元図,散布図)のグラフを描画したコード部分で、<br />
+データを自由に足したりオプションを変えながら、plt.show()をplt.savefig(“filepath.filetype”)に書き換えてファイルに出力してみましょう。</p>
 </div>
 <div class="section" id="gif">
-<h3><span class="section-number">4.2.7. </span>gifアニメーションの作成<a class="headerlink" href="#gif" title="Permalink to this headline">¶</a></h3>
-<p>「なんだこの程度のグラフならExcelでも簡単にできるじゃん…」と思った皆さんのために、もう少し凝ったことをやってみましょう。<br />
-gifアニメーション(パラパラ漫画)を作ってみます。</p>
-<p>以下のリンクに、x軸をGDP,y軸を24歳から35歳の平均就学年数の女性/男性比(%)としたグラフを画像ファイル(png)にしたものを公開しました。<br />
-(もともとのデータはFACTFULNESSから来ているのでライセンスフリーです)<br />
-<a class="reference external" href="https://drive.google.com/drive/folders/1kD0Sk8EL-JSDJv-V8Bim3UytNSlofc6s?usp=sharing">https://drive.google.com/drive/folders/1kD0Sk8EL-JSDJv-V8Bim3UytNSlofc6s?usp=sharing</a></p>
+<h3><span class="section-number">4.4.7. </span>gifアニメーションの作成<a class="headerlink" href="#gif" title="Permalink to this headline">¶</a></h3>
+<p>「なんだこの程度のグラフならExcelでも簡単にできるじゃん…」と思った皆さんのために、もう少し凝ったことをやってみましょう。</p>
+<p>以下のリンクに、x軸をGDP,y軸を24歳から35歳の平均就学年数の女性/男性比(%)としたグラフを画像ファイル(png)にしたものを公開した。<br />
+もともとのデータはFACTFULNESSから来ているのでライセンスフリー.
+そのデータをもとに、Pythonで幾つかの国のデータを抜き出して、グラフを作成してある。</p>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/1ifBG3v1_Z2VixHcxpQUP7WLEUi5y7OfZ?usp=sharing">https://drive.google.com/drive/folders/1ifBG3v1_Z2VixHcxpQUP7WLEUi5y7OfZ?usp=sharing</a></p>
+<p>この画像ファイルをパラパラ漫画のようにしてgifアニメーションにしてみよう.
+そのために必要なファイルにGoogle Colab.からアクセスできるよう、以下のいずれかの手順で作業しよう(授業では楽ちんな2を使う予定)</p>
+<div class="section" id="google-drive">
+<h4><span class="section-number">4.4.7.1. </span>方法1: Google Driveを開いて直接操作する方法<a class="headerlink" href="#google-drive" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p>まずこれをダウンロードしてください。</p></li>
-<li><p>ZIP形式で保存されるので、それを解凍してください</p></li>
-<li><p>解凍したフォルダを自身のGoogle Driveの好きな場所にアップロードしてください<br />
-※以下のコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というディレクトリを作ってその下にアップロード</p></li>
+<li><p>まずこれをダウンロードする</p></li>
+<li><p>ZIP形式なので、それを解凍する</p></li>
+<li><p>解凍したフォルダを自身のGoogle Driveの好きな場所にアップロードする
+※以下のグラフを作成するコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というディレクトリを作ってその下にアップロード</p></li>
 </ol>
 <p>たとえば私のようにGoogle Driveのマイドライブ直下のAdDSというフォルダの下に<br />
-GDPvsWomenInSchoolというフォルダを置いたとします</p>
+GDPvsWomenInSchoolというフォルダを置いたとすると…</p>
 <p>参考スクリーンショット(ディレクトリ名が古い(AdDS2021)ので注意):<br />
-<img alt="" src="https://drive.google.com/uc?export=view&amp;id=12v-XLgCHTpOehkJ2pmJIZ7zcaGIH4OZv" /></p>
-<p>年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみましょう</p>
-<p>先程のグラフがgoogle driveに保存されているかどうかは、以下のコマンドで確認できます(アップロードして直後はファイルが見つからないことがあります)</p>
+<img src="https://drive.google.com/uc?export=view&id=12v-XLgCHTpOehkJ2pmJIZ7zcaGIH4OZv" width = 40%></p>
+<p>こちらにダウンロードして展開したファイルをアップロードします.</p>
+</div>
+<div class="section" id="linuxpython">
+<h4><span class="section-number">4.4.7.2. </span>方法2: LinuxコマンドとPythonコードで行う方法<a class="headerlink" href="#linuxpython" title="Permalink to this headline">¶</a></h4>
+<p>zipを解凍するソフトウェアが無い方はこちらがおすすめ:</p>
+<ol class="simple">
+<li><p>Google Driveをマウントしておく</p></li>
+<li><p>Pythonコードを使って、共有リンクからzipファイルを保存する</p></li>
+<li><p>zipファイルをunzipコマンドで展開し、展開したフォルダをGoogle Driveのフォルダに移動する</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!ls  ./drive/MyDrive/AdDS/GDPvsWomenInSchool/*.png
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 手順 2. Pythonコード</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://drive.google.com/uc?export=download&amp;id=1ifBG3v1_Z2VixHcxpQUP7WLEUi5y7OfZ&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;GDPvsWomenInSchool.zip&quot;</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 手順3. Linuxコマンド</span>
+
+<span class="c1">#zipファイルを解凍する</span>
+<span class="o">!</span>unzip GDPvsWomenInSchool.zip 
+
+<span class="c1"># Google Driveのマイドライブに移動する</span>
+<span class="o">!</span><span class="nb">cd</span> drive/MyDrive
+
+<span class="c1"># マイドライブ内にAdDSというフォルダを作成し、解凍したファイルを移動する</span>
+<span class="o">!</span>mkdir AdDS
+<span class="o">!</span>mv GDPvsWomenInSchool AdDS/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pnggif">
+<h4><span class="section-number">4.4.7.3. </span>pngファイルを読み込んでgifアニメーションを作成する<a class="headerlink" href="#pnggif" title="Permalink to this headline">¶</a></h4>
+<p>先程のグラフがgoogle driveに保存されているかどうかは、以下のコマンドで確認できる(アップロードして直後はファイルが見つからないことがあります).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls  ./drive/MyDrive/AdDS/GDPvsWomenInSchool/*.png
 </pre></div>
 </div>
 </div>
 </div>
 <p>AdDS/GDPvsWomenInSchool/の部分は皆さんのフォルダ名に適宜変更してください.</p>
-<p>pngファイルをまとめてgifにするコードは以下のとおりです。(処理にしばし時間がかかります)</p>
+<p>ファイルが確認できたら、年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみよう.</p>
+<p>pngファイルをまとめてgifにするコードは以下の通り(処理にしばし時間がかかります):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 
-<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/AdDS/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> <span class="c1">##まとめたいpngをワイルドカードで指定</span>
+<span class="c1"># まとめたいpngをワイルドカード*で指定</span>
+<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/AdDS/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> 
 <span class="n">images</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">files</span><span class="p">))</span>
 
-<span class="n">oupf</span> <span class="o">=</span> <span class="s1">&#39;./drive/My Drive/Colab_pic/GDPvsWomen.gif&#39;</span> <span class="c1">##出力名と保存場所を指定する</span>
+<span class="c1"># 出力名と保存場所を指定</span>
+<span class="n">oupf</span> <span class="o">=</span> <span class="s1">&#39;./drive/My Drive/Colab_pic/GDPvsWomen.gif&#39;</span> 
+
+<span class="c1"># 画像をGIFアニメーションとして保存</span>
 <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">oupf</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">duration</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>エラーが出なければおそらく変数<code class="docutils literal notranslate"><span class="pre">oupf</span></code>で指定した場所に、gifファイルが生成されていると思います。</p>
-<p>私の作成例(<a class="reference external" href="https://drive.google.com/file/d/1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k/view?usp=sharing">ファイルへのリンク</a>)は以下のとおりです</p>
+<p>エラーが出なければ、変数<code class="docutils literal notranslate"><span class="pre">oupf</span></code>で指定した場所に、gifファイルが生成されている。</p>
+<p>私の作成例(<a class="reference external" href="https://drive.google.com/file/d/1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k/view?usp=sharing">ファイルへのリンク</a>):</p>
 <img src="https://drive.google.com/uc?export=view&id=1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k" width = 40%>
 </div>
+</div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">4.2.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.4.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>その他のグラフ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.axes3d</span> <span class="kn">import</span> <span class="n">get_test_data</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1033,7 +1075,7 @@ GDPvsWomenInSchoolというフォルダを置いたとします</p>
 <p>二次元ヒストグラム</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">mu1</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
@@ -1059,17 +1101,17 @@ GDPvsWomenInSchoolというフォルダを置いたとします</p>
 <p>日本地図</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install japanmap
-from japanmap import pref_names,pref_code,groups,picture
-import matplotlib.pyplot as plt
-from pylab import rcParams
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install japanmap
+<span class="kn">from</span> <span class="nn">japanmap</span> <span class="kn">import</span> <span class="n">pref_names</span><span class="p">,</span><span class="n">pref_code</span><span class="p">,</span><span class="n">groups</span><span class="p">,</span><span class="n">picture</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">picture</span><span class="p">({</span><span class="s1">&#39;栃木県&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;群馬県&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}))</span>
 </pre></div>
 </div>
