@@ -1038,6 +1038,24 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_mean_variance</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calculate_mean_variance</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+    <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">mean</span><span class="p">,</span> <span class="n">variance</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>さて簡単な例でブロックごとの処理の挙動を確認しておきましょう。</p>
 <p><strong>練習問題</strong></p>
 <p>以下のコードを実行すると、何回数字がprintされるでしょうか？<br />
