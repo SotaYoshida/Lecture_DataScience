@@ -422,7 +422,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#csv">
-   8.3. csv,エクセルファイルの操作
+   8.3. csv
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -494,27 +494,28 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 この章の内容は、データ解析というよりは、Pythonでデータ解析をするための下準備に相当する。</p>
 <p>愚直にコードを書いている事もあり少々泥臭い部分が多いが、この章のような操作のエッセンスを抑えておけば<br />
 普通にやると膨大な時間がかかる様々な処理を高速化・自動化することができるので、頑張って学習しよう。</p>
+<p>これまでの章で学んだfor文や自作関数、if文などを駆使する格好の練習問題でもある。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">8.1. </span>授業で使うファイルの準備<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>予め以下のリンクをクリックして、ファイルをダウンロードし、<br />
-ご自身のGoogle Driveにアップロードしておいてください。</p>
+ご自身のGoogle Driveにアップロードする。</p>
+<p>本章では、ファイルの場所を指定する<strong>パス</strong>という概念がたびたび登場する。
+以下のコードをそのまま使いたいという方は、マイドライブ直下に<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というフォルダを作り、さらにその中に<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダを作成し、ファイルをいれてください。</p>
+<p>パスについては後の節で詳しく説明します(今気になる方は末尾をチェック)。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1U2uvrN18713ylN4OQiI2fsfX5gudL45w/view?usp=sharing">test.txt</a> (テキストファイル)</p></li>
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1bYJNWdtujcQWfSBAa1UeXi2ZzJRJktil/view?usp=sharing">python_handling_test.csv</a> (csv, カンマ区切りのテキストファイル)</p></li>
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1gJMVHivmP7R9Qf4LdqRhdPVc3x0IzD8v/view?usp=sharing">kakei.xlsx</a> (エクセルファイル)</p></li>
 </ul>
-<p>本章では、ファイルの場所を指定する<strong>パス</strong>という概念がたびたび登場する。
-以下のコードをそのまま使いたいという方は、マイドライブ直下に<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というフォルダを作り、さらにその中に<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダを作成し、ファイルをいれてください。</p>
-<p>パスについては後の節で詳しく説明します(今気になる方は末尾をチェック)。</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">8.2. </span>テキストファイルの操作<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>膨大な行のテキストファイルに対して、人間が手で操作をするというのは時として非現実的です。</p>
-<p>誤変換を置換するくらいなら、どのテキスト/メモ帳アプリやwordでもできますが、
-全行(数千とか数万)に対して、決まった操作が必要な場合、プログラムにしてしまったほうが遥かに便利です。</p>
+<p>膨大な行・数のテキストファイルに対して、人間が手で操作をするというのは非効率だし、時として非現実的となる。</p>
+<p>誤変換を置換するくらいなら、どのテキスト/メモ帳アプリやwordでもできるが、
+全行(数千とか数万)に対して、決まった操作が必要な場合や複数ファイルについて　　
+同じ操作が必要になるときは、プログラムを書くと系統的な操作が可能となる。</p>
 <p>以下ではGoogle Driveのマイドライブの<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>の下に作った<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダにファイルを保存したと仮定して話を進めますので、<strong>適宜皆さんの場合に置き換えて使用してください</strong></p>
-<p>まずはgoogle driveに保存した<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>という名前のファイルを読み込んでみましょう。<br />
-既に何回かやったようにgoogle driveをマウントします。</p>
+<p>まずはgoogle driveに保存した<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>という名前のファイルを読み込んでみよう。以前もやったようにgoogle driveをマウントする:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
@@ -523,10 +524,10 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 </div>
-<p><strong>注意</strong> 以後のコードは、google driveの中にあるファイルを読み書きしたりといった操作を行うため<br />
-上でGoogle Driveをマウントした状態でなければ実行しても多くがエラーとなる。</p>
+<p>以後のコードは、google driveの中にあるファイルを読み書きしたりといった操作を行うため<br />
+上でGoogle Driveをマウントした状態でなければ実行しても多くがエラーとなることに注意しよう。</p>
 <hr class="docutils" />
-<p>Google Driveのマウントができたら、先程のファイルがあるかlsコマンドで確かめてみよう。</p>
+<p>Google Driveのマウントができたら、先程のファイルがあるかlsコマンドで確かめてみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /content/drive/MyDrive/AdDS/chapter8_data/*
@@ -534,9 +535,8 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 </div>
-<p>*はワイルドカード記号で、対象を任意とする命令に相当します。<br />
-*.拡張子 などとして使うのも便利です。</p>
-<p>ファイルが見つからない場合は</p>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code>はワイルドカード記号で、対象を任意とする命令に相当し、<code class="docutils literal notranslate"><span class="pre">*.拡張子</span></code> などとして使うのも便利.</p>
+<p>ファイルが見つからない場合やディレクトリ構造の指定に間違いがある場合は</p>
 <blockquote>
 <div><p>No such file or directory</p>
 </div></blockquote>
@@ -578,11 +578,11 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 </div>
-<p>1行目でファイル名(正確にはファイルのパス)を指定し<code class="docutils literal notranslate"><span class="pre">filename</span></code>という変数にした。</p>
-<p>2行目では、指定したパスにあるファイルを開いている。<br />
+<p>1行目でファイル名(正確にはファイルのパス)を指定し<code class="docutils literal notranslate"><span class="pre">filename</span></code>という変数にした。<br />
+2行目では、指定したパスにあるファイルを開いている。<br />
 今はファイルに書き込むのではなく、既にあるファイルを開いて読み込むので<code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code>というオプションを指定している。<br />
-他には<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>(書き出し,上書き), <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>(書き出し,追記)などがあり、新しく上書きでファイルを作成したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>,すでにあるファイルの内容は消さずに追記したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>を指定して使う。</p>
-<p>3行目では、<code class="docutils literal notranslate"><span class="pre">inp</span></code>(ファイルを<code class="docutils literal notranslate"><span class="pre">open</span></code>して得たオブジェクト)に対して<code class="docutils literal notranslate"><span class="pre">readlines</span></code>という操作を適用している。
+他には<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>(書き出し,上書き), <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>(書き出し,追記)などがあり、新しく上書きでファイルを作成したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code>,すでにあるファイルの内容は消さずに追記したい場合は<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>を指定して使う。<br />
+3行目では、<code class="docutils literal notranslate"><span class="pre">inp</span></code>(ファイルを<code class="docutils literal notranslate"><span class="pre">open</span></code>して得たオブジェクト)に対して<code class="docutils literal notranslate"><span class="pre">readlines</span></code>という操作を適用している。
 これは、ファイルに書かれているテキストを(可能なら)全行に渡って読み込みメモリにストアする関数になっている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -642,7 +642,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 <p>ファイルによってはインデントをするために左側にタブ<code class="docutils literal notranslate"><span class="pre">\t</span></code>が含まれる場合もあります(PythonのコードをテキストとしてPythonから読むときなどがこれに該当)。そのような場合に左側にある空白やタブのみを取り除きたければ<code class="docutils literal notranslate"><span class="pre">lstrip()</span></code>を使って取り除くことができる。</p>
-<p>もちろんPythonではインデントが文法なので、インデントを一律で消す、といった操作は必要ないが、特定の状況では、<code class="docutils literal notranslate"><span class="pre">lstrip</span></code>も使えると便利だ。</p>
+<p>もちろんPythonではインデントが文法なので、インデントを一律で消す、といった操作は必要ないが、特定の状況では、<code class="docutils literal notranslate"><span class="pre">lstrip</span></code>も使えると便利。</p>
 <p>上のファイルの文字列で<code class="docutils literal notranslate"><span class="pre">#</span></code>記号を含む行以降だけが必要な場合はどうすればいいでしょうか？</p>
 <p>最も単純(？)な実装は</p>
 <div class="cell docutils container">
@@ -652,8 +652,9 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
     <span class="k">if</span> <span class="s2">&quot;###&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
         <span class="n">hit</span> <span class="o">+=</span> <span class="mi">1</span> 
         <span class="k">continue</span>
+    <span class="c1">#hitが0の状態では何もしない</span>
     <span class="k">if</span> <span class="n">hit</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">continue</span> <span class="c1">#hitが0の状態では何もしない</span>
+        <span class="k">continue</span> 
     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -754,7 +755,7 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 <div class="section" id="replace">
 <h3><span class="section-number">8.2.4. </span>replace関数<a class="headerlink" href="#replace" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">replace</span></code>関数で文字の置換が可能です</p>
+<p><code class="docutils literal notranslate"><span class="pre">replace</span></code>関数で文字の置換が可能:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;abcdあいうえお&quot;</span>
@@ -768,23 +769,37 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 <div class="section" id="clubsuit-map">
 <h3><span class="section-number">8.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> map関数<a class="headerlink" href="#clubsuit-map" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">map</span></code>関数は<code class="docutils literal notranslate"><span class="pre">map(操作,対象)</span></code>という風に使って、対象の各要素に対して一括で操作を適用することができます。<br />
+<p><code class="docutils literal notranslate"><span class="pre">map</span></code>関数は<code class="docutils literal notranslate"><span class="pre">map(操作,対象)</span></code>という風に使って、対象の各要素に対して一括で操作を適用することができる。<br />
 今の場合、<code class="docutils literal notranslate"><span class="pre">['1',</span> <span class="pre">'</span> <span class="pre">2',</span> <span class="pre">'</span> <span class="pre">3',</span> <span class="pre">'</span> <span class="pre">4',</span> <span class="pre">'</span> <span class="pre">5',</span> <span class="pre">'</span> <span class="pre">6']</span></code>などの文字列のリストに対して、<br />
-整数型に変換する<code class="docutils literal notranslate"><span class="pre">int</span></code>関数を作用させるという操作を一度に行います。</p>
+整数型に変換する<code class="docutils literal notranslate"><span class="pre">int</span></code>関数を作用させるという操作を一度に行う。</p>
 <blockquote>
 <div><p>注: <code class="docutils literal notranslate"><span class="pre">map</span></code>関数の返り値はmap objectと呼ばれるものなので、<br />
-元のようなリストの形で使いたい場合は<code class="docutils literal notranslate"><span class="pre">list()</span></code>を使ってリストに変換するステップが必要です。</p>
+元のようなリストの形で使いたい場合は<code class="docutils literal notranslate"><span class="pre">list()</span></code>を使ってリストに変換するステップが必要になる。</p>
 </div></blockquote>
-<p>世の中には、アンケート結果や産業データなどがcsv(カンマ区切りのテキスト)ファイルで公開されている場合が多いですが、<br />
-その場合は<strong>上で説明したような手順でリストなどに格納すれば今まで行ったような解析やグラフ描画が実行できる</strong>といったわけです。<br />
-(もちろんcsvを読むのに便利なライブラリもありますが<br />
-いろんな形式のファイルをプログラムで読み込む場合には<br />
-上のような基本的な操作を組み合わせることも必要になります。)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39; 2&#39;</span><span class="p">,</span> <span class="s1">&#39; 3&#39;</span><span class="p">,</span> <span class="s1">&#39; 4&#39;</span><span class="p">,</span> <span class="s1">&#39; 5&#39;</span><span class="p">,</span> <span class="s1">&#39; 6&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">tmp</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>世の中には、アンケート結果や産業データなどがcsv(カンマ区切りのテキスト)ファイルで公開されている場合が多いが、<br />
+その場合は<strong>上で説明したような手順でリストなどに格納すれば今まで行ったような解析やグラフ描画が実行できる</strong>。</p>
+<p>もちろんcsvを読むのに便利なライブラリもあり、上のような文字列操作が必ずしも必要でない場合もあるが、
+いろんな形式のファイルをプログラムで読み込む場合には、上のような基本的な操作を組み合わせることで、　　
+必要なデータを取り出すことができることは覚えておこう。</p>
 </div>
 <div class="section" id="id5">
 <h3><span class="section-number">8.2.6. </span>テキストファイルの書き出し<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>次に、テキストファイルを書き込んで保存してみます。<br />
-上の文字列で、敬称を”さん”から”様”に置換したテキストを作成して、それを別ファイルとして保存してみましょう。</p>
+<p>次に、テキストファイルを書き込んで保存してみよう。<br />
+上の文字列で、敬称を”さん”から”様”に置換したテキストを作成して、それを別ファイルとして保存してみる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/test_replace.txt&quot;</span> 
@@ -796,20 +811,15 @@ text,csvやxlsx形式のデータをプログラムでサクッと扱えるよ�
 </div>
 </div>
 </div>
-<p>Google Driveで、作成されたファイルをチェックしてみましょう。</p>
-<p>なお、filenameに元ファイルと同じものを指定すると<code class="docutils literal notranslate"><span class="pre">open(filename,&quot;w&quot;)</span></code>を実行した時点で<br />
-ファイルが上書きされて空ファイルになるので注意しましょう。</p>
-<p>今の例ではもちろん、手で置き換えたりするほうが遥かに速いですがこうしたPythonによるファイル操作を覚えておくと</p>
+<p>Google Driveで、作成されたファイルをチェックしてみよう。</p>
+<p>なお、filenameに元ファイルと同じものを指定すると<code class="docutils literal notranslate"><span class="pre">open(filename,&quot;w&quot;)</span></code>を実行した時点でファイルが上書きされて空ファイルになるので注意。</p>
+<p>今の例ではもちろん、手で置き換えたりするほうが遥かに速いが、こうしたPythonによるファイル操作を覚えておくと</p>
 <ul class="simple">
 <li><p>ファイル自体が大量にあり、同じ操作を繰り返す場合</p></li>
 <li><p>単一のテキストファイルに大量の行に渡って情報がある場合</p></li>
 </ul>
-<p>など、手作業が非現実的な様々な状況でも、楽ちんに作業を終わらせることができる(かもしれません)。</p>
-<p>上の内容や、これまでに学習したループ処理を駆使すると、<br />
-数万人のデータが1行ずつ記載されたテキストファイルから条件にヒットする人の<br />
-情報だけを抽出して小さなファイルにまとめるといったことも可能です。</p>
-<p><strong>プログラミングを用いたファイル操作をする発想があるかどうか</strong>がきっとこの先<br />
-皆さんの生き方や働き方に大きな影響を与えると私は考えています。</p>
+<p>など、手作業が非現実的な様々な状況でも、楽ちんに作業を終わらせることができる(かもしれない)。</p>
+<p>一度、プログラミングを用いたファイル操作をする発想を持つと、もうそれなしでは戻れない、といったように、皆さんの生き方や働き方にも少なからず影響があるのではと思ったりする。</p>
 <blockquote>
 <div><p><strong>文字コードに関連した余談</strong><br />
 Windows環境で作成されたテキストファイルを扱う際は読み込みで、文字コードによるエラーが出るかもしれない。最近ではメモ帳でもUTF-8(世界標準)を採用しているよう(→<a class="reference external" href="https://blogs.windows.com/japan/2020/02/20/about-windows-and-japanese-text/">MicrosoftのWindows blogの記事</a>)だが、古いテキストファイルだとShift-JISになっているかも。そういうときは、<code class="docutils literal notranslate"><span class="pre">open(file,</span> <span class="pre">&quot;r&quot;,</span> <span class="pre">encoding</span> <span class="pre">=</span> <span class="pre">&quot;shift_jis&quot;)</span></code>など、ファイルを開くときにencodingを明示的に指定する必要がある。明示的にUTF-8で保存したいときは<code class="docutils literal notranslate"><span class="pre">open(file,</span> <span class="pre">&quot;w&quot;,</span> <span class="pre">encoding</span> <span class="pre">=</span> <span class="pre">&quot;utf-8&quot;)</span></code>などとする。<br />
@@ -819,29 +829,30 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div>
 </div>
 <div class="section" id="csv">
-<h2><span class="section-number">8.3. </span>csv,エクセルファイルの操作<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3><span class="section-number">8.3.1. </span>アンケート分析<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>冒頭の二番目のファイル<a class="reference external" href="https://drive.google.com/file/d/1bYJNWdtujcQWfSBAa1UeXi2ZzJRJktil/view?usp=sharing">python_handling_test.csv</a>はあるアンケート結果をまとめたファイルになっています。</p>
-<p>これは、Google フォームで作成したアンケーで、国数英社理(中学の５科目)に対する得意/苦手意識の調査を想定した疑似アンケートです。</p>
-<p>このようなアンケート調査は事務作業や卒業研究などで頻繁に見られ、会社や大学など所属コミュニティで何らかの意思決定に用いられることも多いことでしょう。こうしたアンケート分析を行っていると、</p>
+<p>冒頭の二番目のファイル<a class="reference external" href="https://drive.google.com/file/d/1bYJNWdtujcQWfSBAa1UeXi2ZzJRJktil/view?usp=sharing">python_handling_test.csv</a>はあるアンケート結果をまとめたファイルになっている。<br />
+これは、Google フォームで作成したアンケーで、国数英社理(中学の５科目)に対する得意/苦手意識の調査を想定した疑似アンケートになっている。</p>
+<p>このようなアンケート調査は事務作業や卒業研究などで頻繁に見られ、会社や大学など所属コミュニティで何らかの意思決定に用いられることも多い。
+こうしたアンケート分析を行っていると、</p>
 <ul class="simple">
 <li><p>各回答項目同士の関係が知りたい</p></li>
 <li><p>明示的な項目以外の情報も抽出したい</p></li>
 </ul>
-<p>といった要望が出てきます。今の場合でいうと、</p>
+<p>といった要望が出てくる。今の場合でいうと、</p>
 <ul class="simple">
 <li><p>各科目ごとの得意・苦手意識の相関を調べたい</p></li>
 <li><p>夜中(あるいは日中)にアンケートを回答した夜型(昼型)の人に見られる特徴がなにかないか？</p></li>
 </ul>
-<p>といったイメージです。そんなとき、</p>
+<p>といったイメージ。そんなとき、</p>
 <blockquote>
 <div><p>国語が得意(どちらかというと得意)と回答した方に質問です。<br />
 英語についてはどうでしょうか？</p>
 </div></blockquote>
-<p>などと新たに設問を増やしてアンケートをやり直すというのは得策では有りません。<br />
-すでに得られた情報からさらなる情報を引き出すことを考えてみましょう。<br />
-まずは、csvファイルに記載された情報を整理してプログラムで扱いやすくすることを考えます。</p>
+<p>などと新たに設問を増やしてアンケートをやり直すというのは得策ではないので、
+すでに得られた情報からさらなる情報を引き出すことを考えたい。</p>
+<p>こんなとき、csvファイルに記載された情報を整理してプログラムで扱いやすくすることを考えてみよう。</p>
 <blockquote>
 <div><p>余談: このcsvファイルをExcelで開こうとするとお使いの環境によって文字化けを起こすかと思います。これはgoogleフォームで作成されたcsvファイルの文字コードが世界標準のutf-8を使用しているのに対し、ExcelがShift-JISという時代遅れな文字コードでcsvファイルを開こうとするためです。Googleのスプレッドシートや、Mac標準のNumbersで開くと文字化けしません。</p>
 </div></blockquote>
@@ -851,13 +862,13 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/python_handling_test.csv&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#読み込むファイルのパスの指定</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/python_handling_test.csv&quot;</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>とりあえずファイルの中身を数行表示してみる。</p>
-<p>csvファイル(コンマ区切りのテキスト)なので、テキストファイルと同じ方法をとる(他の方法ももちろんある)</p>
+<p>とりあえずファイルの中身を数行表示してみる。csvファイル(コンマ区切りのテキスト)なので、テキストファイルと同じ方法をとる(他の方法ももちろんある)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
@@ -880,6 +891,8 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div>
 </div>
 </div>
+<p>ただし、csvファイルのフリをしたいい加減なファイルの場合はエラーになることもあるので、
+独自にコードを書いて例外的な処理をすることも必要になる。</p>
 <p>さて、<code class="docutils literal notranslate"><span class="pre">csv_lines</span></code>に格納したデータをもう少し扱いやすいように変更しよう。<br />
 最初の0行目はどういうデータが入っているか(データの項目)を表している。<br />
 1-2000行目には2000人分の回答が詰まっている。</p>
@@ -956,24 +969,22 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div>
 </div>
 </div>
-<p>相関分析は以降の章で扱うので具体例は省略します。</p>
+<p>相関分析は別の章で扱うので、具体例は省略する。</p>
 </div>
 </div>
 <div class="section" id="clubsuit">
 <h2><span class="section-number">8.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 複雑なエクセルファイルの操作<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">kakei.xlsx</span></code>はエクセルファイルで以降では、2020年度前期のデータサイエンス入門(一部学科を除く)の<br />
-相関分析で使用されたエクセルファイル、<a class="reference external" href="https://drive.google.com/file/d/1gJMVHivmP7R9Qf4LdqRhdPVc3x0IzD8v/view?usp=sharing">kakei.xlsx</a>を使用します。</p>
-<p>以下では、上と同じディレクトリに<code class="docutils literal notranslate"><span class="pre">kakei.xlsx</span></code>を置いたと仮定して<br />
-処理を行いますので、適宜ご自身の環境にパスを置き換えてください。</p>
-<p>※もともとはxlrdというライブラリを使って実装していましたが.xlsx形式をサポートしなくなるとのことで、pandasライブラリを用いた実装に変更しました。</p>
+<p>家計調査のデータが入ったエクセルファイル<a class="reference external" href="https://drive.google.com/file/d/1gJMVHivmP7R9Qf4LdqRhdPVc3x0IzD8v/view?usp=sharing">kakei.xlsx</a>を使用する。<br />
+以下では、上と同じディレクトリに<code class="docutils literal notranslate"><span class="pre">kakei.xlsx</span></code>を置いたと仮定して処理を行うので、適宜ご自身の環境にパスを置き換えて実行しよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/kakei.xlsx&quot;</span> <span class="c1">#読み込むファイルのパスの指定</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#読み込むファイルのパスの指定</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/kakei.xlsx&quot;</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>まずはxlsxファイルをPythonで読み込んで、どんな”シート”があるのかを確認してみましょう。</p>
+<p>まずはxlsxファイルをPythonで読み込んで、どんな”シート”があるのかを確認してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -984,8 +995,8 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div>
 </div>
 </div>
-<p>たくさんシートがあることが分かります。</p>
-<p>Sheet1の中身をのぞいてみましょう。まずは行と列の数を取得してみます。</p>
+<p>たくさんシートがあることが分かった。</p>
+<p>次に、Sheet1の中身をのぞいてみよう。まずは行と列の数を取得してみる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sheet1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
@@ -1003,26 +1014,16 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 </div>
 </div>
 </div>
-<p>などとする。このように、扱いたいファイルの”構造”を知ることが<br />
-やりたい操作を系統的に実行するための第一歩です。<br />
-このエクセルを実際に開くとSheet1からSheet12までが複数都市の家計調査のデータで<br />
-S1からS12までが気候データになっていて<br />
-1-12までの数字が2017年の1月から12月までに対応していることが分かります。</p>
-<p>実際のデータを触っていると「2006年までとそれ以降とでデータファイル(.xlsx)の”構造”が違う」<br />
-といったことも出てきます。<br />
-最初は特定のものに合わせたコードを作り、徐々に”汎用性の高い”コードにしていくのがよいでしょう。</p>
-<p>このエクセルを使って実際に作業をするには、[細かいライブラリの使い方]などを説明することになるため<br />
-授業ではやらず、以下の”おまけ”にいれておきます。この作業や実践DSに限らず</p>
-<ul class="simple">
-<li><p>自分がやりたい操作をきちんと言語化する</p></li>
-<li><p>公式ドキュメントやWebから情報を探す</p></li>
-<li><p>とにかく試してみる</p></li>
-</ul>
-<p>という意識が重要です。</p>
+<p>などとする。このように、扱いたいファイルの”構造”を知ることがやりたい操作を系統的に実行するための第一歩になる。</p>
+<p>このエクセルを実際に開くとSheet1からSheet12までが複数都市の家計調査のデータでS1からS12までが気候データになっていて、
+1-12までの数字が2017年の1月から12月までに対応していることが分かる。</p>
+<p>実際のデータを触っていると「2006年までとそれ以降とでデータファイル(.xlsx)の”構造”が違う」といったことも出てくるので、
+最初は特定のものに合わせたコードを作り、徐々に汎用性の高い(例外に対応できる)コードにしていくのが良い。</p>
+<p>このエクセルを使って実際に作業をするには、pandas等のライブラリの細かい使い方を説明することになるため、授業ではやらず、以下の”おまけ”にいれておく。</p>
 <div class="section" id="clubsuit-clubsuit">
 <h3><span class="section-number">8.4.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit-clubsuit" title="Permalink to this headline">¶</a></h3>
-<p>以下のコードは、プログラミングの”ありがたみ”を感じてもらうためのお試し用です。<br />
-(昔書いたかなり読みにくいコードなのであまり真剣に読まないでください.)</p>
+<p>以下のコードは、プログラミングの”ありがたみ”を感じてもらうためのお試し用。<br />
+(昔書いたかなり読みにくいコードなのであまり真剣に読まないでください)</p>
 <p><strong>大量の画像ファイルをドライブに生成するので、以下を読んだ上で実行してください</strong></p>
 <p>以下のコードたちを何もいじらずに実行すると、<br />
 全都市の月別平均気温と全品目の世帯平均支出のうち、<br />
@@ -1117,6 +1118,7 @@ S1からS12までが気候データになっていて<br />
                 <span class="n">v_kikou</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">trow</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="p">]</span>
         <span class="k">return</span> <span class="n">Tplaces</span><span class="p">,</span> <span class="n">v_kikou</span><span class="p">,</span><span class="n">quantities</span>
 
+<span class="c1"># 月ごとの色を決める関数</span>
 <span class="k">def</span> <span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">==</span><span class="mi">12</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;blue&quot;</span>
@@ -1128,6 +1130,7 @@ S1からS12までが気候データになっていて<br />
         <span class="k">return</span> <span class="s2">&quot;orange&quot;</span>
     <span class="k">return</span> <span class="n">tcol</span>
 
+<span class="c1"># 指定した品目・地点の散布図を描く関数</span>
 <span class="k">def</span> <span class="nf">plot_cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">quantity</span><span class="p">,</span><span class="n">place</span><span class="p">,</span><span class="n">corrcoef</span><span class="p">):</span>    
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1142,7 +1145,8 @@ S1からS12までが気候データになっていて<br />
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">oupdir</span> <span class="o">+</span> <span class="s2">&quot;corr_&quot;</span><span class="o">+</span><span class="n">item</span><span class="o">+</span><span class="s2">&quot;vs&quot;</span><span class="o">+</span><span class="n">quantity</span><span class="o">+</span><span class="s2">&quot;_at_&quot;</span><span class="o">+</span><span class="n">place</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">calcor</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
+<span class="c1"># 指定した品目・地点の散布図を描く関数</span>
+<span class="k">def</span> <span class="nf">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
     <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">num_pic</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">Vs</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="k">for</span> <span class="n">j_K</span><span class="p">,</span><span class="n">place</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">places</span><span class="p">):</span>
@@ -1168,30 +1172,25 @@ S1からS12までが気候データになっていて<br />
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">ti</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">T</span><span class="o">=</span><span class="kc">True</span><span class="p">;</span> <span class="n">F</span><span class="o">=</span><span class="kc">False</span>
-
+    <span class="n">T</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">F</span><span class="o">=</span><span class="kc">False</span>
     <span class="n">inpf</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/kakei.xlsx&quot;</span>
     <span class="n">oupdir</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/AdDS/chapter8_data/kakei_cor_pic/&quot;</span> <span class="c1">#適宜置き換える</span>
     <span class="n">iT</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># iT=6: 日平均気温</span>
     <span class="n">printlog</span><span class="o">=</span> <span class="n">F</span> <span class="c1">#条件にhitした都市の品目と気候データを逐次printするかどうか. (Fを推奨)</span>
-    <span class="n">pthre</span><span class="o">=</span> <span class="mf">0.90</span> <span class="c1">## corrplotを描く相関係数のthreshold </span>
-    <span class="n">pltmode</span> <span class="o">=</span> <span class="n">T</span> <span class="c1">## T:plotする F:計算のみ ** 画像をいちいちplotして保存する必要がない場合Fを推奨</span>
+    <span class="n">pthre</span><span class="o">=</span> <span class="mf">0.90</span> <span class="c1">## corrplotを描く相関係数の絶対値のthreshold(下限)</span>
+    <span class="n">pltmode</span> <span class="o">=</span> <span class="n">T</span> <span class="c1">## T:plotする F:計算のみ (画像をいちいちplotして保存する必要がない場合Fを推奨)</span>
     <span class="n">year</span><span class="o">=</span><span class="s2">&quot;2017&quot;</span> 
 
     <span class="n">wb</span><span class="o">=</span><span class="n">ebook</span><span class="p">(</span><span class="n">inpf</span><span class="p">)</span>
     <span class="n">s_kakei</span><span class="p">,</span><span class="n">s_kikou</span><span class="o">=</span><span class="n">wb</span><span class="o">.</span><span class="n">indices</span><span class="p">()</span>   
-    <span class="n">Vs_kakei</span><span class="o">=</span><span class="p">[];</span> <span class="n">Vs_kikou</span><span class="o">=</span><span class="p">[];</span><span class="n">dates</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">Vs_kakei</span><span class="o">=</span><span class="p">[];</span> <span class="n">Vs_kikou</span><span class="o">=</span><span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ind_kakei</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s_kakei</span><span class="p">):</span>
         <span class="n">i_places</span><span class="p">,</span><span class="n">places</span><span class="p">,</span> <span class="n">v_kakei</span><span class="p">,</span><span class="n">items</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">readkakei</span><span class="p">(</span><span class="n">ind_kakei</span><span class="p">)</span>
         <span class="n">Tplaces</span><span class="p">,</span> <span class="n">v_kikou</span><span class="p">,</span> <span class="n">quantities</span>  <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">readkikou</span><span class="p">(</span><span class="n">s_kikou</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-            <span class="n">date</span><span class="o">=</span><span class="n">year</span><span class="o">+</span><span class="s2">&quot;0&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">date</span><span class="o">=</span><span class="n">year</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">dates</span> <span class="o">+=</span> <span class="p">[</span><span class="n">date</span><span class="p">]</span>
         <span class="n">Vs_kakei</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">v_kakei</span> <span class="p">]</span>
         <span class="n">Vs_kikou</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">v_kikou</span> <span class="p">]</span>
-    <span class="n">calcor</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span><span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">)</span>    
+    <span class="n">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span><span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">)</span>    
 
     <span class="n">tf</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elapced time[sec]:&quot;</span><span class="p">,</span> <span class="n">tf</span><span class="o">-</span><span class="n">ti</span><span class="p">)</span>
@@ -1206,7 +1205,8 @@ S1からS12までが気候データになっていて<br />
 <p>プログラムでデータを機械的に読み出して活用することで、人間が到底出来ないような作業効率を実現することができる場合も多い。
 そんな光の側面ばかりなら良いが、実際にはそう上手くは行かないことも多い。</p>
 <p>業務のデジタル化・デジタルトランスフォーメーションなどといった標語とは裏腹に、世の中にあふれるcsv,スプレッドシートなどは、
-csvと謳っておいて、実際にはカンマ区切りではなくタブ区切りであったり、機械判読を全く想定していないデータの書き方・並べ方となっているものが多く、プログラムを書ける人にとっては苦痛な状況も多い。</p>
+csvと謳っておいて、実際にはカンマ区切りではなくタブ区切りであったり、機械判読を全く想定していないデータの書き方・並べ方となっているものが多く、
+プログラムを書ける人にとっては苦痛な状況も多い。</p>
 <p>総務省統計局は令和2年2月に、政府統計(e-Stat)に関して<a class="reference external" href="https://www.soumu.go.jp/menu_news/s-news/01toukatsu01_02000186.html">統計表における機械判読可能なデータの表記方法の統一ルールの策定</a>というものを出している。
 これが最適な提案かはさておき、データの記述に法則性と機械判読性をもたせる意識を全員が持つことが重要なように思う。</p>
 <p>お掃除ロボットが床を綺麗にするためには、まずお掃除ロボットが走れるよう掃除する(床に物が散乱していない)という条件が求められる、という話だ(そうなの？)。</p>
