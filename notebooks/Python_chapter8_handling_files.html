@@ -1022,8 +1022,9 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 <p>このエクセルを使って実際に作業をするには、pandas等のライブラリの細かい使い方を説明することになるため、授業ではやらず、以下の”おまけ”にいれておく。</p>
 <div class="section" id="clubsuit-clubsuit">
 <h3><span class="section-number">8.4.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span><span class="math notranslate nohighlight">\(\clubsuit\)</span>おまけ<a class="headerlink" href="#clubsuit-clubsuit" title="Permalink to this headline">¶</a></h3>
-<p>以下のコードは、プログラミングの”ありがたみ”を感じてもらうためのお試し用。<br />
-(昔書いたかなり読みにくいコードなのであまり真剣に読まないでください)</p>
+<p>以下のコードは、プログラミングの”ありがたみ”を感じてもらうためのお試し用。
+(昔書いたかなり読みにくいコードなのであまり真剣に読まないでください)
+例外処理も完璧でないのだが、許してほしい。</p>
 <p><strong>大量の画像ファイルをドライブに生成するので、以下を読んだ上で実行してください</strong></p>
 <p>以下のコードたちを何もいじらずに実行すると、<br />
 全都市の月別平均気温と全品目の世帯平均支出のうち、<br />
@@ -1058,7 +1059,7 @@ Windows環境で作成されたテキストファイルを扱う際は読み込�
 
 <span class="k">class</span> <span class="nc">ebook</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">inpf</span><span class="p">)</span>
         <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sname</span> <span class="o">=</span> <span class="n">sheet_names</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sheet_names</span><span class="p">)</span>
