@@ -939,6 +939,9 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <p>上のコードを実行後にGoogle Drive上の指定したフォルダを確認してみよう.</p>
 <p>少しラグがあるかもしれないが、少し待つと、フォルダ内に<code class="docutils literal notranslate"><span class="pre">scatter_Utsunomiya_ice.pdf</span></code>というpdfファイルが出来る。</p>
 <p>Matplotlibはファイル名を変えるだけで、指定した拡張子で描画してくれるので色々試してみよう(.jpg,.pdf,.eps,.pngなど)</p>
+<p><strong>注意</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">savefig()</span></code>関数の前に<code class="docutils literal notranslate"><span class="pre">show()</span></code>を実行するとその時点でキャンバスがクリアされるので、<code class="docutils literal notranslate"><span class="pre">savefig()</span></code>で保存したファイルが空になってしまうので注意.<br />
+<code class="docutils literal notranslate"><span class="pre">show()</span></code>は<code class="docutils literal notranslate"><span class="pre">savefig()</span></code>の後に実行すること.</p>
 <p><strong>余談</strong></p>
 <p>プレゼンのスライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfなど)がおすすめです.
 (あるいは、高解像度でjpegやpngを作ってスライドを作り、誰かにスライドを渡すときは軽量化する)
