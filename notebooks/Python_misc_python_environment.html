@@ -448,6 +448,11 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Pythonパッケージの管理
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -487,7 +492,7 @@
 <ol class="simple">
 <li><p>Pythonのインストーラを用いてインストールする</p>
 <ul class="simple">
-<li><p>メリット: Windows環境を汚さない, インストールが楽</p></li>
+<li><p>メリット: インストールが楽, GUI系のコード作成に向いている</p></li>
 <li><p>デメリット: 他のプログラミング言語などへの拡張性が低い</p></li>
 </ul>
 </li>
@@ -1023,6 +1028,16 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 秘密鍵はローカル環境に、公開鍵はリモート環境に置いておくことで、安全にログインを行うことができるものである。
 秘密鍵の取り扱いに注意が必要であることは言うまでもない。</p>
 </div>
+</div>
+<div class="section" id="id5">
+<h2>Pythonパッケージの管理<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Pythonのパッケージは、上の一部でやったように<code class="docutils literal notranslate"><span class="pre">pip</span></code>と呼ばれるパッケージマネージャを用いてインストールすることができる。<br />
+一方で、書籍などによっては、<code class="docutils literal notranslate"><span class="pre">Anaconda</span></code>と呼ばれるパッケージマネージャを用いてインストールすることを推奨しているものもある。<br />
+<code class="docutils literal notranslate"><span class="pre">pip</span></code>と<code class="docutils literal notranslate"><span class="pre">Anaconda</span></code>(<code class="docutils literal notranslate"><span class="pre">conda</span></code>)は、それぞれ独自のパッケージ管理システムであり、
+双方を混在させてパッケージをインストールすると、パッケージのバージョンの競合などが発生し、Python環境が破壊されてしまい、ライブラリのインポート時などにエラーが発生することがある。</p>
+<p>そこで、パッケージの管理には、<code class="docutils literal notranslate"><span class="pre">pip</span></code>と<code class="docutils literal notranslate"><span class="pre">conda</span></code>の<strong>どちらか一方のみ</strong>を用いることを推奨する。<br />
+仮に<code class="docutils literal notranslate"><span class="pre">pip</span></code>を使うのであれば書籍等のライブラリのインストール作業で<code class="docutils literal notranslate"><span class="pre">conda</span></code>を<code class="docutils literal notranslate"><span class="pre">pip</span></code>に置き換えたり、
+<code class="docutils literal notranslate"><span class="pre">conda</span></code>を使うのであれば反対に、<code class="docutils literal notranslate"><span class="pre">pip</span></code>を<code class="docutils literal notranslate"><span class="pre">conda</span></code>に置き換えて使うと良い。</p>
 </div>
 </div>
 
