@@ -597,6 +597,9 @@ Google Colabで使用しているサーバー上にライブライのソース�
 <span class="o">!</span>mv pandas-estat local_library
 <span class="o">%</span><span class="k">cd</span> ./local_library/
 <span class="kn">import</span> <span class="nn">pandas_estat</span> <span class="k">as</span> <span class="nn">pandas_estat</span>
+
+<span class="c1"># Pandasをインポート</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +607,7 @@ Google Colabで使用しているサーバー上にライブライのソース�
 <p><strong>AppIDの定義</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;dcda7e96569055203230f2aaf838de5200aace1e&quot;</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#引用符内に先ほど作成したAppIDを貼り付ける</span>
 <span class="n">pandas_estat</span><span class="o">.</span><span class="n">set_appid</span><span class="p">(</span><span class="n">appID</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -617,7 +620,8 @@ Google Colabで使用しているサーバー上にライブライのソース�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># サービス産業動向調査</span>
-<span class="n">statslist</span> <span class="o">=</span> <span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  
+<span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statslist</span>
+<span class="n">statslist</span> <span class="o">=</span> <span class="n">pandas_estat</span><span class="o">.</span><span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  
 <span class="n">statslist</span>
 </pre></div>
 </div>
@@ -727,179 +731,16 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 <p>新型コロナウイルスの感染拡大を受けて2020年の1月ごろから<br />
 緊急事態宣言の解除(5月25日)まで、大幅に収益が減っていることが分かる。</p>
+<p>図を保存したければ、Google Driveのマウントを行った上で、<code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code>を使ってパスを指定することで保存できる。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="id3">
 <h3>備考<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>あらかじめ興味のあるデータ,分類・属性等がわかっている場合は、<br />
-上記のコードの対応するIDなどを変更すればよいし<br />
-コードを拡張して、データ,分類・属性等の一覧表などを適宜表示しながら、<br />
-特定のキーワードを含むものに絞ってデータを取得したりもできる。</p>
-<p>ちなみに、GoogleColabで提供されているコードスニペット(テンプレートのようなもの)<br />
-を用いることで、プルダウンでデータ,分類・属性等を選んでプロットする、<br />
-といったようにGoogle Colab.上で自分だけのe-Stat分析ツールを作ることもできる<br />
-(最終課題で取り組むのも良い)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/kotamya/pandas-estat.git
-<span class="o">!</span>mv pandas-estat local_library
-<span class="o">%</span><span class="k">cd</span> local_library
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
-<span class="c1">#import local_library.pandas_estat</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># グローバル変数でAppIDを設定する</span>
-<span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># 引用符内を準備1で発行したappidに置き換える</span>
-<span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;dcda7e96569055203230f2aaf838de5200aace1e&quot;</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-
-<span class="k">def</span> <span class="nf">read_statslist</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
-    <span class="c1"># code: str,</span>
-    <span class="c1"># limit: int = None,</span>
-    <span class="c1"># start_position: Optional[int] = None,</span>
-    <span class="c1"># updated_date: Optional[str] = None,</span>
-    <span class="c1"># lang: str = &quot;J&quot;,</span>
-    <span class="c1"># appid: Optional[str] = None,</span>
-    <span class="c1"># version: str = &quot;3.0&quot;,</span>
-    <span class="c1"># **kwargs,</span>
-    <span class="c1"># pd.DataFrame:</span>
-
-    <span class="n">reader</span> <span class="o">=</span> <span class="n">StatsListReader</span><span class="p">(</span>
-        <span class="n">code</span><span class="p">,</span>
-        <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
-        <span class="n">start_position</span><span class="o">=</span><span class="n">start_position</span><span class="p">,</span>
-        <span class="n">updated_date</span><span class="o">=</span><span class="n">updated_date</span><span class="p">,</span>
-        <span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span>
-        <span class="n">appid</span><span class="o">=</span><span class="n">appid</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dataframe</span>
-
-<span class="k">class</span> <span class="nc">StatsListReader</span><span class="p">(</span><span class="n">BaseReader</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;統計表情報を取得します。</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        code (str): 政府統計コードです。</span>
-<span class="sd">            数値 5 桁: 作成機関で検索</span>
-<span class="sd">            数値 8 桁: 政府統計コードで検索</span>
-<span class="sd">            次のページから検索できます。</span>
-<span class="sd">            https://www.e-stat.go.jp/api/api-info/api-data</span>
-<span class="sd">            e-Stat API の ``statsCode`` に対応します。</span>
-<span class="sd">        limit (int, optional): データの取得行数を指定して下さい。</span>
-<span class="sd">            省略時は 10 万件です。</span>
-<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
-<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
-<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
-<span class="sd">            e-Stat API の ``limit`` に対応します。</span>
-<span class="sd">        start_position (int, optional): データの取得開始位置（1 から始まる行番号）を指定して下さい。</span>
-<span class="sd">            省略時は先頭から取得します。</span>
-<span class="sd">            統計データを複数回に分けて取得する場合等、継続データを取得する開始位置を指定するために指定します。</span>
-<span class="sd">            前回受信したデータの ``&lt;NEXT_KEY&gt;`` タグの値を指定します。</span>
-<span class="sd">            e-Stat API の ``startPosition`` に対応します。</span>
-<span class="sd">        updated_date (str, optional): 更新日付を指定します。</span>
-<span class="sd">            指定された期間で更新された統計表の情報を提供します。</span>
-<span class="sd">            以下のいずれかの形式で指定して下さい。</span>
-
-<span class="sd">            - ``YYYY``: 単年検索</span>
-<span class="sd">            - ``YYYYMM``: 単月検索</span>
-<span class="sd">            - ``YYYYMMDD``: 単日検索</span>
-<span class="sd">            - ``YYYYMMDD-YYYYMMDD``: 範囲検索</span>
-
-<span class="sd">            e-Stat API の ``updatedDate`` に相当します。</span>
-<span class="sd">        lang ({&quot;J&quot;, &quot;E&quot;}, default &quot;J&quot;): 取得するデータの言語です。</span>
-<span class="sd">            ``&quot;J&quot;`` （日本語）または ``&quot;E&quot;`` （英語）で指定してください。</span>
-<span class="sd">            e-Stat API の ``lang`` に対応します。</span>
-<span class="sd">        appid (str, optional): アプリケーション ID です。</span>
-<span class="sd">            指定しない場合、:func:`pandas_estat.set_appid` で指定した値か、</span>
-<span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
-<span class="sd">            e-Stat API の ``appId`` に対応します。</span>
-<span class="sd">        version (str, default &quot;3.0&quot;): API 仕様バージョンです。</span>
-<span class="sd">            https://www.e-stat.go.jp/api/api-info/api-spec</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">&quot;getSimpleStatsList&quot;</span>
-    <span class="n">TABLE_TAG</span> <span class="o">=</span> <span class="s2">&quot;STAT_INF&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">start_position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">updated_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span>
-        <span class="n">appid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="o">=</span> <span class="n">start_position</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span> <span class="o">=</span> <span class="n">updated_date</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="o">=</span> <span class="n">get_appid</span><span class="p">(</span><span class="n">appid</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;アプリケーション ID が指定されていません。&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{5}</span><span class="s2">|\d</span><span class="si">{8}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;政府統計コードは 5 桁か 8 桁の数字を str 型で指定してください。</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data&quot;</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-        <span class="k">if</span> <span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;言語 lang は &quot;J&quot; か &quot;E&quot; で指定してください。&#39;</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;e-Stat API のパラメータ群を `dict` 形式で返します。</span>
-
-<span class="sd">        Note:</span>
-<span class="sd">            - 参照: e-Stat API v3.0 仕様 2.1 API の利用方法 - 統計表情報取得</span>
-<span class="sd">            - 参照: e-Stat API v3.0 仕様 3.2 API パラメータ - 統計表情報取得</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appId&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">&quot;statsCode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;limit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;startPosition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;updatedDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;lang&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span>
-
-        <span class="k">return</span> <span class="n">params</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>あらかじめ興味のあるデータ,分類・属性等がわかっている場合は上記のコードの対応するIDなどを変更すればよいし<br />
+コードを拡張して、データ,分類・属性等の一覧表などを適宜表示しながら、特定のキーワードを含むものに絞ってデータを取得したりもできる。</p>
+<p>ちなみに、GoogleColabで提供されているコードスニペット(テンプレートのようなもの)を用いることで、<br />
+プルダウンでデータ,分類・属性等を選んでプロットする、といったように<br />
+Google Colab.上で自分だけのe-Stat分析ツールを作ることもできる(最終課題で取り組むのも良い)。</p>
 </div>
 </div>
 </div>
