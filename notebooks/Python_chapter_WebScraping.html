@@ -389,18 +389,11 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandas-e-stat">
-     準備2 Pandas e-Statのインストール
+     準備2 Pandas e-Statの導入
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Pandas e-Statを使ってみよう
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id3">
      備考
     </a>
    </li>
@@ -420,24 +413,21 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_WebScraping.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="web">
 <h1>Web操作・スクレイピング<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h1>
-<p>Webから情報を抽出・整形・解析したり、<br />
-ブラウザ上での特定の操作を自動化する、といったことも<br />
-Pythonでは比較的容易に実行することができる。</p>
+<p>Webから情報を抽出・整形・解析したり、ブラウザ上での特定の操作を自動化する、といったこともPythonでは比較的容易に実行することができる。</p>
 <p>Web上にある情報にアクセスしたりする方法は色々あるが、大まかには２つに分類され</p>
 <ol class="simple">
 <li><p>プログラムでWebページにアクセスして中身(HTML)を読み、そこから情報を抽出する方法</p></li>
 <li><p>ブラウザをプログラムに操作させて特定の作業を実行する方法</p></li>
 </ol>
 <p>この章では、とくに1.のWebから情報を抽出すること(スクレイピング)に絞ってそのエッセンスを紹介する。<br />
-HTMLとは、Webページを作るための言語のことで、<br />
-みなさんが普段からアクセスするほぼ全てのWebページは、<br />
-HTMLで記述されています。</p>
+HTMLとは、Webページを作るための言語のことで、みなさんが普段からアクセスする多くのWebページは、HTMLで記述されています。</p>
 <p>Webから情報を抽出したりする際、共通して言える注意点を述べておく:</p>
 <ul class="simple">
 <li><p><strong>対象とするページの利用規約を必ず確認する</strong><br />
-規約でスクレイピングを禁止しているページがある (例: Amazon, Twitter, Instagram, facebook, 金融系などなど)<br />
-禁止している場合でも、APIが提供されている場合があります<br />
-※APIはApplication Programming Interfaceの略です。<br />
+規約でスクレイピングを禁止しているページがある<br />
+(例: Amazon, Twitter, Instagram, facebook, 金融系などなど)<br />
+禁止している場合でも、APIが提供されている場合がある<br />
+(※APIはApplication Programming Interfaceの略)<br />
 今の場合、大雑把にはデータ提供用の窓口とでも思ってください.</p></li>
 <li><p><strong>サーバーに負荷をかけない</strong><br />
 規約で特にスクレイピングを禁止していない場合でも、過度なアクセスをしてはいけません。<br />
@@ -456,37 +446,35 @@ HTMLで記述されています。</p>
 それをグラフにして可視化してみましょう。まずは必要なライブラリをインポートしておきます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import requests
-import json
-import datetime
-import matplotlib.pyplot as plt
-!pip install japanize-matplotlib 
-import japanize_matplotlib 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span> <span class="c1">#json形式のデータを扱うために必要</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="c1">#日付の処理に使う</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">!</span>pip install japanize-matplotlib 
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
 </pre></div>
 </div>
 </div>
 </div>
 <p><a class="reference external" href="https://stopcovid19.metro.tokyo.lg.jp/">東京都 新型コロナウイルス感染症対策サイト</a>の<a class="reference external" href="https://github.com/tokyo-metropolitan-gov/covid19">レポジトリ</a>で公開されているデータ(json形式)を読み出す。</p>
 <p>指定したurlにリクエストを送り、レスポンスをjson形式で取得する</p>
+<blockquote>
+<div><p>ちなみに、json形式のデータは、元々JavaScriptのオブジェクトとして扱うために作られたものであるが、
+PythonやJava, PHPなどでも扱うことができる。Pythonで言うと辞書型が近い。</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/tokyo-metropolitan-gov/covid19/development/data/data.json&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/tokyo-metropolitan-gov/covid19/development/data/data.json&quot;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>上の<code class="docutils literal notranslate"><span class="pre">data</span></code>を直接<code class="docutils literal notranslate"><span class="pre">print</span></code>すると表示が冗長になるため<br />
-代わりに、jsonのキーとして何があるかを見てみよう。</p>
+<p>上の<code class="docutils literal notranslate"><span class="pre">data</span></code>(辞書型)を直接<code class="docutils literal notranslate"><span class="pre">print</span></code>すると表示が冗長になるため、代わりに、キーとして何があるかを見てみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;contacts&#39;, &#39;querents&#39;, &#39;patients_summary&#39;, &#39;inspections_summary&#39;, &#39;lastUpdate&#39;, &#39;main_summary&#39;])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -498,19 +486,14 @@ import japanize_matplotlib
 <li><p>patients_summary: 陽性患者数</p></li>
 <li><p>inspections_summary: 検査実施日別状況</p></li>
 <li><p>lastUpdate: 最終更新日時</p></li>
-<li><p>main_summary: (これはよくわからない)</p></li>
+<li><p>main_summary: (これはよくわからない, 使用されていなかったっぽい)</p></li>
 </ul>
 <p>に対応している。</p>
 <p>陽性患者数のデータの構造を調べつつ結果を可視化してみよう。<br />
 まずは型を調べてみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -518,12 +501,7 @@ import japanize_matplotlib
 <p>辞書型とわかったのでキーの一覧を見てみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;date&#39;, &#39;data&#39;])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -531,12 +509,14 @@ import japanize_matplotlib
 <p>同様にして<code class="docutils literal notranslate"><span class="pre">data['patients_summary'][&quot;data&quot;]</span></code>が”日付”と”小計”をキーに持つ辞書のリストだと分かる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;日付&#39;: &#39;2020-01-24T08:00:00.000Z&#39;, &#39;小計&#39;: 1}
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -544,7 +524,7 @@ import japanize_matplotlib
 <p>日付と陽性患者数をリストに直して、描画してみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#　&quot;2022-01-01&quot;のような文字列をdatetimeに変換する関数</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#　&quot;2022-01-01&quot;のような文字列をdatetimeに変換する関数</span>
 <span class="k">def</span> <span class="nf">str_to_dt</span><span class="p">(</span><span class="n">tstr</span><span class="p">):</span>
     <span class="n">tdatetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">tstr</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">tdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">tdatetime</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
@@ -555,15 +535,15 @@ import japanize_matplotlib
 <span class="n">tdat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;patients_summary&#39;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span> <span class="n">str_to_dt</span><span class="p">(</span><span class="n">tdat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;日付&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
 <span class="n">num_patients</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tdat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;小計&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">num_patients</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dates=&gt;&quot;</span><span class="p">,</span>  <span class="n">dates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;陽性患者数=&gt;&quot;</span><span class="p">,</span> <span class="n">num_patients</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;東京都&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;日付&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;陽性者数[人]&quot;</span><span class="p">)</span>
@@ -573,115 +553,72 @@ import japanize_matplotlib
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_WebScraping_18_0.png" src="../_images/Python_chapter_WebScraping_18_0.png" />
 </div>
-</div>
+<p>このようにして、Web上のデータを取得して、可視化することができた。</p>
+<p>ちなみに、東京都のCOVID19の<a class="reference external" href="https://github.com/Tokyo-Metro-Gov/covid19">レポジトリ</a>は、
+5類以降後の2023年6月にPublic archiveとなり、更新を停止している。</p>
 </div>
 <div class="section" id="e-stat">
 <h2>e-Statのデータを取得する<a class="headerlink" href="#e-stat" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://www.e-stat.go.jp/">政府統計の総合窓口(e-Stat)</a>は<br />
-日本の各府省が公表する統計データを一つにまとめた、<br />
-政府統計のポータルサイトです。</p>
+<p><a class="reference external" href="https://www.e-stat.go.jp/">政府統計の総合窓口(e-Stat)</a>は日本の各府省が公表する統計データを一つにまとめた政府統計のポータルサイトである。</p>
 <p>e-Statでは<a class="reference external" href="https://www.e-stat.go.jp/api/">API機能</a>(ユーザー登録が必要)が提供されていて、<br />
-指定されたURLに対してリクエストを送信することで各APIを利用することが出来ます。</p>
+指定されたURLに対してリクエストを送信することで各APIを利用することが出来る。</p>
 <div class="section" id="id2">
 <h3>準備1 e-Statの登録<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>以降の内容でも、e-StatのAPI機能を使用するため予めe-Statへの登録が必要です。</p>
-<p>国内のデータを使って最終課題に取り組みたいという方は<br />
-ここに記載の手順にならって登録しておきましょう。</p>
+<p>以降の内容でも、e-StatのAPI機能を使用するため予めe-Statへの登録が必要になる。</p>
+<p>国内の公開データを使って最終課題に取り組みたいという方は、必ず、ここに記載の手順にならって登録しておこう。</p>
 <ol class="simple">
 <li><p>まず<a class="reference external" href="https://www.e-stat.go.jp/mypage/user/preregister">こちら</a>のページからメールアドレス(Gmailを推奨します)を入力し、届いたメールから本登録を行う<br />
-このとき、gmailアカウントによる認証をオンにしておくと、以後のログインが楽。</p></li>
-<li><p><a class="reference external" href="https://www.e-stat.go.jp/mypage/login">ログインページ</a>からログインし、
-右上の[マイページ]に遷移
+このとき、gmailアカウントによる認証をオンにしておくと、以後のログインが楽になる。</p></li>
+<li><p><a class="reference external" href="https://www.e-stat.go.jp/mypage/login">ログインページ</a>からログインし、右上の[マイページ]に遷移
 <img src="https://drive.google.com/uc?export=view&id=1NHMQ8GnJ6n6hSaUAIFgOGyRc5Z55Enxj" width = 70%></p></li>
 <li><p>[API機能(アプリケーションID発行)]に遷移する</p></li>
-<li><p>以下の例にならって、名称とURLを入力し、発行ボタンを押す
+<li><p>以下の例にならって、名称とURLを入力し、発行ボタンを押す。<br />
+ここでは、名称はGoogleColab、URLは<code class="docutils literal notranslate"><span class="pre">https://test.localhost</span></code>としている。<br />
 <img src="https://drive.google.com/uc?export=view&id=100w2nmie7ZD6PliQVbjAHIt7o5gaBciN" width = 80%></p></li>
 <li><p>[appId]に生成された文字列を、どこかに控えておく(<strong>appIdを他人と共有してはいけません</strong>)</p></li>
 </ol>
 </div>
 <div class="section" id="pandas-e-stat">
-<h3>準備2 Pandas e-Statのインストール<a class="headerlink" href="#pandas-e-stat" title="Permalink to this headline">¶</a></h3>
+<h3>準備2 Pandas e-Statの導入<a class="headerlink" href="#pandas-e-stat" title="Permalink to this headline">¶</a></h3>
 <p>さて、e-Statへの登録ができたでしょうか。</p>
 <p>早速e-Statにあるデータをどんどん抽出したい<br />
-…のですが、<a class="reference external" href="https://www.e-stat.go.jp/api/sites/default/files/uploads/2019/07/API-specVer3.0.pdf">マニュアル</a>を理解してAPIに適切なリクエストを送るというのは、<br />
-それ自体がややハードルが高いかと思います。</p>
-<p>そこで、このノートブックでは<a class="reference external" href="https://github.com/simaki">simaki</a>氏が作った<br />
-Python用のライブラリ<a class="reference external" href="https://github.com/simaki/pandas-estat">Pandas e-Stat</a>を使用することにします。<br />
-同氏によるQiitaの解説記事→https://qiita.com/simaki/items/05cc242d27b4e6781d19</p>
-<p>まずはインストール&amp;インポートします。</p>
+…のだが、<a class="reference external" href="https://www.e-stat.go.jp/api/sites/default/files/uploads/2019/07/API-specVer3.0.pdf">マニュアル</a>を理解してAPIに適切なリクエストを送るというのは、それ自体がややハードルが高いように思う。</p>
+<p>そこで、このノートブックではPython用のライブラリ<a class="reference external" href="https://github.com/kotamya/pandas-estat">Pandas e-Stat</a>を使用することにする。<br />
+ただし、このライブラリについてもpublic archive化されていて<code class="docutils literal notranslate"><span class="pre">pip</span></code>などでインストールできないため、
+Google Colabで使用しているサーバー上にライブライのソースファイルをダウンロードして展開し、インポートする荒業で対応する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install pandas-estat
-import pandas as pd
-## import pandas_estat 
-# 以降では、pandas_estat内の関数は個別にimportすることにする (そうすると短い名前で使える)
-#実行時の依存関係のエラーは当面問題ない(はず)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas-estat in /usr/local/lib/python3.7/dist-packages (0.3.1)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.26.0 in /usr/local/lib/python3.7/dist-packages (from pandas-estat) (2.26.0)
-Requirement already satisfied: pandas&lt;2.0.0,&gt;=1.3.3 in /usr/local/lib/python3.7/dist-packages (from pandas-estat) (1.3.5)
-Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;2.0.0,&gt;=1.3.3-&gt;pandas-estat) (1.19.5)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;2.0.0,&gt;=1.3.3-&gt;pandas-estat) (2.8.2)
-Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;2.0.0,&gt;=1.3.3-&gt;pandas-estat) (2018.9)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas&lt;2.0.0,&gt;=1.3.3-&gt;pandas-estat) (1.15.0)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.26.0-&gt;pandas-estat) (2.10)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.26.0-&gt;pandas-estat) (2021.10.8)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.26.0-&gt;pandas-estat) (1.24.3)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.26.0-&gt;pandas-estat) (2.0.8)
-</pre></div>
-</div>
-</div>
-</div>
-<p>次に<code class="docutils literal notranslate"><span class="pre">pandas_estat</span></code>からAPIを使用するためのIDを指定します</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">set_appid</span>
-<span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;honyahonya&quot;</span> <span class="c1"># 引用符内を準備1で発行したappidに置き換える</span>
-<span class="n">set_appid</span><span class="p">(</span><span class="n">appID</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>Pandas e-Statを使ってみよう<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>ライブラリを使ってみましょう.<br />
-<code class="docutils literal notranslate"><span class="pre">read_statslist()</span></code>関数の引数に”政府統計コード”を指定することで、<br />
-該当する統計データの一覧を<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>形式で取得することができます。<br />
-<a class="reference external" href="https://www.e-stat.go.jp/help/stat-search-3-5">政府統計コードの一覧はこちら</a></p>
-<p>政府統計コードそのものの一覧をdataframe形式取得するコードはそのうち書くつもりです。</p>
-<p>それでは、さっそくPandas e-statを使ってみましょう。<br />
-以下では、例にならって「サービス産業動向調査」の結果を抽出してみることにしましょう。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statslist</span>
-<span class="n">statslist</span> <span class="o">=</span> <span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  <span class="c1"># サービス産業動向調査</span>
-<span class="n">statslist</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      TABLE_INF STAT_CODE  ... SUB_CATEGORY_CODE SUB_CATEGORY
-0    0003179100  00200544  ...                02         需給流通
-1    0003179101  00200544  ...                02         需給流通
-2    0003085562  00200544  ...                02         需給流通
-3    0003085612  00200544  ...                02         需給流通
-4    0003090498  00200544  ...                02         需給流通
-..          ...       ...  ...               ...          ...
-137  0003412789  00200544  ...                02         需給流通
-138  0003412790  00200544  ...                02         需給流通
-139  0003412791  00200544  ...                02         需給流通
-140  0003412792  00200544  ...                02         需給流通
-141  0003412793  00200544  ...                02         需給流通
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ホームディレクトリにレポジトリをクローン</span>
+<span class="o">%</span><span class="k">cd</span> 
+<span class="o">!</span>git clone https://github.com/kotamya/pandas-estat.git
 
-[142 rows x 35 columns]
+<span class="c1"># ディレクトリ名を変更し、レポジトリ内に移動しインポート</span>
+<span class="o">!</span>mv pandas-estat local_library
+<span class="o">%</span><span class="k">cd</span> ./local_library/
+<span class="kn">import</span> <span class="nn">pandas_estat</span> <span class="k">as</span> <span class="nn">pandas_estat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>AppIDの定義</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;dcda7e96569055203230f2aaf838de5200aace1e&quot;</span> 
+<span class="n">pandas_estat</span><span class="o">.</span><span class="n">set_appid</span><span class="p">(</span><span class="n">appID</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read_statslist()</span></code>関数の引数に”政府統計コード”を指定することで、<br />
+該当する統計データの一覧を<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>形式で取得することができる。<br />
+<a class="reference external" href="https://www.e-stat.go.jp/help/stat-search-3-5">政府統計コードの一覧はこちら</a></p>
+<p>以下では、「サービス産業動向調査」の結果を例に抽出してみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># サービス産業動向調査</span>
+<span class="n">statslist</span> <span class="o">=</span> <span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  
+<span class="n">statslist</span>
 </pre></div>
 </div>
 </div>
@@ -690,27 +627,7 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 列(column)を表示してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">statslist</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;TABLE_INF&#39;, &#39;STAT_CODE&#39;, &#39;STAT_NAME&#39;, &#39;GOV_ORG_CODE&#39;, &#39;GOV_ORG_NAME&#39;,
-       &#39;TABULATION_CATEGORY&#39;, &#39;TABULATION_SUB_CATEGORY1&#39;,
-       &#39;TABULATION_SUB_CATEGORY2&#39;, &#39;TABULATION_SUB_CATEGORY3&#39;,
-       &#39;TABULATION_SUB_CATEGORY4&#39;, &#39;TABULATION_SUB_CATEGORY5&#39;,
-       &#39;TABULATION_CATEGORY_EXPLANATION&#39;,
-       &#39;TABULATION_SUB_CATEGORY_EXPLANATION1&#39;,
-       &#39;TABULATION_SUB_CATEGORY_EXPLANATION2&#39;,
-       &#39;TABULATION_SUB_CATEGORY_EXPLANATION3&#39;,
-       &#39;TABULATION_SUB_CATEGORY_EXPLANATION4&#39;,
-       &#39;TABULATION_SUB_CATEGORY_EXPLANATION5&#39;, &#39;NO&#39;, &#39;TITLE&#39;,
-       &#39;TABLE_EXPLANATION&#39;, &#39;TABLE_CATEGORY&#39;, &#39;TABLE_SUB_CATEGORY1&#39;,
-       &#39;TABLE_SUB_CATEGORY2&#39;, &#39;TABLE_SUB_CATEGORY3&#39;, &#39;CYCLE&#39;, &#39;SURVEY_DATE&#39;,
-       &#39;OPEN_DATE&#39;, &#39;SMALL_AREA&#39;, &#39;COLLECT_AREA&#39;, &#39;OVERALL_TOTAL_NUMBER&#39;,
-       &#39;UPDATED_DATE&#39;, &#39;MAIN_CATEGORY_CODE&#39;, &#39;MAIN_CATEGORY&#39;,
-       &#39;SUB_CATEGORY_CODE&#39;, &#39;SUB_CATEGORY&#39;],
-      dtype=&#39;object&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">statslist</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -719,7 +636,7 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 CYCLEが”月次”(月ごと)になっているデータだけをピックアップして、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span> <span class="o">=</span> <span class="n">statslist</span><span class="p">[</span><span class="n">statslist</span><span class="o">.</span><span class="n">CYCLE</span> <span class="o">==</span> <span class="s2">&quot;月次&quot;</span><span class="p">]</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span> <span class="o">=</span> <span class="n">statslist</span><span class="p">[</span><span class="n">statslist</span><span class="o">.</span><span class="n">CYCLE</span> <span class="o">==</span> <span class="s2">&quot;月次&quot;</span><span class="p">]</span> 
 </pre></div>
 </div>
 </div>
@@ -727,17 +644,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <p>その<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)と<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>(タイトル)だけを表示してみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span><span class="p">[[</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">,</span> <span class="s2">&quot;TITLE&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     TABLE_INF                                              TITLE
-2   0003085562    事業所・企業等の産業（中分類）別売上高，従業上の地位別事業従事者数（月次）【2013年1月～】
-5   0003191203                     事業活動の産業（中分類）別売上高（月次）【2013年1月～】
-7   0003085489               事業活動の産業（中分類）別需要の状況【2013年1月～2016年12月】
-8   0003085521  事業活動の産業（中分類），事業所・企業等の産業（中分類）別売上高（月次）【2013年1月～12月】
-10  0003094573  事業活動の産業（一部中分類），事業所・企業等の産業（一部中分類）別売上高（月次）【2013年...
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span><span class="p">[[</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">,</span> <span class="s2">&quot;TITLE&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -748,28 +655,9 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 引数に<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)を入力すると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statsdata</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statsdata</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">read_statsdata</span><span class="p">(</span><span class="s2">&quot;0003191203&quot;</span><span class="p">)</span>  
 <span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     tab_code      表章項目 cat01_code 事業活動の産業  ...    時間軸（月次） unit     value annotation
-0         001  売上高（収入額）      00000      合計  ...    2013年1月  百万円  27331888        NaN
-1         001  売上高（収入額）      00000      合計  ...    2013年2月  百万円  27395304        NaN
-2         001  売上高（収入額）      00000      合計  ...    2013年3月  百万円  35140562        NaN
-3         001  売上高（収入額）      00000      合計  ...    2013年4月  百万円  28676427        NaN
-4         001  売上高（収入額）      00000      合計  ...    2013年5月  百万円  28648626        NaN
-...       ...       ...        ...     ...  ...        ...  ...       ...        ...
-5035      001  売上高（収入額）      20000     その他  ...    2021年5月  百万円    869554        NaN
-5036      001  売上高（収入額）      20000     その他  ...    2021年6月  百万円    956542        NaN
-5037      001  売上高（収入額）      20000     その他  ...  2021年7月 p  百万円    937055        NaN
-5038      001  売上高（収入額）      20000     その他  ...  2021年8月 p  百万円    894658        NaN
-5039      001  売上高（収入額）      20000     その他  ...  2021年9月 p  百万円   1005051        NaN
-
-[5040 rows x 11 columns]
-1.1.5
 </pre></div>
 </div>
 </div>
@@ -777,14 +665,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <p>これで、データを抽出することができました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;tab_code&#39;, &#39;表章項目&#39;, &#39;cat01_code&#39;, &#39;事業活動の産業&#39;, &#39;area_code&#39;, &#39;地域&#39;,
-       &#39;time_code&#39;, &#39;時間軸（月次）&#39;, &#39;unit&#39;, &#39;value&#39;, &#39;annotation&#39;],
-      dtype=&#39;object&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
@@ -794,59 +675,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <code class="docutils literal notranslate"><span class="pre">set</span></code>関数を使って重複を除くと…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;37通信業&#39;,
- &#39;38放送業&#39;,
- &#39;39情報サービス業&#39;,
- &#39;4*航空運輸業，郵便業（信書便事業を含む）&#39;,
- &#39;40インターネット附随サービス業&#39;,
- &#39;41映像・音声・文字情報制作業&#39;,
- &#39;42鉄道業&#39;,
- &#39;43道路旅客運送業&#39;,
- &#39;44道路貨物運送業&#39;,
- &#39;45水運業&#39;,
- &#39;47倉庫業&#39;,
- &#39;48運輸に附帯するサービス業&#39;,
- &#39;68不動産取引業&#39;,
- &#39;69不動産賃貸業・管理業&#39;,
- &#39;70物品賃貸業&#39;,
- &#39;72専門サービス業（他に分類されないもの）\u3000（※「純粋持株会社」（平成25年１月以降）を除く）&#39;,
- &#39;73広告業&#39;,
- &#39;74技術サービス業（他に分類されないもの）&#39;,
- &#39;75宿泊業&#39;,
- &#39;76飲食店&#39;,
- &#39;77持ち帰り・配達飲食サービス業&#39;,
- &#39;78洗濯・理容・美容・浴場業&#39;,
- &#39;79その他の生活関連サービス業\u3000（※「家事サービス業」を除く）&#39;,
- &#39;80娯楽業&#39;,
- &#39;82aうち社会教育，職業・教育支援施設&#39;,
- &#39;82bうち学習塾，教養・技能教授業&#39;,
- &#39;82その他の教育，学習支援業&#39;,
- &#39;83医療業&#39;,
- &#39;84保健衛生\u3000（※「保健所」を除く）&#39;,
- &#39;85社会保険・社会福祉・介護事業\u3000（※「社会保険事業団体」（平成25年１月以降）及び「福祉事務所」を除く）&#39;,
- &#39;88廃棄物処理業&#39;,
- &#39;89自動車整備業&#39;,
- &#39;90機械等修理業（別掲を除く）&#39;,
- &#39;91職業紹介・労働者派遣業&#39;,
- &#39;92その他の事業サービス業&#39;,
- &#39;95その他のサービス業&#39;,
- &#39;その他&#39;,
- &#39;サービス産業計&#39;,
- &#39;合計&#39;,
- &#39;Ｇ情報通信業&#39;,
- &#39;Ｈ運輸業，郵便業&#39;,
- &#39;Ｋ不動産業，物品賃貸業&#39;,
- &#39;Ｌ学術研究，専門・技術サービス業\u3000（※「学術・開発研究機関」（平成25年１月以降）及び「純粋持株会社」（平成25年１月以降）を除く）&#39;,
- &#39;Ｍ宿泊業，飲食サービス業&#39;,
- &#39;Ｎ生活関連サービス業，娯楽業\u3000（※「家事サービス業」を除く）&#39;,
- &#39;Ｏ教育，学習支援業\u3000（※「学校教育」を除く）&#39;,
- &#39;Ｐ医療，福祉（※「保健所」、「社会保険事業団体」（平成25年１月以降）及び「福祉事務所」を除く）&#39;,
- &#39;Ｒサービス業（他に分類されないもの）\u3000（※「政治・経済・文化団体」、「宗教」及び「外国公務」を除く）&#39;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -854,7 +683,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <p>“42鉄道業”を見てみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ndf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;42鉄道業&quot;</span><span class="p">]</span> <span class="c1">#dfの中の、&quot;事業活動の産業欄が&quot;42鉄道業&quot;のものを抽出し、ndfと名前をつける</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;42鉄道業&quot;</span><span class="p">]</span> <span class="c1">#dfの中の、&quot;事業活動の産業欄が&quot;42鉄道業&quot;のものを抽出し、ndfと名前をつける</span>
 
 <span class="n">ndf</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;月&quot;</span><span class="p">)]</span>
 <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y年%m月&quot;</span><span class="p">)</span>
@@ -865,52 +694,21 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        時間軸（月次）   value unit
-945  2013-01-01  583438  百万円
-946  2013-02-01  529656  百万円
-947  2013-03-01  644219  百万円
-948  2013-04-01  627287  百万円
-949  2013-05-01  581344  百万円
-...         ...     ...  ...
-1042 2021-02-01  332987  百万円
-1043 2021-03-01  424911  百万円
-1044 2021-04-01  402705  百万円
-1045 2021-05-01  341804  百万円
-1046 2021-06-01  360438  百万円
-
-[102 rows x 3 columns]
-1.1.5
-</pre></div>
-</div>
-</div>
 </div>
 <p>図を描いてみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-!pip install japanize-matplotlib 
-import japanize_matplotlib 
-import matplotlib.dates as mdates
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: japanize-matplotlib in /usr/local/lib/python3.7/dist-packages (1.1.3)
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.7/dist-packages (from japanize-matplotlib) (3.2.2)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (2.8.2)
-Requirement already satisfied: numpy&gt;=1.11 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (1.19.5)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (3.0.6)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (1.3.2)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib-&gt;japanize-matplotlib) (0.11.0)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib-&gt;japanize-matplotlib) (1.15.0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">!</span>pip install japanize-matplotlib 
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.e-2</span>  <span class="c1"># XX億円に換算</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -926,15 +724,13 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-pack
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_WebScraping_48_0.png" src="../_images/Python_chapter_WebScraping_48_0.png" />
-</div>
 </div>
 <p>新型コロナウイルスの感染拡大を受けて2020年の1月ごろから<br />
 緊急事態宣言の解除(5月25日)まで、大幅に収益が減っていることが分かる。</p>
+</div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h3>備考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>備考<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>あらかじめ興味のあるデータ,分類・属性等がわかっている場合は、<br />
 上記のコードの対応するIDなどを変更すればよいし<br />
 コードを拡張して、データ,分類・属性等の一覧表などを適宜表示しながら、<br />
@@ -943,6 +739,167 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-pack
 を用いることで、プルダウンでデータ,分類・属性等を選んでプロットする、<br />
 といったようにGoogle Colab.上で自分だけのe-Stat分析ツールを作ることもできる<br />
 (最終課題で取り組むのも良い)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/kotamya/pandas-estat.git
+<span class="o">!</span>mv pandas-estat local_library
+<span class="o">%</span><span class="k">cd</span> local_library
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+<span class="c1">#import local_library.pandas_estat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># グローバル変数でAppIDを設定する</span>
+<span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># 引用符内を準備1で発行したappidに置き換える</span>
+<span class="n">appID</span> <span class="o">=</span> <span class="s2">&quot;dcda7e96569055203230f2aaf838de5200aace1e&quot;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">def</span> <span class="nf">read_statslist</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+    <span class="c1"># code: str,</span>
+    <span class="c1"># limit: int = None,</span>
+    <span class="c1"># start_position: Optional[int] = None,</span>
+    <span class="c1"># updated_date: Optional[str] = None,</span>
+    <span class="c1"># lang: str = &quot;J&quot;,</span>
+    <span class="c1"># appid: Optional[str] = None,</span>
+    <span class="c1"># version: str = &quot;3.0&quot;,</span>
+    <span class="c1"># **kwargs,</span>
+    <span class="c1"># pd.DataFrame:</span>
+
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">StatsListReader</span><span class="p">(</span>
+        <span class="n">code</span><span class="p">,</span>
+        <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+        <span class="n">start_position</span><span class="o">=</span><span class="n">start_position</span><span class="p">,</span>
+        <span class="n">updated_date</span><span class="o">=</span><span class="n">updated_date</span><span class="p">,</span>
+        <span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span>
+        <span class="n">appid</span><span class="o">=</span><span class="n">appid</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">dataframe</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataframe</span>
+
+<span class="k">class</span> <span class="nc">StatsListReader</span><span class="p">(</span><span class="n">BaseReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;統計表情報を取得します。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        code (str): 政府統計コードです。</span>
+<span class="sd">            数値 5 桁: 作成機関で検索</span>
+<span class="sd">            数値 8 桁: 政府統計コードで検索</span>
+<span class="sd">            次のページから検索できます。</span>
+<span class="sd">            https://www.e-stat.go.jp/api/api-info/api-data</span>
+<span class="sd">            e-Stat API の ``statsCode`` に対応します。</span>
+<span class="sd">        limit (int, optional): データの取得行数を指定して下さい。</span>
+<span class="sd">            省略時は 10 万件です。</span>
+<span class="sd">            データ件数が指定した limit 値より少ない場合、全件を取得します。</span>
+<span class="sd">            データ件数が指定した limit 値より多い場合（継続データが存在する）は、</span>
+<span class="sd">            受信したデータの ``&lt;NEXT_KEY&gt;`` タグに継続データの開始行が設定されます。</span>
+<span class="sd">            e-Stat API の ``limit`` に対応します。</span>
+<span class="sd">        start_position (int, optional): データの取得開始位置（1 から始まる行番号）を指定して下さい。</span>
+<span class="sd">            省略時は先頭から取得します。</span>
+<span class="sd">            統計データを複数回に分けて取得する場合等、継続データを取得する開始位置を指定するために指定します。</span>
+<span class="sd">            前回受信したデータの ``&lt;NEXT_KEY&gt;`` タグの値を指定します。</span>
+<span class="sd">            e-Stat API の ``startPosition`` に対応します。</span>
+<span class="sd">        updated_date (str, optional): 更新日付を指定します。</span>
+<span class="sd">            指定された期間で更新された統計表の情報を提供します。</span>
+<span class="sd">            以下のいずれかの形式で指定して下さい。</span>
+
+<span class="sd">            - ``YYYY``: 単年検索</span>
+<span class="sd">            - ``YYYYMM``: 単月検索</span>
+<span class="sd">            - ``YYYYMMDD``: 単日検索</span>
+<span class="sd">            - ``YYYYMMDD-YYYYMMDD``: 範囲検索</span>
+
+<span class="sd">            e-Stat API の ``updatedDate`` に相当します。</span>
+<span class="sd">        lang ({&quot;J&quot;, &quot;E&quot;}, default &quot;J&quot;): 取得するデータの言語です。</span>
+<span class="sd">            ``&quot;J&quot;`` （日本語）または ``&quot;E&quot;`` （英語）で指定してください。</span>
+<span class="sd">            e-Stat API の ``lang`` に対応します。</span>
+<span class="sd">        appid (str, optional): アプリケーション ID です。</span>
+<span class="sd">            指定しない場合、:func:`pandas_estat.set_appid` で指定した値か、</span>
+<span class="sd">            環境変数 ``ESTAT_APPID`` を用います。</span>
+<span class="sd">            e-Stat API の ``appId`` に対応します。</span>
+<span class="sd">        version (str, default &quot;3.0&quot;): API 仕様バージョンです。</span>
+<span class="sd">            https://www.e-stat.go.jp/api/api-info/api-spec</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">QUERY</span> <span class="o">=</span> <span class="s2">&quot;getSimpleStatsList&quot;</span>
+    <span class="n">TABLE_TAG</span> <span class="o">=</span> <span class="s2">&quot;STAT_INF&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">start_position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">updated_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span>
+        <span class="n">appid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="o">=</span> <span class="n">start_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span> <span class="o">=</span> <span class="n">updated_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="o">=</span> <span class="n">lang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="o">=</span> <span class="n">get_appid</span><span class="p">(</span><span class="n">appid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;アプリケーション ID が指定されていません。&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{5}</span><span class="s2">|\d</span><span class="si">{8}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;政府統計コードは 5 桁か 8 桁の数字を str 型で指定してください。</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;e-Stat 提供データ: https://www.e-stat.go.jp/api/api-info/api-data&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">lang</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;言語 lang は &quot;J&quot; か &quot;E&quot; で指定してください。&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;e-Stat API のパラメータ群を `dict` 形式で返します。</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - 参照: e-Stat API v3.0 仕様 2.1 API の利用方法 - 統計表情報取得</span>
+<span class="sd">            - 参照: e-Stat API v3.0 仕様 3.2 API パラメータ - 統計表情報取得</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;appId&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">appid</span><span class="p">,</span> <span class="s2">&quot;statsCode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;limit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;startPosition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_position</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;updatedDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updated_date</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;lang&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang</span>
+
+        <span class="k">return</span> <span class="n">params</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
