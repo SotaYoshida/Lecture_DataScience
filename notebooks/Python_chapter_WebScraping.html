@@ -459,7 +459,7 @@ HTMLとは、Webページを作るための言語のことで、みなさんが�
 <p><a class="reference external" href="https://stopcovid19.metro.tokyo.lg.jp/">東京都 新型コロナウイルス感染症対策サイト</a>の<a class="reference external" href="https://github.com/tokyo-metropolitan-gov/covid19">レポジトリ</a>で公開されているデータ(json形式)を読み出す。</p>
 <p>指定したurlにリクエストを送り、レスポンスをjson形式で取得する</p>
 <blockquote>
-<div><p>ちなみに、json形式のデータは、元々JavaScriptのオブジェクトとして扱うために作られたものであるが、
+<div><p>ちなみに、json形式のデータは、元々JavaScriptのオブジェクトとして扱うために作られたものだが、<br />
 PythonやJava, PHPなどでも扱うことができる。Pythonで言うと辞書型が近い。</p>
 </div></blockquote>
 <div class="cell docutils container">
@@ -627,7 +627,7 @@ Google Colabで使用しているサーバー上にライブライのソース�
 </div>
 </div>
 </div>
-<p>次に、これらのデータがどうやって分類されているのかを調べてみましょう。<br />
+<p>次に、これらのデータが表データとしてどうやって分類されているのかを調べてみよう。<br />
 列(column)を表示してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -645,7 +645,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 </div>
 </div>
-<p>その<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)と<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>(タイトル)だけを表示してみましょう</p>
+<p>その<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)と<code class="docutils literal notranslate"><span class="pre">TITLE</span></code>(タイトル)だけを表示してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statslist</span><span class="p">[[</span><span class="s2">&quot;TABLE_INF&quot;</span><span class="p">,</span> <span class="s2">&quot;TITLE&quot;</span><span class="p">]]</span>
@@ -653,10 +653,9 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>の数値が[統計表ID]と呼ばれるものです。</p>
-<p>ではこの中から”事業活動の産業（中分類）別売上高（月次）【2013年1月～】”を読み出してみましょう。<br />
-それには<code class="docutils literal notranslate"><span class="pre">read_statsdata</span></code>という関数が用意されているので、<br />
-引数に<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)を入力すると…</p>
+<p><code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>の数値が[統計表ID]と呼ばれるものになる。</p>
+<p>この中から”事業活動の産業（中分類）別売上高（月次）【2013年1月～】”を読み出してみよう。<br />
+それには<code class="docutils literal notranslate"><span class="pre">read_statsdata</span></code>という関数が用意されているので、引数に<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)を入力すると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statsdata</span> 
@@ -666,7 +665,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 </div>
 </div>
-<p>これで、データを抽出することができました。</p>
+<p>これで、データを抽出することができた。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
@@ -674,9 +673,8 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 </div>
 </div>
-<p>もう属性を少し絞ってみましょう。</p>
-<p>dataframeの”事業活動の産業”列にどんなものがあるかを抽出し、<br />
-<code class="docutils literal notranslate"><span class="pre">set</span></code>関数を使って重複を除くと…</p>
+<p>次に、もう属性を少し絞ってみよう。</p>
+<p>dataframeの”事業活動の産業”列にどんなものがあるかを抽出し、<code class="docutils literal notranslate"><span class="pre">set</span></code>関数を使って重複を除くと…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">])</span>
@@ -684,16 +682,17 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 </div>
 </div>
-<p>“42鉄道業”を見てみましょう。</p>
+<p>例えば”42鉄道業”に注目してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;事業活動の産業&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;42鉄道業&quot;</span><span class="p">]</span> <span class="c1">#dfの中の、&quot;事業活動の産業欄が&quot;42鉄道業&quot;のものを抽出し、ndfと名前をつける</span>
 
+<span class="c1">#月次データを抽出</span>
 <span class="n">ndf</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;月&quot;</span><span class="p">)]</span>
 <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y年%m月&quot;</span><span class="p">)</span>
 <span class="n">ndf</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">)</span>
 
-<span class="c1">#必要なところだけ抽出すると...</span>
+<span class="c1">#さらに必要な列のみ抽出する</span>
 <span class="n">ndf</span><span class="p">[[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -713,7 +712,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;時間軸（月次）&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.e-2</span>  <span class="c1"># XX億円に換算</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.e-2</span>  <span class="c1"># 元が百万円単位なので、100で割ると億円単位になる</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  
@@ -731,7 +730,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 </div>
 <p>新型コロナウイルスの感染拡大を受けて2020年の1月ごろから<br />
 緊急事態宣言の解除(5月25日)まで、大幅に収益が減っていることが分かる。</p>
-<p>図を保存したければ、Google Driveのマウントを行った上で、<code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code>を使ってパスを指定することで保存できる。</p>
+<p>なお、図を保存したければ、Google Driveのマウントを行った上で、<code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code>を使ってパスを指定し保存すれば良い。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="id3">
