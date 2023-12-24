@@ -1014,8 +1014,7 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </div>
 </div>
 </div>
-<p>DataFrame同士を結合してまとめるなどして<br />
-扱いやすいデータに整形していく.</p>
+<p>DataFrame同士を結合してまとめるなどして扱いやすいデータに整形していく.</p>
 <p>縦方向の結合はpandasのconcat(concatenateの略)を使う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1029,10 +1028,8 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </div>
 <div class="section" id="dataframecsv-excel">
 <h2>DataFrameのcsv/Excelファイルへの書き出し<a class="headerlink" href="#dataframecsv-excel" title="Permalink to this headline">¶</a></h2>
-<p>DataFrameオブジェクトは、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>内の関数を用いれば、<br />
-簡単にcsvやExcelファイルとして書き出すことができます。</p>
-<p>先程の、２０１０年代のノーベル物理学賞受賞者のデータを、<br />
-Google Driveにファイルとして書き出してみましょう。</p>
+<p>DataFrameオブジェクトは、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>内の関数・メソッドを用いれば、簡単にcsvやExcelファイルとして書き出すことができる。</p>
+<p>先程の、2010年代のノーベル物理学賞受賞者のデータを、Google Driveにファイルとして書き出してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
@@ -1042,25 +1039,24 @@ Google Driveにファイルとして書き出してみましょう。</p>
 </div>
 </div>
 <p><strong>csvとして書き出す場合</strong></p>
-<p>適当にパスを指定して、DataFrameオブジェクトに<br />
-<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>関数を作用させます。</p>
+<p>適当にパスを指定して、DataFrameオブジェクトに<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>関数を作用させる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/My Drive/AdDS2021/pd_write_test.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/pd_write_test.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Excelファイルとして書き出す場合</strong></p>
-<p>この場合も同様で、<code class="docutils literal notranslate"><span class="pre">to_excel</span></code>関数を用います。</p>
+<p>この場合も同様で、<code class="docutils literal notranslate"><span class="pre">to_excel</span></code>関数を用いればよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;/content/drive/My Drive/AdDS2021/pd_write_test.xlsx&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/pd_write_test.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>上記の関数内で文字コードを指定することもできます。<br />
+<p>上記の関数内で文字コードを指定することもできる。<br />
 例: <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8_sig&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">encoding=&quot;shift_jis&quot;</span></code></p>
 </div>
 </div>
