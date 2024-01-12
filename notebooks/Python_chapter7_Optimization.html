@@ -476,7 +476,7 @@
 <div class="section" id="id2">
 <h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>以下で考えたい問題のポンチ絵</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_1d.png?raw=true" width=60%>  
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt1d.png?raw=true" width=60%>  
 <blockquote>
 <div><p>あなたは変数<span class="math notranslate nohighlight">\(x\)</span>のある特定の点<span class="math notranslate nohighlight">\(t\)</span>での関数値<span class="math notranslate nohighlight">\(f(t)\)</span>を観測して知っている。<br />
 また、図中に<strong>緑の線で示したような<span class="math notranslate nohighlight">\(f(x)\)</span>の振る舞いを予め知ることはできず<br />
@@ -484,11 +484,12 @@
 (そのことを点線で表現しています)<br />
 このとき、<span class="math notranslate nohighlight">\(x\)</span>を変えながら<span class="math notranslate nohighlight">\(f(x)\)</span>が最小となる点を探すには一般にどうすればよいだろうか？</p>
 </div></blockquote>
-<p>変数が2次元(やそれ以上)の場合も、(実際上の難しさが違うとはいえ)基本的なアイデアは同様なので、以下では１次元の場合のみ扱うことにする.</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_2d.png?raw=true" width=60%>  
+<p>変数が2次元(やそれ以上)の場合も、</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt2d.png?raw=true" width=60%>  
+(実際上の難しさが違うとはいえ)基本的なアイデアは同様なので、以下では１次元の場合のみ扱うことにする.
 <hr class="docutils" />
 <p>さて、1次元の場合に話を戻して…(図を再掲)</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_1d.png?raw=true" width=60%>  
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt1d.png?raw=true" width=60%>  
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を<span class="math notranslate nohighlight">\(t\)</span>から更新していく方法として、色んな方法が考えられる。たとえば…</p>
 <ol class="simple">
 <li><p>ランダムに探索する(例:サイコロを振って、目が1-3なら<span class="math notranslate nohighlight">\(x\)</span>を適当な値だけ減らし出目が4-6なら<span class="math notranslate nohighlight">\(x\)</span>を増やしていく)</p></li>
