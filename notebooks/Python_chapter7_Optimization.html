@@ -476,7 +476,7 @@
 <div class="section" id="id2">
 <h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>以下で考えたい問題のポンチ絵</p>
-<img src="https://drive.google.com/uc?export=view&id=1dvnzljSpB7ht4RDr8WXTP8kH9KCMBCBA" width=70%>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_1d.png?raw=true" width=60%>  
 <blockquote>
 <div><p>あなたは変数<span class="math notranslate nohighlight">\(x\)</span>のある特定の点<span class="math notranslate nohighlight">\(t\)</span>での関数値<span class="math notranslate nohighlight">\(f(t)\)</span>を観測して知っている。<br />
 また、図中に<strong>緑の線で示したような<span class="math notranslate nohighlight">\(f(x)\)</span>の振る舞いを予め知ることはできず<br />
@@ -484,13 +484,11 @@
 (そのことを点線で表現しています)<br />
 このとき、<span class="math notranslate nohighlight">\(x\)</span>を変えながら<span class="math notranslate nohighlight">\(f(x)\)</span>が最小となる点を探すには一般にどうすればよいだろうか？</p>
 </div></blockquote>
-<p>変数が2次元(やそれ以上)の場合も、<br />
-(実際上の難しさが違うとはいえ)基本的なアイデアは同様なので、<br />
-以下では１次元の場合のみ扱うことにする.</p>
-<img src="https://drive.google.com/uc?export=view&id=1PGkcncbgSOQpG_mGyqV58d2FvMdJeI7K" width=60%>
+<p>変数が2次元(やそれ以上)の場合も、(実際上の難しさが違うとはいえ)基本的なアイデアは同様なので、以下では１次元の場合のみ扱うことにする.</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_2d.png?raw=true" width=60%>  
 <hr class="docutils" />
 <p>さて、1次元の場合に話を戻して…(図を再掲)</p>
-<img src="https://drive.google.com/uc?export=view&id=1dvnzljSpB7ht4RDr8WXTP8kH9KCMBCBA" width=60%>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Opt_1d.png?raw=true" width=60%>  
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を<span class="math notranslate nohighlight">\(t\)</span>から更新していく方法として、色んな方法が考えられる。たとえば…</p>
 <ol class="simple">
 <li><p>ランダムに探索する(例:サイコロを振って、目が1-3なら<span class="math notranslate nohighlight">\(x\)</span>を適当な値だけ減らし出目が4-6なら<span class="math notranslate nohighlight">\(x\)</span>を増やしていく)</p></li>
@@ -515,8 +513,8 @@
 <div class="section" id="id3">
 <h2><span class="section-number">7.2. </span>最も基本的な最適化手法: 勾配法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>*以下では、微分の値のことを指して[勾配]と呼ぶことにする.</p>
-<p>さて、上の一次元の例をもっと簡略化することにして、単峰的(つまり１つしか谷が無い)場合を考えてみよう。
-<img src="https://drive.google.com/uc?export=view&id=1VKl4CFinx5nr0sG0pqOpbfiZR48WLaUE" width=65%></p>
+<p>さて、上の一次元の例をもっと簡略化することにして、単峰的(つまり１つしか谷が無い)場合を考えてみよう。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_simple.png?raw=true" width=60%>  
 <p>この様な場合、斜面の傾きに沿ってパラメータを更新していけばいずれ<span class="math notranslate nohighlight">\(f(x)\)</span>の最小値が見つかりそうだ。<br />
 点<span class="math notranslate nohighlight">\(x=t\)</span>での勾配は(あえて)偏微分で書くと<span class="math notranslate nohighlight">\(\frac{\partial f(x)}{\partial x}|_{x=t}\)</span>となる。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を更新する際に、更新前の値を<span class="math notranslate nohighlight">\(x_{old}\)</span>,更新後の値を<span class="math notranslate nohighlight">\(x_{new}\)</span>と書くことにすると、<br />
@@ -535,11 +533,9 @@
 今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分。</p>
 <p>ただし、上の<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎたり小さすぎたりすると、なかなか効率的に<span class="math notranslate nohighlight">\(f(x)\)</span>の最適解を見つけられないことがある。</p>
 <p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷をまたいでしまい、なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
-<img src="https://drive.google.com/uc?export=view&id=1f1t1Bvs9NgHn5Fp1k84Ihs7F7SedM5OU" width = 65%>
-<p>一方で<span class="math notranslate nohighlight">\(\eta\)</span>が小さすぎると、なかなか更新が進まず<br />
-これまた効率の悪い探索となってしまう。</p>
-<img src="https://drive.google.com/uc?export=view&id=1ChsZeoNFnHHuZKsATDvS2q6KITmgjoaS" width = 65%>
-<p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<br />
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_large_eta.png?raw=true" width=60%>  
+<p>一方で<span class="math notranslate nohighlight">\(\eta\)</span>が小さすぎると、なかなか更新が進まず、これまた効率の悪い探索となってしまう。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_small_eta.png?raw=true" width=60%>  <p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<br />
 <span class="math notranslate nohighlight">\(\eta\)</span>が小さいと局所的な谷に捕まってしまってなかなか大局的な谷にたどり着けない、<br />
 かといって<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎるとあらぬ方向に飛んでいってしまう、といったことが起こりえる。</p>
 <p>その様な場合にはもう少し”賢い”最適化の手法を応用したり、更新の幅を徐々に減衰させるなどの工夫が必要になる。</p>
