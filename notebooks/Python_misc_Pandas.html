@@ -787,12 +787,40 @@ Webから直接xlsxファイルを読み込んでみよう。</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
+11肉類
+12鶏卵
+13乳類
+14油脂類
+15菓子類
+16し好飲料
+17調味料及び香辛料
+18調理済み流通食品類
+1穀類
+2いも及びでん粉類
+3砂糖及び甘味類
+4豆類
+5種実類
+6野菜類
+7果実類
+8きのこ類
+9藻類
+表全体
+</pre></div>
+</div>
+</div>
 </div>
 <p>ブック内のシートの一覧は以下のように取得できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pandas: シート名&quot;</span><span class="p">,</span><span class="n">sheet_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas: シート名 [&#39;表全体&#39;, &#39;1穀類&#39;, &#39;2いも及びでん粉類&#39;, &#39;3砂糖及び甘味類&#39;, &#39;4豆類&#39;, &#39;5種実類&#39;, &#39;6野菜類&#39;, &#39;7果実類&#39;, &#39;8きのこ類&#39;, &#39;9藻類&#39;, &#39;10魚介類&#39;, &#39;11肉類&#39;, &#39;12鶏卵&#39;, &#39;13乳類&#39;, &#39;14油脂類&#39;, &#39;15菓子類&#39;, &#39;16し好飲料&#39;, &#39;17調味料及び香辛料&#39;, &#39;18調理済み流通食品類&#39;]
 </pre></div>
 </div>
 </div>
@@ -808,6 +836,338 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
+11肉類
+12鶏卵
+13乳類
+14油脂類
+15菓子類
+16し好飲料
+17調味料及び香辛料
+18調理済み流通食品類
+1穀類
+2いも及びでん粉類
+3砂糖及び甘味類
+4豆類
+5種実類
+6野菜類
+7果実類
+8きのこ類
+9藻類
+表全体
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>...</th>
+      <th>Unnamed: 52</th>
+      <th>Unnamed: 53</th>
+      <th>Unnamed: 54</th>
+      <th>Unnamed: 55</th>
+      <th>Unnamed: 56</th>
+      <th>Unnamed: 57</th>
+      <th>Unnamed: 58</th>
+      <th>Unnamed: 59</th>
+      <th>Unnamed: 60</th>
+      <th>更新日：2021年12月28日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>食　品　番　号</td>
+      <td>索　引　番　号</td>
+      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>備　　考</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>食　品　名</td>
+      <td>廃　棄　率</td>
+      <td>エネルギー</td>
+      <td>NaN</td>
+      <td>水　分</td>
+      <td>たんぱく質</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アルコール</td>
+      <td>食塩相当量</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アミノ酸組成による\nたんぱく質</td>
+      <td>たんぱく質</td>
+      <td>...</td>
+      <td>ナイアシン当量</td>
+      <td>ビ\nタ\nミ\nン\nＢ６</td>
+      <td>ビ\nタ\nミ\nン\nＢ１２</td>
+      <td>葉　酸</td>
+      <td>パントテン酸</td>
+      <td>ビ オ チ ン</td>
+      <td>ビタミンC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>1.0</td>
+      <td>01139</td>
+      <td>201</td>
+      <td>ひえ　精白粒</td>
+      <td>0</td>
+      <td>1534</td>
+      <td>361</td>
+      <td>12.9</td>
+      <td>8.4</td>
+      <td>9.4</td>
+      <td>...</td>
+      <td>2.3</td>
+      <td>0.17</td>
+      <td>(0)</td>
+      <td>14</td>
+      <td>1.50</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>歩留り： 55～60 %</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>1.0</td>
+      <td>01140</td>
+      <td>202</td>
+      <td>もろこし　玄穀</td>
+      <td>0</td>
+      <td>1454</td>
+      <td>344</td>
+      <td>12.0</td>
+      <td>(9.0)</td>
+      <td>10.3</td>
+      <td>...</td>
+      <td>(8.0)</td>
+      <td>0.31</td>
+      <td>(0)</td>
+      <td>54</td>
+      <td>1.42</td>
+      <td>15.0</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名： こうりゃん、ソルガム、たかきび、マイロ</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1.0</td>
+      <td>01141</td>
+      <td>203</td>
+      <td>もろこし　精白粒</td>
+      <td>0</td>
+      <td>1473</td>
+      <td>348</td>
+      <td>12.5</td>
+      <td>(8.0)</td>
+      <td>9.5</td>
+      <td>...</td>
+      <td>(5.0)</td>
+      <td>0.24</td>
+      <td>(0)</td>
+      <td>29</td>
+      <td>0.66</td>
+      <td>-</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名： こうりゃん、ソルガム、たかきび、マイロ\n歩留り： 70～80 %</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>1.0</td>
+      <td>01142</td>
+      <td>204</td>
+      <td>ライむぎ　全粒粉</td>
+      <td>0</td>
+      <td>1342</td>
+      <td>317</td>
+      <td>12.5</td>
+      <td>10.8</td>
+      <td>12.7</td>
+      <td>...</td>
+      <td>4.2</td>
+      <td>0.22</td>
+      <td>(0)</td>
+      <td>65</td>
+      <td>0.87</td>
+      <td>9.5</td>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名：黒麦（くろむぎ）</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>1.0</td>
+      <td>01143</td>
+      <td>205</td>
+      <td>ライむぎ　ライ麦粉</td>
+      <td>0</td>
+      <td>1368</td>
+      <td>324</td>
+      <td>13.5</td>
+      <td>7.8</td>
+      <td>8.5</td>
+      <td>...</td>
+      <td>2.6</td>
+      <td>0.10</td>
+      <td>(0)</td>
+      <td>34</td>
+      <td>0.63</td>
+      <td>-</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名:黒麦（くろむぎ）\n歩留り： 65～75 %</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 62 columns</p>
+</div></div></div>
 </div>
 <p>同じものが得られている。</p>
 <div class="section" id="id7">
@@ -820,6 +1180,149 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>...</th>
+      <th>Unnamed: 52</th>
+      <th>Unnamed: 53</th>
+      <th>Unnamed: 54</th>
+      <th>Unnamed: 55</th>
+      <th>Unnamed: 56</th>
+      <th>Unnamed: 57</th>
+      <th>Unnamed: 58</th>
+      <th>Unnamed: 59</th>
+      <th>Unnamed: 60</th>
+      <th>更新日：2021年12月28日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>食　品　番　号</td>
+      <td>索　引　番　号</td>
+      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>備　　考</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>食　品　名</td>
+      <td>廃　棄　率</td>
+      <td>エネルギー</td>
+      <td>NaN</td>
+      <td>水　分</td>
+      <td>たんぱく質</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アルコール</td>
+      <td>食塩相当量</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アミノ酸組成による\nたんぱく質</td>
+      <td>たんぱく質</td>
+      <td>...</td>
+      <td>ナイアシン当量</td>
+      <td>ビ\nタ\nミ\nン\nＢ６</td>
+      <td>ビ\nタ\nミ\nン\nＢ１２</td>
+      <td>葉　酸</td>
+      <td>パントテン酸</td>
+      <td>ビ オ チ ン</td>
+      <td>ビタミンC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 62 columns</p>
+</div></div></div>
 </div>
 <p>最初の4行ほどに栄養素等の情報が入っているのだが、<br />
 セルが結合されたりしているため、所々にNaNが入っていたりして見辛い。</p>
@@ -851,6 +1354,12 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;食品名&#39;, &#39;廃棄率&#39;, &#39;エネルギー&#39;, &#39;nan&#39;, &#39;水分&#39;, &#39;たんぱく質&#39;, &#39;nan&#39;, &#39;脂質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;有機酸&#39;, &#39;灰分&#39;, &#39;無機質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;無機質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミン&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;アルコール&#39;, &#39;食塩相当量&#39;, &#39;nan&#39;]
+[&#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;アミノ酸組成によるたんぱく質&#39;, &#39;たんぱく質&#39;, &#39;脂肪酸のトリアシルグリセロール当量&#39;, &#39;コレステロール&#39;, &#39;脂質&#39;, &#39;利用可能炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;食物繊維総量&#39;, &#39;糖アルコール&#39;, &#39;炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ナトリウム&#39;, &#39;カリウム&#39;, &#39;カルシウム&#39;, &#39;マグネシウム&#39;, &#39;リン&#39;, &#39;鉄&#39;, &#39;亜鉛&#39;, &#39;銅&#39;, &#39;マンガン&#39;, &#39;nan&#39;, &#39;ヨウ素&#39;, &#39;セレン&#39;, &#39;クロム&#39;, &#39;モリブデン&#39;, &#39;ビタミンA&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミンD&#39;, &#39;ビタミンE&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミンK&#39;, &#39;ビタミンＢ１&#39;, &#39;ビタミンB２&#39;, &#39;ナイアシン&#39;, &#39;ナイアシン当量&#39;, &#39;ビタミンＢ６&#39;, &#39;ビタミンＢ１２&#39;, &#39;葉酸&#39;, &#39;パントテン酸&#39;, &#39;ビオチン&#39;, &#39;ビタミンC&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>セルの結合により、興味のあるデータがどの列に記述されているかは注意が必要。</p>
 <p>実際、[エネルギー]という文字列は1行目の6列目(それぞれインデックスでいうと0,5)で取得できるが、<br />
@@ -866,6 +1375,125 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 9</th>
+      <th>Unnamed: 12</th>
+      <th>Unnamed: 20</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>食　品　名</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>たんぱく質</td>
+      <td>脂質</td>
+      <td>炭水化物</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>ひえ　精白粒</td>
+      <td>361</td>
+      <td>9.4</td>
+      <td>3.3</td>
+      <td>73.2</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>もろこし　玄穀</td>
+      <td>344</td>
+      <td>10.3</td>
+      <td>4.7</td>
+      <td>71.1</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>もろこし　精白粒</td>
+      <td>348</td>
+      <td>9.5</td>
+      <td>2.6</td>
+      <td>74.1</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>ライむぎ　全粒粉</td>
+      <td>317</td>
+      <td>12.7</td>
+      <td>2.7</td>
+      <td>70.7</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>ライむぎ　ライ麦粉</td>
+      <td>324</td>
+      <td>8.5</td>
+      <td>1.6</td>
+      <td>75.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 5 columns</p>
+</div></div></div>
 </div>
 <p>もう少し整形したいので、新しいデータフレームの列を書き換える。</p>
 <p>食品名等が記載されているのは10行目以降なので、それを使いcolumnsを指定する。</p>
@@ -880,6 +1508,125 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>食品名</th>
+      <th>エネルギー(kcal)</th>
+      <th>たんぱく質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>成分識別子</td>
+      <td>ENERC_KCAL</td>
+      <td>PROT-</td>
+      <td>FAT-</td>
+      <td>CHOCDF-</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>アマランサス 玄穀</td>
+      <td>343</td>
+      <td>12.7</td>
+      <td>6.0</td>
+      <td>64.9</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>あわ 精白粒</td>
+      <td>346</td>
+      <td>11.2</td>
+      <td>4.4</td>
+      <td>69.7</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>あわ あわもち</td>
+      <td>210</td>
+      <td>5.1</td>
+      <td>1.3</td>
+      <td>45.3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>えんばく オートミール</td>
+      <td>350</td>
+      <td>13.7</td>
+      <td>5.7</td>
+      <td>69.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>ひえ 精白粒</td>
+      <td>361</td>
+      <td>9.4</td>
+      <td>3.3</td>
+      <td>73.2</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>もろこし 玄穀</td>
+      <td>344</td>
+      <td>10.3</td>
+      <td>4.7</td>
+      <td>71.1</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>もろこし 精白粒</td>
+      <td>348</td>
+      <td>9.5</td>
+      <td>2.6</td>
+      <td>74.1</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>ライむぎ 全粒粉</td>
+      <td>317</td>
+      <td>12.7</td>
+      <td>2.7</td>
+      <td>70.7</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>ライむぎ ライ麦粉</td>
+      <td>324</td>
+      <td>8.5</td>
+      <td>1.6</td>
+      <td>75.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>206 rows × 5 columns</p>
+</div></div></div>
 </div>
 <p>次に、食品名の一覧を取得した後、興味のあるもの(日常的に馴染みのあるもの)だけを<br />
 ピックアップしてみよう。</p>
@@ -906,6 +1653,76 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>食品名</th>
+      <th>エネルギー(kcal)</th>
+      <th>たんぱく質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>45</th>
+      <td>こむぎ ［パン類］ 食パン リッチタイプ</td>
+      <td>256</td>
+      <td>(7.8)</td>
+      <td>(6.0)</td>
+      <td>(45.6)</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>こむぎ ［パン類］ フランスパン</td>
+      <td>289</td>
+      <td>9.4</td>
+      <td>1.3</td>
+      <td>57.5</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>こむぎ ［うどん・そうめん類］ うどん ゆで</td>
+      <td>95</td>
+      <td>2.6</td>
+      <td>0.4</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>こめ ［水稲軟めし］ 精白米</td>
+      <td>113</td>
+      <td>(1.8)</td>
+      <td>(0.3)</td>
+      <td>(26.4)</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>そば そば ゆで</td>
+      <td>130</td>
+      <td>4.8</td>
+      <td>1.0</td>
+      <td>26.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>などとする。</p>
 <p>‘6野菜類’でも同様に…</p>
@@ -921,6 +1738,146 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
+11肉類
+12鶏卵
+13乳類
+14油脂類
+15菓子類
+16し好飲料
+17調味料及び香辛料
+18調理済み流通食品類
+1穀類
+2いも及びでん粉類
+3砂糖及び甘味類
+4豆類
+5種実類
+6野菜類
+7果実類
+8きのこ類
+9藻類
+表全体
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>食品名</th>
+      <th>エネルギー(kcal)</th>
+      <th>たんぱく質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>成分識別子</td>
+      <td>ENERC_KCAL</td>
+      <td>PROT-</td>
+      <td>FAT-</td>
+      <td>CHOCDF-</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>アーティチョーク 花らい 生</td>
+      <td>39</td>
+      <td>2.3</td>
+      <td>0.2</td>
+      <td>11.3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>アーティチョーク 花らい ゆで</td>
+      <td>35</td>
+      <td>2.1</td>
+      <td>0.1</td>
+      <td>10.8</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>あさつき 葉 生</td>
+      <td>34</td>
+      <td>4.2</td>
+      <td>0.3</td>
+      <td>5.6</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>あさつき 葉 ゆで</td>
+      <td>41</td>
+      <td>4.2</td>
+      <td>0.3</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>407</th>
+      <td>（その他） ミックスベジタブル 冷凍</td>
+      <td>67</td>
+      <td>3.0</td>
+      <td>0.7</td>
+      <td>15.1</td>
+    </tr>
+    <tr>
+      <th>408</th>
+      <td>（その他） ミックスベジタブル 冷凍 ゆで</td>
+      <td>65</td>
+      <td>3.1</td>
+      <td>0.8</td>
+      <td>14.6</td>
+    </tr>
+    <tr>
+      <th>409</th>
+      <td>（その他） ミックスベジタブル 冷凍 油いため</td>
+      <td>108</td>
+      <td>3.3</td>
+      <td>4.9</td>
+      <td>15.7</td>
+    </tr>
+    <tr>
+      <th>410</th>
+      <td>（その他） 野菜ミックスジュース 通常タイプ</td>
+      <td>21</td>
+      <td>0.8</td>
+      <td>0.1</td>
+      <td>4.7</td>
+    </tr>
+    <tr>
+      <th>411</th>
+      <td>（その他） 野菜ミックスジュース 濃縮タイプ</td>
+      <td>36</td>
+      <td>1.0</td>
+      <td>0.3</td>
+      <td>7.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>402 rows × 5 columns</p>
+</div></div></div>
 </div>
 <p>特定のキーワードを含むものを全て取得して、<br />
 食品名を細かく指定したり、対応する行番号のインデックスを取得できたりする</p>
@@ -931,6 +1888,92 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>食品名</th>
+      <th>エネルギー(kcal)</th>
+      <th>たんぱく質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>81</th>
+      <td>（キャベツ類） キャベツ 結球葉 生</td>
+      <td>21</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>（キャベツ類） キャベツ 結球葉 ゆで</td>
+      <td>19</td>
+      <td>0.9</td>
+      <td>0.2</td>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>（キャベツ類） キャベツ 結球葉 油いため</td>
+      <td>78</td>
+      <td>1.6</td>
+      <td>6.0</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>（キャベツ類） グリーンボール 結球葉 生</td>
+      <td>20</td>
+      <td>1.4</td>
+      <td>0.1</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>（キャベツ類） レッドキャベツ 結球葉 生</td>
+      <td>30</td>
+      <td>2.0</td>
+      <td>0.1</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>358</th>
+      <td>めキャベツ 結球葉 生</td>
+      <td>52</td>
+      <td>5.7</td>
+      <td>0.1</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>めキャベツ 結球葉 ゆで</td>
+      <td>51</td>
+      <td>5.3</td>
+      <td>0.1</td>
+      <td>9.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,6 +1982,108 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>食品名</th>
+      <th>エネルギー(kcal)</th>
+      <th>たんぱく質(g)</th>
+      <th>脂質(g)</th>
+      <th>炭水化物(g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>221</th>
+      <td>（トマト類） 赤色トマト 果実 生</td>
+      <td>20</td>
+      <td>0.7</td>
+      <td>0.1</td>
+      <td>4.7</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>（トマト類） 赤色ミニトマト 果実 生</td>
+      <td>30</td>
+      <td>1.1</td>
+      <td>0.1</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>（トマト類） 黄色トマト 果実 生</td>
+      <td>18</td>
+      <td>1.1</td>
+      <td>0.4</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>（トマト類） ドライトマト</td>
+      <td>291</td>
+      <td>14.2</td>
+      <td>2.1</td>
+      <td>67.3</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>（トマト類） 加工品 ホール 食塩無添加</td>
+      <td>21</td>
+      <td>0.9</td>
+      <td>0.2</td>
+      <td>4.4</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>（トマト類） 加工品 トマトジュース 食塩添加</td>
+      <td>15</td>
+      <td>0.7</td>
+      <td>0.1</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>（トマト類） 加工品 トマトジュース 食塩無添加</td>
+      <td>18</td>
+      <td>0.7</td>
+      <td>0.1</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>（トマト類） 加工品 ミックスジュース 食塩添加</td>
+      <td>18</td>
+      <td>0.6</td>
+      <td>0</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>（トマト類） 加工品 ミックスジュース 食塩無添加</td>
+      <td>18</td>
+      <td>0.6</td>
+      <td>0</td>
+      <td>4.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>DataFrame同士を結合してまとめるなどして扱いやすいデータに整形していく.</p>
 <p>縦方向の結合はpandasのconcat(concatenateの略)を使う。</p>
