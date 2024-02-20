@@ -380,33 +380,38 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#index">
-     2.1.1. リストの要素にアクセスする, インデックス(index)
+    <a class="reference internal nav-link" href="#id2">
+     2.1.1. リストに関する禁止事項
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2.1.2. リストの結合
+    <a class="reference internal nav-link" href="#index">
+     2.1.2. リストの要素にアクセスする, インデックス(index)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.1.3. リストに要素を加える
+     2.1.3. リストの結合
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.1.4. インデックスの取得
+     2.1.4. リストに要素を加える
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.1.5. スライスを用いた部分リストの取得
+     2.1.5. インデックスの取得
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.1.6. スライスを用いた部分リストの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#clubsuit">
-     2.1.6.
+     2.1.7.
      <span class="math notranslate nohighlight">
       \(\clubsuit\)
      </span>
@@ -421,7 +426,7 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id7">
    2.3. ループ処理
   </a>
   <ul class="nav section-nav flex-column">
@@ -431,12 +436,12 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      2.3.2. ブロックとインデント
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
+    <a class="reference internal nav-link" href="#id9">
      2.3.3. リスト内包表記
     </a>
    </li>
@@ -464,14 +469,14 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id10">
      2.3.7. 例外処理
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
+  <a class="reference internal nav-link" href="#id11">
    2.4.
    <span class="math notranslate nohighlight">
     \(\clubsuit\)
@@ -485,7 +490,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
+    <a class="reference internal nav-link" href="#id12">
      2.4.2. 辞書型, 波括弧
     </a>
    </li>
@@ -558,8 +563,19 @@
 例：名前、身長、体重 =&gt; <code class="docutils literal notranslate"><span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,</span> <span class="pre">66]</span></code></p>
 <p>また、これを拡張して、入れ子に(リストのリストを作成)することもできます。
 <code class="docutils literal notranslate"> <span class="pre">[</span> <span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,66],</span> <span class="pre">[&quot;Bさん&quot;,</span> <span class="pre">180,</span> <span class="pre">70]</span> <span class="pre">]</span></code></p>
+<div class="section" id="id2">
+<h3><span class="section-number">2.1.1. </span>リストに関する禁止事項<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>リストの変数名を絶対に！絶対に!!絶対に！！！<code class="docutils literal notranslate"><span class="pre">list</span></code>にしない。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#これはエラーにはならないが、絶対ダメ</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">list</span></code>には、リストと互換性のある配列をリストに変換する組み込み関数としてあらかじめ使われているため、このような変数名を使うと、その後<code class="docutils literal notranslate"><span class="pre">list</span></code>関数が使えなくなる。</p>
+<p>Google Colab.では、予約語(１章で前述)や組み込み関数(３章で後述)と呼ばれるものを入力した時点で色が変わる。<br />
+もし、色が変わるようであれば、名前の衝突を割けるため変数名を変えること。</p>
+<p>もし誤って予約語や組み込み関数と同じ名前の変数を定義・代入してしまい、想定する挙動が得られない場合は、一度ランタイムを再起動することで、その変数を消去することができる。</p>
+</div>
 <div class="section" id="index">
-<h3><span class="section-number">2.1.1. </span>リストの要素にアクセスする, インデックス(index)<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>リストの要素にアクセスする, インデックス(index)<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
 <p>リストの中の要素にアクセスするときは、半角括弧を使って[整数]といった形で”番地”を指定します。<br />
 このときの番地(あるいは座標といっても良いですが)を指定する整数のことをインデックス(index)と呼びます。</p>
 <p><strong>【重要】Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします!</strong></p>
@@ -626,8 +642,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>テキストセルの内容をコードセルなどにコピー&amp;ペーストしたければ、対象をドラッグして、<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>でコピー,<code class="docutils literal notranslate"><span class="pre">Ctrl+V</span></code>でペースト出来ます(Macの場合は<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>を<code class="docutils literal notranslate"><span class="pre">⌘</span></code>に置き換えてください)</p>
 </div>
 </div>
-<div class="section" id="id2">
-<h3><span class="section-number">2.1.2. </span>リストの結合<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3><span class="section-number">2.1.3. </span>リストの結合<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>２つのリストを結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -654,8 +670,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="id3">
-<h3><span class="section-number">2.1.3. </span>リストに要素を加える<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3><span class="section-number">2.1.4. </span>リストに要素を加える<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>リストにあとから要素を加えたくなるときもあります.<br />
 そんなときは <code class="docutils literal notranslate"><span class="pre">append</span></code>関数か<code class="docutils literal notranslate"><span class="pre">+=</span></code>を使います。</p>
 <div class="cell docutils container">
@@ -738,8 +754,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3><span class="section-number">2.1.4. </span>インデックスの取得<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><span class="section-number">2.1.5. </span>インデックスの取得<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,8 +776,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 <p>複雑なデータを扱う際に「あれ、あの要素ってどこの番地にあるんだっけ？」といった状況に便利な関数です。</p>
 </div>
-<div class="section" id="id5">
-<h3><span class="section-number">2.1.5. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><span class="section-number">2.1.6. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,7 +813,7 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <div class="section" id="clubsuit">
-<h3><span class="section-number">2.1.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.7. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、ググれば自分でだいたい解決することができます。<br />
 ただしこの項目で述べることは(初学者にとって)「直感に反するのだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
 <p>例を見せるために、以下の2種類のリストを用意します.</p>
@@ -958,8 +974,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2><span class="section-number">2.3. </span>ループ処理<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2><span class="section-number">2.3. </span>ループ処理<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>ループ処理は、プログラミングの中で<strong>最も重要な概念の一つ</strong>です。<br />
 ループ処理を使うことで、同じ処理を繰り返し行うことができます。</p>
 <div class="section" id="for">
@@ -1025,8 +1041,8 @@ len(a[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>さて、上の<code class="docutils literal notranslate"><span class="pre">for</span></code>文のコードには、関数の前に半角スペースが4つあるのに気がついたでしょうか?<br />
 Pythonでは、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を始め様々な処理の際に一連の作業”ブロック”を、<strong>半角スペース4つ分</strong>インデントを下げることで表現します。</p>
 <p>下のように、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を使っているにも関わらず正しくインデントされていない場合はエラーが出ます。</p>
@@ -1147,8 +1163,8 @@ Google Colab. では、　[ツール]→[設定]→[エディタ]から変更で
 </div>
 <p>など、考えたい値を直接ループで扱うのではなく間接的な値(今の場合<code class="docutils literal notranslate"><span class="pre">p</span></code>)を扱うなどの考え方も、コードをスッキリさせる上で重要です。</p>
 </div>
-<div class="section" id="id8">
-<h3><span class="section-number">2.3.3. </span>リスト内包表記<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><span class="section-number">2.3.3. </span>リスト内包表記<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>文の別の使い方として、リスト内包表記と呼ばれる書き方があります。<br />
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
@@ -1336,8 +1352,8 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3><span class="section-number">2.3.7. </span>例外処理<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3><span class="section-number">2.3.7. </span>例外処理<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1380,8 +1396,8 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>このノートブックでは説明しませんがexceptの後に具体的な例外を指定して例外の種類に応じた操作を行うことも出来ます。<a class="reference external" href="https://docs.python.org/ja/3/library/exceptions.html">https://docs.python.org/ja/3/library/exceptions.html</a></p>
 </div>
 </div>
-<div class="section" id="id10">
-<h2><span class="section-number">2.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2><span class="section-number">2.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>発展的な内容です。<br />
 以下のタプル・辞書型は使いこなせれば便利ですが、授業では必ずしも必要ではない(リストで代用できる)ので、興味に応じて学習してください。</p>
 <div class="section" id="tuple">
@@ -1448,8 +1464,8 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>タプルの方が実行時間が短い事がわかります.<br />
 今の例では差は人間にとっては気にならない程度の差ですが、複雑な処理になってコードがなかなか計算を完了しないときには、リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
 </div>
-<div class="section" id="id11">
-<h3><span class="section-number">2.4.2. </span>辞書型, 波括弧<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3><span class="section-number">2.4.2. </span>辞書型, 波括弧<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>辞書型は、キーと値の２つの要素をあわせ持つ型です.<br />
 リストにいれたものをいっぺんに扱うときに、毎回番地を指定したりループで要素を回して、望むものを持ってくるのは面倒です。</p>
 <p>たとえば以下の名前と年齢のリスト</p>
