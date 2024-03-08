@@ -440,16 +440,17 @@
 <h1>練習帳<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>このノートブックでは、1-8章で抑えておくべき基本事項を確認するための練習問題を与える。</p>
 <p>CLで収集する授業のリアクションシートには、</p>
-<ul class="simple">
-<li><p>練習帳のURL</p></li>
-<li><p>質問: 授業や資料でわからなかったこと (なければ所感のみでOK)</p></li>
-<li><p>所感: その回で理解した/できるようになったことを完結にまとめる</p></li>
-<li><p>適当な雑談: 最近ハマっていること</p></li>
-</ul>
-<p>を設定された〆切までに提出すること。これをもって出席とみなす。
+<ol class="simple">
+<li><p>**(必須)**練習帳のURLと該当する練習問題への回答</p></li>
+<li><p>**(必須)**その授業で学習したこと</p></li>
+<li><p>(任意) 質問: 授業や資料でわからなかったこと</p></li>
+<li><p>(任意) 所感・感想、適当な雑談</p></li>
+</ol>
+<p>を設定された〆切までに提出すること。1.2.の提出をもって出席とみなす。
 なお、(この授業に限らず)、2/3以上の出席がない場合、履修規程に従い自動的に不可となるため、必ず提出すること。</p>
 <p>この練習帳の目的は、皆さんが自分自身の理解・疑問点を確認するためであって
-<strong>練習帳で書いているコードや記述が正しいかどうかは一切授業の評点には関係がない</strong>。</p>
+<strong>練習帳で書いているコードや記述が正しいかどうかは一切授業の評点には関係がない</strong>。<br />
+一方で、練習帳の記載内容が明らかな盗用・剽窃であると判断された場合、事実確認の上、厳正な措置を取ることがあるので注意されたい。</p>
 <p>したがって友人に見せてもらったり相談をして体裁を整える必要はまったく無い。
 とにかく、自分の理解を確認するためにコードをどんどん書いてどんどん失敗しよう。</p>
 <p>質問やその返答を円滑にするための連絡帳のようなものだと思ってもらえれば良い。</p>
@@ -484,7 +485,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
 </pre></div>
 </div>
 </div>
@@ -512,11 +513,38 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>ヒント&amp;助言:</p>
+<ul>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">list</span></code>という変数名のリストを作らない！</strong></p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">list</span></code>はリストと互換性のあるオブジェクトをリストに変換するための関数です。</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>などと一度実行してしまうと、以降でリスト関数が使えなくなります。
+予約語やprint,listなどの組み込み関数を変数として上書きしてしまうと、元の機能が使えなくなり、不都合が生じる場合があります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">=</span> <span class="s2">&quot;Hey!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>などとすると、</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">callable</span>
+</pre></div>
+</div>
+<p>既に文字列(str)型になっているprintを関数みたく使う(callする)ことはできないよ！とエラーが発生し、print関数を使えなくなってしまいます。<br />
+そうしたときは、変数名を適切に変更した上で、【ランタイム】→【ランタイムの再起動】を行えば、元の予約語や組み込み関数を問題なく使えるようになります。</p>
+</li>
+<li><p><strong>ブロックに注意！</strong></p>
+<p>インデントによる処理のブロックの指定に注意が必要です。
+例えばfor文を条件文(if)に応じてbreakする場合は、for文のブロックの中にif文のブロックを書く必要があります。</p>
+</li>
+</ul>
 <p><strong>2章の振り返り</strong></p>
 <p><strong>とくに２章は重要な概念が盛りだくさんなので、必ず練習したり、疑問があれば質問すること!</strong></p>
 <p>これらの点をチェックし、必要ならコードセルを追加して練習しよう:</p>
@@ -531,19 +559,28 @@
 <h2>第3章:関数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol>
+<li><p>摂氏温度(℃,度)に対応する数値(int,float)を受けとり、絶対温度(K,ケルビン)を返す関数をコードセルに書いておいた。
+この関数を用いて、摂氏0度,20.55度,42.199度に対応する絶対温度をそれぞれ計算し、print文で表示せよ。</p></li>
 <li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。
 なお、分散の定義は下記の標本分散とする:</p>
 <div class="math notranslate nohighlight">
 \[
     \frac{1}{N}\sum^N_{i=1} (x_i - \bar{x})^2
     \]</div>
-<p>なお、<span class="math notranslate nohighlight">\(N\)</span>はデータの個数、<span class="math notranslate nohighlight">\(x_i\)</span>が各データ、<span class="math notranslate nohighlight">\(\bar{x}\)</span>は平均を意味する。</p>
+<p>ここで<span class="math notranslate nohighlight">\(N\)</span>はデータの個数、<span class="math notranslate nohighlight">\(x_i\)</span>が各データ、<span class="math notranslate nohighlight">\(\bar{x}\)</span>は平均を意味する。<br />
+平均を計算する関数、分散を計算する関数をそれぞれ作成しても良いし、一つの関数でまとめても良い。</p>
+<p>ポイントは<strong>任意の長さの</strong>という点で、リストの長さが2とか3とか、特定の場合にしか対応していないコードを書くのではなく、リストの長さに依存しない汎用的なコードを書くこと。</p>
 </li>
-<li><p>1.で作った自作関数を1つの変数で受け取り(例<code class="docutils literal notranslate"><span class="pre">ret_value=myfunction(mylist)</span></code>)その返り値の型を調べよ。</p></li>
+<li><p>2.で作った自作関数を1つの変数で受け取り(例<code class="docutils literal notranslate"><span class="pre">ret_value=myfunction(mylist)</span></code>)その返り値の型を調べて表示するコードを書け。<br />
+なお、1.で関数をまとめた場合は、返り値が複数となるため、タプル型となることを確認せよ。個別の関数を作った場合は、返り値がfloat型であることを確認せよ。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<span class="c1">#1. </span>
+<span class="k">def</span> <span class="nf">K_from_C</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">C</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="k">return</span> <span class="n">K</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +588,7 @@
 <p><strong>3章の振り返り</strong></p>
 <p>これらの点をチェックし、必要ならコードセルを追加して練習しよう:</p>
 <ul class="simple">
-<li><p>自作関数の定義の仕方が分かる</p></li>
+<li><p>自作関数の定義の仕方・呼び出し方が分かる</p></li>
 <li><p>引数(インプット)や返り値(アウトプット)の扱い方が分かる</p></li>
 </ul>
 </div>
@@ -570,7 +607,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
 </pre></div>
 </div>
 </div>
@@ -592,7 +629,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
 </pre></div>
 </div>
 </div>
@@ -614,7 +651,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
 <span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
 <span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
 </pre></div>
@@ -637,7 +674,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">10.06</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">9.95</span><span class="p">,</span><span class="mf">9.93</span><span class="p">,</span> <span class="mf">9.92</span><span class="p">,</span><span class="mf">9.9</span><span class="p">,</span> <span class="mf">9.86</span><span class="p">,</span><span class="mf">9.85</span><span class="p">,</span> <span class="mf">9.84</span><span class="p">,</span> <span class="mf">9.79</span><span class="p">,</span> <span class="mf">9.78</span><span class="p">,</span> <span class="mf">9.77</span><span class="p">,</span> <span class="mf">9.74</span><span class="p">,</span><span class="mf">9.72</span><span class="p">,</span><span class="mf">9.69</span><span class="p">,</span><span class="mf">9.58</span> <span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1999</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span> <span class="p">]</span>
 </pre></div>
@@ -655,18 +692,37 @@
 <div class="section" id="id8">
 <h2>第8章:ファイル操作<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
-<ol class="simple">
-<li><p>Google Colaboratoryから授業で使ったノートを参照し、Google Driveをマウントしtest.txtファイルの中身を表示せよ。その際、Unix/Linuxコマンドである<code class="docutils literal notranslate"><span class="pre">cat</span></code>を用いれば良い。</p></li>
-<li><p>matplotlibを用いて適当なグラフを描きGoogleドライブに保存せよ。</p></li>
-</ol>
+<ol>
+<li><p>コードセルに示したように、<code class="docutils literal notranslate"><span class="pre">Pandas</span></code>を用いてWeb上にあるcsvファイルを読み込んでみよう。</p>
+<p>例として、栃木県のオープンデータ「ベリーとちぎ」から<a class="reference external" href="https://data.bodik.jp/dataset/090000_hoikusyo/resource/37469f20-ed3c-4f9e-a5c4-fa750fc3c673">保育所一覧(2021年4月1日現在)</a>を利用する。</p>
+<p>なお、このcsvファイルはShift-JISでエンコードされているため、<code class="docutils literal notranslate"><span class="pre">encoding</span></code>オプションを指定する必要がある。<br />
+また、適宜URLを別のcsvファイルに変更しても構わないが、その場合はURLのほか、簡単な説明やコメントを添えること。</p>
+</li>
+<li><p>Google Driveをマウントし、1.で読み込んだデータをGoogle Driveに保存せよ。</p>
 <p>この問題はDriveのマウント・パスの指定などの一連の作業が理解できているかを確認するものなので、エラーが出た場合はそのログや自身が試した工程について、スクリーンショットなども活用しながらできるだけ詳細に報告すること。特に問題なく作業ができた場合は、2の図を送るなどはしなくて構わない。</p>
 <p>また、プライベートなGoogleアカウントを使用している(※授業では非推奨)場合、相談の際にはプログラムの出力結果やスクリーンショットなどに他人に見られて困るものが映っていないか配慮すること。</p>
+</li>
+<li><p>余力があれば、Pythonで地図上にデータをプロットする方法を調べてみよう。
+代表的なライブラリとしては<code class="docutils literal notranslate"><span class="pre">folium</span></code>や<code class="docutils literal notranslate"><span class="pre">geopandas</span></code>などがある。</p>
+<p>こちらは、地図上にプロットしたりできると楽しいよ、というだけで、とくにコード欄に記載したりする必要はない。</p>
+</li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># コードを以下に記載(追記)
-#1.のコードのヒント
-!cat path_to_yourfile/test.text
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<span class="c1">#1. (コードは書いておきましたので、挙動を確認してください)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.bodik.jp/dataset/47cb5069-7383-47d3-a7df-b84d59484432/resource/37469f20-ed3c-4f9e-a5c4-fa750fc3c673/download/42064_2021_hoikusyo_02184.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">)</span>
+<span class="c1">#df = pd.read_csv(url) #こちらにするとエラーになることも確認してみよう</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2.以降のコードはこちらへ</span>
 </pre></div>
 </div>
 </div>
