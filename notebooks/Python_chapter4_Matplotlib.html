@@ -1074,7 +1074,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <p>以下のリンクに、x軸をGDP,y軸を24歳から35歳の平均就学年数の女性/男性比(%)としたグラフを画像ファイル(png)にしたものを公開した。<br />
 もともとのデータはFACTFULNESSから来ているのでライセンスフリー.
 そのデータをもとに、Pythonで幾つかの国のデータを抜き出して、グラフを作成してある。</p>
-<p><a class="reference external" href="https://drive.google.com/drive/folders/1ifBG3v1_Z2VixHcxpQUP7WLEUi5y7OfZ?usp=sharing">https://drive.google.com/drive/folders/1ifBG3v1_Z2VixHcxpQUP7WLEUi5y7OfZ?usp=sharing</a></p>
+<p><a class="reference external" href="https://drive.google.com/file/d/1W57Ci8cbFbjGkB5muFURQJqib2E9NSz3/view?usp=sharing">https://drive.google.com/file/d/1W57Ci8cbFbjGkB5muFURQJqib2E9NSz3/view?usp=sharing</a></p>
 <p>この画像ファイルをパラパラ漫画のようにしてgifアニメーションにしてみよう.
 そのために必要なファイルにGoogle Colab.からアクセスできるよう、以下のいずれかの手順で作業しよう(授業では楽ちんな2を使う予定)</p>
 <div class="section" id="google-drive">
@@ -1085,11 +1085,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <li><p>解凍したフォルダを自身のGoogle Driveの好きな場所にアップロードする
 ※以下のグラフを作成するコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というディレクトリを作ってその下にアップロード</p></li>
 </ol>
-<p>たとえば私のようにGoogle Driveのマイドライブ直下のAdDSというフォルダの下に<br />
-GDPvsWomenInSchoolというフォルダを置いたとすると…</p>
-<p>参考スクリーンショット(ディレクトリ名が古い(AdDS2021)ので注意):<br />
-<img src="https://drive.google.com/uc?export=view&id=12v-XLgCHTpOehkJ2pmJIZ7zcaGIH4OZv" width = 40%></p>
-<p>こちらにダウンロードして展開したファイルをアップロードします.</p>
+<p>つまり、アップロードされた画像ファイルが、マイドライブ→<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>→<code class="docutils literal notranslate"><span class="pre">GDPvsWomenInSchool</span></code>という階層にある状態になる。</p>
 </div>
 <div class="section" id="linuxpython">
 <h4><span class="section-number">4.4.7.2. </span>方法2: LinuxコマンドとPythonコードで行う方法<a class="headerlink" href="#linuxpython" title="Permalink to this headline">¶</a></h4>
@@ -1122,7 +1118,7 @@ GDPvsWomenInSchoolというフォルダを置いたとすると…</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 手順3. Linuxコマンド</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 手順3. Linuxコマンド (Google Colab.上では、!から始めることでLinuxコマンドを使うことができる)</span>
 
 <span class="c1">#zipファイルを解凍する</span>
 <span class="o">!</span>unzip GDPvsWomenInSchool.zip 
@@ -1170,8 +1166,8 @@ GDPvsWomenInSchoolというフォルダを置いたとすると…</p>
 </div>
 </div>
 <p>エラーが出なければ、変数<code class="docutils literal notranslate"><span class="pre">oupf</span></code>で指定した場所に、gifファイルが生成されている。</p>
-<p>私の作成例(<a class="reference external" href="https://drive.google.com/file/d/1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k/view?usp=sharing">ファイルへのリンク</a>):</p>
-<img src="https://drive.google.com/uc?export=view&id=1Y4EkRP3U-aUcziBOoHyxuBZWbT7ZGL-k" width = 40%>
+<p>私の作成例:</p>
+<img src="https://drive.google.com/uc?export=view&id=1LMb5TgQLKr4ElNmRLizN4t-ySnuB4ES_" width = 40%>
 </div>
 </div>
 <div class="section" id="clubsuit">
