@@ -37,20 +37,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. Pythonの基本 その１:" href="Python_chapter1_Introduction.html" />
@@ -88,7 +90,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -296,8 +298,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
-                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -305,7 +307,7 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -313,11 +315,11 @@
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_practice.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -329,12 +331,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
-                    class="fab fa-github"></i>リポジトリ</button></a>
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_practice.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
@@ -342,8 +344,8 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
-        title="全画面モード"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -356,7 +358,7 @@
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_practice.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -367,10 +369,10 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 目次
+                <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -432,57 +434,150 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>練習帳</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   練習帳のノートブックの共有の仕方
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   第1章:Pythonの基礎
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python2">
+   第2章:Pythonの基礎2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   第3章:関数
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   第4章:ライブラリ/パッケージ/モジュールとデータの可視化
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   第5章:確率と擬似乱数
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   第6章:相関・回帰分析
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   第7章:最適化問題
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   第8章:ファイル操作
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   最終課題
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_practice.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>練習帳<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>このノートブックでは、1-8章で抑えておくべき基本事項を確認するための練習問題を与える。</p>
-<p>CLで収集する授業のリアクションシートには、</p>
-<ol class="simple">
-<li><p><strong>(必須)</strong> 練習帳のURLと該当する練習問題への回答</p></li>
-<li><p><strong>(必須)</strong> その授業で学習したこと</p></li>
-<li><p>(任意) 質問。授業や資料でわからなかったこと</p></li>
-<li><p>(任意) 所感・感想、適当な雑談</p></li>
-</ol>
-<p>を設定された〆切までに提出すること。1.2.の提出をもって出席とみなす。
-なお、(この授業に限らず)、2/3以上の出席がない場合、履修規程に従い自動的に不可となるため、必ず提出すること。</p>
 <p>この練習帳の目的は、皆さんが自分自身の理解・疑問点を確認するためであって、<strong>練習帳で書いているコードや記述が正しいかどうかは一切授業の評点には関係がない</strong>。<br />
 一方で、練習帳の記載内容が明らかな盗用・剽窃であると判断された場合、事実確認の上、厳正な措置を取ることがあるので注意されたい。</p>
-<p>したがって友人に見せてもらったり相談をして体裁を整える必要はまったく無い。とにかく、自分の理解を確認するためにコードをどんどん書いてどんどん失敗しよう。
-質問やその返答を円滑にするための連絡帳のようなものだと思ってもらえれば良い。</p>
-<p>また、教員に対する質問の見落としを防ぐため、リアクションシート(CL)の方で</p>
+<p>したがって友人に見せてもらったり相談をして体裁を整える必要はまったく無い。</p>
+<p>質問やその返答を円滑にするための連絡帳のようなものだと思ってもらえれば良い。<br />
+とにかく、自分の理解を確認するためにコードをどんどん書いてどんどん失敗しよう。</p>
+<p>また、教員に対する質問の見落としを防ぐため、リアクションシート(C-Learning)上で</p>
 <blockquote>
 <div><p>練習帳に詳細な質問とコードを書きました</p>
 </div></blockquote>
-<p>などと教えてもらえるとスムーズな対応が可能になります。<strong>リアクションシートの提出や質問の際は、必ず練習帳の共有リンクを添えてください</strong></p>
+<p>などと教えてもらえるとスムーズな対応が可能になります。<br />
+<strong>リアクションシートの提出やその他、連絡・相談などでの質問の際は、必ず毎回練習帳の共有リンクを添えてください</strong></p>
 <p>慣れないうちは、エラーの原因がわからない場合は<strong>とにかく教員に聞く</strong>。
-慣れてくると、自分でエラーメッセージをWebで検索したり、<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_Error.html">よくあるエラー集</a>などを見て、解決ができるようになる。<br />
-それでもわからない場合もあると思うが、遠慮せず、エラーメッセージを添えて教員に尋ねよう。</p>
+その際は、エラーメッセージを転記したりスクリーンショットを添えて質問しよう。</p>
+<p>慣れてくると、自分でエラーメッセージをWebで検索したり、<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_Error.html">よくあるエラー集</a>などを見て、原因の特定・解決ができるようになる。</p>
 <div class="section" id="id2">
 <h2>練習帳のノートブックの共有の仕方<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>以下の手順にならってください。1-3は1度やれば再び行う必要はありません。</p>
+<p>以下の手順にならってください(1-3は1度やれば再び行う必要はありません)。</p>
 <ol class="simple">
 <li><p>まずノートブックのコピーを作成し、ファイル名を適当に編集する: 例: 練習帳_氏名_123456X.ipynb (123456Xは学籍番号のつもり)</p></li>
 <li><p>右上の共有ボタンを押し、「制限付き」を「リンクを知っている全員」に変更
 (共有ボタンが見えない場合、編集権限がないつまり「ノートブックのコピーをつくる」というお約束を忘れていることを意味する)</p></li>
 <li><p>「リンクを知っている全員」の右にある「閲覧者」を「編集者」に変更する</p></li>
-<li><p>最後に、ブックマークするか、リンクをコピーしどこかに保存しておこう(2回目以降はCLで一度提出した過去のURLをコピーするのが手っ取り早い)</p></li>
+<li><p>最後に、「リンクをコピー」をクリックし、そのURLをブックマークするか、どこか(メモ帳やメールの下書きなど)に保存しておこう.<br />
+2回目以降はC-Learningで一度提出した過去のURLをコピーするのが手っ取り早い.
+※ここでの注意は、「リンクをコピー」を押して得られたURLを貼り付けること。自身が開いているノートブックのアドレスバーのURLをコピーするのではない。</p></li>
 </ol>
-<p>元の問題文さえ残っていれば、レイアウトは好きに改変してOK.
+<p>元の問題文さえ残っていれば、練習帳のレイアウトは好きに改変してOK.
 コードセル・テキストセルともに自由に追加して構わない。</p>
+<p>なお、markdown形式の記述方法が知りたい方は、<a class="reference external" href="https://ja.wikipedia.org/wiki/Markdown">WikipediaのMarkdownのページ</a>などを適宜参照すること。</p>
 </div>
 <div class="section" id="python">
 <h2>第1章:Pythonの基礎<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>練習問題:</p>
 <ol class="simple">
 <li><p>身長と体重に相当する変数を適当に定義し、BMI(体重kg ÷ 身長mの二乗)を計算した上で<code class="docutils literal notranslate"><span class="pre">print</span></code>関数で表示せよ (自身の身長体重を用いる必要はない)</p></li>
-<li><p>上で計算したBMIに対応する変数と<code class="docutils literal notranslate"><span class="pre">str</span></code>関数を用いて文字列を連結し、”AさんのBMIは22.0です”などと表示させよ。</p></li>
+<li><p>上で計算したBMIに対応する変数と<code class="docutils literal notranslate"><span class="pre">str</span></code>関数を用いて文字列を連結し、”AさんのBMIは22.0です”などと表示させよ。<br />
+もし、小数点以下第2位まで表示したいなど、表示を工夫したい場合は下のヒントを参考にためしてみよう。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 問題1.&amp;2.に対応するコードを以下に記載してください</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 問題2.に関するフォーマット指定の例 (ややテクニカルなので、理解できなくても問題ありません)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mf">3.141592653589793</span>
+
+<span class="c1"># 例1: 小数点以下4桁まで表示し、全体の幅を9にする</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;例1&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%9.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">))</span> <span class="c1">#</span>
+
+<span class="c1"># 例2: 指数表記で表示 (小数点以下2桁まで表示し、全体の幅を7にする)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;例2&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%7.2e</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">))</span> 
+
+<span class="c1"># 例3: 小数点以下2桁まで表示</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;例3&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  
+
+<span class="c1"># 例4: 小数点以下4桁まで表示し、全体の幅を9にする(1の別の書き方)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;例4&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:9.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>  <span class="c1"># 小数点以下4桁までfloat型で表示し、全体の幅を9にする</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>例1    3.1416
+例2 3.14e+00
+例3 3.14
+例4    3.1416
 </pre></div>
 </div>
 </div>
@@ -511,7 +606,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載してください</span>
 </pre></div>
 </div>
 </div>
@@ -574,7 +669,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載してください</span>
 <span class="c1">#1. </span>
 <span class="k">def</span> <span class="nf">K_from_C</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">C</span> <span class="o">+</span> <span class="mf">273.15</span>
@@ -607,7 +702,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載してください</span>
 </pre></div>
 </div>
 </div>
@@ -629,7 +724,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載してください</span>
 
 <span class="c1"># 2.のヒント　(AさんからZさんまで作っておきます)</span>
 <span class="c1"># 解説: Pythonの組み込み関数の`chr`には、Unicodeのコードポイントと呼ばれる整数値から、対応する文字列を返す機能があります。</span>
@@ -679,7 +774,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)してください</span>
 <span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
 <span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
 </pre></div>
@@ -702,7 +797,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)してください</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">10.06</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">9.95</span><span class="p">,</span><span class="mf">9.93</span><span class="p">,</span> <span class="mf">9.92</span><span class="p">,</span><span class="mf">9.9</span><span class="p">,</span> <span class="mf">9.86</span><span class="p">,</span><span class="mf">9.85</span><span class="p">,</span> <span class="mf">9.84</span><span class="p">,</span> <span class="mf">9.79</span><span class="p">,</span> <span class="mf">9.78</span><span class="p">,</span> <span class="mf">9.77</span><span class="p">,</span> <span class="mf">9.74</span><span class="p">,</span><span class="mf">9.72</span><span class="p">,</span><span class="mf">9.69</span><span class="p">,</span><span class="mf">9.58</span> <span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1999</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span> <span class="p">]</span>
 </pre></div>
@@ -737,7 +832,7 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)してください</span>
 <span class="c1">#1. (コードは書いておきましたので、挙動を確認してください)</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.bodik.jp/dataset/47cb5069-7383-47d3-a7df-b84d59484432/resource/37469f20-ed3c-4f9e-a5c4-fa750fc3c673/download/42064_2021_hoikusyo_02184.csv&quot;</span>
@@ -765,11 +860,11 @@
 </div>
 <div class="section" id="id9">
 <h2>最終課題<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>授業の後半で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わない。
+<p>授業の後半で取り組む最終課題については、自由な発想で課題を設計し、取り組んでもらって構わない。<br />
 条件としては、以下のようなものが挙げられる:</p>
 <ul class="simple">
-<li><p>1人(ないし２名ペア)で取り組むこと</p></li>
-<li><p>ペアの場合は、それぞれの寄与を明確にし、一人の寄与が十分に認められること</p></li>
+<li><p>1人(ないし２名ペア)で取り組むこと<br />
+ペアの場合は、それぞれの寄与が明確かつ十分と認められること、および、ペアでやる必然性を示すこと</p></li>
 <li><p>都度、教員に相談しながら、計画的に進めること</p></li>
 <li><p>事前に教員に確認すべき課題の例</p>
 <ul>
@@ -801,7 +896,7 @@
 <li><p>実際のデータを元に、分析を行う</p></li>
 <li><p>問題点が生じた場合、その原因を特定し、解決するために必要な知識を学ぶ。(以下試行錯誤…)</p></li>
 </ul>
-<p>といった具合だ。あくまで、例であるので、自身の興味に合わせて課題を設計していくこと。</p>
+<p>といった具合。あくまで、例であるので、自身の興味に合わせて課題を設計していくこと。</p>
 </div>
 </div>
 
@@ -827,8 +922,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_chapter0_HowToUse.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -845,20 +940,18 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          <div class="extra_footer">
-            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+  <p>
+    
+      <div class="extra_footer">
+        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 
