@@ -408,7 +408,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.1.6. インデックスの取得
+     2.1.6. 要素に対応するインデックスの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -563,7 +563,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.1.6. インデックスの取得
+     2.1.6. 要素に対応するインデックスの取得
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -680,6 +680,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">2. </span>Pythonの基本 その２:<a class="headerlink" href="#python-2" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 プログラミングで非常に重要な概念である配列や繰り返し処理について学ぶ。</p>
+<p>※授業では最初に、一番最後の節にある条件分岐から説明します。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>実際にいろんなデータを扱う際には、値や変数をまとめて処理したくなります。
@@ -692,7 +693,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>リスト自体を変数にすることも可能です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span><span class="o">=</span><span class="p">[</span><span class="mf">178.0</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">153.0</span><span class="p">]</span>
 
 <span class="c1"># 変数heightsをprint</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
@@ -709,7 +710,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>リストの要素にできるのは数値だけではなく、文字列のリストも作ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span> <span class="s2">&quot;宇大太郎さん&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span> <span class="s2">&quot;宇大太郎さん&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -717,7 +718,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>リストに入っている要素の数は、<code class="docutils literal notranslate"><span class="pre">len()</span></code>関数(lenはlengthの略)で見ることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストnamesは&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストnamesは&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;長さは&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -727,7 +728,7 @@ const thebe_selector_output = ".output, .cell_output"
 <strong>関数の出力の結果を何度も後で再利用する場合</strong>などは、このように変数に代入しておくと便利です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ln_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リストnamesの長さは&quot;</span><span class="p">,</span> <span class="n">ln_a</span><span class="p">,</span> <span class="s2">&quot;で、型は&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ln_a</span><span class="p">))</span> 
 </pre></div>
 </div>
@@ -760,7 +761,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>【重要】Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします!</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -771,7 +772,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>ですので、<code class="docutils literal notranslate"><span class="pre">person[3]</span></code>にアクセスしようとすると、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -783,7 +784,7 @@ Pythonの他にもC/C++なども0からカウントします(ちなみにFORTRAN
 <p>理工系分野では、教科書などで行列やベクトルの要素を指定するのに1-based indexingを使うことも多いため、混乱するかもしれません。慣れるまでは注意が必要です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
@@ -819,7 +820,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>２つのリストを和<code class="docutils literal notranslate"><span class="pre">+</span></code>で結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">c</span><span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -834,7 +835,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>長さや階層の異なる2つのリストでも可能です.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">]</span>
 <span class="n">d</span><span class="o">=</span><span class="p">[[</span><span class="mf">170.5</span><span class="p">,</span><span class="mf">60.0</span><span class="p">],[</span><span class="s2">&quot;東京都出身&quot;</span><span class="p">,</span> <span class="s2">&quot;250歳&quot;</span><span class="p">]]</span>
 <span class="n">c</span><span class="o">+</span><span class="n">d</span>
 </pre></div>
@@ -848,7 +849,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 そんなときは <code class="docutils literal notranslate"><span class="pre">append</span></code>関数か<code class="docutils literal notranslate"><span class="pre">+=</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person_1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> 
 <span class="n">person_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;O型&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;person_1&quot;</span><span class="p">,</span> <span class="n">person_1</span><span class="p">)</span>
 
@@ -863,7 +864,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 入れ子のリストを作るときは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 <span class="n">data</span> <span class="o">+=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="p">]</span>
 <span class="n">data</span> <span class="o">+=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
@@ -875,7 +876,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 実際に1重の括弧で試してみよう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 <span class="n">data2</span> <span class="o">+=</span>  <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="c1"># １重カッコ これだと右辺のリストを空リストに結合することになる</span>
 <span class="n">data2</span> <span class="o">+=</span>  <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="c1"># これも同様</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
@@ -891,7 +892,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>リストの要素は後から更新することもできます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span>  <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span>  <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span>  <span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -899,7 +900,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>というリストがあったとして、Aさんの体重を修正したければ、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1">#Aさんの体重を更新</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1">#Aさんの体重を更新</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#リストを表示</span>
 </pre></div>
 </div>
@@ -908,8 +909,8 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>入れ子になっているリストに血液型を追加したければ以下のようにすればよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;A型&quot;</span><span class="p">]</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;B型&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;A型&quot;</span> <span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;B型&quot;</span> <span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -918,11 +919,11 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">2.1.6. </span>インデックスの取得<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.6. </span>要素に対応するインデックスの取得<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">]</span>
 <span class="n">tlist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;りんご&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -931,7 +932,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>重複する要素がある場合、初めにヒットしたインデックスを返します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tlist2</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">,</span><span class="s2">&quot;りんご&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tlist2</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span> <span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">,</span><span class="s2">&quot;りんご&quot;</span><span class="p">]</span>
 <span class="n">tlist2</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;りんご&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -944,7 +945,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;years&quot;</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -952,15 +953,16 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>始点,コロン(<code class="docutils literal notranslate"><span class="pre">:</span></code>),終点でインデックスの範囲を指定して、部分的に取り出すことが出来ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>終点のインデックスに相当する要素は取り出されないことに注意しましょう。</p>
+<p>また、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -969,7 +971,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>負のインデックスを使用することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -982,7 +984,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>例を見せるために、以下の2種類のリストを用意します.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span> <span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 <span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span><span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="p">]</span> 
 
@@ -995,7 +997,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">data2</span></code>のようにまず雛形のリスト<code class="docutils literal notranslate"><span class="pre">tmp</span></code>を作って人数分の長さを持つリストを作ってから中身を編集しようと考えた場合、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Bさん&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Bさん&quot;</span>
 <span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">180</span>
 <span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">70</span>
 </pre></div>
@@ -1005,7 +1007,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <p>という操作を思いつきます。このとき、<code class="docutils literal notranslate"><span class="pre">data2</span></code>の2つ目(０から数えて1番目)の要素だけを編集したつもりでも<code class="docutils literal notranslate"><span class="pre">data2</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>すると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1017,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 ※C言語などを学習していれば、参照渡し(ポインタ渡し)などである程度馴染みがあるかもしれません。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span><span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="p">]</span> 
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1">#それぞれのidを調べてprint</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idが等しいか&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1">#id()は変数のidを確認する関数</span>
@@ -1030,7 +1032,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 これは<code class="docutils literal notranslate"><span class="pre">copy</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">copy</span></code>関数を用いて配列のコピーを作成することで回避できます。(モジュールについては4章で説明します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
 <span class="n">tmp</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">tmp</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># ← data2の0番目と1番目のidが同じ(参照元が同じ)だと困るのでFalseであってほしい</span>
@@ -1042,7 +1044,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 
 <span class="n">copydata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1070,9 +1072,15 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 リストは要素を<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲むことで作ることができました。タプルは丸括弧<code class="docutils literal notranslate"><span class="pre">()</span></code>で囲むことで作ることができます</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0番目の要素は&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">##要素にアクセスするときはタプルのときでもやはり角括弧を使う</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 2.0, 3.0) &lt;class &#39;tuple&#39;&gt;
+0番目の要素は 1.0
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1093,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1.の例 円周率のべきを保持しておいて再利用する状況をイメージ</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1.の例 円周率のべきを保持しておいて再利用する状況をイメージ</span>
 <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592653589793</span>
 <span class="n">pi_pow</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">pi</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;piの0乗から3乗まで&quot;</span><span class="p">,</span> <span class="n">pi_pow</span><span class="p">)</span>
@@ -1095,12 +1103,27 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>piの0乗から3乗まで (1, 3.141592653589793, 9.869604401089358, 31.006276680299816)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;piの0乗から3乗まで&quot;</span><span class="p">,</span> <span class="n">pi_pow</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># (誤って)要素を変更しようとするとエラーとなる</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">pi_pow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
 </div>
 <p>2.の例: 次に中身が同じ(1から5000までの整数)リストとタプルを用意して、1万回要素の和を計算するという計算をしてみましょう. この計算自体に意味はありません。<br />
 <code class="docutils literal notranslate"><span class="pre">time</span></code>というライブラリを使って2つの作業に係る時間を調べてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> 
 <span class="n">itnum</span><span class="o">=</span><span class="mi">10_000</span> 
 
 <span class="c1">#リストを使った計算</span>
@@ -1122,6 +1145,12 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>リストの処理にかかった時間 0.20134186744689941
+タプルの処理にかかった時間 0.0008060932159423828
+</pre></div>
+</div>
+</div>
 </div>
 <p>タプルの方が実行時間が短い事がわかります.<br />
 今の例では差は人間にとっては気にならない程度の差ですが、複雑な処理になってコードがなかなか計算を完了しないときには、リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
@@ -1137,7 +1166,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 Bさんの年齢を取得するには例えば以下のようなコードになります</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
 
 <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Bさん&quot;</span> <span class="p">:</span>
@@ -1145,11 +1174,16 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bさんの年齢= 21
+</pre></div>
+</div>
+</div>
 </div>
 <p>このようなfor文とif文などを組み合わせた要素の探索が面倒なら、予め名前と年齢という２つの関係のある量を”辞書”として定義してしまえばよいのです。辞書型は波括弧<code class="docutils literal notranslate"><span class="pre">{}</span></code>で囲むことで構成できます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1191,12 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>Bさんの値(今は年齢)を知りたければ以下のように一行で取得可能です.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span><span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dict_age</span><span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1211,7 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>値(<code class="docutils literal notranslate"><span class="pre">value</span></code>)として、リストを保持することもできます.次のように年齢と出身県のリストを値にもつ辞書にしてみましょう.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;栃木県&quot;</span><span class="p">],</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="s2">&quot;茨城県&quot;</span><span class="p">],</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;群馬県&quot;</span><span class="p">]}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Aさん&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;栃木県&quot;</span><span class="p">],</span> <span class="s1">&#39;Bさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="s2">&quot;茨城県&quot;</span><span class="p">],</span> <span class="s1">&#39;Cさん&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;群馬県&quot;</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
@@ -1180,7 +1219,12 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>Cさんの個人情報にアクセスする際は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[18, &#39;群馬県&#39;]
 </pre></div>
 </div>
 </div>
@@ -1199,7 +1243,7 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>まず以下のコードを実行してみましょう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1209,22 +1253,51 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <blockquote>
 <div><p>iを0から4まで変化させながらiをprintする作業を繰り返しなさい</p>
 </div></blockquote>
-<p>という処理になっています。順番に見ていきましょう:<br />
-まず<code class="docutils literal notranslate"><span class="pre">range()</span></code>関数は、<code class="docutils literal notranslate"><span class="pre">range</span></code>型のオブジェクトを生成する関数で、<code class="docutils literal notranslate"><span class="pre">range(5)</span></code>は0から整数を5つ(0,1,2,3,4)を生成する関数です。やはり0始まりで、5が含まれないことに注意です。<br />
-なお<code class="docutils literal notranslate"><span class="pre">range</span></code>関数の引数を<code class="docutils literal notranslate"><span class="pre">range(始点,終点,間隔)</span></code>と3つにすると、より複雑な整数の集合を作ることもできます。</p>
+<p>という処理になっています。新しく登場したいくつかの要素を順に説明します。</p>
+<p>まず<code class="docutils literal notranslate"><span class="pre">range()</span></code>関数は、<code class="docutils literal notranslate"><span class="pre">range</span></code>型のオブジェクトを生成する関数で、<code class="docutils literal notranslate"><span class="pre">range(5)</span></code>は0から整数を5つ(0,1,2,3,4)を生成する関数です。やはり0始まりで、5が含まれないことに注意です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">range(5)</span></code>をそのままprintすると、<code class="docutils literal notranslate"><span class="pre">range(0,5)</span></code>と表示されるだけで、よくわかりません。<br />
+このように<code class="docutils literal notranslate"><span class="pre">range</span></code>関数の出力はそれ自体が、<code class="docutils literal notranslate"><span class="pre">range</span></code>という抽象的な型を持ったオブジェクトになっています。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(0, 5)
+&lt;class &#39;range&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code>は、リストと互換性を持つため、<code class="docutils literal notranslate"><span class="pre">list</span></code>関数を使ってリストに変換することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお<code class="docutils literal notranslate"><span class="pre">range</span></code>関数の引数を<code class="docutils literal notranslate"><span class="pre">range(始点,終点,間隔)</span></code>と3つにすると、より複雑な整数の集合を作ることもできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#やはり6は含まれないことに注意</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">in</span></code>(予約語なので色が変わる)は、<code class="docutils literal notranslate"><span class="pre">i</span></code>に<code class="docutils literal notranslate"><span class="pre">range()</span></code>で指定した数値の範囲(リストみたいなもの)を順番に突っ込んでくれる機能を持つものと理解しておけばひとまずOKです。</p>
-<p>次に、リストの中身を順番に表示させてみましょう。</p>
+<p>次に、for文を使ってリストの中身を順番に表示させてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span><span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">]</span> <span class="c1">#リストを定義</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;いちご&quot;</span><span class="p">,</span> <span class="s2">&quot;りんご&quot;</span><span class="p">,</span><span class="s2">&quot;ぶどう&quot;</span><span class="p">,</span><span class="s2">&quot;メロン&quot;</span><span class="p">]</span> <span class="c1">#リストを定義</span>
 <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 </pre></div>
@@ -1240,7 +1313,7 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>で、上のコードは2.に相当します。上の例で、1.の方法を採る場合は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span> <span class="p">)</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span> <span class="n">fruits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1250,23 +1323,24 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>インデックスと要素を同時に取得して使いたいときには<code class="docutils literal notranslate"><span class="pre">enumerate</span></code>関数を使って</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;リスト内の&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;番目の要素は:&quot;</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>上記のほか、<code class="docutils literal notranslate"><span class="pre">for</span></code>と<code class="docutils literal notranslate"><span class="pre">in</span></code>を用いて、リスト(またはリストと互換性のある多くの型)の中身を順番に取り出すことができます。</p>
 </div>
 <div class="section" id="id11">
 <h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>さて、上の<code class="docutils literal notranslate"><span class="pre">for</span></code>文のコードには、関数の前に半角スペースが4つあるのに気がついたでしょうか?<br />
-Pythonでは、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を始め様々な処理の際に一連の作業”ブロック”を、<strong>半角スペース4つ分</strong>インデントを下げることで表現します。
-環境によっては、2つやよしなに推定してくれるものもありますが、必ず4つにしましょう。</p>
-<p>Google Colaboratory環境では、[ツール]→[設定]→[エディタ]→[インデント幅(スペース)]で変更ができます。もし、インデントが2つになっている場合は、4つに変更してください。</p>
+Pythonでは、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を始め様々な処理の際に一連の作業<strong>ブロック</strong>を、<strong>半角スペース4つ分</strong>インデントを下げることで表現します。</p>
+<p>Google Colaboratory環境では、[ツール]→[設定]→[エディタ]→[インデント幅(スペース)]で変更ができます。もし、インデントが2つになっている場合は、4つに変更してください。
+環境によっては、2つや、スペースの数が混在していてもよしなに推定して実行してくれるものもありますが、自身でコードを作成する際には、必ず4つ半角スペースを開けるようにしましょう。</p>
 <p>下のように、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を使っているにも関わらず正しくインデントされていない場合はエラーが出ます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1281,7 +1355,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p>C. 13回</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1289,14 +1363,32 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0 0
+0 1
+0 2
+0 3
+0 4
+1
+1 0
+1 1
+1 2
+1 3
+1 4
+1 4
+</pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">i</span></code>に関する繰り返し(ループとも呼びます)は、i=0,1の２回で、インデントが1ブロック下げられた操作を実行しますので、
-<code class="docutils literal notranslate"><span class="pre">print(i)</span></code>を2回と、<code class="docutils literal notranslate"><span class="pre">j</span></code>に関するループを２回繰り返します。<code class="docutils literal notranslate"><span class="pre">j</span></code>はj=0,1,2,3,4をとり、<code class="docutils literal notranslate"><span class="pre">j</span></code>のループでは<code class="docutils literal notranslate"><span class="pre">print(i,j)</span></code>は合計2×5=10回呼ばれます。最後の行にある<code class="docutils literal notranslate"><span class="pre">print(i,j)</span></code>はどのループ(ブロック)の中にも入っていませんから、実行されるのは1回だけです。</p>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">i</span></code>に関する繰り返し(ループとも呼びます)は、<code class="docutils literal notranslate"><span class="pre">i=0,1</span></code>の２回で、インデントが1ブロック下がった操作を2回実行します。つまり、<code class="docutils literal notranslate"><span class="pre">print(i)</span></code>を2回と、<code class="docutils literal notranslate"><span class="pre">j</span></code>に関するループを２回繰り返します。
+2つめのfor文で、<code class="docutils literal notranslate"><span class="pre">j</span></code>はj=0,1,2,3,4をとりますが、<code class="docutils literal notranslate"><span class="pre">i</span></code>のループのブロックに入っているので、<code class="docutils literal notranslate"><span class="pre">print(i,j)</span></code>は合計2×5=10回呼ばれます。
+最後の行にある<code class="docutils literal notranslate"><span class="pre">print(i,j)</span></code>はどのループ(ブロック)の中にも入っていませんから、実行されるのは1回だけです。</p>
 <p>ということで、答えはC.の13回でした。</p>
 <p>慣れないうちは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1310,7 +1402,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 コードを編集しているうちに</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
@@ -1320,6 +1412,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 </div>
 <p>といったように意図しないインデントになってしまって、<br />
 正しい答えを与えない(バグを作ってしまう)可能性があります。</p>
+<p>Pythonは<strong>インデント(ブロック)が、文法的な意味を持つ</strong>という特徴がありますので、よく覚えておきましょう。</p>
 <p><strong>練習</strong></p>
 <p>リスト
 <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[</span> <span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,66]</span> <span class="pre">,</span> <span class="pre">[&quot;Bさん&quot;,180,70],</span> <span class="pre">[&quot;Cさん&quot;,</span> <span class="pre">165,55]]</span></code>を用意し、<br />
@@ -1328,7 +1421,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 ヒント2: total=0.0を定義して、体重の二乗×身長をfor文を使ってどんどん足していく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">###以下は、不完全なコードです。これにあと３行ほど書き足してみましょう。 </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###以下は、不完全なコードです。これにあと３行ほど書き足してみましょう。 </span>
 <span class="c1">###ちなみに答えは 2156493です.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span><span class="mi">55</span><span class="p">]]</span>
 <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1341,7 +1434,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p>他にも、たとえば、 1, 10, 100, 1000, 10000,…というループを回したい時、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">]:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1350,7 +1443,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p>と書くのではなく、べき乗に対するループを回す</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1364,7 +1457,7 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="c1">## i を1から999まで2ずつ変えていったときの値を詰めたリストを作成</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="c1">## i を1から999まで2ずつ変えていったときの値を詰めたリストを作成</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1376,29 +1469,41 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 <p><code class="docutils literal notranslate"><span class="pre">break</span></code>は<code class="docutils literal notranslate"><span class="pre">for</span></code>文を途中で抜け出すのに使います。用途としては<strong>目的を果たしたのでもうループを繰り返す必要がないとき</strong>や<strong>予期せぬ事が起きた場合にループ処理を終わらせてプログラムを終了するとき</strong>などに使います.</p>
 <p>以下のような状況を考えてみましょう</p>
 <blockquote>
-<div><p>Aさんは100万円を手にカジノにやってきて、<br />
-掛け金が20万かつ50%の確率で勝ったり負けたりするギャンブルに目をつけました。</p>
+<div><p>Aさんは、掛け金が20万円、コインの表が出たら掛け金+20万円もらえるゲームをしています。
+Aさんは、所持金100万円からスタートして、一度でも負ければゲームを辞めることにしました。
+ただし、ゲームへの参加回数は最大10回とします。</p>
 </div></blockquote>
-<p>このAさんが [最大10回ゲームをやるが１回でも負ければ即座に賭けをやめたい]という状況をコードで表現する場合、以下のようなコードになります:</p>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を使って、このゲームをシミュレーションするプログラムを書いてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
 
-<span class="c1"># 最初の手持ち金を定義</span>
-<span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="c1"># 最初の手持ち金と掛け金を定義</span>
+<span class="n">money</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">bet</span> <span class="o">=</span> <span class="mi">200_000</span>
 
 <span class="c1"># ゲームを開始, 最大10回まで繰り返すことをfor文で表現</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>   
-    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;回目のゲームスタート&quot;</span><span class="p">)</span>
+    <span class="n">money</span> <span class="o">=</span> <span class="n">money</span> <span class="o">-</span> <span class="n">bet</span>    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span> <span class="c1"># 1/2の確率で勝ちか負けかを決める</span>
     <span class="k">if</span> <span class="n">result</span><span class="p">:</span> <span class="c1"># result==True, つまり勝った場合</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!&quot;</span><span class="p">)</span>
+        <span class="n">money</span> <span class="o">+=</span> <span class="mi">400000</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!! 所持金は&quot;</span><span class="p">,</span> <span class="n">money</span><span class="p">,</span> <span class="s2">&quot;円です&quot;</span><span class="p">)</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けたので帰ります&quot;</span><span class="p">)</span>
-        <span class="k">break</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けたのでおしまい&quot;</span><span class="p">)</span>
+        <span class="k">break</span> <span class="c1"># for文を抜ける</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1回目のゲームスタート
+勝った!!! 所持金は 1500000 円です
+2回目のゲームスタート
+負けたのでおしまい
+最終的な所持金は...1300000円だ
 </pre></div>
 </div>
 </div>
@@ -1417,7 +1522,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </ul>
 <p>といったイメージ。この様な場合は、何回処理を繰り返せば良いか予め知ることはほとんど不可能となる。</p>
 <p>サイコロの例の場合だと、たとえば5回ふっただけで6が連続で出る奇跡的な状況も有りえますし、1000回ふっても100万回降っても連続で5回は出ないかもしれません。(某漫画の地下チンチロ編のようなイカサマサイコロを使用するとグッと確率はあがります)このような処理を実装したい場合には<code class="docutils literal notranslate"><span class="pre">while</span></code>文を使います.</p>
-<p>さっきのAさんとカジノのギャンブルを例に</p>
+<p>さっきのAさんのギャンブルを例に</p>
 <blockquote>
 <div><p>手持ち100万からゲームを開始して
 「手持ちが50万以上150未満ある限り賭けを続けるコード」</p>
@@ -1425,25 +1530,42 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>を作ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
 
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-
+<span class="n">bet</span> <span class="o">=</span> <span class="mi">200000</span>
 <span class="c1">#手元に50万以上-150万未満ある限り賭け続けることをwhile文で表現</span>
 <span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span> 
-    <span class="c1">## choice([True,False])でTrue(勝ち)とFalse(負け)をランダムに生成       </span>
+    <span class="n">money</span> <span class="o">-=</span> <span class="n">bet</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">result</span><span class="p">:</span> <span class="c1"># 勝ちの場合</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span> 
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+        <span class="n">money</span> <span class="o">+=</span> <span class="mi">400000</span> 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!&quot;</span><span class="p">)</span>
-    <span class="k">else</span> <span class="p">:</span> <span class="c1">#負けの場合 20万失う</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span>
+    <span class="k">else</span> <span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けた..&quot;</span><span class="p">)</span>
-
-<span class="c1"># 500000 &lt;= money &lt; 1500000部分が&quot;False&quot;、つまりお金が50万以下か150万以上になったら</span>
-<span class="c1"># while文が終わり、以下のprint文が読まれる</span>
-
+    <span class="c1"># whileの条件文は、ブロックの最後に評価されるので、ここで条件を満たしているかを確認</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;現在の所持金は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円&quot;</span><span class="p">,</span> <span class="s2">&quot;条件のチェック&quot;</span><span class="p">,</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">)</span>
+    <span class="c1"># while文の条件がFalseであれば、自動的にループを抜ける</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>負けた..
+現在の所持金は800000円 条件のチェック True
+勝った!!
+現在の所持金は1000000円 条件のチェック True
+勝った!!
+現在の所持金は1200000円 条件のチェック True
+負けた..
+現在の所持金は1000000円 条件のチェック True
+勝った!!
+現在の所持金は1200000円 条件のチェック True
+勝った!!
+現在の所持金は1400000円 条件のチェック True
+勝った!!
+現在の所持金は1600000円 条件のチェック False
+最終的な所持金は...1600000円だ
 </pre></div>
 </div>
 </div>
@@ -1455,88 +1577,39 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <h3><span class="section-number">2.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">continue</span></code>文は、<code class="docutils literal notranslate"><span class="pre">for</span></code>や<code class="docutils literal notranslate"><span class="pre">while</span></code>文の中で[以降の処理を無視する]のに使います.<br />
 具体的な用途としては[特定の条件を満たす場合にのみ適用する処理を書きたい]場合などがあります.再びカジノの例で考えてみましょう.</p>
-<p>まず、Aさんに勝負のたびに所持金を叫ばせるコードは</p>
+<p>上のfor文の例で、最初の2回だけは負けてもゲームを続けるというルールを追加したいとします.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="mi">200000</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">money</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">bet</span> <span class="o">=</span> <span class="mi">200_000</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;回目のゲームスタート, 所持金は&quot;</span><span class="p">,</span> <span class="n">money</span><span class="p">,</span> <span class="s2">&quot;円&quot;</span><span class="p">)</span>
+    <span class="n">money</span> <span class="o">=</span> <span class="n">money</span> <span class="o">-</span> <span class="n">bet</span>    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span> <span class="c1"># 1/2の確率で勝ちか負けかを決める</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span> <span class="c1"># result==True, つまり勝った場合</span>
+        <span class="n">money</span> <span class="o">+=</span> <span class="mi">400000</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;勝った!!! &quot;</span><span class="p">)</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="mi">200000</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今の所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
+        <span class="c1"># 追加した部分, continueと同じブロックの続く処理をスキップする</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けたけど...まだまだ挽回するぞ...&quot;</span><span class="p">)</span>
+            <span class="k">continue</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負けたのでおしまい&quot;</span><span class="p">)</span>
+        <span class="k">break</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<p>となります。これに少しずつ、より複雑な条件を加えていくことにしましょう.</p>
-<p>最初の掛け金を一旦5万円にすることにして[連続で勝った場合、コインを投げて表が出たら掛け金を2倍にする]という条件をいれてみましょう。これをプログラムで表現するのには以下のような実装が考えられます.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-
-<span class="c1"># 連続勝数を記録する変数hitを定義</span>
-<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
-<span class="c1"># 掛け金をセット</span>
-<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> 
-
-<span class="c1"># メイン部分のコード</span>
-<span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;=</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">result</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="n">bet</span> 
-        <span class="n">hit</span> <span class="o">+=</span><span class="mi">1</span> <span class="c1">#勝ったら連勝数をプラス1する</span>
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="n">bet</span>
-        <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#負けたら連続勝ち数を0にリセット</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今の所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
-
-    <span class="c1"># コインの表裏を決める</span>
-    <span class="n">coin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">coin</span><span class="p">:</span> 
-        <span class="n">bet</span> <span class="o">=</span> <span class="n">bet</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズ!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぞ!!&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>さらに<strong>掛け金をレイズするかどうか悩んで、コインを投げて決めるのは、所持金が80万以上のときだけ</strong>という、
-より複雑な条件を実装するのに<code class="docutils literal notranslate"><span class="pre">continue</span></code>を使ってみましょう</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
-
-<span class="c1">#連続勝数と掛け金を設定する</span>
-<span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
-<span class="n">bet</span> <span class="o">=</span> <span class="mi">50000</span> 
-<span class="k">while</span> <span class="mi">500000</span> <span class="o">&lt;</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">1500000</span><span class="p">:</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-        <span class="n">money</span> <span class="o">+=</span> <span class="n">bet</span> 
-        <span class="n">hit</span> <span class="o">+=</span><span class="mi">1</span> 
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="n">money</span> <span class="o">-=</span> <span class="n">bet</span>
-        <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;今の所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>    
-
-    <span class="c1"># ここから下が追加された部分</span>
-    <span class="k">if</span> <span class="n">money</span> <span class="o">&lt;</span> <span class="mi">800000</span><span class="p">:</span>
-        <span class="k">continue</span> <span class="c1"># もし所持金が80万未満ならcontinue(以下の処理は実行しない)</span>
-
-    <span class="n">coin</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">hit</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">coin</span> <span class="p">:</span>
-        <span class="n">bet</span> <span class="o">=</span> <span class="n">bet</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;掛け金をレイズ!&quot;</span><span class="p">,</span><span class="s2">&quot;次は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">bet</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円を賭けるぞ!!&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最終的な所持金は...&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">money</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;円だ&quot;</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1回目のゲームスタート, 所持金は 1000000 円
+勝った!!! 
+2回目のゲームスタート, 所持金は 1200000 円
+勝った!!! 
+3回目のゲームスタート, 所持金は 1400000 円
+負けたのでおしまい
+最終的な所持金は...1200000円だ
 </pre></div>
 </div>
 </div>
@@ -1547,9 +1620,8 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
-<span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
-<span class="c1">#for i in range(20):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">114</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">-=</span> <span class="mi">10</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> 
@@ -1568,7 +1640,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
@@ -1592,7 +1664,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <code class="docutils literal notranslate"><span class="pre">if</span></code>文を使って命題の真偽を判定することで、条件分岐を表現することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=-</span><span class="mf">0.3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">3.0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=-</span><span class="mf">0.3</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aはbよりも大きい&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span>
@@ -1604,7 +1676,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>条件を満たすときはA,満たさないときはBをしたい、という場合には<code class="docutils literal notranslate"><span class="pre">else</span></code>を使う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aはbよりも小さい&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&gt;=b&quot;</span><span class="p">)</span> 
@@ -1616,7 +1688,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>たとえば、もし条件1が満たされればAを実行、条件1は満たされないが条件2が満たされればBを、さらに1も２も満たされない場合はCを実行するという場合は下記のようなコードになる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span> <span class="c1">#条件1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span> <span class="c1">#条件1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&lt;b&quot;</span><span class="p">)</span>
 <span class="k">elif</span>  <span class="n">a</span> <span class="o">==</span><span class="n">b</span><span class="p">:</span> <span class="c1">#条件２</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a=b&quot;</span><span class="p">)</span>
@@ -1630,7 +1702,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>たとえば<code class="docutils literal notranslate"><span class="pre">a</span></code>が偶数の場合は値をそのまま表示して、<code class="docutils literal notranslate"><span class="pre">a</span></code>が奇数の場合は3の倍数かそうでないかで処理を変える事を考えると、以下のようになる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
@@ -1651,7 +1723,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>と書いてしまうと、<code class="docutils literal notranslate"><span class="pre">a=0</span></code>の場合、<code class="docutils literal notranslate"><span class="pre">if</span></code>文を２つともすり抜けてしまい、バグの原因になることがあります。はじめのうちは少々面倒でも<code class="docutils literal notranslate"><span class="pre">else</span></code>を使って、意図しないすり抜けがないかチェックするのが良いでしょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#aをいろんな値に変えて実行してみてください</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#aをいろんな値に変えて実行してみてください</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#aが0より大きい場合</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;処理1:a+2=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>    
