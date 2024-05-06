@@ -37,22 +37,20 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)" href="Python_chapter4_Matplotlib.html" />
@@ -90,7 +88,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -298,8 +296,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
+                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -307,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -315,11 +313,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter3_Function.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -331,12 +329,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
+                    class="fab fa-github"></i>リポジトリ</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter3_Function.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
         
     </div>
 </div>
@@ -344,8 +342,8 @@ const thebe_selector_output = ".output, .cell_output"
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
+        title="全画面モード"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -358,7 +356,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter3_Function.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -369,10 +367,10 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> 目次
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -383,7 +381,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.1.1. 引数値のデフォルト値
+     3.1.1. 引数のデフォルト値
     </a>
    </li>
   </ul>
@@ -424,65 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>関数</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   3.1. 関数の定義
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     3.1.1. 引数値のデフォルト値
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   3.2. 変数のスコープについて
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     3.2.1.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     関数内でのリスト更新
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   3.3. 関数とメソッド
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     3.3.1. 組み込み関数の一覧
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter3_Function.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
@@ -530,11 +470,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">calc_d</span></code>は自作した関数の名前で、関数名の後ろのカッコには<strong>引数</strong>(ひきすう)を指定する。</p>
-<p>リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)した、というのが上のコードで行っていることになる。</p>
-<p>コロン<code class="docutils literal notranslate"><span class="pre">:</span></code>は「以下で関数の中身を記述するブロックが開始する」ことを意味していて、インデントによってどこまでが関数のブロックかがわかるようになっている。(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
+<p>関数の構成要素は以下の通りである。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">関数名</span><span class="p">(</span><span class="n">引数1</span><span class="p">,</span><span class="n">引数2</span><span class="p">,</span><span class="o">...</span><span class="p">):</span>
+    <span class="n">処理1</span>
+    <span class="n">処理2</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">戻り値</span>
+</pre></div>
+</div>
+<p>上で定義した関数では、リスト(<code class="docutils literal notranslate"><span class="pre">l1</span></code>)とリスト(<code class="docutils literal notranslate"><span class="pre">l2</span></code>)を突っ込んだときに距離を計算して<code class="docutils literal notranslate"><span class="pre">return</span></code>する(返す)という一連の操作を関数として定義<code class="docutils literal notranslate"><span class="pre">def</span></code>(defineの略)し、
+実際にリスト<code class="docutils literal notranslate"><span class="pre">p1</span></code>,<code class="docutils literal notranslate"><span class="pre">p2</span></code>に対して関数を適用している。</p>
+<p>関数名のあとに付けたコロン<code class="docutils literal notranslate"><span class="pre">:</span></code>は「以下で関数の中身を記述するブロックが開始する」ことを意味していて、インデントによってどこまでが関数のブロックかがわかるようになっている。(ブロックについては<code class="docutils literal notranslate"><span class="pre">if</span></code>や<code class="docutils literal notranslate"><span class="pre">for</span></code>を思い出してください)</p>
 <p>定義した関数を使用する際には、この関数<code class="docutils literal notranslate"><span class="pre">calc_d()</span></code>に必要な引数(変数,今の場合リスト)<code class="docutils literal notranslate"><span class="pre">l1,l2</span></code>を代入して使う。
-関数に入れる引数は代名詞のようなもので、関数に入れるものを<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。これもある種の抽象化である。</p>
+関数に入れる引数に用いる変数名は、実際に関数を用いる際の引数として使う変数名とは関係がなく、
+関数に入れるもの(関数の外側で扱う変数)を<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。これもある種の抽象化である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calc_d</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p100</span><span class="p">))</span> <span class="c1">#←これでも使えるし</span>
@@ -563,31 +512,42 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>)に対して距離を計算することが出来る。<br />
-上で使われているインデックス(<span class="math notranslate nohighlight">\(j,i\)</span>)の模式図:<br />
-<img src="https://drive.google.com/uc?export=view&id=1d_MB8x20a2OE-WwLWqJCM1LRM-to6AoO" width = 15%></p>
+<p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>)に対して距離を計算することが出来る。</p>
 <p>引数は通常関数の中で行う操作に必要な変数を指定する。上の例では２つのリストを引数とした。</p>
 <p>関数内の操作に関数外からの情報(インプット)が必要ない場合は引数なしの関数でも構わないし、
-関数の外に値を渡す(アウトプットする)必要がなければreturn文を明示的に書かなくても問題ない。
+関数の外に値を渡す(アウトプットする)必要がなければ<code class="docutils literal notranslate"><span class="pre">return</span></code>文を明示的に書かなくても問題ない。
 <code class="docutils literal notranslate"><span class="pre">return</span></code>文がない場合は自動で<code class="docutils literal notranslate"><span class="pre">None</span></code>(値なし)が返される関数となる。</p>
 <p>幾つか例を作って、挙動を理解してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#引数なしで、ただ以下の文字列を表示する関数</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#引数なしで、ただ以下の文字列を表示する関数を定義し、</span>
 <span class="k">def</span> <span class="nf">name</span><span class="p">():</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;私は田中です&quot;</span><span class="p">)</span>
 
-<span class="c1">#引数namaeを使って、以下の文字列を表示する関数</span>
+<span class="c1">#その関数を使用してみる</span>
+<span class="n">name</span><span class="p">()</span> <span class="c1">#←これで関数が実行される</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;print関数内で実行してみます→&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">())</span> <span class="c1">#←print関数の中に関数を入れると、関数の戻り値が表示される。戻り値がない場合はNoneが表示される</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#引数namaeを使って、以下の文字列を表示する関数とその実行</span>
 <span class="k">def</span> <span class="nf">myname</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;私は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">namae</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;です&quot;</span><span class="p">)</span>
 
-<span class="c1">#　myname()同様の文字列をprintする代わりに返り値として返す関数</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;myname()の返り値→&quot;</span><span class="p">,</span> <span class="n">myname</span><span class="p">(</span><span class="s2">&quot;吉田&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#　myname()同様の文字列をprintする代わりに返り値として返す関数とその実行</span>
 <span class="k">def</span> <span class="nf">myname_return</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span> 
     <span class="k">return</span> <span class="s2">&quot;私は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">namae</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;です&quot;</span>
 
-<span class="c1"># いずれの場合も、print内のname()などの関数が実行されたあと、print文が実行される。</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name()の実行→&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">())</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;myname()の返り値→&quot;</span><span class="p">,</span> <span class="n">myname</span><span class="p">(</span><span class="s2">&quot;吉田&quot;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;myname_return()の返り値→&quot;</span><span class="p">,</span> <span class="n">myname_return</span><span class="p">(</span><span class="s2">&quot;吉田&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -601,12 +561,14 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">return</span> <span class="s2">&quot;距離は&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span> <span class="p">(</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>  <span class="p">)</span><span class="o">+</span><span class="s2">&quot;です&quot;</span>
 
 <span class="k">def</span> <span class="nf">zahyo_and_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">calc_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">)</span> <span class="c1">#関数の中で、先程の自作関数を呼んでいる</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">calc_d</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">)</span> <span class="c1">#関数の中で、別の自作関数を呼び出すことができる</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">],</span><span class="n">d</span>  <span class="c1">#座標を結合したリストと距離を返す</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">]</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">]</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">calc_d_print</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;関数calc_d_print→&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
-
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">zahyo_and_d</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;関数zahyo→ &quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
@@ -665,7 +627,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id3">
-<h3><span class="section-number">3.1.1. </span>引数値のデフォルト値<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.1. </span>引数のデフォルト値<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>関数を定義するときに、引数にデフォルト値(とくに値を指定しなければこの値が選ばれる)を設定することも出来る。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -683,7 +645,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>上の場合、引数を指定する際に<code class="docutils literal notranslate"><span class="pre">p=</span></code>などは書いても書かなくてもなくてもOKだが、デフォルト値が複数設定されている関数を作った場合には、どの変数を指定しているのかを明示的にするため、<code class="docutils literal notranslate"><span class="pre">p=3</span></code>などと引数に入力する。</p>
-<p>ココまでで説明したように、自作の関数を定義することで作業を<em>パッケージ化</em>し、コードを簡略化することができます。「繰り返しの操作は関数にする」ことを心がけよう。</p>
+<p>ココまでで説明したように、自作の関数を定義することで作業を再利用可能なものとして抽象化しコードを簡略化することができます。「繰り返しの操作は関数にする」ことを心がけよう。</p>
 </div>
 </div>
 <div class="section" id="id4">
@@ -776,15 +738,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="margin sidebar">
-<p class="sidebar-title">プログラミング言語とスコープ</p>
-<p>Pythonでは、インデントでブロックを定義したりすることで短いコードを書くことができますが、一方で変数のスコープが分かりづらいことがしばしばあります。たとえば関数内で、定義されていない変数を用いたコードがあればPythonでは「global変数で定義されているのでは？」と解釈され実行が試行されますが、このことを「気が利いている」と感じる人もいれば「意図しない参照が起きて余計なバグの温床になる」と、見る人によって違う捉え方になったりします。</p>
-</div>
 <p>といったように、関数の中で使う変数をグローバル変数として宣言すれば、関数の外でもその変数を使うことができる。</p>
 <p>ただし、このようなコードの書き方は、処理が複雑化してくるとどこでその変数が定義されたり更新されたりしているかがわかりづらく、予期しない挙動の原因にもなるため一般には非推奨である。</p>
 <p>[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本となる。
 (まぁ細かいことを言えばPythonだとそれともちょっと設計思想が違うのですが…)</p>
-<p>また、関数を用いる際に、変数のスコープに関して混乱を避ける手助けとなる方法は…メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
+<p>Pythonでは、インデントでブロックを定義したりすることで短いコードを書くことができるが、一方で変数のスコープが分かりづらいことがしばしばある。
+たとえば関数内で、定義されていない変数を用いたコードがあればPythonでは「global変数で定義されているのでは？」と解釈され実行が試行されるが、このことを「気が利いている」と感じる人もいれば、「意図しない参照が起きて余計なバグの温床になる」と、見る人によって違う捉え方になったりする。</p>
+<p>関数を用いる際に、変数のスコープに関して混乱を避ける手助けとなる方法は…メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
 たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、関数の引数にはアルファベットを使うなどの工夫(ルール作り)もオススメ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,7 +797,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">3.3. </span>関数とメソッド<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>これまで登場してきた<code class="docutils literal notranslate"><span class="pre">print</span></code>や<code class="docutils literal notranslate"><span class="pre">len</span></code>などの関数は、Pythonに組み込まれている関数で、<code class="docutils literal notranslate"><span class="pre">関数()</span></code>という自作関数と同じ方法で呼び出せた。</p>
 <p>一方で、リストや文字列などのオブジェクトに対して、<code class="docutils literal notranslate"><span class="pre">オブジェクト.関数()</span></code>という形で呼び出せる関数がある。</p>
-<p>これらは<strong>メソッド</strong>と呼ばれ、オブジェクト(正確にはクラス)に対して定義された関数になっている。</p>
+<p>これらは<strong>メソッド</strong>と呼ばれ、それぞれのオブジェクト(正確にはクラス)に対して定義された関数になっている。</p>
 <p>たとえば、リストに対して<code class="docutils literal notranslate"><span class="pre">append</span></code>というメソッドを呼び出すと、リストの末尾に要素を追加することができた:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -850,25 +810,95 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>関数もメソッドも、引数を取り何らかの操作をするという点では同じだが、両者はその設計思想が異なるため、混乱しないように注意する必要がある。
 大雑把に言えば、<strong>関数は引数を取り、何らかの操作を行い、戻り値を返す</strong>という設計思想であるのに対し、<strong>メソッドはオブジェクトに対して何らかの操作を行う</strong>という設計思想である。</p>
-<p>この授業では、クラスについての説明を行わないため、自分でクラスないしメソッドを定義することはないとは思うが、
+<p>この授業では、<code class="docutils literal notranslate"><span class="pre">クラス</span></code>についての説明を行わないため、自分でクラスないしメソッドを定義することはないとは思うが、
 ライブラリ等で用意されているクラス・メソッドを用いることも多いため、混乱した場合はこの違いを意識するようにすると良い。</p>
 <div class="section" id="id6">
 <h3><span class="section-number">3.3.1. </span>組み込み関数の一覧<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Pythonのdocumentから組み込み関数の一覧を確認することが出来る: <a class="reference external" href="https://docs.python.org/ja/3/library/functions.html">https://docs.python.org/ja/3/library/functions.html</a></p>
 <p>授業資料で既に使用したものとしては<code class="docutils literal notranslate"><span class="pre">print</span></code>,<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>などがある。</p>
-<p>その他にも、絶対値を得る<code class="docutils literal notranslate"><span class="pre">abs</span></code>、リストlikeな型の和を取ったり最大値・最小値を得る<code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>やソートする<code class="docutils literal notranslate"><span class="pre">sort</span></code>、
-ファイルを開く<code class="docutils literal notranslate"><span class="pre">open</span></code>、互換性のある型から所望の型に変換する<code class="docutils literal notranslate"><span class="pre">int</span></code>,<code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">complex</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>など
-状況に応じて様々な組み込み関数を使うこともあることだろう。</p>
-<p>上でリストlikeと書いたり、互換性と言ったのは、幾つかの型やクラスの間には互換性があり、関数(やメソッド)で相互に変換する事ができることも多いことによる。</p>
-<p>例えばfor文で頻出する<code class="docutils literal notranslate"><span class="pre">range</span></code>はリストに変換することもできる:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>関数名</p></th>
+<th class="head"><p>出来ること</p></th>
+<th class="head"><p>実行例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">print</span></code></p></td>
+<td><p>メッセージを表示する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">print(&quot;Hello,</span> <span class="pre">World!&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>オブジェクトの型を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type(10)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">len</span></code></p></td>
+<td><p>オブジェクトの長さを返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">range</span></code></p></td>
+<td><p>指定された範囲の整数を生成する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">range(5)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>オブジェクトの識別子を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id(&quot;Hello&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>オブジェクトを文字列に変換する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str(3.14)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">abs</span></code></p></td>
+<td><p>数値の絶対値を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">abs(-5)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sum</span></code></p></td>
+<td><p>リストの要素の合計を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sum([1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p>リストの最小値を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">min([5,</span> <span class="pre">2,</span> <span class="pre">8,</span> <span class="pre">1])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p>リストの最大値を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">max([5,</span> <span class="pre">2,</span> <span class="pre">8,</span> <span class="pre">1])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sort</span></code></p></td>
+<td><p>リストをソートする</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">l</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">8,</span> <span class="pre">1];</span> <span class="pre">l.sort()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">open</span></code></p></td>
+<td><p>ファイルを開く</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">=</span> <span class="pre">open(&quot;data.txt&quot;,</span> <span class="pre">&quot;r&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>文字列や浮動小数点数を整数に変換する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int(&quot;10&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>文字列や整数を浮動小数点数に変換する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float(&quot;3.14&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">complex</span></code></p></td>
+<td><p>実数と虚数から複素数を作成する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">complex(2,</span> <span class="pre">3)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>リストと互換性のあるものをリストに変換する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list((1,</span> <span class="pre">2,</span> <span class="pre">3))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p>キーと値のペアから辞書を作成する</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict([('a',</span> <span class="pre">1),</span> <span class="pre">('b',</span> <span class="pre">2)])</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>上で”変換する”や”互換性”と書いたように、幾つかの型やクラスの間には互換性があり、関数(やメソッド)で相互に変換する事ができることも多い。</p>
+<p>例えばfor文で頻出する<code class="docutils literal notranslate"><span class="pre">range</span></code>はリストに変換することができた(２章も参照):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 </pre></div>
 </div>
 </div>
@@ -899,8 +929,8 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_chapter2_ListLoop.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -917,18 +947,20 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      <div class="extra_footer">
-        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+    <div class="container">
+      <p>
+        
+          <div class="extra_footer">
+            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-      </div>
-  </p>
-</footer>
+          </div>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
