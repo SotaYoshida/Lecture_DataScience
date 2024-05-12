@@ -1387,8 +1387,9 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">]</span> <span class="c1">## i を1から999まで2ずつ変えていったときの値を詰めたリストを作成</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># year を1900から2000まで変えていき、その値を詰めたリストyearsを作成</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span> <span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">2001</span><span class="p">)</span> <span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
