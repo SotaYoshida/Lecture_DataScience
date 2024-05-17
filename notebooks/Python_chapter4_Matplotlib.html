@@ -532,6 +532,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+2.718281828459045
+0.6931471805599453
+0.3010299956639812
+7.38905609893065
+1.2246467991473532e-16
+</pre></div>
+</div>
+</div>
 </div>
 <p>注:<span class="math notranslate nohighlight">\(sin(\pi)\)</span>は本来0だが、1章で述べたように実数が有限の精度なので、<span class="math notranslate nohighlight">\(\pi\)</span>の計算機上での数値が厳密には円周率と異なるため、<span class="math notranslate nohighlight">\(sin(\pi)\)</span>の値も僅かに0からズレることになる。</p>
 </div>
@@ -566,6 +576,15 @@ Numpyはおもにベクトルや行列の演算などを高速に行うことが
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6931471805599453
+0.3010299956639812
+7.38905609893065
+3.141592653589793
+1.2246467991473532e-16
+</pre></div>
+</div>
+</div>
 </div>
 <p>また、以下でやるように、数値を要素に持つリストを使って演算やグラフを描画するときは、データのリストなどを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換して使う事も多い。</p>
 <p>リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用います。</p>
@@ -578,23 +597,38 @@ Numpyはおもにベクトルや行列の演算などを高速に行うことが
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.23000e+00  9.34122e+03 -3.23300e+01] &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>グラフの描画で便利な理由は以下のような人単位のデータを持つ入れ子のリストがあったときに、成分の転置を取ってx軸方向のデータ, y軸方向のデータに整形が容易となる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#身長体重のデータ</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">180</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span> <span class="p">[</span><span class="mi">160</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> <span class="p">[</span><span class="mi">170</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span> <span class="p">]</span>
-
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="c1"># データをndarrayに変換</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># 転置を行うメソッドを適用することで、0列目が身長、1列目が体重と整形できる</span>
-<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[180, 70], [175, 65], [160, 58], [170, 60]]
+[[180 175 160 170]
+ [ 70  65  58  60]]
+x [180 175 160 170]
+y [70 65 58 60]
 </pre></div>
 </div>
 </div>
@@ -980,9 +1014,9 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <li><p>まず上記リンクからダウンロード</p></li>
 <li><p>Zip形式なので、それを解凍する</p></li>
 <li><p>解凍したフォルダを自身のGoogle Driveの好きな場所にアップロードする
-※以下のグラフを作成するコードをそのまま使いたければ<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>というディレクトリを作ってその下にアップロード</p></li>
+※以下のグラフを作成するコードをそのまま使いたければマイドライブ直下にアップロード</p></li>
 </ol>
-<p>つまり、アップロードされた画像ファイルが、マイドライブ→<code class="docutils literal notranslate"><span class="pre">AdDS</span></code>→<code class="docutils literal notranslate"><span class="pre">GDPvsWomenInSchool</span></code>という階層にある状態になる。</p>
+<p>つまり、アップロードされた画像ファイルが、マイドライブ→<code class="docutils literal notranslate"><span class="pre">GDPvsWomenInSchool</span></code>という階層にある状態になる。</p>
 </div>
 <div class="section" id="linuxpython">
 <h4><span class="section-number">4.4.7.2. </span>方法2: LinuxコマンドとPythonコードで行う方法<a class="headerlink" href="#linuxpython" title="Permalink to this headline">¶</a></h4>
@@ -1020,12 +1054,8 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <span class="c1">#zipファイルを解凍する</span>
 <span class="o">!</span>unzip GDPvsWomenInSchool.zip 
 
-<span class="c1"># Google Driveのマイドライブに移動する</span>
-<span class="o">!</span><span class="nb">cd</span> drive/MyDrive
-
-<span class="c1"># マイドライブ内にAdDSというフォルダを作成し、解凍したファイルを移動する</span>
-<span class="o">!</span>mkdir AdDS
-<span class="o">!</span>mv GDPvsWomenInSchool AdDS/
+<span class="c1">#解答したファイルをマイドライブ直下へ(マウントした状態でないと無効)</span>
+<span class="o">!</span>mv GDPvsWomenInSchool drive/MyDrive/
 </pre></div>
 </div>
 </div>
@@ -1036,12 +1066,12 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <p>先程のグラフがgoogle driveに保存されているかどうかは、以下のコマンドで確認できる(アップロードして直後はファイルが見つからないことがあります).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls  ./drive/MyDrive/AdDS/GDPvsWomenInSchool/*.png
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls  ./drive/MyDrive/Colab_picGDPvsWomenInSchool/*.png
 </pre></div>
 </div>
 </div>
 </div>
-<p>AdDS/GDPvsWomenInSchool/の部分は皆さんのフォルダ名に適宜変更してください.</p>
+<p>Colab_pic/GDPvsWomenInSchool/の部分は、もし独自のフォルダなどを用意した場合は、対応するフォルダ名に適宜変更してください.</p>
 <p>ファイルが確認できたら、年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみよう.</p>
 <p>pngファイルをまとめてgifにするコードは以下の通り(処理にしばし時間がかかります):</p>
 <div class="cell docutils container">
@@ -1050,7 +1080,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="c1"># まとめたいpngをワイルドカード*で指定</span>
-<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/AdDS/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> 
+<span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./drive/My Drive/GDPvsWomenInSchool/GDPvsWomen*.png&#39;</span><span class="p">))</span> 
 <span class="n">images</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">files</span><span class="p">))</span>
 
 <span class="c1"># 出力名と保存場所を指定</span>
