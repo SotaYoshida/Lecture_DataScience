@@ -876,7 +876,8 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;のとき =&gt; ndarrayのサイズは~&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">nbytes</span><span class="o">+</span><span class="n">y</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">**</span><span class="mi">3</span> <span class="p">,</span> <span class="s2">&quot; GB程度&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;のとき =&gt; ndarrayのサイズは~&quot;</span><span class="p">,</span> 
+          <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">nbytes</span><span class="o">+</span><span class="n">y</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span> <span class="p">,</span> <span class="s2">&quot; GB程度&quot;</span><span class="p">)</span>
     <span class="k">return</span>  <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">num</span>
 
 <span class="n">pi_approx_mem</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
@@ -885,11 +886,11 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p=7のとき =&gt; ndarrayのサイズは~ 0.16  GB程度
-p=8のとき =&gt; ndarrayのサイズは~ 1.6  GB程度
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p=7のとき =&gt; ndarrayのサイズは~  0.15  GB程度
+p=8のとき =&gt; ndarrayのサイズは~  1.49  GB程度
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14164512
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14159012
 </pre></div>
 </div>
 </div>
