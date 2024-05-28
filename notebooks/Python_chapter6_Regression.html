@@ -447,11 +447,9 @@ import numpy as np
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">6.1. </span>相関分析 (復習)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>1年次の必修科目、データサイエンス入門でも相関分析を学習したことかと思います。</p>
-<p>解析したいデータが2種類だけなら、プログラムを使うご利益はそれほど感じられないが
-「多くのデータ間の相関関係を系統的に調べたい」「複数年度に渡るデータを解析したい」<br />
-あるいは「その結果をベクタ画像として出力したい」となると<br />
-これまで学習してきた繰り返し操作や作図が役に立つ。</p>
+<p>高校数学のデータの分析やデータサイエンス入門などでも学習する相関分析について扱う。</p>
+<p>解析したいデータが2種類だけなら、プログラムを使うご利益はそれほど感じられないが「多くのデータ間の相関関係を系統的に調べたい」「複数年度に渡るデータを解析したい」<br />
+あるいは「その結果をベクタ画像として出力したい」となると、これまで学習してきた繰り返し操作や作図が役に立つ。</p>
 <p>まずは簡単な例から初めよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,13 +477,19 @@ import numpy as np
 </div>
 <p>「平均気温とアイスの消費には相関がありそう」という直感の通り、正の相関があることが見て取れる。</p>
 <p>では”どれほどの”相関を持つかを表す量として相関係数を算出してみよう。<br />
-相関係数<span class="math notranslate nohighlight">\(r\)</span>は以下のように定義され
-<span class="math notranslate nohighlight">\(r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 \sum^n_i (y_i-\bar{y})^2} }\)</span><br />
-<span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>はそれぞれ<span class="math notranslate nohighlight">\(x,y\)</span>の平均値で<span class="math notranslate nohighlight">\(\bar{x} = \frac{1}{n} \sum^n_i x_i \)</span>,　<span class="math notranslate nohighlight">\(\bar{y} = \frac{1}{n} \sum^n_i y_i \)</span><br />
-と書ける。</p>
+相関係数<span class="math notranslate nohighlight">\(r\)</span>は以下のように定義され</p>
+<div class="math notranslate nohighlight">
+\[
+r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 \sum^n_i (y_i-\bar{y})^2} }
+\]</div>
+<p><span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>はそれぞれ<span class="math notranslate nohighlight">\(x,y\)</span>の平均値で</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{1}{n} \sum^n_i x_i $,　$\bar{y} = \frac{1}{n} \sum^n_i y_i 
+\]</div>
+<p>と書ける。</p>
 <p>下付き添字<span class="math notranslate nohighlight">\(i\)</span>は<span class="math notranslate nohighlight">\(x\)</span>の<span class="math notranslate nohighlight">\(i\)</span>番目の要素であることを表し(つまり<span class="math notranslate nohighlight">\(x\)</span>をn次元ベクトルとみなしたときの第<span class="math notranslate nohighlight">\(i\)</span>成分が<span class="math notranslate nohighlight">\(x_i\)</span>)<br />
-今考えているデータの場合、<span class="math notranslate nohighlight">\(\sum\)</span>の和記号は<span class="math notranslate nohighlight">\(i\)</span>は1から12までの値を取り、対応する値を足し上げることを意味する。<br />
-(“<span class="math notranslate nohighlight">\(i\)</span>の和が1から12までを走る”と言ったりもする)</p>
+今考えているデータの場合、<span class="math notranslate nohighlight">\(\sum\)</span>の和記号は<span class="math notranslate nohighlight">\(i\)</span>は1から12までの値を取り、対応する値を足し上げることを意味する。(“<span class="math notranslate nohighlight">\(i\)</span>の和が1から12までを走る”と言ったりもする)</p>
 <p><span class="math notranslate nohighlight">\(r\)</span>は必ず-1から1までの値を取り1.0(-1.0)に近づくにつれ強い正(負)の相関を示す。<br />
 (強いというのは曖昧な表現で絶対的な線引がある訳では無いことに注意)</p>
 <blockquote>
@@ -493,8 +497,11 @@ import numpy as np
 上の<span class="math notranslate nohighlight">\(r\)</span>の定義と<span class="math notranslate nohighlight">\(n\)</span>次元ベクトル同士の内積の定義とを見比べると示せる(暇があればやってみよう)。</p>
 </div></blockquote>
 <p>次に<code class="docutils literal notranslate"><span class="pre">x</span></code>と<code class="docutils literal notranslate"><span class="pre">y</span></code>、２つのリストを引数に持ち、相関係数<span class="math notranslate nohighlight">\(r\)</span>を返す関数を作成してみよう。</p>
-<p>にらめっこするために式を再掲:
-<span class="math notranslate nohighlight">\(r= \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 \sum^n_i (y_i-\bar{y})^2} }\)</span></p>
+<p>にらめっこするために式を再掲:</p>
+<div class="math notranslate nohighlight">
+\[
+r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 \sum^n_i (y_i-\bar{y})^2} }
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### ライブラリを一切使わない方法</span>
