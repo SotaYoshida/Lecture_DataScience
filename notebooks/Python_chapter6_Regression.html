@@ -407,12 +407,12 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     6.2.3. (余談1) 100メートル走のタイム
+     6.2.3. 予言能力のない例: 100メートル走のタイム
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     6.2.4. (余談2) 新型コロナウイルス感染症の陽性者数の推移に関して
+     6.2.4. 感染症の陽性者数
     </a>
    </li>
   </ul>
@@ -499,14 +499,14 @@ import numpy as np
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### ライブラリを一切使わない方法</span>
 <span class="k">def</span> <span class="nf">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="c1"># xとyの長さが違う場合や長さ0の場合はエラーを出す</span>
+    <span class="c1"># xとyの長さが違う場合や長さ0の場合はエラーを出す (おまけ)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Error: x&amp;y must satisfy len(x) = len(y) != 0&quot;</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
     <span class="c1">## 平均を計算</span>
     <span class="n">xbar</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">;</span> <span class="n">ybar</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> 
 
-    <span class="c1">##分子(numerator)の和を計算 (初期値を0に)</span>
+    <span class="c1">##分子(numerator)の和を計算 (初期値を0にしてループで加算していく)</span>
     <span class="n">s_n</span> <span class="o">=</span> <span class="mf">0.0</span> 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">s_n</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">xbar</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span>
@@ -517,10 +517,10 @@ import numpy as np
         <span class="n">s_x</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">xbar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
         <span class="n">s_y</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">s_d</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_x</span> <span class="o">*</span> <span class="n">s_y</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="c1"># 一行で書くなら</span>
+    <span class="c1"># 一行で書くならリスト内包表記を用いて以下のようにも書ける</span>
     <span class="c1">#s_d = ( sum([(x[i]-xbar)**2 for i in range(n)]) * sum([(y[i]-ybar)**2 for i in range(n)]) )**0.5</span>
 
-    <span class="k">return</span> <span class="n">s_n</span><span class="o">/</span><span class="n">s_d</span> <span class="c1"># 分子/分母の値を返す</span>
+    <span class="k">return</span> <span class="n">s_n</span><span class="o">/</span><span class="n">s_d</span> 
 
 <span class="n">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -584,24 +584,16 @@ yとxの相関, yとyの相関(=1.0)]<br />
 に関して説明する。</p>
 <p>下の図は、2017年の家計調査・気候データから作成した散布図で、<br />
 千葉市での平均気温と、しめじの消費支出の間の相関を示している。</p>
-<img src="https://drive.google.com/uc?export=view&id=1P4bYyfUDHMXOtGRrDBBLszVNijDqGv6H" width = 40%><p>生産量と平均気温の間に、強い負の相関が見て取れますが、これはどうしてでしょう？<br />
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Shimeji_Chiba.png?raw=true" width = 40%><p>生産量と平均気温の間に、強い負の相関が見て取れますが、これはどうしてでしょう？<br />
 「寒い季節には鍋が食べたくなるから」と言われるとふむふむと感じる一方で<br />
 「そもそも生産量が冬に多く、市場に出回る量が多いから」と考えることもできる。<br />
 したがって、このデータを見ただけでは、しめじが冬によく売れる理由までははっきりとは分からない。</p>
-<p>事実、しめじの旬はGoogle検索によると9月下旬から11月初旬とのことで、<br />
-最も売れている時期(12月1月)とは少し時期にズレがあり、<br />
-購買意欲は必ずしも”旬”によって決まっている訳ではなさそうな印象を受ける。</p>
-<p>気温と特定の野菜の購買意欲の真の関係を知りたければ、<br />
-「その野菜はビニールハウスなどの生産設備の向上で年中、安定した味で生産ができる」<br />
-「比較的新しい品種で〇〇といえば秋、のような固定観念がない」<br />
-「季節ごとの生産量がほぼ同じ」<br />
-など、他の条件が揃った状況下で比較しなければ確度の高い議論は難しい。</p>
-<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。<br />
-気になる方は、たとえば”因果推論”で調べてみよう。</p>
-<p><a class="reference external" href="https://www.tylervigen.com/spurious-correlations">疑似相関をまとめたおもしろいサイト</a><br />
-のように顕著な例ならば「あぁ疑似相関だな」と気がつくが<br />
-我々が普段見ている情報の中には、擬似相関であるとひろく認識されていない情報もあるはずだ。<br />
-物事の因果関係を断定するような言説に対しては一歩引いて見る姿勢も重要なように思う。</p>
+<p>事実、しめじの旬はGoogle検索によると9月下旬から11月初旬とのことで、最も売れている時期(12月1月)とは少し時期にズレがあり、購買意欲は必ずしも”旬”によって決まっている訳ではなさそうな印象を受ける。</p>
+<p>気温と特定の野菜の購買意欲の真の関係を知りたければ、「その野菜はビニールハウスなどの生産設備の向上で年中、安定した味で生産ができる」
+「比較的新しい品種で〇〇といえば秋、のような固定観念がない」「季節ごとの生産量がほぼ同じ」など、他の条件が揃った状況下で比較しなければ確度の高い議論は難しい。</p>
+<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。気になる方は、たとえば”因果推論”で調べてみよう。</p>
+<p><a class="reference external" href="https://www.tylervigen.com/spurious-correlations">疑似相関をまとめたおもしろいサイト</a>のように顕著な例ならば「あぁ疑似相関だな」と気がつくが<br />
+我々が普段見ている情報の中には、擬似相関であるとひろく認識されていない情報もあるはずだ。物事の因果関係を断定するような言説に対しては一歩引いて見る姿勢も重要なように思う。</p>
 </div>
 </div>
 <div class="section" id="id4">
@@ -616,9 +608,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <p><span class="math notranslate nohighlight">\(D\)</span>個の点<span class="math notranslate nohighlight">\(\{x_1,x_2,...,x_D\}\)</span>でのyの値<span class="math notranslate nohighlight">\(\{y_1,y_2,...,y_D\}\)</span>が観測されているとき、<br />
 最小二乗法とは、ある決められたモデル関数<span class="math notranslate nohighlight">\(f(x)\)</span>との齟齬<span class="math notranslate nohighlight">\(\chi^2 = \sum^D_{i=1} (y_i - f(x_i))^2\)</span>を<br />
 最小化するように関数<span class="math notranslate nohighlight">\(f\)</span>の係数を調整すること。</p>
-<p><span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。<br />
-たとえば回帰を行う関数として、ニューラルネットワークを採用する立場を採ることも可能。<br />
-参照: <a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_chapter_ArtificialNeuralNetwork.html">おまけのノートブック: ニューラルネットワークによる回帰</a></p>
+<p><span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。</p>
 <p>以下では、<span class="math notranslate nohighlight">\(f(x)\)</span>として単純な多項式のみを考えることにする。<br />
 まず回帰を学ぶために、適当なデータを生成しておく。</p>
 <div class="cell docutils container">
@@ -672,8 +662,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 なお”閉じた形”というのは、数学や物理をやっていると出てくる表現で、答えが具体的な形で書き下せる、程度の意味。<br />
 たとえば 行列<span class="math notranslate nohighlight">\(A\)</span>、ベクトル<span class="math notranslate nohighlight">\(\vec{x},\vec{y}\)</span>,スカラー<span class="math notranslate nohighlight">\(\lambda\)</span>について方程式<span class="math notranslate nohighlight">\(A\vec{x}=\lambda \vec{y}\)</span>が成り立つとき、<br />
 <span class="math notranslate nohighlight">\(A\)</span>の逆行列をどうやって求めるか(数値的にやるのか解析的に求めるのか)はさておき、<br />
-<span class="math notranslate nohighlight">\(\vec{x} = \lambda A^{-1}\vec{y}\)</span>と書き直せるので<br />
-「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりもする。</p>
+<span class="math notranslate nohighlight">\(\vec{x} = \lambda A^{-1}\vec{y}\)</span>と書き直せるので「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりもする。</p>
 </div></blockquote>
 <div class="section" id="polyfit-poly1d">
 <h3><span class="section-number">6.2.1. </span>polyfit/poly1d関数<a class="headerlink" href="#polyfit-poly1d" title="Permalink to this headline">¶</a></h3>
@@ -684,7 +673,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> 
 
 <span class="c1">#多項式の次元pを決める. 今は3次式.</span>
-<span class="n">p</span><span class="o">=</span><span class="mi">3</span> 
+<span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> 
 
 <span class="c1">#polyfit関数で最適化し、返り値(係数)を取得する</span>
 <span class="n">coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> 
@@ -763,8 +752,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <p>現実のデータ解析の状況では、背後にある”真の関数”が分かっていることは非常に稀で、<br />
 「興味のあるデータが、人間がよく知っている単純な式(有限次元の多項式や指数関数)で<br />
 完全に表現できる道理はない」ということも抑えておくべき重要な点となる.<br />
-真の関数というのは一般に[神のみぞ知る]で、<br />
-人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
+真の関数というのは一般に[神のみぞ知る]で、人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
 その背後にあるメカニズム(の主要部分)を解明することと言える.</p>
 <p>一般に、関数をどんどん複雑なものにしていくにつれて、関数の表現力(表現できるデータの幅)は大きく拡がる。<br />
 その一方で、用意した関数がデータに過度に適合するあまり、<br />
@@ -817,7 +805,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <p>参考→正則化でググってみよう.</p>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">6.2.3. </span>(余談1) 100メートル走のタイム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.3. </span>予言能力のない例: 100メートル走のタイム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>予言能力がないモデルとして、以下の例を考えてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -864,28 +852,21 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <p>など、データが持つべき性質を予め知っているので、<br />
 「このデータに対して単純な多項式回帰を当てはめるのはおかしい」<br />
 と気がつくことが出来る。</p>
-<p><strong>でも、他のデータではどうでしょう？</strong></p>
-<p>データを分析するためには、データの値だけをみて闇雲に分析するだけではダメで、<br />
-データの背景やドメイン知識が不可欠である、という好例。</p>
+<p><strong>でも、他のデータではどうだろう？</strong></p>
+<p>データを分析するためには、データの値だけをみて闇雲に分析するだけではダメで、データの背景やドメイン知識が不可欠である、という好例。</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.2.4. </span>(余談2) 新型コロナウイルス感染症の陽性者数の推移に関して<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>我々が現実世界で観測することのできる種々の”値”というのは、<br />
-何らかの関数<span class="math notranslate nohighlight">\(f(x)\)</span>の、ある<span class="math notranslate nohighlight">\(x\)</span>での(実現)値と言える。</p>
-<p>コロナウイルスの感染者数の推移は日付に対する関数として示される事が多い。<br />
-日付に対して陽性者数の推移をプロットして変動の予想を立てることは簡単だが、<br />
-コロナウイルスの感染者数の推移も単なる時間に対する１変数の関数であるはずなどがなく、<br />
-たとえば検査数や我々の外出自粛や”空気感”、国・都道府県ごとの取り組み・政策、<br />
-ウイルスの変異,その他様々な要素に左右される。</p>
+<h3><span class="section-number">6.2.4. </span>感染症の陽性者数<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>我々が現実世界で観測することのできる種々の”値”というのは、何らかの関数<span class="math notranslate nohighlight">\(f(x)\)</span>の、ある<span class="math notranslate nohighlight">\(x\)</span>での(実現)値と言える。</p>
+<p>感染者数の推移は日付に対する関数として示される事も多い。<br />
+日付に対して陽性者数の推移をプロットして変動の予想を立てることは簡単だが、感染者数の推移も単なる時間に対する１変数の関数である道理などなく、
+たとえば検査数や報道などの”空気感”、国・都道府県ごとの取り組み・政策、ウイルスの変異,その他様々な要素に左右される。</p>
 <p>我々人間がグラフにして理解できるのはたかだか３次元(３つの変数がある状況)まで。<br />
-言い換えれば、人間は物事を理解するときに本来D次元(D&gt;&gt;3, Dは３よりずっと大きい)の変数で定義される関数を<br />
-3次元以下に射影した「影」をみて理解しようとする生き物だということは意識しておくべきだろう。</p>
-<p>緊急事態宣言が出され報道が加熱していた頃には、安易な感染者数予測で危険を煽ったり、<br />
-あるいは逆に「心配する必要がない」などと極端な主張をする人が数多く現れた。<br />
-また事態が収束したあとに「私のモデルはこんなに正しかった」という人も現れることだろう。<br />
-だが、それは極めて高い蓋然性で偶然だろう。<br />
-無限の数の関数を考えれば、データに適合するものが存在してもおかしくはない。<br />
-何にでも言えることだが、モデルを立てて終わり、ではなく検証し続ける姿勢が重要。</p>
+言い換えれば、人間は物事を理解するときに本来D次元(D&gt;&gt;3, Dは３よりずっと大きい)の変数で定義される関数を、3次元以下に射影した「影」をみて理解しようとする生き物だということは意識しておくべきだろう。</p>
+<p>多項式に限らずより広範なクラスの関数を考えることはもちろんできる。
+やみくもに無限の数の関数を考えれば、データに適合するものが存在してもおかしくはない。<br />
+が、そのような関数を見つけることができたとしても、それがデータの背後にあるメカニズムを説明しているとは限らない。
+何にでも言えることだが、モデルを立てて終わり、ではなく検証し続ける姿勢が重要である。</p>
 </div>
 </div>
 </div>
