@@ -484,9 +484,10 @@ r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 
 \]</div>
 <p><span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>はそれぞれ<span class="math notranslate nohighlight">\(x,y\)</span>の平均値で</p>
 <div class="math notranslate nohighlight">
-\[
-\bar{x} = \frac{1}{n} \sum^n_i x_i $,　$\bar{y} = \frac{1}{n} \sum^n_i y_i 
-\]</div>
+\[\begin{split}
+\bar{x} = \frac{1}{n} \sum^n_i x_i, \\
+\bar{y} = \frac{1}{n} \sum^n_i y_i 
+\end{split}\]</div>
 <p>と書ける。</p>
 <p>下付き添字<span class="math notranslate nohighlight">\(i\)</span>は<span class="math notranslate nohighlight">\(x\)</span>の<span class="math notranslate nohighlight">\(i\)</span>番目の要素であることを表し(つまり<span class="math notranslate nohighlight">\(x\)</span>をn次元ベクトルとみなしたときの第<span class="math notranslate nohighlight">\(i\)</span>成分が<span class="math notranslate nohighlight">\(x_i\)</span>)<br />
 今考えているデータの場合、<span class="math notranslate nohighlight">\(\sum\)</span>の和記号は<span class="math notranslate nohighlight">\(i\)</span>は1から12までの値を取り、対応する値を足し上げることを意味する。(“<span class="math notranslate nohighlight">\(i\)</span>の和が1から12までを走る”と言ったりもする)</p>
@@ -505,11 +506,12 @@ r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### ライブラリを一切使わない方法</span>
-<span class="k">def</span> <span class="nf">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># xとyの長さが違う場合や長さ0の場合はエラーを出す (おまけ)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Error: x&amp;y must satisfy len(x) = len(y) != 0&quot;</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="c1">## 平均を計算</span>
     <span class="n">xbar</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">;</span> <span class="n">ybar</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> 
 
@@ -549,22 +551,18 @@ r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cor_coeff_np</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="n">ybar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span> <span class="p">)</span> 
+    <span class="n">xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="n">ybar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span> <span class="p">)</span> 
 
 <span class="n">cor_coeff_np</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>とすると、関数自体は3行で書けてしまう。
-さらに<span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>をいちいち定義しないように書き換えれば、関数の中身自体は一行でかけてしまいます。</p>
-<p>上のコードを少し補足しておくと…分子や分母に現れる<br />
-<span class="math notranslate nohighlight">\(\sum^n_i (x_i-\bar{x})(y_i-\bar{y})\)</span>や<span class="math notranslate nohighlight">\(\sum^n_i (x_i-\bar{x})^2 \)</span>といった項は、<br />
-<span class="math notranslate nohighlight">\(i\)</span>番目の成分に<span class="math notranslate nohighlight">\(x_i-\bar{x}\)</span>を持つベクトル<span class="math notranslate nohighlight">\(\tilde{x}\)</span>と<br />
-<span class="math notranslate nohighlight">\(i\)</span>番目の成分に<span class="math notranslate nohighlight">\(y_i-\bar{y}\)</span>を持つベクトル<span class="math notranslate nohighlight">\(\tilde{y}\)</span>を定義しておくと、<br />
-<span class="math notranslate nohighlight">\(\tilde{x}\cdot\tilde{y}\)</span>,　<span class="math notranslate nohighlight">\(\tilde{x}\cdot\tilde{x}\)</span>,　<span class="math notranslate nohighlight">\(\tilde{y}\cdot\tilde{y}\)</span>といったように
-ベクトルの内積の形でいずれも表すことができる。</p>
+<p>とすると、関数自体は3行で書けてしまう。さらに<span class="math notranslate nohighlight">\(\bar{x},\bar{y}\)</span>をいちいち定義しないように書き換えれば、関数の中身自体は一行でかける。</p>
+<p>上のコードを少し補足しておくと…分子や分母に現れる<span class="math notranslate nohighlight">\(\sum^n_i (x_i-\bar{x})(y_i-\bar{y})\)</span>や<span class="math notranslate nohighlight">\(\sum^n_i (x_i-\bar{x})^2 \)</span>といった項は、<br />
+<span class="math notranslate nohighlight">\(i\)</span>番目の成分に<span class="math notranslate nohighlight">\(x_i-\bar{x}\)</span>を持つベクトル<span class="math notranslate nohighlight">\(\tilde{x}\)</span>と<span class="math notranslate nohighlight">\(i\)</span>番目の成分に<span class="math notranslate nohighlight">\(y_i-\bar{y}\)</span>を持つベクトル<span class="math notranslate nohighlight">\(\tilde{y}\)</span>を定義しておくと、<br />
+<span class="math notranslate nohighlight">\(\tilde{x}\cdot\tilde{y}\)</span>,　<span class="math notranslate nohighlight">\(\tilde{x}\cdot\tilde{x}\)</span>,　<span class="math notranslate nohighlight">\(\tilde{y}\cdot\tilde{y}\)</span>といったように、ベクトルの内積の形でいずれも表すことができる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>にはブロードキャスト機能(Numpyのノートを参照)やベクトル積を計算する関数<code class="docutils literal notranslate"><span class="pre">dot</span></code>が備わっているので、<br />
 それらを活用することで相関係数の計算を短く実装することができた。</p>
 <p>更に言うと実は<code class="docutils literal notranslate"><span class="pre">numpy</span></code>には相関係数を計算する関数<code class="docutils literal notranslate"><span class="pre">corrcoef()</span></code>が予め用意されていて</p>
@@ -583,24 +581,22 @@ yとxの相関, yとyの相関(=1.0)]<br />
 確かに上の相関行列の[0,1]成分は、さっき計算した<span class="math notranslate nohighlight">\(r\)</span>の値と一致している。</p>
 <p>「初めからそれを教えろ！」と思うかもしれないが<br />
 <strong>考えたい量を数式として定義してそれをプログラムに変換し、値が正しいことを確認する作業</strong>は<br />
-<strong>式(考え方)とプログラミング双方の理解を深める上で非常に重要</strong>である</p>
+<strong>式(考え方)とプログラミング双方の理解を深める上で非常に重要</strong>になる。</p>
 <div class="section" id="id3">
 <h3><span class="section-number">6.1.1. </span>相関分析と因果関係<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>以下では、ある一つのグラフの例を見ながら、冒頭の<br />
-<em>相関関係は因果関係を含意しない (Correlation does not imply causation)</em><br />
-に関して説明する。</p>
-<p>下の図は、2017年の家計調査・気候データから作成した散布図で、<br />
-千葉市での平均気温と、しめじの消費支出の間の相関を示している。</p>
+<p>以下では、ある一つのグラフの例を見ながら、冒頭の*相関関係は因果関係を含意しない (Correlation does not imply causation)*に関して説明する。</p>
+<p>下の図は、2017年の家計調査・気候データから作成した散布図で、千葉市での平均気温と、しめじの消費支出の間の相関を示している。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Shimeji_Chiba.png?raw=true" width = 40%><p>生産量と平均気温の間に、強い負の相関が見て取れますが、これはどうしてでしょう？<br />
 「寒い季節には鍋が食べたくなるから」と言われるとふむふむと感じる一方で<br />
 「そもそも生産量が冬に多く、市場に出回る量が多いから」と考えることもできる。<br />
 したがって、このデータを見ただけでは、しめじが冬によく売れる理由までははっきりとは分からない。</p>
-<p>事実、しめじの旬はGoogle検索によると9月下旬から11月初旬とのことで、最も売れている時期(12月1月)とは少し時期にズレがあり、購買意欲は必ずしも”旬”によって決まっている訳ではなさそうな印象を受ける。</p>
+<p>事実、しめじの旬はGoogle検索によると9月下旬から11月初旬とのことで、最も売れている時期(12月1月)とは少し時期にズレがあり、購買意欲は必ずしも”旬”によって決まっている訳ではなく、複合的な要因がありそうな印象を受ける。</p>
 <p>気温と特定の野菜の購買意欲の真の関係を知りたければ、「その野菜はビニールハウスなどの生産設備の向上で年中、安定した味で生産ができる」
 「比較的新しい品種で〇〇といえば秋、のような固定観念がない」「季節ごとの生産量がほぼ同じ」など、他の条件が揃った状況下で比較しなければ確度の高い議論は難しい。</p>
-<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。気になる方は、たとえば”因果推論”で調べてみよう。</p>
-<p><a class="reference external" href="https://www.tylervigen.com/spurious-correlations">疑似相関をまとめたおもしろいサイト</a>のように顕著な例ならば「あぁ疑似相関だな」と気がつくが<br />
-我々が普段見ている情報の中には、擬似相関であるとひろく認識されていない情報もあるはずだ。物事の因果関係を断定するような言説に対しては一歩引いて見る姿勢も重要なように思う。</p>
+<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。
+気になった方は、たとえば”因果推論”で調べてみよう。</p>
+<p><a class="reference external" href="https://www.tylervigen.com/spurious-correlations">疑似相関をまとめたおもしろいサイト</a>のように顕著な例ならば「あぁ疑似相関だな」と気がつくが、我々が普段見ている情報の中には、擬似相関であるとひろく認識されていない情報もあるはず。
+物事の因果関係を断定するような言説に対しては一歩引いて見る姿勢も重要なように思う。</p>
 </div>
 </div>
 <div class="section" id="id4">
@@ -608,16 +604,15 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <p>以下では自分が立てたモデルを表現する関数のことを<em>モデル関数</em>、<br />
 モデル関数とデータとの齟齬を最小化するようにモデル関数の係数を決定することを<strong>回帰</strong>、<br />
 そして回帰に基づく分析を指して<strong>回帰分析</strong>と呼ぶことにする。</p>
-<p>データとモデル間の齟齬を表現する方法はいくつかあるが、<br />
-以下では最もポピュラーな誤差の二乗和を採用することとし、<br />
-その最小化を考える(<strong>最小二乗法</strong>とも呼ぶ)。
-データや関数、最小二乗法をもう少しきちんと定義しよう。</p>
+<p>この授業では、<span class="math notranslate nohighlight">\(x\)</span>に対する<span class="math notranslate nohighlight">\(y\)</span>の振る舞い、といういわゆる単回帰分析のみを扱う。</p>
+<p>データとモデル間の齟齬を表現する方法はいくつかあるが、以下では最もポピュラーな誤差の二乗和を採用することとし、<br />
+その最小化を考える(<strong>最小二乗法</strong>)。データや関数、最小二乗法をもう少しきちんと定義しよう。</p>
 <p><span class="math notranslate nohighlight">\(D\)</span>個の点<span class="math notranslate nohighlight">\(\{x_1,x_2,...,x_D\}\)</span>でのyの値<span class="math notranslate nohighlight">\(\{y_1,y_2,...,y_D\}\)</span>が観測されているとき、<br />
 最小二乗法とは、ある決められたモデル関数<span class="math notranslate nohighlight">\(f(x)\)</span>との齟齬<span class="math notranslate nohighlight">\(\chi^2 = \sum^D_{i=1} (y_i - f(x_i))^2\)</span>を<br />
 最小化するように関数<span class="math notranslate nohighlight">\(f\)</span>の係数を調整すること。</p>
-<p><span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。</p>
 <p>以下では、<span class="math notranslate nohighlight">\(f(x)\)</span>として単純な多項式のみを考えることにする。<br />
-まず回帰を学ぶために、適当なデータを生成しておく。</p>
+<span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。</p>
+<p>まず回帰を学ぶために、適当なデータを生成しておく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -632,11 +627,10 @@ yとxの相関, yとyの相関(=1.0)]<br />
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span>
 
 <span class="c1">#私と皆さんで結果が変わらないよう乱数のseedを固定</span>
-<span class="c1">#randomモジュールの関数を使うときはrandom.seedを、</span>
-<span class="c1">#numpyのrandom関数を使うときはnp.random.seedを用いる</span>
+<span class="c1">#randomモジュールの関数を使うときはrandom.seedを、numpyのrandom関数を使うときはnp.random.seedを用いる</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> 
 
-<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">create_toy_data</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">1.e-1</span><span class="p">)</span> 
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">create_toy_data</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">1.e-1</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -676,7 +670,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <p>たとえば今のデータを３次式でフィットしたければ、以下のようにする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## 多項式をplotするためのxの値を準備(グラフをなめらかにするために、0から1までの間の500点を等間隔に取る)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## 多項式をplotするためのxの値を準備(グラフをなめらかにするために、0から1までの間の500点を等間隔に作る)</span>
 <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> 
 
 <span class="c1">#多項式の次元pを決める. 今は3次式.</span>
@@ -693,14 +687,17 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">np.polyfit(x,</span> <span class="pre">y,</span> <span class="pre">p)</span></code>では、データのx,yの値と多項式の次元pを引数として与え、<br />
-<span class="math notranslate nohighlight">\(p\)</span>次の多項式でデータ<span class="math notranslate nohighlight">\((x,y)\)</span>をfitしなさい(<span class="math notranslate nohighlight">\(p\)</span>次までの係数を関数がデータと整合するように”最適化”しなさい)<br />
-という指令を与えている.</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.poly1d(</span> <span class="pre">np.polyfit(x,</span> <span class="pre">y,</span> <span class="pre">p)</span> <span class="pre">)(xp)</span></code>では、<br />
-fitしたp次元の係数をもつ多項式に<code class="docutils literal notranslate"><span class="pre">xp</span></code>(今は500点)を代入して、対応する<code class="docutils literal notranslate"><span class="pre">y</span></code>の値を返す。<br />
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.polyfit(x,</span> <span class="pre">y,</span> <span class="pre">p)</span></code>:</p>
+<p>データのx,yの値と多項式の次元pを引数として与え<span class="math notranslate nohighlight">\(p\)</span>次の多項式でデータ<span class="math notranslate nohighlight">\((x,y)\)</span>をfitしなさい(<span class="math notranslate nohighlight">\(p\)</span>次までの係数を関数がデータと整合するように”最適化”しなさい)という指令になっている。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.poly1d(</span> <span class="pre">np.polyfit(x,</span> <span class="pre">y,</span> <span class="pre">p)</span> <span class="pre">)(xp)</span></code>:</p>
+<p>fitしたp次元の係数をもつ多項式に<code class="docutils literal notranslate"><span class="pre">xp</span></code>(今は500点)を代入して、対応する<code class="docutils literal notranslate"><span class="pre">y</span></code>の値を返す。<br />
 上のコードはこの返り値を<code class="docutils literal notranslate"><span class="pre">yp</span></code>という変数に格納している。</p>
-<p>最後に、調整(最適化)された3次式の係数を表示してみた。<br />
-ちなみに、表示される係数は次数が高いところから<span class="math notranslate nohighlight">\(a_3,a_2,a_1,a_0\)</span>です(ややこしい…)。</p>
+</li>
+</ul>
+<p>最後に、printで調整(最適化)された3次式の係数を表示してみた。<br />
+ちなみに、表示される係数は次数が高いところから<span class="math notranslate nohighlight">\(a_3,a_2,a_1,a_0\)</span>です(ややこしいね…)。</p>
 <p>グラフを描いてみるとこんな感じ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,7 +729,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">:</span>
     <span class="n">ys</span> <span class="o">+=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">))(</span><span class="n">xp</span><span class="p">)]</span>
 
-<span class="c1"># データのは以後にある&quot;真の関数&quot;(本当は知り得ない)の値をxpの各点で計算</span>
+<span class="c1"># データの背後にある&quot;真の関数&quot;(本当は知り得ない)の値をxpの各点で計算</span>
 <span class="n">ytrue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">xp</span><span class="p">)</span> 
 
 <span class="c1"># お絵かき</span>
@@ -751,7 +748,7 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 </div>
 </div>
 <blockquote>
-<div><p>注: 今の場合、データはsin関数に適当なノイズを足して作られている。<br />
+<div><p>注: 今の場合、回帰に用いたデータはsin関数に適当なノイズを足して作られている。<br />
 解析の手法を学ぶ際には、このように答えを知っている状態からはじめて、<br />
 手法がうまくデータを説明しているかどうかを検証したりする。<br />
 一見ズルっぽいが、理論を理解したりプログラムで確認するためには重要なプロセスとなる。</p>
@@ -759,14 +756,12 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 <p>現実のデータ解析の状況では、背後にある”真の関数”が分かっていることは非常に稀で、<br />
 「興味のあるデータが、人間がよく知っている単純な式(有限次元の多項式や指数関数)で<br />
 完全に表現できる道理はない」ということも抑えておくべき重要な点となる.<br />
-真の関数というのは一般に[神のみぞ知る]で、人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
+真の関数というのは一般に<strong>神のみぞ知る</strong>で、人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
 その背後にあるメカニズム(の主要部分)を解明することと言える.</p>
 <p>一般に、関数をどんどん複雑なものにしていくにつれて、関数の表現力(表現できるデータの幅)は大きく拡がる。<br />
-その一方で、用意した関数がデータに過度に適合するあまり、<br />
-<strong>未知の点での値の予測精度(汎化性能)が著しく損なわれている危険性</strong>がある。<br />
+その一方で、用意した関数がデータに過度に適合するあまり、<strong>未知の点での値の予測精度(汎化性能)が著しく損なわれている危険性</strong>がある。<br />
 このことを予言能力がない(データに<strong>過適合</strong>している) と言う。<br />
-データの背後にあるメカニズムが何かを考えたり理論的な解析をして初めて、<br />
-回帰に用いる関数の妥当性が検証できるという点に注意しよう。</p>
+データの背後にあるメカニズムが何かを考えたり理論的な解析をして初めて、回帰に用いる関数の妥当性が検証できるという点に注意しよう。</p>
 </div>
 <div class="section" id="clubsuit">
 <h3><span class="section-number">6.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> モデルの複雑さとモデル選択<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
@@ -800,24 +795,19 @@ fitしたp次元の係数をもつ多項式に<code class="docutils literal notr
 </div>
 </div>
 <p>9次式は、データをよく説明する一方で、非常に複雑なモデルになっている。</p>
-<p>上記のモデル選択基準量<span class="math notranslate nohighlight">\(L\)</span>は<span class="math notranslate nohighlight">\(p=3\)</span>で最小となるため<br />
-この<span class="math notranslate nohighlight">\(L\)</span>の定義のもとでは3次式が選ばれることになる。</p>
-<p>このように実際のデータ分析や機械学習などのモデル選択では、<br />
-既知のデータの記述能力(二乗誤差の最小化)とモデルの複雑さの低減(過適合を避ける)との<br />
-トレードオフでモデルを選択することが多い。</p>
-<p>上の<span class="math notranslate nohighlight">\(L\)</span>の定義中の<span class="math notranslate nohighlight">\(\lambda\)</span>の大きさを変えることは<br />
-データとの整合性を高める/モデルの複雑さを抑える<br />
-のどちらを重視するかの”度合い”を決めることに相当する。<br />
-(<span class="math notranslate nohighlight">\(\lambda\)</span>を適当に変えてみよう)</p>
-<p>参考→正則化でググってみよう.</p>
+<p>上記のモデル選択基準量<span class="math notranslate nohighlight">\(L\)</span>は<span class="math notranslate nohighlight">\(p=3\)</span>で最小となるため、この<span class="math notranslate nohighlight">\(L\)</span>の定義のもとでは3次式が選ばれることになる。</p>
+<p>このように実際のデータ分析や機械学習などのモデル選択では、既知のデータの記述能力(二乗誤差の最小化)とモデルの複雑さの低減(過適合を避ける)との トレードオフでモデルを選択することも多い。</p>
+<p>上の<span class="math notranslate nohighlight">\(L\)</span>の定義中の<span class="math notranslate nohighlight">\(\lambda\)</span>の大きさを変えることは、”データとの整合性を高める”のか、”モデルの複雑さを抑える”のか、
+どちらを重視するかの”度合い”を決めることに相当している。(<span class="math notranslate nohighlight">\(\lambda\)</span>を適当に変えてみよう)</p>
+<p>機械学習の文脈でもよく使われるこのような手法は、<strong>正則化</strong>と呼ばれる。</p>
 </div>
 <div class="section" id="id5">
 <h3><span class="section-number">6.2.3. </span>予言能力のない例: 100メートル走のタイム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>予言能力がないモデルとして、以下の例を考えてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">10.06</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">9.95</span><span class="p">,</span><span class="mf">9.93</span><span class="p">,</span> <span class="mf">9.92</span><span class="p">,</span><span class="mf">9.9</span><span class="p">,</span> <span class="mf">9.86</span><span class="p">,</span><span class="mf">9.85</span><span class="p">,</span> <span class="mf">9.84</span><span class="p">,</span> <span class="mf">9.79</span><span class="p">,</span> <span class="mf">9.78</span><span class="p">,</span> <span class="mf">9.77</span><span class="p">,</span> <span class="mf">9.74</span><span class="p">,</span><span class="mf">9.72</span><span class="p">,</span><span class="mf">9.69</span><span class="p">,</span><span class="mf">9.58</span> <span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1968</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1999</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span> <span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.06</span><span class="p">,</span> <span class="mf">10.03</span><span class="p">,</span> <span class="mf">10.02</span><span class="p">,</span> <span class="mf">9.95</span><span class="p">,</span> <span class="mf">9.93</span><span class="p">,</span> <span class="mf">9.92</span><span class="p">,</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mf">9.86</span><span class="p">,</span> <span class="mf">9.85</span><span class="p">,</span> <span class="mf">9.84</span><span class="p">,</span> <span class="mf">9.79</span><span class="p">,</span> <span class="mf">9.78</span><span class="p">,</span> <span class="mf">9.77</span><span class="p">,</span> <span class="mf">9.74</span><span class="p">,</span> <span class="mf">9.72</span><span class="p">,</span> <span class="mf">9.69</span><span class="p">,</span> <span class="mf">9.58</span> <span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1964</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">1991</span><span class="p">,</span> <span class="mi">1991</span><span class="p">,</span> <span class="mi">1994</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,</span> <span class="mi">1999</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2007</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">]</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
