@@ -37,22 +37,20 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. ファイル・文字列操作" href="Python_chapter8_handling_files.html" />
@@ -90,7 +88,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -298,8 +296,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
+                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -307,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -315,11 +313,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter7_Optimization.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -331,12 +329,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
+                    class="fab fa-github"></i>リポジトリ</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter7_Optimization.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
         
     </div>
 </div>
@@ -344,8 +342,8 @@ const thebe_selector_output = ".output, .cell_output"
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
+        title="全画面モード"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -358,7 +356,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter7_Optimization.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -369,10 +367,10 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> 目次
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -457,98 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>最適化問題の基礎</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   7.1. 考えたい問題のイメージ
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   7.2. 最も基本的な最適化手法: 勾配法
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     7.2.1.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     その他の最適化手法
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     7.2.2.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     目的関数の選択
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     7.2.3. 簡単な例でのプログラム
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   7.3. 勾配の計算について
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     7.3.1. 解析的に微分が計算できる場合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     7.3.2. 数値的に勾配を計算する場合
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   7.4.
-   <span class="math notranslate nohighlight">
-    \(\clubsuit\)
-   </span>
-   その他の話題
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   7.5. 数学的準備: 微分
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     7.5.1. 微分の基本的な考え方
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter7_Optimization.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
@@ -556,15 +463,22 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">7. </span>最適化問題の基礎<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 最適化問題のイメージを掴み、一次元の単峰的な関数の最小値を探索できるようになる。</p>
-<p>種々のデータ解析や学術的分野での計算をはじめ世の中の多くの問題は<strong>最適化問題</strong>に帰着される.<br />
-最適化問題とは、大雑把に言えば「ある量の最小値/最大値とそれを与える変数/パラメータの値を知ること」と言い換えられる.</p>
-<p>「人生も、何らかの目的関数<span class="math notranslate nohighlight">\(f(x)\)</span>(一般に<span class="math notranslate nohighlight">\(x\)</span>は多次元),たとえば幸福感(不幸感)を最大化(最小化)すること<br />
+<p>最適化問題とは、大雑把に言えば「ある量の最小値/最大値とそれを与える変数/パラメータの値を知ること」と言い換えられる.
+種々のデータ解析や学術的分野での計算をはじめ世の中の多くの問題は<strong>最適化問題</strong>に帰着される.</p>
+<p>例えば、</p>
+<ul class="simple">
+<li><p>商品の売り上げを最大化するための広告戦略を考える</p></li>
+<li><p>ある製品の製造コストを最小化するための製造工程を設計する</p></li>
+<li><p>配達員の配達ルートを最適化(≒時間や燃料の消費を最小化)する</p></li>
+<li><p>機械学習のモデルのパラメータを調整し、予測精度を最大化する</p></li>
+</ul>
+<p>などなど。「人生も、何らかの目的関数<span class="math notranslate nohighlight">\(f(x)\)</span>(一般に<span class="math notranslate nohighlight">\(x\)</span>は多次元),たとえば幸福感(不幸感)を最大化(最小化)すること<br />
 という意味では、最適化問題を考えていることに相当する」というと少し大げさでしょうか。</p>
-<p>この章では、最適化の基礎について学んでいくことにしよう。<br />
+<p>この章では、最適化の基礎について説明する。<br />
 授業では実際に最適化で必要な数学的な操作をするコードを作ったりする訳ではないが<br />
 「ライブラリに入れてポンッ」ではなく、背後にあるモチベーションや概念を理解しておくことは<br />
-自分が興味のある問題を最適化問題に帰着させて解くためには不可欠だ。</p>
-<p>※高校で微分を勉強していないという方に向けて末尾に数学的準備の項を設けてあるのでチェックしてください.<br />
+自分が興味のある問題を最適化問題に帰着させて解くためには不可欠になる。</p>
+<p>※高校で微分をあまり勉強していないという方に向けて末尾に数学的準備の項を設けてあるのでチェックしてください.<br />
 (よく知っているという方もさっと目を通してみてください)</p>
 <div class="section" id="id2">
 <h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -589,8 +503,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>xを適当な区間に分割(10等分,100等分, etc.)その点で値を調べる</p></li>
 </ol>
 <p>などが考えられる。</p>
-<p>ただし<span class="math notranslate nohighlight">\(x\)</span>が薬品の濃度で<span class="math notranslate nohighlight">\(f(x)\)</span>が薬品の副作用だとしたとき(※)には、<br />
-<span class="math notranslate nohighlight">\(x\)</span>を変えて<span class="math notranslate nohighlight">\(f(x)\)</span>の値を調べると言っても限界がある。</p>
+<p>ただし<span class="math notranslate nohighlight">\(x\)</span>が薬品の濃度で<span class="math notranslate nohighlight">\(f(x)\)</span>が薬品の副作用だとしたとき(※)には、<span class="math notranslate nohighlight">\(x\)</span>を変えて<span class="math notranslate nohighlight">\(f(x)\)</span>の値を調べる(測定する)と言っても限界がある。</p>
 <p>※「1変数の関数であるはずがない」ことは一旦忘れることにして、イメージしやすいようこの例にした</p>
 <p>1.の方法では、<strong>同じところを何度か行き来するので明らかに無駄が多い</strong>し、<br />
 2.の方法では<strong>分割が少なすぎると十分な精度で最適解が見つからない</strong><br />
@@ -598,15 +511,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>したがって、<strong>できるだけ少ない試行回数で最適な値を見つける効率のよい探索方法</strong>が必要となる。<br />
 そこで重要なのが、<span class="math notranslate nohighlight">\(x\)</span>を変えたときに関数<span class="math notranslate nohighlight">\(f(x)\)</span>がどのように変化するか、つまり微分(勾配)の情報である。</p>
 <p><strong>注意</strong><br />
-そもそも<span class="math notranslate nohighlight">\(f(x)\)</span>の式の形がわかっていて<span class="math notranslate nohighlight">\(f'(x)=0\)</span>となる(つまり極値を持つ)<span class="math notranslate nohighlight">\(x\)</span>の値が計算できるのなら<br />
-わざわざ<span class="math notranslate nohighlight">\(x\)</span>を更新するなどという手続きは必要ない。<br />
-一般の問題では、関数やその勾配がそもそも書き下せなかったり<br />
-極値を与える<span class="math notranslate nohighlight">\(x\)</span>(<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解)を解析的に解けなかったりする。<br />
-そんなときは以下で考えるような、<span class="math notranslate nohighlight">\(x\)</span>を更新した探索が必要となる。</p>
+そもそも<span class="math notranslate nohighlight">\(f(x)\)</span>の式の形がわかっていて<span class="math notranslate nohighlight">\(f'(x)=0\)</span>となる(つまり極値を持つ)<span class="math notranslate nohighlight">\(x\)</span>の値が計算できるのなら、わざわざ<span class="math notranslate nohighlight">\(x\)</span>を更新するなどという手続きは必要ない。<br />
+一般の問題では、関数やその勾配がそもそも書き下せなかったり極値を与える<span class="math notranslate nohighlight">\(x\)</span>(<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解)を解析的に解けなかったりする。
+そんなときは以下で考えるような、<span class="math notranslate nohighlight">\(x\)</span>を更新していくような探索が必要となる。</p>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">7.2. </span>最も基本的な最適化手法: 勾配法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>*以下では、微分の値のことを指して[勾配]と呼ぶことにする.</p>
+<p>*以下では、微分の値のことを指して勾配と呼ぶことにする.</p>
 <p>さて、上の一次元の例をもっと簡略化することにして、単峰的(つまり１つしか谷が無い)場合を考えてみよう。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_simple.png?raw=true" width=60%>  
 <p>この様な場合、斜面の傾きに沿ってパラメータを更新していけばいずれ<span class="math notranslate nohighlight">\(f(x)\)</span>の最小値が見つかりそうだ。<br />
@@ -619,14 +530,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>微分(傾き)が正の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が増える<br />
 微分(傾き)が負の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が減る<br />
 ことから、微分の値の前にマイナスがついている理由も納得できるかと思います。</p>
-<p>最小化でなく最大化を考える場合はマイナス符号は不要で<code class="docutils literal notranslate"><span class="pre">+</span></code>となる。<br />
-(上と同じように考えてみましょう)</p>
-<p>上では、<span class="math notranslate nohighlight">\(\eta\)</span>という係数(正の値)を導入したが、<br />
-これは<strong>傾いてる方向にどれくらいのスケールで<span class="math notranslate nohighlight">\(x\)</span>を更新するか</strong>をコントロールするパラメータで、<br />
-機械学習などの分野で[学習率]と呼ばれるものに対応している。<br />
-今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分。</p>
+<p>最小化でなく最大化を考える場合はマイナス符号は不要で<code class="docutils literal notranslate"><span class="pre">+</span></code>となる。(上と同じように考えてみよう)</p>
+<p>上では、<span class="math notranslate nohighlight">\(\eta\)</span>という係数(正の値)を導入したが、これは<strong>傾いてる方向にどれくらいのスケールで<span class="math notranslate nohighlight">\(x\)</span>を更新するか</strong>をコントロールするパラメータで、機械学習などの分野で学習率と呼ばれるものに対応している。<br />
+今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分である。</p>
 <p>ただし、上の<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎたり小さすぎたりすると、なかなか効率的に<span class="math notranslate nohighlight">\(f(x)\)</span>の最適解を見つけられないことがある。</p>
-<p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷をまたいでしまい、なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
+<p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると、<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷を跨いでしまい、なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_large_eta.png?raw=true" width=80%>  
 <p>一方で<span class="math notranslate nohighlight">\(\eta\)</span>が小さすぎると、なかなか更新が進まず、これまた効率の悪い探索となってしまう。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_small_eta.png?raw=true" width=80%>  <p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<br />
@@ -635,33 +543,24 @@ const thebe_selector_output = ".output, .cell_output"
 <p>その様な場合にはもう少し”賢い”最適化の手法を応用したり、更新の幅を徐々に減衰させるなどの工夫が必要になる。</p>
 <div class="section" id="clubsuit">
 <h3><span class="section-number">7.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
-<p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。<br />
-最適化を詳しくやろうとするとそれだけで半期の授業じゃ足りないくらいなので<br />
-興味がある方は下記のキーワードなどで調べてみよう。</p>
-<p>たとえば機械学習では、勾配の情報だけでなくそれまでの更新の履歴を活用した各種の最適化手法がよく用いられる。<br />
-c.f. AdaGrad, Adam, etc.</p>
-<p>また、物理学から着想を得た最適化手法もよく用いられる<br />
-c.f. 焼きなまし法(Simulated Annealing)</p>
-<p>最適化の手法自体に(広義の)機械学習の手法を使うこともあります<br />
-c.f. ベイズ最適化(授業でも紹介します)</p>
+<p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。</p>
+<p>最適化問題自体、非常に話題が豊富なので、15コマ程度ましてや１コマで扱い切れるようなトピックではない。</p>
+<p>興味がある方は下記のキーワードなどで調べてみよう。</p>
+<p>たとえば機械学習では、勾配の情報だけでなくそれまでの更新の履歴を活用した各種の最適化手法がよく用いられる。→ AdaGrad, Adam, etc.</p>
+<p>また、物理学から着想を得た最適化手法もよく用いられる → 焼きなまし法(Simulated Annealing)</p>
+<p>最適化の手法自体に(広義の)機械学習の手法を使うこともある　→ ベイズ最適化 (おまけのノートブックもある)</p>
 </div>
 <div class="section" id="id4">
 <h3><span class="section-number">7.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>目的関数の選択<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>最適化問題を解く場合に最小化/最大化したい関数のことを目的関数と呼ぶ。</p>
-<p>データ分析をする上で最もよく出てくる目的関数はカイ自乗(chi-square)で<br />
-例えば回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間の二乗誤差<br />
-<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。<br />
-(データの数で割ったり平方根を取った値を採用することもある)</p>
-<p>機械学習の文脈では「予測の誤差(損失)を最小化したい」というモチベーションがあり<br />
-目的関数を損失関数/Loss functionなどと言ったりもする。</p>
-<p>目的関数の選び方は問題によってまちまちで<br />
-その選び方によって”最適なモデル”も変わり得る、ということに注意しておこう。</p>
-<p>たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と<br />
-「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、<br />
-データの数値に対する誤差が占める割合に着目すれば<br />
-前者は2倍(100%)ずれていて、後者は1%しかずれていない。</p>
-<p>このようにスケールの異なる量が出てくる状況下では<br />
-目的関数(誤差関数, 損失関数, etc.)の定義で対数を取ったりする場合もある。</p>
+<p>データ分析をする上で最もよく出てくる目的関数はカイ自乗(chi-square)で、回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間の二乗誤差<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。<br />
+(データの数で割ったり平方根を取った値、平均二乗誤差を採用することも多い)</p>
+<p>機械学習の文脈では「予測の誤差(損失)を最小化したい」というモチベーションがあり、目的関数を損失関数/Loss functionなどと言ったりもする。</p>
+<p>目的関数の選び方は問題によってまちまちで、その選び方によって”最適なモデル”も変わり得る、ということに注意しておこう。</p>
+<p>たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、<br />
+データの数値に対する誤差が占める割合に着目すれば、前者は2倍(100%)ずれていて、後者は1%しかずれていない。</p>
+<p>このようにスケールの異なる量が出てくる状況下では、目的関数の定義で対数を取ったりする場合もある。</p>
+<p>一般に目的関数の選択は、複数の量のバランス(トレードオフ)を考える必要があり、その選び方が問題の解釈や性能にも大きく影響する。</p>
 </div>
 <div class="section" id="id5">
 <h3><span class="section-number">7.2.3. </span>簡単な例でのプログラム<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
@@ -36311,52 +36210,53 @@ gg==\
 </script>
 </div></div>
 </div>
-<p>グラフが描画できたら、再生ボタンを押してみてください</p>
-<p>青(<span class="math notranslate nohighlight">\(\eta=0.2\)</span>)は<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎて、谷を行ったり来たりしていることが分かる。<br />
-一方で紫(<span class="math notranslate nohighlight">\(\eta=0.001\)</span>)は小さすぎて、なかなか最適解にたどり着かない。</p>
-<p>一般に考えたい関数に関して適切な<span class="math notranslate nohighlight">\(\eta\)</span>を前もって知ることはできず、<br />
-関数*の振る舞いを見ながら試行錯誤することが必要になる。</p>
-<p>*最適化したい量(損失関数と呼ぶ)の振る舞い</p>
+<p>グラフが描画できたら、再生ボタンを押してみよう。</p>
+<p>青(<span class="math notranslate nohighlight">\(\eta=0.2\)</span>)は<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎて、谷を行ったり来たりしていることが分かる。一方で紫(<span class="math notranslate nohighlight">\(\eta=0.001\)</span>)は小さすぎて、なかなか最適解にたどり着かない。</p>
+<p>一般に考えたい関数に関して適切な<span class="math notranslate nohighlight">\(\eta\)</span>を前もって知ることはできず、最適化したい量(関数)の振る舞いを見ながら試行錯誤することが必要になる。</p>
 </div>
 </div>
 <div class="section" id="id6">
 <h2><span class="section-number">7.3. </span>勾配の計算について<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
 <h3><span class="section-number">7.3.1. </span>解析的に微分が計算できる場合<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>たとえば以下の例のように<br />
-例1: <span class="math notranslate nohighlight">\(f(x)= \sum^p_{i=0} a_i x^i\)</span> (多項式)<br />
-例2: <span class="math notranslate nohighlight">\(f(x)= \exp{(-ax^2+bx+c)}\)</span> (指数関数)<br />
-例3: <span class="math notranslate nohighlight">\(f(x)= \ln{x}\)</span> (自然対数)</p>
+<p>たとえば以下の例のように</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)= \sum^p_{i=0} a_i x^i\)</span> (多項式)</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)= \exp{(-ax^2+bx+c)}\)</span> (指数関数)</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)= \ln{x}\)</span> (自然対数)</p></li>
+</ol>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f(x)\)</span>が閉じた形で書き下せる</p></li>
-<li><p>興味のある区間(定義域)で微分形が計算でき、有限の値を持つ場合</p></li>
+<li><p>興味のある区間(定義域)で微分形が計算でき、有限の値を持つ</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(x\)</span>をその微分した表式に代入することで勾配法の実装が可能となる.<br />
+<p>場合、<span class="math notranslate nohighlight">\(x\)</span>をその微分した表式に代入することで勾配法の実装が可能となる.<br />
 ([有限の値をもつ場合]と限定したのは、微分が発散してしまうとパラメータの更新には実用上意味をなさないため)</p>
-<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)が手で計算できるなら数値計算する必要がないし、<br />
-根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。</p>
-<p>※最も単純な求根アルゴリズムであるニュートン法についての説明についてはおまけのニュートン法の章に記載がある。</p>
-<p>大量の関数を考えて微分した表式が必要な場合は、<br />
-いちいち関数の微分形を導出してコードにするのは面倒なので、<br />
-SympyなどのモジュールやMathematicaなどのツールを使うのも一つの手です.</p>
+<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)がすべて手で計算できるなら数値計算する必要がないし、根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。　　
+※最も単純な求根アルゴリズムであるニュートン法についての説明についてはおまけのニュートン法の章に記載がある。</p>
+<p>大量の関数を考えて微分した表式が必要な場合は、いちいち関数の微分形を導出してコードにするのは面倒なので、SympyなどのモジュールやMathematicaなどの数式そのものの微分などを扱えるツールを使うのも一つの手である。</p>
 </div>
 <div class="section" id="id8">
 <h3><span class="section-number">7.3.2. </span>数値的に勾配を計算する場合<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(f(x)\)</span>が具体的な<span class="math notranslate nohighlight">\(x\)</span>の形で書き下せない場合もある.</p>
 <p>たとえば「<span class="math notranslate nohighlight">\(f(x)\)</span>が条件<span class="math notranslate nohighlight">\(x\)</span>のもとで行った何らかの測定結果である場合」などがこれにあてはまる。</p>
-<p>より具体的な例をあげるなら、
-あなたはとある医療薬品の効果(数値で表現できると仮定)を調べる研究をしているとして、<br />
-温度<span class="math notranslate nohighlight">\(x\)</span>を変えながら何回か測定して<span class="math notranslate nohighlight">\(f(x)\)</span>の値を得るような状況を想像してください.</p>
-<p>このような場合、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の具体的な表式がわからないので、勾配だって<span class="math notranslate nohighlight">\(x\)</span>に対する式として書き下すことはできない。</p>
-<p>しかし、微分の定義に立ち返って考えてみると、<br />
-<span class="math notranslate nohighlight">\(f(x=a)\)</span>の値と、<span class="math notranslate nohighlight">\(x=a\)</span>から微小量<span class="math notranslate nohighlight">\(\delta\)</span>だけ動かした場所での値<span class="math notranslate nohighlight">\(f(a+\delta)\)</span><br />
-がわかっていれば<span class="math notranslate nohighlight">\(f'(x=a)\)</span>を”近似的に”計算することができる。</p>
+<p>より具体的な例をあげるなら…</p>
+<blockquote>
+<div><p>あなたはとある医療薬品の効果(数値で表現できると仮定)を調べる研究をしているとして、<br />
+温度<span class="math notranslate nohighlight">\(x\)</span>を変えながら何回か測定して<span class="math notranslate nohighlight">\(f(x)\)</span>の値を調べている</p>
+</div></blockquote>
+<p>といった状況を想像してください.　　
+このような場合、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の具体的な表式がわからないので、勾配についても<span class="math notranslate nohighlight">\(x\)</span>に対する式として書き下すことはできない。</p>
+<p>しかし、微分の定義に立ち返って考えてみると、<span class="math notranslate nohighlight">\(f(x=a)\)</span>の値と、<span class="math notranslate nohighlight">\(x=a\)</span>から微小量<span class="math notranslate nohighlight">\(\delta\)</span>だけ動かした場所での値<span class="math notranslate nohighlight">\(f(a+\delta)\)</span>がわかっていれば<span class="math notranslate nohighlight">\(f'(x=a)\)</span>を”近似的に”計算することができる。</p>
+<div class="math notranslate nohighlight">
+\[
+\left. \frac{df(x)}{dx} \right|_{x=a} = \lim_{\delta \to 0} \frac{f(a+\delta) - f(a)}{\delta}
+\]</div>
 <p>ただし、<span class="math notranslate nohighlight">\(\delta\)</span>があまり小さくないと下の絵のように正しく勾配が計算できない一方で、<span class="math notranslate nohighlight">\(x\)</span>を調整する精度に限界があったり、勾配を計算する際のコンピュータの数値精度には限りがありますので、文字通りの意味で”無限に小さい”の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることはできず、有限の小さな値で<span class="math notranslate nohighlight">\(\delta\)</span>を表現することになり、それにより数値計算に大きな誤差が紛れ込む危険性もある。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>を動かしたときの関数の変動度合いがものすごく大きい(たとえば係数がめちゃくちゃデカイ)と、数値微分の精度は<span class="math notranslate nohighlight">\(\delta\)</span>に対する依存性が強くなってしまう。</p>
-<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1lY6wW0T09Nh9LoNNYRKrykaKMMGOFkhV" /></p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/finite_diff.png?raw=true" width=60%>  
 <p>解析的に微分ができる関数を使って、数値微分の簡単な例を示しておこう。</p>
-<p>関数<span class="math notranslate nohighlight">\(f(x)= x^4 - 3x^3 + 2x - 1\)</span>を<span class="math notranslate nohighlight">\(x=5\)</span>で微分した値<span class="math notranslate nohighlight">\(f'(5)\)</span>は定義から277となるが、<br />
-<span class="math notranslate nohighlight">\(x=5\)</span>から<span class="math notranslate nohighlight">\(\epsilon\)</span>だけずらした点での値を使って数値微分してみると</p>
+<p>関数 <span class="math notranslate nohighlight">\(f(x)= x^4 - 3x^3 + 2x - 1\)</span> を <span class="math notranslate nohighlight">\(x=5\)</span> で微分した値 <span class="math notranslate nohighlight">\(f'(5)\)</span> は定義から277となるが、
+<span class="math notranslate nohighlight">\(x=5\)</span> から <span class="math notranslate nohighlight">\(\epsilon\)</span> だけずらした点での値を使って数値微分してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -36385,18 +36285,23 @@ eps	 1.0e-15 	f&#39;(5)	  227.3736754432320 	 diff. 1.7e+00
 </div>
 </div>
 <p>となり, <span class="math notranslate nohighlight">\(\epsilon=0.01\)</span>程度では微分の値の誤差が1, <span class="math notranslate nohighlight">\(\epsilon=\)</span> 1.e-5でも2桁程度の精度しかない。</p>
-<p>一番小さい<span class="math notranslate nohighlight">\(\epsilon=\)</span>で精度が逆に悪くなっているのは、<br />
+<p>一番小さい<span class="math notranslate nohighlight">\(\epsilon=\)</span>で精度が逆に悪くなっているのは、
 あまりに小さい<span class="math notranslate nohighlight">\(\epsilon\)</span>だと<span class="math notranslate nohighlight">\(f(x+\epsilon)-f(x)\)</span>という引き算部分で数値誤差が発生し、<br />
-さらに分母の小さな<span class="math notranslate nohighlight">\(\epsilon\)</span>によってそれが増幅されるため。</p>
-<p>進んだ注)<br />
-中心差分という、分割する区間を中央をxに揃える方式だと、精度が若干改善される。<br />
-このことは、テイラー展開から示すことができる<a class="reference external" href="https://ja.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86">→参考</a></p>
+さらに分母の小さな<span class="math notranslate nohighlight">\(\epsilon\)</span>によってそれが増幅されるためで、
+微小な値にすればするほど厳密な答えを得られるというわけではない。</p>
+<p><span class="math notranslate nohighlight">\(\clubsuit\)</span> 進んだ注<br />
+中心差分という、分割する区間を中央をxに揃える方式だと、精度が若干改善される。このことは、テイラー展開から示すことができる<a class="reference external" href="https://ja.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86">→参考</a>
+つまり、微分を下記の右辺のように評価する方法:</p>
+<div class="math notranslate nohighlight">
+\[
+\left. \frac{df(x)}{dx} \right|_{x=a} \approx \lim_{a\to 0} \frac{f(x+a/2)-f(x-a/2)}{a}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fp2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">eps</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">eps</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;分割する区間の中央をxに揃える方式&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中心差分: 分割する区間の中央をxに揃える方式&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">]:</span>
     <span class="n">eps</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;eps</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5.1e</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">f&#39;(&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;)</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%18.13f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">fp2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span> <span class="p">),</span>
@@ -36422,23 +36327,19 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <div class="section" id="id9">
 <h2><span class="section-number">7.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の話題<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>冒頭にも書いたとおり、我々の身の回りにある多くの問題は最適化問題に帰着される。</p>
-<p>もう少し細かいことをいうと、今回考えたような連続的な変数に対して<br />
-最大/最小値を探索することは連続最適化と呼ばれ<br />
-離散的な変数を含む離散最適化/組み合わせ最適化とは区別される。</p>
-<p>組合せ最適化には、巡回セールスマン問題やナップサック問題などが含まれる。</p>
+<p>もう少し細かいことをいうと、今回考えたような連続的な変数に対して最大/最小値を探索することは連続最適化と呼ばれ、離散的な変数を含む離散最適化/組み合わせ最適化とは区別される。</p>
+<p>組合せ最適化には、巡回セールスマン問題、ナップサック問題などが含まれる。<br />
+過去の授業の最終課題として、「予め用意された日常的に使う食品群の中から、栄養バランスを考慮しつつ食品を選び献立作成に役立てる」という課題に着手した学生もいたが、
+これも材料の単位を個数・100gごとなどで離散化すれば、組合せ最適化問題として解くことができる。</p>
 </div>
 <div class="section" id="id10">
 <h2><span class="section-number">7.5. </span>数学的準備: 微分<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<br />
-<span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。</p>
-<p>一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、<br />
-それを式で表現しようと思うと、様々な関数の形を考える必要がある。<br />
+<p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。</p>
+<p>一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、それを式で表現しようと思うと、様々な関数の形を考える必要がある。<br />
 (たとえば何かの値の季節変動などをイメージしよう)</p>
-<p>そこで、直線の場合の[傾き]を、直線以外の関数に”拡張”しようと考えるのは<br />
-至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
-<p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが<br />
-最も代表的なものは、17世紀にニュートンとライプニッツが確立したとする説で<br />
-ニュートンは微分の概念を独自に定式化し、天体の軌道などを予測するなどの偉大な功績を残した.</p>
+<p>そこで、直線の場合の傾きを、直線以外の関数に”拡張”しようと考えるのは至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
+<p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが、
+最も代表的なものは、17世紀にニュートンとライプニッツが確立したとする説で、ニュートンは微分の概念を独自に定式化し、天体の軌道などを予測するなどの偉大な功績を残した.</p>
 <p>以下の内容は、厳密性はかなり犠牲にして微分の概念を導入している。
 (もちろん、大学の数学の教科書に載っている関数の連続性や微分の厳密な定義も非常に重要です).</p>
 <div class="section" id="id11">
@@ -36541,8 +36442,8 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_chapter6_Regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -36559,18 +36460,20 @@ eps	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      <div class="extra_footer">
-        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+    <div class="container">
+      <p>
+        
+          <div class="extra_footer">
+            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-      </div>
-  </p>
-</footer>
+          </div>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
