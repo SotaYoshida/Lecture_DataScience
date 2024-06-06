@@ -36249,7 +36249,7 @@ gg==\
 \]</div>
 <p>ただし、<span class="math notranslate nohighlight">\(\delta\)</span>があまり小さくないと下の絵のように正しく勾配が計算できない一方で、<span class="math notranslate nohighlight">\(x\)</span>を調整する精度に限界があったり、勾配を計算する際のコンピュータの数値精度には限りがありますので、文字通りの意味で”無限に小さい”の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることはできず、有限の小さな値で<span class="math notranslate nohighlight">\(\delta\)</span>を表現することになり、それにより数値計算に大きな誤差が紛れ込む危険性もある。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>を動かしたときの関数の変動度合いがものすごく大きい(たとえば係数がめちゃくちゃデカイ)と、数値微分の精度は<span class="math notranslate nohighlight">\(\delta\)</span>に対する依存性が強くなってしまう。</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/finite_diff.png?raw=true" width=60%>  
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/finite_diff.png?raw=true" width=90%>  
 <p>解析的に微分ができる関数を使って、数値微分の簡単な例を示しておこう。</p>
 <p>関数 <span class="math notranslate nohighlight">\(f(x)= x^4 - 3x^3 + 2x - 1\)</span> を <span class="math notranslate nohighlight">\(x=5\)</span> で微分した値 <span class="math notranslate nohighlight">\(f'(5)\)</span> は定義から277となるが、
 <span class="math notranslate nohighlight">\(x=5\)</span> から <span class="math notranslate nohighlight">\(\epsilon\)</span> だけずらした点での値を使って数値微分してみると</p>
