@@ -471,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     8.6.1. 余談: ファイル名に使用すべきでない文字
+     8.6.1. ファイル名に使用すべきでない文字
     </a>
    </li>
   </ul>
@@ -591,7 +591,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     8.6.1. 余談: ファイル名に使用すべきでない文字
+     8.6.1. ファイル名に使用すべきでない文字
     </a>
    </li>
   </ul>
@@ -1355,7 +1355,7 @@ macOSの場合→ <code class="docutils literal notranslate"><span class="pre">/
 (プログラムなどを書く人には厄介な仕様だったりする)</p></li>
 </ul>
 <p>コンピュータには、ホームディレクトリというものが指定されておりWindowsなら <code class="docutils literal notranslate"><span class="pre">C:\Users\ユーザー名</span></code>,Macなら <code class="docutils literal notranslate"><span class="pre">/Users/ユーザー名</span></code>に通常設定されていて、ユーザーがよく使うデスクトップや写真・ドキュメントなどのフォルダはホームディレクトリ直下に配置されている。また、ホームディレクトリは<code class="docutils literal notranslate"><span class="pre">~/</span></code>で簡略化して指定することもできる。
-OSにもよるが…ライトユーザーはホームディレクトリより上の階層をあまり触らないことが推奨されている(と思う)。理由は、システムファイルが入っていることが多いため。</p>
+OSにもよるが…ライトユーザーはホームディレクトリより上の階層を触らないことが推奨されている。理由は、システムファイルなどが入っているため。</p>
 <p>パスの指定の仕方にはその他にも方法があり、ピリオドやスラッシュを駆使して現在のディレクトリからの[相対パス]で指定する事もできる。たとえば…</p>
 <p>Home<br />
 ├ Documents<br />
@@ -1372,15 +1372,16 @@ OSにもよるが…ライトユーザーはホームディレクトリより上
 <p>こういう階層構造になっていて、現在<code class="docutils literal notranslate"><span class="pre">Home/Documents/AdDS2020/Report1</span></code>という
 ディレクトリにいるとすると、そこから</p>
 <ul class="simple">
-<li><p>StudentAへの相対パスは <code class="docutils literal notranslate"><span class="pre">./StudentA</span></code></p></li>
+<li><p>StudentAへの相対パスは <code class="docutils literal notranslate"><span class="pre">./StudentA</span></code>や<code class="docutils literal notranslate"><span class="pre">StudentA</span></code></p></li>
 <li><p>Report2への相対パスは <code class="docutils literal notranslate"><span class="pre">../Report2</span></code></p></li>
 <li><p>AdDS2019への相対パスは <code class="docutils literal notranslate"><span class="pre">../../AdDS2019</span></code></p></li>
-<li><p>Pictureへの相対パスは<code class="docutils literal notranslate"><span class="pre">../../../Pictures</span></code></p></li>
+<li><p>Pictures内のhonyarara.jpgへの相対パスは<code class="docutils literal notranslate"><span class="pre">../../../Pictures/honyarara.jpg</span></code></p></li>
 </ul>
 <p>といった感じ。前述のように愚直にReport1フォルダを指定するときは<code class="docutils literal notranslate"><span class="pre">/Users/Sota/Documents/AdDS2020/Report1</span></code>といった感じで、これを相対パスと対比させて絶対パスと呼んだりする。</p>
 <div class="section" id="id10">
-<h3><span class="section-number">8.6.1. </span>余談: ファイル名に使用すべきでない文字<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>授業で公開しているノートブックの名前は基本的に半角英数字とアンダースコアのみで構成されている。これは別に作成者(吉田)がイキってる訳ではない。</p>
+<h3><span class="section-number">8.6.1. </span>ファイル名に使用すべきでない文字<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>授業で公開しているノートブックの名前は基本的に半角英数字とアンダースコアのみで構成されている。
+これは別に作成者(吉田)がイキってる訳ではない。</p>
 <ul class="simple">
 <li><p>半角スペース(以下␣という記号で表現する)</p></li>
 <li><p>各種括弧 (),{},[]</p></li>
@@ -1412,10 +1413,11 @@ Google Colab.上では冒頭に!を付けることで、以下に例を示すよ
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls test\ .pdf
 </pre></div>
 </div>
-<p>といった具合に、人間側の手間が必要になってしまう。<br />
-人間が目で見るフォルダ名と機械に与えるべきパスが異なるというのは…やっぱり色んな場面で不便が生じる。
-上記の記号や２バイト以上の文字はファイル(フォルダ)名に使わないのがコンピューターにとっては無難なのだ。
-こういうことは小中高や大学でも理由付きで教えてくれなかったりするので、プログラミングをやって初めて気がつく(気にするようになった)という人も多いかもしれない。</p>
+<p>といった具合に、人間側の手間が必要になってしまう。</p>
+<p>人間が目で見るフォルダ名と機械に与えるべきパスが異なるというのは、やはり色んな場面で不便が生じる。
+上記の記号や２バイト以上の文字はファイル(フォルダ)名に使わないのがコンピューターにとっては無難である。</p>
+<p>こういうことは小中高や大学でも理由付きで教えてくれなかったりするので、プログラミングをやって初めて気がつく(気にするようになった)という人も多いかもしれない。</p>
+<p>機械判読可能なデータの表記方法やファイル名の命名規則などは、プログラムを書く上での基本的な知識として覚えておくと良い。</p>
 </div>
 </div>
 </div>
