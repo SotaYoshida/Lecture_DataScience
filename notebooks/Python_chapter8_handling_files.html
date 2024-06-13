@@ -1037,7 +1037,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#処理Aのための関数</span>
-<span class="c1">#input_strが、&quot;年月日 時刻(h:m:s) 午前/午後 GMT+9&quot; という文字列である、という文字列の[構造]を知った上での実装になっていることに注意</span>
+<span class="c1">#input_strが、&quot;年月日 時刻(h:m:s) 午前/午後 GMT+9&quot; という文字列である、というデータの&quot;構造&quot;を知った上での実装になっていることに注意</span>
 <span class="k">def</span> <span class="nf">make_time_24h</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>        
     <span class="n">time</span>  <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">AMPM</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
@@ -1055,15 +1055,12 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <span class="n">nlines</span><span class="o">=</span><span class="p">[]</span> <span class="c1">#整理したものをリストとしてまとめるための空のリスト</span>
 <span class="k">for</span> <span class="n">nth</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">csv_lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span> 
     <span class="n">nline</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># 改行文字の除去、ダブルクォーテーションの除去, カンマで分割    </span>
-    <span class="c1"># この時点でnlineは0:時刻 1:性別, ...のリストとなっているはず print()でcheckしてみよう</span>
     <span class="c1"># 処理A)</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">make_time_24h</span><span class="p">(</span><span class="n">nline</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="c1">#print(&quot;nline[0]&quot;, nline[0], &quot;time&quot;, time)</span>
     <span class="n">M_or_F</span> <span class="o">=</span> <span class="n">nline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#性別</span>
 
     <span class="c1">#　処理B)</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">nline</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span> <span class="c1">#各科目の値だけのリスト(points)を作成</span>
-    <span class="c1"># 上記をmap関数にしてみよう。</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">nline</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span> <span class="c1">#各科目の値だけのリスト(points)を作成, map関数にするのもあり</span>
 
     <span class="n">nline</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">M_or_F</span><span class="p">]</span><span class="o">+</span><span class="n">points</span>  <span class="c1">#リストを連結(時刻,性別と各科目の値を同じ階層で結合)して、nlineという名前で上書き</span>
     <span class="n">nlines</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">nline</span> <span class="p">]</span>
@@ -1092,6 +1089,8 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 </div>
 <p>相関分析は別の章で扱ったので、具体例は省略する。</p>
+<p>もちろん、このようなデータを扱う際には、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>ライブラリを使うともっと簡単にデータを扱うことができるが、
+このような泥臭い？基本的な操作を覚えておくことは、データ解析の基礎を固める上で非常に重要である。</p>
 </div>
 </div>
 <div class="section" id="clubsuit">
