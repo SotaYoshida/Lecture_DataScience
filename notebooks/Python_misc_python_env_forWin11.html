@@ -37,19 +37,17 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -88,7 +86,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -296,8 +294,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
+                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -305,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -313,11 +311,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_python_env_forWin11.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -329,12 +327,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
+                    class="fab fa-github"></i>リポジトリ</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_python_env_forWin11.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
         
     </div>
 </div>
@@ -342,8 +340,8 @@ const thebe_selector_output = ".output, .cell_output"
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
+        title="全画面モード"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -356,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_env_forWin11.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -367,10 +365,10 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> 目次
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -397,40 +395,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pythonの環境構築 (Windows11版)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#windows">
-   Windowsターミナルの導入
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wsl2">
-   WSL2の導入
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wslpython">
-   WSL下でのPython環境の構築
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="python-windows11">
@@ -451,27 +416,12 @@ const thebe_selector_output = ".output, .cell_output"
 コマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉です。</p>
 <p>CUIに対して、普段我々が使っているポインタやウィンドウなどは<br />
 GUI(Graphical User Interface)に相当します。</p>
-<p>何故現代においてもCUIが必要なのか、<br />
-つまりマウスでポインタを動かしたりクリックするのではなく<br />
-一見不便そうな文字列だらけのインターフェースが用いられるのか、<br />
-そこには<em>単に映画やドラマでハッカーの邪悪さを演出する</em>以上の理由があります。</p>
-<p>計算機(コンピュータ)の発展の歴史的側面、パフォーマンス的側面から<br />
-その理由をすべて説明することはしませんが例えば授業で用いた<br />
-<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドなどはCUIの利便性を表す一例になっていて、<br />
-こうしたいわゆる”機械的”な操作についてはCUIに軍配が挙がります。</p>
 <p>Windows Terminalは、2019年にマイクロソフトがリリースしたターミナルで<br />
 コマンドプロンプトやPowerShellといったWindows独自のCUIに加えて<br />
 後述のWSLを統合的に扱うことができる環境となっています。</p>
-<ul>
-<li><p>Windows10の場合</p>
-<p>後々のことも考えてこれを導入しておこう。<br />
-MS storeでWindows terminalと検索し、 入手を押す</p>
-</li>
-<li><p>Windows11の場合</p>
-<p>標準で入っているのでWindowsボタンで開くメニューから<br />
-「terminal」などと検索すると出てくる</p>
-</li>
-</ul>
+<p>Windows11以降標準で入っているのでWindowsボタンで
+開くメニューから、「ターミナル」「terminal」などと検索すると出てくる。</p>
+<p>開く際に右クリックすると管理者権限で開く事もできる(WSLのインストール時に必要)。</p>
 </div>
 <div class="section" id="wsl2">
 <h2>WSL2の導入<a class="headerlink" href="#wsl2" title="Permalink to this headline">¶</a></h2>
@@ -485,9 +435,7 @@ MS storeでWindows terminalと検索し、 入手を押す</p>
 <p>Windowsユーザーが、プログラミング環境の構築やLinux-likeな作業をしたい場合<br />
 方法は幾つかあるが最近だとWindows Subsystem for Linux (通称WSL)を使うのが<br />
 最も簡単かつ安全な方法の１つとされている。</p>
-<p>この授業ではLinuxの中のUbuntuというディストリビューションを用意して使うことにしよう。<br />
-Ubuntu自体はLinux OSの中ではGUI環境も良く出来ているディストリビューションで人気が高い。<br />
-~日本語のシステムフォントがひどいWなんとかというOSよりはフォント・レンダリングも美しい~</p>
+<p>この授業ではLinuxの中のUbuntuというディストリビューションを用意して使うことにしよう。</p>
 <ul>
 <li><p><strong>手順1. WSLと仮想マシンプラットフォームの有効化</strong></p>
 <p>スタートメニューから「コントロールパネル」を検索して開く
@@ -499,32 +447,45 @@ Ubuntu自体はLinux OSの中ではGUI環境も良く出来ているディスト
 </ul>
 <p>の２つにチェックを入れて有効化する(再起動が必要)</p>
 </li>
-<li><p><strong>手順2. Windows TerminalからWSLのインストール</strong></p>
-<p>スタートメニューからterminalなどと打ち込んで<br />
-Windows Terminalで右クリックして[管理者として実行]する<br />
-このアプリがデバイスに変更を加えることを許可しますか→[はい]</p>
-<p>ターミナルに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="n">install</span>
+<li><p><strong>手順2. Linuxカーネル更新プログラムの適用</strong></p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>この操作はもともとAMD RyzenのCPUを搭載したマシンでWSL2を使う場合に必要だったが、
+IntelのCPUを搭載したマシンでも必要になったようだ。</p>
+</div>
+<p><a class="reference external" href="https://docs.microsoft.com/ja-jp/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">このページ</a>の手順4にあるリンクから
+「x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージ」をクリックし、
+ダウンロードしたファイルを実行する。
+Next→Windowsシステム側の警告「はい」を選択→Finishで完了する。</p>
+</li>
+<li><p><strong>手順3. WSLのバージョンの確認</strong></p>
+<p>Windows Terminal上で</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">-</span><span class="n">l</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
-<p>と打ち込んで実行(Enter)する</p>
-  <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/wsl_2.png?raw=true" width=50%>   
-<p>大量にヘルプが表示される場合は、</p>
+<p>と打ち込んでEnterを押すと、WSLのバージョンが表示される。
+もしもバージョンが1であれば、WSL2への変更が推奨される。</p>
+<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/wsl/basic-commands?source=recommendations#set-wsl-version-to-1-or-2">参考リンク</a></p>
+</li>
+<li><p><strong>手順4. Windows TerminalからWSLのインストール</strong></p>
+<p>スタートメニューからterminalなどと打ち込んで<br />
+<strong>ターミナルの上で右クリックして[管理者として実行]する</strong><br />
+このアプリがデバイスに変更を加えることを許可しますか→[はい]</p>
+<p>ターミナルに</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="n">install</span> <span class="o">-</span><span class="n">d</span> <span class="n">Ubuntu</span>
 </pre></div>
 </div>
-<p>と明示的にUbuntuを指定してインストールする</p>
+<p>と打ちEnterを押すことで、Ubuntuのインストールが始まる。</p>
 </li>
-<li><p><strong>手順3. Ubuntuの起動</strong></p>
+<li><p><strong>手順5. Ubuntuの起動</strong></p>
 <p>Ubuntuのウィンドウが開く※ので<br />
 指示(Press any key to continue…)に従って適当なキーを押す。</p>
   <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/wsl_3.png?raw=true" width=50%>   
-<p>※RyzenのCPUが搭載されたマシンを使っていて<br />
-ウィンドウが開いたときにerror: 0x800701bcが発生している場合は
+<p>※ウィンドウが開いたときにerror: 0x800701bcが発生している場合は
 <a class="reference external" href="https://docs.microsoft.com/ja-jp/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">このページ</a>を参考に<br />
-「Linux カーネル更新プログラム パッケージ」をダウンロードして実行した後、手順1→2を再度行う。</p>
+「Linux カーネル更新プログラム パッケージ」をダウンロードして実行した後、手順2→4を再度行う。</p>
 </li>
-<li><p><strong>手順4. Ubuntuの初期設定</strong></p>
+<li><p><strong>手順6. Ubuntuの初期設定</strong></p>
 <p>しばらくすると<code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">new</span> <span class="pre">UNIX</span> <span class="pre">username:</span> </code><br />
 とLinuxシステム用のusernameを求められるので<br />
 適当なものを入力してEnterを押す<br />
@@ -631,8 +592,8 @@ $pip3 install Selenium
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_misc_python_environment.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -649,18 +610,20 @@ $pip3 install Selenium
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      <div class="extra_footer">
-        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+    <div class="container">
+      <p>
+        
+          <div class="extra_footer">
+            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-      </div>
-  </p>
-</footer>
+          </div>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
