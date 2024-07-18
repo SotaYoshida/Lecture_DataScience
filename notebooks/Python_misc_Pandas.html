@@ -426,6 +426,11 @@
    DataFrameのcsv/Excelファイルへの書き出し
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excel">
+   Excelファイルの読み込みに関する補足
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -795,25 +800,7 @@ Webから直接xlsxファイルを読み込んでみよう。</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
-11肉類
-12鶏卵
-13乳類
-14油脂類
-15菓子類
-16し好飲料
-17調味料及び香辛料
-18調理済み流通食品類
-1穀類
-2いも及びでん粉類
-3砂糖及び甘味類
-4豆類
-5種実類
-6野菜類
-7果実類
-8きのこ類
-9藻類
-表全体
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.io.excel._base.ExcelFile at 0x12f82ca60&gt;
 </pre></div>
 </div>
 </div>
@@ -2136,6 +2123,343 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </div>
 <p>上記の関数内で文字コードを指定することもできる。<br />
 例: <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8_sig&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">encoding=&quot;shift_jis&quot;</span></code></p>
+</div>
+<div class="section" id="excel">
+<h2>Excelファイルの読み込みに関する補足<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>内部では<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>というクラスがExcelファイルを扱うために用意されている。</p>
+<p>Excelファイルが単一のシートしかない場合や、上でやったように<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>化してシート名を既に知っている場合は、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>関数で直接読み込むことができ、ataFrameとして取得できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mext.go.jp/content/20201225-mxt_kagsei-mext_01110_012.xlsx&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;1穀類&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>...</th>
+      <th>Unnamed: 52</th>
+      <th>Unnamed: 53</th>
+      <th>Unnamed: 54</th>
+      <th>Unnamed: 55</th>
+      <th>Unnamed: 56</th>
+      <th>Unnamed: 57</th>
+      <th>Unnamed: 58</th>
+      <th>Unnamed: 59</th>
+      <th>Unnamed: 60</th>
+      <th>更新日：2021年12月28日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>食　品　番　号</td>
+      <td>索　引　番　号</td>
+      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>備　　考</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>食　品　名</td>
+      <td>廃　棄　率</td>
+      <td>エネルギー</td>
+      <td>NaN</td>
+      <td>水　分</td>
+      <td>たんぱく質</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アルコール</td>
+      <td>食塩相当量</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>アミノ酸組成による\nたんぱく質</td>
+      <td>たんぱく質</td>
+      <td>...</td>
+      <td>ナイアシン当量</td>
+      <td>ビ\nタ\nミ\nン\nＢ６</td>
+      <td>ビ\nタ\nミ\nン\nＢ１２</td>
+      <td>葉　酸</td>
+      <td>パントテン酸</td>
+      <td>ビ オ チ ン</td>
+      <td>ビタミンC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>1.0</td>
+      <td>01139</td>
+      <td>201</td>
+      <td>ひえ　精白粒</td>
+      <td>0</td>
+      <td>1534</td>
+      <td>361</td>
+      <td>12.9</td>
+      <td>8.4</td>
+      <td>9.4</td>
+      <td>...</td>
+      <td>2.3</td>
+      <td>0.17</td>
+      <td>(0)</td>
+      <td>14</td>
+      <td>1.50</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>歩留り： 55～60 %</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>1.0</td>
+      <td>01140</td>
+      <td>202</td>
+      <td>もろこし　玄穀</td>
+      <td>0</td>
+      <td>1454</td>
+      <td>344</td>
+      <td>12.0</td>
+      <td>(9.0)</td>
+      <td>10.3</td>
+      <td>...</td>
+      <td>(8.0)</td>
+      <td>0.31</td>
+      <td>(0)</td>
+      <td>54</td>
+      <td>1.42</td>
+      <td>15.0</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名： こうりゃん、ソルガム、たかきび、マイロ</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1.0</td>
+      <td>01141</td>
+      <td>203</td>
+      <td>もろこし　精白粒</td>
+      <td>0</td>
+      <td>1473</td>
+      <td>348</td>
+      <td>12.5</td>
+      <td>(8.0)</td>
+      <td>9.5</td>
+      <td>...</td>
+      <td>(5.0)</td>
+      <td>0.24</td>
+      <td>(0)</td>
+      <td>29</td>
+      <td>0.66</td>
+      <td>-</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名： こうりゃん、ソルガム、たかきび、マイロ\n歩留り： 70～80 %</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>1.0</td>
+      <td>01142</td>
+      <td>204</td>
+      <td>ライむぎ　全粒粉</td>
+      <td>0</td>
+      <td>1342</td>
+      <td>317</td>
+      <td>12.5</td>
+      <td>10.8</td>
+      <td>12.7</td>
+      <td>...</td>
+      <td>4.2</td>
+      <td>0.22</td>
+      <td>(0)</td>
+      <td>65</td>
+      <td>0.87</td>
+      <td>9.5</td>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名：黒麦（くろむぎ）</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>1.0</td>
+      <td>01143</td>
+      <td>205</td>
+      <td>ライむぎ　ライ麦粉</td>
+      <td>0</td>
+      <td>1368</td>
+      <td>324</td>
+      <td>13.5</td>
+      <td>7.8</td>
+      <td>8.5</td>
+      <td>...</td>
+      <td>2.6</td>
+      <td>0.10</td>
+      <td>(0)</td>
+      <td>34</td>
+      <td>0.63</td>
+      <td>-</td>
+      <td>(0)</td>
+      <td>-</td>
+      <td>0</td>
+      <td>別名:黒麦（くろむぎ）\n歩留り： 65～75 %</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 62 columns</p>
+</div></div></div>
+</div>
+<p>ファイルによっては、読み込む際にエラーが出ることがある。</p>
+<p>その場合、<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>というライブラリをインストールすることで解決することがある。
+以下のようにしてインストールし、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>のオプションとして<code class="docutils literal notranslate"><span class="pre">engine=&quot;openpyxl&quot;</span></code>を指定するとよい。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install openpyxl
+df = pd.read_excel(&#39;filepath.xlsx&#39;,engine=&quot;openpyxl&quot;)
+</pre></div>
+</div>
+<p>Pythonには伝統的にExcelファイルを扱うためのライブラリが複数存在しており、pandasの内部でも用いられている。
+中でも、ファイルを読み込む際に良く用いられてきたのが<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>である。
+pandasのバージョン1.1まではExcelファイルを扱う際、内部的に<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用していたが、v1.2からは<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>形式は<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>、<code class="docutils literal notranslate"><span class="pre">.xls</span></code>は<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用するようになった。
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html">https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html</a></p>
+<p>したがって、使用している環境で<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>や<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>などがなければインストールしたり、ファイルを読み込む際に明示的にengineを指定してやる必要がある。</p>
 </div>
 </div>
 
