@@ -37,17 +37,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -86,7 +88,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -294,8 +296,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
-                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -303,7 +305,7 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -311,11 +313,11 @@
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_Pandas.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -327,12 +329,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
-                    class="fab fa-github"></i>リポジトリ</button></a>
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_Pandas.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
@@ -340,8 +342,8 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
-        title="全画面モード"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -354,7 +356,7 @@
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Pandas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -365,10 +367,10 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 目次
+                <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -410,10 +412,27 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   Pandasで複雑なエクセルファイルを操作する
+  <a class="reference internal nav-link" href="#pandascsv-excel">
+   Pandasでcsv/Excelファイルを読み込む
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     csvファイルの読み込み
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel">
+     Excelファイルの読み込み
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Excelファイルの読み込みに関する補足
+      </a>
+     </li>
+    </ul>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
      データの整形
@@ -426,11 +445,6 @@
    DataFrameのcsv/Excelファイルへの書き出し
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#excel">
-   Excelファイルの読み込みに関する補足
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -439,7 +453,96 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Pandasの使い方 (基礎)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   DataFrame型
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   DataFrameの要素を確認・指定する方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     特定の列を取得したい場合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     列の追加
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     特定の行を取得したい場合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     より複雑な行・列の抽出
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#webdataframe">
+   Webページにある表をDataFrameとして取得する
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandascsv-excel">
+   Pandasでcsv/Excelファイルを読み込む
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     csvファイルの読み込み
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel">
+     Excelファイルの読み込み
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Excelファイルの読み込みに関する補足
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     データの整形
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframecsv-excel">
+   DataFrameのcsv/Excelファイルへの書き出し
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Pandas.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
@@ -481,6 +584,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataの型 &lt;class &#39;dict&#39;&gt;
+dfの型 &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>jupyter環境でDataFrameをコードセルの最終行に書くと、”いい感じ”に表示してくれる</p>
 <div class="cell docutils container">
@@ -489,11 +598,85 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>名前</th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Aさん</td>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bさん</td>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cさん</td>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dさん</td>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eさん</td>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>printだとちょっと無機質な感じに。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    名前    出身都道府県    生年   身長
+0  Aさん     Tokyo  1998  172
+1  Bさん   Tochigi  1993  156
+2  Cさん  Hokkaido  2000  162
+3  Dさん     Kyoto  1989  180
+4  Eさん   Tochigi  2002  158
 </pre></div>
 </div>
 </div>
@@ -505,6 +688,70 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>名前</th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Aさん</td>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bさん</td>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cさん</td>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dさん</td>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eさん</td>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">info()</span></code>関数を作用させると、詳細な情報が得られる。<br />
 列ごとにどんな種類のデータが格納されているのかや、
@@ -512,6 +759,21 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 4 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   名前      5 non-null      object
+ 1   出身都道府県  5 non-null      object
+ 2   生年      5 non-null      int64 
+ 3   身長      5 non-null      int64 
+dtypes: int64(2), object(2)
+memory usage: 292.0+ bytes
 </pre></div>
 </div>
 </div>
@@ -528,10 +790,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=5, step=1)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;名前&#39;, &#39;出身都道府県&#39;, &#39;生年&#39;, &#39;身長&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -548,6 +820,64 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>Eさん</th>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>などとしてもよい。</p>
 <div class="section" id="id2">
@@ -555,6 +885,16 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;身長&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aさん    172
+Bさん    156
+Cさん    162
+Dさん    180
+Eさん    158
+Name: 身長, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -567,6 +907,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aさん    172
+Bさん    156
+Cさん    162
+Dさん    180
+Eさん    158
+Name: 身長, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <p>値のリスト(正確にはnumpy.ndarray型)として取得したければ</p>
 <div class="cell docutils container">
@@ -575,10 +925,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([172, 156, 162, 180, 158])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;出身都道府県&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Tokyo&#39;, &#39;Tochigi&#39;, &#39;Hokkaido&#39;, &#39;Kyoto&#39;, &#39;Tochigi&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -591,6 +951,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Tokyo&#39;, &#39;Tochigi&#39;, &#39;Hokkaido&#39;, &#39;Kyoto&#39;, &#39;Tochigi&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>ある列が特定のものに一致するもののみを抽出するのも簡単にできる</p>
 <div class="cell docutils container">
@@ -599,11 +964,61 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>Eさん</th>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>これは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;出身都道府県&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Tochigi&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aさん    False
+Bさん     True
+Cさん    False
+Dさん    False
+Eさん     True
+Name: 出身都道府県, dtype: bool
 </pre></div>
 </div>
 </div>
@@ -621,6 +1036,70 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Eさん</th>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -629,6 +1108,70 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Eさん</th>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>リストや<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>を列として追加することができる。</p>
 <div class="cell docutils container">
@@ -639,6 +1182,70 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+      <td>AB</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Eさん</th>
+      <td>Tochigi</td>
+      <td>2002</td>
+      <td>158</td>
+      <td>A</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="id4">
@@ -650,11 +1257,25 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>出身都道府県    Kyoto
+生年         1989
+身長          180
+血液型           B
+Name: Dさん, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <p>値のみ取得したければ先程と同様<code class="docutils literal notranslate"><span class="pre">values</span></code>で<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>を取得できる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Kyoto&#39;, 1989, 180, &#39;B&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -666,11 +1287,109 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+      <td>AB</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">df[1]</span></code>といった使い方は出来ず、KeyErrorが発生する、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File index.pyx:167,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File index.pyx:196,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7081,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7089,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 1
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/core/frame.py:4102,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4100</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4101</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">4102</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4103</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">4104</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3815</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3816</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3817</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: 1
 </pre></div>
 </div>
 </div>
@@ -685,6 +1404,56 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>さらにこのうち身長が170cm以上の人だけがほしければ</p>
 <div class="cell docutils container">
@@ -693,6 +1462,49 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+      <th>血液型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>1998</td>
+      <td>172</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>などとすればよい。<strong>複数条件の場合は、条件を()で囲む必要があることに注意</strong>しよう。</p>
 <p>他にも<code class="docutils literal notranslate"><span class="pre">iloc</span></code>,<code class="docutils literal notranslate"><span class="pre">loc</span></code>などを用いれば、特定の行・列を抽出することができる</p>
@@ -707,6 +1519,36 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,6 +1558,52 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+      <td>162</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+      <td>180</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>を使う場合は、indexの代わりに項目名で指定する。</p>
 <div class="cell docutils container">
@@ -724,6 +1612,43 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>身長</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aさん</th>
+      <td>Tokyo</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>162</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>スライス的に指定することもできる</p>
 <div class="cell docutils container">
@@ -732,6 +1657,48 @@ df[ [True/Falseの配列] ]とすると、Trueに対応する要素のみを返�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>出身都道府県</th>
+      <th>生年</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bさん</th>
+      <td>Tochigi</td>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>Cさん</th>
+      <td>Hokkaido</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Dさん</th>
+      <td>Kyoto</td>
+      <td>1989</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>といった具合。</p>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code>を使う場合、1:4や[1,2,3,4]はindexのスライスではなく、<br />
@@ -751,17 +1718,23 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">lxml</span> <span class="pre">not</span> <span class="pre">found</span></code>といったエラーが出る場合は、適宜必要なものをインストールし、再度実行する.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install lxml</span>
+<span class="c1">#!pip install openpyxl</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>表の数を数えてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
 </pre></div>
 </div>
 </div>
@@ -775,11 +1748,275 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>年度</th>
+      <th>受賞者名</th>
+      <th>受賞者名.1</th>
+      <th>国籍</th>
+      <th>受賞理由[4]・原著ないし関連論文</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2010年</td>
+      <td>NaN</td>
+      <td>アンドレ・ガイム Andre Geim</td>
+      <td>オランダ （ ロシア出身）</td>
+      <td>二次元物質グラフェンに関する革新的実験[注 71]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2010年</td>
+      <td>NaN</td>
+      <td>コンスタンチン・ノボセロフ Konstantin Novoselov</td>
+      <td>ロシア  イギリス</td>
+      <td>二次元物質グラフェンに関する革新的実験[注 71]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2011年</td>
+      <td>NaN</td>
+      <td>ソール・パールマッター Saul Perlmutter</td>
+      <td>アメリカ合衆国</td>
+      <td>遠方の超新星の観測を通した宇宙の加速膨張の発見 Astrophys. J.: 517 (19...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2011年</td>
+      <td>NaN</td>
+      <td>ブライアン・P・シュミット Brian Schmidt</td>
+      <td>オーストラリア  アメリカ合衆国</td>
+      <td>遠方の超新星の観測を通した宇宙の加速膨張の発見 Astrophys. J.: 517 (19...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2011年</td>
+      <td>NaN</td>
+      <td>アダム・リース Adam Riess</td>
+      <td>アメリカ合衆国</td>
+      <td>遠方の超新星の観測を通した宇宙の加速膨張の発見 Astrophys. J.: 517 (19...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2012年</td>
+      <td>NaN</td>
+      <td>セルジュ・アロシュ Serge Haroche</td>
+      <td>フランス （ モロッコ出身）</td>
+      <td>個別の量子系に対する計測および制御[注 72]を可能にする画期的な実験的手法に関する業績[5...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2012年</td>
+      <td>NaN</td>
+      <td>デービッド・ワインランド David J. Wineland</td>
+      <td>アメリカ合衆国</td>
+      <td>個別の量子系に対する計測および制御[注 72]を可能にする画期的な実験的手法に関する業績[5...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2013年</td>
+      <td>NaN</td>
+      <td>フランソワ・アングレール François Englert</td>
+      <td>ベルギー</td>
+      <td>欧州原子核研究機構 (CERN) によって存在が確認された素粒子（ヒッグス粒子）に基づく、質...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2013年</td>
+      <td>NaN</td>
+      <td>ピーター・ヒッグス Peter Higgs</td>
+      <td>イギリス</td>
+      <td>欧州原子核研究機構 (CERN) によって存在が確認された素粒子（ヒッグス粒子）に基づく、質...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2014年</td>
+      <td>NaN</td>
+      <td>赤﨑勇 Isamu Akasaki</td>
+      <td>日本</td>
+      <td>高輝度で省電力の白色光源を実現可能にした青色発光ダイオードの発明[10]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2014年</td>
+      <td>NaN</td>
+      <td>天野浩 Hiroshi Amano</td>
+      <td>日本</td>
+      <td>高輝度で省電力の白色光源を実現可能にした青色発光ダイオードの発明[10]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2014年</td>
+      <td>NaN</td>
+      <td>中村修二 Shuji Nakamura</td>
+      <td>アメリカ合衆国 （ 日本出身）</td>
+      <td>高輝度で省電力の白色光源を実現可能にした青色発光ダイオードの発明[10]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2015年</td>
+      <td>NaN</td>
+      <td>梶田隆章 Takaaki Kajita</td>
+      <td>日本</td>
+      <td>素粒子「ニュートリノ」が質量を持つことを示すニュートリノ振動の発見[11] Nucl. Ph...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2015年</td>
+      <td>NaN</td>
+      <td>アーサー・B・マクドナルド Arthur B. McDonald</td>
+      <td>カナダ</td>
+      <td>素粒子「ニュートリノ」が質量を持つことを示すニュートリノ振動の発見[11] Nucl. Ph...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2016年</td>
+      <td>NaN</td>
+      <td>デイヴィッド・J・サウレス David J. Thouless</td>
+      <td>イギリス  アメリカ合衆国</td>
+      <td>物質のトポロジカル相とトポロジカル相転移の理論的発見[12][13]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2016年</td>
+      <td>NaN</td>
+      <td>ダンカン・ホールデン Duncan Haldane</td>
+      <td>イギリス  スロベニア</td>
+      <td>物質のトポロジカル相とトポロジカル相転移の理論的発見[12][13]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2016年</td>
+      <td>NaN</td>
+      <td>ジョン・M・コステリッツ Michael Kosterlitz</td>
+      <td>イギリス  アメリカ合衆国</td>
+      <td>物質のトポロジカル相とトポロジカル相転移の理論的発見[12][13]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2017年</td>
+      <td>NaN</td>
+      <td>レイナー・ワイス Rainer Weiss</td>
+      <td>アメリカ合衆国 （ ドイツ出身）</td>
+      <td>LIGO検出器および重力波の観測への決定的な貢献</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2017年</td>
+      <td>NaN</td>
+      <td>バリー・バリッシュ Barry Barish</td>
+      <td>アメリカ合衆国</td>
+      <td>LIGO検出器および重力波の観測への決定的な貢献</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2017年</td>
+      <td>NaN</td>
+      <td>キップ・ソーン Kip Thorne</td>
+      <td>アメリカ合衆国</td>
+      <td>LIGO検出器および重力波の観測への決定的な貢献</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2018年</td>
+      <td>NaN</td>
+      <td>アーサー・アシュキン Arthur Ashkin</td>
+      <td>アメリカ合衆国</td>
+      <td>光ピンセットの開発と生体システムへの応用</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2018年</td>
+      <td>NaN</td>
+      <td>ジェラール・ムル Gérard Mourou</td>
+      <td>フランス</td>
+      <td>超高出力・超短パルスレーザーの生成方法の開発</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2018年</td>
+      <td>NaN</td>
+      <td>ドナ・ストリックランド Donna Strickland</td>
+      <td>カナダ</td>
+      <td>超高出力・超短パルスレーザーの生成方法の開発</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2019年</td>
+      <td>NaN</td>
+      <td>ジェームズ・ピーブルス Jim Peebles</td>
+      <td>アメリカ合衆国 （ カナダ出身）</td>
+      <td>物理宇宙論における理論的発見</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2019年</td>
+      <td>NaN</td>
+      <td>ミシェル・マイヨール Michel Mayor</td>
+      <td>スイス</td>
+      <td>太陽型恒星を周回する太陽系外惑星の発見</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2019年</td>
+      <td>NaN</td>
+      <td>ディディエ・ケロー Didier Queloz</td>
+      <td>スイス</td>
+      <td>太陽型恒星を周回する太陽系外惑星の発見</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>Pandasで複雑なエクセルファイルを操作する<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>Pandasにはread_excel()という関数が用意されていて、<br />
+<div class="section" id="pandascsv-excel">
+<h2>Pandasでcsv/Excelファイルを読み込む<a class="headerlink" href="#pandascsv-excel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="csv">
+<h3>csvファイルの読み込み<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<p>pandasには、csvを読み込むための関数<code class="docutils literal notranslate"><span class="pre">read_csv</span></code>も用意されていて、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>と同様に、ファイルパスを指定する他に、URLを指定して開く事ができる。</p>
+<p><a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/">教育用標準データセット</a>の一つであるSSDSE-A(市区町村別データ)を読み込んでみよう。</p>
+<p>下を実行すると…実はエラーとなる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-A-2024.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>その原因は、ファイルの文字コードがShift-JISであるためである。
+Shift-JISで作成されたファイルを読み込む場合、エンコーディングを指定する必要がある。</p>
+<p>“shift_jis”等としたいところだが、最近のShift-JISに対応するエンコーディングの指示は”cp932”である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-A-2024.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="excel">
+<h3>Excelファイルの読み込み<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h3>
+<p>Pandasには<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>という関数が用意されていて、<br />
 多数のシートを含むようなエクセルファイルを開くことも出来る。</p>
 <p>まずは必要なモジュールをインポートしよう。</p>
 <div class="cell docutils container">
@@ -796,11 +2033,6 @@ Webから直接xlsxファイルを読み込んでみよう。</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mext.go.jp/content/20201225-mxt_kagsei-mext_01110_012.xlsx&quot;</span>
 <span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.io.excel._base.ExcelFile at 0x12f82ca60&gt;
 </pre></div>
 </div>
 </div>
@@ -830,340 +2062,26 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
-11肉類
-12鶏卵
-13乳類
-14油脂類
-15菓子類
-16し好飲料
-17調味料及び香辛料
-18調理済み流通食品類
-1穀類
-2いも及びでん粉類
-3砂糖及び甘味類
-4豆類
-5種実類
-6野菜類
-7果実類
-8きのこ類
-9藻類
-表全体
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>Unnamed: 1</th>
-      <th>Unnamed: 2</th>
-      <th>Unnamed: 3</th>
-      <th>Unnamed: 4</th>
-      <th>Unnamed: 5</th>
-      <th>Unnamed: 6</th>
-      <th>Unnamed: 7</th>
-      <th>Unnamed: 8</th>
-      <th>Unnamed: 9</th>
-      <th>...</th>
-      <th>Unnamed: 52</th>
-      <th>Unnamed: 53</th>
-      <th>Unnamed: 54</th>
-      <th>Unnamed: 55</th>
-      <th>Unnamed: 56</th>
-      <th>Unnamed: 57</th>
-      <th>Unnamed: 58</th>
-      <th>Unnamed: 59</th>
-      <th>Unnamed: 60</th>
-      <th>更新日：2021年12月28日</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>食　品　番　号</td>
-      <td>索　引　番　号</td>
-      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>備　　考</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>食　品　名</td>
-      <td>廃　棄　率</td>
-      <td>エネルギー</td>
-      <td>NaN</td>
-      <td>水　分</td>
-      <td>たんぱく質</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>アルコール</td>
-      <td>食塩相当量</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>アミノ酸組成による\nたんぱく質</td>
-      <td>たんぱく質</td>
-      <td>...</td>
-      <td>ナイアシン当量</td>
-      <td>ビ\nタ\nミ\nン\nＢ６</td>
-      <td>ビ\nタ\nミ\nン\nＢ１２</td>
-      <td>葉　酸</td>
-      <td>パントテン酸</td>
-      <td>ビ オ チ ン</td>
-      <td>ビタミンC</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>211</th>
-      <td>1.0</td>
-      <td>01139</td>
-      <td>201</td>
-      <td>ひえ　精白粒</td>
-      <td>0</td>
-      <td>1534</td>
-      <td>361</td>
-      <td>12.9</td>
-      <td>8.4</td>
-      <td>9.4</td>
-      <td>...</td>
-      <td>2.3</td>
-      <td>0.17</td>
-      <td>(0)</td>
-      <td>14</td>
-      <td>1.50</td>
-      <td>3.6</td>
-      <td>0</td>
-      <td>-</td>
-      <td>0</td>
-      <td>歩留り： 55～60 %</td>
-    </tr>
-    <tr>
-      <th>212</th>
-      <td>1.0</td>
-      <td>01140</td>
-      <td>202</td>
-      <td>もろこし　玄穀</td>
-      <td>0</td>
-      <td>1454</td>
-      <td>344</td>
-      <td>12.0</td>
-      <td>(9.0)</td>
-      <td>10.3</td>
-      <td>...</td>
-      <td>(8.0)</td>
-      <td>0.31</td>
-      <td>(0)</td>
-      <td>54</td>
-      <td>1.42</td>
-      <td>15.0</td>
-      <td>(0)</td>
-      <td>-</td>
-      <td>0</td>
-      <td>別名： こうりゃん、ソルガム、たかきび、マイロ</td>
-    </tr>
-    <tr>
-      <th>213</th>
-      <td>1.0</td>
-      <td>01141</td>
-      <td>203</td>
-      <td>もろこし　精白粒</td>
-      <td>0</td>
-      <td>1473</td>
-      <td>348</td>
-      <td>12.5</td>
-      <td>(8.0)</td>
-      <td>9.5</td>
-      <td>...</td>
-      <td>(5.0)</td>
-      <td>0.24</td>
-      <td>(0)</td>
-      <td>29</td>
-      <td>0.66</td>
-      <td>-</td>
-      <td>(0)</td>
-      <td>-</td>
-      <td>0</td>
-      <td>別名： こうりゃん、ソルガム、たかきび、マイロ\n歩留り： 70～80 %</td>
-    </tr>
-    <tr>
-      <th>214</th>
-      <td>1.0</td>
-      <td>01142</td>
-      <td>204</td>
-      <td>ライむぎ　全粒粉</td>
-      <td>0</td>
-      <td>1342</td>
-      <td>317</td>
-      <td>12.5</td>
-      <td>10.8</td>
-      <td>12.7</td>
-      <td>...</td>
-      <td>4.2</td>
-      <td>0.22</td>
-      <td>(0)</td>
-      <td>65</td>
-      <td>0.87</td>
-      <td>9.5</td>
-      <td>0</td>
-      <td>-</td>
-      <td>0</td>
-      <td>別名：黒麦（くろむぎ）</td>
-    </tr>
-    <tr>
-      <th>215</th>
-      <td>1.0</td>
-      <td>01143</td>
-      <td>205</td>
-      <td>ライむぎ　ライ麦粉</td>
-      <td>0</td>
-      <td>1368</td>
-      <td>324</td>
-      <td>13.5</td>
-      <td>7.8</td>
-      <td>8.5</td>
-      <td>...</td>
-      <td>2.6</td>
-      <td>0.10</td>
-      <td>(0)</td>
-      <td>34</td>
-      <td>0.63</td>
-      <td>-</td>
-      <td>(0)</td>
-      <td>-</td>
-      <td>0</td>
-      <td>別名:黒麦（くろむぎ）\n歩留り： 65～75 %</td>
-    </tr>
-  </tbody>
-</table>
-<p>216 rows × 62 columns</p>
-</div></div></div>
 </div>
 <p>同じものが得られている。</p>
+<div class="section" id="id6">
+<h4>Excelファイルの読み込みに関する補足<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>内部では<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>というクラスがExcelファイルを扱うために用意されている。</p>
+<p>Excelファイルが単一のシートしかない場合や、上でやったように<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>化してシート名を既に知っている場合は、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>関数で直接読み込むことができ、DataFrameとして取得できる。</p>
+<p>ファイルによっては、読み込む際にエラーが出ることがある。</p>
+<p>その場合、<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>というライブラリをインストールすることで解決することがある。
+以下のようにしてインストールし、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>のオプションとして<code class="docutils literal notranslate"><span class="pre">engine=&quot;openpyxl&quot;</span></code>を指定するとよい。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install openpyxl
+df = pd.read_excel(&#39;filepath.xlsx&#39;,engine=&quot;openpyxl&quot;)
+</pre></div>
+</div>
+<p>Pythonには伝統的にExcelファイルを扱うためのライブラリが複数存在しており、pandasの内部でも用いられている。
+中でも、ファイルを読み込む際に良く用いられてきたのが<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>である。
+pandasのバージョン1.1まではExcelファイルを扱う際、内部的に<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用していたが、v1.2からは<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>形式は<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>、<code class="docutils literal notranslate"><span class="pre">.xls</span></code>は<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用するようになった。
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html">https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html</a></p>
+<p>したがって、使用している環境で<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>や<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>などがなければインストールしたり、ファイルを読み込む際に明示的にengineを指定してやる必要がある。</p>
+</div>
+</div>
 <div class="section" id="id7">
 <h3>データの整形<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>次に、今取得したデータフレームのままでは少々扱い辛いので”整形”を考える。<br />
@@ -1174,149 +2092,6 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>Unnamed: 1</th>
-      <th>Unnamed: 2</th>
-      <th>Unnamed: 3</th>
-      <th>Unnamed: 4</th>
-      <th>Unnamed: 5</th>
-      <th>Unnamed: 6</th>
-      <th>Unnamed: 7</th>
-      <th>Unnamed: 8</th>
-      <th>Unnamed: 9</th>
-      <th>...</th>
-      <th>Unnamed: 52</th>
-      <th>Unnamed: 53</th>
-      <th>Unnamed: 54</th>
-      <th>Unnamed: 55</th>
-      <th>Unnamed: 56</th>
-      <th>Unnamed: 57</th>
-      <th>Unnamed: 58</th>
-      <th>Unnamed: 59</th>
-      <th>Unnamed: 60</th>
-      <th>更新日：2021年12月28日</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>食　品　番　号</td>
-      <td>索　引　番　号</td>
-      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>備　　考</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>食　品　名</td>
-      <td>廃　棄　率</td>
-      <td>エネルギー</td>
-      <td>NaN</td>
-      <td>水　分</td>
-      <td>たんぱく質</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>アルコール</td>
-      <td>食塩相当量</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>アミノ酸組成による\nたんぱく質</td>
-      <td>たんぱく質</td>
-      <td>...</td>
-      <td>ナイアシン当量</td>
-      <td>ビ\nタ\nミ\nン\nＢ６</td>
-      <td>ビ\nタ\nミ\nン\nＢ１２</td>
-      <td>葉　酸</td>
-      <td>パントテン酸</td>
-      <td>ビ オ チ ン</td>
-      <td>ビタミンC</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>4 rows × 62 columns</p>
-</div></div></div>
 </div>
 <p>最初の4行ほどに栄養素等の情報が入っているのだが、<br />
 セルが結合されたりしているため、所々にNaNが入っていたりして見辛い。</p>
@@ -1348,12 +2123,6 @@ read_excel関数の最初の引数にはパスの他に、urlも取れる。</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;食品名&#39;, &#39;廃棄率&#39;, &#39;エネルギー&#39;, &#39;nan&#39;, &#39;水分&#39;, &#39;たんぱく質&#39;, &#39;nan&#39;, &#39;脂質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;有機酸&#39;, &#39;灰分&#39;, &#39;無機質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;無機質&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミン&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;アルコール&#39;, &#39;食塩相当量&#39;, &#39;nan&#39;]
-[&#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;アミノ酸組成によるたんぱく質&#39;, &#39;たんぱく質&#39;, &#39;脂肪酸のトリアシルグリセロール当量&#39;, &#39;コレステロール&#39;, &#39;脂質&#39;, &#39;利用可能炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;食物繊維総量&#39;, &#39;糖アルコール&#39;, &#39;炭水化物&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ナトリウム&#39;, &#39;カリウム&#39;, &#39;カルシウム&#39;, &#39;マグネシウム&#39;, &#39;リン&#39;, &#39;鉄&#39;, &#39;亜鉛&#39;, &#39;銅&#39;, &#39;マンガン&#39;, &#39;nan&#39;, &#39;ヨウ素&#39;, &#39;セレン&#39;, &#39;クロム&#39;, &#39;モリブデン&#39;, &#39;ビタミンA&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミンD&#39;, &#39;ビタミンE&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;ビタミンK&#39;, &#39;ビタミンＢ１&#39;, &#39;ビタミンB２&#39;, &#39;ナイアシン&#39;, &#39;ナイアシン当量&#39;, &#39;ビタミンＢ６&#39;, &#39;ビタミンＢ１２&#39;, &#39;葉酸&#39;, &#39;パントテン酸&#39;, &#39;ビオチン&#39;, &#39;ビタミンC&#39;, &#39;nan&#39;, &#39;nan&#39;, &#39;nan&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>セルの結合により、興味のあるデータがどの列に記述されているかは注意が必要。</p>
 <p>実際、[エネルギー]という文字列は1行目の6列目(それぞれインデックスでいうと0,5)で取得できるが、<br />
@@ -1369,125 +2138,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 3</th>
-      <th>Unnamed: 6</th>
-      <th>Unnamed: 9</th>
-      <th>Unnamed: 12</th>
-      <th>Unnamed: 20</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>可　　食　　部　　 100　　g　　当　　た　　り</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>食　品　名</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>たんぱく質</td>
-      <td>脂質</td>
-      <td>炭水化物</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>211</th>
-      <td>ひえ　精白粒</td>
-      <td>361</td>
-      <td>9.4</td>
-      <td>3.3</td>
-      <td>73.2</td>
-    </tr>
-    <tr>
-      <th>212</th>
-      <td>もろこし　玄穀</td>
-      <td>344</td>
-      <td>10.3</td>
-      <td>4.7</td>
-      <td>71.1</td>
-    </tr>
-    <tr>
-      <th>213</th>
-      <td>もろこし　精白粒</td>
-      <td>348</td>
-      <td>9.5</td>
-      <td>2.6</td>
-      <td>74.1</td>
-    </tr>
-    <tr>
-      <th>214</th>
-      <td>ライむぎ　全粒粉</td>
-      <td>317</td>
-      <td>12.7</td>
-      <td>2.7</td>
-      <td>70.7</td>
-    </tr>
-    <tr>
-      <th>215</th>
-      <td>ライむぎ　ライ麦粉</td>
-      <td>324</td>
-      <td>8.5</td>
-      <td>1.6</td>
-      <td>75.8</td>
-    </tr>
-  </tbody>
-</table>
-<p>216 rows × 5 columns</p>
-</div></div></div>
 </div>
 <p>もう少し整形したいので、新しいデータフレームの列を書き換える。</p>
 <p>食品名等が記載されているのは10行目以降なので、それを使いcolumnsを指定する。</p>
@@ -1502,125 +2152,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>食品名</th>
-      <th>エネルギー(kcal)</th>
-      <th>たんぱく質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>10</th>
-      <td>成分識別子</td>
-      <td>ENERC_KCAL</td>
-      <td>PROT-</td>
-      <td>FAT-</td>
-      <td>CHOCDF-</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>アマランサス 玄穀</td>
-      <td>343</td>
-      <td>12.7</td>
-      <td>6.0</td>
-      <td>64.9</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>あわ 精白粒</td>
-      <td>346</td>
-      <td>11.2</td>
-      <td>4.4</td>
-      <td>69.7</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>あわ あわもち</td>
-      <td>210</td>
-      <td>5.1</td>
-      <td>1.3</td>
-      <td>45.3</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>えんばく オートミール</td>
-      <td>350</td>
-      <td>13.7</td>
-      <td>5.7</td>
-      <td>69.1</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>211</th>
-      <td>ひえ 精白粒</td>
-      <td>361</td>
-      <td>9.4</td>
-      <td>3.3</td>
-      <td>73.2</td>
-    </tr>
-    <tr>
-      <th>212</th>
-      <td>もろこし 玄穀</td>
-      <td>344</td>
-      <td>10.3</td>
-      <td>4.7</td>
-      <td>71.1</td>
-    </tr>
-    <tr>
-      <th>213</th>
-      <td>もろこし 精白粒</td>
-      <td>348</td>
-      <td>9.5</td>
-      <td>2.6</td>
-      <td>74.1</td>
-    </tr>
-    <tr>
-      <th>214</th>
-      <td>ライむぎ 全粒粉</td>
-      <td>317</td>
-      <td>12.7</td>
-      <td>2.7</td>
-      <td>70.7</td>
-    </tr>
-    <tr>
-      <th>215</th>
-      <td>ライむぎ ライ麦粉</td>
-      <td>324</td>
-      <td>8.5</td>
-      <td>1.6</td>
-      <td>75.8</td>
-    </tr>
-  </tbody>
-</table>
-<p>206 rows × 5 columns</p>
-</div></div></div>
 </div>
 <p>次に、食品名の一覧を取得した後、興味のあるもの(日常的に馴染みのあるもの)だけを<br />
 ピックアップしてみよう。</p>
@@ -1647,76 +2178,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>食品名</th>
-      <th>エネルギー(kcal)</th>
-      <th>たんぱく質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>45</th>
-      <td>こむぎ ［パン類］ 食パン リッチタイプ</td>
-      <td>256</td>
-      <td>(7.8)</td>
-      <td>(6.0)</td>
-      <td>(45.6)</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>こむぎ ［パン類］ フランスパン</td>
-      <td>289</td>
-      <td>9.4</td>
-      <td>1.3</td>
-      <td>57.5</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>こむぎ ［うどん・そうめん類］ うどん ゆで</td>
-      <td>95</td>
-      <td>2.6</td>
-      <td>0.4</td>
-      <td>21.6</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>こめ ［水稲軟めし］ 精白米</td>
-      <td>113</td>
-      <td>(1.8)</td>
-      <td>(0.3)</td>
-      <td>(26.4)</td>
-    </tr>
-    <tr>
-      <th>195</th>
-      <td>そば そば ゆで</td>
-      <td>130</td>
-      <td>4.8</td>
-      <td>1.0</td>
-      <td>26.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>などとする。</p>
 <p>‘6野菜類’でも同様に…</p>
@@ -1732,146 +2193,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10魚介類
-11肉類
-12鶏卵
-13乳類
-14油脂類
-15菓子類
-16し好飲料
-17調味料及び香辛料
-18調理済み流通食品類
-1穀類
-2いも及びでん粉類
-3砂糖及び甘味類
-4豆類
-5種実類
-6野菜類
-7果実類
-8きのこ類
-9藻類
-表全体
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>食品名</th>
-      <th>エネルギー(kcal)</th>
-      <th>たんぱく質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>10</th>
-      <td>成分識別子</td>
-      <td>ENERC_KCAL</td>
-      <td>PROT-</td>
-      <td>FAT-</td>
-      <td>CHOCDF-</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>アーティチョーク 花らい 生</td>
-      <td>39</td>
-      <td>2.3</td>
-      <td>0.2</td>
-      <td>11.3</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>アーティチョーク 花らい ゆで</td>
-      <td>35</td>
-      <td>2.1</td>
-      <td>0.1</td>
-      <td>10.8</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>あさつき 葉 生</td>
-      <td>34</td>
-      <td>4.2</td>
-      <td>0.3</td>
-      <td>5.6</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>あさつき 葉 ゆで</td>
-      <td>41</td>
-      <td>4.2</td>
-      <td>0.3</td>
-      <td>7.3</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>407</th>
-      <td>（その他） ミックスベジタブル 冷凍</td>
-      <td>67</td>
-      <td>3.0</td>
-      <td>0.7</td>
-      <td>15.1</td>
-    </tr>
-    <tr>
-      <th>408</th>
-      <td>（その他） ミックスベジタブル 冷凍 ゆで</td>
-      <td>65</td>
-      <td>3.1</td>
-      <td>0.8</td>
-      <td>14.6</td>
-    </tr>
-    <tr>
-      <th>409</th>
-      <td>（その他） ミックスベジタブル 冷凍 油いため</td>
-      <td>108</td>
-      <td>3.3</td>
-      <td>4.9</td>
-      <td>15.7</td>
-    </tr>
-    <tr>
-      <th>410</th>
-      <td>（その他） 野菜ミックスジュース 通常タイプ</td>
-      <td>21</td>
-      <td>0.8</td>
-      <td>0.1</td>
-      <td>4.7</td>
-    </tr>
-    <tr>
-      <th>411</th>
-      <td>（その他） 野菜ミックスジュース 濃縮タイプ</td>
-      <td>36</td>
-      <td>1.0</td>
-      <td>0.3</td>
-      <td>7.8</td>
-    </tr>
-  </tbody>
-</table>
-<p>402 rows × 5 columns</p>
-</div></div></div>
 </div>
 <p>特定のキーワードを含むものを全て取得して、<br />
 食品名を細かく指定したり、対応する行番号のインデックスを取得できたりする</p>
@@ -1882,92 +2203,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>食品名</th>
-      <th>エネルギー(kcal)</th>
-      <th>たんぱく質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>81</th>
-      <td>（キャベツ類） キャベツ 結球葉 生</td>
-      <td>21</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>5.2</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>（キャベツ類） キャベツ 結球葉 ゆで</td>
-      <td>19</td>
-      <td>0.9</td>
-      <td>0.2</td>
-      <td>4.6</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>（キャベツ類） キャベツ 結球葉 油いため</td>
-      <td>78</td>
-      <td>1.6</td>
-      <td>6.0</td>
-      <td>5.9</td>
-    </tr>
-    <tr>
-      <th>84</th>
-      <td>（キャベツ類） グリーンボール 結球葉 生</td>
-      <td>20</td>
-      <td>1.4</td>
-      <td>0.1</td>
-      <td>4.3</td>
-    </tr>
-    <tr>
-      <th>85</th>
-      <td>（キャベツ類） レッドキャベツ 結球葉 生</td>
-      <td>30</td>
-      <td>2.0</td>
-      <td>0.1</td>
-      <td>6.7</td>
-    </tr>
-    <tr>
-      <th>358</th>
-      <td>めキャベツ 結球葉 生</td>
-      <td>52</td>
-      <td>5.7</td>
-      <td>0.1</td>
-      <td>9.9</td>
-    </tr>
-    <tr>
-      <th>359</th>
-      <td>めキャベツ 結球葉 ゆで</td>
-      <td>51</td>
-      <td>5.3</td>
-      <td>0.1</td>
-      <td>9.8</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1976,108 +2211,6 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>食品名</th>
-      <th>エネルギー(kcal)</th>
-      <th>たんぱく質(g)</th>
-      <th>脂質(g)</th>
-      <th>炭水化物(g)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>221</th>
-      <td>（トマト類） 赤色トマト 果実 生</td>
-      <td>20</td>
-      <td>0.7</td>
-      <td>0.1</td>
-      <td>4.7</td>
-    </tr>
-    <tr>
-      <th>222</th>
-      <td>（トマト類） 赤色ミニトマト 果実 生</td>
-      <td>30</td>
-      <td>1.1</td>
-      <td>0.1</td>
-      <td>7.2</td>
-    </tr>
-    <tr>
-      <th>223</th>
-      <td>（トマト類） 黄色トマト 果実 生</td>
-      <td>18</td>
-      <td>1.1</td>
-      <td>0.4</td>
-      <td>3.2</td>
-    </tr>
-    <tr>
-      <th>224</th>
-      <td>（トマト類） ドライトマト</td>
-      <td>291</td>
-      <td>14.2</td>
-      <td>2.1</td>
-      <td>67.3</td>
-    </tr>
-    <tr>
-      <th>225</th>
-      <td>（トマト類） 加工品 ホール 食塩無添加</td>
-      <td>21</td>
-      <td>0.9</td>
-      <td>0.2</td>
-      <td>4.4</td>
-    </tr>
-    <tr>
-      <th>226</th>
-      <td>（トマト類） 加工品 トマトジュース 食塩添加</td>
-      <td>15</td>
-      <td>0.7</td>
-      <td>0.1</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>227</th>
-      <td>（トマト類） 加工品 トマトジュース 食塩無添加</td>
-      <td>18</td>
-      <td>0.7</td>
-      <td>0.1</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>228</th>
-      <td>（トマト類） 加工品 ミックスジュース 食塩添加</td>
-      <td>18</td>
-      <td>0.6</td>
-      <td>0</td>
-      <td>4.3</td>
-    </tr>
-    <tr>
-      <th>229</th>
-      <td>（トマト類） 加工品 ミックスジュース 食塩無添加</td>
-      <td>18</td>
-      <td>0.6</td>
-      <td>0</td>
-      <td>4.3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>DataFrame同士を結合してまとめるなどして扱いやすいデータに整形していく.</p>
 <p>縦方向の結合はpandasのconcat(concatenateの略)を使う。</p>
@@ -2121,33 +2254,8 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 </div>
 </div>
 </div>
-<p>上記の関数内で文字コードを指定することもできる。<br />
+<p>上記の関数内で書き出しに使う文字コードを指定することもできる。<br />
 例: <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8_sig&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">encoding=&quot;shift_jis&quot;</span></code></p>
-</div>
-<div class="section" id="excel">
-<h2>Excelファイルの読み込みに関する補足<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>内部では<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>というクラスがExcelファイルを扱うために用意されている。</p>
-<p>Excelファイルが単一のシートしかない場合や、上でやったように<code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>化してシート名を既に知っている場合は、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>関数で直接読み込むことができ、ataFrameとして取得できる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mext.go.jp/content/20201225-mxt_kagsei-mext_01110_012.xlsx&quot;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;1穀類&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>ファイルによっては、読み込む際にエラーが出ることがある。</p>
-<p>その場合、<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>というライブラリをインストールすることで解決することがある。
-以下のようにしてインストールし、<code class="docutils literal notranslate"><span class="pre">read_excel</span></code>のオプションとして<code class="docutils literal notranslate"><span class="pre">engine=&quot;openpyxl&quot;</span></code>を指定するとよい。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install openpyxl
-df = pd.read_excel(&#39;filepath.xlsx&#39;,engine=&quot;openpyxl&quot;)
-</pre></div>
-</div>
-<p>Pythonには伝統的にExcelファイルを扱うためのライブラリが複数存在しており、pandasの内部でも用いられている。
-中でも、ファイルを読み込む際に良く用いられてきたのが<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>である。
-pandasのバージョン1.1まではExcelファイルを扱う際、内部的に<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用していたが、v1.2からは<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>形式は<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>、<code class="docutils literal notranslate"><span class="pre">.xls</span></code>は<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>を使用するようになった。
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html">https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.2.0.html</a></p>
-<p>したがって、使用している環境で<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>や<code class="docutils literal notranslate"><span class="pre">xlrd</span></code>などがなければインストールしたり、ファイルを読み込む際に明示的にengineを指定してやる必要がある。</p>
 </div>
 </div>
 
@@ -2173,8 +2281,8 @@ pandasのバージョン1.1まではExcelファイルを扱う際、内部的に
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_misc_VScode.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2191,20 +2299,18 @@ pandasのバージョン1.1まではExcelファイルを扱う際、内部的に
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          <div class="extra_footer">
-            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+  <p>
+    
+      <div class="extra_footer">
+        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 
