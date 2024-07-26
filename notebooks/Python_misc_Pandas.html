@@ -37,19 +37,17 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -88,7 +86,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -296,8 +294,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
+                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -305,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -313,11 +311,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_Pandas.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -329,12 +327,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
+                    class="fab fa-github"></i>リポジトリ</button></a>
         <a class="issues-button"
             href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_Pandas.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
         
     </div>
 </div>
@@ -342,8 +340,8 @@ const thebe_selector_output = ".output, .cell_output"
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
+        title="全画面モード"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -356,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Pandas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
@@ -367,10 +365,10 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> 目次
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -453,96 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pandasの使い方 (基礎)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframe">
-   DataFrame型
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   DataFrameの要素を確認・指定する方法
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     特定の列を取得したい場合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     列の追加
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     特定の行を取得したい場合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     より複雑な行・列の抽出
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#webdataframe">
-   Webページにある表をDataFrameとして取得する
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandascsv-excel">
-   Pandasでcsv/Excelファイルを読み込む
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#csv">
-     csvファイルの読み込み
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excel">
-     Excelファイルの読み込み
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       Excelファイルの読み込みに関する補足
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     データの整形
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframecsv-excel">
-   DataFrameのcsv/Excelファイルへの書き出し
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_Pandas.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
@@ -1989,46 +1898,46 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <p>下を実行すると…実はエラーとなる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-A-2024.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-B-2024.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnicodeDecodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-A-2024.csv&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-B-2024.csv&quot;</span><span class="p">)</span>
 
-<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1898,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1895</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1897</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1898</span>     <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1899</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1900</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1723,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1720</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1722</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1723</span>     <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1725</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File ~/.pyenv/versions/3.11.4/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py:93,</span> in <span class="ni">CParserWrapper.__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py:93,</span> in <span class="ni">CParserWrapper.__init__</span><span class="nt">(self, src, **kwds)</span>
 <span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="k">if</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;dtype_backend&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pyarrow&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="c1"># Fail here loudly instead of in cython after reading</span>
 <span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
@@ -2036,17 +1945,17 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
 <span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="c1"># error: Cannot determine type of &#39;names&#39;</span>
 
-<span class="nn">File parsers.pyx:574,</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:579,</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:663,</span> in <span class="ni">pandas._libs.parsers.TextReader._get_header</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:668,</span> in <span class="ni">pandas._libs.parsers.TextReader._get_header</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:874,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:879,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:891,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:2053,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:2050,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
 
-<span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0x94 in position 928: invalid start byte
+<span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0x94 in position 748: invalid start byte
 </pre></div>
 </div>
 </div>
@@ -2056,7 +1965,7 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <p>“shift_jis”等としたいところだが、最近のShift-JISに対応するエンコーディングの指示は”cp932”である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-A-2024.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-B-2024.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -2080,9 +1989,9 @@ Webページの中にある表をDataFrame形式で取得することもでき�
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>SSDSE-A-2024</th>
+      <th>SSDSE-B-2024</th>
+      <th>Code</th>
       <th>Prefecture</th>
-      <th>Municipality</th>
       <th>A1101</th>
       <th>A110101</th>
       <th>A110102</th>
@@ -2091,48 +2000,24 @@ Webページの中にある表をDataFrame形式で取得することもでき�
       <th>A110202</th>
       <th>A1301</th>
       <th>...</th>
-      <th>H6130</th>
-      <th>H6131</th>
-      <th>H6132</th>
-      <th>I510120</th>
-      <th>I5102</th>
-      <th>I5103</th>
-      <th>I6100</th>
-      <th>I6200</th>
-      <th>I6300</th>
-      <th>J250302</th>
+      <th>L322101</th>
+      <th>L322102</th>
+      <th>L322103</th>
+      <th>L322104</th>
+      <th>L322105</th>
+      <th>L322106</th>
+      <th>L322107</th>
+      <th>L322108</th>
+      <th>L322109</th>
+      <th>L322110</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>年度</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>...</td>
-      <td>2021</td>
-      <td>2021</td>
-      <td>2021</td>
-      <td>2021</td>
-      <td>2021</td>
-      <td>2021</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2020</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>地域コード</td>
       <td>都道府県</td>
-      <td>市区町村</td>
       <td>総人口</td>
       <td>総人口（男）</td>
       <td>総人口（女）</td>
@@ -2141,88 +2026,112 @@ Webページの中にある表をDataFrame形式で取得することもでき�
       <td>日本人人口（女）</td>
       <td>15歳未満人口</td>
       <td>...</td>
-      <td>小売店数</td>
-      <td>飲食店数</td>
-      <td>大型小売店数</td>
-      <td>一般病院数</td>
-      <td>一般診療所数</td>
-      <td>歯科診療所数</td>
-      <td>医師数</td>
-      <td>歯科医師数</td>
-      <td>薬剤師数</td>
-      <td>保育所等数（基本票）</td>
+      <td>食料費（二人以上の世帯）</td>
+      <td>住居費（二人以上の世帯）</td>
+      <td>光熱・水道費（二人以上の世帯）</td>
+      <td>家具・家事用品費（二人以上の世帯）</td>
+      <td>被服及び履物費（二人以上の世帯）</td>
+      <td>保健医療費（二人以上の世帯）</td>
+      <td>交通・通信費（二人以上の世帯）</td>
+      <td>教育費（二人以上の世帯）</td>
+      <td>教養娯楽費（二人以上の世帯）</td>
+      <td>その他の消費支出（二人以上の世帯）</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5183000</td>
+      <td>2446000</td>
+      <td>2737000</td>
+      <td>5147000</td>
+      <td>2429000</td>
+      <td>2717000</td>
+      <td>544000</td>
+      <td>...</td>
+      <td>71448</td>
+      <td>22013</td>
+      <td>26676</td>
+      <td>9912</td>
+      <td>8816</td>
+      <td>13788</td>
+      <td>30483</td>
+      <td>9913</td>
+      <td>23762</td>
+      <td>51583</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>R01100</td>
+      <td>2020</td>
+      <td>R01000</td>
       <td>北海道</td>
-      <td>札幌市</td>
-      <td>1973395</td>
-      <td>918682</td>
-      <td>1054713</td>
-      <td>1933094</td>
-      <td>897727</td>
-      <td>1035367</td>
-      <td>215366</td>
+      <td>5224614</td>
+      <td>2465088</td>
+      <td>2759526</td>
+      <td>5151366</td>
+      <td>2429697</td>
+      <td>2721669</td>
+      <td>555804</td>
       <td>...</td>
-      <td>10370</td>
-      <td>7354</td>
-      <td>348</td>
-      <td>177</td>
-      <td>1413</td>
-      <td>1206</td>
-      <td>6978</td>
-      <td>2142</td>
-      <td>5758</td>
-      <td>368</td>
+      <td>77680</td>
+      <td>27305</td>
+      <td>27309</td>
+      <td>12255</td>
+      <td>9227</td>
+      <td>14251</td>
+      <td>41407</td>
+      <td>9394</td>
+      <td>26539</td>
+      <td>56316</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>R01202</td>
+      <td>2019</td>
+      <td>R01000</td>
       <td>北海道</td>
-      <td>函館市</td>
-      <td>251084</td>
-      <td>113965</td>
-      <td>137119</td>
-      <td>248208</td>
-      <td>112718</td>
-      <td>135490</td>
-      <td>23560</td>
+      <td>5259000</td>
+      <td>2480000</td>
+      <td>2780000</td>
+      <td>5223000</td>
+      <td>2464000</td>
+      <td>2759000</td>
+      <td>565000</td>
       <td>...</td>
-      <td>2163</td>
-      <td>1256</td>
-      <td>41</td>
-      <td>26</td>
-      <td>206</td>
-      <td>122</td>
-      <td>822</td>
-      <td>182</td>
-      <td>683</td>
-      <td>54</td>
+      <td>72912</td>
+      <td>20862</td>
+      <td>26332</td>
+      <td>9895</td>
+      <td>10466</td>
+      <td>16466</td>
+      <td>42277</td>
+      <td>8848</td>
+      <td>29335</td>
+      <td>57289</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>R01203</td>
+      <td>2018</td>
+      <td>R01000</td>
       <td>北海道</td>
-      <td>小樽市</td>
-      <td>111299</td>
-      <td>50136</td>
-      <td>61163</td>
-      <td>109971</td>
-      <td>49441</td>
-      <td>60530</td>
-      <td>9169</td>
+      <td>5293000</td>
+      <td>2495000</td>
+      <td>2798000</td>
+      <td>5262000</td>
+      <td>2482000</td>
+      <td>2780000</td>
+      <td>577000</td>
       <td>...</td>
-      <td>1097</td>
-      <td>616</td>
-      <td>17</td>
-      <td>11</td>
-      <td>79</td>
-      <td>78</td>
-      <td>338</td>
-      <td>105</td>
-      <td>334</td>
-      <td>23</td>
+      <td>69044</td>
+      <td>19089</td>
+      <td>27012</td>
+      <td>8845</td>
+      <td>11517</td>
+      <td>11437</td>
+      <td>39308</td>
+      <td>10825</td>
+      <td>26991</td>
+      <td>56984</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2249,130 +2158,1142 @@ Webページの中にある表をDataFrame形式で取得することもでき�
       <td>...</td>
     </tr>
     <tr>
-      <th>1738</th>
-      <td>R47361</td>
-      <td>沖縄県</td>
-      <td>久米島町</td>
-      <td>7192</td>
-      <td>3823</td>
-      <td>3369</td>
-      <td>7152</td>
-      <td>3802</td>
-      <td>3350</td>
-      <td>1075</td>
+      <th>596</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>87</td>
-      <td>65</td>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>1</td>
-      <td>5</td>
-      <td>1</td>
-      <td>12</td>
-      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1739</th>
-      <td>R47362</td>
-      <td>沖縄県</td>
-      <td>八重瀬町</td>
-      <td>30941</td>
-      <td>15244</td>
-      <td>15697</td>
-      <td>30805</td>
-      <td>15148</td>
-      <td>15657</td>
-      <td>5977</td>
+      <th>597</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>153</td>
-      <td>55</td>
-      <td>3</td>
-      <td>1</td>
-      <td>14</td>
-      <td>8</td>
-      <td>82</td>
-      <td>16</td>
-      <td>47</td>
-      <td>14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1740</th>
-      <td>R47375</td>
-      <td>沖縄県</td>
-      <td>多良間村</td>
-      <td>1058</td>
-      <td>575</td>
-      <td>483</td>
-      <td>1047</td>
-      <td>574</td>
-      <td>473</td>
-      <td>150</td>
+      <th>598</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>14</td>
-      <td>5</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1741</th>
-      <td>R47381</td>
-      <td>沖縄県</td>
-      <td>竹富町</td>
-      <td>3942</td>
-      <td>2033</td>
-      <td>1909</td>
-      <td>3898</td>
-      <td>2013</td>
-      <td>1885</td>
-      <td>707</td>
+      <th>599</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>58</td>
-      <td>71</td>
-      <td>0</td>
-      <td>0</td>
-      <td>15</td>
-      <td>3</td>
-      <td>6</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1742</th>
-      <td>R47382</td>
-      <td>沖縄県</td>
-      <td>与那国町</td>
-      <td>1676</td>
-      <td>923</td>
-      <td>753</td>
-      <td>1661</td>
-      <td>913</td>
-      <td>748</td>
-      <td>302</td>
+      <th>600</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>24</td>
-      <td>23</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>1743 rows × 128 columns</p>
+<p>601 rows × 112 columns</p>
 </div></div></div>
 </div>
+<p>今の場合ファイルの(0から数えて)1行目にヘッダ(列名)にしたい情報があるので<code class="docutils literal notranslate"><span class="pre">header</span></code>オプションを指定する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-B-2024.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>年度</th>
+      <th>地域コード</th>
+      <th>都道府県</th>
+      <th>総人口</th>
+      <th>総人口（男）</th>
+      <th>総人口（女）</th>
+      <th>日本人人口</th>
+      <th>日本人人口（男）</th>
+      <th>日本人人口（女）</th>
+      <th>15歳未満人口</th>
+      <th>...</th>
+      <th>食料費（二人以上の世帯）</th>
+      <th>住居費（二人以上の世帯）</th>
+      <th>光熱・水道費（二人以上の世帯）</th>
+      <th>家具・家事用品費（二人以上の世帯）</th>
+      <th>被服及び履物費（二人以上の世帯）</th>
+      <th>保健医療費（二人以上の世帯）</th>
+      <th>交通・通信費（二人以上の世帯）</th>
+      <th>教育費（二人以上の世帯）</th>
+      <th>教養娯楽費（二人以上の世帯）</th>
+      <th>その他の消費支出（二人以上の世帯）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5183000.0</td>
+      <td>2446000.0</td>
+      <td>2737000.0</td>
+      <td>5147000.0</td>
+      <td>2429000.0</td>
+      <td>2717000.0</td>
+      <td>544000.0</td>
+      <td>...</td>
+      <td>71448.0</td>
+      <td>22013.0</td>
+      <td>26676.0</td>
+      <td>9912.0</td>
+      <td>8816.0</td>
+      <td>13788.0</td>
+      <td>30483.0</td>
+      <td>9913.0</td>
+      <td>23762.0</td>
+      <td>51583.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5224614.0</td>
+      <td>2465088.0</td>
+      <td>2759526.0</td>
+      <td>5151366.0</td>
+      <td>2429697.0</td>
+      <td>2721669.0</td>
+      <td>555804.0</td>
+      <td>...</td>
+      <td>77680.0</td>
+      <td>27305.0</td>
+      <td>27309.0</td>
+      <td>12255.0</td>
+      <td>9227.0</td>
+      <td>14251.0</td>
+      <td>41407.0</td>
+      <td>9394.0</td>
+      <td>26539.0</td>
+      <td>56316.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5259000.0</td>
+      <td>2480000.0</td>
+      <td>2780000.0</td>
+      <td>5223000.0</td>
+      <td>2464000.0</td>
+      <td>2759000.0</td>
+      <td>565000.0</td>
+      <td>...</td>
+      <td>72912.0</td>
+      <td>20862.0</td>
+      <td>26332.0</td>
+      <td>9895.0</td>
+      <td>10466.0</td>
+      <td>16466.0</td>
+      <td>42277.0</td>
+      <td>8848.0</td>
+      <td>29335.0</td>
+      <td>57289.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5293000.0</td>
+      <td>2495000.0</td>
+      <td>2798000.0</td>
+      <td>5262000.0</td>
+      <td>2482000.0</td>
+      <td>2780000.0</td>
+      <td>577000.0</td>
+      <td>...</td>
+      <td>69044.0</td>
+      <td>19089.0</td>
+      <td>27012.0</td>
+      <td>8845.0</td>
+      <td>11517.0</td>
+      <td>11437.0</td>
+      <td>39308.0</td>
+      <td>10825.0</td>
+      <td>26991.0</td>
+      <td>56984.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5325000.0</td>
+      <td>2510000.0</td>
+      <td>2815000.0</td>
+      <td>5298000.0</td>
+      <td>2499000.0</td>
+      <td>2799000.0</td>
+      <td>588000.0</td>
+      <td>...</td>
+      <td>69640.0</td>
+      <td>24217.0</td>
+      <td>25633.0</td>
+      <td>10550.0</td>
+      <td>11222.0</td>
+      <td>12242.0</td>
+      <td>39559.0</td>
+      <td>9837.0</td>
+      <td>26797.0</td>
+      <td>57003.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>595</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>596</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>597</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>598</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>599</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>600 rows × 112 columns</p>
+</div></div></div>
+</div>
+<p>都道府県の列から、都道府県の名前を取り出してみよう。ある行以降はNaNになっているので、それを除去する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>年度</th>
+      <th>地域コード</th>
+      <th>都道府県</th>
+      <th>総人口</th>
+      <th>総人口（男）</th>
+      <th>総人口（女）</th>
+      <th>日本人人口</th>
+      <th>日本人人口（男）</th>
+      <th>日本人人口（女）</th>
+      <th>15歳未満人口</th>
+      <th>...</th>
+      <th>食料費（二人以上の世帯）</th>
+      <th>住居費（二人以上の世帯）</th>
+      <th>光熱・水道費（二人以上の世帯）</th>
+      <th>家具・家事用品費（二人以上の世帯）</th>
+      <th>被服及び履物費（二人以上の世帯）</th>
+      <th>保健医療費（二人以上の世帯）</th>
+      <th>交通・通信費（二人以上の世帯）</th>
+      <th>教育費（二人以上の世帯）</th>
+      <th>教養娯楽費（二人以上の世帯）</th>
+      <th>その他の消費支出（二人以上の世帯）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5183000.0</td>
+      <td>2446000.0</td>
+      <td>2737000.0</td>
+      <td>5147000.0</td>
+      <td>2429000.0</td>
+      <td>2717000.0</td>
+      <td>544000.0</td>
+      <td>...</td>
+      <td>71448.0</td>
+      <td>22013.0</td>
+      <td>26676.0</td>
+      <td>9912.0</td>
+      <td>8816.0</td>
+      <td>13788.0</td>
+      <td>30483.0</td>
+      <td>9913.0</td>
+      <td>23762.0</td>
+      <td>51583.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5224614.0</td>
+      <td>2465088.0</td>
+      <td>2759526.0</td>
+      <td>5151366.0</td>
+      <td>2429697.0</td>
+      <td>2721669.0</td>
+      <td>555804.0</td>
+      <td>...</td>
+      <td>77680.0</td>
+      <td>27305.0</td>
+      <td>27309.0</td>
+      <td>12255.0</td>
+      <td>9227.0</td>
+      <td>14251.0</td>
+      <td>41407.0</td>
+      <td>9394.0</td>
+      <td>26539.0</td>
+      <td>56316.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5259000.0</td>
+      <td>2480000.0</td>
+      <td>2780000.0</td>
+      <td>5223000.0</td>
+      <td>2464000.0</td>
+      <td>2759000.0</td>
+      <td>565000.0</td>
+      <td>...</td>
+      <td>72912.0</td>
+      <td>20862.0</td>
+      <td>26332.0</td>
+      <td>9895.0</td>
+      <td>10466.0</td>
+      <td>16466.0</td>
+      <td>42277.0</td>
+      <td>8848.0</td>
+      <td>29335.0</td>
+      <td>57289.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5293000.0</td>
+      <td>2495000.0</td>
+      <td>2798000.0</td>
+      <td>5262000.0</td>
+      <td>2482000.0</td>
+      <td>2780000.0</td>
+      <td>577000.0</td>
+      <td>...</td>
+      <td>69044.0</td>
+      <td>19089.0</td>
+      <td>27012.0</td>
+      <td>8845.0</td>
+      <td>11517.0</td>
+      <td>11437.0</td>
+      <td>39308.0</td>
+      <td>10825.0</td>
+      <td>26991.0</td>
+      <td>56984.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5325000.0</td>
+      <td>2510000.0</td>
+      <td>2815000.0</td>
+      <td>5298000.0</td>
+      <td>2499000.0</td>
+      <td>2799000.0</td>
+      <td>588000.0</td>
+      <td>...</td>
+      <td>69640.0</td>
+      <td>24217.0</td>
+      <td>25633.0</td>
+      <td>10550.0</td>
+      <td>11222.0</td>
+      <td>12242.0</td>
+      <td>39559.0</td>
+      <td>9837.0</td>
+      <td>26797.0</td>
+      <td>57003.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>559</th>
+      <td>2014.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1426000.0</td>
+      <td>700000.0</td>
+      <td>725000.0</td>
+      <td>1416000.0</td>
+      <td>695000.0</td>
+      <td>721000.0</td>
+      <td>249000.0</td>
+      <td>...</td>
+      <td>56734.0</td>
+      <td>20998.0</td>
+      <td>20722.0</td>
+      <td>7509.0</td>
+      <td>6622.0</td>
+      <td>9531.0</td>
+      <td>32302.0</td>
+      <td>9016.0</td>
+      <td>18570.0</td>
+      <td>43864.0</td>
+    </tr>
+    <tr>
+      <th>560</th>
+      <td>2013.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1419000.0</td>
+      <td>697000.0</td>
+      <td>722000.0</td>
+      <td>1410000.0</td>
+      <td>692000.0</td>
+      <td>718000.0</td>
+      <td>249000.0</td>
+      <td>...</td>
+      <td>57278.0</td>
+      <td>23557.0</td>
+      <td>20499.0</td>
+      <td>7335.0</td>
+      <td>7398.0</td>
+      <td>9281.0</td>
+      <td>33976.0</td>
+      <td>9714.0</td>
+      <td>20199.0</td>
+      <td>50418.0</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>2012.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1411000.0</td>
+      <td>693000.0</td>
+      <td>719000.0</td>
+      <td>1403000.0</td>
+      <td>688000.0</td>
+      <td>715000.0</td>
+      <td>248000.0</td>
+      <td>...</td>
+      <td>55499.0</td>
+      <td>23731.0</td>
+      <td>19756.0</td>
+      <td>7353.0</td>
+      <td>6856.0</td>
+      <td>9948.0</td>
+      <td>27855.0</td>
+      <td>7769.0</td>
+      <td>19324.0</td>
+      <td>49890.0</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>2011.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1402000.0</td>
+      <td>688000.0</td>
+      <td>714000.0</td>
+      <td>1395000.0</td>
+      <td>684000.0</td>
+      <td>711000.0</td>
+      <td>247000.0</td>
+      <td>...</td>
+      <td>53193.0</td>
+      <td>23454.0</td>
+      <td>20645.0</td>
+      <td>6136.0</td>
+      <td>6855.0</td>
+      <td>9775.0</td>
+      <td>26806.0</td>
+      <td>7489.0</td>
+      <td>18818.0</td>
+      <td>48762.0</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>2010.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1392818.0</td>
+      <td>683328.0</td>
+      <td>709490.0</td>
+      <td>1377248.0</td>
+      <td>675338.0</td>
+      <td>701910.0</td>
+      <td>246313.0</td>
+      <td>...</td>
+      <td>54297.0</td>
+      <td>24269.0</td>
+      <td>19706.0</td>
+      <td>7306.0</td>
+      <td>7538.0</td>
+      <td>9127.0</td>
+      <td>28479.0</td>
+      <td>10577.0</td>
+      <td>20140.0</td>
+      <td>57283.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>564 rows × 112 columns</p>
+</div></div></div>
+</div>
+<p>あるいは、特定の列の特定の行がNaNかどうかを調べて除外してみると</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;都道府県&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>年度</th>
+      <th>地域コード</th>
+      <th>都道府県</th>
+      <th>総人口</th>
+      <th>総人口（男）</th>
+      <th>総人口（女）</th>
+      <th>日本人人口</th>
+      <th>日本人人口（男）</th>
+      <th>日本人人口（女）</th>
+      <th>15歳未満人口</th>
+      <th>...</th>
+      <th>食料費（二人以上の世帯）</th>
+      <th>住居費（二人以上の世帯）</th>
+      <th>光熱・水道費（二人以上の世帯）</th>
+      <th>家具・家事用品費（二人以上の世帯）</th>
+      <th>被服及び履物費（二人以上の世帯）</th>
+      <th>保健医療費（二人以上の世帯）</th>
+      <th>交通・通信費（二人以上の世帯）</th>
+      <th>教育費（二人以上の世帯）</th>
+      <th>教養娯楽費（二人以上の世帯）</th>
+      <th>その他の消費支出（二人以上の世帯）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5183000.0</td>
+      <td>2446000.0</td>
+      <td>2737000.0</td>
+      <td>5147000.0</td>
+      <td>2429000.0</td>
+      <td>2717000.0</td>
+      <td>544000.0</td>
+      <td>...</td>
+      <td>71448.0</td>
+      <td>22013.0</td>
+      <td>26676.0</td>
+      <td>9912.0</td>
+      <td>8816.0</td>
+      <td>13788.0</td>
+      <td>30483.0</td>
+      <td>9913.0</td>
+      <td>23762.0</td>
+      <td>51583.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5224614.0</td>
+      <td>2465088.0</td>
+      <td>2759526.0</td>
+      <td>5151366.0</td>
+      <td>2429697.0</td>
+      <td>2721669.0</td>
+      <td>555804.0</td>
+      <td>...</td>
+      <td>77680.0</td>
+      <td>27305.0</td>
+      <td>27309.0</td>
+      <td>12255.0</td>
+      <td>9227.0</td>
+      <td>14251.0</td>
+      <td>41407.0</td>
+      <td>9394.0</td>
+      <td>26539.0</td>
+      <td>56316.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5259000.0</td>
+      <td>2480000.0</td>
+      <td>2780000.0</td>
+      <td>5223000.0</td>
+      <td>2464000.0</td>
+      <td>2759000.0</td>
+      <td>565000.0</td>
+      <td>...</td>
+      <td>72912.0</td>
+      <td>20862.0</td>
+      <td>26332.0</td>
+      <td>9895.0</td>
+      <td>10466.0</td>
+      <td>16466.0</td>
+      <td>42277.0</td>
+      <td>8848.0</td>
+      <td>29335.0</td>
+      <td>57289.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5293000.0</td>
+      <td>2495000.0</td>
+      <td>2798000.0</td>
+      <td>5262000.0</td>
+      <td>2482000.0</td>
+      <td>2780000.0</td>
+      <td>577000.0</td>
+      <td>...</td>
+      <td>69044.0</td>
+      <td>19089.0</td>
+      <td>27012.0</td>
+      <td>8845.0</td>
+      <td>11517.0</td>
+      <td>11437.0</td>
+      <td>39308.0</td>
+      <td>10825.0</td>
+      <td>26991.0</td>
+      <td>56984.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017.0</td>
+      <td>R01000</td>
+      <td>北海道</td>
+      <td>5325000.0</td>
+      <td>2510000.0</td>
+      <td>2815000.0</td>
+      <td>5298000.0</td>
+      <td>2499000.0</td>
+      <td>2799000.0</td>
+      <td>588000.0</td>
+      <td>...</td>
+      <td>69640.0</td>
+      <td>24217.0</td>
+      <td>25633.0</td>
+      <td>10550.0</td>
+      <td>11222.0</td>
+      <td>12242.0</td>
+      <td>39559.0</td>
+      <td>9837.0</td>
+      <td>26797.0</td>
+      <td>57003.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>559</th>
+      <td>2014.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1426000.0</td>
+      <td>700000.0</td>
+      <td>725000.0</td>
+      <td>1416000.0</td>
+      <td>695000.0</td>
+      <td>721000.0</td>
+      <td>249000.0</td>
+      <td>...</td>
+      <td>56734.0</td>
+      <td>20998.0</td>
+      <td>20722.0</td>
+      <td>7509.0</td>
+      <td>6622.0</td>
+      <td>9531.0</td>
+      <td>32302.0</td>
+      <td>9016.0</td>
+      <td>18570.0</td>
+      <td>43864.0</td>
+    </tr>
+    <tr>
+      <th>560</th>
+      <td>2013.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1419000.0</td>
+      <td>697000.0</td>
+      <td>722000.0</td>
+      <td>1410000.0</td>
+      <td>692000.0</td>
+      <td>718000.0</td>
+      <td>249000.0</td>
+      <td>...</td>
+      <td>57278.0</td>
+      <td>23557.0</td>
+      <td>20499.0</td>
+      <td>7335.0</td>
+      <td>7398.0</td>
+      <td>9281.0</td>
+      <td>33976.0</td>
+      <td>9714.0</td>
+      <td>20199.0</td>
+      <td>50418.0</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>2012.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1411000.0</td>
+      <td>693000.0</td>
+      <td>719000.0</td>
+      <td>1403000.0</td>
+      <td>688000.0</td>
+      <td>715000.0</td>
+      <td>248000.0</td>
+      <td>...</td>
+      <td>55499.0</td>
+      <td>23731.0</td>
+      <td>19756.0</td>
+      <td>7353.0</td>
+      <td>6856.0</td>
+      <td>9948.0</td>
+      <td>27855.0</td>
+      <td>7769.0</td>
+      <td>19324.0</td>
+      <td>49890.0</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>2011.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1402000.0</td>
+      <td>688000.0</td>
+      <td>714000.0</td>
+      <td>1395000.0</td>
+      <td>684000.0</td>
+      <td>711000.0</td>
+      <td>247000.0</td>
+      <td>...</td>
+      <td>53193.0</td>
+      <td>23454.0</td>
+      <td>20645.0</td>
+      <td>6136.0</td>
+      <td>6855.0</td>
+      <td>9775.0</td>
+      <td>26806.0</td>
+      <td>7489.0</td>
+      <td>18818.0</td>
+      <td>48762.0</td>
+    </tr>
+    <tr>
+      <th>563</th>
+      <td>2010.0</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1392818.0</td>
+      <td>683328.0</td>
+      <td>709490.0</td>
+      <td>1377248.0</td>
+      <td>675338.0</td>
+      <td>701910.0</td>
+      <td>246313.0</td>
+      <td>...</td>
+      <td>54297.0</td>
+      <td>24269.0</td>
+      <td>19706.0</td>
+      <td>7306.0</td>
+      <td>7538.0</td>
+      <td>9127.0</td>
+      <td>28479.0</td>
+      <td>10577.0</td>
+      <td>20140.0</td>
+      <td>57283.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>564 rows × 112 columns</p>
+</div></div></div>
+</div>
+<p>県名を取得したければ例えば</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prefectures</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prefectures</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;北海道&#39;, &#39;青森県&#39;, &#39;岩手県&#39;, &#39;宮城県&#39;, &#39;秋田県&#39;, &#39;山形県&#39;, &#39;福島県&#39;, &#39;茨城県&#39;, &#39;栃木県&#39;, &#39;群馬県&#39;, &#39;埼玉県&#39;, &#39;千葉県&#39;, &#39;東京都&#39;, &#39;神奈川県&#39;, &#39;新潟県&#39;, &#39;富山県&#39;, &#39;石川県&#39;, &#39;福井県&#39;, &#39;山梨県&#39;, &#39;長野県&#39;, &#39;岐阜県&#39;, &#39;静岡県&#39;, &#39;愛知県&#39;, &#39;三重県&#39;, &#39;滋賀県&#39;, &#39;京都府&#39;, &#39;大阪府&#39;, &#39;兵庫県&#39;, &#39;奈良県&#39;, &#39;和歌山県&#39;, &#39;鳥取県&#39;, &#39;島根県&#39;, &#39;岡山県&#39;, &#39;広島県&#39;, &#39;山口県&#39;, &#39;徳島県&#39;, &#39;香川県&#39;, &#39;愛媛県&#39;, &#39;高知県&#39;, &#39;福岡県&#39;, &#39;佐賀県&#39;, &#39;長崎県&#39;, &#39;熊本県&#39;, &#39;大分県&#39;, &#39;宮崎県&#39;, &#39;鹿児島県&#39;, &#39;沖縄県&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>NaNの判定は少しトリッキーで、単純な二項演算子で判定しようとすると直感と異なる振る舞いになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nan同士を==で評価(しているつもり)&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan同士を==で評価(しているつもり) False
+</pre></div>
+</div>
+</div>
+</div>
+<p>さきほどのデータの例で、都道府県列からNaNでないものを取っているつもり</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span> <span class="p">][</span><span class="s2">&quot;都道府県&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;北海道&#39;, &#39;青森県&#39;, &#39;岩手県&#39;, &#39;宮城県&#39;, &#39;秋田県&#39;, &#39;山形県&#39;, &#39;福島県&#39;, &#39;茨城県&#39;, &#39;栃木県&#39;,
+       &#39;群馬県&#39;, &#39;埼玉県&#39;, &#39;千葉県&#39;, &#39;東京都&#39;, &#39;神奈川県&#39;, &#39;新潟県&#39;, &#39;富山県&#39;, &#39;石川県&#39;, &#39;福井県&#39;,
+       &#39;山梨県&#39;, &#39;長野県&#39;, &#39;岐阜県&#39;, &#39;静岡県&#39;, &#39;愛知県&#39;, &#39;三重県&#39;, &#39;滋賀県&#39;, &#39;京都府&#39;, &#39;大阪府&#39;,
+       &#39;兵庫県&#39;, &#39;奈良県&#39;, &#39;和歌山県&#39;, &#39;鳥取県&#39;, &#39;島根県&#39;, &#39;岡山県&#39;, &#39;広島県&#39;, &#39;山口県&#39;, &#39;徳島県&#39;,
+       &#39;香川県&#39;, &#39;愛媛県&#39;, &#39;高知県&#39;, &#39;福岡県&#39;, &#39;佐賀県&#39;, &#39;長崎県&#39;, &#39;熊本県&#39;, &#39;大分県&#39;, &#39;宮崎県&#39;,
+       &#39;鹿児島県&#39;, &#39;沖縄県&#39;, nan], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nanに対して定義された関数やメソッドを用いる必要がある。</p>
 </div>
 <div class="section" id="excel">
 <h3>Excelファイルの読み込み<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h3>
@@ -3869,8 +4790,8 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Python_misc_VScode.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -3887,18 +4808,20 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      <div class="extra_footer">
-        © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+    <div class="container">
+      <p>
+        
+          <div class="extra_footer">
+            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-      </div>
-  </p>
-</footer>
+          </div>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
