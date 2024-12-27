@@ -1,423 +1,465 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Numpyについて &#8212; プログラミング演習1・実践データサイエンス</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_misc_numpy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="機械学習: ニューラルネットワークによる回帰" href="Python_chapter_ArtificialNeuralNetwork.html" />
     <link rel="prev" title="Pandasの使い方 (基礎)" href="Python_misc_Pandas.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <dialog id="pst-search-dialog">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   資料について
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  プログラムの実行方法
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    資料について
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter0_HowToUse.html">
-   Google Colaboratoryの使い方
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  練習帳
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_practice.html">
-   練習帳
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Pythonの基本文法
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   2. Pythonの基本 その２:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter3_Function.html">
-   3. 関数
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter2_ListLoop.html">2. Pythonの基本 その２:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  ライブラリと可視化
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  データ分析の基礎
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter6_Regression.html">
-   6. 相関・回帰分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter5_Probability.html">5. 確率と疑似乱数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter8_handling_files.html">8. ファイル・文字列操作</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tips&amp;環境構築
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Error.html">
-   よくあるエラー集
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_environment.html">
-   Pythonの環境構築
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
-   Pythonの環境構築 (Windows11版)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_VScode.html">
-   コードの編集環境とGitHub Copilot
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  おまけ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Pandas.html">
-   Pandasの使い方 (基礎)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Numpyについて
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">
-   機械学習: ニューラルネットワークによる回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
-   ベイズ最適化による実験計画法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
-   ベイズ線形回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_StyleGAN3.html">
-   StyleGAN3+CLIPによる写真生成
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_WebScraping.html">
-   Webスクレイピング・ブラウザ操作
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_ODE.html">
-   常微分方程式の数値解法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_PCA.html">
-   主成分分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
-   特異値分解と情報削減
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
-   ニュートン法によるN次元多項式の求根
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numpyについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
+
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
-                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/Python_misc_numpy.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
-                    class="fab fa-github"></i>リポジトリ</button></a>
-        <a class="issues-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_numpy.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
-        title="全画面モード"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_misc_numpy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Python_misc_numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numpyについて</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 目次
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-array">
-   numpy.array
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#np-dot">
-   np.dot
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   ブロードキャスト機能
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arange-linspace">
-   arange, linspace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   行列・線形代数
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t">
-   転置 .T
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array">numpy.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot">np.dot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ブロードキャスト機能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arange-linspace">arange, linspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">行列・線形代数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t">転置 .T</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_numpy.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="numpy">
-<h1>Numpyについて<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="numpy">
+<h1>Numpyについて<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
 <p>この授業で使うノートブックや、巷に転がってるPythonのコードでは、たびたび<code class="docutils literal notranslate"><span class="pre">Numpy</span></code>というものが使われています。
 この補足ノートではその<code class="docutils literal notranslate"><span class="pre">Numpy</span></code>について説明します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>は数値演算ライブラリで、機械学習・画像音声処理などなど様々な場面で使用されるライブラリです。<br />
@@ -435,15 +477,15 @@
 <a class="reference external" href="https://modelingguru.nasa.gov/docs/DOC-2783">https://modelingguru.nasa.gov/docs/DOC-2783</a></p>
 <p>2番目の点<br />
 numpyでは数学で用いる種々の関数(sin,cos,log,log10, etc.)が定義されていて簡単に読み出すことができます。また、乱数を生成してサイコロを振ったりすることも簡単です。</p>
-<div class="section" id="numpy-array">
-<h2>numpy.array<a class="headerlink" href="#numpy-array" title="Permalink to this headline">¶</a></h2>
+<section id="numpy-array">
+<h2>numpy.array<a class="headerlink" href="#numpy-array" title="Link to this heading">#</a></h2>
 <p>それでは<code class="docutils literal notranslate"><span class="pre">numpy</span></code>を<code class="docutils literal notranslate"><span class="pre">import</span></code>して、使ってみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#numpyとかくと長いのでnpという名前で使う</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np #numpyとかくと長いのでnpという名前で使う
 
-<span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5001</span><span class="p">)</span> <span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+a = [ i for i in range(1,5001) ]
+b = np.array(a)
 </pre></div>
 </div>
 </div>
@@ -452,8 +494,8 @@ numpyでは数学で用いる種々の関数(sin,cos,log,log10, etc.)が定義�
 それを<code class="docutils literal notranslate"><span class="pre">np.array()</span></code>関数に突っ込んだ<code class="docutils literal notranslate"><span class="pre">b</span></code>を定義してみました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;a&quot;, a)
+print(&quot;b&quot;, b)
 </pre></div>
 </div>
 </div>
@@ -468,8 +510,8 @@ b [   1    2    3 ... 4998 4999 5000]
 では<code class="docutils literal notranslate"><span class="pre">type</span></code>を調べてみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aの型&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bの型&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;aの型&quot;, type(a))
+print(&quot;bの型&quot;, type(b))
 </pre></div>
 </div>
 </div>
@@ -487,9 +529,9 @@ bの型 &lt;class &#39;numpy.ndarray&#39;&gt;
 リスト(2章のノート)の足し算では、リスト同士の結合を意味していました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aa</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">a</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aaの長さ&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">aa</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>aa = a + a 
+print(aa)
+print(&quot;aaの長さ&quot;, len(aa))
 </pre></div>
 </div>
 </div>
@@ -504,8 +546,8 @@ aaの長さ 10000
 <p>一方、numpy.arrayである<code class="docutils literal notranslate"><span class="pre">b</span></code>を足してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bb</span><span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bb</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bb</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bb= b + b
+print(bb, len(bb))
 </pre></div>
 </div>
 </div>
@@ -519,8 +561,8 @@ aaの長さ 10000
 <p>あるいは、３を<code class="docutils literal notranslate"><span class="pre">b</span></code>にかけてみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b3</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b3</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">b3</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b3 = 3*b
+print(b3,len(b3))
 </pre></div>
 </div>
 </div>
@@ -532,18 +574,18 @@ aaの長さ 10000
 </div>
 <p>となり、すべての要素が３倍されています。</p>
 <p>これはよくよくみると<strong>和</strong>と<strong>スカラー倍</strong>が定義できている.つまり、ベクトルとしての性質を持っている事がわかります。</p>
-</div>
-<div class="section" id="np-dot">
-<h2>np.dot<a class="headerlink" href="#np-dot" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="np-dot">
+<h2>np.dot<a class="headerlink" href="#np-dot" title="Link to this heading">#</a></h2>
 <p>データ分析をする際「要素ごとの積をとって和を取る」という操作が頻繁に表れます。<br />
 たとえば<span class="math notranslate nohighlight">\(a=[1.0,3.0,4.0]\)</span>と<span class="math notranslate nohighlight">\(b=[-2.0,1.0,5.0]\)</span>について<span class="math notranslate nohighlight">\(1 \times (-2) + 3.0 \times 1.0 + 4.0 \times 5.0 = 21\)</span>といった操作です。
 この操作は数学的には、実数を成分にもつベクトルの内積に対応しますが<code class="docutils literal notranslate"><span class="pre">numpy</span></code>にはこの機能が備わっています。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a = [1.0, 3.0, 4.0]
+b = [-2.0, 1.0, 5.0]
 
-<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+np.dot(a,b)
 </pre></div>
 </div>
 </div>
@@ -555,13 +597,13 @@ aaの長さ 10000
 </div>
 <p>多項式回帰の際の二乗誤差なども</p>
 <p><span class="math notranslate nohighlight">\(\chi^2 = \sum^N_{i=1} (y_i - (ax_i+b))^2\)</span>は<span class="math notranslate nohighlight">\(y_i-(ax_i+b)\)</span>を<span class="math notranslate nohighlight">\(i\)</span>番目の成分に持つベクトルの自身との内積になるので、簡単に実装することができます。</p>
-</div>
-<div class="section" id="id1">
-<h2>ブロードキャスト機能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2>ブロードキャスト機能<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>にはブロードキャストと呼ばれる機能が備わっていて<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>同士の二項演算では、形状を揃える機能が備わっています。たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x = np.array([1.0, 2.0, 3.0, 4.0])
 </pre></div>
 </div>
 </div>
@@ -569,9 +611,9 @@ aaの長さ 10000
 <p>というベクトル(1次元のndarray)があったときに、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span> 
-<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span> 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a = 2.0 
+b = 1.0
+a*x + b 
 </pre></div>
 </div>
 </div>
@@ -583,17 +625,17 @@ aaの長さ 10000
 </div>
 <p>とすると、<span class="math notranslate nohighlight">\(a\)</span>でスカラー倍したのち、全ての成分に<span class="math notranslate nohighlight">\(b\)</span>が足されています。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>を<span class="math notranslate nohighlight">\(N\)</span>個成分を持つndarrayとして用意しておいて<span class="math notranslate nohighlight">\(y\)</span>に各点での関数<span class="math notranslate nohighlight">\(f(x_i) (i=1,...,N)\)</span>の出力を対応させたいときも下で見るようにブロードキャスト機能を使えば簡単に実装できます。</p>
-</div>
-<div class="section" id="arange-linspace">
-<h2>arange, linspace<a class="headerlink" href="#arange-linspace" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="arange-linspace">
+<h2>arange, linspace<a class="headerlink" href="#arange-linspace" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">np.arange(始点,終点,公差)</span></code>や<code class="docutils literal notranslate"><span class="pre">np.linspace(始点,終点,点の数)</span></code>を使うと始点-終点の領域における等間隔な点を生成することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.e-1</span><span class="p">)</span> <span class="c1">#終点は含まれない</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a = np.arange(0.1, 1.0, 1.e-1) #終点は含まれない
+b = np.linspace(1.0,10.0,10)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+print(&quot;a&quot;, a)
+print(&quot;b&quot;, b)
 </pre></div>
 </div>
 </div>
@@ -607,10 +649,10 @@ b [ 1.  2.  3.  4.  5.  6.  7.  8.  9. 10.]
 <p>グラフを連続的に線で繋ぎたいときなどに重宝します</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="n">b</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span><span class="n">c</span> <span class="c1">#二次関数</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x = np.linspace(0.0,10.0, 10)
+a = 2.0; b=-0.5; c = 4
+y = a * x**2 + b * x +c #二次関数
+print(&quot;y&quot;,y) 
 </pre></div>
 </div>
 </div>
@@ -622,14 +664,14 @@ b [ 1.  2.  3.  4.  5.  6.  7.  8.  9. 10.]
 </div>
 </div>
 <p>点同士の間隔を厳に設定したい場合は<code class="docutils literal notranslate"><span class="pre">arange</span></code>をつかって、点の数を厳に設定したい場合は<code class="docutils literal notranslate"><span class="pre">linspace</span></code>を使うといいでしょう。</p>
-</div>
-<div class="section" id="id2">
-<h2>行列・線形代数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id2">
+<h2>行列・線形代数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>ベクトルと同じように、<code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>では二次元配列(つまり行列)を考えることも出来て、たとえば 左上から順に整数1,2,3,…という値をもった３行３列の行列を考えたければ</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A = np.array( [ [1,2,3],[4,5,6],[7,8,9]] )
+print(A)
 </pre></div>
 </div>
 </div>
@@ -645,10 +687,10 @@ b [ 1.  2.  3.  4.  5.  6.  7.  8.  9. 10.]
 <p>他にも、たとえば</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span>  <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;行列B&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bの逆行列は&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bの行列式は&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>B = np.array( [  [2.0,0.1,-0.2], [0.1,1.3,0.4], [-0.2,0.4,3.0]])
+print(&quot;行列B&quot;, B)
+print(&quot;Bの逆行列は&quot;, np.linalg.inv(B))
+print(&quot;Bの行列式は&quot;, np.linalg.det(B))
 </pre></div>
 </div>
 </div>
@@ -665,13 +707,13 @@ Bの行列式は 7.3820000000000014
 </div>
 </div>
 <p>といったように、線形代数(linalg &lt;- linear algebraの略)で扱うような演算も簡単にできる。</p>
-</div>
-<div class="section" id="t">
-<h2>転置 .T<a class="headerlink" href="#t" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="t">
+<h2>転置 .T<a class="headerlink" href="#t" title="Link to this heading">#</a></h2>
 <p>numpyは実はMatplotlibを使ったお絵かきでもよくお世話になる。それは、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">185</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">141</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">543</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">334</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">172</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">123</span><span class="p">]]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tmp = [ [1,185,72,141], [2,165,50,543],[3,150,48,334],[4,172,65,123]]
 </pre></div>
 </div>
 </div>
@@ -684,8 +726,8 @@ Bの行列式は 7.3820000000000014
 <p>このとき、ループをまわしてplotするのはめんどくさい。たとえば「2番目の値だけが入った配列に対して、3番目の値だけが入った配列を用意していっぺんにplotしたい」ときは転置(transpose,T)をつかえば一瞬で実現できる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ntmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="c1">#numpy.arrayに変換してから転置(transpose)を取りなさいという命令 .T</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ntmp</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ntmp = np.array(tmp).T #numpy.arrayに変換してから転置(transpose)を取りなさいという命令 .T
+print(ntmp)
 </pre></div>
 </div>
 </div>
@@ -701,8 +743,8 @@ Bの行列式は 7.3820000000000014
 <p>２番めと３番目の値だけ取り出したいときは、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2番目の要素の配列&quot;</span><span class="p">,</span> <span class="n">ntmp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3番目の要素の配列&quot;</span><span class="p">,</span> <span class="n">ntmp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;2番目の要素の配列&quot;, ntmp[1])
+print(&quot;3番目の要素の配列&quot;, ntmp[2])
 </pre></div>
 </div>
 </div>
@@ -717,8 +759,8 @@ Bの行列式は 7.3820000000000014
 <p>あるいは</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[:,1]→&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[:,2]→&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp</span><span class="p">)[:,</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;[:,1]→&quot;, np.array(tmp)[:,1])
+print(&quot;[:,2]→&quot;, np.array(tmp)[:,2])
 </pre></div>
 </div>
 </div>
@@ -732,27 +774,27 @@ Bの行列式は 7.3820000000000014
 <p>などとしても良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ntmp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ntmp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1">#要素ごとにループを回したりしなくてよい</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(4,4))
+plt.scatter(ntmp[1], ntmp[2]) #要素ごとにループを回したりしなくてよい
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_misc_numpy_48_0.png" src="../_images/Python_misc_numpy_48_0.png" />
+<img alt="../_images/cfe7afdf41c7a0c6b09246a6c2e271f94b0b38d652a1047ee6e97316eff9a31f.png" src="../_images/cfe7afdf41c7a0c6b09246a6c2e271f94b0b38d652a1047ee6e97316eff9a31f.png" />
 </div>
 </div>
 <p>文字列を含むリストをndarrayに変換したときの挙動には注意しよう.<br />
 文字列と数値は分けて使うのがオススメ.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">55</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">50</span><span class="p">]]</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">T</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="c1">#文字列になってしまっている</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>t = [ [&quot;Aさん&quot;,170,55], [&quot;Bさん&quot;,160,50]]
+t = np.array(t)
+data = t.T
+print(&quot;t&quot;,t, &quot;data&quot;,data)
+print(&quot;type&quot;, type(data[1][0])) #文字列になってしまっている
 </pre></div>
 </div>
 </div>
@@ -767,8 +809,8 @@ type &lt;class &#39;numpy.str_&#39;&gt;
 </div>
 </div>
 <p>(以下、都度追記)</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -782,7 +824,7 @@ type &lt;class &#39;numpy.str_&#39;&gt;
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -790,47 +832,102 @@ type &lt;class &#39;numpy.str_&#39;&gt;
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Python_misc_Pandas.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pandasの使い方 (基礎)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Python_misc_Pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandasの使い方 (基礎)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Python_chapter_ArtificialNeuralNetwork.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Python_chapter_ArtificialNeuralNetwork.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">機械学習: ニューラルネットワークによる回帰</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          <div class="extra_footer">
-            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array">numpy.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot">np.dot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ブロードキャスト機能</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arange-linspace">arange, linspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">行列・線形代数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t">転置 .T</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
           </div>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
-      </div>
-    </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
 
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

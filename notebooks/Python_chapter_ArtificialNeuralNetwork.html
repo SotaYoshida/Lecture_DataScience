@@ -1,413 +1,463 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>機械学習: ニューラルネットワークによる回帰 &#8212; プログラミング演習1・実践データサイエンス</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter_ArtificialNeuralNetwork';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ベイズ最適化による実験計画法" href="Python_chapter_BayesianOptimization.html" />
     <link rel="prev" title="Numpyについて" href="Python_misc_numpy.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <dialog id="pst-search-dialog">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="この本を検索..." aria-label="この本を検索..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   資料について
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  プログラムの実行方法
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    資料について
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter0_HowToUse.html">
-   Google Colaboratoryの使い方
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  練習帳
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_practice.html">
-   練習帳
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Pythonの基本文法
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter2_ListLoop.html">
-   2. Pythonの基本 その２:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter3_Function.html">
-   3. 関数
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter2_ListLoop.html">2. Pythonの基本 その２:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  ライブラリと可視化
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  データ分析の基礎
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter6_Regression.html">
-   6. 相関・回帰分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter5_Probability.html">5. 確率と疑似乱数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter8_handling_files.html">8. ファイル・文字列操作</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tips&amp;環境構築
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Error.html">
-   よくあるエラー集
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_environment.html">
-   Pythonの環境構築
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
-   Pythonの環境構築 (Windows11版)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_VScode.html">
-   コードの編集環境とGitHub Copilot
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  おまけ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Pandas.html">
-   Pandasの使い方 (基礎)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_numpy.html">
-   Numpyについて
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   機械学習: ニューラルネットワークによる回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
-   ベイズ最適化による実験計画法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
-   ベイズ線形回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_StyleGAN3.html">
-   StyleGAN3+CLIPによる写真生成
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_WebScraping.html">
-   Webスクレイピング・ブラウザ操作
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_ODE.html">
-   常微分方程式の数値解法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_PCA.html">
-   主成分分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
-   特異値分解と情報削減
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
-   ニュートン法によるN次元多項式の求根
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">機械学習: ニューラルネットワークによる回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
+
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="ナビゲーションを切り替え" aria-controls="site-navigation"
-                title="ナビゲーションを切り替え" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="このページをダウンロード"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="ソースファイルをダウンロード" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDFに印刷"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="ソースリポジトリ"><i
-                    class="fab fa-github"></i>リポジトリ</button></a>
-        <a class="issues-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter_ArtificialNeuralNetwork.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="問題を開く"><i class="fas fa-lightbulb"></i>未解決の問題</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="全画面モード"
-        title="全画面モード"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="発売 Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter_ArtificialNeuralNetwork.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>機械学習: ニューラルネットワークによる回帰</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 目次
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   データの下処理
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   勾配降下法
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adam">
-   Adam
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   最適化手法に関するまとめ
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの下処理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">勾配降下法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adam">Adam</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">最適化手法に関するまとめ</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>機械学習: ニューラルネットワークによる回帰<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>機械学習: ニューラルネットワークによる回帰<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>この章では、最も単純な、入力層・隠れ層・出力層からなるニューラルネットワークを使って、データから尤もらしい予測を与える関数を構築してみましょう。</p>
 <p>対象とする(疑似)データは、多項式回帰の際に用いたデータと同じsin関数＋ノイズで生成することにします。</p>
 <ul class="simple">
@@ -416,53 +466,53 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">create_toy_data</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="c1">#毎回同じデータになるように乱数の種を固定しておく </span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                                                                                                                 
-    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
+def create_toy_data(sample_size, std):
+    np.random.seed(1234) #毎回同じデータになるように乱数の種を固定しておく 
+    x = np.linspace(0, 0.5, sample_size)
+    t = np.sin(2*np.pi*x) + np.random.normal(scale=std, size=x.shape)                                                                                                                 
+    return x, t
 
-<span class="n">xt</span><span class="p">,</span><span class="n">yt</span> <span class="o">=</span> <span class="n">create_toy_data</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mf">5.e-2</span><span class="p">)</span> 
+xt,yt = create_toy_data(40,5.e-2) 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###グラフにしてみる</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>###グラフにしてみる
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(10,4))
+ax = fig.add_subplot(111)
+ax.set_xlabel(&quot;x&quot;); ax.set_ylabel(&quot;y&quot;)
+ax.scatter(xt, yt, facecolor=&quot;none&quot;, edgecolor=&quot;b&quot;, s=50, label=&quot;Data&quot;)
+ax.legend()
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_4_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_4_0.png" />
+<img alt="../_images/7eb7efd81c4eb3d2c408bfd334830d4ba0e35e9b491970aeaeffde5bec917087.png" src="../_images/7eb7efd81c4eb3d2c408bfd334830d4ba0e35e9b491970aeaeffde5bec917087.png" />
 </div>
 </div>
 <p>ではいくつか必要な関数を適宜定義しながら進めていきましょう。</p>
 <p>*注: 以下のコードは入力・出力ともに1次元かつ、決まったニューラルネットワーク構造の場合に対して書かれているため、naiveに2層以上の隠れ層を持つニューラルネットワークに拡張するのはstraightfowardではなく、また効率的ではありません。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhl</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">## 隠れ層のノードの数を指定 これを増やすほどニューラルネットワークの表現能力が上がる一方、データに過適合しやすくなる(例外あり)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nhl = 8 ## 隠れ層のノードの数を指定 これを増やすほどニューラルネットワークの表現能力が上がる一方、データに過適合しやすくなる(例外あり)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#重み行列W,V(今はベクトル)と、隠れ層でのバイアスbs,出力層でのバイアスを正規乱数で初期化</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>  <span class="c1">#結果が実行ごとに同じになるよう乱数を固定(バグを見つけやすくする)</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">bs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#重み行列W,V(今はベクトル)と、隠れ層でのバイアスbs,出力層でのバイアスを正規乱数で初期化
+np.random.seed(1234)  #結果が実行ごとに同じになるよう乱数を固定(バグを見つけやすくする)
+W = np.random.normal(0.0,1.0,nhl)
+V = np.random.normal(0.0,1.0,nhl)
+bs = np.random.normal(0.0,1.0,nhl)
+b0 = np.random.normal()
 </pre></div>
 </div>
 </div>
@@ -470,9 +520,9 @@
 <p>隠れ層で作用させる活性化関数を定義しておきましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#シグモイド関数: 活性化関数の一つ</span>
-<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#シグモイド関数: 活性化関数の一つ
+def sigmoid(z):
+    return 1.0/(1.0+np.exp(-z))
 </pre></div>
 </div>
 </div>
@@ -481,28 +531,28 @@
 <p>以下では、データとANNのアウトプットの二乗誤差を目的関数として定めることにします。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### データとANNの出力間の二乗誤差を計算する関数を作っておく。</span>
-<span class="k">def</span> <span class="nf">calc_tloss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">):</span>
-    <span class="n">nhl</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tW</span><span class="p">)</span>
-    <span class="n">s</span><span class="o">=</span><span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tV</span><span class="p">,</span> <span class="n">acf</span><span class="p">(</span><span class="n">tW</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">tbs</span><span class="p">))</span> <span class="o">+</span> <span class="n">tb0</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
-    <span class="k">return</span> <span class="n">s</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>### データとANNの出力間の二乗誤差を計算する関数を作っておく。
+def calc_tloss(x,y,tW,tV,tbs,tb0,acf):
+    nhl = len(tW)
+    s=0.0
+    for i in range(len(x)):
+        s += (np.dot(tV, acf(tW*x[i]+tbs)) + tb0 - y[i])**2
+    return s
 </pre></div>
 </div>
 </div>
 </div>
 <p>上ではcalc_tlossの引数にacfという変数を指定し、acfにsigmoidを指定しました。<br />
 この様にしておくと、sigmoid関数以外の活性化関数を使う際にも、上のcalc_tloss関数が使いまわせますね。</p>
-<div class="section" id="id2">
-<h2>データの下処理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2>データの下処理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>機械学習などの分析では、データの値を中心0,分散1に変換して扱うのが基本です。</p>
 <p>このことを、データの標準化と呼びます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ymean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span>
-<span class="n">ystd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span>
-<span class="n">ny</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span><span class="o">-</span><span class="n">ymean</span><span class="p">)</span><span class="o">/</span> <span class="n">ystd</span> <span class="c1">#それぞれのデータを平均をひいて標準偏差で割る</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ymean = np.mean(yt)
+ystd = np.std(yt)
+ny = (np.array(yt)-ymean)/ ystd #それぞれのデータを平均をひいて標準偏差で割る
 </pre></div>
 </div>
 </div>
@@ -518,7 +568,7 @@
 特定の値を特別視しない(全ての量を平等に扱う)のなら、通常は標準化を行います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acf</span> <span class="o">=</span> <span class="n">sigmoid</span> <span class="c1">#sigmoid関数をacfという名前で使う</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>acf = sigmoid #sigmoid関数をacfという名前で使う
 </pre></div>
 </div>
 </div>
@@ -526,7 +576,7 @@
 <p>さて、初期値W,V,bs,b0と活性化関数にsigmoidを選んだニューラルネットワークとデータの値の二乗誤差は…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初期値での二乗誤差&quot;</span><span class="p">,</span><span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;初期値での二乗誤差&quot;,calc_tloss(xt,ny,W,V,bs,b0,acf))
 </pre></div>
 </div>
 </div>
@@ -539,7 +589,7 @@
 <p>データ1個あたり、ニューラルネットワークとデータ値との間にどれくらい誤差があるかというと…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;データ1個あたりの誤差:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">xt</span><span class="p">)))</span> <span class="c1">#データ1個あたりどれほど誤差*があるか *標準化された誤差</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;データ1個あたりの誤差:&quot;, np.sqrt(calc_tloss(xt,ny,W,V,bs,b0,acf)/len(xt))) #データ1個あたりどれほど誤差*があるか *標準化された誤差
 </pre></div>
 </div>
 </div>
@@ -552,21 +602,21 @@
 <p>ランダムに生成した重み(W,V)やバイアス項(bs,b0)では、まだニューラルネットワークは訓練がなされていないデタラメな関数なので、図にプロットしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">bs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xp</span><span class="p">))])</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xp = np.linspace(0.0,0.5,300)
+yp = np.array([np.dot(V, sigmoid(W*xp[i]+bs)) for i in range(len(xp))])
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span> 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="o">*</span><span class="n">ystd</span><span class="o">+</span><span class="n">ymean</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ANN&quot;</span><span class="p">)</span> <span class="c1">#ニューラルネットワークの予測ypは、&quot;標準化された&quot;yの値に従って学習されているので、元のスケールに戻さないといけない。</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+fig = plt.figure(figsize=(10,4))
+ax = fig.add_subplot(111)
+ax.set_xlabel(&quot;x&quot;); ax.set_ylabel(&quot;y&quot;)
+ax.scatter(xt, yt, facecolor=&quot;none&quot;, edgecolor=&quot;b&quot;, s=50, label=&quot;Data&quot;) 
+ax.plot(xp,yp*ystd+ymean,label=&quot;ANN&quot;) #ニューラルネットワークの予測ypは、&quot;標準化された&quot;yの値に従って学習されているので、元のスケールに戻さないといけない。
+ax.legend()
+plt.show(); plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_22_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_22_0.png" />
+<img alt="../_images/1c6682aa633ff3f76aba9cd02d19273c804bbdaaaa0de755318c571024e0d4a6.png" src="../_images/1c6682aa633ff3f76aba9cd02d19273c804bbdaaaa0de755318c571024e0d4a6.png" />
 </div>
 </div>
 <p>当然ですが、全然だめですね。</p>
@@ -576,33 +626,33 @@
 <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial W}, \frac{\partial f}{\partial V}, \frac{\partial f}{\partial b}, \frac{\partial f}{\partial b_0}\)</span>です。<br />
 プログラムではそれぞれ<code class="docutils literal notranslate"><span class="pre">dw,dv,dbs,db0</span></code>とでも名前をつけることにして、勾配を返り値として与える関数を定義します。</p>
 <p>以下では、勾配降下法, Adamの2通りの最適化手法を用いてパラメータを更新することとします。</p>
-</div>
-<div class="section" id="id3">
-<h2>勾配降下法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2>勾配降下法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>勾配降下法とは、目的関数を微分した勾配の値のみを使ってパラメータを更新する方法です。<br />
 たとえば,重み<span class="math notranslate nohighlight">\(W\)</span>の<span class="math notranslate nohighlight">\(i\)</span>番目を更新する際には<br />
 <span class="math notranslate nohighlight">\(W_i := W_i - \eta \frac{\partial f}{\partial W_i}\)</span><br />
 とします。(<span class="math notranslate nohighlight">\(f\)</span>は目的関数で、<span class="math notranslate nohighlight">\(\eta\)</span>は学習率(パラメータ更新のスケールを決めるパラメータ)です。)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_der</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">):</span>
-    <span class="n">tdw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">)</span>
-    <span class="n">tdv</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">)</span>
-    <span class="n">tdbs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">)</span>
-    <span class="n">tdb0</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="c1">#以下の勾配の計算は、目的関数が二乗誤差かつ全データでの勾配の和を使用する場合にのみ正しい</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tV</span><span class="p">,</span> <span class="n">acf</span><span class="p">(</span><span class="n">tW</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">tbs</span><span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="n">tb0</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">tdb0</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">g</span>
-        <span class="k">for</span> <span class="n">jth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nhl</span><span class="p">):</span>                    
-            <span class="n">tdv</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span>  <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">acf</span><span class="p">(</span><span class="n">tW</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">tbs</span><span class="p">[</span><span class="n">jth</span><span class="p">])</span>
-            <span class="n">tdw</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span>  <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">tV</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span> <span class="o">*</span> <span class="n">acfder</span><span class="p">(</span><span class="n">tW</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">tbs</span><span class="p">[</span><span class="n">jth</span><span class="p">])</span> <span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">tdbs</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">tV</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span> <span class="o">*</span> <span class="n">acfder</span><span class="p">(</span><span class="n">tW</span><span class="p">[</span><span class="n">jth</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">tbs</span><span class="p">[</span><span class="n">jth</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">tdw</span><span class="p">,</span> <span class="n">tdv</span><span class="p">,</span> <span class="n">tdbs</span><span class="p">,</span> <span class="n">tdb0</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def calc_der(x,y,tW,tV,tbs,tb0,acf,acfder):
+    tdw = np.zeros(nhl)
+    tdv =  np.zeros(nhl)
+    tdbs = np.zeros(nhl)
+    tdb0 = 0.0
+    #以下の勾配の計算は、目的関数が二乗誤差かつ全データでの勾配の和を使用する場合にのみ正しい
+    for i in range(len(x)):
+        g = np.dot(tV, acf(tW*x[i]+tbs) ) + tb0 - y[i]
+        tdb0 += 2.0 * g
+        for jth in range(nhl):                    
+            tdv[jth]  += 2.0 * g * acf(tW[jth]*x[i]+tbs[jth])
+            tdw[jth]  += 2.0 * g * tV[jth] * acfder(tW[jth]*x[i]+tbs[jth]) *x[i]
+            tdbs[jth] += 2.0 * g * tV[jth] * acfder(tW[jth]*x[i]+tbs[jth])
+    return tdw, tdv, tdbs, tdb0
 
-<span class="c1">#シグモイド関数の微分: 勾配の計算を具体的に求めるのに使う</span>
-<span class="k">def</span> <span class="nf">sigmoid_der</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">)</span><span class="o">/</span> <span class="p">((</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+#シグモイド関数の微分: 勾配の計算を具体的に求めるのに使う
+def sigmoid_der(z):
+    return np.exp(-z)/ ((1.0+np.exp(-z))**2)
 </pre></div>
 </div>
 </div>
@@ -610,9 +660,9 @@
 <p>さてW,V,bs,b0の初期値での勾配の値は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acf</span> <span class="o">=</span> <span class="n">sigmoid</span>
-<span class="n">acfder</span> <span class="o">=</span> <span class="n">sigmoid_der</span> <span class="c1">#sigmoid関数の微分sigmoid_derをacfderという名前で使う</span>
-<span class="n">calc_der</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>acf = sigmoid
+acfder = sigmoid_der #sigmoid関数の微分sigmoid_derをacfderという名前で使う
+calc_der(xt,ny,W,V,bs,b0,acf,acfder)
 </pre></div>
 </div>
 </div>
@@ -631,16 +681,16 @@
 <p>と計算できるようになりました。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fitGD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">,</span><span class="n">nepoch</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">verbose</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nepoch</span><span class="p">):</span>
-        <span class="n">tdw</span><span class="p">,</span><span class="n">tdv</span><span class="p">,</span><span class="n">tdbs</span><span class="p">,</span> <span class="n">tdb0</span> <span class="o">=</span> <span class="n">calc_der</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">)</span>
-        <span class="n">tW</span> <span class="o">=</span> <span class="n">tW</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">tdw</span>
-        <span class="n">tV</span> <span class="o">=</span> <span class="n">tV</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">tdv</span>
-        <span class="n">tbs</span> <span class="o">=</span>  <span class="n">tbs</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">tdbs</span>
-        <span class="n">tb0</span> <span class="o">=</span> <span class="n">tb0</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">tdb0</span>        
-        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;tloss =&quot;</span><span class="p">,</span> <span class="n">calc_tloss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">tdw</span><span class="p">,</span><span class="n">tdv</span><span class="p">,</span><span class="n">tdbs</span><span class="p">,</span> <span class="n">tdb0</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def fitGD(x,y,tW,tV,tbs,tb0,acf,acfder,nepoch,eta,verbose):
+    for i in range(nepoch):
+        tdw,tdv,tdbs, tdb0 = calc_der(x,y,tW,tV,tbs,tb0,acf,acfder)
+        tW = tW - eta * tdw
+        tV = tV -eta * tdv
+        tbs =  tbs -eta * tdbs
+        tb0 = tb0 -eta * tdb0        
+        if verbose == 1:
+            print(i, &quot;tloss =&quot;, calc_tloss(x,y,tW,tV,tbs,tb0,acf))
+    return tW,tV,tbs,tb0,tdw,tdv,tdbs, tdb0
 </pre></div>
 </div>
 </div>
@@ -649,11 +699,11 @@
 (nhlの値に依りますが、ちょっぴり計算に時間がかかります)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nepoch</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">acf</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">;</span> <span class="n">acfder</span><span class="o">=</span><span class="n">sigmoid_der</span>
-<span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1">#学習率(パラメータ更新のスケールを決めるパラメータ)</span>
-<span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">dw</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">dbs</span><span class="p">,</span><span class="n">db0</span><span class="o">=</span><span class="n">fitGD</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">,</span><span class="n">nepoch</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">verbose</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nepoch = 2000
+acf = sigmoid; acfder=sigmoid_der
+verbose=0
+eta = 0.01 #学習率(パラメータ更新のスケールを決めるパラメータ)
+W,V,bs,b0,dw,dv,dbs,db0=fitGD(xt,ny,W,V,bs,b0,acf,acfder,nepoch,eta,verbose)
 </pre></div>
 </div>
 </div>
@@ -661,7 +711,7 @@
 <p>更新された重み・バイアス(W,V,bs,b0)を使って、データとの二乗誤差を計算してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学習後の二乗誤差&quot;</span><span class="p">,</span><span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;学習後の二乗誤差&quot;,calc_tloss(xt,ny,W,V,bs,b0,acf))
 </pre></div>
 </div>
 </div>
@@ -675,29 +725,29 @@
 <p>実際にplotしてみても</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> 
-<span class="n">yp</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">*</span><span class="n">xp</span> 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yp</span><span class="p">)):</span>
-    <span class="n">yp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">bs</span><span class="p">))</span> <span class="o">+</span> <span class="n">b0</span> 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xp = np.linspace(0, 0.5, 500) 
+yp = 0.0*xp 
+for i in range(len(yp)):
+    yp[i] = np.dot(V, sigmoid(W*xp[i]+bs)) + b0 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="o">*</span><span class="n">ystd</span><span class="o">+</span><span class="n">ymean</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ANN&quot;</span><span class="p">)</span> <span class="c1">## ニューラルネットワークの出力は標準化した値に対して学習されていることに注意</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(10,4))
+ax = fig.add_subplot(111)
+ax.set_xlabel(&quot;x&quot;); ax.set_ylabel(&quot;y&quot;)
+ax.scatter(xt, yt, facecolor=&quot;none&quot;, edgecolor=&quot;b&quot;, s=50, label=&quot;Data&quot;)
+ax.plot(xp,yp*ystd+ymean,label=&quot;ANN&quot;) ## ニューラルネットワークの出力は標準化した値に対して学習されていることに注意
+ax.legend()
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_37_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_37_0.png" />
+<img alt="../_images/20179533b6e49f9bf61f7a449cffc6b92d063db34de5028086911aca4671e82a.png" src="../_images/20179533b6e49f9bf61f7a449cffc6b92d063db34de5028086911aca4671e82a.png" />
 </div>
 </div>
 <p>ほとんど学習が進んでいません…(絶望)</p>
@@ -705,17 +755,17 @@
 最初からやりなおしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">bs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>np.random.seed(1234)
+W = np.random.normal(0.0,1.0,nhl)
+V = np.random.normal(0.0,1.0,nhl)
+bs = np.random.normal(0.0,1.0,nhl)
+b0 = np.random.normal()
 
-<span class="n">nepoch</span><span class="o">=</span><span class="mi">20</span> <span class="c1">#20回だけ学習の様子を表示</span>
-<span class="n">verbose</span><span class="o">=</span><span class="mi">1</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学習前のloss&quot;</span><span class="p">,</span> <span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
-<span class="c1">#学習</span>
-<span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">dw</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">dbs</span><span class="p">,</span><span class="n">db0</span><span class="o">=</span><span class="n">fitGD</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">,</span><span class="n">nepoch</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">verbose</span><span class="p">)</span>
+nepoch=20 #20回だけ学習の様子を表示
+verbose=1 
+print(&quot;学習前のloss&quot;, calc_tloss(xt,ny,W,V,bs,b0,acf))
+#学習
+W,V,bs,b0,dw,dv,dbs,db0=fitGD(xt,ny,W,V,bs,b0,acf,acfder,nepoch,eta,verbose)
 </pre></div>
 </div>
 </div>
@@ -758,39 +808,39 @@
 と思うかもしれませんが、学習率を単純に大きくしてしまうと、明後日の方向にパラメータを更新するせいで目的関数が発散してしまいます。(eta=0.1などとして試してみてください)</p>
 <p>注) 勾配降下法を拡張した、データを部分的に使うことで学習が停滞することを防ぐ、確率的勾配降下法(Stochastic Gradient Descent; SGD)は現在もよく使われています。</p>
 <p>以下では、Adamと呼ばれる別の最適化手法を試してみましょう。</p>
-</div>
-<div class="section" id="adam">
-<h2>Adam<a class="headerlink" href="#adam" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="adam">
+<h2>Adam<a class="headerlink" href="#adam" title="Link to this heading">#</a></h2>
 <p>Adamは、勾配降下法の様にその都度の勾配の情報だけを使うのではなく、
 以前の勾配の情報も有効活用する手法です。</p>
 <p>Adamは2014年に提唱された比較的新しい手法で、以降の機械学習の論文では、Adamが最もよく使われています。(*最も”良い”という意味では必ずしもありません)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">updateAdam</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">mt</span><span class="p">,</span><span class="n">vt</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">beta1</span><span class="p">,</span><span class="n">beta2</span><span class="p">,</span><span class="n">eps</span><span class="p">):</span>
-    <span class="n">mhat</span> <span class="o">=</span> <span class="n">mt</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta1</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">vhat</span> <span class="o">=</span> <span class="n">vt</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">mhat</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">vhat</span> <span class="p">)</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def updateAdam(A,mt,vt,i,beta1,beta2,eps):
+    mhat = mt / (1.0-beta1**(i+1))
+    vhat = vt / (1.0-beta2**(i+1))
+    return mhat / (np.sqrt( vhat )+eps)
 
-<span class="k">def</span> <span class="nf">fitAdam</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">,</span><span class="n">nepoch</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">verbose</span><span class="p">):</span>
-    <span class="n">mts</span> <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]</span>
-    <span class="n">vts</span>  <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nhl</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">]</span>
-    <span class="c1">## Adamで使用するパラメータ</span>
-    <span class="n">beta1</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">;</span> <span class="n">beta2</span> <span class="o">=</span> <span class="mf">0.999</span><span class="p">;</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-6</span>
-    <span class="n">omb1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">beta1</span><span class="p">;</span> <span class="n">omb2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">beta2</span>
-    <span class="c1">## 最適化</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nepoch</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">calc_der</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">)</span>   <span class="c1">### 勾配を計算するところまでは同じ。</span>
-        <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">mt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mts</span><span class="p">):</span>
-            <span class="n">mts</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">mt</span> <span class="o">+</span> <span class="n">omb1</span> <span class="o">*</span> <span class="n">tmp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-            <span class="n">vts</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">vts</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">omb2</span> <span class="o">*</span> <span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="c1">### 重み・バイアスの更新</span>
-        <span class="n">tW</span> <span class="o">+=</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">updateAdam</span><span class="p">(</span><span class="n">tW</span><span class="p">,</span> <span class="n">mts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">vts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">i</span><span class="p">,</span><span class="n">beta1</span><span class="p">,</span><span class="n">beta2</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
-        <span class="n">tV</span>  <span class="o">+=</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">updateAdam</span><span class="p">(</span><span class="n">tV</span><span class="p">,</span> <span class="n">mts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">vts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">i</span><span class="p">,</span><span class="n">beta1</span><span class="p">,</span><span class="n">beta2</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
-        <span class="n">tbs</span> <span class="o">+=</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span> <span class="n">updateAdam</span><span class="p">(</span><span class="n">tbs</span><span class="p">,</span><span class="n">mts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">vts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">i</span><span class="p">,</span><span class="n">beta1</span><span class="p">,</span><span class="n">beta2</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
-        <span class="n">tb0</span> <span class="o">+=</span> <span class="o">-</span><span class="n">eta</span> <span class="o">*</span>  <span class="p">(</span><span class="n">mts</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta1</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span> <span class="o">/</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">vts</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">beta2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;tloss =&quot;</span><span class="p">,</span> <span class="n">calc_tloss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>        
-    <span class="k">return</span> <span class="n">tW</span><span class="p">,</span><span class="n">tV</span><span class="p">,</span><span class="n">tbs</span><span class="p">,</span><span class="n">tb0</span>
+def fitAdam(x,y,tW,tV,tbs,tb0,acf,acfder,nepoch,eta,verbose):
+    mts = [ np.zeros(nhl), np.zeros(nhl), np.zeros(nhl), np.zeros(1) ]
+    vts  = [ np.zeros(nhl), np.zeros(nhl), np.zeros(nhl), np.zeros(1) ]
+    ## Adamで使用するパラメータ
+    beta1 = 0.9; beta2 = 0.999; eps = 1.e-6
+    omb1 = 1.0-beta1; omb2 = 1.0-beta2
+    ## 最適化
+    for i in range(nepoch):
+        tmp = calc_der(x,y,tW,tV,tbs,tb0,acf,acfder)   ### 勾配を計算するところまでは同じ。
+        for n,mt in enumerate(mts):
+            mts[n] = beta1 * mt + omb1 * tmp[n]
+            vts[n]  = beta2 * vts[n] + omb2 * (tmp[n]**2)
+        ### 重み・バイアスの更新
+        tW += -eta * updateAdam(tW, mts[0],vts[0],i,beta1,beta2,eps)
+        tV  += -eta * updateAdam(tV, mts[1],vts[1],i,beta1,beta2,eps)
+        tbs += -eta * updateAdam(tbs,mts[2],vts[2],i,beta1,beta2,eps)
+        tb0 += -eta *  (mts[3]/(1.0-beta1**(i+1))) / ( np.sqrt( vts[3]/ (1.0-beta2**(i+1))) + eps)
+        if verbose and i % 500 == 0:
+            print(i, &quot;tloss =&quot;, calc_tloss(x,y,tW,tV,tbs,tb0,acf))        
+    return tW,tV,tbs,tb0
 </pre></div>
 </div>
 </div>
@@ -798,20 +848,20 @@
 <p>それでは重みを初期化して、再び学習をしてみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="c1">## Gradient descentと同条件でスタートするためseedを固定</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">bs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">nhl</span><span class="p">)</span>
-<span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>np.random.seed(1234) ## Gradient descentと同条件でスタートするためseedを固定
+W = np.random.normal(0.0,1.0,nhl)
+V = np.random.normal(0.0,1.0,nhl)
+bs = np.random.normal(0.0,1.0,nhl)
+b0 = np.random.normal()
 
-<span class="n">nepoch</span><span class="o">=</span><span class="mi">2000</span>
-<span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
-<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.05</span>
+nepoch=2000
+verbose=False
+eta = 0.05
 
-<span class="n">acf</span> <span class="o">=</span> <span class="n">sigmoid</span> <span class="p">;</span> <span class="n">acfder</span> <span class="o">=</span><span class="n">sigmoid_der</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学習前のloss&quot;</span><span class="p">,</span> <span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
-<span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="o">=</span><span class="n">fitAdam</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">,</span><span class="n">acfder</span><span class="p">,</span><span class="n">nepoch</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">verbose</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;学習後のloss&quot;</span><span class="p">,</span> <span class="n">calc_tloss</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">bs</span><span class="p">,</span><span class="n">b0</span><span class="p">,</span><span class="n">acf</span><span class="p">))</span>
+acf = sigmoid ; acfder =sigmoid_der
+print(&quot;学習前のloss&quot;, calc_tloss(xt,ny,W,V,bs,b0,acf))
+W,V,bs,b0=fitAdam(xt,ny,W,V,bs,b0,acf,acfder,nepoch,eta,verbose)
+print(&quot;学習後のloss&quot;, calc_tloss(xt,ny,W,V,bs,b0,acf))
 </pre></div>
 </div>
 </div>
@@ -826,36 +876,36 @@
 <p>グラフにしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> 
-<span class="n">yp</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">*</span><span class="n">xp</span> 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yp</span><span class="p">)):</span>
-    <span class="n">yp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">bs</span><span class="p">))</span> <span class="o">+</span> <span class="n">b0</span> 
-<span class="n">ytruth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">xp</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span> <span class="n">yt</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="o">*</span><span class="n">ystd</span><span class="o">+</span><span class="n">ymean</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C01&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ANN&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">ytruth</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C02&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ground Truth&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xp = np.linspace(0, 0.5, 500) 
+yp = 0.0*xp 
+for i in range(len(yp)):
+    yp[i] = np.dot(V, sigmoid(W*xp[i]+bs)) + b0 
+ytruth = np.sin(2*np.pi*xp)
+fig = plt.figure(figsize=(10,4))
+ax = fig.add_subplot(111)
+ax.set_xlabel(&quot;x&quot;); ax.set_ylabel(&quot;y&quot;)
+ax.scatter(xt, yt, facecolor=&quot;none&quot;, edgecolor=&quot;b&quot;, s=50, label=&quot;Data&quot;)
+ax.plot(xp,yp*ystd+ymean,color=&quot;C01&quot;,label=&quot;ANN&quot;)
+ax.plot(xp,ytruth,color=&quot;C02&quot;,label=&quot;Ground Truth&quot;)
+ax.legend()
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_48_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_48_0.png" />
+<img alt="../_images/0f355d1b24ce3484e4621e723834f9a5f38e71f4e7499b776e7264736aa378a8.png" src="../_images/0f355d1b24ce3484e4621e723834f9a5f38e71f4e7499b776e7264736aa378a8.png" />
 </div>
 </div>
 <p>のように、データの特徴をそこそこうまく捉えたニューラルネットワークへと学習が進みました。</p>
 <p>実際には、ニューラルネットワークの精度(良さ)は、前述のような検証データに対する汎化性能で評価します。</p>
 <p>上で示した例では、3層のニューラルネットワークにデータからそれらしい関数を学習させてみました。</p>
 <p>ニューラルネットワークの構造をより複雑化したりしながら、より複雑で高次元な回帰問題に応用したり、回帰問題だけではなく分類問題・画像生成・物体検知などなど、各種の楽しい実社会の問題に応用していきます。 (例: 第2回で説明した敵対的生成ネットワーク)</p>
-</div>
-<div class="section" id="id4">
-<h2>最適化手法に関するまとめ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2>最適化手法に関するまとめ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>ニューラルネットワークの学習がうまく進むかどうかは一般に</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>ネットワークの構造(アーキテクチャとも言ったりします)や活性化関数(とその微分)の持つ性質</p></li>
 <li><p>最適化手法や手法内のパラメータ</p></li>
 <li><p>重みやバイアスの初期値</p></li>
@@ -866,38 +916,38 @@
 最近の傾向として、sigmoidよりも以下のReLU関数が使われることが多いです。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">*</span> <span class="n">z</span>   
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def relu(z):
+    return (z &gt; 0)* z   
 
-<span class="k">def</span> <span class="nf">relu_der</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-     <span class="k">return</span> <span class="p">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mf">1.0</span> 
+def relu_der(z):
+     return (z &gt; 0)*1.0 
      
-<span class="c1">#いずれも、zが実数値でもnp.array型のベクトルでも対応可能な表式</span>
+#いずれも、zが実数値でもnp.array型のベクトルでも対応可能な表式
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##適当な区間のxの値を用意する</span>
-<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">yp_sigmoid</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
-<span class="n">yp_relu</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>##適当な区間のxの値を用意する
+xp = np.linspace(-10.0,10.0,100)
+yp_sigmoid = sigmoid(xp)
+yp_relu = relu(xp)
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp_sigmoid</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sigmoid&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp_relu</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ReLU&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+fig = plt.figure(figsize=(10,4))
+ax1 = fig.add_subplot(121)
+ax1.plot(xp,yp_sigmoid,label=&quot;Sigmoid&quot;)
+ax1.legend()
+ax2 = fig.add_subplot(122)
+ax2.plot(xp,yp_relu,label=&quot;ReLU&quot;)
+ax2.legend()
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_52_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_52_0.png" />
+<img alt="../_images/cd0ff2602b5ea76fd815f9a1fa553cd69ee54343415e688705e7ad688f6221c9.png" src="../_images/cd0ff2602b5ea76fd815f9a1fa553cd69ee54343415e688705e7ad688f6221c9.png" />
 </div>
 </div>
 <p>sigmoid関数はx-&gt;+∞で1.0, x=-∞で-1.0に漸近します。</p>
@@ -908,24 +958,24 @@
 <p>それぞれの関数の微分を表示してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">yp_sigmoid</span> <span class="o">=</span> <span class="n">sigmoid_der</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
-<span class="n">yp_relu</span> <span class="o">=</span> <span class="n">relu_der</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xp = np.linspace(-10.0,10.0,100)
+yp_sigmoid = sigmoid_der(xp)
+yp_relu = relu_der(xp)
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp_sigmoid</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sigmoid&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp_relu</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ReLU&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+fig = plt.figure(figsize=(10,4))
+ax1 = fig.add_subplot(121)
+ax1.plot(xp,yp_sigmoid,label=&quot;Sigmoid&quot;)
+ax1.legend()
+ax2 = fig.add_subplot(122)
+ax2.plot(xp,yp_relu,label=&quot;ReLU&quot;)
+ax2.legend()
+plt.show()
+plt.close()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Python_chapter_ArtificialNeuralNetwork_54_0.png" src="../_images/Python_chapter_ArtificialNeuralNetwork_54_0.png" />
+<img alt="../_images/a16dc984ff5aab41477135914a091407edf12a3b7af528718047c96ffad9e802.png" src="../_images/a16dc984ff5aab41477135914a091407edf12a3b7af528718047c96ffad9e802.png" />
 </div>
 </div>
 <p>sigmoid関数は微分の値が最大で0.25なのに対して、ReLU関数では最大1.0となるため勾配の消失が起こりにくいのです。</p>
@@ -944,8 +994,8 @@
 <p>どのような初期値を採用するべきかに関しても、予め知ることは一般にはできませんが、<br />
 いくつかの特定の場合に関して、推奨される方法というのは存在しています。</p>
 <p>例: ReLU関数を活性化関数に使うときはHeの初期値というものが推奨されている</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -959,7 +1009,7 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -967,47 +1017,100 @@
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Python_misc_numpy.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Numpyについて</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Python_misc_numpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numpyについて</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Python_chapter_BayesianOptimization.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Python_chapter_BayesianOptimization.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">ベイズ最適化による実験計画法</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          <div class="extra_footer">
-            © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの下処理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">勾配降下法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adam">Adam</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">最適化手法に関するまとめ</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
           </div>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
-      </div>
-    </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
 
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  © Copyright 2020-2023 by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
