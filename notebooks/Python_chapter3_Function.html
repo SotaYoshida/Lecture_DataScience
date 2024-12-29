@@ -647,10 +647,6 @@
 <li><p>処理: ユークリッド距離 (成分間の差分の２乗和の平方根)を計算</p></li>
 <li><p>戻り値: 計算した距離 (float)</p></li>
 </ul>
-<p><strong>注意: 関数の引数</strong></p>
-<p>関数に入れる引数に用いる変数名は、実際に関数を用いる際の引数として使う変数名とは関係がなく、
-関数の外側で扱う変数を上の例でいう<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。</p>
-<p>関数の定義文にある引数名はあくまで、外から与えられた引数を関数内部で使う際の名前であることに注意しよう。</p>
 <p>上の例のように100個の点の3次元座標に対応するリストがある場合、ループ(<code class="docutils literal notranslate"><span class="pre">for</span></code>文)と組み合わせて</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -697,6 +693,10 @@
 </div>
 </div>
 </div>
+<p><strong>注意: 関数の引数</strong></p>
+<p>関数に入れる引数に用いる変数名は、実際に関数を用いる際の引数として使う変数名とは関係がなく、
+関数の外側で扱う変数を上の例でいう<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。</p>
+<p>関数の定義文にある引数名はあくまで、外から与えられた引数を関数内部で使う際の名前であることに注意しよう。</p>
 <p><strong>例3: 文字列を受け取り、別の文字列を返したり表示する関数</strong></p>
 <p>関数内の操作に関数外からの情報(インプット)が必要ない場合は引数なしの関数でも構わないし、
 関数の外に値を渡す(アウトプットする)必要がなければ<code class="docutils literal notranslate"><span class="pre">return</span></code>文を明示的に書かなくても問題ない。
