@@ -884,7 +884,7 @@ None
 </div>
 </div>
 </div>
-<p>のように、関数内での代入などブロック化に書かれたコードではない場合、変数はグローバル変数として定義される。<br />
+<p>のように、関数内などに書かれたものでない場合、変数はグローバル変数として定義される。<br />
 そのため、一度定義されれば関数に引数として渡さなくても参照することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -897,7 +897,7 @@ None
 </div>
 </div>
 </div>
-<p>一方、関数の中で定義(代入)されるローカル変数は、関数の外で参照することはできない。
+<p>一方、関数の中で定義(代入)されるローカル変数は、関数の外で参照することはできない。<br />
 (注: あとで説明するように関数内でglobal変数であることを宣言すれば関数の外でも参照できるがあまり推奨はされない)</p>
 <p>以下のコードを実行して,関数の中で定義された変数<code class="docutils literal notranslate"><span class="pre">abcd</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしてもエラーが起こってしまう。</p>
 <div class="cell docutils container">
@@ -940,7 +940,7 @@ None
 </div>
 </div>
 </div>
-<p>一方で、</p>
+<p>一方で、関数の中で使う変数をグローバル変数として宣言すれば、関数の外でもその変数を使うこともできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
@@ -959,14 +959,13 @@ None
 </div>
 </div>
 </div>
-<p>といったように、関数の中で使う変数をグローバル変数として宣言すれば、関数の外でもその変数を使うことができる。</p>
-<p>ただし、このようなコードの書き方は、処理が複雑化してくるとどこでその変数が定義されたり更新されたりしているかがわかりづらく、予期しない挙動の原因にもなるため一般には非推奨である。</p>
+<p>ただし、このようなコードの書き方は、処理が複雑化してくると、<strong>どこでその変数が定義されたり更新されたりしているか</strong>がわかりづらく、予期しない挙動の原因にもなるため一般には<strong>非推奨</strong>である。</p>
 <p>[関数には引数として変数を渡して、必要な戻り値を取得する]というコードを書くのがあくまで基本となる。
-(まぁ細かいことを言えばPythonだとそれともちょっと設計思想が違うのですが…)</p>
+(まぁ細かいことを言うと、Pythonは、それともちょっと設計思想が違うのですが…)</p>
 <p>Pythonでは、インデントでブロックを定義したりすることで短いコードを書くことができるが、一方で変数のスコープが分かりづらいことがしばしばある。
 たとえば関数内で、定義されていない変数を用いたコードがあればPythonでは「global変数で定義されているのでは？」と解釈され実行が試行されるが、このことを「気が利いている」と感じる人もいれば、「意図しない参照が起きて余計なバグの温床になる」と、見る人によって違う捉え方になったりする。</p>
 <p>関数を用いる際に、変数のスコープに関して混乱を避ける手助けとなる方法は…メインプログラムと関数内とで変数の命名規則を区別しておく:<br />
-たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、関数の引数にはアルファベットを使うなどの工夫(ルール作り)もオススメ。</p>
+たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、関数の引数にはアルファベットを使うなどの工夫(ルール作り)も良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_join</span><span class="p">(</span><span class="n">listA</span><span class="p">,</span><span class="n">listB</span><span class="p">):</span> <span class="c1">#特殊なリストの結合をして返す関数, 処理に特に意味はない。</span>
