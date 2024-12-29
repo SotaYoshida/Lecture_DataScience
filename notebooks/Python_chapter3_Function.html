@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -540,7 +540,7 @@
 </div>
 </div>
 </div>
-<p><strong>注意</strong></p>
+<p><strong>注意: 関数の定義</strong></p>
 <p>当然だが、関数の定義は関数の呼び出しよりも前に行う必要がある。
 関数1の中で自作関数2を読み出すような書き方(定義の順序が前後すること)はOKだが、</p>
 <div class="cell docutils container">
@@ -647,9 +647,11 @@
 <li><p>処理: ユークリッド距離 (成分間の差分の２乗和の平方根)を計算</p></li>
 <li><p>戻り値: 計算した距離 (float)</p></li>
 </ul>
+<p><strong>注意: 関数の引数</strong></p>
 <p>関数に入れる引数に用いる変数名は、実際に関数を用いる際の引数として使う変数名とは関係がなく、
-関数に入れるもの(関数の外側で扱う変数)を<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。</p>
-<p>上の例のように100個の点の3次元座標に対応するリストがある場合,</p>
+関数の外側で扱う変数を上の例でいう<code class="docutils literal notranslate"><span class="pre">l1</span></code>,<code class="docutils literal notranslate"><span class="pre">l2</span></code>という名前にあわせて定義しておく必要はない。</p>
+<p>関数の定義文にある引数名はあくまで、外から与えられた引数を関数内部で使う際の名前であることに注意しよう。</p>
+<p>上の例のように100個の点の3次元座標に対応するリストがある場合、ループ(<code class="docutils literal notranslate"><span class="pre">for</span></code>文)と組み合わせて</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#リスト内包表記で3次元の座標点をランダムに100個作る n,iはダミー変数</span>
@@ -674,11 +676,11 @@
 </div>
 </div>
 </div>
-<p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>=4950組)に対して距離を計算することが出来る。</p>
+<p>などとすれば、全組み合わせ(<span class="math notranslate nohighlight">\({}_{100}C_2\)</span>=4950組)に対して即座に距離を計算することが出来る。</p>
 <p>上の例はあくまで「任意の長さが3の数値リストに対して3次元空間での距離を計算する関数」であり、3成分以上のリストに対しては対応していない。
-実際に関数を定義する際には、より操作を抽象化することで、より汎用的な関数を作ることが求められることも多い。
+実際に関数を定義する際には、より汎用的な関数を作ることが望ましい場合も多い。
 上の例で言えば、「長さが共通の任意の２つの数値リストに対して距離を計算する関数」に拡張することで、
-より汎用性の高いN次元空間でのユークリッド距離を計算する関数にすることができる。</p>
+汎用性の高いN次元空間でのユークリッド距離を計算する関数にすることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3つ以外の成分でも使えるユークリッド距離を計算する関数</span>
