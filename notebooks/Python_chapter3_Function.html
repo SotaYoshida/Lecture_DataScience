@@ -701,8 +701,12 @@
 <p>関数内の操作に関数外からの情報(インプット)が必要ない場合は引数なしの関数でも構わないし、
 関数の外に値を渡す(アウトプットする)必要がなければ<code class="docutils literal notranslate"><span class="pre">return</span></code>文を明示的に書かなくても問題ない。
 <code class="docutils literal notranslate"><span class="pre">return</span></code>文がない場合は自動で<code class="docutils literal notranslate"><span class="pre">None</span></code>(値なし)が返される関数となる。</p>
-<p>「なぜreturn文が何なのか、なぜ必要なのか分からない」という質問がたまにある。<br />
-関数に何をさせたいかによるが「それぞれの処理がいつどこで必要か？」などを意識すると理解が深まるように思う。</p>
+<p>「なぜ返り値とは何なのか、なぜreturnが必要なのか分からない」という質問がたまにある。<br />
+これまでは単になにか操作をした値を<code class="docutils literal notranslate"><span class="pre">print</span></code>で表示していたが、
+実際にプログラムを書く場合には、関数の結果を他の処理に使いたい場合が多い。</p>
+<p>作業工程が単体で完結する場合は<code class="docutils literal notranslate"><span class="pre">return</span></code>を省略してもよいが、
+関数の結果を他の処理に使いたい場合は<code class="docutils literal notranslate"><span class="pre">return</span></code>を使って返り値を指定する必要がある。
+「それぞれの処理がいつどこで必要か？」などを意識すると理解が深まるように思う。</p>
 <p>以下の２つの違いに注目しながら、関数を定義してみよう。</p>
 <ol class="arabic simple">
 <li><p>文字列を受け取り、上下左右をシャープ記号で装飾した文字列を<strong>表示する</strong>関数</p></li>
