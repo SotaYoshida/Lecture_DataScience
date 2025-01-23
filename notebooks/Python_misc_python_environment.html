@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -455,7 +455,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-files">隠しファイル/隠しフォルダ(dot files)について</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関連する事項</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -475,8 +478,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#動画貼り付け用</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">base64</span><span class="w"> </span><span class="kn">import</span> <span class="n">b64encode</span>
 </pre></div>
 </div>
 </div>
@@ -729,7 +732,7 @@ $ sudo apt install python3-tk
 </pre></div>
 </div>
 <p>を実行するか、Pythonの対話環境の中で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -925,7 +928,7 @@ Desktopに上記のフォルダ以外の”Ad”を含むディレクトリが�
 その後1を打って再びタブを叩くと、該当するものは一つですので<br />
 (ambiguityがなくなった時点で)最後まで入力が補完されます。</p>
 <p>ちなみにPython側からLinuxのコマンドを実行したければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;ls *.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1031,6 +1034,62 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <p>そこで、パッケージの管理には、<code class="docutils literal notranslate"><span class="pre">pip</span></code>と<code class="docutils literal notranslate"><span class="pre">conda</span></code>の<strong>どちらか一方のみ</strong>を用いることを推奨する。<br />
 仮に<code class="docutils literal notranslate"><span class="pre">pip</span></code>を使うのであれば書籍等のライブラリのインストール作業で<code class="docutils literal notranslate"><span class="pre">conda</span></code>を<code class="docutils literal notranslate"><span class="pre">pip</span></code>に置き換えたり、
 <code class="docutils literal notranslate"><span class="pre">conda</span></code>を使うのであれば反対に、<code class="docutils literal notranslate"><span class="pre">pip</span></code>を<code class="docutils literal notranslate"><span class="pre">conda</span></code>に置き換えて使うと良い。</p>
+<section id="id6">
+<h3>関連する事項<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>最近(2023年以降)、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">library-name</span></code>などとすると、</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
+
+× This environment is externally managed
+╰─&gt; To install Python packages system-wide, try brew install
+    xyz, where xyz is the package you are trying to
+    install.
+    
+    If you wish to install a Python library that isn&#39;t in Homebrew,
+    use a virtual environment:
+    
+    python3 -m venv path/to/venv
+    source path/to/venv/bin/activate
+    python3 -m pip install xyz
+    
+    If you wish to install a Python application that isn&#39;t in Homebrew,
+    it may be easiest to use &#39;pipx install xyz&#39;, which will manage a
+    virtual environment for you. You can install pipx with
+    
+    brew install pipx
+    
+    You may restore the old behavior of pip by passing
+    the &#39;--break-system-packages&#39; flag to pip, or by adding
+    &#39;break-system-packages = true&#39; to your pip.conf file. The latter
+    will permanently disable this error.
+    
+    If you disable this error, we STRONGLY recommend that you additionally
+    pass the &#39;--user&#39; flag to pip, or set &#39;user = true&#39; in your pip.conf
+    file. Failure to do this can result in a broken Homebrew installation.
+    
+    Read more about this behavior here: &lt;https://peps.python.org/pep-0668/&gt;
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+</pre></div>
+</div>
+<p>などとエラーメッセージが出ることがある。(Macの場合は上の<code class="docutils literal notranslate"><span class="pre">apt</span></code>の部分が<code class="docutils literal notranslate"><span class="pre">brew</span></code>などに置き換わっていはず)
+これは、Python Enhancement Proposal (PEP)と呼ばれる提案に関するもので、とくにその<code class="docutils literal notranslate"><span class="pre">PEP668</span></code>に由来したメッセージとなる。</p>
+<p>要は、Pythonのためのパッケージマネージャである<code class="docutils literal notranslate"><span class="pre">pip</span></code>や<code class="docutils literal notranslate"><span class="pre">conda</span></code>と、
+OSのパッケージマネージャである<code class="docutils literal notranslate"><span class="pre">brew</span></code>(Mac)や<code class="docutils literal notranslate"><span class="pre">apt</span></code>(debian系 Linux)がときに依存関係でconflictを起こすので、
+「Pythonのパッケージもシステムのパッケージマネージャで管理をするか、仮想環境を作成するかしなさい」という趣旨のメッセージである。</p>
+<p>これに対処する方法は幾つかあり、</p>
+<ul class="simple">
+<li><p>警告を無視して強制オプションをつけてglobal環境でpipする<br />
+これはあまり推奨し辛い(急ぎだとやってしまうこともあるが…)</p></li>
+<li><p>brewやaptなどのシステム用パッケージマネージャでのinstallを試みる<br />
+但し、幾つかのPythonパッケージではうまく見つからないその場合は↓が選択肢筆頭となる。</p></li>
+<li><p>Python仮想環境を作成して使用する<br />
+エラーメッセージにもinstructionがあるように、pythonの仮想環境を作成し、activateした後pipを行う。<br />
+Jupyter環境などでPythonコードを実行する際にも、作成した仮想環境をカーネルに選べば良い。</p></li>
+</ul>
+<p>となるが、仮想環境を作成するのが最もトラブルが少なく良いように思う。</p>
+<p>Pythonは導入・読み書きやすいのが魅力、と言われていたが、ユーザーや開発者の数が爆発的に増え新たな局面に突入しつつあるのかもしれない。</p>
+</section>
 </section>
 </section>
 
@@ -1116,7 +1175,10 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-files">隠しファイル/隠しフォルダ(dot files)について</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関連する事項</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
