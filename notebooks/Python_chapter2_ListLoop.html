@@ -1,688 +1,491 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>2. Pythonの基本 その２: &#8212; プログラミング演習1・実践データサイエンス</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter2_ListLoop';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. 自作関数" href="Python_chapter3_Function.html" />
     <link rel="prev" title="1. Pythonの基本 その１:" href="Python_chapter1_Introduction.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <dialog id="pst-search-dialog">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   資料について
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  プログラムの実行方法
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    資料について
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter0_HowToUse.html">
-   Google Colaboratoryの使い方
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  練習帳
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_practice.html">
-   練習帳
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Pythonの基本文法
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter1_Introduction.html">
-   1. Pythonの基本 その１:
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   2. Pythonの基本 その２:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter3_Function.html">
-   3. 自作関数
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Pythonの基本 その２:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  ライブラリと可視化
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
-   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  データ分析の基礎
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter5_Probability.html">
-   5. 確率と疑似乱数
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter6_Regression.html">
-   6. 相関・回帰分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter7_Optimization.html">
-   7. 最適化問題の基礎
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter8_handling_files.html">
-   8. ファイル・文字列操作
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter5_Probability.html">5. 確率と疑似乱数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter8_handling_files.html">8. ファイル・文字列操作</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tips&amp;環境構築
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Error.html">
-   よくあるエラー集
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_environment.html">
-   Pythonの環境構築
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
-   Pythonの環境構築 (Windows11版)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_VScode.html">
-   コードの編集環境とGitHub Copilot
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  おまけ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_Pandas.html">
-   Pandasの使い方 (基礎)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_numpy.html">
-   Numpyについて
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">
-   機械学習: ニューラルネットワークによる回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
-   ベイズ最適化による実験計画法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
-   ベイズ線形回帰
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_StyleGAN3.html">
-   StyleGAN3+CLIPによる写真生成
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_chapter_WebScraping.html">
-   Webスクレイピング・ブラウザ操作
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_ODE.html">
-   常微分方程式の数値解法
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_PCA.html">
-   主成分分析
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
-   特異値分解と情報削減
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
-   ニュートン法によるN次元多項式の求根
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
+
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter2_ListLoop.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter2_ListLoop.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter2_ListLoop.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter2_ListLoop.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter2_ListLoop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Python_chapter2_ListLoop.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pythonの基本 その２:</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   2.1. リスト
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2.1.1. リストに関する禁止事項
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#index">
-     2.1.2. リストの要素にアクセスする, インデックス(index)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     2.1.3. リストの結合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     2.1.4. リストに要素を加える
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     2.1.5. リストの値の更新
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     2.1.6. 要素に対応するインデックスの取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     2.1.7. スライスを用いた部分リストの取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     2.1.8.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     リスト操作の注意点
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   2.2.
-   <span class="math notranslate nohighlight">
-    \(\clubsuit\)
-   </span>
-   タプル・辞書型
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-tuple">
-     2.2.1.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     タプル(tuple)型
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     2.2.2.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     辞書型
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   2.3. ループ処理
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for">
-     2.3.1. for文
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     2.3.2. ブロックとインデント
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     2.3.3. リスト内包表記
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break">
-     2.3.4. break ループ処理を途中で抜けたい場合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-while">
-     2.3.5.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     While文
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-continue">
-     2.3.6.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     continue
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     2.3.7. 例外処理
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if">
-   2.4. 条件分岐 (if文)
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. リスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. リストに関する禁止事項</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index">2.1.2. リストの要素にアクセスする, インデックス(index)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.3. リストの結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.4. リストに要素を加える</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.5. リストの値の更新</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.6. 要素に対応するインデックスの取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.7. スライスを用いた部分リストの取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">2.1.8. <span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-tuple">2.2.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル(tuple)型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 辞書型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3. ループ処理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for">2.3.1. for文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2. ブロックとインデント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.3. リスト内包表記</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">2.3.4. break ループ処理を途中で抜けたい場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-while">2.3.5. <span class="math notranslate nohighlight">\(\clubsuit\)</span> While文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-continue">2.3.6. <span class="math notranslate nohighlight">\(\clubsuit\)</span> continue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.7. 例外処理</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">2.4. 条件分岐 (if文)</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pythonの基本 その２:</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   2.1. リスト
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2.1.1. リストに関する禁止事項
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#index">
-     2.1.2. リストの要素にアクセスする, インデックス(index)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     2.1.3. リストの結合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     2.1.4. リストに要素を加える
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     2.1.5. リストの値の更新
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     2.1.6. 要素に対応するインデックスの取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     2.1.7. スライスを用いた部分リストの取得
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit">
-     2.1.8.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     リスト操作の注意点
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   2.2.
-   <span class="math notranslate nohighlight">
-    \(\clubsuit\)
-   </span>
-   タプル・辞書型
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-tuple">
-     2.2.1.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     タプル(tuple)型
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     2.2.2.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     辞書型
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   2.3. ループ処理
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#for">
-     2.3.1. for文
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     2.3.2. ブロックとインデント
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     2.3.3. リスト内包表記
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break">
-     2.3.4. break ループ処理を途中で抜けたい場合
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-while">
-     2.3.5.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     While文
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clubsuit-continue">
-     2.3.6.
-     <span class="math notranslate nohighlight">
-      \(\clubsuit\)
-     </span>
-     continue
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
-     2.3.7. 例外処理
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if">
-   2.4. 条件分岐 (if文)
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter2_ListLoop.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="python-2">
-<h1><span class="section-number">2. </span>Pythonの基本 その２:<a class="headerlink" href="#python-2" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="python-2">
+<h1><span class="section-number">2. </span>Pythonの基本 その２:<a class="headerlink" href="#python-2" title="Link to this heading">#</a></h1>
 <p>[この章の目的]
 プログラミングで非常に重要な概念である配列や繰り返し処理について学ぶ。</p>
 <p>※授業では最初に、一番最後の節にある条件分岐から説明します。</p>
-<div class="section" id="id1">
-<h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h2><span class="section-number">2.1. </span>リスト<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>実際にいろんなデータを扱う際には、値や変数をまとめて処理したくなります。
 こうしたときに必要になるのが以下で扱う<strong>リスト</strong>型を始めとする<strong>配列</strong>です。</p>
 <p>リストは、値や変数などを角括弧<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>で括り、要素をカンマで区切ることで作ることができます。<br />
@@ -743,8 +546,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span> <span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 </pre></div>
 </div>
-<div class="section" id="id2">
-<h3><span class="section-number">2.1.1. </span>リストに関する禁止事項<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3><span class="section-number">2.1.1. </span>リストに関する禁止事項<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>リストの変数名を絶対に！絶対に!!絶対に！！！<code class="docutils literal notranslate"><span class="pre">list</span></code>にしない。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#これはエラーにはならないが、絶対ダメ</span>
 </pre></div>
@@ -753,9 +556,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Google Colab.では、予約語(１章で前述)や組み込み関数(３章で後述)と呼ばれるものを入力した時点で色が変わる。<br />
 もし、色が変わるようであれば、名前の衝突を割けるため変数名を変えること。</p>
 <p>もし誤って予約語や組み込み関数と同じ名前の変数を定義・代入してしまい、想定する挙動が得られない場合は、一度ランタイムを再起動することで、その変数を消去することができる。</p>
-</div>
-<div class="section" id="index">
-<h3><span class="section-number">2.1.2. </span>リストの要素にアクセスする, インデックス(index)<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="index">
+<h3><span class="section-number">2.1.2. </span>リストの要素にアクセスする, インデックス(index)<a class="headerlink" href="#index" title="Link to this heading">#</a></h3>
 <p>リストの中の要素にアクセスするときは、半角括弧を使って[整数]といった形で”番地”を指定します。<br />
 このときの番地(あるいは座標といっても良いですが)を指定する整数のことをインデックス(index)と呼びます。</p>
 <p><strong>【重要】Pythonでは要素にアクセスするためのインデックスは１からではなく、0からカウントします!</strong></p>
@@ -803,7 +606,7 @@ Pythonの他にもC/C++なども0からカウントします(ちなみにFORTRAN
 <p>このような場合では、一番外側の括弧から数えて、何番目の階層になっているかを考えることが必要になります。</p>
 <p>練習してみましょう。</p>
 <p><strong>練習</strong></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>[+コード]でセルを以下に追加し、下のリストを作成する<br />
 <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">[</span> <span class="pre">[&quot;Aさん&quot;,</span> <span class="pre">178,66],</span> <span class="pre">[&quot;Bさん&quot;,</span> <span class="pre">180,</span> <span class="pre">70]</span> <span class="pre">]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data[i][j]</span></code>のi,jに可能な整数を入れて、Aさんの身長、Bさんの体重などをprint関数で表示してみましょう。</p></li>
@@ -814,9 +617,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <li><p>4.5.の挙動から推測して、aのリストの中から４を取り出したい場合どうすればいいのかprint関数を使いながら考えてみましょう。</p></li>
 </ol>
 <p>テキストセルの内容をコードセルなどにコピー&amp;ペーストしたければ、対象をドラッグして、<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>でコピー,<code class="docutils literal notranslate"><span class="pre">Ctrl+V</span></code>でペースト出来ます(Macの場合は<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>を<code class="docutils literal notranslate"><span class="pre">⌘</span></code>に置き換えてください)</p>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">2.1.3. </span>リストの結合<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.1.3. </span>リストの結合<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>２つのリストを和<code class="docutils literal notranslate"><span class="pre">+</span></code>で結合することもできます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -842,9 +645,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">2.1.4. </span>リストに要素を加える<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.1.4. </span>リストに要素を加える<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>リストにあとから要素を加えたくなるときもあります.<br />
 そんなときは <code class="docutils literal notranslate"><span class="pre">append</span></code>関数か<code class="docutils literal notranslate"><span class="pre">+=</span></code>を使います。</p>
 <div class="cell docutils container">
@@ -886,9 +689,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <p>こうしてしまう(リスト同士の単なる結合)と、人ごとにデータが区切られていないので扱うのに不便となる。</p>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">2.1.5. </span>リストの値の更新<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.1.5. </span>リストの値の更新<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>リストの要素は後から更新することもできます.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,9 +720,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">2.1.6. </span>要素に対応するインデックスの取得<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.1.6. </span>要素に対応するインデックスの取得<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>関数を使ってリスト内の、[興味のある要素]のインデックスを取得することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,9 +742,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 <p>複雑なデータを扱う際に「あれ、あの要素ってどこの番地にあるんだっけ？」といった状況に便利な関数です。</p>
-</div>
-<div class="section" id="id7">
-<h3><span class="section-number">2.1.7. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.1.7. </span>スライスを用いた部分リストの取得<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>以下の<code class="docutils literal notranslate"><span class="pre">a</span></code>のようなリストがあったとき、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,9 +779,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="clubsuit">
-<h3><span class="section-number">2.1.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="clubsuit">
+<h3><span class="section-number">2.1.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
 <p>授業で扱う程度の内容のプログラミングに関する疑問は、ググれば自分でだいたい解決することができます。<br />
 ただしこの項目で述べることは(初学者にとって)「直感に反するのだけど、どこがおかしいのか分からないので<strong>そもそもどうググっていいかが分からない</strong>」という点で、少し事情が異なります。</p>
 <p>例を見せるために、以下の2種類のリストを用意します.</p>
@@ -1032,7 +835,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 これは<code class="docutils literal notranslate"><span class="pre">copy</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">copy</span></code>関数を用いて配列のコピーを作成することで回避できます。(モジュールについては4章で説明します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
 <span class="n">tmp</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">tmp</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># ← data2の0番目と1番目のidが同じ(参照元が同じ)だと困るのでFalseであってほしい</span>
@@ -1044,7 +847,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 
 <span class="n">copydata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1059,15 +862,15 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 <p>上を見ると<code class="docutils literal notranslate"><span class="pre">data</span></code>というリストと<code class="docutils literal notranslate"><span class="pre">copydata</span></code>という”リスト同士”が異なるidを持っていても、それぞれの0番目の要素のidを見てみると、同じものを参照していることがわかります。<br />
 このように、ネストされたリストをコピーして別々に扱いたい場合は特に注意が必要で、<code class="docutils literal notranslate"><span class="pre">deepcopy</span></code>のような作業が必要となります。(私も初めてプログラミングで配列を使ったときに、この点に気が付かずに時間をかなり溶かしました)</p>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\clubsuit\)</span>のついたセクションは発展的な内容で、授業では時間の都合上スキップすることが多い項目になります。<br />
 以下のタプル・辞書型は使いこなせれば便利ですが、授業では必ずしも必要ではない(リストで代用できる)ので、興味に応じて学習してください。</p>
 <p>リストのときと同様に、タプルや辞書型の変数名を絶対に<code class="docutils literal notranslate"><span class="pre">tuple</span></code>や<code class="docutils literal notranslate"><span class="pre">dict</span></code>にしないように注意してください。</p>
-<div class="section" id="clubsuit-tuple">
-<h3><span class="section-number">2.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル(tuple)型<a class="headerlink" href="#clubsuit-tuple" title="Permalink to this headline">¶</a></h3>
+<section id="clubsuit-tuple">
+<h3><span class="section-number">2.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル(tuple)型<a class="headerlink" href="#clubsuit-tuple" title="Link to this heading">#</a></h3>
 <p>タプルは”immutable”(要素が変更不可)なリストと覚えておけばよいでしょう。
 リストは要素を<code class="docutils literal notranslate"><span class="pre">[]</span></code>で囲むことで作ることができました。タプルは丸括弧<code class="docutils literal notranslate"><span class="pre">()</span></code>で囲むことで作ることができます</p>
 <div class="cell docutils container">
@@ -1081,7 +884,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 <p>値をリストのように格納しておきたい、という状況下かつ、リストの値を後で変更することがないなら
 タプルを使うのも一つの手です.タプルを使うメリットとしては以下の通りです:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>(予期せず)値を更新しようとするとエラーを吐いて教えてくれる</p></li>
 <li><p>(場合によりけりですが)リストよりも早く処理が実行される</p></li>
 </ol>
@@ -1102,7 +905,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">time</span></code>というライブラリを使って2つの作業に係る時間を調べてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span> 
 <span class="n">itnum</span><span class="o">=</span><span class="mi">10_000</span> 
 
 <span class="c1">#リストを使った計算</span>
@@ -1127,9 +930,9 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 </div>
 <p>タプルの方が実行時間が短い事がわかります.<br />
 今の例では差は人間にとっては気にならない程度の差ですが、複雑な処理になってコードがなかなか計算を完了しないときには、リストをタプルにするなど、コードのパフォーマンスを改善する作業が必要となります。</p>
-</div>
-<div class="section" id="id9">
-<h3><span class="section-number">2.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 辞書型<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 辞書型<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>辞書型は、キーと値の２つの要素をあわせ持つ型です.リストにいれたものをいっぺんに扱うときに、毎回インデックスを指定したりループで要素を回して、望むものを持ってくるのは面倒です。</p>
 <p>たとえば以下の名前と年齢のリスト</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="s2">&quot;Cさん&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
@@ -1190,14 +993,14 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 <p>とすればいいことがわかります。
 慣れないうちはタプルや辞書を使わずリストだけ覚えておけば問題ないのですが、
 複雑な処理になると(タプルにしないと)パフォーマンス差が顕著になったり(辞書にしないと)コードの可読性が低くなったりミスの原因になるので、タプルや辞書型もうまく組み合わせながら使えると良いです。</p>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><span class="section-number">2.3. </span>ループ処理<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.3. </span>ループ処理<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>ループ処理は、プログラミングの中で<strong>最も重要な概念の一つ</strong>です。<br />
 ループ処理を使うことで、同じ処理を繰り返し行うことができます。</p>
-<div class="section" id="for">
-<h3><span class="section-number">2.3.1. </span>for文<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
+<section id="for">
+<h3><span class="section-number">2.3.1. </span>for文<a class="headerlink" href="#for" title="Link to this heading">#</a></h3>
 <p>まず以下のコードを実行してみましょう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1253,7 +1056,7 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 </div>
 <p>上のコードでは、<code class="docutils literal notranslate"><span class="pre">tmp</span></code>という変数に<code class="docutils literal notranslate"><span class="pre">fruits</span></code>というリストの中身が順番に当てはめられている事がわかります。<br />
 ループを用いてリストの中身にアクセスする方法は主に2通りで、</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>インデックスのループを回してリストにアクセスする</p></li>
 <li><p>リストの要素に順番にアクセスする</p></li>
 </ol>
@@ -1277,9 +1080,9 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 </div>
 </div>
 <p>上記のほか、<code class="docutils literal notranslate"><span class="pre">for</span></code>と<code class="docutils literal notranslate"><span class="pre">in</span></code>を用いて、リスト(またはリストと互換性のある多くの型)の中身を順番に取り出すことができます。</p>
-</div>
-<div class="section" id="id11">
-<h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id11">
+<h3><span class="section-number">2.3.2. </span>ブロックとインデント<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>さて、上の<code class="docutils literal notranslate"><span class="pre">for</span></code>文のコードには、関数の前に半角スペースが4つあるのに気がついたでしょうか?<br />
 Pythonでは、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を始め様々な処理の際に一連の作業<strong>ブロック</strong>を、<strong>半角スペース4つ分</strong>インデントを下げることで表現します。</p>
 <p>Google Colaboratory環境では、[ツール]→[設定]→[エディタ]→[インデント幅(スペース)]で変更ができます。もし、インデントが2つになっている場合は、4つに変更してください。
@@ -1380,9 +1183,9 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 </div>
 </div>
 <p>など、考えたい値を直接ループで扱うのではなく間接的な値(今の場合<code class="docutils literal notranslate"><span class="pre">p</span></code>)を扱うなどの考え方も、コードをスッキリさせる上で重要です。</p>
-</div>
-<div class="section" id="id12">
-<h3><span class="section-number">2.3.3. </span>リスト内包表記<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id12">
+<h3><span class="section-number">2.3.3. </span>リスト内包表記<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>文の別の使い方として、リスト内包表記と呼ばれる書き方があります。<br />
 これを使うと、要素がたくさんのリストを簡単につくることができます。</p>
 <div class="cell docutils container">
@@ -1394,9 +1197,9 @@ Pythonでは、<code class="docutils literal notranslate"><span class="pre">for<
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="break">
-<h3><span class="section-number">2.3.4. </span>break ループ処理を途中で抜けたい場合<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="break">
+<h3><span class="section-number">2.3.4. </span>break ループ処理を途中で抜けたい場合<a class="headerlink" href="#break" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">break</span></code>は<code class="docutils literal notranslate"><span class="pre">for</span></code>文を途中で抜け出すのに使います。用途としては<strong>目的を果たしたのでもうループを繰り返す必要がないとき</strong>や<strong>予期せぬ事が起きた場合にループ処理を終わらせてプログラムを終了するとき</strong>などに使います.</p>
 <p>以下のような状況を考えてみましょう</p>
 <blockquote>
@@ -1407,7 +1210,7 @@ Aさんは、所持金100万円からスタートして、一度でも負けれ�
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を使って、このゲームをシミュレーションするプログラムを書いてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
 
 <span class="c1"># 最初の手持ち金と掛け金を定義</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1_000_000</span>
@@ -1432,9 +1235,9 @@ Aさんは、所持金100万円からスタートして、一度でも負けれ�
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">random.choice([True,False])</span></code>は1/2の確率で<code class="docutils literal notranslate"><span class="pre">True</span></code>か<code class="docutils literal notranslate"><span class="pre">False</span></code>を与える処理になっている。
 True/Falseをそれぞれ勝ち負けに対応させられるので、その結果に応じて処理を分岐させていることが分かる。</p>
-</div>
-<div class="section" id="clubsuit-while">
-<h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> While文<a class="headerlink" href="#clubsuit-while" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="clubsuit-while">
+<h3><span class="section-number">2.3.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> While文<a class="headerlink" href="#clubsuit-while" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>に似たものとして<code class="docutils literal notranslate"><span class="pre">while</span></code>もよく用いられる。</p>
 <p><code class="docutils literal notranslate"><span class="pre">while</span></code>文は、原理的には<code class="docutils literal notranslate"><span class="pre">for</span></code>文と<code class="docutils literal notranslate"><span class="pre">break</span></code>を組み合わせたコードでも実装可能なので発展的な内容(<span class="math notranslate nohighlight">\(\clubsuit\)</span>マーク)として授業ではスキップするかも…</p>
 <p>プログラムを書いていくうちに、繰り返しの数が前もってわからないケースに遭遇することがある。たとえば</p>
@@ -1452,7 +1255,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>を作ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
 
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">bet</span> <span class="o">=</span> <span class="mi">200000</span>
@@ -1475,9 +1278,9 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </div>
 <p>といった具合です. 使用例が思い浮かばなければ「<code class="docutils literal notranslate"><span class="pre">while</span></code>なんてのがある」とだけ覚えておけば当面はOKです.<br />
 ちなみに上のコードは<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールの(疑似)乱数を用いているので、実行ごとに買ったり負けたり結果が変わります。何度か実行してみてください。</p>
-</div>
-<div class="section" id="clubsuit-continue">
-<h3><span class="section-number">2.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="clubsuit-continue">
+<h3><span class="section-number">2.3.6. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> continue<a class="headerlink" href="#clubsuit-continue" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">continue</span></code>文は、<code class="docutils literal notranslate"><span class="pre">for</span></code>や<code class="docutils literal notranslate"><span class="pre">while</span></code>文の中で[以降の処理を無視する]のに使います.<br />
 具体的な用途としては[特定の条件を満たす場合にのみ適用する処理を書きたい]場合などがあります.再びカジノの例で考えてみましょう.</p>
 <p>上のfor文の例で、最初の2回だけは負けてもゲームを続けるというルールを追加したいとします.</p>
@@ -1506,13 +1309,13 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id13">
-<h3><span class="section-number">2.3.7. </span>例外処理<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.3.7. </span>例外処理<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">114</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">-=</span> <span class="mi">10</span>
@@ -1532,7 +1335,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
@@ -1548,10 +1351,10 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </div>
 </div>
 <p>このノートブックでは説明しませんがexceptの後に具体的な例外を指定して例外の種類に応じた操作を行うことも出来ます。<a class="reference external" href="https://docs.python.org/ja/3/library/exceptions.html">https://docs.python.org/ja/3/library/exceptions.html</a></p>
-</div>
-</div>
-<div class="section" id="if">
-<h2><span class="section-number">2.4. </span>条件分岐 (if文)<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="if">
+<h2><span class="section-number">2.4. </span>条件分岐 (if文)<a class="headerlink" href="#if" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">if</span></code>文では、書かれた条件が成立した場合、後に続くブロックを実行します。<br />
 <code class="docutils literal notranslate"><span class="pre">if</span></code>文を使って命題の真偽を判定することで、条件分岐を表現することができます。</p>
 <div class="cell docutils container">
@@ -1626,8 +1429,8 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1641,7 +1444,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1649,45 +1452,123 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Python_chapter1_Introduction.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Pythonの基本 その１:</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Python_chapter1_Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Pythonの基本 その１:</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Python_chapter3_Function.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Python_chapter3_Function.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">3. </span>自作関数</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      <div class="extra_footer">
-        © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
-
-      </div>
-  </p>
-</footer>
-</main>
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. リスト</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. リストに関する禁止事項</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index">2.1.2. リストの要素にアクセスする, インデックス(index)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.3. リストの結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.4. リストに要素を加える</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.5. リストの値の更新</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.6. 要素に対応するインデックスの取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.7. スライスを用いた部分リストの取得</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">2.1.8. <span class="math notranslate nohighlight">\(\clubsuit\)</span> リスト操作の注意点</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル・辞書型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-tuple">2.2.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span> タプル(tuple)型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 辞書型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.3. ループ処理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for">2.3.1. for文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3.2. ブロックとインデント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.3. リスト内包表記</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">2.3.4. break ループ処理を途中で抜けたい場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-while">2.3.5. <span class="math notranslate nohighlight">\(\clubsuit\)</span> While文</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-continue">2.3.6. <span class="math notranslate nohighlight">\(\clubsuit\)</span> continue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.7. 例外処理</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">2.4. 条件分岐 (if文)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
 
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
