@@ -47,3 +47,5 @@ sphinx:
   config:
     html_show_copyright: false
     bibtex_reference_style: author_year
+
+google_analytics: G-F7NT8KLGKR
