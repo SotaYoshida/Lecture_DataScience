@@ -1,483 +1,613 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="../" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8. ファイル・文字列操作 &#8212; プログラミング演習1・実践データサイエンス</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+    
+      
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter8_handling_files';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="よくあるエラー集" href="Python_misc_Error.html" />
     <link rel="prev" title="7. 最適化問題の基礎" href="Python_chapter7_Optimization.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+    <div class="container-fluid" id="banner"></div>
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
+    
 
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    資料について
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   資料について
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  練習帳
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter2_ListLoop.html">2. Pythonの基本 その２:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_practice.html">
+   練習帳
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pythonの基本文法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter2_ListLoop.html">
+   2. Pythonの基本 その２:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter3_Function.html">
+   3. 自作関数
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ライブラリと可視化
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ分析の基礎
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter5_Probability.html">5. 確率と疑似乱数</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. ファイル・文字列操作</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter5_Probability.html">
+   5. 確率と疑似乱数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter6_Regression.html">
+   6. 相関・回帰分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter7_Optimization.html">
+   7. 最適化問題の基礎
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. ファイル・文字列操作
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tips&amp;環境構築
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Error.html">
+   よくあるエラー集
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_environment.html">
+   Pythonの環境構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
+   Pythonの環境構築 (Windows11版)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_VScode.html">
+   コードの編集環境とGitHub Copilot
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  おまけ
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Pandas.html">
+   Pandasの使い方 (基礎)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_numpy.html">
+   Numpyについて
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">
+   機械学習: ニューラルネットワークによる回帰
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
+   ベイズ最適化による実験計画法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
+   ベイズ線形回帰
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_StyleGAN3.html">
+   StyleGAN3+CLIPによる写真生成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_WebScraping.html">
+   Webスクレイピング・ブラウザ操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_ODE.html">
+   常微分方程式の数値解法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_PCA.html">
+   主成分分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
+   特異値分解と情報削減
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
+   ニュートン法によるN次元多項式の求根
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
-  </div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter8_handling_files.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter8_handling_files.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/notebooks/Python_chapter8_handling_files.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>ファイル・文字列操作</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter8_handling_files.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter8_handling_files.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter8_handling_files.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 授業で使うファイルの準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. テキストファイルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.1. テキストファイルを開いて内容を読み出す</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strip">8.2.2. strip関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split">8.2.3. split関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace">8.2.4. replace関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-map">8.2.5. <span class="math notranslate nohighlight">\(\clubsuit\)</span> map関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.6. テキストファイルの書き出し</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2.7. 文字コードに関連した余談</a></li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   8.1. 授業で使うファイルの準備
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.2. テキストファイルの操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     8.2.1. テキストファイルを開いて内容を読み出す
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strip">
+     8.2.2. strip関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#split">
+     8.2.3. split関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replace">
+     8.2.4. replace関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit-map">
+     8.2.5.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     map関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     8.2.6. テキストファイルの書き出し
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     8.2.7. 文字コードに関連した余談
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#csv">
+   8.3. csv
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     8.3.1. アンケート分析
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clubsuit">
+   8.4.
+   <span class="math notranslate nohighlight">
+    \(\clubsuit\)
+   </span>
+   複雑なエクセルファイルの操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit-clubsuit">
+     8.4.1.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\clubsuit\)
+     </span>
+     おまけ
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   8.5. 電子ファイルのフォーマット
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   8.6. ファイルパスの指定
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     8.6.1. ファイル名に使用すべきでない文字
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">8.3. csv</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.3.1. アンケート分析</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">8.4. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 複雑なエクセルファイルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-clubsuit">8.4.1. <span class="math notranslate nohighlight">\(\clubsuit\clubsuit\)</span> おまけ</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.5. 電子ファイルのフォーマット</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.6. ファイルパスの指定</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.6.1. ファイル名に使用すべきでない文字</a></li>
-</ul>
-</li>
-</ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ファイル・文字列操作</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   8.1. 授業で使うファイルの準備
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.2. テキストファイルの操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     8.2.1. テキストファイルを開いて内容を読み出す
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strip">
+     8.2.2. strip関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#split">
+     8.2.3. split関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replace">
+     8.2.4. replace関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit-map">
+     8.2.5.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     map関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     8.2.6. テキストファイルの書き出し
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     8.2.7. 文字コードに関連した余談
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#csv">
+   8.3. csv
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     8.3.1. アンケート分析
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clubsuit">
+   8.4.
+   <span class="math notranslate nohighlight">
+    \(\clubsuit\)
+   </span>
+   複雑なエクセルファイルの操作
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit-clubsuit">
+     8.4.1.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\clubsuit\)
+     </span>
+     おまけ
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   8.5. 電子ファイルのフォーマット
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   8.6. ファイルパスの指定
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     8.6.1. ファイル名に使用すべきでない文字
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter8_handling_files.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8. </span>ファイル・文字列操作<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">8. </span>ファイル・文字列操作<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 テキストファイルやcsv・xlsx形式のデータをプログラムで扱えるようになる。</p>
 <p>この章では、テキストファイルやcsvファイル(excelファイルはおまけ<span class="math notranslate nohighlight">\(\clubsuit\)</span>)をPythonで操作する簡単な方法を学習する。</p>
@@ -487,8 +617,8 @@
 <p>愚直にコードを書いている事もあり少々泥臭い部分が多いが、この章のような操作のエッセンスを抑えておけば<br />
 普通にやると膨大な時間がかかる様々な処理を高速化・自動化することができるので、頑張って学習しよう。</p>
 <p>これまでの章で学んだfor文や自作関数、if文などを駆使する格好の練習問題でもある。</p>
-<section id="id2">
-<h2><span class="section-number">8.1. </span>授業で使うファイルの準備<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="section" id="id2">
+<h2><span class="section-number">8.1. </span>授業で使うファイルの準備<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>予め共有しておいた以下のファイルを用いる。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/SotaYoshida/Lecture_DataScience/main/Chapter8_data/test.txt">test.txt</a> (テキストファイル)</p></li>
@@ -498,28 +628,28 @@
 <p>それぞれのファイルをダウンロードし、ご自身のGoogle Driveに指定されたディレクトリを作成し、ファイルをアップロードしてもよいが、少し時間がかかるので、Google Driveのマウントと、Linuxコマンドを駆使してファイルをダウンロードする方法を以下に示す。</p>
 <p>本章では、ファイルの場所を指定する<strong>パス</strong>という概念がたびたび登場する。
 以下のコードをそのまま使いたいという方は、マイドライブ直下に<code class="docutils literal notranslate"><span class="pre">Pro1AdDS</span></code>というフォルダを作り、さらにその中に<code class="docutils literal notranslate"><span class="pre">chapter8_data</span></code>というフォルダを作成して作業する必要がある。</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>まずはGoogle Driveのマウントを行う:<br />
 以降の多くのコードは、google driveの中にあるファイルを読み書きしたりする作業を伴うため、
 Google Driveをマウントした状態でなければ、実行しても多くがエラーとなることに注意しよう。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<ol class="arabic simple" start="2">
+<ol class="simple">
 <li><p>以下のコードを一度だけ実行する:</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SotaYoshida/Lecture_DataScience
-<span class="o">!</span>mkdir<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/
-<span class="o">!</span>mv<span class="w"> </span>Lecture_DataScience/Chapter8_data<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/chapter8_data
-<span class="o">!</span>ls<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/chapter8_data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/SotaYoshida/Lecture_DataScience
+<span class="o">!</span>mkdir /content/drive/MyDrive/Pro1AdDS/
+<span class="o">!</span>mv Lecture_DataScience/Chapter8_data /content/drive/MyDrive/Pro1AdDS/chapter8_data
+<span class="o">!</span>ls /content/drive/MyDrive/Pro1AdDS/chapter8_data
 </pre></div>
 </div>
 </div>
@@ -527,15 +657,15 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p><span class="math notranslate nohighlight">\(\clubsuit\)</span> 解説(気になる人むけ):</p>
 <p>1つめの行ではまず授業資料のGitHubレポジトリをColab環境で間借りしているgoogleのサーバー上にクローン(≒コピー)する。2行目(<code class="docutils literal notranslate"><span class="pre">mkdir</span></code>コマンド)でマイドライブの下に<code class="docutils literal notranslate"><span class="pre">Pro1AdDS</span></code>というフォルダの作成を試み、3行目(<code class="docutils literal notranslate"><span class="pre">mv</span></code>コマンド)でダウンロードしてきたレポジトリにある<code class="docutils literal notranslate"><span class="pre">Chapter8_data</span></code>をさっき作った<code class="docutils literal notranslate"><span class="pre">Pro1AdDS</span></code>というフォルダの中に別名(先頭が小文字になっている)で移動する。
 最後に、どんなファイルがあるかを<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドで確認している。</p>
-</section>
-<section id="id3">
-<h2><span class="section-number">8.2. </span>テキストファイルの操作<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">8.2. </span>テキストファイルの操作<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>膨大な行・数のテキストファイルに対して、人間が手で操作をするというのは非効率だし、時として非現実的となる。</p>
 <p>誤変換を置換するくらいなら、どのテキスト/メモ帳アプリやwordでもできるが、全行(数千とか数万)に対して、決まった操作が必要な場合や複数ファイルについて同じ操作が必要になるときは、プログラムを書くと系統的な操作が可能となる。</p>
 <p>まずはgoogle driveに保存した<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>という名前のファイルがあるかを<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドで確認してみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/chapter8_data/*
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /content/drive/MyDrive/Pro1AdDS/chapter8_data/*
 </pre></div>
 </div>
 </div>
@@ -548,7 +678,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>などと表示される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/chapter8_data/*txt<span class="w"> </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /content/drive/MyDrive/Pro1AdDS/chapter8_data/*txt 
 </pre></div>
 </div>
 </div>
@@ -556,8 +686,8 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>とするとマイドライブ以下の<code class="docutils literal notranslate"><span class="pre">Pro1AdDS/chapter8_data</span></code>内にある<code class="docutils literal notranslate"><span class="pre">.txt</span></code>形式のファイル一覧を表示させることができる。</p>
 <p>では以降で、この<code class="docutils literal notranslate"><span class="pre">test.txt</span></code>ファイルに書かれているテキストを取得してみよう。<br />
 方法は幾つかあるが、最も標準的なものとして、ファイルを開いてテキストを取得する方法を試してみよう。</p>
-<section id="id4">
-<h3><span class="section-number">8.2.1. </span>テキストファイルを開いて内容を読み出す<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="section" id="id4">
+<h3><span class="section-number">8.2.1. </span>テキストファイルを開いて内容を読み出す<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/My Drive/Pro1AdDS/chapter8_data/test.txt&quot;</span> 
@@ -597,9 +727,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>次に、もう少し具体的なテキスト操作をしてみよう。<br />
 まず、上の1行ずつ表示するコードでは、改行コードを明示的に含む文字列を一行ずつ表示したため、改めて<code class="docutils literal notranslate"><span class="pre">print</span></code>すると余分なスペースが空いてしまう。</p>
 <p><span class="math notranslate nohighlight">\(\clubsuit\)</span> なぜなら<code class="docutils literal notranslate"><span class="pre">print</span></code>関数はデフォルトで末尾に改行<code class="docutils literal notranslate"><span class="pre">\n</span></code>を挿入するのでファイルにある改行記号とあわせて2回改行してしまう→<a class="reference external" href="https://docs.python.org/ja/3/library/functions.html#print">参考リンク</a></p>
-</section>
-<section id="strip">
-<h3><span class="section-number">8.2.2. </span>strip関数<a class="headerlink" href="#strip" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="strip">
+<h3><span class="section-number">8.2.2. </span>strip関数<a class="headerlink" href="#strip" title="Permalink to this headline">¶</a></h3>
 <p>たとえば<code class="docutils literal notranslate"><span class="pre">strip()</span></code>関数を使うと、文字列に含まれる空白、タブや改行コードを消去することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -673,9 +803,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 <p>ひとくちにテキストファイルといっても様々な形式があり、表記方法もバラバラである。
 プログラムで扱う際には、そのファイルの特性に合わせて適切な処理を行う必要があることに注意しよう。</p>
-</section>
-<section id="split">
-<h3><span class="section-number">8.2.3. </span>split関数<a class="headerlink" href="#split" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="split">
+<h3><span class="section-number">8.2.3. </span>split関数<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h3>
 <p>また、1,2,3,4,5,6といったコンマやスペースで区切られたものをリストに格納したい場合には、<code class="docutils literal notranslate"><span class="pre">split</span></code>関数が便利。<code class="docutils literal notranslate"><span class="pre">split</span></code>関数は引数に何も指定しなければ、スペースや改行もしくはタブごとに文字列を区切ったリストを返す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,9 +875,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 </div>
 </div>
-</section>
-<section id="replace">
-<h3><span class="section-number">8.2.4. </span>replace関数<a class="headerlink" href="#replace" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="replace">
+<h3><span class="section-number">8.2.4. </span>replace関数<a class="headerlink" href="#replace" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">replace</span></code>関数で文字の置換が可能:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,9 +889,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 </div>
 </div>
-</section>
-<section id="clubsuit-map">
-<h3><span class="section-number">8.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> map関数<a class="headerlink" href="#clubsuit-map" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="clubsuit-map">
+<h3><span class="section-number">8.2.5. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> map関数<a class="headerlink" href="#clubsuit-map" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">map</span></code>関数は<code class="docutils literal notranslate"><span class="pre">map(操作,対象)</span></code>という風に使って、対象の各要素に対して一括で操作を適用することができる。<br />
 今の場合、<code class="docutils literal notranslate"><span class="pre">['1',</span> <span class="pre">'</span> <span class="pre">2',</span> <span class="pre">'</span> <span class="pre">3',</span> <span class="pre">'</span> <span class="pre">4',</span> <span class="pre">'</span> <span class="pre">5',</span> <span class="pre">'</span> <span class="pre">6']</span></code>などの文字列のリストに対して、<br />
 整数型に変換する<code class="docutils literal notranslate"><span class="pre">int</span></code>関数を作用させるという操作を一度に行う。</p>
@@ -786,9 +916,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 その場合は<strong>上で説明したような手順でリストなどに格納すれば今まで行ったような解析やグラフ描画が実行できる</strong>。</p>
 <p>もちろんcsvを読むのに便利なライブラリもあり、上のような文字列操作が必ずしも必要でない場合もあるが、
 いろんな形式のファイルをプログラムで読み込む場合には、上のような基本的な操作を組み合わせることで、必要なデータを取り出すことができることは覚えておこう。</p>
-</section>
-<section id="id5">
-<h3><span class="section-number">8.2.6. </span>テキストファイルの書き出し<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">8.2.6. </span>テキストファイルの書き出し<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>次に、テキストファイルを書き込んで保存してみよう。<br />
 上の文字列で、敬称を”さん”から”様”に置換したテキストを作成して、それを別ファイルとして保存してみる:</p>
 <div class="cell docutils container">
@@ -811,9 +941,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </ul>
 <p>など、手作業が非現実的な様々な状況でも、楽ちんに作業を終わらせることができる(かもしれない)。</p>
 <p>一度、プログラミングを用いたファイル操作をする発想を持つと、もうそれなしでは戻れない…かもしれない。</p>
-</section>
-<section id="id6">
-<h3><span class="section-number">8.2.7. </span>文字コードに関連した余談<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">8.2.7. </span>文字コードに関連した余談<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Windows環境で作成されたテキストファイルを扱う際は読み込みで、文字コードによるエラーが出るかもしれない。
 文字コードとは、英数字のみならず、日本語や中国語などの文字をコンピュータで扱うための規則のことで、こうした文字・記号などとコンピュータ内部での数値(バイト列)との対応を定めたものである。
 最も一般的なのはUTF-8と呼ばれるものであるが、Windows環境ではShift-JISという文字コードが使われることもある。
@@ -821,13 +951,13 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>最近ではメモ帳でもUTF-8(世界標準)を採用しているよう(→<a class="reference external" href="https://blogs.windows.com/japan/2020/02/20/about-windows-and-japanese-text/">MicrosoftのWindows blogの記事</a>)だが、古いテキストファイルだとShift-JISになっているかも。そういうときは、<code class="docutils literal notranslate"><span class="pre">open(file,</span> <span class="pre">&quot;r&quot;,</span> <span class="pre">encoding</span> <span class="pre">=</span> <span class="pre">&quot;shift_jis&quot;)</span></code>など、ファイルを開くときにencodingを明示的に指定する必要がある。明示的にUTF-8で保存したいときは<code class="docutils literal notranslate"><span class="pre">open(file,</span> <span class="pre">&quot;w&quot;,</span> <span class="pre">encoding</span> <span class="pre">=</span> <span class="pre">&quot;utf-8&quot;)</span></code>などとする。<br />
 参考: <a class="reference external" href="https://docs.python.org/ja/3/howto/unicode.html#reading-and-writing-unicode-data">公式ドキュメント</a><br />
 ここまで勉強してきた皆さんには「そんなの、パソコンに存在するShift-JISで書かれたテキストファイルを全てUTF-8に変換するPythonスクリプト書けばいいんじゃね？」という発想があることを期待しています。</p>
-</section>
-</section>
-<section id="csv">
-<h2><span class="section-number">8.3. </span>csv<a class="headerlink" href="#csv" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="csv">
+<h2><span class="section-number">8.3. </span>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h2>
 <p>csvファイルは、カンマ区切りのテキストファイルであり、表形式のデータを保存するのに適している。</p>
-<section id="id7">
-<h3><span class="section-number">8.3.1. </span>アンケート分析<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="section" id="id7">
+<h3><span class="section-number">8.3.1. </span>アンケート分析<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>冒頭の二番目のファイル<code class="docutils literal notranslate"><span class="pre">python_handling_test.csv</span></code>(<a class="reference external" href="https://raw.githubusercontent.com/SotaYoshida/Lecture_DataScience/main/Chapter8_data/python_handling_test.csv">https://raw.githubusercontent.com/SotaYoshida/Lecture_DataScience/main/Chapter8_data/python_handling_test.csv</a>)はあるアンケート結果をまとめたファイルになっている。<br />
 これは、Google フォームで作成したアンケートで、国数英社理(中学の５科目)に対する得意/苦手意識の調査を想定した疑似アンケートになっている。</p>
 <p>このようなアンケート調査は事務作業や卒業研究などで頻繁に見られ、会社や大学など所属コミュニティで何らかの意思決定に用いられることも多い。
@@ -876,7 +1006,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>ちなみに…<code class="docutils literal notranslate"><span class="pre">pandas</span></code>ライブラリを使うとcsvをサクッと読み込むことができる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
@@ -908,7 +1038,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#処理Aのための関数</span>
 <span class="c1">#input_strが、&quot;年月日 時刻(h:m:s) 午前/午後 GMT+9&quot; という文字列である、というデータの&quot;構造&quot;を知った上での実装になっていることに注意</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">make_time_24h</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>        
+<span class="k">def</span> <span class="nf">make_time_24h</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>        
     <span class="n">time</span>  <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">AMPM</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">hms</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
@@ -947,7 +1077,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>最後に、各項目の得点を適当なリスト(あるいはnp.array)に整形しておけば、種々の分析を行うことができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">nlines</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -961,10 +1091,10 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>相関分析は別の章で扱ったので、具体例は省略する。</p>
 <p>もちろん、このようなデータを扱う際には、<code class="docutils literal notranslate"><span class="pre">pandas</span></code>ライブラリを使うともっと簡単にデータを扱うことができるが、
 このような泥臭い？基本的な操作を覚えておくことは、データ解析の基礎を固める上で非常に重要である。</p>
-</section>
-</section>
-<section id="clubsuit">
-<h2><span class="section-number">8.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 複雑なエクセルファイルの操作<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="clubsuit">
+<h2><span class="section-number">8.4. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 複雑なエクセルファイルの操作<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h2>
 <p>家計調査のデータが入ったエクセルファイル<a class="reference external" href="https://github.com/SotaYoshida/Lecture_DataScience/raw/main/Chapter8_data/kakei.xlsx">kakei.xlsx</a>を使用する。<br />
 以下では、上と同じディレクトリに<code class="docutils literal notranslate"><span class="pre">kakei.xlsx</span></code>を置いたと仮定して処理を行うので、適宜ご自身の環境にパスを置き換えて実行しよう。</p>
 <div class="cell docutils container">
@@ -978,7 +1108,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>まずはxlsxファイルをPythonで読み込んで、どんな”シート”があるのかを確認してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pandas: シート名&quot;</span><span class="p">,</span><span class="n">sheet_names</span><span class="p">)</span>
@@ -1011,8 +1141,8 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>実際のデータを触っていると「2006年までとそれ以降とでデータファイル(.xlsx)の”構造”が違う」といったことも出てくるので、
 最初は特定のものに合わせたコードを作り、徐々に汎用性の高い(例外に対応できる)コードにしていくのが良い。</p>
 <p>このエクセルを使って実際に作業をするには、pandas等のライブラリの細かい使い方を説明することになるため、授業ではやらず、以下の”おまけ”にいれておく。</p>
-<section id="clubsuit-clubsuit">
-<h3><span class="section-number">8.4.1. </span><span class="math notranslate nohighlight">\(\clubsuit\clubsuit\)</span> おまけ<a class="headerlink" href="#clubsuit-clubsuit" title="Link to this heading">#</a></h3>
+<div class="section" id="clubsuit-clubsuit">
+<h3><span class="section-number">8.4.1. </span><span class="math notranslate nohighlight">\(\clubsuit\clubsuit\)</span> おまけ<a class="headerlink" href="#clubsuit-clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>以下のコードは、プログラミングの”ありがたみ”を感じてもらうためのお試し用。
 (昔書いたかなり読みにくいコードなのであまり真剣に読まないで…)
 例外処理も完璧でないのだが、許してほしい。</p>
@@ -1028,28 +1158,28 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 画像がいっぱい生成されると面倒なので画像を保存するフォルダを作成しておく</span>
-<span class="o">!</span>mkdir<span class="w"> </span>/content/drive/MyDrive/Pro1AdDS/chapter8_data/kakei_cor_pic<span class="w"> </span>
+<span class="o">!</span>mkdir /content/drive/MyDrive/Pro1AdDS/chapter8_data/kakei_cor_pic 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>japanize_matplotlib<span class="w"> </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install japanize_matplotlib 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ebook</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ebook</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">inpf</span><span class="p">)</span>
         <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sname</span> <span class="o">=</span> <span class="n">sheet_names</span>
@@ -1064,9 +1194,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
             <span class="k">elif</span> <span class="s2">&quot;S&quot;</span> <span class="ow">in</span> <span class="n">sheetname</span> <span class="p">:</span>
                 <span class="n">s_kikou</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">i</span> <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s_kakei</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">s_kikou</span> <span class="o">=</span> <span class="n">s_kakei</span><span class="p">,</span><span class="n">s_kikou</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kakei</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kikou</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">readkakei</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikakei</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="nf">readkakei</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikakei</span><span class="p">)</span> <span class="p">:</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikakei</span><span class="p">])</span>
         <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">premode</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1094,7 +1224,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
                         <span class="n">v_kakei</span> <span class="o">+=</span> <span class="p">[</span> <span class="p">[</span><span class="n">trow</span><span class="p">[</span><span class="n">jj</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="n">i_kakei</span><span class="p">]</span> <span class="p">]</span>
                         <span class="n">items</span> <span class="o">+=</span> <span class="p">[</span><span class="n">trow</span><span class="p">[</span><span class="mi">8</span><span class="p">]]</span>                         
         <span class="k">return</span> <span class="n">i_kakei</span><span class="p">,</span> <span class="n">p_kakei</span><span class="p">,</span> <span class="n">v_kakei</span><span class="p">,</span><span class="n">items</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">readkikou</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikikou</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">readkikou</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikikou</span><span class="p">):</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikikou</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">quantities</span> <span class="o">=</span> <span class="p">[];</span><span class="n">v_kikou</span><span class="o">=</span><span class="p">[]</span>
@@ -1111,7 +1241,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
         <span class="k">return</span> <span class="n">Tplaces</span><span class="p">,</span> <span class="n">v_kikou</span><span class="p">,</span><span class="n">quantities</span>
 
 <span class="c1"># 月ごとの色を決める関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">==</span><span class="mi">12</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;blue&quot;</span>
     <span class="k">elif</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">month</span> <span class="o">&lt;=</span><span class="mi">5</span><span class="p">:</span>
@@ -1123,7 +1253,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
     <span class="k">return</span> <span class="n">tcol</span>
 
 <span class="c1"># 指定した品目・地点の散布図を描く関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">quantity</span><span class="p">,</span><span class="n">place</span><span class="p">,</span><span class="n">corrcoef</span><span class="p">):</span>    
+<span class="k">def</span> <span class="nf">plot_cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">quantity</span><span class="p">,</span><span class="n">place</span><span class="p">,</span><span class="n">corrcoef</span><span class="p">):</span>    
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#e0e0e0&quot;</span><span class="p">)</span>
@@ -1138,7 +1268,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="c1"># 指定した品目・地点の散布図を描く関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
     <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">num_pic</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">Vs</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="k">for</span> <span class="n">j_K</span><span class="p">,</span><span class="n">place</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">places</span><span class="p">):</span>
@@ -1190,10 +1320,10 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id8">
-<h2><span class="section-number">8.5. </span>電子ファイルのフォーマット<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">8.5. </span>電子ファイルのフォーマット<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>プログラムでデータを機械的に読み出して活用することで、人間が到底出来ないような作業効率を実現することができる場合も多い。
 そんな光の側面ばかりなら良いが、実際にはそう上手くは行かないことも多い。</p>
 <p>業務のデジタル化・デジタルトランスフォーメーションなどといった標語とは裏腹に、世の中にあふれるcsv,スプレッドシートなどは、
@@ -1202,9 +1332,9 @@ csvと謳っておいて、実際にはカンマ区切りではなくタブ区�
 <p>総務省統計局は令和2年2月に、政府統計(e-Stat)に関して<a class="reference external" href="https://www.soumu.go.jp/menu_news/s-news/01toukatsu01_02000186.html">統計表における機械判読可能なデータの表記方法の統一ルールの策定</a>というものを出している。
 これが最適な提案かはさておき、データの記述に法則性と機械判読性をもたせる意識を全員が持つことが重要なように思う。</p>
 <p>お掃除ロボットが床を綺麗にするためには、まずお掃除ロボットが走れるよう掃除する(床に物が散乱していない)という条件が求められる、という話だ(そうなの？)。</p>
-</section>
-<section id="id9">
-<h2><span class="section-number">8.6. </span>ファイルパスの指定<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">8.6. </span>ファイルパスの指定<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>ファイルがコンピュータ上でどこにあるかを指し示す文字列はファイルパス(パス, path)と呼ばれる。<br />
 <code class="docutils literal notranslate"><span class="pre">&quot;/content/drive/My</span> <span class="pre">Drive/XXX.png&quot;</span></code>もファイルパスの一例になっている。</p>
 <p>たとえば…</p>
@@ -1247,8 +1377,8 @@ OSにもよるが…ライトユーザーはホームディレクトリより上
 <li><p>Pictures内のhonyarara.jpgへの相対パスは<code class="docutils literal notranslate"><span class="pre">../../../Pictures/honyarara.jpg</span></code></p></li>
 </ul>
 <p>といった感じ。前述のように愚直にReport1フォルダを指定するときは<code class="docutils literal notranslate"><span class="pre">/Users/Sota/Documents/AdDS2020/Report1</span></code>といった感じで、これを相対パスと対比させて絶対パスと呼んだりする。</p>
-<section id="id10">
-<h3><span class="section-number">8.6.1. </span>ファイル名に使用すべきでない文字<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="section" id="id10">
+<h3><span class="section-number">8.6.1. </span>ファイル名に使用すべきでない文字<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>授業で公開しているノートブックの名前は基本的に半角英数字とアンダースコアのみで構成されている。
 これは別に作成者(吉田)がイキってる訳ではない。</p>
 <ul class="simple">
@@ -1263,7 +1393,7 @@ OSにもよるが…ライトユーザーはホームディレクトリより上
 <li><p>その他、機種依存文字などはもちろん、全角記号等</p></li>
 </ul>
 <p>などは、(プログラムで扱う予定がある)ファイルの名前には使用しないことが推奨される。その理由は色々あるが</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>機械の解釈にambiguity(あいまいさ)が生じる</p></li>
 <li><p>(1.により人間側の操作が増えて)面倒</p></li>
 </ol>
@@ -1287,9 +1417,9 @@ Google Colab.上では冒頭に!を付けることで、以下に例を示すよ
 上記の記号や２バイト以上の文字はファイル(フォルダ)名に使わないのがコンピューターにとっては無難である。</p>
 <p>こういうことは小中高や大学でも理由付きで教えてくれなかったりするので、プログラミングをやって初めて気がつく(気にするようになった)という人も多いかもしれない。</p>
 <p>機械判読可能なデータの表記方法やファイル名の命名規則などは、プログラムを書く上での基本的な知識として覚えておくと良い。</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1303,7 +1433,7 @@ Google Colab.上では冒頭に!を付けることで、以下に例を示すよ
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1311,120 +1441,45 @@ Google Colab.上では冒頭に!を付けることで、以下に例を示すよ
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="Python_chapter7_Optimization.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>最適化問題の基礎</p>
-      </div>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Python_chapter7_Optimization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>最適化問題の基礎</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="Python_misc_Error.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="Python_misc_Error.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">よくあるエラー集</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
             
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 授業で使うファイルの準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. テキストファイルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.1. テキストファイルを開いて内容を読み出す</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strip">8.2.2. strip関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split">8.2.3. split関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace">8.2.4. replace関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-map">8.2.5. <span class="math notranslate nohighlight">\(\clubsuit\)</span> map関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.6. テキストファイルの書き出し</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2.7. 文字コードに関連した余談</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">8.3. csv</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.3.1. アンケート分析</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">8.4. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 複雑なエクセルファイルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit-clubsuit">8.4.1. <span class="math notranslate nohighlight">\(\clubsuit\clubsuit\)</span> おまけ</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.5. 電子ファイルのフォーマット</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.6. ファイルパスの指定</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.6.1. ファイル名に使用すべきでない文字</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-<div class="extra_footer">
-  © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
-
-</div>
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+        </div>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+    <footer class="footer">
+  <p>
+    
+      <div class="extra_footer">
+        © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-  <footer class="bd-footer">
-  </footer>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>

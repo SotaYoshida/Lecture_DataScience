@@ -1,489 +1,570 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="../" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5. 確率と疑似乱数 &#8212; プログラミング演習1・実践データサイエンス</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+    
+      
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter5_Probability';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6. 相関・回帰分析" href="Python_chapter6_Regression.html" />
     <link rel="prev" title="4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)" href="Python_chapter4_Matplotlib.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+    <div class="container-fluid" id="banner"></div>
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
+    
 
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    資料について
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   資料について
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  練習帳
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter2_ListLoop.html">2. Pythonの基本 その２:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_practice.html">
+   練習帳
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pythonの基本文法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter2_ListLoop.html">
+   2. Pythonの基本 その２:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter3_Function.html">
+   3. 自作関数
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ライブラリと可視化
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ分析の基礎
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. 確率と疑似乱数</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter8_handling_files.html">8. ファイル・文字列操作</a></li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. 確率と疑似乱数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter6_Regression.html">
+   6. 相関・回帰分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter7_Optimization.html">
+   7. 最適化問題の基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter8_handling_files.html">
+   8. ファイル・文字列操作
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tips&amp;環境構築
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Error.html">
+   よくあるエラー集
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_environment.html">
+   Pythonの環境構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
+   Pythonの環境構築 (Windows11版)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_VScode.html">
+   コードの編集環境とGitHub Copilot
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  おまけ
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Pandas.html">
+   Pandasの使い方 (基礎)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_numpy.html">
+   Numpyについて
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">
+   機械学習: ニューラルネットワークによる回帰
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_BayesianOptimization.html">
+   ベイズ最適化による実験計画法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
+   ベイズ線形回帰
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_StyleGAN3.html">
+   StyleGAN3+CLIPによる写真生成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_WebScraping.html">
+   Webスクレイピング・ブラウザ操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_ODE.html">
+   常微分方程式の数値解法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_PCA.html">
+   主成分分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
+   特異値分解と情報削減
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
+   ニュートン法によるN次元多項式の求根
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
-  </div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter5_Probability.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter5_Probability.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/notebooks/Python_chapter5_Probability.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>確率と疑似乱数</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter5_Probability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter5_Probability.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter5_Probability.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 疑似乱数について</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">5.2. Pythonでの乱数生成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.3. 無作為抽出</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.4. 一様分布からの乱数生成</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.4.1. じゃんけん関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">5.4.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算</a></li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.1. 疑似乱数について
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   5.2. Pythonでの乱数生成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.3. 無作為抽出
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.4. 一様分布からの乱数生成
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     5.4.1. じゃんけん関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit">
+     5.4.2.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     一様乱数を用いた円周率の計算
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.5. 正規分布からの乱数生成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seed">
+   5.6. 乱数の種(seed)の固定
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.7. 正規分布に関して
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.7.1.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     おまけ: 多変数正規分布
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.8.
+   <span class="math notranslate nohighlight">
+    \(\clubsuit\)
+   </span>
+   ランダムウォーク(酔歩)
+  </a>
+ </li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.5. 正規分布からの乱数生成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seed">5.6. 乱数の種(seed)の固定</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.7. 正規分布に関して</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.7.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.8. <span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)</a></li>
-</ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>確率と疑似乱数</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.1. 疑似乱数について
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   5.2. Pythonでの乱数生成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.3. 無作為抽出
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.4. 一様分布からの乱数生成
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     5.4.1. じゃんけん関数
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clubsuit">
+     5.4.2.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     一様乱数を用いた円周率の計算
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.5. 正規分布からの乱数生成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seed">
+   5.6. 乱数の種(seed)の固定
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.7. 正規分布に関して
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.7.1.
+     <span class="math notranslate nohighlight">
+      \(\clubsuit\)
+     </span>
+     おまけ: 多変数正規分布
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.8.
+   <span class="math notranslate nohighlight">
+    \(\clubsuit\)
+   </span>
+   ランダムウォーク(酔歩)
+  </a>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter5_Probability.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">5. </span>確率と疑似乱数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">5. </span>確率と疑似乱数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>[この章の目的]
 コンピュータで確率・乱数を扱う概要を学ぶ。</p>
 <p>この章では、確率と擬似乱数について扱います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ライブラリをインポートしておきましょう</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="id2">
-<h2><span class="section-number">5.1. </span>疑似乱数について<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="section" id="id2">
+<h2><span class="section-number">5.1. </span>疑似乱数について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>コンピュータで何かの処理を実現したいときや、自然科学や統計学などで様々なことをシミュレーションしたいとき、[確率的な事象]を考えたくなることがよくあります。</p>
 <p>たとえば人◯ゲームや◯鉄のようなゲームを作るときにもサイコロの出目が必要になりますし、技が急所に当たる確率や色違いのポ◯モンが出現する確率などを設定しなければなりません.</p>
 <p>真に理想的なサイコロならば1から6の目が出る確率は等しく1/6ですが、このような”理想的な”サイコロは、現実世界でも、コンピュータの上でも実現することはできず、我々人間が乱数をシミュレーションして扱う際には、何らかの確定的な方法で乱数列(<strong>十分ランダムだとみなせる数の集合</strong>)を生成することになります。</p>
@@ -492,9 +573,9 @@
 <p>乱数を生成する方法はいくつもあるが代表的なものはメルセンヌツイスタと呼ばれる方法で、多くのプログラミング言語でも採用されている。</p>
 <p>また<em>モンテカルロ法</em>と検索すると(主に学術的な分野で)乱数がどのように活用されているか、雰囲気を味わうことができます。<br />
 ちなみにモンテカルロはカジノで有名なモナコの地名Monte Carloに由来。</p>
-</section>
-<section id="python">
-<h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="python">
+<h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Pythonでは<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールを使えば簡単に乱数を使用することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,7 +635,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0a4469b1bbe1b9d20e02f5ba65d3e8f648c0a183736f861c67b18afe0f9a08d9.png" src="../_images/0a4469b1bbe1b9d20e02f5ba65d3e8f648c0a183736f861c67b18afe0f9a08d9.png" />
+<img alt="../_images/Python_chapter5_Probability_11_0.png" src="../_images/Python_chapter5_Probability_11_0.png" />
 </div>
 </div>
 <p>1-6の出る目の頻度が確率から期待される振る舞いに漸近していく事がわかる.  c.f. 大数の法則</p>
@@ -583,7 +664,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/df056bc23c3eaa9dbf632c705c3ef198f925529c3a5dc3daeda2903f3aecdeec.png" src="../_images/df056bc23c3eaa9dbf632c705c3ef198f925529c3a5dc3daeda2903f3aecdeec.png" />
+<img alt="../_images/Python_chapter5_Probability_14_0.png" src="../_images/Python_chapter5_Probability_14_0.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -609,9 +690,9 @@ numpyの(np.random.randintを使う)場合 =&gt; {1, 2, 3, 4, 5}
 </div>
 </div>
 </div>
-</section>
-<section id="id3">
-<h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>リストやrangeなどからランダムに要素を選びたいときには<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>が便利だ。<br />
 (たとえば[出席番号のリストからランダムに選ぶ]などをイメージしよう)</p>
 <p>ループに入れて5回くらい実行してみましょう。</p>
@@ -645,7 +726,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>の<code class="docutils literal notranslate"><span class="pre">choice</span></code>関数を使うのがよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># replace = True/Falseで重複を認めるかどうかを指定できる </span>
 </pre></div>
 </div>
@@ -660,7 +741,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <p>ちなみに選んだものをソートしたければ組み込み関数<code class="docutils literal notranslate"><span class="pre">sorted</span></code>などを使うと良い:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">sorted_array</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sorted_array</span><span class="p">)</span>
@@ -673,9 +754,9 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </div>
 </div>
 </div>
-</section>
-<section id="id4">
-<h2><span class="section-number">5.4. </span>一様分布からの乱数生成<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">5.4. </span>一様分布からの乱数生成<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>上記のような離散的な乱数とは異なり、連続的な数について乱数が必要になる場合もある。</p>
 <p>その一つの例である一様乱数は、ある”有限”区間での確率(密度)が等しい確率に従う乱数で、<br />
 <code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code>関数を使えば、指定した区間での一様乱数を生成することができる。</p>
@@ -715,26 +796,26 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d43d2e858f1206326f5d483542635ebd5d29c2b6c1f4943f058ccd3308cd68b9.png" src="../_images/d43d2e858f1206326f5d483542635ebd5d29c2b6c1f4943f058ccd3308cd68b9.png" />
+<img alt="../_images/Python_chapter5_Probability_30_0.png" src="../_images/Python_chapter5_Probability_30_0.png" />
 </div>
 </div>
 <p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span></strong> 散布図とヒストグラムをまとめて描く</p>
 <p>もうちょっとかっこよく描きたければ<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>というモジュールの<code class="docutils literal notranslate"><span class="pre">jointplot</span></code>を用いると良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="id5">
-<h3><span class="section-number">5.4.1. </span>じゃんけん関数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="section" id="id5">
+<h3><span class="section-number">5.4.1. </span>じゃんけん関数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>乱数を使ってじゃんけんをする関数を作ってみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
     <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span><span class="s2">&quot;パー&quot;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> 
 </pre></div>
@@ -757,7 +838,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#あるいは、手を0,1,2として計算する関数とじゃんけんの手に反映させる部分を分けても良い</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">Janken</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">Janken</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">RPS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span> <span class="s2">&quot;パー&quot;</span><span class="p">]</span>  <span class="c1">#integer to Rock-Paper-Scissors</span>
 
@@ -781,7 +862,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 ２つの手の確率を指定すれば、残りも一意に決まるので、たとえば、0から1の区間から一様乱数を発生させて、ある領域に含まれたらグー、ある領域に含まれたらチョキ、残りはパー、とすれば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_RPS</span><span class="p">(</span><span class="n">p_rock</span><span class="p">,</span> <span class="n">p_scissors</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_RPS</span><span class="p">(</span><span class="n">p_rock</span><span class="p">,</span> <span class="n">p_scissors</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">p_rock</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -808,20 +889,20 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">じゃんけん関数を工夫したり</span><span class="err">、</span><span class="n">サザ</span><span class="err">◯</span><span class="n">さんやドラ</span><span class="err">◯</span><span class="n">もんのじゃんけんのパターンを解析することで</span><span class="err">、</span>  
-<span class="n">毎週土曜や日曜にドラ</span><span class="err">◯</span><span class="n">もんやサザ</span><span class="err">◯</span><span class="n">さんを倒す関数を作ってみるのも面白そうです</span><span class="err">。</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>じゃんけん関数を工夫したり、サザ◯さんやドラ◯もんのじゃんけんのパターンを解析することで、  
+毎週土曜や日曜にドラ◯もんやサザ◯さんを倒す関数を作ってみるのも面白そうです。
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="clubsuit">
-<h3><span class="section-number">5.4.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
+</div>
+<div class="section" id="clubsuit">
+<h3><span class="section-number">5.4.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算<a class="headerlink" href="#clubsuit" title="Permalink to this headline">¶</a></h3>
 <p>プログラミングでド定番の、乱数を使って円周率を求める方法も<br />
 Pythonならサクッと実装することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -873,7 +954,7 @@ p= 7 	 pi_approx 3.1410364 log10(abs(diff)) -3.254727173274235
 p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 </pre></div>
 </div>
-<img alt="../_images/2ac97aa47ecc065ddd28a43bde964d6e9021c6ef86f52e85b069e2ec5e1e2b9e.png" src="../_images/2ac97aa47ecc065ddd28a43bde964d6e9021c6ef86f52e85b069e2ec5e1e2b9e.png" />
+<img alt="../_images/Python_chapter5_Probability_45_1.png" src="../_images/Python_chapter5_Probability_45_1.png" />
 </div>
 </div>
 <p>あまり効率は良くない(<span class="math notranslate nohighlight">\(10^8\)</span>サンプルあっても４桁くらいしか合っていない)。<br />
@@ -881,8 +962,8 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 <p>なお、上のコードはメモリを食うので、これ以上<span class="math notranslate nohighlight">\(p\)</span>を増やすとだんだんGoogle Colab上では計算が厳しくなってくる。それまでの作業にも依存するが、<span class="math notranslate nohighlight">\(p\geq9\)</span>にして実行するとクラッシュする。このように場合によってはメモリ使用量も気にする必要がある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">pi_approx_mem</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">pi_approx_mem</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -905,10 +986,10 @@ p=8のとき =&gt; ndarrayのサイズは~  1.49  GB程度
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id6">
-<h2><span class="section-number">5.5. </span>正規分布からの乱数生成<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">5.5. </span>正規分布からの乱数生成<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>正規分布は多くの特徴的な性質を有しています.<br />
 それらは後述するとして…正規分布に従う乱数を生成するには<br />
 <code class="docutils literal notranslate"><span class="pre">random.gauss()</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">random.normalvariate()</span></code>  を用いればよい.<br />
@@ -947,7 +1028,7 @@ p=8のとき =&gt; ndarrayのサイズは~  1.49  GB程度
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/308fa4c565ee0a601ab98ac142f4a5bfa2748c1bce6a6b36793f901718915075.png" src="../_images/308fa4c565ee0a601ab98ac142f4a5bfa2748c1bce6a6b36793f901718915075.png" />
+<img alt="../_images/Python_chapter5_Probability_52_0.png" src="../_images/Python_chapter5_Probability_52_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu,sigma a: 0.0067173334130862326 1.005917217916256
 mu,sigma b: -0.062043437506205806 0.9809649613610115
 mu,sigma c: 0.0029861824182547607 1.0029708839095104
@@ -957,9 +1038,9 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <p>サンプル数が増えるにつれて、正規分布に収束していく様子が見られます.</p>
-</section>
-<section id="seed">
-<h2><span class="section-number">5.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="seed">
+<h2><span class="section-number">5.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Permalink to this headline">¶</a></h2>
 <p>これまでのプログラムでは、実行の度に答えが変わりました。</p>
 <p>擬似的にでもランダム性が担保されているというのは便利だが、<br />
 実際にプログラミングで乱数を使って何かの作業を実装したいときは、<br />
@@ -1013,9 +1094,9 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 原理的には(1/30~1/60秒程度の正確な入力が可能なら)望むようにゲームをスイスイ攻略することもできます。</p>
 <p>これを利用して攻略を進めたり、コンピュータにゲームの操作をやらせて、<br />
 メタル◯ライムに会心の一撃を食らわせてレベルアップしまくる動画などが昔はやりました(今も時々ある)。</p>
-</section>
-<section id="id7">
-<h2><span class="section-number">5.7. </span>正規分布に関して<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">5.7. </span>正規分布に関して<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>この授業は確率・統計の授業ではないので、深入りはしませんが、<br />
 正規分布(ガウス分布,ガウシアン)に少し触れておきます.<br />
 (厳密性は少々犠牲にし、変数が1次元の場合の正規分布に限る)</p>
@@ -1036,7 +1117,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>実際に、上の<span class="math notranslate nohighlight">\(x\)</span>についての関数<span class="math notranslate nohighlight">\(f(x)\)</span>の値を、<span class="math notranslate nohighlight">\(\mu\)</span>や<span class="math notranslate nohighlight">\(\sigma\)</span>を変えながらplotしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1054,7 +1135,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c50bca5ad20e0fe46ecff44e32f5de359bc471e86419a73bf8e29ab773fd165c.png" src="../_images/c50bca5ad20e0fe46ecff44e32f5de359bc471e86419a73bf8e29ab773fd165c.png" />
+<img alt="../_images/Python_chapter5_Probability_61_0.png" src="../_images/Python_chapter5_Probability_61_0.png" />
 </div>
 </div>
 <p>こんな感じ。このような形状の分布を示すデータ(量)が世の中には溢れています。</p>
@@ -1071,7 +1152,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>以下では<span class="math notranslate nohighlight">\(\mu=0.0\)</span>, <span class="math notranslate nohighlight">\(\sigma=1.0\)</span>のみを考えることにして、もう少し正規分布の特徴的な性質について見てみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -1093,7 +1174,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9264cf383efa7cd564941390737cde600e52674750abba0e29641a0090787fb6.png" src="../_images/9264cf383efa7cd564941390737cde600e52674750abba0e29641a0090787fb6.png" />
+<img alt="../_images/Python_chapter5_Probability_64_0.png" src="../_images/Python_chapter5_Probability_64_0.png" />
 </div>
 </div>
 <p>上の図では、<span class="math notranslate nohighlight">\(\mu \pm 1\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 3\sigma\)</span>の領域での正規分布とx軸とが囲む領域を、それぞれ赤色、青色、緑色で塗りつぶしました。<br />
@@ -1108,8 +1189,8 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>もちろん、実際の場合、分布は真には正規分布になっていないので、<br />
 平均と標準偏差を計算したときに、いつでも1シグマの中に<br />
 全体の68%が分布しているわけではありません。</p>
-<section id="id8">
-<h3><span class="section-number">5.7.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="section" id="id8">
+<h3><span class="section-number">5.7.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>上の正規分布の考え方を拡張して、多変数の場合を考えることもできます。</p>
 <p>2つ以上の変数であることを明示的に表すため、
 多次元正規分布や多変数正規分布などと呼ばれることが多いです。</p>
@@ -1156,14 +1237,14 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bb9a976364f3ad3301d8c7a575dffdeaace364343206c1aff50b8dd95986381e.png" src="../_images/bb9a976364f3ad3301d8c7a575dffdeaace364343206c1aff50b8dd95986381e.png" />
+<img alt="../_images/Python_chapter5_Probability_70_0.png" src="../_images/Python_chapter5_Probability_70_0.png" />
 </div>
 </div>
 <p>こんな感じ。</p>
 <p>二次元のヒストグラムにすると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -1184,7 +1265,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fffce4874ba48003d4f3b98c1b44df1a89267c72f2d871021d89b4c70a27c0fe.png" src="../_images/fffce4874ba48003d4f3b98c1b44df1a89267c72f2d871021d89b4c70a27c0fe.png" />
+<img alt="../_images/Python_chapter5_Probability_72_0.png" src="../_images/Python_chapter5_Probability_72_0.png" />
 </div>
 </div>
 <p>中心付近にたくさん分布している様子が見て取れます。</p>
@@ -1227,7 +1308,7 @@ var(x) 0.5996593224718298 var(y) 0.996967770694425 cov(x,y) -0.29333540781674877
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">axes3d</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">axL</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 <span class="n">axR</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
@@ -1243,22 +1324,22 @@ var(x) 0.5996593224718298 var(y) 0.996967770694425 cov(x,y) -0.29333540781674877
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/009a63b5c07150ffaf755b3c7ec92cfed17a264a82411aa7c66b7be91a47dc6b.png" src="../_images/009a63b5c07150ffaf755b3c7ec92cfed17a264a82411aa7c66b7be91a47dc6b.png" />
+<img alt="../_images/Python_chapter5_Probability_78_0.png" src="../_images/Python_chapter5_Probability_78_0.png" />
 </div>
 </div>
 <p>こんな感じ。<br />
 x,yのメッシュ点をいっぱいつくって、各点でのzの値を定義に則って計算し、<br />
 z=f(x,y)の値に応じて色をつけている.</p>
-</section>
-</section>
-<section id="id9">
-<h2><span class="section-number">5.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">5.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>ここまでの乱数の生成方法を応用すると、ランダムウォーク(酔歩)と呼ばれるものを実装することもできます。</p>
 <p>あなたは原点(0,0)に立っていて、毎秒ごとに[-1,1]の一様乱数に従ってx方向とy方向に移動するとします。<br />
 T秒後に立ってる場所や、軌跡をプロットしてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">])</span> <span class="c1">#開始地点</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#stepの数</span>
 
@@ -1280,7 +1361,7 @@ T秒後に立ってる場所や、軌跡をプロットしてみましょう。<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/63bf24981fac31e97514f5ae5d47fc800dfe696af3bfdcf05c015605f25c1aa3.png" src="../_images/63bf24981fac31e97514f5ae5d47fc800dfe696af3bfdcf05c015605f25c1aa3.png" />
+<img alt="../_images/Python_chapter5_Probability_83_0.png" src="../_images/Python_chapter5_Probability_83_0.png" />
 </div>
 </div>
 <p>今の場合、x方向y方向いずれも、<br />
@@ -1295,8 +1376,8 @@ T秒後に立ってる場所や、軌跡をプロットしてみましょう。<
 最適化や確率分布からのサンプリングが必要な状況下でよく用いられ、<br />
 統計学、自然科学、機械学習など様々な分野で活躍しています。<br />
 c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1310,7 +1391,7 @@ c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1318,111 +1399,45 @@ c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="Python_chapter4_Matplotlib.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</p>
-      </div>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Python_chapter4_Matplotlib.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="Python_chapter6_Regression.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="Python_chapter6_Regression.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">6. </span>相関・回帰分析</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
             
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 疑似乱数について</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">5.2. Pythonでの乱数生成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.3. 無作為抽出</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.4. 一様分布からの乱数生成</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.4.1. じゃんけん関数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">5.4.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.5. 正規分布からの乱数生成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seed">5.6. 乱数の種(seed)の固定</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.7. 正規分布に関して</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.7.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.8. <span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-<div class="extra_footer">
-  © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
-
-</div>
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+        </div>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+    <footer class="footer">
+  <p>
+    
+      <div class="extra_footer">
+        © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-  <footer class="bd-footer">
-  </footer>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>

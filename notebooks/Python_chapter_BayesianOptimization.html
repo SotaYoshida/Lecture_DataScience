@@ -1,583 +1,555 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="../" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ベイズ最適化による実験計画法 &#8212; プログラミング演習1・実践データサイエンス</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+    
+      
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter_BayesianOptimization';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ベイズ線形回帰" href="Python_chapter_Bayesian_linear_regression.html" />
     <link rel="prev" title="機械学習: ニューラルネットワークによる回帰" href="Python_chapter_ArtificialNeuralNetwork.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+    <div class="container-fluid" id="banner"></div>
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
+    
 
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    資料について
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">プログラムの実行方法</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter0_HowToUse.html">Google Colaboratoryの使い方</a></li>
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">プログラミング演習1・実践データサイエンス</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   資料について
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">練習帳</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  プログラムの実行方法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_practice.html">練習帳</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter0_HowToUse.html">
+   Google Colaboratoryの使い方
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pythonの基本文法</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  練習帳
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter1_Introduction.html">1. Pythonの基本 その１:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter2_ListLoop.html">2. Pythonの基本 その２:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter3_Function.html">3. 自作関数</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_practice.html">
+   練習帳
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ライブラリと可視化</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Pythonの基本文法
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter4_Matplotlib.html">4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter1_Introduction.html">
+   1. Pythonの基本 その１:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter2_ListLoop.html">
+   2. Pythonの基本 その２:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter3_Function.html">
+   3. 自作関数
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">データ分析の基礎</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ライブラリと可視化
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter5_Probability.html">5. 確率と疑似乱数</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter6_Regression.html">6. 相関・回帰分析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter7_Optimization.html">7. 最適化問題の基礎</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter8_handling_files.html">8. ファイル・文字列操作</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter4_Matplotlib.html">
+   4. ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tips&amp;環境構築</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ分析の基礎
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter5_Probability.html">
+   5. 確率と疑似乱数
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter6_Regression.html">
+   6. 相関・回帰分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter7_Optimization.html">
+   7. 最適化問題の基礎
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter8_handling_files.html">
+   8. ファイル・文字列操作
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tips&amp;環境構築
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Error.html">
+   よくあるエラー集
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_environment.html">
+   Pythonの環境構築
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_python_env_forWin11.html">
+   Pythonの環境構築 (Windows11版)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_VScode.html">
+   コードの編集環境とGitHub Copilot
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  おまけ
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ベイズ最適化による実験計画法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_PCA.html">主成分分析</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_Pandas.html">
+   Pandasの使い方 (基礎)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_numpy.html">
+   Numpyについて
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">
+   機械学習: ニューラルネットワークによる回帰
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   ベイズ最適化による実験計画法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">
+   ベイズ線形回帰
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_StyleGAN3.html">
+   StyleGAN3+CLIPによる写真生成
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_chapter_WebScraping.html">
+   Webスクレイピング・ブラウザ操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_ODE.html">
+   常微分方程式の数値解法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_PCA.html">
+   主成分分析
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_SingularValueDecomposition.html">
+   特異値分解と情報削減
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_misc_NewtonsMethod.html">
+   ニュートン法によるN次元多項式の求根
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
-  </div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_BayesianOptimization.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter_BayesianOptimization.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/notebooks/Python_chapter_BayesianOptimization.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>ベイズ最適化による実験計画法</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/Python_chapter_BayesianOptimization.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SotaYoshida/Lecture_DataScience/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Python_chapter_BayesianOptimization.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_BayesianOptimization.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">備忘録: ライブラリの出力に関して</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpyopt">GPyOpt</a></li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   備忘録: ライブラリの出力に関して
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpyopt">
+   GPyOpt
+  </a>
+ </li>
 </ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ベイズ最適化による実験計画法</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   備忘録: ライブラリの出力に関して
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpyopt">
+   GPyOpt
+  </a>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter_BayesianOptimization.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>ベイズ最適化による実験計画法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>ベイズ最適化による実験計画法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>以下では、ベイズ最適化を用いた実験計画法を見てみよう。</p>
 <p>数学的部分やコードの詳細よりも「なんとなくこのあたりを探索しようかな」といった<br />
 人間の経験に依る部分を客観的な方法で置き換えた実験計画の方法論の強力さを感じることが目的なので難しいところはスキップしても構わない。</p>
 <p>ガウス過程の基本や詳細は<a class="reference external" href="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/GPnote.pdf">補足ノート</a>に譲る.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#使うライブラリのインポート
-import numpy as np
-import matplotlib.pyplot as plt
-import copy
-from scipy import special
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#使うライブラリのインポート</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">special</span>
 
-## データの生成用関数
-def f(x):
-    return np.sin(x) + 0.2 * x
+<span class="c1">## データの生成用関数</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span>
 
-## ガウス過程のカーネル(共分散行列)の設計
-def Mat52(Thetas,r):
-    tau,sigma = Thetas
-    thetar = r * np.sqrt(5.0)/sigma
-    return tau * (1.0 + thetar + (thetar**2) /3.0) * np.exp(-thetar)
-def KernelMat(Thetas,xt,xp):
-    lt = len(xt); lp=len(xp)
-    Ktt = np.zeros((lt,lt)); Kpt = np.zeros((lp,lt));  Kpp = np.zeros((lp,lp))
-    for j in range(lt):
-        for i in range(j,lt):
-            r = abs(xt[i]-xt[j])
-            tmp  = Mat52(Thetas,r) 
-            Ktt[i,j] = tmp; Ktt[j,i] = tmp 
-        for i in range(lp):
-            r= abs(xp[i]-xt[j])
-            Kpt[i,j] = Mat52(Thetas,r)
-    for j in range(lp):
-        for i in range(j,lp):
-            r= abs(xp[i]-xp[j])
-            tmp  = Mat52(Thetas,r)
-            Kpp[i,j] = tmp; Kpp[j,i] = tmp
-    return Ktt,Kpt,Kpp
+<span class="c1">## ガウス過程のカーネル(共分散行列)の設計</span>
+<span class="k">def</span> <span class="nf">Mat52</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">tau</span><span class="p">,</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">Thetas</span>
+    <span class="n">thetar</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span>
+    <span class="k">return</span> <span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">thetar</span> <span class="o">+</span> <span class="p">(</span><span class="n">thetar</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">thetar</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">KernelMat</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">xt</span><span class="p">,</span><span class="n">xp</span><span class="p">):</span>
+    <span class="n">lt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xt</span><span class="p">);</span> <span class="n">lp</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+    <span class="n">Ktt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">lt</span><span class="p">,</span><span class="n">lt</span><span class="p">));</span> <span class="n">Kpt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">lp</span><span class="p">,</span><span class="n">lt</span><span class="p">));</span>  <span class="n">Kpp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">lp</span><span class="p">,</span><span class="n">lp</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lt</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">lt</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">xt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">tmp</span>  <span class="o">=</span> <span class="n">Mat52</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">r</span><span class="p">)</span> 
+            <span class="n">Ktt</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span> <span class="n">Ktt</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
+            <span class="n">r</span><span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">xt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">Kpt</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Mat52</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">lp</span><span class="p">):</span>
+            <span class="n">r</span><span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">xp</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">tmp</span>  <span class="o">=</span> <span class="n">Mat52</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">Kpp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span> <span class="n">Kpp</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+    <span class="k">return</span> <span class="n">Ktt</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span>
 
-## 事後共分散行列の計算
-def calcSj(cLinv,Kpt,Kpp,yt,mu_yt,mu_yp):
-    tKtp= np.dot(cLinv,Kpt.T)
-    return mu_yp + np.dot(Kpt,np.dot(cLinv.T,np.dot(cLinv,yt-mu_yt))), Kpp - np.dot(tKtp.T,tKtp)
+<span class="c1">## 事後共分散行列の計算</span>
+<span class="k">def</span> <span class="nf">calcSj</span><span class="p">(</span><span class="n">cLinv</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span><span class="p">,</span><span class="n">yt</span><span class="p">,</span><span class="n">mu_yt</span><span class="p">,</span><span class="n">mu_yp</span><span class="p">):</span>
+    <span class="n">tKtp</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cLinv</span><span class="p">,</span><span class="n">Kpt</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mu_yp</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Kpt</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cLinv</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cLinv</span><span class="p">,</span><span class="n">yt</span><span class="o">-</span><span class="n">mu_yt</span><span class="p">))),</span> <span class="n">Kpp</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tKtp</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">tKtp</span><span class="p">)</span>
 
-## Cholesky分解
-def Mchole(tmpA,ln) :
-    cLL = np.linalg.cholesky(tmpA)
-    logLii=0.0
-    for i in range(ln):
-        logLii += np.log(cLL[i,i])
-    return np.linalg.inv(cLL), 2.0*logLii
+<span class="c1">## Cholesky分解</span>
+<span class="k">def</span> <span class="nf">Mchole</span><span class="p">(</span><span class="n">tmpA</span><span class="p">,</span><span class="n">ln</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">cLL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">tmpA</span><span class="p">)</span>
+    <span class="n">logLii</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ln</span><span class="p">):</span>
+        <span class="n">logLii</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">cLL</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cLL</span><span class="p">),</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">logLii</span>
 
-## 獲得関数を計算, 次点の計算点を決める
-def calcEI(xp,mujoint,sigmaj,xbest,ybest):
-    EIs = [ (mujoint[i]-ybest) * Phi((mujoint[i]-ybest)/sigmaj[i]) +
-            sigmaj[i]* np.exp(-0.5* ((mujoint[i]-ybest)/sigmaj[i])**2) for i in range(len(xp))]
-    xnew,ynew,ind=xybest(xp,EIs)
-    ynew= np.sin(xnew) + 0.2*xnew #+ 0.01 * (0.5-np.random.rand())
-    return xnew,ynew,EIs,ind
-def Phi(z):
-    return 0.5 * special.erfc(-(z/(2**0.5)) )
+<span class="c1">## 獲得関数を計算, 次点の計算点を決める</span>
+<span class="k">def</span> <span class="nf">calcEI</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">mujoint</span><span class="p">,</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">xbest</span><span class="p">,</span><span class="n">ybest</span><span class="p">):</span>
+    <span class="n">EIs</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">mujoint</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">ybest</span><span class="p">)</span> <span class="o">*</span> <span class="n">Phi</span><span class="p">((</span><span class="n">mujoint</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">ybest</span><span class="p">)</span><span class="o">/</span><span class="n">sigmaj</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span>
+            <span class="n">sigmaj</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span> <span class="p">((</span><span class="n">mujoint</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">ybest</span><span class="p">)</span><span class="o">/</span><span class="n">sigmaj</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xp</span><span class="p">))]</span>
+    <span class="n">xnew</span><span class="p">,</span><span class="n">ynew</span><span class="p">,</span><span class="n">ind</span><span class="o">=</span><span class="n">xybest</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">EIs</span><span class="p">)</span>
+    <span class="n">ynew</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">xnew</span> <span class="c1">#+ 0.01 * (0.5-np.random.rand())</span>
+    <span class="k">return</span> <span class="n">xnew</span><span class="p">,</span><span class="n">ynew</span><span class="p">,</span><span class="n">EIs</span><span class="p">,</span><span class="n">ind</span>
+<span class="k">def</span> <span class="nf">Phi</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">special</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">))</span> <span class="p">)</span>
 
-def xybest(xt,yt):
-    ind = np.argmax(yt)
-    return xt[ind],yt[ind],ind
+<span class="k">def</span> <span class="nf">xybest</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">yt</span><span class="p">):</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xt</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">yt</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">ind</span>
 
-## お絵かき
-def plotGP0(xt,yt,xp,ytrue):
-    fig = plt.figure(figsize=(8,4))
-    axT = fig.add_subplot(1,1,1)
-    axT.set_xlabel(&quot;x&quot;); axT.set_ylabel(&quot;y&quot;)
-    axT.set_xlim(-2.0,12); axT.set_ylim(-2.0,5.0)
-    axT.scatter(xt,yt,marker=&quot;o&quot;,color=&quot;black&quot;,label=&quot;Data&quot;)
-    axT.plot(xp,ytrue,color=&quot;red&quot;,label=&quot;True&quot;,linestyle=&quot;dotted&quot;)
-    axT.legend(loc=&quot;upper right&quot;)
-    plt.show()
-    #plt.savefig(&quot;BayesOpt_initial.pdf&quot;,bbox_inches=&quot;tight&quot;, pad_inches=0.1)
-    plt.close()
+<span class="c1">## お絵かき</span>
+<span class="k">def</span> <span class="nf">plotGP0</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">yt</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">axT</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">axT</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span> <span class="n">axT</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">yt</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1">#plt.savefig(&quot;BayesOpt_initial.pdf&quot;,bbox_inches=&quot;tight&quot;, pad_inches=0.1)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-def plotGP(nxt,nyt,nxp,xp,ytrue,mujoint,sigmaj,ysamples,EIs):
-    fig = plt.figure(figsize=(16,4))
-    axT = fig.add_subplot(121)
-    axB = fig.add_subplot(122)
-    axT.set_xlabel(&quot;x&quot;); axT.set_ylabel(&quot;y&quot;)
-    axB.set_xlabel(&quot;x&quot;); axB.set_ylabel(&quot;Acquisition function&quot;)
-    axT.set_xlim(-2.0,12); axT.set_ylim(-2.0,5.0)
-    axB.set_xlim(-2.0,12)
-    axT.scatter(nxt,nyt,marker=&quot;o&quot;,color=&quot;black&quot;,label=&quot;Data&quot;)
-    for i in range(len(ysamples)):
-        axT.plot(nxp,ysamples[i],alpha=0.1)
-    axT.plot(nxp,mujoint,label=&quot;GP mean&quot;,linestyle=&quot;dashed&quot;,color=&quot;blue&quot;)
-    axB.plot(nxp,EIs,color=&quot;green&quot;)
-    axB.set_yticklabels([]) 
-    axT.fill_between(nxp,mujoint-sigmaj,mujoint+sigmaj,color=&quot;blue&quot;, alpha=0.3)
-    axT.plot(xp,ytrue,color=&quot;red&quot;,label=&quot;True&quot;,linestyle=&quot;dotted&quot;)
-    axT.legend(loc=&quot;upper right&quot;)
-    plt.show()
-    plt.close()
+<span class="k">def</span> <span class="nf">plotGP</span><span class="p">(</span><span class="n">nxt</span><span class="p">,</span><span class="n">nyt</span><span class="p">,</span><span class="n">nxp</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">,</span><span class="n">mujoint</span><span class="p">,</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">ysamples</span><span class="p">,</span><span class="n">EIs</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">axT</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">axB</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">axT</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="n">axB</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">axB</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Acquisition function&quot;</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span> <span class="n">axT</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span>
+    <span class="n">axB</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">nxt</span><span class="p">,</span><span class="n">nyt</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ysamples</span><span class="p">)):</span>
+        <span class="n">axT</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nxp</span><span class="p">,</span><span class="n">ysamples</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nxp</span><span class="p">,</span><span class="n">mujoint</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;GP mean&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">axB</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nxp</span><span class="p">,</span><span class="n">EIs</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">axB</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span> 
+    <span class="n">axT</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">nxp</span><span class="p">,</span><span class="n">mujoint</span><span class="o">-</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">mujoint</span><span class="o">+</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+    <span class="n">axT</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Thetas=[2.0,2.0]
-oxt = np.array([ 0.0 + 1.02*i for i in range(11)])
-xp = []
-for tmp in np.arange(-2.0,12.0, 5.e-2):
-    if (tmp in oxt)==False:
-        xp += [ tmp ]
-xp = np.array(xp)
-oyt = f(oxt)
-ytrue = f(xp)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thetas</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="n">oxt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.0</span> <span class="o">+</span> <span class="mf">1.02</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)])</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">5.e-2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tmp</span> <span class="ow">in</span> <span class="n">oxt</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="n">xp</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">tmp</span> <span class="p">]</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+<span class="n">oyt</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">oxt</span><span class="p">)</span>
+<span class="n">ytrue</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
 
-SVs=[]
-xt =[oxt[2],oxt[6]]; yt =[oyt[2],oyt[6]]
-plotGP0(xt,yt,xp,ytrue)
+<span class="n">SVs</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">xt</span> <span class="o">=</span><span class="p">[</span><span class="n">oxt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">oxt</span><span class="p">[</span><span class="mi">6</span><span class="p">]];</span> <span class="n">yt</span> <span class="o">=</span><span class="p">[</span><span class="n">oyt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">oyt</span><span class="p">[</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">plotGP0</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">yt</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3b1a417c8e5b7a6bf5e6a6bfcfcf5e8f4e4e8e86b4cd666b44540ac78030a8de.png" src="../_images/3b1a417c8e5b7a6bf5e6a6bfcfcf5e8f4e4e8e86b4cd666b44540ac78030a8de.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_4_0.png" src="../_images/Python_chapter_BayesianOptimization_4_0.png" />
 </div>
 </div>
 <p>一般には真の関数(赤色)は分からないので、勾配も計算できない。<br />
@@ -586,77 +558,77 @@ plotGP0(xt,yt,xp,ytrue)
 <p>そこでベイズ最適化を用いることで大局的な探索と局所的な探索をうまくトレードオフしながら最適値を探索する、ということを以下でデモンストレーションする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Thetas=[2.0,2.0]
-nxp = list(copy.copy(xp))
-nxt = copy.copy(xt)
-nyt = copy.copy(yt)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thetas</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="n">nxp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xp</span><span class="p">))</span>
+<span class="n">nxt</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span>
+<span class="n">nyt</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span>
 
-n_iter = 10 ## 探索回数の上限
-xopt = 6; yopt = -1.e+30
-SVs=[]
-plot = True
-#plot = False
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">## 探索回数の上限</span>
+<span class="n">xopt</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="n">yopt</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.e+30</span>
+<span class="n">SVs</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1">#plot = False</span>
 
-for iter in range(n_iter):
-    lt=len(nxt); lp=len(nxp)
-    Ktt,Kpt,Kpp = KernelMat(Thetas,nxt,nxp)
-    mu_yt= np.zeros(lt)
-    mu_yp= np.zeros(lp)
-    cLinv,logdetK = Mchole(Ktt,lt) 
-    mujoint,Sjoint = calcSj(cLinv,Kpt,Kpp,nyt,mu_yt,mu_yp)
-    sigmaj=[ Sjoint[j][j] for j in range(lp)]
-    ysamples = [np.random.multivariate_normal(mujoint,Sjoint) for i in range(10)]
-    SVs += [ [ mujoint, sigmaj] ]
-    xbest,ybest,ind= xybest(nxt,nyt)
-    xnew,ynew,EIs,ind = calcEI(nxp,mujoint,sigmaj,xbest,ybest)
-    if plot :
-        plotGP(nxt,nyt,nxp,xp,ytrue,mujoint,sigmaj,ysamples,EIs)
-    nxt += [ xnew ]; nyt += [ ynew ]
-    nxp.pop(ind)    
-    if ynew &gt; yopt:
-        xopt= xnew; yopt = ynew 
-    print(iter, xopt, yopt)
+<span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
+    <span class="n">lt</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">nxt</span><span class="p">);</span> <span class="n">lp</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">nxp</span><span class="p">)</span>
+    <span class="n">Ktt</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span> <span class="o">=</span> <span class="n">KernelMat</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">nxt</span><span class="p">,</span><span class="n">nxp</span><span class="p">)</span>
+    <span class="n">mu_yt</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+    <span class="n">mu_yp</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lp</span><span class="p">)</span>
+    <span class="n">cLinv</span><span class="p">,</span><span class="n">logdetK</span> <span class="o">=</span> <span class="n">Mchole</span><span class="p">(</span><span class="n">Ktt</span><span class="p">,</span><span class="n">lt</span><span class="p">)</span> 
+    <span class="n">mujoint</span><span class="p">,</span><span class="n">Sjoint</span> <span class="o">=</span> <span class="n">calcSj</span><span class="p">(</span><span class="n">cLinv</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span><span class="p">,</span><span class="n">nyt</span><span class="p">,</span><span class="n">mu_yt</span><span class="p">,</span><span class="n">mu_yp</span><span class="p">)</span>
+    <span class="n">sigmaj</span><span class="o">=</span><span class="p">[</span> <span class="n">Sjoint</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lp</span><span class="p">)]</span>
+    <span class="n">ysamples</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mujoint</span><span class="p">,</span><span class="n">Sjoint</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="n">SVs</span> <span class="o">+=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">mujoint</span><span class="p">,</span> <span class="n">sigmaj</span><span class="p">]</span> <span class="p">]</span>
+    <span class="n">xbest</span><span class="p">,</span><span class="n">ybest</span><span class="p">,</span><span class="n">ind</span><span class="o">=</span> <span class="n">xybest</span><span class="p">(</span><span class="n">nxt</span><span class="p">,</span><span class="n">nyt</span><span class="p">)</span>
+    <span class="n">xnew</span><span class="p">,</span><span class="n">ynew</span><span class="p">,</span><span class="n">EIs</span><span class="p">,</span><span class="n">ind</span> <span class="o">=</span> <span class="n">calcEI</span><span class="p">(</span><span class="n">nxp</span><span class="p">,</span><span class="n">mujoint</span><span class="p">,</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">xbest</span><span class="p">,</span><span class="n">ybest</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">plot</span> <span class="p">:</span>
+        <span class="n">plotGP</span><span class="p">(</span><span class="n">nxt</span><span class="p">,</span><span class="n">nyt</span><span class="p">,</span><span class="n">nxp</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">ytrue</span><span class="p">,</span><span class="n">mujoint</span><span class="p">,</span><span class="n">sigmaj</span><span class="p">,</span><span class="n">ysamples</span><span class="p">,</span><span class="n">EIs</span><span class="p">)</span>
+    <span class="n">nxt</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">xnew</span> <span class="p">];</span> <span class="n">nyt</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">ynew</span> <span class="p">]</span>
+    <span class="n">nxp</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>    
+    <span class="k">if</span> <span class="n">ynew</span> <span class="o">&gt;</span> <span class="n">yopt</span><span class="p">:</span>
+        <span class="n">xopt</span><span class="o">=</span> <span class="n">xnew</span><span class="p">;</span> <span class="n">yopt</span> <span class="o">=</span> <span class="n">ynew</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">xopt</span><span class="p">,</span> <span class="n">yopt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/494ece9c44e1aabe8e380d95a8f99171fa698a40229fd949cda213f1bc0b1a6b.png" src="../_images/494ece9c44e1aabe8e380d95a8f99171fa698a40229fd949cda213f1bc0b1a6b.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_0.png" src="../_images/Python_chapter_BayesianOptimization_6_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 -1.6999999999999997 -1.3316648104524687
 </pre></div>
 </div>
-<img alt="../_images/0f2de2440d1ce7d091d70d4693bf6acfa5d337f100224e2fe6e312ffee6573cd.png" src="../_images/0f2de2440d1ce7d091d70d4693bf6acfa5d337f100224e2fe6e312ffee6573cd.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_2.png" src="../_images/Python_chapter_BayesianOptimization_6_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 10.20000000000001 1.3401253124064523
 </pre></div>
 </div>
-<img alt="../_images/bb59a4bd5d42e1809dad595ca9d65d4276c023e3e28c3ca3c2773df388093549.png" src="../_images/bb59a4bd5d42e1809dad595ca9d65d4276c023e3e28c3ca3c2773df388093549.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_4.png" src="../_images/Python_chapter_BayesianOptimization_6_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 11.950000000000012 1.8119225385829674
 </pre></div>
 </div>
-<img alt="../_images/5ef2dae0b57bd88443fccff6d8beabdcbc6dffd7585270c95b4238ca6de3ec2f.png" src="../_images/5ef2dae0b57bd88443fccff6d8beabdcbc6dffd7585270c95b4238ca6de3ec2f.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_6.png" src="../_images/Python_chapter_BayesianOptimization_6_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 11.950000000000012 1.8119225385829674
 </pre></div>
 </div>
-<img alt="../_images/865c7e44c4d0ac646e92e35e916e81432bc1847a5917dad7aa501ac5a8c122f0.png" src="../_images/865c7e44c4d0ac646e92e35e916e81432bc1847a5917dad7aa501ac5a8c122f0.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_8.png" src="../_images/Python_chapter_BayesianOptimization_6_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 8.100000000000009 2.589889810845086
 </pre></div>
 </div>
-<img alt="../_images/fd73360dc8f0e308a41c726ff3b5b701911c06b49094213582f43124214d413f.png" src="../_images/fd73360dc8f0e308a41c726ff3b5b701911c06b49094213582f43124214d413f.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_10.png" src="../_images/Python_chapter_BayesianOptimization_6_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 8.100000000000009 2.589889810845086
 </pre></div>
 </div>
-<img alt="../_images/c9f9e0515bda50f02ad798d588a2256e3f31fd2f22759c5932634a34a66d3d39.png" src="../_images/c9f9e0515bda50f02ad798d588a2256e3f31fd2f22759c5932634a34a66d3d39.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_12.png" src="../_images/Python_chapter_BayesianOptimization_6_12.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 8.100000000000009 2.589889810845086
 </pre></div>
 </div>
-<img alt="../_images/fdf1192437feb09431e391a7d1ee0fd46297d4e33c0b5efc139dc3ff5b9e3120.png" src="../_images/fdf1192437feb09431e391a7d1ee0fd46297d4e33c0b5efc139dc3ff5b9e3120.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_14.png" src="../_images/Python_chapter_BayesianOptimization_6_14.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 8.100000000000009 2.589889810845086
 </pre></div>
 </div>
-<img alt="../_images/532519bfa5547a35f1626bf24aa9ee7922c8458087c8c211dfd3d1820449bf39.png" src="../_images/532519bfa5547a35f1626bf24aa9ee7922c8458087c8c211dfd3d1820449bf39.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_16.png" src="../_images/Python_chapter_BayesianOptimization_6_16.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 8.05000000000001 2.5908498356204
 </pre></div>
 </div>
-<img alt="../_images/dd6c9187ac63b99bddc56ea8de6238736403ce728250ec95ed1418cacd358bc4.png" src="../_images/dd6c9187ac63b99bddc56ea8de6238736403ce728250ec95ed1418cacd358bc4.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_6_18.png" src="../_images/Python_chapter_BayesianOptimization_6_18.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 8.05000000000001 2.5908498356204
 </pre></div>
 </div>
@@ -668,30 +640,30 @@ for iter in range(n_iter):
 <p>同じデータで、勾配法による最適化もやってみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 
-def f(x):
-    return np.sin(x) + 0.2 * x 
-def derf(x):
-    return np.cos(x) + 0.2  
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span> 
+<span class="k">def</span> <span class="nf">derf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span>  
 
-xexact = 8.055339554764814
+<span class="n">xexact</span> <span class="o">=</span> <span class="mf">8.055339554764814</span>
 
-x = 6 
-xopt = x; yopt=f(x)
-tol = 1.e-2
-eta = 1.e-1
+<span class="n">x</span> <span class="o">=</span> <span class="mi">6</span> 
+<span class="n">xopt</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="n">yopt</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.e-2</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">1.e-1</span>
 
-itnum = 10**4
-for i in range(itnum):
-    x += eta * derf(x)
-    y = f(x)
-    if y &gt; yopt:
-        xopt = x
-        yopt = y 
-    if abs(xexact-xopt) &lt; tol :
-        break
-print(&quot;探索回数&quot;,i, &quot;最適解(x,y)=&quot;,xopt,yopt)
+<span class="n">itnum</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">itnum</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">derf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">yopt</span><span class="p">:</span>
+        <span class="n">xopt</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">yopt</span> <span class="o">=</span> <span class="n">y</span> 
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xexact</span><span class="o">-</span><span class="n">xopt</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span> <span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;探索回数&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;最適解(x,y)=&quot;</span><span class="p">,</span><span class="n">xopt</span><span class="p">,</span><span class="n">yopt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -710,30 +682,30 @@ print(&quot;探索回数&quot;,i, &quot;最適解(x,y)=&quot;,xopt,yopt)
 <li><p>獲得関数の定義・選択と依存性</p></li>
 <li><p>数値計算(とくにガウス過程の部分)のTips</p></li>
 </ul>
-<section id="id2">
-<h2>備忘録: ライブラリの出力に関して<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="section" id="id2">
+<h2>備忘録: ライブラリの出力に関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Thetas=[1.0,1.0]
-nxp = np.linspace(-2,12,10)
-nxt = copy.copy(xt);nyt = copy.copy(yt)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Thetas</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">nxp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">nxt</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xt</span><span class="p">);</span><span class="n">nyt</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">yt</span><span class="p">)</span>
 
-n_iter = 10 ## 探索回数の上限
-xopt = 6; yopt = -1.e+30
-SVs=[]
-plot = False
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">## 探索回数の上限</span>
+<span class="n">xopt</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="n">yopt</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.e+30</span>
+<span class="n">SVs</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span>
 
-lt=len(nxt); lp=len(nxp)
-Ktt,Kpt,Kpp = KernelMat(Thetas,nxt,nxp)
-mu_yt= np.zeros(lt)
-mu_yp= np.zeros(lp)
-cLinv,logdetK = Mchole(Ktt,lt) 
-mujoint,Sjoint = calcSj(cLinv,Kpt,Kpp,nyt,mu_yt,mu_yp)
-sigmaj=[ np.sqrt(Sjoint[j][j]) for j in range(lp)]
-print(&quot;train&quot;, nxt,nyt)
-print(&quot;xp&quot;, nxp)
-print(&quot;My muj &quot;, mujoint)
-print(&quot;sigmaj&quot;, sigmaj)
+<span class="n">lt</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">nxt</span><span class="p">);</span> <span class="n">lp</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">nxp</span><span class="p">)</span>
+<span class="n">Ktt</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span> <span class="o">=</span> <span class="n">KernelMat</span><span class="p">(</span><span class="n">Thetas</span><span class="p">,</span><span class="n">nxt</span><span class="p">,</span><span class="n">nxp</span><span class="p">)</span>
+<span class="n">mu_yt</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="n">mu_yp</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">lp</span><span class="p">)</span>
+<span class="n">cLinv</span><span class="p">,</span><span class="n">logdetK</span> <span class="o">=</span> <span class="n">Mchole</span><span class="p">(</span><span class="n">Ktt</span><span class="p">,</span><span class="n">lt</span><span class="p">)</span> 
+<span class="n">mujoint</span><span class="p">,</span><span class="n">Sjoint</span> <span class="o">=</span> <span class="n">calcSj</span><span class="p">(</span><span class="n">cLinv</span><span class="p">,</span><span class="n">Kpt</span><span class="p">,</span><span class="n">Kpp</span><span class="p">,</span><span class="n">nyt</span><span class="p">,</span><span class="n">mu_yt</span><span class="p">,</span><span class="n">mu_yp</span><span class="p">)</span>
+<span class="n">sigmaj</span><span class="o">=</span><span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Sjoint</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lp</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">nxt</span><span class="p">,</span><span class="n">nyt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;xp&quot;</span><span class="p">,</span> <span class="n">nxp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My muj &quot;</span><span class="p">,</span> <span class="n">mujoint</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigmaj&quot;</span><span class="p">,</span> <span class="n">sigmaj</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -751,27 +723,27 @@ sigmaj [0.9999901297449515, 0.9978771506830272, 0.8245848824042269, 0.6584175494
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from sklearn.gaussian_process import kernels as sk_kern
-import sklearn.gaussian_process as skGP 
-# sklearn GP
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">kernels</span> <span class="k">as</span> <span class="n">sk_kern</span>
+<span class="kn">import</span> <span class="nn">sklearn.gaussian_process</span> <span class="k">as</span> <span class="nn">skGP</span> 
+<span class="c1"># sklearn GP</span>
 
-nxp = np.linspace(-2,12,10)
-nxt = np.array(copy.copy(xt))
-nyt = np.array(copy.copy(yt))
+<span class="n">nxp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">nxt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xt</span><span class="p">))</span>
+<span class="n">nyt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">yt</span><span class="p">))</span>
 
-kern = sk_kern.Matern(length_scale=1.0, length_scale_bounds=(1.0,1.0), nu=2.5)
-sGP = skGP.GaussianProcessRegressor(
-        kernel=kern,
-        alpha=1e-15, 
-        optimizer=&quot;fmin_l_bfgs_b&quot;, 
-        n_restarts_optimizer=0)
+<span class="n">kern</span> <span class="o">=</span> <span class="n">sk_kern</span><span class="o">.</span><span class="n">Matern</span><span class="p">(</span><span class="n">length_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">length_scale_bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">nu</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">sGP</span> <span class="o">=</span> <span class="n">skGP</span><span class="o">.</span><span class="n">GaussianProcessRegressor</span><span class="p">(</span>
+        <span class="n">kernel</span><span class="o">=</span><span class="n">kern</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span> 
+        <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;fmin_l_bfgs_b&quot;</span><span class="p">,</span> 
+        <span class="n">n_restarts_optimizer</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-sGP.fit(nxt.reshape(-1, 1), nyt)
-print(&quot;sGP.kernel_&quot;, sGP.kernel_)
-pred_mean, pred_std= sGP.predict(nxp.reshape(-1,1), return_std=True)
+<span class="n">sGP</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">nxt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">nyt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sGP.kernel_&quot;</span><span class="p">,</span> <span class="n">sGP</span><span class="o">.</span><span class="n">kernel_</span><span class="p">)</span>
+<span class="n">pred_mean</span><span class="p">,</span> <span class="n">pred_std</span><span class="o">=</span> <span class="n">sGP</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nxp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-print(pred_mean.reshape(-1,))
-print(pred_std)
+<span class="nb">print</span><span class="p">(</span><span class="n">pred_mean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pred_std</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -788,7 +760,7 @@ print(pred_std)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install GPy
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install GPy
 </pre></div>
 </div>
 </div>
@@ -820,22 +792,22 @@ Successfully installed GPy-1.10.0 paramz-0.9.5
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import GPy
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">GPy</span>
 
-nxp = np.linspace(-2,12,10).reshape(-1,1)
-nxt = np.array(copy.copy(xt)).reshape(-1,1)
-nyt = np.array(copy.copy(yt)).reshape(-1,1)
+<span class="n">nxp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nxt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xt</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nyt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">yt</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-kern = GPy.kern.Matern52(input_dim=1,variance=1.0,lengthscale=1.0)
-model = GPy.models.GPRegression(X=nxt, Y=nyt, kernel=kern,normalizer=None)
-print(model)
-pred_mean, pred_var = model.predict(nxp)
-print(&quot;results(default) &quot;, pred_mean.reshape(-1,), &quot;\n&quot;,pred_var.reshape(-1,))
+<span class="n">kern</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">kern</span><span class="o">.</span><span class="n">Matern52</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">variance</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">lengthscale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">nxt</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">nyt</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kern</span><span class="p">,</span><span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">pred_mean</span><span class="p">,</span> <span class="n">pred_var</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nxp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;results(default) &quot;</span><span class="p">,</span> <span class="n">pred_mean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">pred_var</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
 
-model = GPy.models.GPRegression(X=nxt, Y=nyt, kernel=kern,noise_var=1.e-15, normalizer=None)
-pred_mean, pred_var = model.predict(nxp)
-print(model)
-print(&quot;results(noise_var~0)&quot;, pred_mean.reshape(-1,), &quot;\n&quot;,pred_var.reshape(-1,))
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">nxt</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">nyt</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kern</span><span class="p">,</span><span class="n">noise_var</span><span class="o">=</span><span class="mf">1.e-15</span><span class="p">,</span> <span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">pred_mean</span><span class="p">,</span> <span class="n">pred_var</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nxp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;results(noise_var~0)&quot;</span><span class="p">,</span> <span class="n">pred_mean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">pred_var</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>
@@ -879,13 +851,13 @@ results(noise_var~0) [-5.75795228e-03 -8.44113803e-02 -7.33727600e-01 -9.8841321
 <p>これはかなり注意が必要。<br />
 GPに限らず多くの場合、データを標準化(平均0,分散1)して使うので、予測誤差の分散が1.0というデフォルト値を使うというのは、  「GPの予測が、データ全体の広がりと同程度誤差を持つ」ことを仮定していて、場合によっては非現実的な仮定になり得る。<br />
 Webに転がってるGPyを使ったコードだと、あまりこのあたりは認識されていないように思う。</p>
-</section>
-<section id="gpyopt">
-<h2>GPyOpt<a class="headerlink" href="#gpyopt" title="Link to this heading">#</a></h2>
+</div>
+<div class="section" id="gpyopt">
+<h2>GPyOpt<a class="headerlink" href="#gpyopt" title="Permalink to this headline">¶</a></h2>
 <p>上で自前コードでやったことを、GPyOptを使ってやってみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#使うライブラリのインポート
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#使うライブラリのインポート
 !pip install GPy
 !pip install GPyOpt
 import GPy
@@ -926,38 +898,38 @@ Successfully installed GPyOpt-1.2.6
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def f(x): #GPyOptは最小値を探索するのでマイナスをかけておく
-    return - (np.sin(x) + 0.2 * x)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1">#GPyOptは最小値を探索するのでマイナスをかけておく</span>
+    <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 
 
-oxt = np.array([ 0.0 + 1.02*i for i in range(11)])
-xt = np.array([ oxt[2], oxt[6]])
-yt = f(xt)
-xt = np.array( [ [ x ] for x in xt])
-yt = np.array( [ [ y ] for y in yt])
+<span class="n">oxt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.0</span> <span class="o">+</span> <span class="mf">1.02</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)])</span>
+<span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">oxt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">oxt</span><span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+<span class="n">yt</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span>
+<span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="p">[</span> <span class="n">x</span> <span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xt</span><span class="p">])</span>
+<span class="n">yt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span> <span class="p">[</span> <span class="n">y</span> <span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">yt</span><span class="p">])</span>
 
-## BayesOptの準備・実行
-bounds = [{&#39;name&#39;: &#39;x&#39;, &#39;type&#39;: &#39;continuous&#39;, &#39;domain&#39;: (-2,12)}]
-res = GPyOpt.methods.BayesianOptimization(f=f,X=xt,Y=yt, 
-                                            kernel=GPy.kern.Matern52(input_dim=len(bounds)),                                           
-                                            domain=bounds,acquisition_type=&#39;EI&#39;)
-#print(&quot;bounds&quot;, bounds,len(bounds))
-res.run_optimization(max_iter=10)
+<span class="c1">## BayesOptの準備・実行</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;continuous&#39;</span><span class="p">,</span> <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">)}]</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">GPyOpt</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">BayesianOptimization</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="n">xt</span><span class="p">,</span><span class="n">Y</span><span class="o">=</span><span class="n">yt</span><span class="p">,</span> 
+                                            <span class="n">kernel</span><span class="o">=</span><span class="n">GPy</span><span class="o">.</span><span class="n">kern</span><span class="o">.</span><span class="n">Matern52</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">bounds</span><span class="p">)),</span>                                           
+                                            <span class="n">domain</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span><span class="n">acquisition_type</span><span class="o">=</span><span class="s1">&#39;EI&#39;</span><span class="p">)</span>
+<span class="c1">#print(&quot;bounds&quot;, bounds,len(bounds))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">run_optimization</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-## 結果の描画等
-xs = res.X; ys = res.Y
-print(&quot;Estimated Opt. x&quot;, res.x_opt[0], &quot;y&quot;, -res.fx_opt)
-xr = np.arange(-2.0,12.0,0.1)
-yr = - f(xr)
+<span class="c1">## 結果の描画等</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">X</span><span class="p">;</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">Y</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated Opt. x&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">x_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">res</span><span class="o">.</span><span class="n">fx_opt</span><span class="p">)</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">yr</span> <span class="o">=</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">xr</span><span class="p">)</span>
 
-fig = plt.figure(figsize=(12,4))
-ax = fig.add_subplot(111)
-ax.set_xlabel(&quot;x&quot;); ax.set_ylabel(&quot;y&quot;)
-ax.set_xlim(-2.0,12); ax.set_ylim(-2.0,5.0)
-ax.plot(xr,yr,linestyle=&quot;dotted&quot;,color=&quot;red&quot;)
-ax.scatter(xs,-ys,marker=&quot;o&quot;,color=&quot;black&quot;)
-plt.show()
-plt.close()
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span><span class="n">yr</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="o">-</span><span class="n">ys</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -965,11 +937,11 @@ plt.close()
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated Opt. x 8.001075118805382 y 2.589416268802192
 </pre></div>
 </div>
-<img alt="../_images/e4c638160803ed9e36f235385255f4803fa085914d4c27c5bf08cd954216ffd0.png" src="../_images/e4c638160803ed9e36f235385255f4803fa085914d4c27c5bf08cd954216ffd0.png" />
+<img alt="../_images/Python_chapter_BayesianOptimization_21_1.png" src="../_images/Python_chapter_BayesianOptimization_21_1.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -983,7 +955,7 @@ plt.close()
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -991,98 +963,45 @@ plt.close()
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="Python_chapter_ArtificialNeuralNetwork.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">機械学習: ニューラルネットワークによる回帰</p>
-      </div>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Python_chapter_ArtificialNeuralNetwork.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">機械学習: ニューラルネットワークによる回帰</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="Python_chapter_Bayesian_linear_regression.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="Python_chapter_Bayesian_linear_regression.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">ベイズ線形回帰</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
             
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">備忘録: ライブラリの出力に関して</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpyopt">GPyOpt</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-<div class="extra_footer">
-  © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
-
-</div>
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+        </div>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+    <footer class="footer">
+  <p>
+    
+      <div class="extra_footer">
+        © Copyright 2020- by 吉田 聡太 (Sota Yoshida). 本コンテンツは<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 ライセンス</a>の下に提供されています。 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>　ただし、資料中のコードセル部分は<a rel="license" href="https://opensource.org/licenses/MIT">MITライセンス</a>の下に提供されています。
 
-  <footer class="bd-footer">
-  </footer>
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>
