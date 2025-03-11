@@ -33,6 +33,7 @@ parts:
     - file: notebooks/Python_misc_python_environment.ipynb
     - file: notebooks/Python_misc_python_env_forWin11.ipynb
     - file: notebooks/Python_misc_VScode.ipynb
+    - file: notebooks/Python_venv_pip.ipynb
 - caption: おまけ
   chapters:
     - file: notebooks/Python_misc_Pandas.ipynb
