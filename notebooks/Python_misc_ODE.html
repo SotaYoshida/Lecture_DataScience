@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -218,6 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="LaTeX_in_markdown.html">LaTeXの記法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
@@ -483,8 +484,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#使用するモジュールのimport</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
@@ -585,7 +586,7 @@ x_{r-1}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># f(x,t)のトイモデルとして dx/dt = -2tx^2 というものを考える</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">):</span> 
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">):</span> 
     <span class="k">return</span> <span class="o">-</span>  <span class="mf">2.0</span><span class="o">*</span>  <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">t</span>
 <span class="c1">#時刻tを間隔hで細かく分割する</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">1.e-4</span>
@@ -619,7 +620,7 @@ x_{r-1}
 <p>差分のlogを取ってみると…以下のようになる:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fexact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fexact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x0</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span> <span class="n">t</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">xe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">fexact</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr</span><span class="p">])</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -744,7 +745,7 @@ Runge-Kutta法よりも、高速に計算できるかもしれない。</p>
 数値的に不安定になりやすいことも知られている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">AB4</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">AB4</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">xsAB</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
@@ -810,7 +811,7 @@ x_{i+1} &amp;= x_i + \frac{h}{24}(f_{i-2}-5f_{i-1}+19f_i + 9f(t_{i+1},x^P_{i+1})
 \)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ABM</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ABM</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">xsABM</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>

@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -218,6 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="LaTeX_in_markdown.html">LaTeXの記法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
@@ -489,7 +490,7 @@
 これを指してこの章では”自作関数”あるいは単に”関数”と呼ぶことにする。</p>
 <p>関数とは「処理を抽象化して、再利用可能な形でまとめたもの」である。関数を使うことで、同じ処理を何度も書く必要がなくなり、プログラムの見通しがよくなる。</p>
 <p>まずはPythonで関数を”定義”(define)する方法を以下に示した:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">関数名</span><span class="p">(</span><span class="n">引数1</span><span class="p">,</span><span class="n">引数2</span><span class="p">,</span><span class="o">...</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">関数名</span><span class="p">(</span><span class="n">引数1</span><span class="p">,</span><span class="n">引数2</span><span class="p">,</span><span class="o">...</span><span class="p">):</span>
     <span class="n">処理1</span>
     <span class="n">処理2</span>
     <span class="o">...</span>
@@ -515,7 +516,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 <p><strong>例1: 摂氏温度を受け取り、絶対温度に変換する関数</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Celsius_to_Kelvin</span><span class="p">(</span><span class="n">cval</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Celsius_to_Kelvin</span><span class="p">(</span><span class="n">cval</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">cval</span> <span class="o">+</span> <span class="mf">273.15</span>
     <span class="k">return</span> <span class="n">K</span>
 </pre></div>
@@ -561,11 +562,11 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 関数1の中で自作関数2を読み出すような書き方(定義の順序が前後すること)はOKだが、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func_1</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_1</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;これは関数1です&quot;</span><span class="p">)</span>
     <span class="n">func_2</span><span class="p">()</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">func_2</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">func_2</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;これは関数2です&quot;</span><span class="p">)</span>
 
 <span class="n">func_1</span><span class="p">()</span>
@@ -584,7 +585,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">your_function</span><span class="p">()</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">your_funtion</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">your_funtion</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;定義されていない関数は実行できないので、ココは読まれないよ！！&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
@@ -595,7 +596,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">your_function</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span><span class="w"> </span><span class="nf">your_funtion</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span> <span class="nf">your_funtion</span><span class="p">():</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;定義されていない関数は実行できないので、ココは読まれないよ！！&quot;</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;your_function&#39; is not defined
@@ -629,7 +630,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 やはりこの場合も関数を使って処理を抽象化することが望ましい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calc_distance</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_distance</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
     <span class="k">return</span> <span class="p">(</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">l2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">calc_distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">)</span> 
@@ -667,7 +668,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#リスト内包表記で3次元の座標点をランダムに100個作る n,iはダミー変数</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span> 
+<span class="kn">import</span> <span class="nn">random</span> 
 <span class="n">lists</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span> 
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -696,7 +697,7 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3つ以外の成分でも使えるユークリッド距離を計算する関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calc_d_Re</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
+<span class="k">def</span> <span class="nf">calc_d_Re</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">):</span>           
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">l2</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;次元が違います!&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -730,11 +731,11 @@ return文を省略すると関数の返り値は<code class="docutils literal no
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_3_1</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_3_1</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
     <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">function_3_2</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
+<span class="k">def</span> <span class="nf">function_3_2</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
     <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span>
     <span class="k">return</span> <span class="n">text</span>
 </pre></div>
@@ -784,7 +785,7 @@ None
 <p>では次に、関数3_2を使ってみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_3_2</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_3_2</span><span class="p">(</span><span class="n">text_input</span><span class="p">):</span>    
     <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span>
     <span class="k">return</span> <span class="n">text</span>
 
@@ -835,8 +836,8 @@ None
 <p>戻り値<code class="docutils literal notranslate"><span class="pre">return</span></code>は単一の値や文字列に限らず、複数の値やリスト、辞書なども返すことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span> <span class="c1">#指数関数を使うためにmathモジュールをインポート</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">ret_sum_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#指数関数を使うためにmathモジュールをインポート</span>
+<span class="k">def</span> <span class="nf">ret_sum_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="p">[</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)]</span>
 
 <span class="n">ret_sum_product</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
@@ -869,7 +870,7 @@ None
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#数値リストの要素のp乗和を計算する関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">sump</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span> 
+<span class="k">def</span> <span class="nf">sump</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span> 
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="n">p</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">))])</span>
 
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">]</span>
@@ -904,7 +905,7 @@ None
 そのため、一度定義されれば関数に引数として渡さなくても参照することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">testfunc</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
@@ -918,7 +919,7 @@ None
 <p>以下のコードを実行して,関数の中で定義された変数<code class="docutils literal notranslate"><span class="pre">abcd</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>しようとしてもエラーが起こってしまう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">testfunc</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
     <span class="n">abcd</span> <span class="o">=</span> <span class="mf">1.000</span>
 <span class="n">testfunc</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">abcd</span><span class="p">)</span>
@@ -930,7 +931,7 @@ None
 <p>2？それとも5?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">testfunc</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">a</span><span class="o">=</span> <span class="mi">2</span>
 <span class="n">testfunc</span><span class="p">()</span>
@@ -944,7 +945,7 @@ None
 <p>実際<code class="docutils literal notranslate"><span class="pre">id</span></code>関数を用いて取得できる変数のIDを<code class="docutils literal notranslate"><span class="pre">print</span></code>させてみると、関数の内と外とで<code class="docutils literal notranslate"><span class="pre">id</span></code>が異なることも分かる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">testfunc</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;関数の内部&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
     
@@ -959,7 +960,7 @@ None
 <p>一方で、関数の中で使う変数をグローバル変数として宣言すれば、関数の外でもその変数を使うこともできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">testfunc</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">abc</span><span class="p">,</span> <span class="n">a</span> <span class="c1">#global変数の宣言</span>
     <span class="n">abc</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">a</span> <span class="o">+=</span> <span class="mi">2</span>
@@ -984,7 +985,7 @@ None
 たとえば…メインコード(global変数)で使うリストの名前の区別には数字を使う、関数の引数にはアルファベットを使うなどの工夫(ルール作り)も良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func_join</span><span class="p">(</span><span class="n">listA</span><span class="p">,</span><span class="n">listB</span><span class="p">):</span> <span class="c1">#特殊なリストの結合をして返す関数, 処理に特に意味はない。</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_join</span><span class="p">(</span><span class="n">listA</span><span class="p">,</span><span class="n">listB</span><span class="p">):</span> <span class="c1">#特殊なリストの結合をして返す関数, 処理に特に意味はない。</span>
     <span class="k">return</span> <span class="n">listA</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">listB</span> 
 
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">]</span>
@@ -999,7 +1000,7 @@ None
 <p>上では、数値(float)と関数を例に説明しましたが、リストの場合はもう少し挙動が複雑になる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
     <span class="n">in_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AAA&quot;</span>
 
 <span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -1013,7 +1014,7 @@ None
 <p>リストオブジェクト自体のidは引き継がれていて、リスト内要素(0番目)の更新が反映されていることがわかる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_update_list</span><span class="p">(</span><span class="n">in_list</span><span class="p">):</span>
     <span class="n">in_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AAA&quot;</span> 
     <span class="n">in_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1">##ココはローカル変数扱い</span>
     <span class="k">return</span> <span class="n">in_list</span>

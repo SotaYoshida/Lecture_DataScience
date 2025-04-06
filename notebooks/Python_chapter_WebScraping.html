@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -216,6 +216,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="LaTeX_in_markdown.html">LaTeXの記法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
@@ -506,12 +507,12 @@ HTMLとは、Webページを作るための言語のことで、みなさんが�
 それをグラフにして可視化してみましょう。まずは必要なライブラリをインポートしておきます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span> <span class="c1">#json形式のデータを扱うために必要</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span> <span class="c1">#日付の処理に使う</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span> <span class="c1">#json形式のデータを扱うために必要</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="c1">#日付の処理に使う</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>japanize-matplotlib<span class="w"> </span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> 
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
 </pre></div>
 </div>
 </div>
@@ -585,7 +586,7 @@ PythonやJava, PHPなどでも扱うことができる。Pythonで言うと辞�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#　&quot;2022-01-01&quot;のような文字列をdatetimeに変換する関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">str_to_dt</span><span class="p">(</span><span class="n">tstr</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">str_to_dt</span><span class="p">(</span><span class="n">tstr</span><span class="p">):</span>
     <span class="n">tdatetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">tstr</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">tdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">tdatetime</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">tdatetime</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tdate</span>
@@ -660,10 +661,10 @@ Google Colabで使用しているサーバー上にライブライのソース�
 <span class="c1"># ディレクトリ名を変更し、レポジトリ内に移動しインポート</span>
 <span class="o">!</span>mv<span class="w"> </span>pandas-estat<span class="w"> </span>local_library
 <span class="o">%</span><span class="k">cd</span> ./local_library/
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_estat</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pandas_estat</span>
+<span class="kn">import</span> <span class="nn">pandas_estat</span> <span class="k">as</span> <span class="nn">pandas_estat</span>
 
 <span class="c1"># Pandasをインポート</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -684,7 +685,7 @@ Google Colabで使用しているサーバー上にライブライのソース�
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># サービス産業動向調査</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pandas_estat</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_statslist</span>
+<span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statslist</span>
 <span class="n">statslist</span> <span class="o">=</span> <span class="n">pandas_estat</span><span class="o">.</span><span class="n">read_statslist</span><span class="p">(</span><span class="s2">&quot;00200544&quot;</span><span class="p">)</span>  
 <span class="n">statslist</span>
 </pre></div>
@@ -722,7 +723,7 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 それには<code class="docutils literal notranslate"><span class="pre">read_statsdata</span></code>という関数が用意されているので、引数に<code class="docutils literal notranslate"><span class="pre">TABLE_INF</span></code>(統計表ID)を入力すると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas_estat</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_statsdata</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_estat</span> <span class="kn">import</span> <span class="n">read_statsdata</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">read_statsdata</span><span class="p">(</span><span class="s2">&quot;0003191203&quot;</span><span class="p">)</span>  
 <span class="n">df</span>
 </pre></div>
@@ -765,10 +766,10 @@ CYCLEが”月次”(月ごと)になっているデータだけをピックア�
 <p>図を描いてみよう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>japanize-matplotlib<span class="w"> </span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> 
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
 </pre></div>
 </div>
 </div>

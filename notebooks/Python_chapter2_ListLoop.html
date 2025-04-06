@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -218,6 +218,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">おまけ</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="LaTeX_in_markdown.html">LaTeXの記法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
@@ -849,7 +850,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 これは<code class="docutils literal notranslate"><span class="pre">copy</span></code>モジュールの<code class="docutils literal notranslate"><span class="pre">copy</span></code>関数を用いて配列のコピーを作成することで回避できます。(モジュールについては4章で説明します)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span> <span class="c1">#copyというモジュールをインポートする</span>
 <span class="n">tmp</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Aさん&quot;</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">tmp</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># ← data2の0番目と1番目のidが同じ(参照元が同じ)だと困るのでFalseであってほしい</span>
@@ -861,7 +862,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code>を使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="s2">&quot;Aさん&quot;</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span><span class="mi">66</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Bさん&quot;</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">70</span><span class="p">]</span> <span class="p">]</span>
 
 <span class="n">copydata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -919,7 +920,7 @@ len(data[0]) #0番目の要素の数をprintしてみましょう。</p></li>
 <code class="docutils literal notranslate"><span class="pre">time</span></code>というライブラリを使って2つの作業に係る時間を調べてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> 
 <span class="n">itnum</span><span class="o">=</span><span class="mi">10_000</span> 
 
 <span class="c1">#リストを使った計算</span>
@@ -1224,7 +1225,7 @@ Aさんは、所持金100万円からスタートして、一度でも負けれ�
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を使って、このゲームをシミュレーションするプログラムを書いてみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#これがなにかはとりあえず気にしない</span>
 
 <span class="c1"># 最初の手持ち金と掛け金を定義</span>
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1_000_000</span>
@@ -1269,7 +1270,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>を作ってみましょう</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="c1">#ランダムに勝ち負けを決めるためrandomというライブラリを使います</span>
 
 <span class="n">money</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="n">bet</span> <span class="o">=</span> <span class="mi">200000</span>
@@ -1329,7 +1330,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 <p>以下の処理は[ある値から都度10を引いていって平方根を取った値を表示する]というコードです</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="c1">#sqrt(square root)関数を使うための1行</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">114</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">-=</span> <span class="mi">10</span>
@@ -1349,7 +1350,7 @@ True/Falseをそれぞれ勝ち負けに対応させられるので、その結�
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">s</span> <span class="o">=</span> <span class="mi">124</span>
 <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span> 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
