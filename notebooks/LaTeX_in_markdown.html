@@ -476,6 +476,10 @@ markdownでは、数式は、$で囲むことでインラインで表示でき�
 <section id="id1">
 <h2>簡単な例<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>インラインで書きたい場合は<code class="docutils literal notranslate"><span class="pre">$</span></code>で囲む: <span class="math notranslate nohighlight">\( f(x) = a x^3 + b x^2 + c x + d \)</span>。</p>
+<p>上の数式を表示するためにmarkdownでは以下のように記述している:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span> $ f(x) = a x^3 + b x^2 + c x + d $
+</pre></div>
+</div>
 <p>独立した数式の場合は、<code class="docutils literal notranslate"><span class="pre">$$</span></code>で囲む(数式の前後に空行を入れよう):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -484,6 +488,15 @@ markdownでは、数式は、$で囲むことでインラインで表示でき�
     &amp; = \frac{7}{3} \
 \end{align}
 \end{split}\]</div>
+<p>上の数式を表示するためにmarkdownでは以下のように記述する:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>$$
+\begin{align}
+\int^{2}_{1} x^2 dx &amp; = \frac{1}{3} (2^3 - 1^3) \nonumber \\
+    &amp; = \frac{7}{3} \
+\end{align}
+$$
+</pre></div>
+</div>
 </section>
 <section id="id2">
 <h2>基本的な記号(二項演算子等)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -705,25 +718,26 @@ markdownでは、数式は、$で囲むことでインラインで表示でき�
 <p>align内で使うことのできる環境の例をいくつか挙げておく。</p>
 <p>行列を作ってみよう。行列には、括弧なし(<code class="docutils literal notranslate"><span class="pre">bmatrix</span></code>)、丸括弧(<code class="docutils literal notranslate"><span class="pre">pmatrix</span></code>)、波括弧(<code class="docutils literal notranslate"><span class="pre">Bmatrix</span></code>)、角括弧(<code class="docutils literal notranslate"><span class="pre">vmatrix</span></code>)がある。</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
+\[\begin{split}
 \begin{align}
     \begin{bmatrix}
         a &amp; b \\
         c &amp; d
-    \end{bmatrix}, \quad
+    \end{bmatrix}, 
     \begin{pmatrix}
         a &amp; b \\
         c &amp; d
-    \end{pmatrix}, \quad
+    \end{pmatrix}, 
     \begin{Bmatrix}
         a &amp; b \\
         c &amp; d
-    \end{Bmatrix}, \quad\end{split}\\\begin{split}    \begin{vmatrix}
+    \end{Bmatrix}, 
+    \begin{vmatrix}
         a &amp; b \\
         c &amp; d
     \end{vmatrix}
 \end{align}
-\end{split}\end{aligned}\end{align} \]</div>
+\end{split}\]</div>
 <p>基本的には丸括弧を使うことが多いが、状況に応じて(例えば行列式なら<code class="docutils literal notranslate"><span class="pre">vmatrix</span></code>)使い分けよう。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
