@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -473,6 +473,9 @@
 <h1>LaTeXの記法<a class="headerlink" href="#latex" title="Link to this heading">#</a></h1>
 <p>理工系で使われる組版システムであるLaTeXは、数式を入力するのに適しており、markdownでも数式をLaTeXで記述することができる。<br />
 markdownでは、数式は、$で囲むことでインラインで表示できる他、式番号を付与した独立した式として記述することもできる。</p>
+<p>いくつか互換性の問題が生じるので、注意が必要である。
+例えば、VSCodeのmarkdown環境で表示されていた数式が、Google Colabでは表示されない、HTML化してWebにデプロイした環境では正しく表示されないなどの問題がある。
+実際に作成されたものが正しく表示されているか確かめるのは当然として、できるだけambiguityのない書き方(省略できる括弧も省略しない、など)を心がけると良いだろう。</p>
 <section id="id1">
 <h2>簡単な例<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>インラインで書きたい場合は<code class="docutils literal notranslate"><span class="pre">$</span></code>で囲む: <span class="math notranslate nohighlight">\( f(x) = a x^3 + b x^2 + c x + d \)</span>。</p>
