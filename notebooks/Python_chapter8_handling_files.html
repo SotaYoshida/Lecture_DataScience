@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -520,7 +520,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -891,7 +891,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>ちなみに…<code class="docutils literal notranslate"><span class="pre">pandas</span></code>ライブラリを使うとcsvをサクッと読み込むことができる</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
@@ -923,7 +923,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#処理Aのための関数</span>
 <span class="c1">#input_strが、&quot;年月日 時刻(h:m:s) 午前/午後 GMT+9&quot; という文字列である、というデータの&quot;構造&quot;を知った上での実装になっていることに注意</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">make_time_24h</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>        
+<span class="k">def</span> <span class="nf">make_time_24h</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>        
     <span class="n">time</span>  <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">AMPM</span> <span class="o">=</span> <span class="n">input_str</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">hms</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
@@ -962,7 +962,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>最後に、各項目の得点を適当なリスト(あるいはnp.array)に整形しておけば、種々の分析を行うことができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">nlines</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -993,7 +993,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 <p>まずはxlsxファイルをPythonで読み込んで、どんな”シート”があるのかを確認してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pandas: シート名&quot;</span><span class="p">,</span><span class="n">sheet_names</span><span class="p">)</span>
@@ -1057,14 +1057,14 @@ Google Driveをマウントした状態でなければ、実行しても多く�
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ebook</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ebook</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inpf</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">inpf</span><span class="p">)</span>
         <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">sheet_names</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sname</span> <span class="o">=</span> <span class="n">sheet_names</span>
@@ -1079,9 +1079,9 @@ Google Driveをマウントした状態でなければ、実行しても多く�
             <span class="k">elif</span> <span class="s2">&quot;S&quot;</span> <span class="ow">in</span> <span class="n">sheetname</span> <span class="p">:</span>
                 <span class="n">s_kikou</span> <span class="o">+=</span> <span class="p">[</span> <span class="n">i</span> <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s_kakei</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">s_kikou</span> <span class="o">=</span> <span class="n">s_kakei</span><span class="p">,</span><span class="n">s_kikou</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kakei</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_kikou</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">readkakei</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikakei</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">def</span> <span class="nf">readkakei</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikakei</span><span class="p">)</span> <span class="p">:</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikakei</span><span class="p">])</span>
         <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">premode</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1109,7 +1109,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
                         <span class="n">v_kakei</span> <span class="o">+=</span> <span class="p">[</span> <span class="p">[</span><span class="n">trow</span><span class="p">[</span><span class="n">jj</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="n">i_kakei</span><span class="p">]</span> <span class="p">]</span>
                         <span class="n">items</span> <span class="o">+=</span> <span class="p">[</span><span class="n">trow</span><span class="p">[</span><span class="mi">8</span><span class="p">]]</span>                         
         <span class="k">return</span> <span class="n">i_kakei</span><span class="p">,</span> <span class="n">p_kakei</span><span class="p">,</span> <span class="n">v_kakei</span><span class="p">,</span><span class="n">items</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">readkikou</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikikou</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">readkikou</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ikikou</span><span class="p">):</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_file</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sname</span><span class="p">[</span><span class="n">ikikou</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">nr</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">quantities</span> <span class="o">=</span> <span class="p">[];</span><span class="n">v_kikou</span><span class="o">=</span><span class="p">[]</span>
@@ -1126,7 +1126,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
         <span class="k">return</span> <span class="n">Tplaces</span><span class="p">,</span> <span class="n">v_kikou</span><span class="p">,</span><span class="n">quantities</span>
 
 <span class="c1"># 月ごとの色を決める関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">seasoncolor</span><span class="p">(</span><span class="n">month</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">==</span><span class="mi">12</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;blue&quot;</span>
     <span class="k">elif</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">month</span> <span class="o">&lt;=</span><span class="mi">5</span><span class="p">:</span>
@@ -1138,7 +1138,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
     <span class="k">return</span> <span class="n">tcol</span>
 
 <span class="c1"># 指定した品目・地点の散布図を描く関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">quantity</span><span class="p">,</span><span class="n">place</span><span class="p">,</span><span class="n">corrcoef</span><span class="p">):</span>    
+<span class="k">def</span> <span class="nf">plot_cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">quantity</span><span class="p">,</span><span class="n">place</span><span class="p">,</span><span class="n">corrcoef</span><span class="p">):</span>    
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#e0e0e0&quot;</span><span class="p">)</span>
@@ -1153,7 +1153,7 @@ Google Driveをマウントした状態でなければ、実行しても多く�
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="c1"># 指定した品目・地点の散布図を描く関数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">calcor</span><span class="p">(</span><span class="n">places</span><span class="p">,</span><span class="n">items</span><span class="p">,</span> <span class="n">Vs_kakei</span><span class="p">,</span><span class="n">Tplaces</span><span class="p">,</span><span class="n">quantities</span><span class="p">,</span><span class="n">Vs_kikou</span><span class="p">):</span>
     <span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">num_pic</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">Vs</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="k">for</span> <span class="n">j_K</span><span class="p">,</span><span class="n">place</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">places</span><span class="p">):</span>
