@@ -1022,6 +1022,25 @@ Bさんの年齢を取得するには例えば以下のようなコードにな�
 </div>
 <p>とすればいいことがわかる。
 慣れないうちはタプルや辞書を使わずリストだけ覚えておけば問題ないが、複雑な処理になると(タプルにしないと)パフォーマンス差が顕著になったり(辞書にしないと)コードの可読性が低くなったりミスの原因になるので、タプルや辞書型もうまく組み合わせながら使えると良い。</p>
+<p>辞書のキーのみ、あるいは値のみを取得したい場合は、<code class="docutils literal notranslate"><span class="pre">keys</span></code>や<code class="docutils literal notranslate"><span class="pre">values</span></code>というメソッドが使用できる。
+また、<code class="docutils literal notranslate"><span class="pre">items</span></code>を使うとキーと値のペアを取得することができる。
+いずれもメソッドの引数は指定せず実行してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;keys:&quot;</span><span class="p">,</span> <span class="n">Dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;values:&quot;</span><span class="p">,</span> <span class="n">Dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;items:&quot;</span><span class="p">,</span> <span class="n">Dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>keys: dict_keys([&#39;Aさん&#39;, &#39;Bさん&#39;, &#39;Cさん&#39;])
+values: dict_values([[25, &#39;栃木県&#39;], [21, &#39;茨城県&#39;], [18, &#39;群馬県&#39;]])
+items: dict_items([(&#39;Aさん&#39;, [25, &#39;栃木県&#39;]), (&#39;Bさん&#39;, [21, &#39;茨城県&#39;]), (&#39;Cさん&#39;, [18, &#39;群馬県&#39;])])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="id10">
