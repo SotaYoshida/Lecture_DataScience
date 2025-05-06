@@ -540,9 +540,13 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 </section>
 <section id="id1">
 <h2>依存関係のインストール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>本講義資料のレポジトリには、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>というファイルがあり、このファイルには、本講義資料を実行するために必要なライブラリが記述されている。
+<p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>というファイルを作成し、その中に必要なライブラリを記述することで、一括でライブラリをインストールすることができる。
 仮想環境を作成した後、以下のコマンドを実行することで、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>に記述されたライブラリを一括でインストールすることができる。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>path_to_file/requirements.txt
+</pre></div>
+</div>
+<p>また<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>は、以下のコマンドで作成することができる。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </section>

@@ -489,17 +489,12 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter4_Matplotlib.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
 <h1><span class="section-number">4. </span>ライブラリ/パッケージ/モジュールとデータの可視化(Matplotlib)<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h1>
-<p>この章の目的:</p>
-<ul class="simple">
-<li><p>[ライブラリ]という概念の獲得</p></li>
-<li><p>Pythonを用いた各種グラフの描画</p></li>
-</ul>
 <p>Pythonでは(他のプログラミング言語と同様)特定の作業がパッケージ化されたプログラム群が用意されていてこれらをライブラリ/パッケージ/モジュールなどと呼ぶ。
-正確な定義としてはライブラリ/パッケージ/モジュールの順に、より上位の集合を指しますが、
-慣例的には同じ意味で使われることが多いです。
-この授業でも呼び方が混在しているかと思います。</p>
-<p>Pythonのライブラリ/パッケージの多くはGitHub上で開発・公開されていて、簡単にインストールしたりインポートして使うことができる。</p>
-<p>データ分析, AI・機械学習, エクセル等の操作, Webスクレイピングなど、非常に多岐にわたるライブラリが存在する。</p>
+正確な定義としてはライブラリ/パッケージ/モジュールの順に、より上位の集合を指すが、
+慣例的には同じ意味で使われることが多い。この授業でも呼び方が混在している。</p>
+<p>Pythonのライブラリ/モジュールの多くはGitHub上で開発・公開されていて、簡単にインストールしたりインポートして使うことができる。
+データ分析, AI・機械学習, エクセル等の操作, Webスクレイピングなど、非常に多岐にわたるライブラリが存在する。
+Pythonのユーザー数が近年急増しているのは、こうしたライブラリが充実していることも大きな要因の一つである。</p>
 <section id="import">
 <h2><span class="section-number">4.1. </span>ライブラリのインポート(import)<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
 <p>幾つかのライブラリ/モジュールは標準で組み込まれているため、特段インストール作業をすることなく、以下のように簡単にインポートして使うことができる。</p>
@@ -534,16 +529,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
-2.718281828459045
-0.6931471805599453
-0.3010299956639812
-7.38905609893065
-1.2246467991473532e-16
-</pre></div>
-</div>
-</div>
 </div>
 <p>注:<span class="math notranslate nohighlight">\(sin(\pi)\)</span>は本来0だが、1章で述べたように実数が有限の精度なので、<span class="math notranslate nohighlight">\(\pi\)</span>の計算機上での数値が厳密には円周率と異なるため、<span class="math notranslate nohighlight">\(sin(\pi)\)</span>の値も僅かに0からズレることになる。</p>
 </section>
@@ -558,6 +543,12 @@
 特殊なライブラリや特定のバージョンを使用したいといった状況でなければ、別途インストールする必要はない。<br />
 また、ユーザーが別途インストールしたライブラリは、そのセッションが終了すると消えてしまうので、<br />
 時間を空けて作業を再開する場合などは、毎回インストールする必要がある。</p>
+<p>ローカルのPython環境におけるライブラリのインストールなどについては、</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_environment.html">Pythonの環境構築</a></p></li>
+<li><p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">Pythonのモジュール/ライブラリの管理と仮想環境の構築</a></p></li>
+</ul>
+<p>などを参照。</p>
 </section>
 <section id="numpy">
 <h2><span class="section-number">4.3. </span>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
@@ -578,29 +569,15 @@ Numpyはおもにベクトルや行列の演算などを高速に行うことが
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6931471805599453
-0.3010299956639812
-7.38905609893065
-3.141592653589793
-1.2246467991473532e-16
-</pre></div>
-</div>
-</div>
 </div>
 <p>また、以下でやるように、数値を要素に持つリストを使って演算やグラフを描画するときは、データのリストなどを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換して使う事も多い。</p>
-<p>リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用います。</p>
+<p>リストを<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型に変換するには、numpyの<code class="docutils literal notranslate"><span class="pre">array</span></code>関数を用いればよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">9341.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.33</span><span class="p">]</span> 
 <span class="n">ndarray_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ndarray_a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ndarray_a</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.23000e+00  9.34122e+03 -3.23300e+01] &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -625,15 +602,6 @@ Numpyはおもにベクトルや行列の演算などを高速に行うことが
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[180, 70], [175, 65], [160, 58], [170, 60]]
-[[180 175 160 170]
- [ 70  65  58  60]]
-x [180 175 160 170]
-y [70 65 58 60]
-</pre></div>
-</div>
-</div>
 </div>
 <p>なお、numpyの<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>を<code class="docutils literal notranslate"><span class="pre">print</span></code>すると上のようにデータを区切るカンマを省略したり、データの数が多いときは省略して表示してくれる。
 これは、<code class="docutils literal notranslate"><span class="pre">print</span></code>関数が<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>型のデータを表示する際に、専用の表示方法を用いているためである。</p>
@@ -641,19 +609,22 @@ y [70 65 58 60]
 <section id="id2">
 <h2><span class="section-number">4.4. </span>Matplotlibを用いた作図<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>次に、<code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>と呼ばれるライブラリを使って、各種のグラフを作成する方法を見ていこう.</p>
-<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<strong>細かい部分は分からなくても心配は不要</strong>である.<br />
-「こういうおまじないを唱える(書くと)こうなる」というざっくりとした理解でまずはOK.少しずつ、グラフの詳細を調整する方法をマスターしていけば良い.</p>
+<p>Matplotlibは様々なグラフが描ける一方で少々テクニカルな部分が多いので<strong>細かい部分は分からなくても心配は不要</strong>である。
+「こういうおまじないを唱える(書くと)こうなる」というざっくりとした理解でまずはOKなのでどんどん触りながら、少しずつ、グラフの詳細を調整する方法をマスターしていけば良い。
+初めて作る料理についてはレシピを見ながら、２回目以降は少しアレンジを加えて、より自分好みの料理にしていくようなイメージだ。</p>
 <p>Pythonのライブラリの細かな使い方を調べる時、真っ先に思いつくのが<strong>ググる</strong>ことになるかと思う。
 最近だと日本語で書かれた情報に気軽にアクセスできるのは良いことだが、不正確な記述が含まれていてかえって理解を遠ざける危険性もある。
 なにか困ったときに一番頼りになるのは大元のライブラリの公式ドキュメント以外ありえない。なぜなら開発者が作っているから。
-ページ内にあれこれと広告が貼り付けてあるようなブログ記事を見て不正確な情報に振り回されるくらいなら、公式ドキュメントを参照しよう.</p>
+ページ内にあれこれと広告が貼り付けてあるようなブログ記事を見て、不正確な情報に振り回されたり不快な思いをするくらいなら、公式ドキュメントを参照しよう.</p>
 <p>はじめは授業資料にあるコードなどを少しずつ流用し、自分の目的のためにどうすれば良いか類推しながら改良していって、<br />
-自分の描きたいグラフに近づけていくのが良い。(私もよく過去の自分が作成したコードを流用して作図しています。)</p>
-<p>慣れてくるといろんな図を作ったり、細かいところにこだわったりしたくなります。 そんなときは以下のチートシートが役に立ちます.<br />
+自分の描きたいグラフに近づけていくのが良い。(私もよく過去の自分が作成したコードを流用して作図している。)</p>
+<p>慣れてくるといろんな図を作ったり、細かいところにこだわったりしたくなる。 そんなときは以下のチートシートが役につかもしれない。
 <a class="github reference external" href="https://github.com/matplotlib/cheatsheets">matplotlib/cheatsheets</a></p>
 <p>あるいは、最近だとChat GPTに「二次元配列をプロットするPythonコードを書いてください」
 「さっきのコードをさらに拡張して、棒グラフにハッチをつけてください」などと聞いてみても良いかも.<br />
-もちろん、コードを貼り付けるだけで個々の部品に関する理解を放棄していると、いつまでたっても有効なプログラムを書けるようにはならないので、
+もちろん、コードを貼り付けるだけで個々の部品に関する理解を放棄していると、
+いつまでたっても有効なプログラムを自分で書けるようにはならず、
+(低い確率で)望むコードが生成されるまでAIに質問をし続けるという皮肉な状況に陥る恐れがある。
 その辺りのバランスを取りながら学習を進めよう。</p>
 <section id="id3">
 <h3><span class="section-number">4.4.1. </span>Matplotlibのインポートと使い方<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
@@ -678,10 +649,12 @@ y [70 65 58 60]
 </div>
 <p>という階層構造があり、子,孫,…といった下位のものはピリオドで指定する.<br />
 上の<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>はその一例になっている.</p>
-<p>次に、注意事項!!</p>
-<p>Matplotlibは<strong>標準だと日本語が文字化けして豆腐のように表示されてしまう</strong>ので、日本語フォントを使うためのライブラリ、
-<code class="docutils literal notranslate"><span class="pre">japanize-matplotlib</span></code>ををGoogleのサーバにインストールする.</p>
-<p>この作業はGoogle Colaboratory環境で作業を再開するたびに行う必要があるので、日本語を含むグラフを描画したければコードに含めておくこと.</p>
+<p><strong>グラフ内で日本語を用いる際の注意事項</strong></p>
+<p>Matplotlibは<strong>標準だと日本語が文字化けして豆腐のように表示されてしまう</strong>ので、日本語フォントを使うためのライブラリ、<code class="docutils literal notranslate"><span class="pre">japanize-matplotlib</span></code>をインストールしておく必要がある。</p>
+<p>この作業は(japanize-matplotlibが標準でインストールされるようにならない限り)Google Colaboratory環境で作業を再開するたびに行う必要がある。
+日本語を含むグラフを描画したければ必ずインストールしておこう。</p>
+<p>セッション中は一度インストールしておけば、以降のセッションではインストールする必要はないので
+グラフの作成・描画など、繰り返し実行する可能性のあるセルとは分けておくと良い.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>japanize-matplotlib<span class="w"> </span>#!から始めることでLinuxコマンドを使うことができる。
@@ -779,37 +752,59 @@ x軸用のリストが数値以外のときは整数値を割り当ててプロ�
 日付は、WHOのSituation Reportが初めて発表された2019年1月20日を起点(ゼロ)とする経過日数として表すことにして…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 感染者数(y)と重傷者数(y_sev) #2019年2月13日までのデータ</span>
-<span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">282</span><span class="p">,</span><span class="mi">314</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">581</span><span class="p">,</span><span class="mi">846</span><span class="p">,</span><span class="mi">1320</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2798</span><span class="p">,</span><span class="mi">4593</span><span class="p">,</span><span class="mi">6065</span><span class="p">,</span><span class="mi">7818</span><span class="p">,</span><span class="mi">9826</span><span class="p">,</span><span class="mi">11953</span><span class="p">,</span><span class="mi">14557</span><span class="p">,</span><span class="mi">17391</span><span class="p">,</span><span class="mi">20630</span><span class="p">,</span><span class="mi">24554</span><span class="p">,</span><span class="mi">28276</span><span class="p">,</span><span class="mi">31481</span><span class="p">,</span><span class="mi">34886</span><span class="p">,</span> <span class="mf">37558.40554</span><span class="p">,</span><span class="mi">43103</span><span class="p">,</span><span class="mi">45171</span><span class="p">]</span> 
-<span class="n">y_sev</span><span class="o">=</span><span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="mi">324</span><span class="p">,</span><span class="mi">461</span><span class="p">,</span><span class="mi">976</span><span class="p">,</span><span class="mi">1239</span><span class="p">,</span><span class="mi">1370</span><span class="p">,</span><span class="mi">1527</span><span class="p">,</span><span class="mi">1795</span><span class="p">,</span><span class="mi">2110</span><span class="p">,</span><span class="mi">2296</span><span class="p">,</span><span class="mi">2788</span><span class="p">,</span><span class="mi">3219</span><span class="p">,</span><span class="mi">3859</span><span class="p">,</span><span class="mi">4821</span><span class="p">,</span><span class="mi">6101</span><span class="p">,</span><span class="mi">6188</span><span class="p">,</span><span class="mi">6484</span><span class="p">,</span><span class="mi">7333</span><span class="p">,</span><span class="mi">8304</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;2019年1月20日以降の経過日数&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span><span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;世界全体での新型コロナウイルス感染者数&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="c1">#x軸が0から始まる整数値(0,1,...)で良い場合は、x軸のデータを指定しなくてもplotしてくれる</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_sev</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;重傷者数&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1">##凡例(線や点等の説明)を描画する</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;1月20日以降の経過日数&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span> <span class="c1">## y軸を対数スケールに変換</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;世界全体での新型コロナウイルス感染者数&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1">## markerの値を指定すれば、線だけじゃなく点を描くことも出来る。</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_sev</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;重傷者数&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">1801</span><span class="p">,</span> <span class="mi">1802</span><span class="p">,</span> <span class="mi">1803</span><span class="p">,</span> <span class="mi">1804</span><span class="p">,</span> <span class="mi">1805</span><span class="p">,</span> <span class="mi">1806</span><span class="p">,</span> <span class="mi">1807</span><span class="p">,</span> <span class="mi">1808</span><span class="p">,</span> <span class="mi">1809</span><span class="p">,</span> <span class="mi">1810</span><span class="p">,</span> <span class="mi">1811</span><span class="p">,</span> <span class="mi">1812</span><span class="p">,</span> <span class="mi">1813</span><span class="p">,</span> <span class="mi">1814</span><span class="p">,</span> <span class="mi">1815</span><span class="p">,</span> <span class="mi">1816</span><span class="p">,</span> <span class="mi">1817</span><span class="p">,</span> <span class="mi">1818</span><span class="p">,</span> <span class="mi">1819</span><span class="p">,</span> <span class="mi">1820</span><span class="p">,</span> <span class="mi">1821</span><span class="p">,</span> <span class="mi">1822</span><span class="p">,</span> <span class="mi">1823</span><span class="p">,</span> <span class="mi">1824</span><span class="p">,</span> <span class="mi">1825</span><span class="p">,</span> <span class="mi">1826</span><span class="p">,</span> <span class="mi">1827</span><span class="p">,</span> <span class="mi">1828</span><span class="p">,</span> <span class="mi">1829</span><span class="p">,</span> <span class="mi">1830</span><span class="p">,</span> <span class="mi">1831</span><span class="p">,</span> <span class="mi">1832</span><span class="p">,</span> <span class="mi">1833</span><span class="p">,</span> <span class="mi">1834</span><span class="p">,</span> <span class="mi">1835</span><span class="p">,</span> <span class="mi">1836</span><span class="p">,</span> <span class="mi">1837</span><span class="p">,</span> <span class="mi">1838</span><span class="p">,</span> <span class="mi">1839</span><span class="p">,</span> <span class="mi">1840</span><span class="p">,</span> <span class="mi">1841</span><span class="p">,</span> <span class="mi">1842</span><span class="p">,</span> <span class="mi">1843</span><span class="p">,</span> <span class="mi">1844</span><span class="p">,</span> <span class="mi">1845</span><span class="p">,</span> <span class="mi">1846</span><span class="p">,</span> <span class="mi">1847</span><span class="p">,</span> <span class="mi">1848</span><span class="p">,</span> <span class="mi">1849</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mi">1851</span><span class="p">,</span> <span class="mi">1852</span><span class="p">,</span> <span class="mi">1853</span><span class="p">,</span> <span class="mi">1854</span><span class="p">,</span> <span class="mi">1855</span><span class="p">,</span> <span class="mi">1856</span><span class="p">,</span> <span class="mi">1857</span><span class="p">,</span> <span class="mi">1858</span><span class="p">,</span> <span class="mi">1859</span><span class="p">,</span> <span class="mi">1860</span><span class="p">,</span> <span class="mi">1861</span><span class="p">,</span> <span class="mi">1862</span><span class="p">,</span> <span class="mi">1863</span><span class="p">,</span> <span class="mi">1864</span><span class="p">,</span> <span class="mi">1865</span><span class="p">,</span> <span class="mi">1866</span><span class="p">,</span> <span class="mi">1867</span><span class="p">,</span> <span class="mi">1868</span><span class="p">,</span> <span class="mi">1869</span><span class="p">,</span> <span class="mi">1870</span><span class="p">,</span> <span class="mi">1871</span><span class="p">,</span> <span class="mi">1872</span><span class="p">,</span> <span class="mi">1873</span><span class="p">,</span> <span class="mi">1874</span><span class="p">,</span> <span class="mi">1875</span><span class="p">,</span> <span class="mi">1876</span><span class="p">,</span> <span class="mi">1877</span><span class="p">,</span> <span class="mi">1878</span><span class="p">,</span> <span class="mi">1879</span><span class="p">,</span> <span class="mi">1880</span><span class="p">,</span> <span class="mi">1881</span><span class="p">,</span> <span class="mi">1882</span><span class="p">,</span> <span class="mi">1883</span><span class="p">,</span> <span class="mi">1884</span><span class="p">,</span> <span class="mi">1885</span><span class="p">,</span> <span class="mi">1886</span><span class="p">,</span> <span class="mi">1887</span><span class="p">,</span> <span class="mi">1888</span><span class="p">,</span> <span class="mi">1889</span><span class="p">,</span> <span class="mi">1890</span><span class="p">,</span> <span class="mi">1891</span><span class="p">,</span> <span class="mi">1892</span><span class="p">,</span> <span class="mi">1893</span><span class="p">,</span> <span class="mi">1894</span><span class="p">,</span> <span class="mi">1895</span><span class="p">,</span> <span class="mi">1896</span><span class="p">,</span> <span class="mi">1897</span><span class="p">,</span> <span class="mi">1898</span><span class="p">,</span> <span class="mi">1899</span><span class="p">,</span> <span class="mi">1900</span><span class="p">,</span> <span class="mi">1901</span><span class="p">,</span> <span class="mi">1902</span><span class="p">,</span> <span class="mi">1903</span><span class="p">,</span> <span class="mi">1904</span><span class="p">,</span> <span class="mi">1905</span><span class="p">,</span> <span class="mi">1906</span><span class="p">,</span> <span class="mi">1907</span><span class="p">,</span> <span class="mi">1908</span><span class="p">,</span> <span class="mi">1909</span><span class="p">,</span> <span class="mi">1910</span><span class="p">,</span> <span class="mi">1911</span><span class="p">,</span> <span class="mi">1912</span><span class="p">,</span> <span class="mi">1913</span><span class="p">,</span> <span class="mi">1914</span><span class="p">,</span> <span class="mi">1915</span><span class="p">,</span> <span class="mi">1916</span><span class="p">,</span> <span class="mi">1917</span><span class="p">,</span> <span class="mi">1918</span><span class="p">,</span> <span class="mi">1919</span><span class="p">,</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">1921</span><span class="p">,</span> <span class="mi">1922</span><span class="p">,</span> <span class="mi">1923</span><span class="p">,</span> <span class="mi">1924</span><span class="p">,</span> <span class="mi">1925</span><span class="p">,</span> <span class="mi">1926</span><span class="p">,</span> <span class="mi">1927</span><span class="p">,</span> <span class="mi">1928</span><span class="p">,</span> <span class="mi">1929</span><span class="p">,</span> <span class="mi">1930</span><span class="p">,</span> <span class="mi">1931</span><span class="p">,</span> <span class="mi">1932</span><span class="p">,</span> <span class="mi">1933</span><span class="p">,</span> <span class="mi">1934</span><span class="p">,</span> <span class="mi">1935</span><span class="p">,</span> <span class="mi">1936</span><span class="p">,</span> <span class="mi">1937</span><span class="p">,</span> <span class="mi">1938</span><span class="p">,</span> <span class="mi">1939</span><span class="p">,</span> <span class="mi">1940</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">1942</span><span class="p">,</span> <span class="mi">1943</span><span class="p">,</span> <span class="mi">1944</span><span class="p">,</span> <span class="mi">1945</span><span class="p">,</span> <span class="mi">1946</span><span class="p">,</span> <span class="mi">1947</span><span class="p">,</span> <span class="mi">1948</span><span class="p">,</span> <span class="mi">1949</span><span class="p">,</span> <span class="mi">1950</span><span class="p">,</span> <span class="mi">1951</span><span class="p">,</span> <span class="mi">1952</span><span class="p">,</span> <span class="mi">1953</span><span class="p">,</span> <span class="mi">1954</span><span class="p">,</span> <span class="mi">1955</span><span class="p">,</span> <span class="mi">1956</span><span class="p">,</span> <span class="mi">1957</span><span class="p">,</span> <span class="mi">1958</span><span class="p">,</span> <span class="mi">1959</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">1961</span><span class="p">,</span> <span class="mi">1962</span><span class="p">,</span> <span class="mi">1963</span><span class="p">,</span> <span class="mi">1964</span><span class="p">,</span> <span class="mi">1965</span><span class="p">,</span> <span class="mi">1966</span><span class="p">,</span> <span class="mi">1967</span><span class="p">,</span> <span class="mi">1968</span><span class="p">,</span> <span class="mi">1969</span><span class="p">,</span> <span class="mi">1970</span><span class="p">,</span> <span class="mi">1971</span><span class="p">,</span> <span class="mi">1972</span><span class="p">,</span> <span class="mi">1973</span><span class="p">,</span> <span class="mi">1974</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1977</span><span class="p">,</span> <span class="mi">1978</span><span class="p">,</span> <span class="mi">1979</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="mi">1981</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1985</span><span class="p">,</span> <span class="mi">1986</span><span class="p">,</span> <span class="mi">1987</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">1989</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1991</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,</span> <span class="mi">1993</span><span class="p">,</span> <span class="mi">1994</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">1999</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2007</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">2024</span><span class="p">,</span> <span class="mi">2025</span><span class="p">,</span> <span class="mi">2026</span><span class="p">,</span> <span class="mi">2027</span><span class="p">,</span> <span class="mi">2028</span><span class="p">,</span> <span class="mi">2029</span><span class="p">,</span> <span class="mi">2030</span><span class="p">,</span> <span class="mi">2031</span><span class="p">,</span> <span class="mi">2032</span><span class="p">,</span> <span class="mi">2033</span><span class="p">,</span> <span class="mi">2034</span><span class="p">,</span> <span class="mi">2035</span><span class="p">,</span> <span class="mi">2036</span><span class="p">,</span> <span class="mi">2037</span><span class="p">,</span> <span class="mi">2038</span><span class="p">,</span> <span class="mi">2039</span><span class="p">,</span> <span class="mi">2040</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1050</span><span class="p">,</span> <span class="mi">1050</span><span class="p">,</span> <span class="mi">1050</span><span class="p">,</span> <span class="mi">1050</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1060</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1070</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1090</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">1130</span><span class="p">,</span> <span class="mi">1130</span><span class="p">,</span> <span class="mi">1130</span><span class="p">,</span> <span class="mi">1140</span><span class="p">,</span> <span class="mi">1140</span><span class="p">,</span> <span class="mi">1150</span><span class="p">,</span> <span class="mi">1150</span><span class="p">,</span> <span class="mi">1150</span><span class="p">,</span> <span class="mi">1160</span><span class="p">,</span> <span class="mi">1160</span><span class="p">,</span> <span class="mi">1170</span><span class="p">,</span> <span class="mi">1170</span><span class="p">,</span> <span class="mi">1180</span><span class="p">,</span> <span class="mi">1180</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">1190</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1210</span><span class="p">,</span> <span class="mi">1210</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1220</span><span class="p">,</span> <span class="mi">1230</span><span class="p">,</span> <span class="mi">1230</span><span class="p">,</span> <span class="mi">1320</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1290</span><span class="p">,</span> <span class="mi">1350</span><span class="p">,</span> <span class="mi">1390</span><span class="p">,</span> <span class="mi">1340</span><span class="p">,</span> <span class="mi">1360</span><span class="p">,</span> <span class="mi">1350</span><span class="p">,</span> <span class="mi">1340</span><span class="p">,</span> <span class="mi">1380</span><span class="p">,</span> <span class="mi">1460</span><span class="p">,</span> <span class="mi">1520</span><span class="p">,</span> <span class="mi">1430</span><span class="p">,</span> <span class="mi">1480</span><span class="p">,</span> <span class="mi">1610</span><span class="p">,</span> <span class="mi">1520</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">1590</span><span class="p">,</span> <span class="mi">1760</span><span class="p">,</span> <span class="mi">1770</span><span class="p">,</span> <span class="mi">1650</span><span class="p">,</span> <span class="mi">1660</span><span class="p">,</span> <span class="mi">1950</span><span class="p">,</span> <span class="mi">1790</span><span class="p">,</span> <span class="mi">1840</span><span class="p">,</span> <span class="mi">1880</span><span class="p">,</span> <span class="mi">1750</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mi">1840</span><span class="p">,</span> <span class="mi">1790</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2040</span><span class="p">,</span> <span class="mi">2030</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2070</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2150</span><span class="p">,</span> <span class="mi">2440</span><span class="p">,</span> <span class="mi">2480</span><span class="p">,</span> <span class="mi">2480</span><span class="p">,</span> <span class="mi">2700</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">2720</span><span class="p">,</span> <span class="mi">2670</span><span class="p">,</span> <span class="mi">2630</span><span class="p">,</span> <span class="mi">2650</span><span class="p">,</span> <span class="mi">2710</span><span class="p">,</span> <span class="mi">2680</span><span class="p">,</span> <span class="mi">2660</span><span class="p">,</span> <span class="mi">2830</span><span class="p">,</span> <span class="mi">2860</span><span class="p">,</span> <span class="mi">2600</span><span class="p">,</span> <span class="mi">2570</span><span class="p">,</span> <span class="mi">2740</span><span class="p">,</span> <span class="mi">2950</span><span class="p">,</span> <span class="mi">2900</span><span class="p">,</span> <span class="mi">2920</span><span class="p">,</span> <span class="mi">3090</span><span class="p">,</span> <span class="mi">3180</span><span class="p">,</span> <span class="mi">3350</span><span class="p">,</span> <span class="mi">3850</span><span class="p">,</span> <span class="mi">3920</span><span class="p">,</span> <span class="mi">3910</span><span class="p">,</span> <span class="mi">3830</span><span class="p">,</span> <span class="mi">3830</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">1820</span><span class="p">,</span> <span class="mi">1950</span><span class="p">,</span> <span class="mi">2080</span><span class="p">,</span> <span class="mi">2320</span><span class="p">,</span> <span class="mi">2420</span><span class="p">,</span> <span class="mi">2580</span><span class="p">,</span> <span class="mi">2760</span><span class="p">,</span> <span class="mi">3060</span><span class="p">,</span> <span class="mi">3210</span><span class="p">,</span> <span class="mi">3330</span><span class="p">,</span> <span class="mi">3520</span><span class="p">,</span> <span class="mi">3700</span><span class="p">,</span> <span class="mi">3900</span><span class="p">,</span> <span class="mi">4060</span><span class="p">,</span> <span class="mi">4360</span><span class="p">,</span> <span class="mi">4840</span><span class="p">,</span> <span class="mi">5370</span><span class="p">,</span> <span class="mi">5790</span><span class="p">,</span> <span class="mi">6220</span><span class="p">,</span> <span class="mi">6870</span><span class="p">,</span> <span class="mi">7190</span><span class="p">,</span> <span class="mi">7880</span><span class="p">,</span> <span class="mi">8630</span><span class="p">,</span> <span class="mi">9640</span><span class="p">,</span> <span class="mi">10800</span><span class="p">,</span> <span class="mi">14500</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">16100</span><span class="p">,</span> <span class="mi">17100</span><span class="p">,</span> <span class="mi">16700</span><span class="p">,</span> <span class="mi">17000</span><span class="p">,</span> <span class="mi">17500</span><span class="p">,</span> <span class="mi">18100</span><span class="p">,</span> <span class="mi">19000</span><span class="p">,</span> <span class="mi">19800</span><span class="p">,</span> <span class="mi">20300</span><span class="p">,</span> <span class="mi">21000</span><span class="p">,</span> <span class="mi">21500</span><span class="p">,</span> <span class="mi">22000</span><span class="p">,</span> <span class="mi">22900</span><span class="p">,</span> <span class="mi">24200</span><span class="p">,</span> <span class="mi">24800</span><span class="p">,</span> <span class="mi">25700</span><span class="p">,</span> <span class="mi">27500</span><span class="p">,</span> <span class="mi">28900</span><span class="p">,</span> <span class="mi">30400</span><span class="p">,</span> <span class="mi">31400</span><span class="p">,</span> <span class="mi">31500</span><span class="p">,</span> <span class="mi">31500</span><span class="p">,</span> <span class="mi">31700</span><span class="p">,</span> <span class="mi">32400</span><span class="p">,</span> <span class="mi">33300</span><span class="p">,</span> <span class="mi">33600</span><span class="p">,</span> <span class="mi">33200</span><span class="p">,</span> <span class="mi">33000</span><span class="p">,</span> <span class="mi">33900</span><span class="p">,</span> <span class="mi">33900</span><span class="p">,</span> <span class="mi">33900</span><span class="p">,</span> <span class="mi">34300</span><span class="p">,</span> <span class="mi">35100</span><span class="p">,</span> <span class="mi">35700</span><span class="p">,</span> <span class="mi">36100</span><span class="p">,</span> <span class="mi">36700</span><span class="p">,</span> <span class="mi">36300</span><span class="p">,</span> <span class="mi">34300</span><span class="p">,</span> <span class="mi">35800</span><span class="p">,</span> <span class="mi">35800</span><span class="p">,</span> <span class="mi">36400</span><span class="p">,</span> <span class="mi">37100</span><span class="p">,</span> <span class="mi">37300</span><span class="p">,</span> <span class="mi">37800</span><span class="p">,</span> <span class="mi">38200</span><span class="p">,</span> <span class="mi">38600</span><span class="p">,</span> <span class="mi">39100</span><span class="p">,</span> <span class="mi">39400</span><span class="p">,</span> <span class="mi">39800</span><span class="p">,</span> <span class="mi">40300</span><span class="p">,</span> <span class="mi">40800</span><span class="p">,</span> <span class="mi">41400</span><span class="p">,</span> <span class="mi">42100</span><span class="p">,</span> <span class="mi">42900</span><span class="p">,</span> <span class="mi">43700</span><span class="p">,</span> <span class="mi">44600</span><span class="p">,</span> <span class="mi">45600</span><span class="p">,</span> <span class="mi">46500</span><span class="p">,</span> <span class="mi">47600</span><span class="p">,</span> <span class="mi">48600</span><span class="p">,</span> <span class="mi">49700</span><span class="p">,</span> <span class="mi">50800</span><span class="p">,</span> <span class="mi">51900</span><span class="p">,</span> <span class="mi">53100</span><span class="p">,</span> <span class="mi">54300</span><span class="p">,</span> <span class="mi">55500</span><span class="p">,</span> <span class="mi">56700</span><span class="p">,</span> <span class="mi">57900</span><span class="p">,</span> <span class="mi">59200</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>下のグラフはy軸の対数スケールを取っている.
-データが無い日の値を0とするのは誤りである. ここではNone(値なし)にしている. こうした欠損値の取り扱いもデータ分析では重要な作業の一つである.</p>
-<p><strong>凡例の表示</strong></p>
-<p>複数のデータをプロットするときは、それぞれのデータに対して凡例を付けることができる.
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>関数は多数の引数を受け取ることができる。</p>
+<p>まずは最小の引数である<code class="docutils literal notranslate"><span class="pre">y</span></code>だけを指定してみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>xを省略すると、0から始まる整数値が自動的に割り当てられる。
+したがって、あるデータを起点に経過日数などで表す場合は、xを省略しても良い。
+より一般の場合は、xを指定してやると良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Japan&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>カラーコードで色を指定、x軸ラベル, y軸ラベル, legend(判例), y軸のスケールをlogにするなど、
+より複雑なオプションを指定してみよう.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#006036&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Japan&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;年&quot;</span><span class="p">)</span> <span class="c1"># x軸のラベル</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;GDP[$]&quot;</span><span class="p">)</span> <span class="c1"># y軸のラベル</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span> <span class="c1"># y軸を対数スケールにする</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span> <span class="c1"># 凡例の位置を指定して表示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>凡例について</strong></p>
+<p>上でも少し凡例について触れたが、複数のデータをプロットするときは、それぞれのデータに対して凡例を付けることができる。
 barやplot、以下でやるscatterなどそれぞれのグラフを構成するオブジェクトに対して、<code class="docutils literal notranslate"><span class="pre">label</span></code>という引数を指定することで凡例を付けることができる.</p>
 <p>つけた凡例は<code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code>で表示することができる.</p>
+<p>凡例を設定することは、図の可読性を向上させるための重要な要素である一方で、
+同じような色や形の凡例が多すぎると、かえって可読性を下げてしまうこともある。
+例えば、散布図で一点ごとに描画してlabelをつけてしまうと、データの数だけ凡例ができてしまう。</p>
+<p>最小限の数の凡例をつけるようデータを整形したり、凡例の一部をannotationにしたり、
+図の横側に凡例を置いたりなど工夫が必要になることも多い。</p>
 <p>当然だが、x軸とy軸方向でデータの数が合っていないとエラーとなる.<br />
 「一緒にしているつもりなのにエラーが出る…」と言う場合は、<code class="docutils literal notranslate"><span class="pre">len</span></code>関数を使うなどして、リストの長さ/要素の数をチェックしてみよう。
 カンマがピリオドになっていて数がずれる、といったことがよくある。</p>
@@ -817,18 +812,15 @@ barやplot、以下でやるscatterなどそれぞれのグラフを構成する
 (意図したリスト) <code class="docutils literal notranslate"><span class="pre">[2,3,5]</span></code>  ←長さ3のリスト<br />
 (間違えて作ったリスト) <code class="docutils literal notranslate"><span class="pre">[2.3,</span> <span class="pre">5]</span></code> ←カンマがピリオドになっていて、長さ2のリストになっている.</p>
 <p>上記のようなミスを防ぐには、値を入力してカンマを打ったあと半角スペースを開けるようにすると分かりやすい, <code class="docutils literal notranslate"><span class="pre">[2,3,5]</span></code>→<code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">5]</span></code>.</p>
-<p>カンマの後ろにスペースを入れることは文法上の必要条件ではないが、コードの可読性を上げるために推奨される書き方である.<br />
-英文などでも基本となるため、癖づけておくと良い.</p>
-<p><strong>練習</strong>:<br />
-「matplotlib marker」でWeb検索してみて、どんな形状のmarkerが使えるか調べてみよう.<br />
-また、その中から”x”(バツ印)以外の好きなシンボルを選んで上のグラフの２番目などをプロットしてみよう。</p>
+<p>カンマの後ろにスペースを入れることは文法上の必要条件ではないが、コードの可読性を上げるために推奨される書き方である. 英文などでも基本となるため、癖づけておくと良い.</p>
 </section>
 <section id="scatter">
 <h3><span class="section-number">4.4.4. </span>scatter: 散布図の描画<a class="headerlink" href="#scatter" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(x\)</span>と<span class="math notranslate nohighlight">\(y\)</span>、２つの量があって、どちらにも興味がある、<br />
-あるいは両者の間の相関に興味がある場合、散布図を描くと、見通しやすくなることが多いです。</p>
-<p>以下では、2017年の宇都宮の平均気温とアイスクリームの消費量の相関を見てみましょう。<br />
-気温・アイスクリームの消費量ともに、1月から12月に順番にリストに入れていくことにします。</p>
+あるいは両者の間の相関に興味がある場合、散布図を描くと、見通しやすくなることが多い。</p>
+<p>以下では、2017年の宇都宮の平均気温とアイスクリームの消費量の相関を見てみよう。<br />
+気温・アイスクリームの消費量ともに、1月から12月に順番にリストに入れていくことにする。</p>
+<p>※実際のデータ分析の場合は、<strong>手でデータを入力してリストを作るのは面倒な上、人為的なミスが入り込む可能性が高い</strong>ので、CSVファイルなどからデータを読み込むことが多い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
@@ -845,11 +837,10 @@ barやplot、以下でやるscatterなどそれぞれのグラフを構成する
 </div>
 </div>
 </div>
-<p>相関係数などの情報を含んだもう少しかっこいい図を作ってみましょう。</p>
+<p>相関係数などの情報を含んだもう少し凝った図を作ってみよう:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#データをリスト形式で与える</span>
-<span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">19.1</span><span class="p">,</span> <span class="mf">20.9</span><span class="p">,</span> <span class="mf">26.4</span><span class="p">,</span> <span class="mf">25.1</span><span class="p">,</span> <span class="mf">21.9</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">]</span>
 <span class="n">y</span><span class="o">=</span> <span class="p">[</span><span class="mi">568</span><span class="p">,</span> <span class="mi">572</span><span class="p">,</span> <span class="mi">804</span><span class="p">,</span> <span class="mi">833</span><span class="p">,</span> <span class="mi">930</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">1213</span><span class="p">,</span> <span class="mi">1120</span><span class="p">,</span> <span class="mi">835</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">502</span><span class="p">]</span>
 
 <span class="c1"># Numpyを使ってx,yの配列間の相関行列を計算. 詳細は相関分析の際に.</span>
@@ -879,8 +870,8 @@ barやplot、以下でやるscatterなどそれぞれのグラフを構成する
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
     <span class="n">tcol</span><span class="o">=</span><span class="n">seasoncolor</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">tcol</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;月&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">tcol</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;月&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span> <span class="s2">&quot;r=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">corrcoef</span><span class="p">),</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -899,6 +890,13 @@ barやplot、以下でやるscatterなどそれぞれのグラフを構成する
 <p>使いこなせれば、論文に使う図表を作るなど、大変重宝するはずだ。細かい図の書き方は必要に応じて勉強していこう.</p>
 <p><code class="docutils literal notranslate"><span class="pre">axes</span></code>に関しては、日本語で書かれた以下の記事もおすすめ:
 <a class="reference external" href="https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9">https://qiita.com/skotaro/items/08dc0b8c5704c94eafb9</a></p>
+<p>下では<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>を使って、キャンバス上に小さな作業領域を作成している.
+<code class="docutils literal notranslate"><span class="pre">add_suplot</span></code>の引数は、(行数, 列数, 作業領域番号)で、
+3行2列の作業領域を作成する場合、左上から右下に向かって1,2,3,…と番号が振られる.</p>
+<p>行数・列数・作業領域番号は整数で指定するが、いずれも10未満の場合であれば、
+連続して書くことでも同じ意味になる.
+具体的には、<code class="docutils literal notranslate"><span class="pre">add_subplot(3,2,1)</span></code>は<code class="docutils literal notranslate"><span class="pre">add_subplot(321)</span></code>とも書けるが、
+<code class="docutils literal notranslate"><span class="pre">add_subplot(3,2,10)</span></code>は<code class="docutils literal notranslate"><span class="pre">add_subplot(3210)</span></code>とは書けない(全て一桁で無いとambiguityが生じるため).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
@@ -987,7 +985,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <p>Matplotlibはファイル名を変えるだけで、指定した拡張子で描画してくれるので色々試してみよう(.jpg,.pdf,.eps,.pngなど)</p>
 <p><strong>注意</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">savefig()</span></code>関数の前に<code class="docutils literal notranslate"><span class="pre">show()</span></code>を実行するとその時点でキャンバスがクリアされるので、<code class="docutils literal notranslate"><span class="pre">savefig()</span></code>で保存したファイルが空になってしまうので注意.<br />
-<code class="docutils literal notranslate"><span class="pre">show()</span></code>は<code class="docutils literal notranslate"><span class="pre">savefig()</span></code>の後に実行すること.</p>
+<strong><code class="docutils literal notranslate"><span class="pre">show()</span></code>は<code class="docutils literal notranslate"><span class="pre">savefig()</span></code>の後に実行する</strong>こと.</p>
 <p><strong>余談</strong></p>
 <p>プレゼンのスライドに載せる画像は可能な限り、ラスタ形式ではなくベクタ形式(pdfなど)がおすすめです.
 (あるいは、高解像度でjpegやpngを作ってスライドを作り、誰かにスライドを渡すときは軽量化する)
@@ -998,7 +996,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 論文でラスタ画像を使う場合は「トンデモ論文だと思われて誰にも読まれない危険性」を理解して使いましょう。</p>
 <p><strong>練習</strong></p>
 <p>これまでの(棒グラフ,円グラフ,１次元図,散布図)のグラフを描画したコード部分で、<br />
-データを自由に足したりオプションを変えながら、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>を<code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;your_filepath.filetype&quot;)</span></code>に書き換えてファイルに出力してみましょう。
+データを自由に足したりオプションを変えながら、<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>を<code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;your_filepath.filetype&quot;)</span></code>に書き換えてファイルに出力してみよう。
 少々くどいが念の為言っておくと、<code class="docutils literal notranslate"><span class="pre">your_filepath</span></code>や<code class="docutils literal notranslate"><span class="pre">filetype</span></code>は実際のファイルパスや拡張子にそれぞれ変えること。</p>
 </section>
 <section id="gif">
@@ -1065,7 +1063,7 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 </section>
 <section id="pnggif">
 <h4><span class="section-number">4.4.7.3. </span>pngファイルを読み込んでgifアニメーションを作成する<a class="headerlink" href="#pnggif" title="Link to this heading">#</a></h4>
-<p>先程のグラフがgoogle driveに保存されているかどうかは、以下のコマンドで確認できる(アップロードして直後はファイルが見つからないことがあります).</p>
+<p>先程のグラフがgoogle driveに保存されているかどうかは、以下のコマンドで確認できる(アップロードして直後はファイルが見つからないことがある).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w">  </span>./drive/MyDrive/GDPvsWomenInSchool/*.png
@@ -1073,9 +1071,9 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 </div>
 </div>
 </div>
-<p>GDPvsWomenInSchool/の部分は、もし独自のフォルダなどを用意した場合は、対応するフォルダ名に適宜変更してください.</p>
-<p>ファイルが確認できたら、年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみよう.</p>
-<p>pngファイルをまとめてgifにするコードは以下の通り(処理にしばし時間がかかります):</p>
+<p>GDPvsWomenInSchool/の部分は、もし独自のフォルダなどを用意した場合は、対応するフォルダ名に適宜変更すること。</p>
+<p>ファイルが確認できたら、年代ごとに別々になったたくさんのグラフを、1つのパラパラ漫画にまとめてみよう。</p>
+<p>pngファイルをまとめてgifにするコードは以下の通り(処理にしばし時間がかかる):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
