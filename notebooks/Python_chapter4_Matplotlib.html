@@ -1040,8 +1040,8 @@ Google Colab.では、同じGoogleのサービスであるGoogle drive上にフ�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 手順3. Linuxコマンド (Google Colab.上では、!から始めることでLinuxコマンドを使うことができる)</span>
 
-<span class="c1">#zipファイルを解凍する</span>
-<span class="o">!</span>unzip<span class="w"> </span>GDPvsWomenInSchool.zip<span class="w"> </span>
+<span class="c1">#zipファイルを解凍する (-oオプションは上書き解凍, 何回か実行してもエラーにならないように)</span>
+<span class="o">!</span>unzip<span class="w"> </span>-o<span class="w"> </span>GDPvsWomenInSchool.zip<span class="w"> </span>
 
 <span class="c1">#解答したファイルをマイドライブ直下へ(マウントした状態でないと無効)</span>
 <span class="o">!</span>mv<span class="w"> </span>GDPvsWomenInSchool<span class="w"> </span>drive/MyDrive/
