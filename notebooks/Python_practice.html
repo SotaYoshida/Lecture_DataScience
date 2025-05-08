@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -639,7 +639,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載してください</span>
 <span class="c1">#1. </span>
-<span class="k">def</span> <span class="nf">K_from_C</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">K_from_C</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">C</span> <span class="o">+</span> <span class="mf">273.15</span>
     <span class="k">return</span> <span class="n">K</span>
 </pre></div>
@@ -802,7 +802,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># コードを以下に記載(追記)してください</span>
 <span class="c1">#1. (コードは書いておきましたので、挙動を確認してください)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.bodik.jp/dataset/47cb5069-7383-47d3-a7df-b84d59484432/resource/37469f20-ed3c-4f9e-a5c4-fa750fc3c673/download/42064_2021_hoikusyo_02184.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">)</span>
 <span class="c1">#df = pd.read_csv(url) #上の代わりにこの行のようにencodingの指定をなしにするとエラーになることも確認してみよう</span>
