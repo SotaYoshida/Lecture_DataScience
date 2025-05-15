@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -484,29 +484,27 @@
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_chapter5_Probability.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">5. </span>確率と疑似乱数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>[この章の目的]
-コンピュータで確率・乱数を扱う概要を学ぶ。</p>
-<p>この章では、確率と擬似乱数について扱います。</p>
+<p>この章では、確率と擬似乱数について扱う。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ライブラリをインポートしておきましょう</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="id2">
 <h2><span class="section-number">5.1. </span>疑似乱数について<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>コンピュータで何かの処理を実現したいときや、自然科学や統計学などで様々なことをシミュレーションしたいとき、[確率的な事象]を考えたくなることがよくあります。</p>
-<p>たとえば人◯ゲームや◯鉄のようなゲームを作るときにもサイコロの出目が必要になりますし、技が急所に当たる確率や色違いのポ◯モンが出現する確率などを設定しなければなりません.</p>
-<p>真に理想的なサイコロならば1から6の目が出る確率は等しく1/6ですが、このような”理想的な”サイコロは、現実世界でも、コンピュータの上でも実現することはできず、我々人間が乱数をシミュレーションして扱う際には、何らかの確定的な方法で乱数列(<strong>十分ランダムだとみなせる数の集合</strong>)を生成することになります。</p>
-<p>真の意味での乱数と区別する意味で、我々が普段ゲームなどで扱う乱数は擬似乱数と呼ばれるべきものです。以下ではめんどくさいので、単に乱数と呼ぶことにします。</p>
-<p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span> 細かな注</strong></p>
-<p>乱数を生成する方法はいくつもあるが代表的なものはメルセンヌツイスタと呼ばれる方法で、多くのプログラミング言語でも採用されている。</p>
-<p>また<em>モンテカルロ法</em>と検索すると(主に学術的な分野で)乱数がどのように活用されているか、雰囲気を味わうことができます。<br />
-ちなみにモンテカルロはカジノで有名なモナコの地名Monte Carloに由来。</p>
+<p>コンピュータで何かの処理を実現したいときや、自然科学や統計学などで様々なことをシミュレーションしたいとき、[確率的な事象]を考えたくなることがよくある。
+たとえば人◯ゲームや◯鉄のようなゲームを作るときにもサイコロの出目が必要になるし、技が急所に当たる確率や色違いのポ◯モンが出現する確率などを設定しなければならない.</p>
+<p>真に理想的なサイコロならば1から6の目が出る確率は等しく1/6だが、このような”理想的な”サイコロは、現実世界でも、コンピュータの上でも実現することはできず、
+我々人間が乱数をシミュレーションして扱う際には、何らかの確定的な方法で乱数列(<strong>十分ランダムだとみなせる数の集合</strong>)を生成する必要が生じる。</p>
+<p>真の意味での乱数と区別する意味で、我々が普段ゲームなどで扱う乱数は擬似乱数と呼ばれるべきものだが、以下ではめんどくさいので、単に乱数と呼ぶことにする。</p>
+<p>詳細には立ち入らないが、乱数を生成する方法はいくつもあり、それ自体が研究の対象になっている。
+現在よく使われている代表的な手法はメルセンヌツイスタと呼ばれる方法で、多くのプログラミング言語でも採用されている。</p>
+<p>また<em>モンテカルロ法</em>と検索すると(主に学術的な分野で)乱数がどのように活用されているか、雰囲気を味わうことができる。
+ちなみに、モンテカルロはカジノで有名なモナコの地名Monte Carloに由来している。</p>
 </section>
 <section id="python">
 <h2><span class="section-number">5.2. </span>Pythonでの乱数生成<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
@@ -601,12 +599,12 @@
 <img alt="../_images/df056bc23c3eaa9dbf632c705c3ef198f925529c3a5dc3daeda2903f3aecdeec.png" src="../_images/df056bc23c3eaa9dbf632c705c3ef198f925529c3a5dc3daeda2903f3aecdeec.png" />
 </div>
 </div>
-<hr class="docutils" />
-<p>以下では、<code class="docutils literal notranslate"><span class="pre">random</span></code>モジュールのよく使う(?)機能をいくつか紹介する.</p>
-<blockquote>
-<div><p>また、<code class="docutils literal notranslate"><span class="pre">numpy</span></code>にも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、  <code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性がある。<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。<br />
-※ <code class="docutils literal notranslate"><span class="pre">randint</span></code>の場合は、<code class="docutils literal notranslate"><span class="pre">np.random.randint</span></code>だと終点を含まないなど、微妙な違いがあるので注意。モジュールの使い方や実装については<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html?highlight=randint#numpy.random.randint">公式Document</a>を参考にすること。これは<code class="docutils literal notranslate"><span class="pre">numpy</span></code>に限らない。</p>
-</div></blockquote>
+<p><strong>関連する注: numpy</strong></p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">numpy</span></code>にも<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>という下位のモジュールがあるので、<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>としても多くの場合では互換性がある。
+(<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールが<code class="docutils literal notranslate"><span class="pre">numpy</span></code>で代替できるのと少し似ている。)</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>とあだ名を使うなら<code class="docutils literal notranslate"><span class="pre">random</span></code>を<code class="docutils literal notranslate"><span class="pre">np.random</span></code>に置き換えて試してみよう。<br />
+※ <code class="docutils literal notranslate"><span class="pre">randint</span></code>の場合は、<code class="docutils literal notranslate"><span class="pre">np.random.randint</span></code>だと終点を含まないなど、<code class="docutils literal notranslate"><span class="pre">random</span></code>と<code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>間で微妙な違いがあるので注意。</p>
+<p>モジュールの使い方や実装については<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html?highlight=randint#numpy.random.randint">公式Document</a>を参考にすること。公式ドキュメントの重要性はやはり<code class="docutils literal notranslate"><span class="pre">numpy</span></code>に限らない。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numpyの中にあるrandintで(1,6)を指定し、サンプルをたくさん(10^6)作ってみる。</span>
@@ -624,12 +622,19 @@ numpyの(np.random.randintを使う)場合 =&gt; {1, 2, 3, 4, 5}
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">以下では</span><span class="err">、`</span><span class="n">random</span><span class="err">`</span><span class="n">モジュールのよく使う</span><span class="p">(</span><span class="err">?</span><span class="p">)</span><span class="n">機能をいくつか紹介する</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id3">
 <h2><span class="section-number">5.3. </span>無作為抽出<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>リストやrangeなどからランダムに要素を選びたいときには<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>が便利だ。<br />
 (たとえば[出席番号のリストからランダムに選ぶ]などをイメージしよう)</p>
-<p>ループに入れて5回くらい実行してみましょう。</p>
+<p>ループに入れて5回くらい実行してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -660,7 +665,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>の<code class="docutils literal notranslate"><span class="pre">choice</span></code>関数を使うのがよい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># replace = True/Falseで重複を認めるかどうかを指定できる </span>
 </pre></div>
 </div>
@@ -675,7 +680,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <p>ちなみに選んだものをソートしたければ組み込み関数<code class="docutils literal notranslate"><span class="pre">sorted</span></code>などを使うと良い:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">sorted_array</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sorted_array</span><span class="p">)</span>
@@ -737,7 +742,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <p>もうちょっとかっこよく描きたければ<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>というモジュールの<code class="docutils literal notranslate"><span class="pre">jointplot</span></code>を用いると良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -746,10 +751,10 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </div>
 <section id="id5">
 <h3><span class="section-number">5.4.1. </span>じゃんけん関数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>乱数を使ってじゃんけんをする関数を作ってみましょう。</p>
+<p>乱数を使ってじゃんけんをする関数を作ってみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Janken</span><span class="p">(</span> <span class="p">):</span>    
     <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span><span class="s2">&quot;パー&quot;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> 
 </pre></div>
@@ -772,7 +777,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#あるいは、手を0,1,2として計算する関数とじゃんけんの手に反映させる部分を分けても良い</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">Janken</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">Janken</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">RPS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;グー&quot;</span><span class="p">,</span><span class="s2">&quot;チョキ&quot;</span><span class="p">,</span> <span class="s2">&quot;パー&quot;</span><span class="p">]</span>  <span class="c1">#integer to Rock-Paper-Scissors</span>
 
@@ -796,7 +801,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 ２つの手の確率を指定すれば、残りも一意に決まるので、たとえば、0から1の区間から一様乱数を発生させて、ある領域に含まれたらグー、ある領域に含まれたらチョキ、残りはパー、とすれば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_RPS</span><span class="p">(</span><span class="n">p_rock</span><span class="p">,</span> <span class="n">p_scissors</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_RPS</span><span class="p">(</span><span class="n">p_rock</span><span class="p">,</span> <span class="n">p_scissors</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">p_rock</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -823,8 +828,7 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">じゃんけん関数を工夫したり</span><span class="err">、</span><span class="n">サザ</span><span class="err">◯</span><span class="n">さんやドラ</span><span class="err">◯</span><span class="n">もんのじゃんけんのパターンを解析することで</span><span class="err">、</span>  
-<span class="n">毎週土曜や日曜にドラ</span><span class="err">◯</span><span class="n">もんやサザ</span><span class="err">◯</span><span class="n">さんを倒す関数を作ってみるのも面白そうです</span><span class="err">。</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">じゃんけん関数を工夫したり</span><span class="err">、</span><span class="n">サザ</span><span class="err">◯</span><span class="n">さんやドラ</span><span class="err">◯</span><span class="n">もんのじゃんけんのパターンを解析することで</span><span class="err">、</span><span class="n">毎週土曜や日曜にドラ</span><span class="err">◯</span><span class="n">もんやサザ</span><span class="err">◯</span><span class="n">さんを倒す関数を作ってみるのも面白そうだ</span><span class="err">。</span>
 </pre></div>
 </div>
 </div>
@@ -832,11 +836,10 @@ a=&gt; 1 	b=&gt; 98 	c=&gt; 日本
 </section>
 <section id="clubsuit">
 <h3><span class="section-number">5.4.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>一様乱数を用いた円周率の計算<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
-<p>プログラミングでド定番の、乱数を使って円周率を求める方法も<br />
-Pythonならサクッと実装することができます。</p>
+<p>プログラミングでド定番の、乱数を使って円周率を求める方法もPythonならサクッと実装することができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pi_approx</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -853,7 +856,7 @@ Pythonならサクッと実装することができます。</p>
 </div>
 </div>
 <p>このコードでは、<span class="math notranslate nohighlight">\(10^p\)</span>組の一様乱数を発生させて、<br />
-円弧の中に入った個数/全体の数(num)で割ることで円周率を求めています。<br />
+円弧の中に入った個数/全体の数(num)で割ることで円周率を求めている。<br />
 (1/4円の面積は<span class="math notranslate nohighlight">\(\pi\)</span>/4で、正方形の面積が1であることを使う)</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/circle_random.png?raw=true" width=40%>  <p>乱数により生成するサンプルの数を増やしていって、精度が改善する様子を見てみよう。</p>
 <div class="cell docutils container">
@@ -896,8 +899,8 @@ p= 8 	 pi_approx 3.14153816 log10(abs(diff)) -4.263654581782899
 <p>なお、上のコードはメモリを食うので、これ以上<span class="math notranslate nohighlight">\(p\)</span>を増やすとだんだんGoogle Colab上では計算が厳しくなってくる。それまでの作業にも依存するが、<span class="math notranslate nohighlight">\(p\geq9\)</span>にして実行するとクラッシュする。このように場合によってはメモリ使用量も気にする必要がある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">pi_approx_mem</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">pi_approx_mem</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">p</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -924,7 +927,7 @@ p=8のとき =&gt; ndarrayのサイズは~  1.49  GB程度
 </section>
 <section id="id6">
 <h2><span class="section-number">5.5. </span>正規分布からの乱数生成<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>正規分布は多くの特徴的な性質を有しています.<br />
+<p>正規分布は多くの特徴的な性質を有している。
 それらは後述するとして…正規分布に従う乱数を生成するには<br />
 <code class="docutils literal notranslate"><span class="pre">random.gauss()</span></code>もしくは<code class="docutils literal notranslate"><span class="pre">random.normalvariate()</span></code>  を用いればよい.<br />
 ※両者は基本的に同じだが、前者のほうが高速らしい</p>
@@ -971,18 +974,18 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 </div>
-<p>サンプル数が増えるにつれて、正規分布に収束していく様子が見られます.</p>
+<p>サンプル数が増えるにつれて、正規分布に収束していく様子が見られる。</p>
 </section>
 <section id="seed">
 <h2><span class="section-number">5.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Link to this heading">#</a></h2>
-<p>これまでのプログラムでは、実行の度に答えが変わりました。</p>
+<p>これまでのプログラムでは、実行の度に答えが変わった。</p>
 <p>擬似的にでもランダム性が担保されているというのは便利だが、<br />
 実際にプログラミングで乱数を使って何かの作業を実装したいときは、<br />
 何か直感と反するような振る舞いをコードが示した際、<br />
 それがランダム性からくる偶然の挙動なのか、コードにバグがあるせいなのかを特定したくなる。<br />
 そんなときには、
 <code class="docutils literal notranslate"><span class="pre">random.seed(適当な整数値)</span></code><br />
-を使って乱数の”種”を指定することで、再現性のあるコードにすることができます。<br />
+を使って乱数の”種”を指定することで、再現性のあるコードにすることができる。
 たとえばサイコロの例でいうと</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1012,8 +1015,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 <p>は何度実行しても同じ答えになる。これは、乱数の生成前に”種”を指定しているため。</p>
 <p>イメージとしては、「無限に長い疑似乱数の羅列の中から10個並んだ数を選ぶときに、<br />
-どこからどこまでを抽出するかを指定する」のが、<br />
-この<code class="docutils literal notranslate"><span class="pre">random.seed</span></code>関数です(細かいことを無視すると、だいたいこんなイメージ).</p>
+どこからどこまでを抽出するかを指定する」のが、この<code class="docutils literal notranslate"><span class="pre">random.seed</span></code>関数(細かいことを無視すると、だいたいこんなイメージ).</p>
 <p>注意点としては、たとえばループを回して乱数を生成するときに</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1023,35 +1025,31 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>などとすると、乱数を生成する前に毎回seedが1に固定されるので<br />
 毎回同じ乱数になってしまうので、意図した挙動になるブロックで使うこと。</p>
 <p><strong>余談</strong><br />
-古いゲームだと、起動してからの経過時間が乱数の種になっていることが多いようで、<br />
-このパターンを調べることができれば、<br />
-原理的には(1/30~1/60秒程度の正確な入力が可能なら)望むようにゲームをスイスイ攻略することもできます。</p>
+古いゲームだと、起動してからの経過時間が乱数の種になっていることが多いようで、このパターンを調べることができれば、<br />
+原理的には(1/30~1/60秒程度の正確な入力が可能なら)望むようにゲームをスイスイ攻略することもできる。</p>
 <p>これを利用して攻略を進めたり、コンピュータにゲームの操作をやらせて、<br />
-メタル◯ライムに会心の一撃を食らわせてレベルアップしまくる動画などが昔はやりました(今も時々ある)。</p>
+メタル◯ライムに会心の一撃を食らわせてレベルアップしまくる動画などが昔はやりった(今も時々ある)。</p>
 </section>
 <section id="id7">
 <h2><span class="section-number">5.7. </span>正規分布に関して<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>この授業は確率・統計の授業ではないので、深入りはしませんが、<br />
-正規分布(ガウス分布,ガウシアン)に少し触れておきます.<br />
-(厳密性は少々犠牲にし、変数が1次元の場合の正規分布に限る)</p>
-<p>正規分布が重要である理由はいくつかありますが、</p>
+<p>この授業は確率・統計の授業ではないので、深入りはしないが、正規分布(ガウス分布,ガウシアン)に少し触れておく。
+(変数が1次元の場合の正規分布に限り、厳密性は少々犠牲にして説明する)</p>
+<p>正規分布が重要である理由はいくつかあるが、</p>
 <ul class="simple">
 <li><p>世の中に(近似的に)正規分布に従う確率変数がたくさんある</p></li>
 <li><p>“性質が良い”(扱いやすい)確率分布である</p></li>
 </ul>
-<p>の２点が代表的なところでしょうか。<br />
-たとえば、身長や体重の分布や、大学入試センター/共通試験の得点の分布なども、正規分布に近いことが知られています。</p>
-<p>ある変数<span class="math notranslate nohighlight">\(x\)</span>が中心<span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差<span class="math notranslate nohighlight">\(\sigma\)</span>の正規分布に従うとき、<br />
-<span class="math notranslate nohighlight">\(x\)</span>の確率密度関数<span class="math notranslate nohighlight">\(f(x)\)</span>は、以下の様に表現されます.</p>
+<p>の２点が代表的な理由だろうか。</p>
+<p>たとえば、1つめの点でいうと、同年代・同性の人の身長や体重の分布や、大学入試共通試験の得点の分布なども、正規分布に近いことが知られている。
+(もちろん例外はあって、左右非対称であったり二山型の分布になっていることもある)</p>
+<p>ある変数<span class="math notranslate nohighlight">\(x\)</span>が中心<span class="math notranslate nohighlight">\(\mu\)</span>、標準偏差<span class="math notranslate nohighlight">\(\sigma\)</span>の正規分布に従うとき、<span class="math notranslate nohighlight">\(x\)</span>の確率密度関数<span class="math notranslate nohighlight">\(f(x)\)</span>は、以下の様に表現される。</p>
 <p><span class="math notranslate nohighlight">\(f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp{(-\frac{(x-\mu)^2}{2\sigma^2})}\)</span></p>
-<p>一見、難しそうな式ですが、<span class="math notranslate nohighlight">\(x=\mu\)</span>で最大値となり、<br />
-<span class="math notranslate nohighlight">\(x\)</span>が<span class="math notranslate nohighlight">\(\mu\)</span>から離れていくとどんどん値が小さくなる関数になっています。</p>
-<p>関数の形を見てなんとなく「平均値の周りに広がった分布になっているんだな」<br />
-と理解できれば問題は有りません。</p>
+<p>一見、難しそうな式だが、重要なのは**<span class="math notranslate nohighlight">\(x=\mu\)</span>で最大値となり、<span class="math notranslate nohighlight">\(x\)</span>が<span class="math notranslate nohighlight">\(\mu\)</span>から離れていくとどんどん値が小さくなる関数**になっているという点だ。</p>
+<p>関数の形を見てなんとなく「平均値の周りに広がった分布になっているんだな」と理解できればこの授業では問題ない。</p>
 <p>実際に、上の<span class="math notranslate nohighlight">\(x\)</span>についての関数<span class="math notranslate nohighlight">\(f(x)\)</span>の値を、<span class="math notranslate nohighlight">\(\mu\)</span>や<span class="math notranslate nohighlight">\(\sigma\)</span>を変えながらplotしてみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1072,21 +1070,20 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <img alt="../_images/c50bca5ad20e0fe46ecff44e32f5de359bc471e86419a73bf8e29ab773fd165c.png" src="../_images/c50bca5ad20e0fe46ecff44e32f5de359bc471e86419a73bf8e29ab773fd165c.png" />
 </div>
 </div>
-<p>こんな感じ。このような形状の分布を示すデータ(量)が世の中には溢れています。</p>
+<p>こんな感じ。このような形状の分布を示すデータ(量)が世の中には溢れている。</p>
 <p>指数関数<span class="math notranslate nohighlight">\(\exp\)</span>の前についている係数<span class="math notranslate nohighlight">\(1/\sqrt{2\pi \sigma^2}\)</span>は、<br />
-この関数をあらゆるxの値で足し上げたときに、その値が1になるようにつけてあります.<br />
-つまり、x軸と関数<span class="math notranslate nohighlight">\(f(x)\)</span>が囲む領域の面積=xの全区間での積分<span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty}f(x) dx \)</span>が1になります.</p>
+この関数をあらゆるxの値で足し上げたときに、その値が1になるようにつけてある。
+つまり、x軸と関数<span class="math notranslate nohighlight">\(f(x)\)</span>が囲む領域の面積=xの全区間での積分<span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty}f(x) dx \)</span>が1になる。</p>
 <p>こうしておけばどの<span class="math notranslate nohighlight">\(\mu,\sigma\)</span>を持つ正規分布を考えたときにでも、<br />
-「どこからどこまでの区間の面積が全体に占める割合が何%だ」といった表現が可能になります。<br />
-つまり、確率として扱いやすくなります。</p>
+「どこからどこまでの区間の面積が全体に占める割合が何%だ」といった表現が可能になり、確率として扱いやすくなる。</p>
 <blockquote>
-<div><p>ちなみに関数<span class="math notranslate nohighlight">\(\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>は、<span class="math notranslate nohighlight">\(x\)</span>に対する有限区間での積分を解析的に求めることはできず(数値的に求めることはできる)、<span class="math notranslate nohighlight">\(x \in [-\infty,\infty]\)</span>で積分した場合にのみ、閉じた形で書き下すことができます。<br />
-その際、積分値<span class="math notranslate nohighlight">\(\int^\infty_{-\infty}\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>が、<span class="math notranslate nohighlight">\(\sqrt{2\pi \sigma^2}\)</span>になります。 c.f. ガウス積分</p>
+<div><p>ちなみに関数<span class="math notranslate nohighlight">\(\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>は、<span class="math notranslate nohighlight">\(x\)</span>に対する有限区間での積分を解析的に求めることはできず(数値的に求めることはできる)、<span class="math notranslate nohighlight">\(x \in [-\infty,\infty]\)</span>で積分した場合にのみ、閉じた形で書き下すことができる。
+その際、積分値<span class="math notranslate nohighlight">\(\int^\infty_{-\infty}\exp{\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}\)</span>が、<span class="math notranslate nohighlight">\(\sqrt{2\pi \sigma^2}\)</span>になる。 c.f. ガウス積分</p>
 </div></blockquote>
-<p>以下では<span class="math notranslate nohighlight">\(\mu=0.0\)</span>, <span class="math notranslate nohighlight">\(\sigma=1.0\)</span>のみを考えることにして、もう少し正規分布の特徴的な性質について見てみましょう。</p>
+<p>以下では<span class="math notranslate nohighlight">\(\mu=0.0\)</span>, <span class="math notranslate nohighlight">\(\sigma=1.0\)</span>のみを考えることにして、もう少し正規分布の特徴的な性質について見てみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">xr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">xr</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -1111,32 +1108,28 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <img alt="../_images/9264cf383efa7cd564941390737cde600e52674750abba0e29641a0090787fb6.png" src="../_images/9264cf383efa7cd564941390737cde600e52674750abba0e29641a0090787fb6.png" />
 </div>
 </div>
-<p>上の図では、<span class="math notranslate nohighlight">\(\mu \pm 1\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 3\sigma\)</span>の領域での正規分布とx軸とが囲む領域を、それぞれ赤色、青色、緑色で塗りつぶしました。<br />
-(1シグマ, 2シグマ, 3シグマと呼んだりします)</p>
-<p>これらが占める面積は、それぞれ0.6827, 0.9545,0.9973(いずれも”約”)となり、<br />
-68%,95%,99%区間などと呼ぶことも多いです。<br />
-このことは、任意の<span class="math notranslate nohighlight">\(\mu,\sigma\)</span>を持つ1次元の正規分布について成立します。</p>
-<p>正負の値をとる<span class="math notranslate nohighlight">\(x\)</span>(たくさんの人のなんかの得点とでも思ってください)の分布が<br />
+<p>上の図では、<span class="math notranslate nohighlight">\(\mu \pm 1\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span>, <span class="math notranslate nohighlight">\(\mu \pm 3\sigma\)</span>の領域での正規分布とx軸とが囲む領域を、それぞれ赤色、青色、緑色で塗りつぶした。<br />
+(1シグマ, 2シグマ, 3シグマと呼んだりする)</p>
+<p>これらが占める面積は、それぞれ0.6827, 0.9545,0.9973(いずれも”約”)となり、68%,95%,99%区間などと呼ぶことも多い。<br />
+このことは、任意の<span class="math notranslate nohighlight">\(\mu,\sigma\)</span>を持つ1次元の正規分布について成立する。</p>
+<p>正負の値をとる<span class="math notranslate nohighlight">\(x\)</span>(たくさんの人のなんらかのスコアとでもしよう)の分布が<br />
 平均0.0,標準偏差が1.0の<strong>正規分布に従っている場合</strong>(理想的な場合)なら、<br />
-全体の68%程度の人の得点は1シグマ領域(赤)、<br />
-つまり-1から1までの間に分布していることになります。</p>
-<p>もちろん、実際の場合、分布は真には正規分布になっていないので、<br />
-平均と標準偏差を計算したときに、いつでも1シグマの中に<br />
-全体の68%が分布しているわけではありません。</p>
+全体の68%程度の人の得点は1シグマ領域(赤)、つまり-1から1までの間に分布していることを意味する。</p>
+<p>もちろん、実際の場合、分布は真には正規分布になっていないし、
+有限なサンプル数を考えた場合、平均と標準偏差を計算しても1シグマの中に全体の68%が分布しているわけではない。</p>
 <section id="id8">
 <h3><span class="section-number">5.7.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> おまけ: 多変数正規分布<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>上の正規分布の考え方を拡張して、多変数の場合を考えることもできます。</p>
-<p>2つ以上の変数であることを明示的に表すため、
-多次元正規分布や多変数正規分布などと呼ばれることが多いです。</p>
+<p>上の正規分布の考え方を拡張して、多変数の場合を考えることもできる。</p>
+<p>2つ以上の変数であることを明示的に表すため、多次元正規分布や多変数正規分布などと呼ばれることが多い。</p>
 <p>1次元の正規分布が、中心と分散(あるいは標準偏差(分散の平方根))で特徴づけられたのに対し、
-多次元正規分布は、中心(ベクトル)と共分散(行列)によって特徴づけられます。</p>
+多次元正規分布は、中心(ベクトル)と共分散(行列)によって特徴づけられる。</p>
 <p><span class="math notranslate nohighlight">\(N\)</span>個の変数が、
 平均を<span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>,共分散を<span class="math notranslate nohighlight">\(\Sigma\)</span>とする<span class="math notranslate nohighlight">\(N\)</span>次元正規分布に従うとき、
 <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>の確率密度関数は</p>
 <p><span class="math notranslate nohighlight">\(\frac{1}{\sqrt{(2\pi)^N |\Sigma|}} \exp{\left( -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\boldsymbol{x}-\boldsymbol{\mu}) \right)}\)</span></p>
-<p>で与えられます。</p>
+<p>で与えられる。</p>
 <p>注) <span class="math notranslate nohighlight">\(x\)</span>←がGoogle ColabのTeXだとうまく太字にならないが多成分(ベクトル)のつもり</p>
-<p>二次元の場合に、適当な<span class="math notranslate nohighlight">\(\mu\)</span>と<span class="math notranslate nohighlight">\(\Sigma\)</span>を取って、多次元正規分布からサンプルしてみましょう。</p>
+<p>二次元の場合に、適当な<span class="math notranslate nohighlight">\(\mu\)</span>と<span class="math notranslate nohighlight">\(\Sigma\)</span>を取って、多次元正規分布からサンプルしてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu1</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
@@ -1178,7 +1171,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>二次元のヒストグラムにすると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -1202,7 +1195,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <img alt="../_images/fffce4874ba48003d4f3b98c1b44df1a89267c72f2d871021d89b4c70a27c0fe.png" src="../_images/fffce4874ba48003d4f3b98c1b44df1a89267c72f2d871021d89b4c70a27c0fe.png" />
 </div>
 </div>
-<p>中心付近にたくさん分布している様子が見て取れます。</p>
+<p>中心付近にたくさん分布している様子が見て取れる。</p>
 <p>各サンプルごとに、<span class="math notranslate nohighlight">\(x\)</span>,<span class="math notranslate nohighlight">\(y\)</span>の分散、共分散を計算してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1223,8 +1216,7 @@ var(x) 0.5996593224718298 var(y) 0.996967770694425 cov(x,y) -0.29333540781674877
 </div>
 </div>
 </div>
-<p>確かに上で与えた共分散の各成分ともちゃんと一致しています。</p>
-<p>–</p>
+<p>確かに上で与えた共分散の各成分ともちゃんと一致している。</p>
 <p>ちなみに…サンプルを使うのではなく、<br />
 式から計算される値をつかって3次元の図を描くと</p>
 <div class="cell docutils container">
@@ -1242,7 +1234,7 @@ var(x) 0.5996593224718298 var(y) 0.996967770694425 cov(x,y) -0.29333540781674877
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">axes3d</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">axL</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 <span class="n">axR</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
@@ -1268,16 +1260,16 @@ z=f(x,y)の値に応じて色をつけている.</p>
 </section>
 <section id="id9">
 <h2><span class="section-number">5.8. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> ランダムウォーク(酔歩)<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>ここまでの乱数の生成方法を応用すると、ランダムウォーク(酔歩)と呼ばれるものを実装することもできます。</p>
-<p>あなたは原点(0,0)に立っていて、毎秒ごとに[-1,1]の一様乱数に従ってx方向とy方向に移動するとします。<br />
-T秒後に立ってる場所や、軌跡をプロットしてみましょう。</p>
+<p>ここまでの乱数の生成方法を応用すると、ランダムウォーク(酔歩)と呼ばれるものを実装することもできる。</p>
+<p>あなたは原点(0,0)に立っていて、毎秒ごとに[-1,1]の一様乱数に従ってx方向とy方向に移動するとする。
+T秒後に立ってる場所や、軌跡をプロットしてみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">])</span> <span class="c1">#開始地点</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#stepの数</span>
 
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="c1">## 同じ答えにしたければ乱数を固定しておきましょう</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="c1">## 同じ答えにしたければ乱数を固定しておく</span>
 <span class="n">trajectory</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="n">xy</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
@@ -1298,18 +1290,14 @@ T秒後に立ってる場所や、軌跡をプロットしてみましょう。<
 <img alt="../_images/63bf24981fac31e97514f5ae5d47fc800dfe696af3bfdcf05c015605f25c1aa3.png" src="../_images/63bf24981fac31e97514f5ae5d47fc800dfe696af3bfdcf05c015605f25c1aa3.png" />
 </div>
 </div>
-<p>今の場合、x方向y方向いずれも、<br />
-特別な方向への指向はなく完全にランダムですが、<br />
-獲得関数や勾配といったものが定義されるとさらなる応用が考えられます。</p>
-<p>たとえば、地図に載っていない山があったと仮定して、<br />
-その山の頂上にたどり着くためには、上のようなランダムウォークでは効率が悪いので、<br />
-山の傾斜の情報(勾配)を利用しながらランダムな大きさで進む、といった方法が思いつきます。</p>
-<p>大きさをランダムにすることで、局所的な峠に捕まることを避けることもできるかもしれません(場合によりけり).</p>
+<p>今の場合、x方向y方向いずれも、特別な方向への指向はなく完全にランダムに動いているが、
+獲得関数や勾配といったものが定義されるとさらなる応用が考えられる。</p>
+<p>たとえば、地図に載っていない山があったと仮定して、その山の頂上にたどり着くためには、上のようなランダムウォークでは効率が悪いので、<br />
+山の傾斜の情報(勾配)を利用しながらランダムな大きさで進む、といった方法が思いつく</p>
+<p>大きさをランダムにすることで、局所的な峠に捕まることを避けることもできるかもしれない(場合によりけり).</p>
 <p><strong><span class="math notranslate nohighlight">\(\clubsuit\)</span>進んだ注</strong></p>
-<p>ランダムウォークやその派生の方法は、<br />
-最適化や確率分布からのサンプリングが必要な状況下でよく用いられ、<br />
-統計学、自然科学、機械学習など様々な分野で活躍しています。<br />
-c.f. サンプリング,マルコフ連鎖モンテカルロ法</p>
+<p>ランダムウォークやその派生の方法は、最適化や確率分布からのサンプリングが必要な状況下でよく用いられ、<br />
+統計学、自然科学、機械学習など様々な分野で活躍している。c.f. サンプリング, マルコフ連鎖モンテカルロ法, etc.</p>
 </section>
 </section>
 
