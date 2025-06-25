@@ -456,7 +456,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-linux">Windows/Linux環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -618,7 +623,8 @@ $pip3 install pandas
 $pip3 install Selenium
 </pre></div>
 </div>
-<p>などを実行します。</p>
+<p>などを実行します。ただし、およそ3.11以降からライブラリの管理に関する指針が変更になったため、仮想環境の作成が推奨されるようになった。
+詳しくは<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>を参照のこと。</p>
 <p>Google Colab環境では毎度</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
 </pre></div>
@@ -628,14 +634,42 @@ $pip3 install Selenium
 (ライブラリのimportはセッションごとに必要です)</p>
 </li>
 </ul>
-<p>その他、Linuxコマンドの使い方等については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_environment.ipynb">元のノートブック</a>を参照</p>
+<p>その他、Linuxコマンドの使い方等については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_environment.ipynb">環境構築の概要のノートブック</a>を参照</p>
 </section>
 <section id="id1">
 <h2>その他の注<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="windows-linux">
+<h3>Windows/Linux環境<a class="headerlink" href="#windows-linux" title="Link to this heading">#</a></h3>
 <p>Windows StoreからPythonのインストールを行い、WSLの環境構築をした場合、
 WSLのターミナルから、双方のシステムのPython/pipが見える。</p>
 <p>実行する際は、Windows側とLinux側、どちらのターミナル/Python/pipを使うのかを意識しよう。
 Windows側のPython/pipには、python3.9.exeやpip3.9.exeなど実行ファイルを示す.exeがついているので、区別はしやすい。</p>
+</section>
+<section id="windowslinux">
+<h3>Windows環境のどこにLinuxのファイルが保存されるか<a class="headerlink" href="#windowslinux" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Users\XXX\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs</span></code></p>
+<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、<br />
+Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となります。<br />
+Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開きます。</p>
+<p>パスが上記と微妙に異なる場合は、<br />
+WindowsのユーザーフォルダからAppDataを開いて、<br />
+検索バーでUbuntuと検索すれば、<br />
+該当するディレクトリが見つけられるはずです。<br />
+(隠しフォルダを非表示にしていると見えないかも)</p>
+<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと<br />
+左側にLinuxのペンギンマークがあるので、そこから参照できます。</p>
+</section>
+<section id="linuxwindows">
+<h3>Linux側からWindows側のファイルにアクセスする<a class="headerlink" href="#linuxwindows" title="Link to this heading">#</a></h3>
+<p>WindowsのディスクはLinuxからみた<code class="docutils literal notranslate"><span class="pre">/mnt/</span></code>以下にマウントされている。<br />
+たとえば、<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Downloads</span></code>
+で、Windows側のダウンロードフォルダのパスを指定できる。</p>
+<p>OneDriveによるバックアップに含まれているフォルダは、<br />
+デフォルトパスから、OneDriveの下に変更されていることがあるので注意。</p>
+<p>(例: デスクトップはLinuxから見ると<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Desktop</span></code>のはずだが、<br />
+デスクトップフォルダがOneDriveのバックアップ対象になっていると、<br />
+<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/OneDrive/Desktop</span></code>などと変更されてしまうので注意。)</p>
+</section>
 </section>
 </section>
 
@@ -707,7 +741,12 @@ Windows側のPython/pipには、python3.9.exeやpip3.9.exeなど実行ファイ�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-linux">Windows/Linux環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

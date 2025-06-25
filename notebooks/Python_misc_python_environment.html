@@ -457,9 +457,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.の方法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2-1. の方法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl">WSLのバージョン確認と更新</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wslmatplotlibshow">WSL環境でMatplotlibのshow()などを使う</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2-2.の方法</a></li>
 </ul>
 </li>
@@ -532,6 +529,7 @@
 </li>
 </ul>
 </li>
+<li><p>Visual Studioなどの統合開発環境(IDE)を用いてインストールする (この資料では説明しない)</p></li>
 </ol>
 <section id="id1">
 <h3>1.の方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -545,7 +543,7 @@
 <div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/z2_nNvpgonY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
 </div>
 <p>メニューからMicrosoft Storeを開き、pythonと検索する。</p>
-<p>Python3.9~3.11あたりから選び[入手]する。</p>
+<p>Python3.11あたりを選び[入手]する。</p>
 <p><strong>インストールしたpythonの使い方</strong></p>
 <p>Windows　Terminal上で</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
@@ -600,162 +598,10 @@
 <section id="id2">
 <h3>2-1. の方法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Windowsの中にLinux(とくにUbuntu)を入れる方法</p>
-<p><a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_env_forWin11.ipynb">Windows11用の資料</a>も参考になります。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/deZTrWYk9vU&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/deZTrWYk9vU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
-</div>
-<ul>
-<li><p><strong>手順1.WSLの有効化</strong></p>
-<p>コントロールパネルから[プログラム]-&gt;[Windowsの機能の有効化または無効化] を選択し<br />
-「Windows Subsystem for Linux」にチェックを入れて有効化する(再起動が必要)</p>
-</li>
-<li><p><strong>手順2. Ubuntuのインストール</strong></p>
-<p>Microsoft storeでUbuntuと検索し、1番目(単にUbuntuという名前のもの)か、<br />
-あるいは(最新または1-2つ前程度の)LTS(long-term support)をインストールする</p>
-<p>※Windows OSのアップデートをしばらく行っていない場合、入手ボタンが押せない。<br />
-一般論として、OSのマイナーアップデートは都度行うようにしましょう。<br />
-(メジャーアップデートは場合による…)</p>
-</li>
-<li><p><strong>手順3.Ubuntuの起動・初期設定</strong></p>
-<p>スタートメニューからUbuntuを起動する</p>
-<ul class="simple">
-<li><p>Enter new UNIX username: Linuxで使うユーザー名を入力する</p></li>
-<li><p>new password: パスワードを設定する</p></li>
-<li><p>Retype new password: 確認のため再入力する</p></li>
-</ul>
-<p>これで、windows内にlinux環境が構築されます。</p>
-</li>
-<li><p><strong>手順4. aptのupdate/upgrade</strong></p>
-<p>Ubuntuターミナルに以下を入力し実行</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update
-$sudo apt upgrade
-</pre></div>
-</div>
-<p>注:上の<code class="docutils literal notranslate"><span class="pre">$</span></code>は皆さんが入力すべきものではなく、<br />
-Ubuntuターミナルにある$を指し<br />
-Pythonの対話モードなどで打ち込む場合と区別するための表記。</p>
-<p>sudoはコマンドの頭につけることで管理者権限で実行する、という命令を意味します。<br />
-実行時に、Ubuntu用に設定したパスワードが要求されます<br />
-入力しても画面には表示されないので注意しながら打ち込んでEnterを押す。<br />
-(間違っても再度入力を求めてくれますし、やめたければCtrl+C)</p>
-<p>aptはLinux(Debian系)のパッケージ管理システム<br />
-※PCの時刻設定がきちんと行われていないと、aptのupdate/upgradeに失敗します。</p>
-</li>
-<li><p><strong>手順5. Pythonのインストール</strong></p>
-<p>Ubuntuには初めからPython3系が含まれていますが、<br />
-pythonの最新バージョンをpip込みでインストールしましょう。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip -y
-</pre></div>
-</div>
-<p>これでpython3.xの最新バージョンと、python用のパッケージマネージャpipがインストールされる</p>
-</li>
-<li><p><strong>手順6. ライブラリのインストール</strong></p>
-<p>ライブラリ・モジュールをインストールしたければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$pip3 install matplotlib
-$pip3 install pandas
-$pip3 install Selenium
-</pre></div>
-</div>
-<p>などを実行する。</p>
-</li>
-</ul>
+<p><a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_env_forWin11.ipynb">Windows11用の資料</a>を参照すること。</p>
 </section>
 <section id="windowslinux">
 <h3>Windows環境のどこにLinuxのファイルが保存されるか<a class="headerlink" href="#windowslinux" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">C:\Users\XXX\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs</span></code></p>
-<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、<br />
-Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となります。<br />
-Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開きます。</p>
-<p>パスが上記と微妙に異なる場合は、<br />
-WindowsのユーザーフォルダからAppDataを開いて、<br />
-検索バーでUbuntuと検索すれば、<br />
-該当するディレクトリが見つけられるはずです。<br />
-(隠しフォルダを非表示にしていると見えないかも)</p>
-<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと<br />
-左側にLinuxのペンギンマークがあるので、そこから参照できます。</p>
-</section>
-<section id="linuxwindows">
-<h3>Linux側からWindows側のファイルにアクセスする<a class="headerlink" href="#linuxwindows" title="Link to this heading">#</a></h3>
-<p>WindowsのディスクはLinuxからみた<code class="docutils literal notranslate"><span class="pre">/mnt/</span></code>以下にマウントされている。<br />
-たとえば、<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Downloads</span></code>
-で、Windows側のダウンロードフォルダのパスを指定できる。</p>
-<p>OneDriveによるバックアップに含まれているフォルダは、<br />
-デフォルトパスから、OneDriveの下に変更されていることがあるので注意。</p>
-<p>(例: デスクトップはLinuxから見ると<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Desktop</span></code>のはずだが、<br />
-デスクトップフォルダがOneDriveのバックアップ対象になっていると、<br />
-<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/OneDrive/Desktop</span></code>などと変更されてしまうので注意。)</p>
-</section>
-<section id="wsl">
-<h3>WSLのバージョン確認と更新<a class="headerlink" href="#wsl" title="Link to this heading">#</a></h3>
-<p>Windows10を使っていてMS Storeから導入した方で<br />
-GUIを伴う処理を行いたい場合、WSLのバージョンを2にする必要がある。</p>
-<p>以下の手順でバージョンを確認し、必要なら更新しよう</p>
-<ol class="arabic">
-<li><p>スタートメニューからWindows PowerShellを開く</p></li>
-<li><p>PowerShell上で下記のコマンドを入力し、バージョンを確認する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">wsl</span> <span class="o">--</span><span class="nb">list</span> <span class="o">--</span><span class="n">verbose</span>
-</pre></div>
-</div>
-<p>出力結果をみてUbuntuのVERSIONが1になっている場合<br />
-更新を行おう</p>
-</li>
-<li><p>更新のための前準備として、<a class="reference external" href="https://aka.ms/wsl2kernel">https://aka.ms/wsl2kernel</a>
-にアクセスし<br />
-x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージをダウンロードする。<br />
-ダウンロードが終わったらパッケージを起動して、案内にしたがって実行する</p></li>
-<li><p>PowerShellに戻り、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">version</span> <span class="n">Ubuntu</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>を実行しwslのバージョンを2に変更する(そこそこ時間がかかる)</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/ss_wsl.png?raw=true" width=50%>   
-</li>
-</ol>
-</section>
-<section id="wslmatplotlibshow">
-<h3>WSL環境でMatplotlibのshow()などを使う<a class="headerlink" href="#wslmatplotlibshow" title="Link to this heading">#</a></h3>
-<p>WSL(今はUbuntu)では、そのままでplt.show()などの<br />
-ウィンドウを開くような操作が使えない。</p>
-<p>その場合はx11とtkinterを含むpython3をインストールしよう</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt update
-$ sudo apt upgrde
-$ sudo apt install language-pack-ja
-$ sudo apt install x11-apps
-$ sudo apt install python3-tk
-</pre></div>
-</div>
-<p>さらにXサーバ(以下ではVcXsrvを選びます)をインストールする:</p>
-<ol class="arabic">
-<li><p><a class="reference external" href="https://sourceforge.net/projects/vcxsrv/">https://sourceforge.net/projects/vcxsrv/</a>
-からDownload</p></li>
-<li><p>ダウンロードしたものを実行</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/VcXsrvSS.png?raw=true" width=50%>
-<p>(デスクトップショートカットは無くても良い)</p>
-</li>
-<li><p>スタートメニューからXLaunchを実行</p>
-  <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Xss1.png?raw=true" width=50%>
-<p>道なりに進んでAdditional parameters for VcXsrvの欄に-acを入力し進む</p>
-</li>
-<li><p>“Save Configuration”を選択してショートカットを作成することで、次回以降同様の作業をしなくても良いようにできる</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$xlogo
-</pre></div>
-</div>
-<p>を実行するか、Pythonの対話環境の中で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>などとやってウィンドウが表示されればOK.</p>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Xss2.png?raw=true" width=50%>
- <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Xss3.png?raw=true" width=50%></li>
-</ol>
 </section>
 <section id="id3">
 <h3>2-2.の方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
@@ -766,26 +612,19 @@ $ sudo apt install python3-tk
 </section>
 <section id="mac">
 <h2>Macの場合<a class="headerlink" href="#mac" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/X2FMQYpXtGY&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/X2FMQYpXtGY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
-</div>
-<p>python2.xやpython3.x (xは購入機種・時期によって違う)が元々入っている。</p>
+<p>python3.x (xは購入機種・時期によって違う)が元々入っている。</p>
 <p>Launchpadにある[その他]から<strong>ターミナル</strong>を開き、<br />
 <code class="docutils literal notranslate"><span class="pre">python</span></code>と入力し、タブキーを2回押すと該当するものが表示される。<br />
 以下は一例:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python2</span>            <span class="n">python2</span><span class="mf">.7</span><span class="o">-</span><span class="n">config</span>   <span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.7</span><span class="o">-</span><span class="n">config</span>   <span class="n">python3</span><span class="mf">.7</span><span class="n">m</span><span class="o">-</span><span class="n">config</span>  <span class="n">pythonw</span>            
-<span class="n">python</span><span class="o">-</span><span class="n">config</span>      <span class="n">python2</span><span class="mf">.7</span>          <span class="n">python3</span>            <span class="n">python3</span><span class="mf">.7</span>          <span class="n">python3</span><span class="mf">.7</span><span class="n">m</span>         <span class="n">pythontex</span>          <span class="n">pythonw2</span><span class="mf">.7</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">config</span>  <span class="n">python3</span><span class="mf">.12</span><span class="o">-</span><span class="n">config</span>
+<span class="n">python</span><span class="o">-</span><span class="n">build</span>       <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  <span class="n">python3</span><span class="mf">.9</span>
+<span class="n">python</span><span class="o">-</span><span class="n">config</span>      <span class="n">python3</span><span class="mf">.11</span>         <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">config</span>
+<span class="n">python3</span>            <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">config</span>  <span class="n">pythontex</span>
+<span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  
+<span class="n">python3</span><span class="mf">.10</span>         <span class="n">python3</span><span class="mf">.12</span>     
 </pre></div>
 </div>
-<p>python3がある場合は、
-<code class="docutils literal notranslate"><span class="pre">$python3</span></code>
-と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く※。</p>
+<p>python3がある場合は、<code class="docutils literal notranslate"><span class="pre">$python3</span></code>と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く※。</p>
 <p>※初回起動時はXcodeの導入が必要かもしれない<br />
 その場合は、ターミナルに</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
@@ -808,22 +647,15 @@ Xcodeのサイズがでかいので安定したネットワーク下で実行す
 </pre></div>
 </div>
 <p>と順にターミナルで実行する(暫く掛かるかも).</p>
-<p>※python3がもともとない場合は、3つめのものを</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">python3</span>
-</pre></div>
-</div>
-<p>などと置き換える。</p>
 <p>インストールに成功すれば、python用のパッケージマネージャ(pip)も使えるようになるはず。<br />
 以後は</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
 </pre></div>
 </div>
-<p>などとすると、python用のモジュールがインストールされ、<br />
-pythonからいつでもインポートして使うことができる。</p>
-<p>MacにDocker環境を入れておけば、<code class="docutils literal notranslate"><span class="pre">apt</span></code>で色々揃うので、レガシーコードの動作確認等にも役に立つ。</p>
-<p>M1以降のApple制のCPUを搭載している場合、Pythonのパッケージ管理やDockerの導入などはやや難易度が上がる。
-(※英語で調べれば必要な情報は出てくる)</p>
+<p>などとすると、python用のモジュールがインストールされ、pythonからいつでもインポートして使うことができる。</p>
+<p>ただし、~3.11以降、Pythonのライブラリ管理方針が変わったため、仮想環境の作成が推奨されるようになった。
+詳しくは<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>を参照のこと。</p>
 </section>
 <section id="linux">
 <h2>Linuxの場合<a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
@@ -1177,9 +1009,6 @@ Jupyter環境などでPythonコードを実行する際にも、作成した仮�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.の方法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2-1. の方法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl">WSLのバージョン確認と更新</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wslmatplotlibshow">WSL環境でMatplotlibのshow()などを使う</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2-2.の方法</a></li>
 </ul>
 </li>
