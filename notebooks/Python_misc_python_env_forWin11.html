@@ -456,6 +456,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a></li>
 </ul>
             </nav>
         </div>
@@ -528,17 +529,8 @@ IntelのCPUを搭載したマシンでも必要になったようだ。</p>
 ダウンロードしたファイルを実行する。
 Next→Windowsシステム側の警告「はい」を選択→Finishで完了する。</p>
 </li>
-<li><p><strong>手順3. WSLのバージョンの確認</strong></p>
-<p>Windows Terminal上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">-</span><span class="n">l</span> <span class="o">-</span><span class="n">v</span>
-</pre></div>
-</div>
-<p>と打ち込んでEnterを押すと、WSLのバージョンが表示される。
-もしもバージョンが1であれば、WSL2への変更が推奨される。</p>
-<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/wsl/basic-commands?source=recommendations#set-wsl-version-to-1-or-2">参考リンク</a></p>
-</li>
-<li><p><strong>手順4. Windows TerminalからWSLのインストール</strong></p>
-<p>スタートメニューからterminalなどと打ち込んで<br />
+<li><p><strong>手順3. Windows TerminalからWSLのインストール</strong></p>
+<p>スタートメニューからterminalなどと打ち込んでターミナルを開く。<br />
 <strong>ターミナルの上で右クリックして[管理者として実行]する</strong><br />
 このアプリがデバイスに変更を加えることを許可しますかというポップアップが出た場合、はいを選択すれば良い。</p>
 <p>次にターミナルに</p>
@@ -547,22 +539,21 @@ Next→Windowsシステム側の警告「はい」を選択→Finishで完了す
 </div>
 <p>と打ちEnterを押すことで、Ubuntuのインストールが始まる。</p>
 </li>
-<li><p><strong>手順5. Ubuntuの起動</strong></p>
-<p>Ubuntuのウィンドウが開く※ので<br />
-指示(Press any key to continue…)に従って適当なキーを押す。</p>
+<li><p><strong>手順4. Ubuntuの起動</strong></p>
+<p>新しいウィンドウが開く※ので指示(Press any key to continue…)があればそれに従って適当なキーを押す。</p>
   <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/wsl_3.png?raw=true" width=50%>   
 <p>※ウィンドウが開いたときにerror: 0x800701bcが発生している場合は、手順2→4を再度行ってみよう。
 もしもそれでも解決しない場合は、教員に尋ねること。</p>
 </li>
-<li><p><strong>手順6. Ubuntuの初期設定</strong></p>
+<li><p><strong>手順5. Ubuntuの初期設定</strong></p>
 <p>しばらくすると<code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">new</span> <span class="pre">UNIX</span> <span class="pre">username:</span> </code><br />
 とLinuxシステム用のusernameを求められるので<br />
-適当なものを入力してEnterを押す<br />
+適当なものを入力してEnterを押す。<br />
 usernameは半角英数字にしよう。あとは…短い方があとあと便利。</p>
 <p>その後
 <code class="docutils literal notranslate"><span class="pre">NewPassword</span></code>
 とパスワードの設定を求められるので打ち込んでEnter<br />
-<strong>この際、パスワードの秘匿化のために何も表示されずカーソルも動かないが、入力しているので安心して打ち込もう</strong></p>
+<strong>この際、パスワードの秘匿化のために何も表示されずカーソルも動かないが、入力しているので安心して間違わないよう打ち込もう</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Retype</span> <span class="pre">new</span> <span class="pre">password</span></code>(もっかい打て)と言われるのでもう一度</p>
 <p>ユーザー名が緑色で表示されていて、エラーメッセージ等がなければOK</p>
   <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/wsl_4_1.png?raw=true" width=50%>   
@@ -598,19 +589,20 @@ Pythonの対話モードなどで打ち込む場合と区別するための表�
 </pre></div>
 </div>
 <p>などとして、様々なものを簡単にインストールすることが出来ます。</p>
-<p>※PCの時刻設定がきちんと行われていないと、aptのupdateやupgradeに失敗します。</p>
+<p>※PCの時刻設定がきちんと行われていないと、aptのupdateやupgradeに失敗することがあるので注意。</p>
 </li>
 <li><p><strong>手順2. Pythonのインストール</strong></p>
-<p>Ubuntuには初めからPython3系が含まれていますが、</p>
-<p>pythonの最新バージョンをpip込みでインストールしましょう。</p>
+<p>Ubuntuには初めからPython3系が含まれている。Ubuntuのバージョンなどによってバージョンが異なるが、
+サポートされているバージョンであれば問題ない。</p>
+<p>pipというPythonのパッケージマネージャが無い場合は、以下のコマンドでpip込みでインストールできる。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip -y
 </pre></div>
 </div>
-<p>これでpython3.xとpython用のパッケージマネージャpipがインストールされます。</p>
+<p>これでpython3.xとpython用のパッケージマネージャpipがインストールされます(手順1でaptのupdate/upgradeが終わっていないと失敗することがあるので注意)。</p>
 </li>
 <li><p><strong>手順3. Pythonの対話モードに入ってみよう</strong></p>
 <p>インストールが終わったら<code class="docutils literal notranslate"><span class="pre">python3</span></code>と打ち込んでEnterを押すと<br />
-Pythonの対話モードに入ります。対話モードの中で</p>
+Pythonの対話モードに入ります(Pythonのバージョンも確認できる)。対話モードの中で</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -637,6 +629,13 @@ $pip3 install Selenium
 </li>
 </ul>
 <p>その他、Linuxコマンドの使い方等については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_environment.ipynb">元のノートブック</a>を参照</p>
+</section>
+<section id="id1">
+<h2>その他の注<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Windows StoreからPythonのインストールを行い、WSLの環境構築をした場合、
+WSLのターミナルから、双方のシステムのPython/pipが見える。</p>
+<p>実行する際は、Windows側とLinux側、どちらのターミナル/Python/pipを使うのかを意識しよう。
+Windows側のPython/pipには、python3.9.exeやpip3.9.exeなど実行ファイルを示す.exeがついているので、区別はしやすい。</p>
 </section>
 </section>
 
@@ -708,6 +707,7 @@ $pip3 install Selenium
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a></li>
 </ul>
   </nav></div>
 
