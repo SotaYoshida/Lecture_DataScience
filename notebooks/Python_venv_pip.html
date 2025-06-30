@@ -527,13 +527,14 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 </pre></div>
 </div>
 <p>上記のコマンドで、現在のディレクトリに<code class="docutils literal notranslate"><span class="pre">name_of_venv</span></code>という名前の仮想環境が作成される。
-これだけ。とても簡単。<br />
+これだけ。とても簡単。<code class="docutils literal notranslate"><span class="pre">name_of_venv</span></code>は適宜自身で管理・識別しやすい名前に変更すること。
 ※WSLでdefaultで入っているPython3の場合、<code class="docutils literal notranslate"><span class="pre">python3-venv</span></code>がインストールされていない場合があり、その場合は別途指示に従ってインストールする必要がある。</p>
 <p>作成した仮想環境に入るには、以下のコマンドを実行する。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/path_to_venv/name_of_venv/bin/activate
 </pre></div>
 </div>
-<p>この状態で、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>などのコマンドを実行すると、仮想環境内にライブラリがインストールされる。</p>
+<p>当然、<code class="docutils literal notranslate"><span class="pre">/path_to_venv/name_of_venv/</span></code>の箇所は実際の仮想環境のパスに置き換える必要がある。
+この状態で、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>などのコマンドを実行すると、仮想環境内にライブラリがインストールされる。</p>
 <p>グローバル環境に戻りたいときや、別の仮想環境に移りたいときは、以下のコマンドを実行すれば良い。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
 </pre></div>
@@ -566,6 +567,7 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 </div>
 <p>VS Codeを再起動すると良い。
 これでも稀に表示されないことがあるが、そのときはVS Codeの<code class="docutils literal notranslate"><span class="pre">python.venvPath</span></code>を編集するとよい。</p>
+<p>くどいが、仮想環境の名前<code class="docutils literal notranslate"><span class="pre">name_venv</span></code>や、表示名<code class="docutils literal notranslate"><span class="pre">display_name_venv</span></code>は適宜自身の環境に合わせて変更すること。</p>
 </section>
 </section>
 
