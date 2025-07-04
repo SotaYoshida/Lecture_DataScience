@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -522,35 +522,39 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 <p>以下では、仮想環境を作成しライブラリのインストールを行う方法に加えて、当該の仮想環境を用いてVS Code上でipynb形式のコードを実行する方法についても説明する。</p>
 <section id="python-activate-deactivate">
 <h2>Python仮想環境の作成&amp;activate/deactivate<a class="headerlink" href="#python-activate-deactivate" title="Link to this heading">#</a></h2>
-<p>Pythonの仮想環境を作成するには、ターミナルで以下のコマンドを実行する。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>name_of_venv
+<p>Pythonの仮想環境を作成するには、ターミナルで以下のコマンドを実行する。
+以下では、$から始まる行は、Linux(やMac)のターミナルで実行するコマンドを表すことに注意。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$python</span><span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>name_of_venv
 </pre></div>
 </div>
 <p>上記のコマンドで、現在のディレクトリに<code class="docutils literal notranslate"><span class="pre">name_of_venv</span></code>という名前の仮想環境が作成される。
 これだけ。とても簡単。<code class="docutils literal notranslate"><span class="pre">name_of_venv</span></code>は適宜自身で管理・識別しやすい名前に変更すること。
 ※WSLでdefaultで入っているPython3の場合、<code class="docutils literal notranslate"><span class="pre">python3-venv</span></code>がインストールされていない場合があり、その場合は別途指示に従ってインストールする必要がある。</p>
 <p>作成した仮想環境に入るには、以下のコマンドを実行する。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/path_to_venv/name_of_venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$source</span><span class="w"> </span>/path_to_venv/name_of_venv/bin/activate
 </pre></div>
 </div>
 <p>当然、<code class="docutils literal notranslate"><span class="pre">/path_to_venv/name_of_venv/</span></code>の箇所は実際の仮想環境のパスに置き換える必要がある。
 この状態で、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>などのコマンドを実行すると、仮想環境内にライブラリがインストールされる。</p>
 <p>グローバル環境に戻りたいときや、別の仮想環境に移りたいときは、以下のコマンドを実行すれば良い。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$deactivate</span>
 </pre></div>
 </div>
 </section>
 <section id="id1">
 <h2>依存関係のインストール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>※この項目はやや開発者向けの内容である。</p>
 <p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>というファイルを作成し、その中に必要なライブラリを記述することで、一括でライブラリをインストールすることができる。
 仮想環境を作成した後、以下のコマンドを実行することで、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>に記述されたライブラリを一括でインストールすることができる。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>path_to_file/requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$pip</span><span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>path_to_file/requirements.txt
 </pre></div>
 </div>
 <p>また<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>は、以下のコマンドで作成することができる。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$pip</span><span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
+<p>この作業が必要になる状況としては、例えば、他の人が作成したPythonのコードを実行する場合などがある。
+<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>に記述されたライブラリ(のバージョン)を明示的に指定することで、依存関係の問題を回避することができる。</p>
 </section>
 <section id="vs-codeipynb">
 <h2>VS Code上でipynb形式のコードを実行する<a class="headerlink" href="#vs-codeipynb" title="Link to this heading">#</a></h2>
@@ -562,7 +566,7 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 <p>VS Codeでは、Jupyter Notebookを実行するためのカーネルを選択する必要があるが、
 このとき、上で作成した仮想環境が選択肢に表示されれば、それを用いれば良い。</p>
 <p>仮想環境が表示されない場合は、仮想環境をactivateした状態で、以下のようなコマンドを実行し、</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipython<span class="w"> </span>kernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>name_venv<span class="w"> </span>--display-name<span class="o">=</span>display_name_venv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$ipython</span><span class="w"> </span>kernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>name_venv<span class="w"> </span>--display-name<span class="o">=</span>display_name_venv
 </pre></div>
 </div>
 <p>VS Codeを再起動すると良い。

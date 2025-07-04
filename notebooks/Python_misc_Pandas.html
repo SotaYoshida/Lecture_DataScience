@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -492,7 +492,7 @@
 <p>まずはインポートしよう。<code class="docutils literal notranslate"><span class="pre">pd</span></code>という名前で使うのが慣例。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
 </pre></div>
 </div>
 </div>
@@ -504,7 +504,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>はExcelシートのような二次元のデータを表現するのに利用され各種データ分析などで非常に役に立つ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
 </pre></div>
 </div>
 </div>
@@ -1320,7 +1320,7 @@ Name: Dさん, dtype: object
 <span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">3811</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
 <span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
 <span class="g g-Whitespace">   </span><span class="mi">3815</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
@@ -1934,39 +1934,39 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnicodeDecodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://www.nstac.go.jp/sys/files/SSDSE-B-2024.csv&quot;</span><span class="p">)</span>
 
-<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
+<span class="nn">File ~/my_python3_env_forQC/lib/python3.13/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
+<span class="nn">File ~/my_python3_env_forQC/lib/python3.13/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="nn">File ~/my_python3_env_forQC/lib/python3.13/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1723,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1720</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1722</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1723</span>     <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1725</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File ~/my_python3_env_forQC/lib/python3.13/site-packages/pandas/io/parsers/readers.py:1898,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1895</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1897</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1898</span>     <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1899</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1900</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File /usr/local/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py:93,</span> in <span class="ni">CParserWrapper.__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="nn">File ~/my_python3_env_forQC/lib/python3.13/site-packages/pandas/io/parsers/c_parser_wrapper.py:93,</span> in <span class="ni">CParserWrapper.__init__</span><span class="nt">(self, src, **kwds)</span>
 <span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="k">if</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;dtype_backend&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pyarrow&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="c1"># Fail here loudly instead of in cython after reading</span>
 <span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
@@ -1974,15 +1974,17 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <span class="g g-Whitespace">     </span><span class="mi">95</span> <span class="bp">self</span><span class="o">.</span><span class="n">unnamed_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">unnamed_cols</span>
 <span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="c1"># error: Cannot determine type of &#39;names&#39;</span>
 
-<span class="nn">File parsers.pyx:579,</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:574,</span> in <span class="ni">pandas._libs.parsers.TextReader.__cinit__</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:668,</span> in <span class="ni">pandas._libs.parsers.TextReader._get_header</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:663,</span> in <span class="ni">pandas._libs.parsers.TextReader._get_header</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:879,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:874,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:891,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
 
-<span class="nn">File parsers.pyx:2050,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
+<span class="nn">File parsers.pyx:2053,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
+
+<span class="nn">File &lt;frozen codecs&gt;:325,</span> in <span class="ni">decode</span><span class="nt">(self, input, final)</span>
 
 <span class="ne">UnicodeDecodeError</span>: &#39;utf-8&#39; codec can&#39;t decode byte 0x94 in position 748: invalid start byte
 </pre></div>
@@ -2187,128 +2189,128 @@ Webページの中にある表をDataFrame形式で取得することもでき�
       <td>...</td>
     </tr>
     <tr>
-      <th>596</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>560</th>
+      <td>2014</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1426000</td>
+      <td>700000</td>
+      <td>725000</td>
+      <td>1416000</td>
+      <td>695000</td>
+      <td>721000</td>
+      <td>249000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>56734</td>
+      <td>20998</td>
+      <td>20722</td>
+      <td>7509</td>
+      <td>6622</td>
+      <td>9531</td>
+      <td>32302</td>
+      <td>9016</td>
+      <td>18570</td>
+      <td>43864</td>
     </tr>
     <tr>
-      <th>597</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>561</th>
+      <td>2013</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1419000</td>
+      <td>697000</td>
+      <td>722000</td>
+      <td>1410000</td>
+      <td>692000</td>
+      <td>718000</td>
+      <td>249000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>57278</td>
+      <td>23557</td>
+      <td>20499</td>
+      <td>7335</td>
+      <td>7398</td>
+      <td>9281</td>
+      <td>33976</td>
+      <td>9714</td>
+      <td>20199</td>
+      <td>50418</td>
     </tr>
     <tr>
-      <th>598</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>562</th>
+      <td>2012</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1411000</td>
+      <td>693000</td>
+      <td>719000</td>
+      <td>1403000</td>
+      <td>688000</td>
+      <td>715000</td>
+      <td>248000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>55499</td>
+      <td>23731</td>
+      <td>19756</td>
+      <td>7353</td>
+      <td>6856</td>
+      <td>9948</td>
+      <td>27855</td>
+      <td>7769</td>
+      <td>19324</td>
+      <td>49890</td>
     </tr>
     <tr>
-      <th>599</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>563</th>
+      <td>2011</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1402000</td>
+      <td>688000</td>
+      <td>714000</td>
+      <td>1395000</td>
+      <td>684000</td>
+      <td>711000</td>
+      <td>247000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>53193</td>
+      <td>23454</td>
+      <td>20645</td>
+      <td>6136</td>
+      <td>6855</td>
+      <td>9775</td>
+      <td>26806</td>
+      <td>7489</td>
+      <td>18818</td>
+      <td>48762</td>
     </tr>
     <tr>
-      <th>600</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>564</th>
+      <td>2010</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1392818</td>
+      <td>683328</td>
+      <td>709490</td>
+      <td>1377248</td>
+      <td>675338</td>
+      <td>701910</td>
+      <td>246313</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>54297</td>
+      <td>24269</td>
+      <td>19706</td>
+      <td>7306</td>
+      <td>7538</td>
+      <td>9127</td>
+      <td>28479</td>
+      <td>10577</td>
+      <td>20140</td>
+      <td>57283</td>
     </tr>
   </tbody>
 </table>
-<p>601 rows × 112 columns</p>
+<p>565 rows × 112 columns</p>
 </div></div></div>
 </div>
 <p>今の場合ファイルの(0から数えて)1行目にヘッダ(列名)にしたい情報があるので<code class="docutils literal notranslate"><span class="pre">header</span></code>オプションを指定する。</p>
@@ -2365,123 +2367,123 @@ Webページの中にある表をDataFrame形式で取得することもでき�
   <tbody>
     <tr>
       <th>0</th>
-      <td>2021.0</td>
+      <td>2021</td>
       <td>R01000</td>
       <td>北海道</td>
-      <td>5183000.0</td>
-      <td>2446000.0</td>
-      <td>2737000.0</td>
-      <td>5147000.0</td>
-      <td>2429000.0</td>
-      <td>2717000.0</td>
-      <td>544000.0</td>
+      <td>5183000</td>
+      <td>2446000</td>
+      <td>2737000</td>
+      <td>5147000</td>
+      <td>2429000</td>
+      <td>2717000</td>
+      <td>544000</td>
       <td>...</td>
-      <td>71448.0</td>
-      <td>22013.0</td>
-      <td>26676.0</td>
-      <td>9912.0</td>
-      <td>8816.0</td>
-      <td>13788.0</td>
-      <td>30483.0</td>
-      <td>9913.0</td>
-      <td>23762.0</td>
-      <td>51583.0</td>
+      <td>71448</td>
+      <td>22013</td>
+      <td>26676</td>
+      <td>9912</td>
+      <td>8816</td>
+      <td>13788</td>
+      <td>30483</td>
+      <td>9913</td>
+      <td>23762</td>
+      <td>51583</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2020.0</td>
+      <td>2020</td>
       <td>R01000</td>
       <td>北海道</td>
-      <td>5224614.0</td>
-      <td>2465088.0</td>
-      <td>2759526.0</td>
-      <td>5151366.0</td>
-      <td>2429697.0</td>
-      <td>2721669.0</td>
-      <td>555804.0</td>
+      <td>5224614</td>
+      <td>2465088</td>
+      <td>2759526</td>
+      <td>5151366</td>
+      <td>2429697</td>
+      <td>2721669</td>
+      <td>555804</td>
       <td>...</td>
-      <td>77680.0</td>
-      <td>27305.0</td>
-      <td>27309.0</td>
-      <td>12255.0</td>
-      <td>9227.0</td>
-      <td>14251.0</td>
-      <td>41407.0</td>
-      <td>9394.0</td>
-      <td>26539.0</td>
-      <td>56316.0</td>
+      <td>77680</td>
+      <td>27305</td>
+      <td>27309</td>
+      <td>12255</td>
+      <td>9227</td>
+      <td>14251</td>
+      <td>41407</td>
+      <td>9394</td>
+      <td>26539</td>
+      <td>56316</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2019.0</td>
+      <td>2019</td>
       <td>R01000</td>
       <td>北海道</td>
-      <td>5259000.0</td>
-      <td>2480000.0</td>
-      <td>2780000.0</td>
-      <td>5223000.0</td>
-      <td>2464000.0</td>
-      <td>2759000.0</td>
-      <td>565000.0</td>
+      <td>5259000</td>
+      <td>2480000</td>
+      <td>2780000</td>
+      <td>5223000</td>
+      <td>2464000</td>
+      <td>2759000</td>
+      <td>565000</td>
       <td>...</td>
-      <td>72912.0</td>
-      <td>20862.0</td>
-      <td>26332.0</td>
-      <td>9895.0</td>
-      <td>10466.0</td>
-      <td>16466.0</td>
-      <td>42277.0</td>
-      <td>8848.0</td>
-      <td>29335.0</td>
-      <td>57289.0</td>
+      <td>72912</td>
+      <td>20862</td>
+      <td>26332</td>
+      <td>9895</td>
+      <td>10466</td>
+      <td>16466</td>
+      <td>42277</td>
+      <td>8848</td>
+      <td>29335</td>
+      <td>57289</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2018.0</td>
+      <td>2018</td>
       <td>R01000</td>
       <td>北海道</td>
-      <td>5293000.0</td>
-      <td>2495000.0</td>
-      <td>2798000.0</td>
-      <td>5262000.0</td>
-      <td>2482000.0</td>
-      <td>2780000.0</td>
-      <td>577000.0</td>
+      <td>5293000</td>
+      <td>2495000</td>
+      <td>2798000</td>
+      <td>5262000</td>
+      <td>2482000</td>
+      <td>2780000</td>
+      <td>577000</td>
       <td>...</td>
-      <td>69044.0</td>
-      <td>19089.0</td>
-      <td>27012.0</td>
-      <td>8845.0</td>
-      <td>11517.0</td>
-      <td>11437.0</td>
-      <td>39308.0</td>
-      <td>10825.0</td>
-      <td>26991.0</td>
-      <td>56984.0</td>
+      <td>69044</td>
+      <td>19089</td>
+      <td>27012</td>
+      <td>8845</td>
+      <td>11517</td>
+      <td>11437</td>
+      <td>39308</td>
+      <td>10825</td>
+      <td>26991</td>
+      <td>56984</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2017.0</td>
+      <td>2017</td>
       <td>R01000</td>
       <td>北海道</td>
-      <td>5325000.0</td>
-      <td>2510000.0</td>
-      <td>2815000.0</td>
-      <td>5298000.0</td>
-      <td>2499000.0</td>
-      <td>2799000.0</td>
-      <td>588000.0</td>
+      <td>5325000</td>
+      <td>2510000</td>
+      <td>2815000</td>
+      <td>5298000</td>
+      <td>2499000</td>
+      <td>2799000</td>
+      <td>588000</td>
       <td>...</td>
-      <td>69640.0</td>
-      <td>24217.0</td>
-      <td>25633.0</td>
-      <td>10550.0</td>
-      <td>11222.0</td>
-      <td>12242.0</td>
-      <td>39559.0</td>
-      <td>9837.0</td>
-      <td>26797.0</td>
-      <td>57003.0</td>
+      <td>69640</td>
+      <td>24217</td>
+      <td>25633</td>
+      <td>10550</td>
+      <td>11222</td>
+      <td>12242</td>
+      <td>39559</td>
+      <td>9837</td>
+      <td>26797</td>
+      <td>57003</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2508,131 +2510,132 @@ Webページの中にある表をDataFrame形式で取得することもでき�
       <td>...</td>
     </tr>
     <tr>
-      <th>595</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>559</th>
+      <td>2014</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1426000</td>
+      <td>700000</td>
+      <td>725000</td>
+      <td>1416000</td>
+      <td>695000</td>
+      <td>721000</td>
+      <td>249000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>56734</td>
+      <td>20998</td>
+      <td>20722</td>
+      <td>7509</td>
+      <td>6622</td>
+      <td>9531</td>
+      <td>32302</td>
+      <td>9016</td>
+      <td>18570</td>
+      <td>43864</td>
     </tr>
     <tr>
-      <th>596</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>560</th>
+      <td>2013</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1419000</td>
+      <td>697000</td>
+      <td>722000</td>
+      <td>1410000</td>
+      <td>692000</td>
+      <td>718000</td>
+      <td>249000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>57278</td>
+      <td>23557</td>
+      <td>20499</td>
+      <td>7335</td>
+      <td>7398</td>
+      <td>9281</td>
+      <td>33976</td>
+      <td>9714</td>
+      <td>20199</td>
+      <td>50418</td>
     </tr>
     <tr>
-      <th>597</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>561</th>
+      <td>2012</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1411000</td>
+      <td>693000</td>
+      <td>719000</td>
+      <td>1403000</td>
+      <td>688000</td>
+      <td>715000</td>
+      <td>248000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>55499</td>
+      <td>23731</td>
+      <td>19756</td>
+      <td>7353</td>
+      <td>6856</td>
+      <td>9948</td>
+      <td>27855</td>
+      <td>7769</td>
+      <td>19324</td>
+      <td>49890</td>
     </tr>
     <tr>
-      <th>598</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>562</th>
+      <td>2011</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1402000</td>
+      <td>688000</td>
+      <td>714000</td>
+      <td>1395000</td>
+      <td>684000</td>
+      <td>711000</td>
+      <td>247000</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>53193</td>
+      <td>23454</td>
+      <td>20645</td>
+      <td>6136</td>
+      <td>6855</td>
+      <td>9775</td>
+      <td>26806</td>
+      <td>7489</td>
+      <td>18818</td>
+      <td>48762</td>
     </tr>
     <tr>
-      <th>599</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>563</th>
+      <td>2010</td>
+      <td>R47000</td>
+      <td>沖縄県</td>
+      <td>1392818</td>
+      <td>683328</td>
+      <td>709490</td>
+      <td>1377248</td>
+      <td>675338</td>
+      <td>701910</td>
+      <td>246313</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>54297</td>
+      <td>24269</td>
+      <td>19706</td>
+      <td>7306</td>
+      <td>7538</td>
+      <td>9127</td>
+      <td>28479</td>
+      <td>10577</td>
+      <td>20140</td>
+      <td>57283</td>
     </tr>
   </tbody>
 </table>
-<p>600 rows × 112 columns</p>
+<p>564 rows × 112 columns</p>
 </div></div></div>
 </div>
 <p>都道府県の列から、都道府県の名前を取り出してみよう。ある行以降はNaNになっているので、それを除去する。</p>
+<p><strong>※こちらは古い記述で、2025年現在のデータでは、NaNが発生しないよう修正されています。ただし、ファイルに値なしが含まれている場合もあるので、記述を残しておきます。</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -2956,7 +2959,7 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 <p>あるいは、特定の列の特定の行がNaNかどうかを調べて除外してみると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;都道府県&#39;</span><span class="p">])</span>
 <span class="n">df</span>
@@ -3302,10 +3305,10 @@ Webページの中にある表をDataFrame形式で取得することもでき�
 </div>
 </div>
 </div>
-<p>さきほどのデータの例で、都道府県列からNaNでないものを取っているつもり</p>
+<p>さきほどのデータの例で、都道府県列からNaNでないものを取っている (※2025年現在のデータでは、NaNが発生しないよう修正されています)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;cp932&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;都道府県&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span> <span class="p">][</span><span class="s2">&quot;都道府県&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
@@ -4768,7 +4771,7 @@ O列R列など、細かい列の分割が挿入されている. ~~これは大�
 <p>実行履歴に残っている適当なDataFrameを、Google Driveにファイルとして書き出してみよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
