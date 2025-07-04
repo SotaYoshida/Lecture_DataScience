@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -486,10 +486,10 @@
 <p>今回使用するライブラリをインポートしておきましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
 <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">japanize</span><span class="o">-</span><span class="n">matplotlib</span> 
-<span class="kn">import</span><span class="w"> </span><span class="nn">japanize_matplotlib</span> 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 </pre></div>
 </div>
 </div>
@@ -555,7 +555,7 @@ r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### ライブラリを一切使わない方法</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">cor_coeff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># xとyの長さが違う場合や長さ0の場合はエラーを出す (おまけ)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Error: x&amp;y must satisfy len(x) = len(y) != 0&quot;</span><span class="p">)</span>
@@ -599,7 +599,7 @@ r = \frac{ \sum^n_i (x_i-\bar{x})(y_i-\bar{y})}{ \sqrt{\sum^n_i (x_i-\bar{x})^2 
 <p>相関係数の計算は、numpyライブラリを使うと実はもう少しシンプルに書ける</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cor_coeff_np</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cor_coeff_np</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
     <span class="n">xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="n">ybar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">ybar</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="n">xbar</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="n">ybar</span><span class="p">)</span> <span class="p">)</span> 
 
@@ -670,7 +670,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <span class="sd">- sample_size: データの数</span>
 <span class="sd">- std: standard deviation (標準偏差σ)</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">create_toy_data</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">create_toy_data</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span>
@@ -827,9 +827,9 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <p>各次数での多項式のモデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>と二乗誤差、そしてモデル選択基準量<span class="math notranslate nohighlight">\(L\)</span>を表示してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">complexity</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complexity</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">r</span><span class="p">))</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">my_criteria</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span><span class="n">err</span><span class="p">,</span><span class="n">lam</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span> <span class="c1">#lambda=1.0</span>
+<span class="k">def</span> <span class="nf">my_criteria</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span><span class="n">err</span><span class="p">,</span><span class="n">lam</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span> <span class="c1">#lambda=1.0</span>
     <span class="k">return</span> <span class="n">err</span> <span class="o">+</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">:</span>
