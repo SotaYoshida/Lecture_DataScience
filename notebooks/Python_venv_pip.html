@@ -470,6 +470,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-activate-deactivate">Python仮想環境の作成&amp;activate/deactivate</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">依存関係のインストール</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-codeipynb">VS Code上でipynb形式のコードを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">GitHub上のレポジトリから開発バージョンのインストール</a></li>
 </ul>
             </nav>
         </div>
@@ -587,6 +588,44 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 これでも稀に表示されないことがあるが、そのときはVS Codeの<code class="docutils literal notranslate"><span class="pre">python.venvPath</span></code>を編集するとよい。</p>
 <p>くどいが、仮想環境の名前<code class="docutils literal notranslate"><span class="pre">name_venv</span></code>や、表示名<code class="docutils literal notranslate"><span class="pre">display_name_venv</span></code>は適宜自身の環境に合わせて変更すること。</p>
 </section>
+<section id="github">
+<h2>GitHub上のレポジトリから開発バージョンのインストール<a class="headerlink" href="#github" title="Link to this heading">#</a></h2>
+<p>GitHub上のレポジトリから開発バージョンのライブラリをインストールすることもできる。
+正式リリース前の新機能をいち早く試したい場合などに有用である。</p>
+<p>いくつかの方法があり得るが、例として以下のような流れを考える:</p>
+<ol class="arabic">
+<li><p>(上記の通り)仮想環境を作成しておく</p></li>
+<li><p>GitHub上のレポジトリをクローンする</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+</pre></div>
+</div>
+</li>
+<li><p>クローンしたディレクトリに移動する</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;repository-directory&gt;
+</pre></div>
+</div>
+</li>
+<li><p>仮想環境をactivateする</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/path_to_venv/name_of_venv/bin/activate
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>が存在する場合は、以下のコマンドで依存関係をインストールする</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p>開発バージョンのライブラリをインストールする</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>あるいは、distフォルダが存在する場合は、以下のようにインストールすることもできる:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>dist/&lt;package-name&gt;.whl
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -656,6 +695,7 @@ hint:<span class="w"> </span>See<span class="w"> </span>PEP<span class="w"> </sp
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-activate-deactivate">Python仮想環境の作成&amp;activate/deactivate</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">依存関係のインストール</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-codeipynb">VS Code上でipynb形式のコードを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github">GitHub上のレポジトリから開発バージョンのインストール</a></li>
 </ul>
   </nav></div>
 

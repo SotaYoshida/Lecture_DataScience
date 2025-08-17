@@ -480,6 +480,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.7. 予約語</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">1.8. ブール(bool)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">1.9. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 参考: フォーマット文字列</a></li>
 </ul>
             </nav>
         </div>
@@ -936,6 +937,52 @@ document.write(`
 </div>
 <p>このような<strong>条件分岐</strong>の具体例については次の章で見ることにしましょう。</p>
 </section>
+<section id="clubsuit">
+<h2><span class="section-number">1.9. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 参考: フォーマット文字列<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h2>
+<p>Pythonでは、文字列の中に変数の値を埋め込み、多彩な表示を行うことができる。
+例えば特定の数値を桁数を指定したり、右・左寄せで表示したり、指数表記にしたりといったことが可能である。</p>
+<p>イメージとして、ゲームを作成している際のメッセージ表示を考えてみよう。
+HPやMPの値を表示する際に、桁数を揃えたり、右寄せで表示したりすると見た目が整い、プレイヤーにとって分かりやすくなる。</p>
+<p>Pythonにはもともと、C言語などで使われるフォーマット文字列や、<code class="docutils literal notranslate"><span class="pre">str</span></code>関数を用いたフォーマットなどが用意されているが、
+近年では、いかに示すような<strong>フォーマット文字列</strong>と呼ばれる機能が追加され、より簡単に変数の値を文字列に埋め込むことができるようになった。
+本資料でも、これを利用して、変数の値を文字列に埋め込む方法を紹介しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;やぁ、ここはXX村だよ&quot;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;こんにちは!&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;小数点以下6桁まで表示すると...</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> 指数表示すると...</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.1e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HP:</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">&gt;3d</span><span class="si">}</span><span class="s2">/999&quot;</span><span class="p">)</span>   <span class="c1"># 右寄せで3桁表示</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;村人「</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">s</span><span class="si">}</span><span class="s2">」&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1/6について、</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">桁まで表示するよ =&gt; </span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="si">:</span><span class="s2">&gt;.</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">桁まで表示するよ&quot;</span><span class="p">)</span>  <span class="c1"># 変数を埋め込むこともできる</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>小数点以下6桁まで表示すると...0.333333 指数表示すると...3.3e-01
+HP:  5/999
+村人「やぁ、ここはXX村だよ」
+1/6について、5桁まで表示するよ =&gt; 0.16667桁まで表示するよ
+</pre></div>
+</div>
+</div>
+</div>
+<p>ちなみに、古い方法の一つ、<code class="docutils literal notranslate"><span class="pre">str</span></code>関数を使う例も資料では用いられているかもしれない:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1013,6 +1060,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.7. 予約語</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">1.8. ブール(bool)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">1.9. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 参考: フォーマット文字列</a></li>
 </ul>
   </nav></div>
 
