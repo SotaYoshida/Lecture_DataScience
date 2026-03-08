@@ -39,12 +39,12 @@ parts:
     - file: notebooks/LaTeX_in_markdown.ipynb
     - file: notebooks/Python_misc_Pandas.ipynb
     - file: notebooks/Python_misc_numpy.ipynb
-    - file: notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb
+    #- file: notebooks/Python_chapter_ArtificialNeuralNetwork.ipynb
     - file: notebooks/Python_chapter_BayesianOptimization.ipynb
     - file: notebooks/Python_chapter_Bayesian_linear_regression.ipynb
-    - file: notebooks/Python_misc_StyleGAN3.ipynb
+    #- file: notebooks/Python_misc_StyleGAN3.ipynb
     - file: notebooks/Python_chapter_WebScraping.ipynb
-    - file: notebooks/Python_misc_ODE.ipynb
+    #- file: notebooks/Python_misc_ODE.ipynb
     - file: notebooks/Python_misc_PCA.ipynb
-    - file: notebooks/Python_misc_SingularValueDecomposition.ipynb
-    - file: notebooks/Python_misc_NewtonsMethod.ipynb
+    #- file: notebooks/Python_misc_SingularValueDecomposition.ipynb
+    #- file: notebooks/Python_misc_NewtonsMethod.ipynb
