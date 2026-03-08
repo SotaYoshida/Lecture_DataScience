@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -78,11 +75,9 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_misc_PCA';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="特異値分解と情報削減" href="Python_misc_SingularValueDecomposition.html" />
-    <link rel="prev" title="常微分方程式の数値解法" href="Python_misc_ODE.html" />
+    <link rel="prev" title="Webスクレイピング・ブラウザ操作" href="Python_chapter_WebScraping.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -98,8 +93,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -107,6 +113,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,8 +121,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,8 +138,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -162,17 +168,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="プログラミング演習1・実践データサイエンス - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -221,17 +231,10 @@
 <li class="toctree-l1"><a class="reference internal" href="LaTeX_in_markdown.html">LaTeXの記法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Pandas.html">Pandasの使い方 (基礎)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_numpy.html">Numpyについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_chapter_ArtificialNeuralNetwork.html">機械学習: ニューラルネットワークによる回帰</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_BayesianOptimization.html">ベイズ最適化による実験計画法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_Bayesian_linear_regression.html">ベイズ線形回帰</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_StyleGAN3.html">StyleGAN3+CLIPによる写真生成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_chapter_WebScraping.html">Webスクレイピング・ブラウザ操作</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_ODE.html">常微分方程式の数値解法</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">主成分分析</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_SingularValueDecomposition.html">特異値分解と情報削減</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_NewtonsMethod.html">ニュートン法によるN次元多項式の求根</a></li>
-
 </ul>
 
     </div>
@@ -240,14 +243,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -422,16 +420,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -455,16 +461,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">主成分分析</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主成分分析とは？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCAの定式化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn">sklearnライブラリを使う方法</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">実装してみよう</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit"><span class="math notranslate nohighlight">\(\clubsuit\)</span> オートエンコーダ(自己符号化器)</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -1186,127 +1187,6 @@ yにマイナスをかけて向きをあわせてみると…</p>
 におけるconventionの違いなどに由来している。</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="clubsuit">
-<h1><span class="math notranslate nohighlight">\(\clubsuit\)</span> オートエンコーダ(自己符号化器)<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h1>
-<p>上で紹介したPCAは、式(or 直交変換の定義)からもわかるように<br />
-空間上に”平坦に”分布するデータの特徴を説明するのにはうってつけです。</p>
-<p>一方、一般のデータは必ずしも直線的な分布を持っているわけではなく<br />
-空間上で曲がったり複雑な幾何学形状をしていてもおかしくありません。</p>
-<p>そんなデータに対して、データの冗長性を削減したり特徴をとらえるための方法の一つが<br />
-以下で説明するオートエンコーダです。</p>
-<p>最も基本的なオートエンコーダは隠れ層がくびれた<br />
-以下のようなニューラルネットワークで構成されます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">capture</span>
-<span class="c1">#from keras.models import Sequential</span>
-<span class="c1">#from keras.layers import Dense</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ann_visualizer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ann_visualizer.visualize</span><span class="w"> </span><span class="kn">import</span> <span class="n">ann_viz</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">graphviz</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">... digraph G {</span>
-<span class="s1">... </span>
-<span class="s1">...      graph[ fontname = &quot;Helvetica-Oblique&quot;,</span>
-<span class="s1">...             fontsize = 20,</span>
-<span class="s1">...             label = &quot;&quot;,</span>
-<span class="s1">...             size = &quot;15,30&quot; ];</span>
-<span class="s1">... </span>
-<span class="s1">...     rankdir = LR;</span>
-<span class="s1">...     splines=false;</span>
-<span class="s1">...     edge[style=invis];</span>
-<span class="s1">...     ranksep= 1.4;</span>
-<span class="s1">...     {</span>
-<span class="s1">...     node [shape=circle, color=chartreuse, style=filled, fillcolor=chartreuse];</span>
-<span class="s1">...     x1 [label=&lt;x&lt;sub&gt;1&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     x2 [label=&lt;x&lt;sub&gt;2&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     x3 [label=&lt;x&lt;sub&gt;3&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     x4 [label=&lt;x&lt;sub&gt;4&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     x5 [label=&lt;x&lt;sub&gt;5&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     x6 [label=&lt;x&lt;sub&gt;6&lt;/sub&gt;&gt;]; </span>
-<span class="s1">... }</span>
-<span class="s1">... {</span>
-<span class="s1">...     node [shape=circle, color=dodgerblue, style=filled, fillcolor=dodgerblue];</span>
-<span class="s1">...     a12 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     a22 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     a32 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     a42 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&gt;];</span>
-<span class="s1">... }</span>
-<span class="s1">... {</span>
-<span class="s1">...     node [shape=circle, color=coral1, style=filled, fillcolor=coral1];</span>
-<span class="s1">...     O1 [label=&lt;y&lt;sub&gt;1&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     O2 [label=&lt;y&lt;sub&gt;2&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     O3 [label=&lt;y&lt;sub&gt;3&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     O4 [label=&lt;y&lt;sub&gt;4&lt;/sub&gt;&gt;];</span>
-<span class="s1">...     O5 [label=&lt;y&lt;sub&gt;5&lt;/sub&gt;&gt;]; </span>
-<span class="s1">...     O6 [label=&lt;y&lt;sub&gt;6&lt;/sub&gt;&gt;]; </span>
-<span class="s1">... }</span>
-<span class="s1">...     {</span>
-<span class="s1">...         rank=same;</span>
-<span class="s1">...         x1-&gt;x2-&gt;x3-&gt;x4-&gt;x5-&gt;x6;</span>
-<span class="s1">...     }</span>
-<span class="s1">...     {</span>
-<span class="s1">...         rank=same;</span>
-<span class="s1">...         a12-&gt;a22-&gt;a32-&gt;a42;</span>
-<span class="s1">...     }</span>
-<span class="s1">...     {</span>
-<span class="s1">...         rank=same;</span>
-<span class="s1">...         O1-&gt;O2-&gt;O3-&gt;O4-&gt;O5-&gt;O6;</span>
-<span class="s1">...     }</span>
-<span class="s1">...     l0 [shape=plaintext, label=&quot;layer 1 (input layer)&quot;];</span>
-<span class="s1">...     l0-&gt;x1;</span>
-<span class="s1">...     {rank=same; l0;x1};</span>
-<span class="s1">...     l1 [shape=plaintext, label=&quot;layer 2 (hidden layer)&quot;];</span>
-<span class="s1">...     l1-&gt;a12;</span>
-<span class="s1">...     {rank=same; l1;a12};</span>
-<span class="s1">...     l3 [shape=plaintext, label=&quot;layer 3 (output layer)&quot;];</span>
-<span class="s1">...     l3-&gt;O1;</span>
-<span class="s1">...     {rank=same; l3;O1};</span>
-<span class="s1">...     edge[style=solid, tailport=e, headport=w];</span>
-<span class="s1">...     {x1; x2;x3;x4;x5;x6} -&gt; {a12;a22;a32;a42};</span>
-<span class="s1">...     {a12;a22;a32;a42} -&gt; {O1,O2,O3,O4,O5,O6};</span>
-<span class="s1">... }&#39;&#39;&#39;</span>
-
-<span class="n">dot</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-<span class="n">dot</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span>
-<span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s1">&#39;neural_network_01&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
-
-<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;neural_network_01.png&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">im_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_list</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<img alt="../_images/48bd6bcdf56f435c8206599ff533b3896d17f8d0321b42a16e523a442b64800b.png" src="../_images/48bd6bcdf56f435c8206599ff533b3896d17f8d0321b42a16e523a442b64800b.png" />
-</div>
-</div>
-<p>上には、入出力の次元が6で、隠れ層が1つ(ノード4)の場合のニューラルネットワークの図を描きました。
-オートエンコーダではこのようなニューラルネットワークのパラメータを出力<span class="math notranslate nohighlight">\(y\)</span>が<span class="math notranslate nohighlight">\(x\)</span>にできるだけ一致するよう学習させるということを考えます。</p>
-<p>入力層から隠れ層への信号の伝播を符号化(エンコード)と呼び隠れ層から出力層への信号の伝播を復号化(デコード)と呼びます。
-それぞれを別々に眺めるとエンコーダ部分はもとの入力の情報を圧縮するような働きをしているとみなせますし、一方デコーダ部分は一度圧縮した情報をもとに元の信号を再構成するような働きをします。</p>
-<p>オートエンコーダはPCAを特殊な場合として含むためPCAの拡張とみなすことができます。<br />
-詳しくは記載しませんが、活性化関数を恒等変換にとって重み行列を直交行列に取り二乗誤差関数を最小化する表式を書き下すとPCAの表式が現れます。</p>
-<p>上では単純な順伝播型のニューラルネットワークを描きましたがオートエンコーダを構成するアーキテクチャは上記のような単純なANNに限らず畳み込みニューラルネットワークを用いた畳み込みオートエンコーダなども知られています。</p>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1339,22 +1219,13 @@ yにマイナスをかけて向きをあわせてみると…</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Python_misc_ODE.html"
+       href="Python_chapter_WebScraping.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">常微分方程式の数値解法</p>
+        <p class="prev-next-title">Webスクレイピング・ブラウザ操作</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Python_misc_SingularValueDecomposition.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">特異値分解と情報削減</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1363,8 +1234,7 @@ yにマイナスをかけて向きをあわせてみると…</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1373,16 +1243,11 @@ yにマイナスをかけて向きをあわせてみると…</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">主成分分析</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主成分分析とは？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCAの定式化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn">sklearnライブラリを使う方法</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">実装してみよう</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit"><span class="math notranslate nohighlight">\(\clubsuit\)</span> オートエンコーダ(自己符号化器)</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
@@ -1423,8 +1288,8 @@ yにマイナスをかけて向きをあわせてみると…</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
