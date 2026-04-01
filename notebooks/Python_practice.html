@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -79,6 +82,7 @@
     <link rel="prev" title="Google Colaboratoryの使い方" href="Python_chapter0_HowToUse.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -94,19 +98,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -114,7 +107,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,8 +114,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -139,7 +131,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -169,21 +162,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="プログラミング演習1・実践データサイエンス - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -244,9 +233,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -421,24 +415,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -462,15 +448,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習帳のノートブックの共有の仕方</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">第1章:Pythonの基礎</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python2">第2章:Pythonの基礎2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">第3章:関数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第4章:ライブラリ/パッケージ/モジュールとデータの可視化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第5章:確率と擬似乱数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第6章:相関・回帰分析</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">第7章:最適化問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">第8章:ファイル操作</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">推奨の進め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">練習帳ノートブックの共有方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colabai">Google ColabのAIアシスタント機能について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">第1章: Pythonの基礎</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python2">第2章: Pythonの基礎2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第3章: 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第4章: ライブラリ/パッケージ/モジュールとデータ可視化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第5章: 確率と擬似乱数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">第6章: 相関・回帰分析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">第7章: 最適化問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">第8章: ファイル操作</a></li>
 </ul>
             </nav>
         </div>
@@ -485,41 +473,61 @@ document.write(`
   <p><a href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_practice.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>練習帳<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>このノートブックでは、1-8章で抑えておくべき基本事項を確認するための練習問題を与える。</p>
-<p>この練習帳の目的は、皆さんが自分自身の理解・疑問点を確認するためであって、<strong>練習帳で書いているコードや記述が正しいかどうかは一切授業の評点には関係がない</strong>。<br />
-質問やその返答を円滑にするための連絡帳のようなものだと思ってもらえれば良い。<br />
-とにかく、自分の理解を確認するためにコードをどんどん書いてどんどん失敗しよう。</p>
-<p>また、教員に対する質問の見落としを防ぐため、リアクションシート(C-Learning)上で</p>
-<blockquote>
-<div><p>練習帳に詳細な質問とコードを書きました</p>
-</div></blockquote>
-<p>などと教えてもらえるとスムーズな対応が可能になります。<br />
-<strong>リアクションシートの提出やその他、連絡・相談などでの質問の際は、必ず毎回練習帳の共有リンクを添えてください</strong></p>
-<p>慣れないうちは、エラーの原因がわからない場合は<strong>とにかく教員に聞く</strong>。
-その際は、エラーメッセージを転記したりスクリーンショットを添えて質問しよう。</p>
-<p>慣れてくると、自分でエラーメッセージをWebで検索したり、<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_Error.html">よくあるエラー集</a>などを見て、原因の特定・解決ができるようになる。</p>
+<p>Python基礎の定着と、質問しやすい記録を残すためのノートです。</p>
+<p>この練習帳は自己確認用です。<strong>ここでの正誤そのものは評点対象ではありません</strong>。</p>
+<p>うまくいかないコードやエラーも、学習の大事な記録です。失敗を残しながら進めましょう。</p>
+<p>質問時は、エラーメッセージ・試したコード・想定した挙動をセットで残すと、解決が速くなります。</p>
+<p>リアクションシート(C-Learning)には、</p>
+<ul class="simple">
+<li><p>練習帳に詳細な質問とコードを書きました</p></li>
+</ul>
+<p>のように一言添えてください。毎回、共有リンクも忘れずに記載してください。</p>
+<p>慣れてきたら、エラーメッセージをWeb検索したり、<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_Error.html">よくあるエラー集</a>を参照し、自力で原因特定する練習もしてみましょう。</p>
 <section id="id2">
-<h2>練習帳のノートブックの共有の仕方<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>以下の手順にならってください(1-3は1度やれば再び行う必要はありません)。</p>
+<h2>推奨の進め方<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>まず**ノートブックのコピーを作成し、ファイル名を適当に編集****する:<br />
-例: 練習帳_氏名_123456X.ipynb (123456Xは学籍番号のつもり)</p></li>
-<li><p>右上の<strong>共有ボタン</strong>を押し、「制限付き」を「リンクを知っている全員」に変更
-(共有ボタンが見えない場合、編集権限がない。つまり1.の<strong>コピーをつくる</strong>という作業を忘れていることを意味する)</p></li>
-<li><p>「リンクを知っている全員」の右にある「閲覧者」を「<strong>編集者</strong>」に変更する</p></li>
-<li><p>最後に、「リンクをコピー」をクリックし、そのURLをブックマークするか、どこか(メモ帳やメールの下書きなど)に保存しておこう.
-※ここでの注意は、「リンクをコピー」を押して得られたURLを貼り付けること。
-自身が開いているノートブックのアドレスバーのURLをコピーするのではない。</p></li>
+<li><p>問題文を読む</p></li>
+<li><p>自分で実装する</p></li>
+<li><p>実行結果とエラーをメモする</p></li>
+<li><p>振り返り項目を自己チェックする</p></li>
+<li><p>必要に応じて、自身で追加のコードを書いてみる</p></li>
 </ol>
-<p>元の問題文さえ残っていれば、コードセル・テキストセルともに自由に追加したり編集して構わない。</p>
-<p>なお、markdown形式の記述方法が知りたい方は、<a class="reference external" href="https://ja.wikipedia.org/wiki/Markdown">WikipediaのMarkdownのページ</a>などを適宜参照すること。</p>
+</section>
+<section id="id3">
+<h2>練習帳ノートブックの共有方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>以下の手順にならってください(1-3は最初の1回のみ)。</p>
+<ol class="arabic simple">
+<li><p>ノートブックのコピーを作成し、ファイル名を編集する。
+例: 練習帳_氏名_123456X.ipynb</p></li>
+<li><p>右上の共有ボタンを押し、「制限付き」を「リンクを知っている全員」に変更する。</p></li>
+<li><p>権限を閲覧者から<strong>編集者</strong>に変更する。</p></li>
+<li><p>リンクをコピーして保存する。
+注意: ブラウザのURL欄ではなく、共有設定の「リンクをコピー」から取得してください。</p></li>
+</ol>
+<p>元の問題文が残っていれば、コードセル・テキストセルともに自由に追加編集して構いません。</p>
+<p><strong>実行時チェック</strong></p>
+<ol class="arabic simple">
+<li><p>上から順にセルを実行できているか</p></li>
+<li><p>変数名の上書き(例: list, print)をしていないか</p></li>
+<li><p>エラーが出たら -&gt; メッセージ全文を読む (大体の原因はエラーに書いてある)</p></li>
+<li><p>質問時に、該当セルとログを共有できる状態か</p></li>
+</ol>
+<p>Markdown記法は、<a class="reference external" href="https://ja.wikipedia.org/wiki/Markdown">WikipediaのMarkdownのページ</a>などを適宜参照してください。</p>
+</section>
+<section id="google-colabai">
+<h2>Google ColabのAIアシスタント機能について<a class="headerlink" href="#google-colabai" title="Link to this heading">#</a></h2>
+<p>Google Colabには、AIアシスタント機能が搭載されています。
+ある程度コードが書けるようになってきたら、AIアシスタントはとても優秀な補助ツールになりますが、一方で、初学者にとっては「最初から目的に即したコードが与えられる」ことよりも、「コードを書く過程での試行錯誤を通して、実現したい作業をコードという論理的な表現に落とし込む能力を身につける」ことの方が重要だと筆者は考えています。</p>
+<p>そのため、この授業では[ツール]→[設定]→[AIアシスタント]から、「生成 AI 機能を非表示」にしておくことを強く推奨します。</p>
 </section>
 <section id="python">
-<h2>第1章:Pythonの基礎<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
+<h2>第1章: Pythonの基礎<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 変数・演算・表示の基本を使って、数値計算を文章として出力できるようになる。</p>
+<p><strong>練習問題</strong></p>
 <ol class="arabic simple">
-<li><p>身長と体重に相当する変数を適当に定義し、BMI(体重kg ÷ 身長mの二乗)を計算した上で<code class="docutils literal notranslate"><span class="pre">print</span></code>関数で表示せよ (自身の身長体重を用いる必要はない)</p></li>
-<li><p>上で計算したBMIに対応する変数と<code class="docutils literal notranslate"><span class="pre">str</span></code>関数を用いて文字列を連結し、”AさんのBMIは22.0です”などと表示させよ。もし、小数点以下第2位まで表示したいなど、表示を工夫したい場合は下のヒントを参考にためしてみよう。</p></li>
+<li><p>身長と体重に相当する変数を定義し、BMI(体重kg ÷ 身長mの二乗)を計算してprint関数で表示せよ。</p></li>
+<li><p>計算したBMIを文字列と連結し、”AさんのBMIは22.0です” のように表示せよ。
+小数点以下の表示桁を調整したい場合は、下のヒントを参考にしてよい。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,17 +566,17 @@ document.write(`
 </ul>
 </section>
 <section id="python2">
-<h2>第2章:Pythonの基礎2<a class="headerlink" href="#python2" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
+<h2>第2章: Pythonの基礎2<a class="headerlink" href="#python2" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: リスト・ループ・条件分岐を組み合わせて、複数データを一括処理できるようになる。</p>
+<p><strong>練習問題</strong></p>
 <ol class="arabic simple">
-<li><p>要素に身長(単位:cm)と体重(単位:kg)を持つ適当なリストを定義し、5人のデータ(リスト)を要素にもつ<strong>入れ子構造のリスト</strong>を作成せよ。<br />
-ただし3人目の身長と体重は必ず175,60とすること(それ以外は適当で構わない)。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を使って、上で作成した5人分のデータ(入れ子構造のリストの各要素)を表示せよ.</p></li>
-<li><p>上のリストから、5人の平均身長と平均体重をそれぞれ計算するコードを作成せよ。<br />
-算術平均を取る際は、数字の5などを使うのではなく、リストの長さを使うなどして、<br />
-<strong>リストの要素の数が5個以外(10や100)でも正しく計算できる汎用性のあるコード</strong>にすること。</p></li>
-<li><p>上のリストについて、<code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて全員のBMI(体重kg ÷ 身長mの二乗)を計算し、一人ずつBMIを表示させよ。(身長の単位に注意)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文のブロック内で<code class="docutils literal notranslate"><span class="pre">if</span></code>と<code class="docutils literal notranslate"><span class="pre">break</span></code>を用いて、「BMIが20.0以下なら、値を表示したあとにループを終了する」という処理を実現せよ。</p></li>
+<li><p>身長(cm)と体重(kg)の2要素を持つリストを5人分作成し、入れ子リストにせよ。
+3人目は必ず [175, 60] とすること。</p></li>
+<li><p>for文で5人分のデータを順に表示せよ。</p></li>
+<li><p>平均身長と平均体重を計算せよ。
+5固定ではなく、リスト長に依存して計算できる汎用コードにすること。</p></li>
+<li><p>全員のBMIをfor文で計算し、1人ずつ表示せよ(身長の単位に注意)。</p></li>
+<li><p>for文内でifとbreakを使い、「BMIが20.0以下なら表示後に終了」を実装せよ。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,23 +622,21 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>や<code class="docutils literal notranslate"><span class="pre">while</span></code>によるループ処理がわかる</p></li>
 </ul>
 </section>
-<section id="id3">
-<h2>第3章:関数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
-<ol class="arabic">
-<li><p>摂氏温度(℃,度)に対応する数値を受けとり、絶対温度(K,ケルビン)を返す関数をコードセルに書いておいた。
-この関数を用いて、摂氏0度,20.55度,42.199度に対応する絶対温度をそれぞれ計算し、print文で表示せよ。</p></li>
-<li><p>要素に実数値を持つ適当なリストを2つ以上定義し、任意の長さの実数値のリストについて平均と分散を返り値とする自作関数を作成せよ。
-なお、分散の定義は下記の標本分散とする:</p>
+<section id="id4">
+<h2>第3章: 関数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 入力と出力を意識した関数を作り、再利用できる処理としてまとめる。</p>
+<p><strong>練習問題</strong></p>
+<ol class="arabic simple">
+<li><p>摂氏温度(℃)を受け取り、絶対温度(K)を返す関数を使って、0, 20.55, 42.199度の結果を表示せよ。</p></li>
+<li><p>実数値のリストを2つ以上用意し、任意長のリストに対して平均と分散を返す関数を作成せよ。
+分散は以下を用いる。</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \frac{1}{N}\sum^N_{i=1} (x_i - \bar{x})^2
-   \]</div>
-<p>ここで<span class="math notranslate nohighlight">\(N\)</span>はデータの個数、<span class="math notranslate nohighlight">\(x_i\)</span>が各データ、<span class="math notranslate nohighlight">\(\bar{x}\)</span>は平均を意味する。<br />
-平均を計算する関数、分散を計算する関数をそれぞれ作成しても良いし、一つの関数でまとめても良い。</p>
-<p>ポイントは<strong>任意の長さの</strong>という点で、リストの長さが2とか3とか、特定の場合にしか対応していないコードを書くのではなく、リストの長さに依存しない汎用的なコードを書くこと。</p>
-</li>
-<li><p>2.で作った自作関数の返り値の型を<code class="docutils literal notranslate"><span class="pre">type</span></code>関数で調べて表示せよ。</p></li>
+\frac{1}{N}\sum^N_{i=1} (x_i - \bar{x})^2
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>2で作った関数の返り値の型をtype関数で表示せよ。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,20 +656,20 @@ document.write(`
 <li><p>引数(インプット)や返り値(アウトプット)の扱い方が分かる</p></li>
 </ul>
 </section>
-<section id="id4">
-<h2>第4章:ライブラリ/パッケージ/モジュールとデータの可視化<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
-<ol class="arabic">
-<li><p>授業で扱った<code class="docutils literal notranslate"><span class="pre">math</span></code>,<code class="docutils literal notranslate"><span class="pre">numpy</span></code>の何れかを使って、任意の半径<code class="docutils literal notranslate"><span class="pre">r</span></code>について円の面積と球の体積を計算する自作関数を作成せよ。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>を用いて、好きな図を作成させノートブック上に表示させよ。その際、<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>(とくに<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>)の使い方を調べて</p>
+<section id="id5">
+<h2>第4章: ライブラリ/パッケージ/モジュールとデータ可視化<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 外部ライブラリを使って、計算と可視化を行えるようになる。</p>
+<p><strong>練習問題</strong></p>
+<ol class="arabic simple">
+<li><p>mathまたはnumpyを使い、任意の半径rについて円の面積と球の体積を計算する関数を作成せよ。</p></li>
+<li><p>matplotlibで好きな図を作成して表示せよ。
+次のようなオプションも調べて試すこと。</p>
 <ul class="simple">
-<li><p>色をカラーコードで指定する</p></li>
-<li><p>グラフを構成するオブジェクトの透過度を設定する</p></li>
+<li><p>色のカラーコード指定</p></li>
+<li><p>透過度(alpha)の指定</p></li>
 </ul>
-<p>など、授業で指定していないオプションを試してみよう。</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールの<a class="reference external" href="https://docs.python.org/ja/3/library/math.html">公式Document</a>を参照し、<br />
-授業で扱っていない関数を1つ選び、その関数を使ったコードとその説明を記載すること。</p></li>
+<li><p>mathモジュールの<a class="reference external" href="https://docs.python.org/ja/3/library/math.html">公式Document</a>を参照し、授業未登場の関数を1つ選び、コード例と説明を記載せよ。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,12 +686,16 @@ document.write(`
 <li><p>Webの情報や公式ドキュメントを読んだりして、使い方を調べることができる</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>第5章:確率と擬似乱数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
+<section id="id6">
+<h2>第5章: 確率と擬似乱数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 乱数生成とランダムサンプリングを使って、再現性も意識したコードを書く。</p>
+<p><strong>練習問題</strong></p>
 <ol class="arabic simple">
-<li><p>0からn-1(nは適当な整数)までのn個の整数から、重複なくランダムにn個選ぶ(つまり0からn-1の無作為な並べかえをする)コードを作成せよ。(<code class="docutils literal notranslate"><span class="pre">numpy.random.choice</span></code>を使うとよい)</p></li>
-<li><p>1.を用いて、任意の文字列のリスト(例: 名前のリスト <code class="docutils literal notranslate"><span class="pre">[&quot;Aさん&quot;,&quot;Bさん&quot;,...]</span></code>)をランダムに並び替えて出力するコードを作成せよ。</p></li>
+<li><p>0からn-1までの整数を重複なくランダムにn個選ぶコードを作成せよ。
+(0からn-1のランダム並べ替え。numpy.random.choiceが便利)</p></li>
+<li><p>1を利用し、名前リストなど任意の文字列リストをランダムに並べ替えて表示せよ。</p></li>
+<li><p>乱数のシードを固定して、同じ乱数列が生成されることを確認せよ。<br />
+※randomモジュールを使って乱数を生成する場合は、random.seed(シード値)で、numpy.randomモジュールを使う場合は、numpy.random.seed(シード値)でシードを固定できます。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,16 +736,14 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id6">
-<h2>第6章:相関・回帰分析<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
+<section id="id7">
+<h2>第6章: 相関・回帰分析<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: データの関係性を数値化し、相関の解釈に注意しながら分析できるようになる。</p>
+<p><strong>練習問題</strong></p>
 <ol class="arabic simple">
-<li><p>以下のデータ<code class="docutils literal notranslate"><span class="pre">x</span></code>(宇都宮市の月別平均気温)と<code class="docutils literal notranslate"><span class="pre">y</span></code>(アイスクリーム・シャーベットの消費量)のうち、<br />
-8月のデータ(気温か消費量のいずれか)をランダムな値に変更し相関係数がどうなるか5通りほどで示せ。<br />
-なお、値を変更する際はインデックスやリストの対応する値を直接書き換えるのではなく、<br />
-ランダムな値をインデックスに使うことで、値を変更するコードを書くこと。<br />
-(なぜなら、データが大量の場合、手でインデックスや、対応するリストの値を書き換えるのは現実的ではないから)</p></li>
-<li><p>疑似相関について調べ例をあげよ。(できれば自身の興味に近いものや日本の事例などを調べてみること)</p></li>
+<li><p>データx(宇都宮市の月別平均気温)とy(アイスクリーム・シャーベット消費量)について、8月のデータ(気温または消費量)をランダム値に変更し、相関係数の変化を5通り示せ。
+値の変更は、インデックスを直接手入力せず、乱数で選んだ位置に対して行うこと。</p></li>
+<li><p>疑似相関を調べ、1例を挙げて説明せよ。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -754,11 +762,12 @@ document.write(`
 <li><p>簡単な場合について自作関数とライブラリの出力が同じであることを確認することができる</p></li>
 </ul>
 </section>
-<section id="id7">
-<h2>第7章:最適化問題<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
+<section id="id8">
+<h2>第7章: 最適化問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 多項式フィッティングを通して、モデルの次数と当てはまりの関係を理解する。</p>
+<p><strong>練習問題</strong></p>
 <ol class="arabic simple">
-<li><p>以下に示したデータ(<code class="docutils literal notranslate"><span class="pre">x</span></code>:年, <code class="docutils literal notranslate"><span class="pre">y</span></code>:男子100m走の世界記録(秒))について、6章で出てきたpolyfitを使って1-5次式までの多項式でフィッティングしてみよう。</p></li>
+<li><p>以下のデータ(x: 年, y: 男子100m走世界記録)について、numpy.polyfitを使って1次〜5次式でフィッティングを行え。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -777,23 +786,17 @@ document.write(`
 <li><p>係数の最適化の結果から、グラフの描画点を生成し、可視化することができる</p></li>
 </ul>
 </section>
-<section id="id8">
-<h2>第8章:ファイル操作<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p>練習問題:</p>
-<ol class="arabic">
-<li><p>コードセルに示したように、<code class="docutils literal notranslate"><span class="pre">Pandas</span></code>を用いてWeb上にあるcsvファイルを読み込んでみよう。</p>
-<p>例として、栃木県のオープンデータ「ベリーとちぎ」から<a class="reference external" href="https://data.bodik.jp/dataset/090000_hoikusyo/resource/37469f20-ed3c-4f9e-a5c4-fa750fc3c673">保育所一覧(2021年4月1日現在)</a>を利用する。</p>
-<p>なお、このcsvファイルはShift-JISでエンコードされているため、<code class="docutils literal notranslate"><span class="pre">encoding</span></code>オプションを指定する必要がある。<br />
-また、適宜URLを別のcsvファイルに変更しても構わないが、その場合はURLのほか、簡単な説明やコメントを添えること。</p>
-</li>
-<li><p>Google Driveをマウントし、1.で読み込んだデータをGoogle Driveに保存せよ。</p>
-<p>この問題はDriveのマウント・パスの指定などの一連の作業が理解できているかを確認するものなので、エラーが出た場合はそのログや自身が試した工程について、<br />
-スクリーンショットなども活用しながらできるだけ詳細に報告すること。特に問題なく作業ができた場合は、2の図を送るなどはしなくて構わない。</p>
-<p>また、プライベートなGoogleアカウントを使用している(※授業では非推奨)場合、相談の際にはプログラムの出力結果やスクリーンショットなどに他人に見られて困るものが映っていないか配慮すること。</p>
-</li>
-<li><p>余力があれば、Pythonで地図上にデータをプロットする方法を調べてみよう。代表的なライブラリとしては<code class="docutils literal notranslate"><span class="pre">folium</span></code>や<code class="docutils literal notranslate"><span class="pre">geopandas</span></code>などがある。</p>
-<p>こちらは、地図上にプロットしたりできると楽しいよ、というだけで、とくにコード欄に記載したりする必要はない。</p>
-</li>
+<section id="id9">
+<h2>第8章: ファイル操作<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p><strong>目標</strong>: 外部データを読み込み、保存し、再利用できる形に整える。</p>
+<p><strong>練習問題</strong></p>
+<ol class="arabic simple">
+<li><p>コードセルの例を参考に、PandasでWeb上のcsvを読み込め。
+例として、栃木県オープンデータの保育所一覧(2021年4月1日現在)を使う。
+このcsvはShift-JIS系のため、encoding指定が必要になる点を確認すること。</p></li>
+<li><p>Google Driveをマウントし、1で読み込んだデータをDriveへ保存せよ。
+エラーが出た場合は、ログと試した手順をできるだけ具体的に記録すること。</p></li>
+<li><p>余力があれば、地図上への可視化(例: folium, geopandas)を調べる。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -883,7 +886,8 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -892,15 +896,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">練習帳のノートブックの共有の仕方</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">第1章:Pythonの基礎</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python2">第2章:Pythonの基礎2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">第3章:関数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第4章:ライブラリ/パッケージ/モジュールとデータの可視化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第5章:確率と擬似乱数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第6章:相関・回帰分析</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">第7章:最適化問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">第8章:ファイル操作</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">推奨の進め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">練習帳ノートブックの共有方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colabai">Google ColabのAIアシスタント機能について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">第1章: Pythonの基礎</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python2">第2章: Pythonの基礎2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">第3章: 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">第4章: ライブラリ/パッケージ/モジュールとデータ可視化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">第5章: 確率と擬似乱数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">第6章: 相関・回帰分析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">第7章: 最適化問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">第8章: ファイル操作</a></li>
 </ul>
   </nav></div>
 
@@ -942,8 +948,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
