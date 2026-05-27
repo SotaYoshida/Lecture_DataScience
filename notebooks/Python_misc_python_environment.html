@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -62,14 +62,6 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-F7NT8KLGKR');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_misc_python_environment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -553,34 +545,34 @@ document.write(`
 <p>Python3.11あたりを選び[入手]する。</p>
 <p><strong>インストールしたpythonの使い方</strong></p>
 <p>Windows　Terminal上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python
 </pre></div>
 </div>
 <p>もしくは</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">.</span><span class="n">exe</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python.exe
 </pre></div>
 </div>
 <p>と実行すると対話モードでpythonが開く。スタートメニューからpythonを起動しても同じ。</p>
 <p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用することを推奨する。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello World&quot;)
 </pre></div>
 </div>
 <p>や、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(5):
+    print(i)
 </pre></div>
 </div>
 <p>などを実行してみよう。</p>
 <p>Python(対話モード)を終了する際はCtrl+Z(もしくはCtrl+Cを実行後にCtrl+Z)→Enterを押すか、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>exit()
 </pre></div>
 </div>
 <p>と入力しEnterを押せば良い。</p>
 <p><strong>Python用のライブラリをインストールする方法</strong></p>
 <p>ターミナル上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">Selenium</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install matplotlib
+pip install pandas
+pip install Selenium
 </pre></div>
 </div>
 <p>などとする。</p>
@@ -588,16 +580,16 @@ document.write(`
 <p>対話モードだと、長い処理を実現するのには向いていないので、<br />
 作業をソースコードとしてファイルに書き出し、それを実行したくなる。<br />
 実行したい場合は、コマンドプロンプト上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python hogehoge.py
 </pre></div>
 </div>
 <p>などとすると<code class="docutils literal notranslate"><span class="pre">hogehoge.py</span></code>というファイルに書いた処理が実行される。</p>
 <p>例: デスクトップにあるソースコードを実行する場合</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chdir</span> <span class="n">Desktop</span>　
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chdir Desktop　
 </pre></div>
 </div>
 <p>などして、適宜カレント(現在いる)ディレクトリの変更をするか</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python Desktop/hogehoge.py
 </pre></div>
 </div>
 <p>など実行するソースの(相対 or 絶対)パスの指定が必要になる。</p>
@@ -623,24 +615,24 @@ document.write(`
 <p>Launchpadにある[その他]から<strong>ターミナル</strong>を開き、<br />
 <code class="docutils literal notranslate"><span class="pre">python</span></code>と入力し、タブキーを2回押すと該当するものが表示される。<br />
 以下は一例:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">config</span>  <span class="n">python3</span><span class="mf">.12</span><span class="o">-</span><span class="n">config</span>
-<span class="n">python</span><span class="o">-</span><span class="n">build</span>       <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  <span class="n">python3</span><span class="mf">.9</span>
-<span class="n">python</span><span class="o">-</span><span class="n">config</span>      <span class="n">python3</span><span class="mf">.11</span>         <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">config</span>
-<span class="n">python3</span>            <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">config</span>  <span class="n">pythontex</span>
-<span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  
-<span class="n">python3</span><span class="mf">.10</span>         <span class="n">python3</span><span class="mf">.12</span>     
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python             python3.10-config  python3.12-config
+python-build       python3.10-gdb.py  python3.9
+python-config      python3.11         python3.9-config
+python3            python3.11-config  pythontex
+python3-config     python3.11-gdb.py  
+python3.10         python3.12     
 </pre></div>
 </div>
 <p>python3がある場合は、<code class="docutils literal notranslate"><span class="pre">$python3</span></code>と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く※。</p>
 <p>※初回起動時はXcodeの導入が必要かもしれない<br />
 その場合は、ターミナルに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xcode-select --install
 </pre></div>
 </div>
 <p>を打ち込みインストール作業を行う。<br />
 Xcodeのサイズがでかいので安定したネットワーク下で実行すること.</p>
 <p>Python(対話モード)が起動できたら</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello World&quot;)
 </pre></div>
 </div>
 <p>などと打って、エンターを押すと、文字列<code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>が表示されるので試してみよう。</p>
@@ -648,16 +640,16 @@ Xcodeのサイズがでかいので安定したネットワーク下で実行す
 今後のことも考えてMacにHomebrewと呼ばれるパッケージマネージャを導入しよう。
 <a class="reference external" href="https://qiita.com/zaburo/items/29fe23c1ceb6056109fd">参考</a></p>
 <p>Homebrewが導入できたら、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">update</span>
-<span class="n">brew</span> <span class="n">upgrade</span>
-<span class="n">brew</span> <span class="n">upgrade</span> <span class="n">python3</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew update
+brew upgrade
+brew upgrade python3
 </pre></div>
 </div>
 <p>と順にターミナルで実行する(暫く掛かるかも).</p>
 <p>インストールに成功すれば、python用のパッケージマネージャ(pip)も使えるようになるはず。<br />
 以後は</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install matplotlib
+pip install pandas
 </pre></div>
 </div>
 <p>などとすると、python用のモジュールがインストールされ、pythonからいつでもインポートして使うことができる。</p>
@@ -668,7 +660,7 @@ Xcodeのサイズがでかいので安定したネットワーク下で実行す
 <h2>Linuxの場合<a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
 <p>Linuxを使っている人が、pythonのインストールができないとは思いにくいが…</p>
 <p>ターミナルから</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update -y
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt update -y
 $sudo apt upgrade -y
 $sudo apt dist-upgrade -y
 $sudo apt autoremove -y
@@ -676,16 +668,16 @@ $sudo apt autoremove -y
 </div>
 <p>などを実行しパッケージマネージャのアップデート等を行った後<br />
 python3系がない場合は</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3
 </pre></div>
 </div>
 <p>ある場合は</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt upgrade python3
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt upgrade python3
 </pre></div>
 </div>
 <p>などを実行すればよい。</p>
 <p>pipがない場合、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip
 </pre></div>
 </div>
 <p>を実行する。</p>
@@ -703,7 +695,7 @@ python3系がない場合は</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> “現在地”を変更する</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd ./Desktop 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd ./Desktop 
 $cd ../ 
 $cd ~
 $cd -
@@ -716,7 +708,7 @@ $cd -
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code> ファイルやディレクトリなどを表示する.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ls 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ls 
 $ls ../*.txt
 $ls Picutures/pic_*.png
 </pre></div>
@@ -726,7 +718,7 @@ $ls Picutures/pic_*.png
 3つめは現在ホームディレクトリにいると仮定して、その直下にあるPictures以下にあるpngファイルのうち、冒頭が<code class="docutils literal notranslate"><span class="pre">pic_</span></code>のものを全て表示</p>
 <ul>
 <li><p>mv　ファイル・ディレクトリの移動・リネーム</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mv aa.txt ~/Desktop
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$mv aa.txt ~/Desktop
 $mv bb.txt ../AdDS/cc.txt
 </pre></div>
 </div>
@@ -736,17 +728,17 @@ $mv bb.txt ../AdDS/cc.txt
 </li>
 <li><p>mkdir ディレクトリを作る</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mkdir Desktop/AdDS2021
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$mkdir Desktop/AdDS2021
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>rm ファイルやディレクトリを削除する</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm ./Desktop/report1.txt
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$rm ./Desktop/report1.txt
 </pre></div>
 </div>
 <p>ディレクトリを消すときは-rオプションが必要</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm -r ./Desktop/AdDS2021
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$rm -r ./Desktop/AdDS2021
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**rmコマンドで削除したものはゴミ箱に入れられずに削除されるので注意** 
@@ -757,7 +749,7 @@ $mv bb.txt ../AdDS/cc.txt
 <ul class="simple">
 <li><p>grep 検索</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep &quot;Hello World&quot; Desktop/AdDS2021/*py
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$grep &quot;Hello World&quot; Desktop/AdDS2021/*py
 </pre></div>
 </div>
 <p><strong>タブ補完</strong></p>
@@ -768,11 +760,11 @@ $mv bb.txt ../AdDS/cc.txt
 というディレクトリがあり、<br />
 最初のものに移動したいとします。
 こんなとき、いちいち</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd AdDS2019
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd AdDS2019
 </pre></div>
 </div>
 <p>と打つのは面倒だし、打ち間違えたりします。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd Ad
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd Ad
 </pre></div>
 </div>
 <p>と打った時点でタブをポンポンと叩くと、<br />
@@ -782,8 +774,8 @@ Desktopに上記のフォルダ以外の”Ad”を含むディレクトリが�
 その後1を打って再びタブを叩くと、該当するものは一つですので<br />
 (ambiguityがなくなった時点で)最後まで入力が補完されます。</p>
 <p>ちなみにPython側からLinuxのコマンドを実行したければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;ls *.txt&quot;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
+os.system(&quot;ls *.txt&quot;)
 </pre></div>
 </div>
 <p>などとすれば良い。</p>
@@ -804,18 +796,18 @@ Desktopに上記のフォルダ以外の”Ad”を含むディレクトリが�
 <li><p>Ubuntuターミナルから、管理者権限で<code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code>を開く<br />
 たとえば、emacsが入っていれば</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo emacs /etc/passwd
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo emacs /etc/passwd
 </pre></div>
 </div>
 <p>なければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo vim /etc/passwd
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo vim /etc/passwd
 </pre></div>
 </div>
 <p>でファイルを開きます。</p>
 <ol class="arabic simple" start="2">
 <li><p>どこかに</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ubuntuユーザ名</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,,,:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ユーザ名</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Ubuntuユーザ名:x:1000:1000:&quot;&quot;,,,:/home/ユーザ名:/bin/bash
 </pre></div>
 </div>
 <p>といった欄があるので<code class="docutils literal notranslate"><span class="pre">/home/ユーザー名</span></code>部分を、<br />
@@ -831,7 +823,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <li><p>もともとのホームディレクトリにあった<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>(エイリアスなどの情報を書くファイル)を
 新しいホームディレクトリに移動させれば完了です。</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
 </pre></div>
 </div>
 </section>
@@ -850,7 +842,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <p><strong>.bashrc</strong> : bashの設定ファイル</p>
 <p>エイリアスの設定などを書くことができる. エイリアスとは、例えばコマンドでpythonを使う際、いちいち<code class="docutils literal notranslate"><span class="pre">python</span></code>とか<code class="docutils literal notranslate"><span class="pre">python3.9</span></code>などを
 指定しなくてもお目当てのpython環境を使用できるようにするためのもの. 例えば、.bashrcに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">py</span><span class="o">=</span><span class="n">python3</span><span class="mf">.9</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>alias py=python3.9
 </pre></div>
 </div>
 <p>などと書いておけば、<code class="docutils literal notranslate"><span class="pre">py</span></code>と打つだけでpython3.9が起動/使用できるようになる.</p>
@@ -859,7 +851,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <li><p>使用しているシェルによって、設定ファイルの名前が異なることがある. 例えば、bashの場合は<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>だが、zshの場合は<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>となる.</p></li>
 <li><p>設定ファイルを変更した場合は、<code class="docutils literal notranslate"><span class="pre">source</span></code>コマンドを実行することで、変更を反映させる必要がある. 例えば、<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>を変更した場合は、</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
 </pre></div>
 </div>
 <p>とするか、ターミナルを再起動する必要がある.</p>
@@ -891,7 +883,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <section id="id6">
 <h3>関連する事項<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>最近(2023年以降)、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">library-name</span></code>などとすると、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
 
 × This environment is externally managed
 ╰─&gt; To install Python packages system-wide, try brew install

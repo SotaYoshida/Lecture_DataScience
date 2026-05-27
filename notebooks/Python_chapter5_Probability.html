@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -62,14 +62,6 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-F7NT8KLGKR');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter5_Probability';</script>
@@ -976,6 +968,7 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 </div>
 </div>
 <p>サンプル数が増えるにつれて、正規分布に収束していく様子が見られる。</p>
+<p>余談になるが、正規乱数をどう生成するかについては、<a class="reference external" href="https://sotayoshida.github.io/AIML1/notebooks/Chapter_GaussianProcess.html#clubsuit">AI・機械学習論1の資料</a>でも少し触れているので、興味があればそちらも参照してみてほしい。</p>
 </section>
 <section id="seed">
 <h2><span class="section-number">5.6. </span>乱数の種(seed)の固定<a class="headerlink" href="#seed" title="Link to this heading">#</a></h2>
@@ -1018,9 +1011,9 @@ mu,sigma c: 2.6103380608022205e-05 1.0002128303060538
 <p>イメージとしては、「無限に長い疑似乱数の羅列の中から10個並んだ数を選ぶときに、<br />
 どこからどこまでを抽出するかを指定する」のが、この<code class="docutils literal notranslate"><span class="pre">random.seed</span></code>関数(細かいことを無視すると、だいたいこんなイメージ).</p>
 <p>注意点としては、たとえばループを回して乱数を生成するときに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(10):
+    random.seed(1)
+    print( random.uniform(0,1) )
 </pre></div>
 </div>
 <p>などとすると、乱数を生成する前に毎回seedが1に固定されるので<br />
