@@ -632,30 +632,27 @@ yとxの相関, yとyの相関(=1.0)]<br />
 <h3><span class="section-number">6.1.1. </span>相関分析と因果関係<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>以下では、ある一つのグラフの例を見ながら、冒頭の*相関関係は因果関係を含意しない (Correlation does not imply causation)*に関して説明する。</p>
 <p>下の図は、2017年の家計調査・気候データから作成した散布図で、千葉市での平均気温と、しめじの消費支出の間の相関を示している。</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Shimeji_Chiba.png?raw=true" width = 40%><p>生産量と平均気温の間に、強い負の相関が見て取れますが、これはどうしてでしょう？<br />
-「寒い季節には鍋が食べたくなるから」と言われるとふむふむと感じる一方で<br />
-「そもそも生産量が冬に多く、市場に出回る量が多いから」と考えることもできる。<br />
-したがって、このデータを見ただけでは、しめじが冬によく売れる理由までははっきりとは分からない。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/Shimeji_Chiba.png?raw=true" width = 40%><p>生産量と平均気温の間に、強い負の相関が見て取れますが、これはどうしてだろうか？
+「寒い季節には鍋が食べたくなるから」と言われるとふむふむと感じる一方で、「そもそも生産量が冬に多く、市場に出回る量が多いから」と考えることもできる。したがって、このデータを見ただけでは、しめじが冬によく売れる理由までははっきりとは分からない。</p>
 <p>事実、しめじの旬はGoogle検索によると9月下旬から11月初旬とのことで、最も売れている時期(12月1月)とは少し時期にズレがあり、購買意欲は必ずしも”旬”によって決まっている訳ではなく、複合的な要因がありそうな印象を受ける。</p>
-<p>気温と特定の野菜の購買意欲の真の関係を知りたければ、「その野菜はビニールハウスなどの生産設備の向上で年中、安定した味で生産ができる」
-「比較的新しい品種で〇〇といえば秋、のような固定観念がない」「季節ごとの生産量がほぼ同じ」など、他の条件が揃った状況下で比較しなければ確度の高い議論は難しい。</p>
-<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。
-気になった方は、たとえば”因果推論”で調べてみよう。</p>
+<p>気温と特定の野菜の購買意欲の真の関係を知りたければ、「その野菜はビニールハウスなどの生産設備の向上で年中、安定した味で生産ができる」「比較的新しい品種で〇〇といえば秋、のような固定観念がない」「季節ごとの生産量がほぼ同じ」など、他の条件が揃った状況下で比較しなければ確度の高い議論は難しい。</p>
+<p>このように、因果関係を紐解くことは、我々が思うほど容易ではなく、それ自体が一つの学問分野になっている。気になった方は、たとえば”因果推論”で調べてみよう。</p>
 <p><a class="reference external" href="https://www.tylervigen.com/spurious-correlations">疑似相関をまとめたおもしろいサイト</a>のように顕著な例ならば「あぁ疑似相関だな」と気がつくが、我々が普段見ている情報の中には、擬似相関であるとひろく認識されていない情報もあるはず。
 物事の因果関係を断定するような言説に対しては一歩引いて見る姿勢も重要なように思う。</p>
 </section>
 </section>
 <section id="id4">
 <h2><span class="section-number">6.2. </span>回帰分析<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>以下では自分が立てたモデルを表現する関数のことを<em>モデル関数</em>、<br />
-モデル関数とデータとの齟齬を最小化するようにモデル関数の係数を決定することを<strong>回帰</strong>、<br />
-そして回帰に基づく分析を指して<strong>回帰分析</strong>と呼ぶことにする。</p>
+<p>以下では自分が立てたモデルを表現する関数のことを<em>モデル関数</em>、モデル関数とデータとの齟齬を最小化するようにモデル関数の係数を決定することを<strong>回帰</strong>、そして回帰に基づく分析を指して<strong>回帰分析</strong>と呼ぶことにする。</p>
 <p>この授業では、<span class="math notranslate nohighlight">\(x\)</span>に対する<span class="math notranslate nohighlight">\(y\)</span>の振る舞い、といういわゆる単回帰分析のみを扱う。</p>
-<p>データとモデル間の齟齬を表現する方法はいくつかあるが、以下では最もポピュラーな誤差の二乗和を採用することとし、<br />
-その最小化を考える(<strong>最小二乗法</strong>)。データや関数、最小二乗法をもう少しきちんと定義しよう。</p>
+<p>データとモデル間の齟齬を表現する方法はいくつかあるが、以下では最もポピュラーな誤差の二乗和を採用することとし、その最小化を考える(<strong>最小二乗法</strong>)。データや関数、最小二乗法をもう少しきちんと定義しよう。</p>
 <p><span class="math notranslate nohighlight">\(D\)</span>個の点<span class="math notranslate nohighlight">\(\{x_1,x_2,...,x_D\}\)</span>でのyの値<span class="math notranslate nohighlight">\(\{y_1,y_2,...,y_D\}\)</span>が観測されているとき、<br />
-最小二乗法とは、ある決められたモデル関数<span class="math notranslate nohighlight">\(f(x)\)</span>との齟齬<span class="math notranslate nohighlight">\(\chi^2 = \sum^D_{i=1} (y_i - f(x_i))^2\)</span>を<br />
-最小化するように関数<span class="math notranslate nohighlight">\(f\)</span>の係数を調整すること。</p>
+最小二乗法とは、ある決められたモデル関数<span class="math notranslate nohighlight">\(f(x)\)</span>との齟齬</p>
+<div class="math notranslate nohighlight">
+\[
+\chi^2 = \sum^D_{i=1} (y_i - f(x_i))^2
+\]</div>
+<p>を最小化するように関数<span class="math notranslate nohighlight">\(f\)</span>の係数を調整すること。</p>
 <p>以下では、<span class="math notranslate nohighlight">\(f(x)\)</span>として単純な多項式のみを考えることにする。<br />
 <span class="math notranslate nohighlight">\(f\)</span>自体をどう決める/設計するかも重要な話題だが、この授業では深入りしない。</p>
 <p>まず回帰を学ぶために、適当なデータを生成しておく。</p>
@@ -707,9 +704,7 @@ yとxの相関, yとyの相関(=1.0)]<br />
 多項式で回帰を行う場合には、実はパラメータの最適解は”閉じた形”で与えられる。<br />
 この辺りのことは、<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_chapter_Bayesian_linear_regression.html">おまけのノートブック:ベイズ線形回帰</a>で詳しく書いています。<br />
 なお”閉じた形”というのは、数学や物理をやっていると出てくる表現で、答えが具体的な形で書き下せる、程度の意味。<br />
-たとえば 行列<span class="math notranslate nohighlight">\(A\)</span>、ベクトル<span class="math notranslate nohighlight">\(\vec{x},\vec{y}\)</span>,スカラー<span class="math notranslate nohighlight">\(\lambda\)</span>について方程式<span class="math notranslate nohighlight">\(A\vec{x}=\lambda \vec{y}\)</span>が成り立つとき、<br />
-<span class="math notranslate nohighlight">\(A\)</span>の逆行列をどうやって求めるか(数値的にやるのか解析的に求めるのか)はさておき、<br />
-<span class="math notranslate nohighlight">\(\vec{x} = \lambda A^{-1}\vec{y}\)</span>と書き直せるので「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりもする。</p>
+たとえば 行列<span class="math notranslate nohighlight">\(A\)</span>、ベクトル<span class="math notranslate nohighlight">\(\vec{x},\vec{y}\)</span>,スカラー<span class="math notranslate nohighlight">\(\lambda\)</span>について方程式<span class="math notranslate nohighlight">\(A\vec{x}=\lambda \vec{y}\)</span>が成り立つとき、<span class="math notranslate nohighlight">\(A\)</span>の逆行列をどうやって求めるか(数値的にやるのか解析的に求めるのか)はさておき、<span class="math notranslate nohighlight">\(\vec{x} = \lambda A^{-1}\vec{y}\)</span>と書き直せるので「<span class="math notranslate nohighlight">\(\vec{x}\)</span>は閉じた形で与えられる」と言ったりもする。</p>
 </div></blockquote>
 <section id="polyfit-poly1d">
 <h3><span class="section-number">6.2.1. </span>polyfit/poly1d関数<a class="headerlink" href="#polyfit-poly1d" title="Link to this heading">#</a></h3>
@@ -760,11 +755,8 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </div>
 </div>
 </div>
-<p>さて、<span class="math notranslate nohighlight">\(p\)</span>次の多項式は<span class="math notranslate nohighlight">\(p-1\)</span>次の多項式を特別な場合として含むため、<br />
-一般に<span class="math notranslate nohighlight">\(p\)</span>(多項式の次元)を増やせば、より複雑な関数を表現することができる。<br />
-(2次式は3次式の<span class="math notranslate nohighlight">\(a_3=0\)</span>の場合ですよね？)</p>
-<p><span class="math notranslate nohighlight">\(p\)</span>を複数変えながら比較した図を作ってみよう。<br />
-その方法は、<span class="math notranslate nohighlight">\(p\)</span>に関するループを回すだけ。</p>
+<p>さて、<span class="math notranslate nohighlight">\(p\)</span>次の多項式は<span class="math notranslate nohighlight">\(p-1\)</span>次の多項式を特別な場合として含むため、一般に<span class="math notranslate nohighlight">\(p\)</span>(多項式の次元)を増やせば、より複雑な関数を表現することができる。(2次式は3次式の<span class="math notranslate nohighlight">\(a_3=0\)</span>の場合ですよね？)</p>
+<p><span class="math notranslate nohighlight">\(p\)</span>を複数変えながら比較した図を作ってみよう。その方法は、<span class="math notranslate nohighlight">\(p\)</span>に関するループを回すだけ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
@@ -793,17 +785,8 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>注: 今の場合、回帰に用いたデータはsin関数に適当なノイズを足して作られている。<br />
-解析の手法を学ぶ際には、このように答えを知っている状態からはじめて、<br />
-手法がうまくデータを説明しているかどうかを検証したりする。<br />
-一見ズルっぽいが、理論を理解したりプログラムで確認するためには重要なプロセスとなる。</p>
-</div></blockquote>
-<p>現実のデータ解析の状況では、背後にある”真の関数”が分かっていることは非常に稀で、<br />
-「興味のあるデータが、人間がよく知っている単純な式(有限次元の多項式や指数関数)で<br />
-完全に表現できる道理はない」ということも抑えておくべき重要な点となる.<br />
-真の関数というのは一般に<strong>神のみぞ知る</strong>で、人間ができることは、出来るだけ尤もらしい関数を見つけ、<br />
-その背後にあるメカニズム(の主要部分)を解明することと言える.</p>
+<p>注: 今の場合、回帰に用いたデータはsin関数に適当なノイズを足して作られている。解析の手法を学ぶ際には、このように答えを知っている状態からはじめて、手法がうまくデータを説明しているかどうかを検証したりする。一見ズルっぽいが、理論を理解したりプログラムで確認するためには重要なプロセスとなる。</p>
+<p>現実のデータ解析の状況では、背後にある”真の関数”が分かっていることは非常に稀で、「興味のあるデータが、人間がよく知っている単純な式(有限次元の多項式や指数関数)で完全に表現できる道理はない」ということも抑えておくべき重要な点となる.真の関数というのは一般に<strong>神のみぞ知る</strong>で、人間ができることは、出来るだけ尤もらしい関数を見つけ、その背後にあるメカニズム(の主要部分)を解明することと言える.</p>
 <p>一般に、関数をどんどん複雑なものにしていくにつれて、関数の表現力(表現できるデータの幅)は大きく拡がる。<br />
 その一方で、用意した関数がデータに過度に適合するあまり、<strong>未知の点での値の予測精度(汎化性能)が著しく損なわれている危険性</strong>がある。<br />
 このことを予言能力がない(データに<strong>過適合</strong>している) と言う。<br />
@@ -811,16 +794,9 @@ yとxの相関, yとyの相関(=1.0)]<br />
 </section>
 <section id="clubsuit">
 <h3><span class="section-number">6.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> モデルの複雑さとモデル選択<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
-<p>上の多項式回帰では、たとえば9次式はデータをピッタリと再現している一方で<br />
-真の関数(sin関数)の振る舞いよりもむしろ、測定誤差のようなものにまで過適合してしまっている。</p>
-<p>ここで過適合を防ぐためにデータとの整合性(二乗誤差)だけでなく<br />
-<strong>モデルの複雑さ</strong>も定量化し、なるべく複雑すぎない関数が選ばれるよう勘定することを考える。</p>
-<p>ここではこのモデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>として多項式の係数の絶対値の2乗和:<br />
-<span class="math notranslate nohighlight">\(C= \sum_i |a_i|^2\)</span>を採用することにしよう。</p>
-<p>さらに、”モデルを選択するための基準<span class="math notranslate nohighlight">\(L\)</span>”を<br />
-<span class="math notranslate nohighlight">\(L = \)</span>(二乗誤差) + <span class="math notranslate nohighlight">\(\lambda\)</span>  log10(モデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>)で定量化し<br />
-この<span class="math notranslate nohighlight">\(L\)</span>が最小になる多項式を採用することにしよう。<br />
-(この選択はあくまで例であることに注意)</p>
+<p>上の多項式回帰では、たとえば9次式はデータをピッタリと再現している一方で真の関数(sin関数)の振る舞いよりもむしろ、測定誤差のようなものにまで過適合してしまっている。ここで過適合を防ぐためにデータとの整合性(二乗誤差)だけでなく<strong>モデルの複雑さ</strong>も定量化し、なるべく複雑すぎない関数が選ばれるよう勘定することを考える。</p>
+<p>ここではこのモデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>として多項式の係数の絶対値の2乗和: <span class="math notranslate nohighlight">\(C= \sum_i |a_i|^2\)</span>を採用することにしよう。</p>
+<p>さらに、”モデルを選択するための基準<span class="math notranslate nohighlight">\(L\)</span>”を<span class="math notranslate nohighlight">\(L = \)</span>(二乗誤差) + <span class="math notranslate nohighlight">\(\lambda\)</span>  log10(モデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>)で定量化し、この<span class="math notranslate nohighlight">\(L\)</span>が最小になる多項式を採用することにしよう。(この選択はあくまで例であることに注意)</p>
 <p>各次数での多項式のモデルの複雑さ<span class="math notranslate nohighlight">\(C\)</span>と二乗誤差、そしてモデル選択基準量<span class="math notranslate nohighlight">\(L\)</span>を表示してみると…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

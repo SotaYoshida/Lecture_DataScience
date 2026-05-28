@@ -495,10 +495,8 @@ document.write(`
 <li><p>配達員の配達ルートを最適化(≒時間や燃料の消費を最小化)する</p></li>
 <li><p>機械学習のモデルのパラメータを調整し、予測精度を最大化する</p></li>
 </ul>
-<p>などなど。「人生も、何らかの目的関数<span class="math notranslate nohighlight">\(f(x)\)</span>(一般に<span class="math notranslate nohighlight">\(x\)</span>は多次元),たとえば幸福感(不幸感)を最大化(最小化)すること、という意味では最適化問題を考えていることに相当する」というと少し大げさでしょうか。</p>
-<p>この章では、最適化の基礎について説明する。<br />
+<p>などなど。この章では、最適化の基礎について説明する。
 授業では実際に最適化で必要な数学的な操作をするコードを作ったりする訳ではないが、「ライブラリに入れてポンッ」ではなく、背後にあるモチベーションや概念を理解しておくことは自分が興味のある問題を最適化問題に帰着させて解くためには不可欠になる。</p>
-<p>※高校で微分をあまり勉強していないという方に向けて末尾に数学的準備の項を設けてあるのでチェックしてください.(よく知っているという方もさっと目を通してみてください)</p>
 <section id="id2">
 <h2><span class="section-number">7.1. </span>考えたい問題のイメージ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>以下で考えたい問題のポンチ絵</p>
@@ -507,7 +505,7 @@ document.write(`
 <div><p>あなたは変数<span class="math notranslate nohighlight">\(x\)</span>のある特定の点<span class="math notranslate nohighlight">\(t\)</span>での関数値<span class="math notranslate nohighlight">\(f(t)\)</span>を観測して知っている。<br />
 また、図中に<strong>緑の線で示したような<span class="math notranslate nohighlight">\(f(x)\)</span>の振る舞いを予め知ることはできず<br />
 都度<span class="math notranslate nohighlight">\(x\)</span>を変えて調べることで初めて対応する<span class="math notranslate nohighlight">\(y\)</span>の値が分かる</strong>状況を考えよう。<br />
-(そのことを点線で表現しています)<br />
+(そのことを点線で表現している)
 このとき、<span class="math notranslate nohighlight">\(x\)</span>を変えながら<span class="math notranslate nohighlight">\(f(x)\)</span>が最小となる点を探すには一般にどうすればよいだろうか？</p>
 </div></blockquote>
 <p>変数が2次元(やそれ以上)の場合も、</p>
@@ -543,12 +541,11 @@ document.write(`
 点<span class="math notranslate nohighlight">\(x=t\)</span>での勾配は(あえて)偏微分で書くと<span class="math notranslate nohighlight">\(\frac{\partial f(x)}{\partial x}|_{x=t}\)</span>となる。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>の値を更新する際に、更新前の値を<span class="math notranslate nohighlight">\(x_{old}\)</span>,更新後の値を<span class="math notranslate nohighlight">\(x_{new}\)</span>と書くことにすると、<br />
 <span class="math notranslate nohighlight">\(x_{new} = x_{old} -\eta \frac{\partial f(x)}{\partial x}|_{x=x_{old}}\)</span> と更新する。</p>
-<blockquote>
-<div><p>注) <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x}|_{x=t}\)</span>という表記に慣れていない方は、<span class="math notranslate nohighlight">\(f'(x=t)\)</span>のことと思って頂いて結構です</p>
-</div></blockquote>
-<p>微分(傾き)が正の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が増える<br />
-微分(傾き)が負の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が減る<br />
-ことから、微分の値の前にマイナスがついている理由も納得できるかと思います。</p>
+<ul class="simple">
+<li><p>微分(傾き)が正の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が増える</p></li>
+<li><p>微分(傾き)が負の場合は、<span class="math notranslate nohighlight">\(x\)</span>を正に増やすと<span class="math notranslate nohighlight">\(f(x)\)</span>の値が減る<br />
+ことから、微分の値の前にマイナスがついている理由も納得できるかと思う。</p></li>
+</ul>
 <p>最小化でなく最大化を考える場合はマイナス符号は不要で<code class="docutils literal notranslate"><span class="pre">+</span></code>となる。(上と同じように考えてみよう)</p>
 <p>上では、<span class="math notranslate nohighlight">\(\eta\)</span>という係数(正の値)を導入したが、これは<strong>傾いてる方向にどれくらいのスケールで<span class="math notranslate nohighlight">\(x\)</span>を更新するか</strong>をコントロールするパラメータで、機械学習などの分野で学習率と呼ばれるものに対応している。<br />
 今の単峰的な関数の場合、学習率<span class="math notranslate nohighlight">\(\eta\)</span>は適当な値をひとつ選べば十分である。</p>
@@ -556,37 +553,26 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎると、<span class="math notranslate nohighlight">\(x\)</span>の更新幅が大きすぎて谷を跨いでしまい、なかなか谷の底に落ち込まない、といったことが起こりえる.</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_large_eta.png?raw=true" width=80%>  
 <p>一方で<span class="math notranslate nohighlight">\(\eta\)</span>が小さすぎると、なかなか更新が進まず、これまた効率の悪い探索となってしまう。</p>
-<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_small_eta.png?raw=true" width=80%>  <p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<br />
-<span class="math notranslate nohighlight">\(\eta\)</span>が小さいと局所的な谷に捕まってしまってなかなか大局的な谷にたどり着けない、<br />
-かといって<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎるとあらぬ方向に飛んでいってしまう、といったことが起こりえる。</p>
+<img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/1d_small_eta.png?raw=true" width=80%>  <p>これ以外にも、最初の図のように多峰的(山あり谷あり)な関数だと、<span class="math notranslate nohighlight">\(\eta\)</span>が小さいと局所的な谷に捕まってしまってなかなか大局的な谷にたどり着けない、かといって<span class="math notranslate nohighlight">\(\eta\)</span>が大きすぎるとあらぬ方向に飛んでいってしまう、といったことが起こりえる。</p>
 <p>その様な場合にはもう少し”賢い”最適化の手法を応用したり、更新の幅を徐々に減衰させるなどの工夫が必要になる。</p>
 <section id="clubsuit">
 <h3><span class="section-number">7.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
-<p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。</p>
-<p>最適化問題自体、非常に話題が豊富なので、15コマ程度ましてや１コマで扱い切れるようなトピックではない。</p>
-<p>興味がある方は下記のキーワードなどで調べてみよう。</p>
-<p>たとえば機械学習では、勾配の情報だけでなくそれまでの更新の履歴を活用した各種の最適化手法がよく用いられる。→ AdaGrad, Adam, etc.</p>
-<p>また、物理学から着想を得た最適化手法もよく用いられる → 焼きなまし法(Simulated Annealing)</p>
-<p>最適化の手法自体に(広義の)機械学習の手法を使うこともある　→ ベイズ最適化 (おまけのノートブックもある)</p>
+<p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。最適化問題自体、非常に話題が豊富なので、１つの講義、まして１つのコマで扱い切れるようなトピックではない。とくに機械学習の分野では、最適化の手法は非常に重要なトピックで、様々な工夫が凝らされた手法が提案されている。
+その少数の例については<a class="reference external" href="https://sotayoshida.github.io/AIML1/notebooks/Chapter_Optimization.html">AI・機械学習論1の資料</a>にも記載がある。</p>
 </section>
 <section id="id4">
 <h3><span class="section-number">7.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>目的関数の選択<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>最適化問題を解く場合に最小化/最大化したい関数のことを目的関数と呼ぶ。</p>
-<p>データ分析をする上で最もよく出てくる目的関数はカイ自乗(chi-square)で、回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間の二乗誤差<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。<br />
-(データの数で割ったり平方根を取った値、平均二乗誤差を採用することも多い)</p>
+<p>最適化問題を解く場合に最小化/最大化したい関数のことを目的関数と呼ぶ。データ分析をする上で最もよく出てくる目的関数はカイ自乗(chi-square)で、回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間の二乗誤差<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。(データの数で割ったり平方根を取った値、平均二乗誤差を採用することも多い)</p>
 <p>機械学習の文脈では「予測の誤差(損失)を最小化したい」というモチベーションがあり、目的関数を損失関数/Loss functionなどと言ったりもする。</p>
-<p>目的関数の選び方は問題によってまちまちで、その選び方によって”最適なモデル”も変わり得る、ということに注意しておこう。</p>
-<p>たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、<br />
-データの数値に対する誤差が占める割合に着目すれば、前者は2倍(100%)ずれていて、後者は1%しかずれていない。</p>
-<p>このようにスケールの異なる量が出てくる状況下では、目的関数の定義で対数を取ったりする場合もある。</p>
+<p>目的関数の選び方は問題によってまちまちで、その選び方によって”最適なモデル”も変わり得る、ということに注意しておこう。
+たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、データの数値に対する誤差が占める割合に着目すれば、前者は2倍(100%)ずれていて、後者は1%しかずれていない。
+このようにスケールの異なる量が出てくる状況下では、目的関数の定義で対数を取ったりする場合もある。</p>
 <p>一般に目的関数の選択は、複数の量のバランス(トレードオフ)を考える必要があり、その選び方が問題の解釈や性能にも大きく影響する。</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">7.2.3. </span>簡単な例でのプログラム<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>下に凸な二次関数の最小値を、勾配降下法で求めてみよう. もちろん二次関数の場合は、極値を与える<span class="math notranslate nohighlight">\(x\)</span>の値は、<br />
-プログラムを書くまでもなく平方完成で求められるが、目的は数値計算になれるためなので気にしないことにする。</p>
-<p><span class="math notranslate nohighlight">\(f(x)=5x^2 -4x + 3\)</span>とでもしましょう。<br />
-<span class="math notranslate nohighlight">\(x\)</span>についての微分はもちろん<span class="math notranslate nohighlight">\(\frac{df(x)}{dx}=10x -4\)</span>になる。</p>
+<p>下に凸な二次関数の最小値を、勾配降下法で求めてみよう. もちろん二次関数の場合は、極値を与える<span class="math notranslate nohighlight">\(x\)</span>の値は、プログラムを書くまでもなく平方完成で求められるが、目的は数値計算になれるためなので気にしないことにする。</p>
+<p><span class="math notranslate nohighlight">\(f(x)=5x^2 -4x + 3\)</span>とでもよう。<span class="math notranslate nohighlight">\(x\)</span>についての微分はもちろん<span class="math notranslate nohighlight">\(\frac{df(x)}{dx}=10x -4\)</span>になる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -614,7 +600,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>アニメーションで見てみると… (少し実行に時間がかかります)</p>
+<p>アニメーションで見てみると… (少し実行に時間がかかる)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -56405,27 +56391,25 @@ AE6Agg4AAAAAgBOgoAMAAAAA4AT+H1WLgJCLIsTEAAAAAElFTkSuQmCC\
 </ul>
 <p>場合、<span class="math notranslate nohighlight">\(x\)</span>をその微分した表式に代入することで勾配法の実装が可能となる.<br />
 ([有限の値をもつ場合]と限定したのは、微分が発散してしまうとパラメータの更新には実用上意味をなさないため)</p>
-<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)がすべて手で計算できるなら数値計算する必要がないし、根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。　　
-※最も単純な求根アルゴリズムであるニュートン法についての説明についてはおまけのニュートン法の章に記載がある。</p>
-<p>大量の関数を考えて微分した表式が必要な場合は、いちいち関数の微分形を導出してコードにするのは面倒なので、SympyなどのモジュールやMathematicaなどの数式そのものの微分などを扱えるツールを使うのも一つの手である。</p>
+<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)がすべて手で計算できるなら数値計算する必要がないし、根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。
+大量の関数を考えて微分した表式が必要な場合は、いちいち関数の微分形を導出してコードにするのは面倒なので、SympyなどのモジュールやMathematicaなどの数式そのものの微分などを扱えるツールを使うのも一つの手である。</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">7.3.2. </span>数値的に勾配を計算する場合<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(f(x)\)</span>が具体的な<span class="math notranslate nohighlight">\(x\)</span>の形で書き下せない場合もある.</p>
-<p>たとえば「<span class="math notranslate nohighlight">\(f(x)\)</span>が条件<span class="math notranslate nohighlight">\(x\)</span>のもとで行った何らかの測定結果である場合」などがこれにあてはまる。</p>
+<p><span class="math notranslate nohighlight">\(f(x)\)</span>が具体的な<span class="math notranslate nohighlight">\(x\)</span>の形で書き下せない場合もある.<br />
+たとえば「<span class="math notranslate nohighlight">\(f(x)\)</span>が条件<span class="math notranslate nohighlight">\(x\)</span>のもとで行った何らかの測定結果である場合」などがこれにあてはまる。</p>
 <p>より具体的な例をあげるなら…</p>
 <blockquote>
 <div><p>あなたはとある医療薬品の効果(数値で表現できると仮定)を調べる研究をしているとして、<br />
 温度<span class="math notranslate nohighlight">\(x\)</span>を変えながら何回か測定して<span class="math notranslate nohighlight">\(f(x)\)</span>の値を調べている</p>
 </div></blockquote>
-<p>といった状況を想像してください.　　
-このような場合、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の具体的な表式がわからないので、勾配についても<span class="math notranslate nohighlight">\(x\)</span>に対する式として書き下すことはできない。</p>
+<p>といった状況を想像しよう。このような場合、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の具体的な表式がわからないので、勾配についても<span class="math notranslate nohighlight">\(x\)</span>に対する式として書き下すことはできない。</p>
 <p>しかし、微分の定義に立ち返って考えてみると、<span class="math notranslate nohighlight">\(f(x=a)\)</span>の値と、<span class="math notranslate nohighlight">\(x=a\)</span>から微小量<span class="math notranslate nohighlight">\(\delta\)</span>だけ動かした場所での値<span class="math notranslate nohighlight">\(f(a+\delta)\)</span>がわかっていれば<span class="math notranslate nohighlight">\(f'(x=a)\)</span>を”近似的に”計算することができる。</p>
 <div class="math notranslate nohighlight">
 \[
 \left. \frac{df(x)}{dx} \right|_{x=a} = \lim_{\delta \to 0} \frac{f(a+\delta) - f(a)}{\delta}
 \]</div>
-<p>ただし、<span class="math notranslate nohighlight">\(\delta\)</span>があまり小さくないと下の絵のように正しく勾配が計算できない一方で、<span class="math notranslate nohighlight">\(x\)</span>を調整する精度に限界があったり、勾配を計算する際のコンピュータの数値精度には限りがありますので、文字通りの意味で”無限に小さい”の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることはできず、有限の小さな値で<span class="math notranslate nohighlight">\(\delta\)</span>を表現することになり、それにより数値計算に大きな誤差が紛れ込む危険性もある。</p>
+<p>ただし、<span class="math notranslate nohighlight">\(\delta\)</span>があまり小さくないと下の絵のように正しく勾配が計算できない一方で、<span class="math notranslate nohighlight">\(x\)</span>を調整する精度に限界があったり、勾配を計算する際のコンピュータの数値精度には限りがあるので、文字通りの意味で”無限に小さい”の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることはできず、有限の小さな値で<span class="math notranslate nohighlight">\(\delta\)</span>を表現することになり、それにより数値計算に大きな誤差が紛れ込む危険性もある。</p>
 <p><span class="math notranslate nohighlight">\(x\)</span>を動かしたときの関数の変動度合いがものすごく大きい(たとえば係数がめちゃくちゃデカイ)と、数値微分の精度は<span class="math notranslate nohighlight">\(\delta\)</span>に対する依存性が強くなってしまう。</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/finite_diff.png?raw=true" width=90%>  
 <p>解析的に微分ができる関数を使って、数値微分の簡単な例を示しておこう。</p>
@@ -56508,23 +56492,21 @@ delta	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 </section>
 <section id="id10">
 <h2><span class="section-number">7.5. </span>数学的準備: 微分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
-<p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。</p>
-<p>一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、それを式で表現しようと思うと、様々な関数の形を考える必要がある。<br />
-(たとえば何かの値の季節変動などをイメージしよう)</p>
+<p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。
+一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、それを式で表現しようと思うと、様々な関数の形を考える必要がある。たとえば何かの値の季節変動などをイメージしよう。</p>
 <p>そこで、直線の場合の傾きを、直線以外の関数に”拡張”しようと考えるのは至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
-<p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが、
-最も代表的なものは、17世紀にニュートンとライプニッツが確立したとする説で、ニュートンは微分の概念を独自に定式化し、天体の軌道などを予測するなどの偉大な功績を残した.</p>
-<p>以下の内容は、厳密性はかなり犠牲にして微分の概念を導入している。
-(もちろん、大学の数学の教科書に載っている関数の連続性や微分の厳密な定義も非常に重要です).</p>
+<p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが、最も代表的なものは、17世紀にニュートンとライプニッツが確立したとする説で、ニュートンは微分の概念を独自に定式化し、天体の軌道などを予測するなどの偉大な功績を残した.</p>
+<p>以下の内容は、厳密性は犠牲にして微分の概念を導入している。</p>
 <section id="id11">
 <h3><span class="section-number">7.5.1. </span>微分の基本的な考え方<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>定義: ある変数<span class="math notranslate nohighlight">\(x\)</span>について関数<span class="math notranslate nohighlight">\(f(x)\)</span>が与えられているとき、<br />
-関数<span class="math notranslate nohighlight">\(f(x)\)</span>の<span class="math notranslate nohighlight">\(x=a\)</span>での微分を<br />
-<span class="math notranslate nohighlight">\(f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}\)</span>と定義する.</p>
-<p>ここで、<span class="math notranslate nohighlight">\(\lim_{\delta \to 0}\)</span>は0に限りなく近い(無限小)の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることを意味する。</p>
-<p>つまり、関数をある点からちょこっとだけ動かしたときに、<br />
-関数の値が変動する度合いがどれくらいかを表しています。<br />
-上の定義は「無限小の幅で関数を直線で近似して傾きを計算している」とも言いかえられるでしょう。</p>
+<p>定義: ある変数<span class="math notranslate nohighlight">\(x\)</span>について関数<span class="math notranslate nohighlight">\(f(x)\)</span>が与えられているとき、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の<span class="math notranslate nohighlight">\(x=a\)</span>での微分を</p>
+<div class="math notranslate nohighlight">
+\[
+f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
+\]</div>
+<p>と定義する.  ここで、<span class="math notranslate nohighlight">\(\lim_{\delta \to 0}\)</span>は0に限りなく近い(無限小)の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることを意味する。</p>
+<p>つまり、関数をある点からちょこっとだけ動かしたときに、関数の値が変動する度合いがどれくらいかを表している。
+上の定義は「無限小の幅で関数を直線で近似して傾きを計算している」とも言いかえられる。</p>
 <p><strong>直線の例</strong><br />
 <span class="math notranslate nohighlight">\(f(x) = ax + b \)</span>の<span class="math notranslate nohighlight">\(x=x_1\)</span>での微分値は定義に当てはめて計算すると<br />
 <span class="math notranslate nohighlight">\(f'(x_1)= \lim_{\delta \to 0} \frac{f(x_1+\delta)-f(x_1)}{\delta}= \lim_{\delta \to 0} \frac{(a(x_1+\delta)+b)-(ax_1+b)}{\delta} = a \)</span> となる。<br />
@@ -56575,11 +56557,9 @@ delta	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <img alt="../_images/de6ac6f614c14b794baa226dd3d8d9ab71bfa7a0ff037eb9199f4d109f06dcdb.png" src="../_images/de6ac6f614c14b794baa226dd3d8d9ab71bfa7a0ff037eb9199f4d109f06dcdb.png" />
 </div>
 </div>
-<p><span class="math notranslate nohighlight">\(x&lt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&lt;0\)</span>で、<span class="math notranslate nohighlight">\(x&gt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&gt;0\)</span>となっていますね。</p>
-<p>これまでは、定義に即して微分の値を計算していましたが、毎回調べたい点で定義に立ち返るというのは面倒です。</p>
-<p>関数が閉じた形で与えられているとき(つまり、<span class="math notranslate nohighlight">\(f(x)\)</span>が<span class="math notranslate nohighlight">\(x\)</span>の具体的な表式で与えられているとき)<br />
-多くはその微分<span class="math notranslate nohighlight">\(f'(x)\)</span>も<span class="math notranslate nohighlight">\(x\)</span>の関数として書き下すことができます。</p>
-<p>そうすれば、<span class="math notranslate nohighlight">\(x\)</span>に特定の値を代入すれば好きな点での微分の値<span class="math notranslate nohighlight">\(f'(x)\)</span>を知ることができます。</p>
+<p><span class="math notranslate nohighlight">\(x&lt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&lt;0\)</span>で、<span class="math notranslate nohighlight">\(x&gt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&gt;0\)</span>となっている。</p>
+<p>これまでは、定義に即して微分の値を計算していましたが、毎回調べたい点で定義に立ち返るというのは面倒だ。
+関数が閉じた形で与えられているとき(つまり、<span class="math notranslate nohighlight">\(f(x)\)</span>が<span class="math notranslate nohighlight">\(x\)</span>の具体的な表式で与えられているとき)多くはその微分<span class="math notranslate nohighlight">\(f'(x)\)</span>も<span class="math notranslate nohighlight">\(x\)</span>の関数として書き下すことができる。そうすれば、<span class="math notranslate nohighlight">\(x\)</span>に特定の値を代入すれば好きな点での微分の値<span class="math notranslate nohighlight">\(f'(x)\)</span>を知ることができる。</p>
 <p>とりあえずは以下を公式的に抑えておけば問題は有りません。</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(x\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に対する微分は1</p></li>
@@ -56589,7 +56569,7 @@ delta	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <li><p><span class="math notranslate nohighlight">\(\sin{x}\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に対する微分は<span class="math notranslate nohighlight">\(\cos{x}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\log{x}\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に対する微分は<span class="math notranslate nohighlight">\(1/x\)</span> (x&gt;0で定義される)</p></li>
 </ol>
-<p>いずれも、上の微分の定義や、指数関数/三角関数/対数関数の定義(c.f. マクローリン展開)から証明することができます。</p>
+<p>いずれも、上の微分の定義や、指数関数/三角関数/対数関数の定義(c.f. マクローリン展開)から証明することができる。</p>
 </section>
 </section>
 </section>
