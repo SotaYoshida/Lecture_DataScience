@@ -16,33 +16,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -62,6 +65,14 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-F7NT8KLGKR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_chapter7_Optimization';</script>
@@ -71,6 +82,7 @@
     <link rel="prev" title="6. 相関・回帰分析" href="Python_chapter6_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,19 +98,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -106,7 +107,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,8 +114,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -131,7 +131,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -161,21 +162,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="プログラミング演習1・実践データサイエンス - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -236,9 +233,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -413,24 +415,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -457,7 +451,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 考えたい問題のイメージ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 最も基本的な最適化手法: 勾配法</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">7.2.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span>目的関数の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 目的関数の選択</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.3. 簡単な例でのプログラム</a></li>
 </ul>
 </li>
@@ -558,15 +552,14 @@ document.write(`
 <section id="clubsuit">
 <h3><span class="section-number">7.2.1. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法<a class="headerlink" href="#clubsuit" title="Link to this heading">#</a></h3>
 <p>勾配法の他にもたくさん問題に応じて最適化手法が用いられる。最適化問題自体、非常に話題が豊富なので、１つの講義、まして１つのコマで扱い切れるようなトピックではない。とくに機械学習の分野では、最適化の手法は非常に重要なトピックで、様々な工夫が凝らされた手法が提案されている。
-その少数の例については<a class="reference external" href="https://sotayoshida.github.io/AIML1/notebooks/Chapter_Optimization.html">AI・機械学習論1の資料</a>にも記載がある。</p>
+その幾つかの例については<a class="reference external" href="https://sotayoshida.github.io/AIML1/notebooks/Chapter_Optimization.html">AI・機械学習論1の資料</a>にも記載がある。</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">7.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span>目的関数の選択<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>最適化問題を解く場合に最小化/最大化したい関数のことを目的関数と呼ぶ。データ分析をする上で最もよく出てくる目的関数はカイ自乗(chi-square)で、回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間の二乗誤差<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。(データの数で割ったり平方根を取った値、平均二乗誤差を採用することも多い)</p>
-<p>機械学習の文脈では「予測の誤差(損失)を最小化したい」というモチベーションがあり、目的関数を損失関数/Loss functionなどと言ったりもする。</p>
+<h3><span class="section-number">7.2.2. </span><span class="math notranslate nohighlight">\(\clubsuit\)</span> 目的関数の選択<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>最適化問題を解く場合に最小化/最大化したい関数のことを目的関数 (target function)と呼ぶことがある。データ分析をする上で最もよく出てくる目的関数は二乗誤差で、回帰の場合、予測<span class="math notranslate nohighlight">\(y_i\)</span>と観測値<span class="math notranslate nohighlight">\(f(x_i)\)</span>との間のズレを二乗して足し上げたもの<span class="math notranslate nohighlight">\(\chi^2 = \sum_i (y_i-f(x_i))^2\)</span>といったように定義される。データの数で割ったり平方根を取った値、平均二乗誤差 (Mean Squared Error)を採用することも多い。</p>
+<p>機械学習の文脈では　<strong>予測の誤差(損失)を最小化したい</strong> というモチベーションから、特に目的関数を損失関数 (Loss function)などと言ったりもする。</p>
 <p>目的関数の選び方は問題によってまちまちで、その選び方によって”最適なモデル”も変わり得る、ということに注意しておこう。
-たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、データの数値に対する誤差が占める割合に着目すれば、前者は2倍(100%)ずれていて、後者は1%しかずれていない。
-このようにスケールの異なる量が出てくる状況下では、目的関数の定義で対数を取ったりする場合もある。</p>
+たとえば、二乗誤差を考える際「正解が10のところを20と予測した場合」と「正解が1000のところを1010と予測した場合」とで二乗誤差の値自体は同じだが、データの数値に対する誤差が占める割合に着目すれば、前者は2倍(100%)ずれていて、後者は1%しかずれていない。このようにスケールの異なる量が出てくる状況下では、目的関数の定義で対数を取ったりする場合もある。</p>
 <p>一般に目的関数の選択は、複数の量のバランス(トレードオフ)を考える必要があり、その選び方が問題の解釈や性能にも大きく影響する。</p>
 </section>
 <section id="id5">
@@ -56380,19 +56373,15 @@ AE6Agg4AAAAAgBOgoAMAAAAA4AT+H1WLgJCLIsTEAAAAAElFTkSuQmCC\
 <section id="id7">
 <h3><span class="section-number">7.3.1. </span>解析的に微分が計算できる場合<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>たとえば以下の例のように</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(f(x)= \sum^p_{i=0} a_i x^i\)</span> (多項式)</p></li>
-<li><p><span class="math notranslate nohighlight">\(f(x)= \exp{(-ax^2+bx+c)}\)</span> (指数関数)</p></li>
-<li><p><span class="math notranslate nohighlight">\(f(x)= \ln{x}\)</span> (自然対数)</p></li>
-</ol>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(f(x)\)</span>が閉じた形で書き下せる</p></li>
-<li><p>興味のある区間(定義域)で微分形が計算でき、有限の値を持つ</p></li>
+<li><p>多項式: <span class="math notranslate nohighlight">\(f(x)= \sum^p_{i=0} a_i x^i\)</span></p></li>
+<li><p>指数関数: <span class="math notranslate nohighlight">\(f(x)= \exp{(-ax^2+bx+c)}\)</span></p></li>
+<li><p>自然体数: <span class="math notranslate nohighlight">\(f(x)= \ln{x}\)</span></p></li>
 </ul>
-<p>場合、<span class="math notranslate nohighlight">\(x\)</span>をその微分した表式に代入することで勾配法の実装が可能となる.<br />
-([有限の値をもつ場合]と限定したのは、微分が発散してしまうとパラメータの更新には実用上意味をなさないため)</p>
-<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)がすべて手で計算できるなら数値計算する必要がないし、根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。
-大量の関数を考えて微分した表式が必要な場合は、いちいち関数の微分形を導出してコードにするのは面倒なので、SympyなどのモジュールやMathematicaなどの数式そのものの微分などを扱えるツールを使うのも一つの手である。</p>
+<p><span class="math notranslate nohighlight">\(f(x)\)</span>が閉じた形で書き下せる場合、
+もっというと、興味のある区間(定義域)で微分形が計算でき、有限の値を持つ場合、<span class="math notranslate nohighlight">\(x\)</span>をその微分した表式に代入することで勾配法の実装が可能となる.</p>
+<p>※ここで有限の値をもつ場合に限定したのは、微分が発散してしまうとパラメータの更新には実用上意味をなさないためである。</p>
+<p>ちなみに導関数<span class="math notranslate nohighlight">\(f'(x)=0\)</span>の解(根)がすべて手で計算できるなら数値計算する必要がないし、根を求めたいだけなら、勾配法を使う理由は(アルゴリズムの理解等の目的を除いて)特に必要ない。大量の関数を考えて微分した表式が必要な場合は、いちいち関数の微分形を導出してコードにするのは面倒なので、<code class="docutils literal notranslate"><span class="pre">Sympy</span></code>などのモジュールやMathematicaなどの数式そのものの微分などを扱えるツールを使うのも一つの手である。</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">7.3.2. </span>数値的に勾配を計算する場合<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
@@ -56494,9 +56483,8 @@ delta	 1.0e-15 	f&#39;(5)	  454.7473508864641 	 diff. 2.2e+00
 <h2><span class="section-number">7.5. </span>数学的準備: 微分<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>ある直線<span class="math notranslate nohighlight">\(y=ax+b\)</span>を考えたとき、直線の傾き<span class="math notranslate nohighlight">\(a\)</span>に着目すれば、<span class="math notranslate nohighlight">\(x\)</span>の増加分に対して<span class="math notranslate nohighlight">\(y\)</span>がどれだけ変化するかを知ることができる。
 一方、実社会で扱うデータは、一般に直線よりも複雑な形をしていて、それを式で表現しようと思うと、様々な関数の形を考える必要がある。たとえば何かの値の季節変動などをイメージしよう。</p>
-<p>そこで、直線の場合の傾きを、直線以外の関数に”拡張”しようと考えるのは至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
+<p>そこで、直線の場合の傾きを、直線以外の関数に拡張しようと考えるのは至って自然な発想といえる。それが<strong>微分</strong>の概念である.</p>
 <p>微分(積分)の歴史は古く、人類史のどの時点でアイデアが確立したとするかは諸説あるが、最も代表的なものは、17世紀にニュートンとライプニッツが確立したとする説で、ニュートンは微分の概念を独自に定式化し、天体の軌道などを予測するなどの偉大な功績を残した.</p>
-<p>以下の内容は、厳密性は犠牲にして微分の概念を導入している。</p>
 <section id="id11">
 <h3><span class="section-number">7.5.1. </span>微分の基本的な考え方<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>定義: ある変数<span class="math notranslate nohighlight">\(x\)</span>について関数<span class="math notranslate nohighlight">\(f(x)\)</span>が与えられているとき、関数<span class="math notranslate nohighlight">\(f(x)\)</span>の<span class="math notranslate nohighlight">\(x=a\)</span>での微分を</p>
@@ -56507,13 +56495,13 @@ f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
 <p>と定義する.  ここで、<span class="math notranslate nohighlight">\(\lim_{\delta \to 0}\)</span>は0に限りなく近い(無限小)の<span class="math notranslate nohighlight">\(\delta\)</span>を考えることを意味する。</p>
 <p>つまり、関数をある点からちょこっとだけ動かしたときに、関数の値が変動する度合いがどれくらいかを表している。
 上の定義は「無限小の幅で関数を直線で近似して傾きを計算している」とも言いかえられる。</p>
-<p><strong>直線の例</strong><br />
-<span class="math notranslate nohighlight">\(f(x) = ax + b \)</span>の<span class="math notranslate nohighlight">\(x=x_1\)</span>での微分値は定義に当てはめて計算すると<br />
+<p><strong>直線の例</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x) = ax + b \)</span>の<span class="math notranslate nohighlight">\(x=x_1\)</span>での微分値は定義に当てはめて計算すると<br />
 <span class="math notranslate nohighlight">\(f'(x_1)= \lim_{\delta \to 0} \frac{f(x_1+\delta)-f(x_1)}{\delta}= \lim_{\delta \to 0} \frac{(a(x_1+\delta)+b)-(ax_1+b)}{\delta} = a \)</span> となる。<br />
 つまり微分の値は直線の傾きに対応していて、<br />
 なおかつ微分の値はどこの場所(<span class="math notranslate nohighlight">\(x\)</span>)で調べても定数<span class="math notranslate nohighlight">\(a\)</span>であることを意味している。</p>
-<p><strong>二次関数(放物線)の例</strong><br />
-<span class="math notranslate nohighlight">\(f(x) = ax^2 + bx +c \)</span>
+<p><strong>二次関数(放物線)の例</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x) = ax^2 + bx +c \)</span>
 の<span class="math notranslate nohighlight">\(x=x_1\)</span>での微分は、定義にならって計算すると
 <span class="math notranslate nohighlight">\(f'(x_1) = 2ax_1+b\)</span>となる(確かめてみよう)<br />
 一方で<span class="math notranslate nohighlight">\(f(x)\)</span>を平方完成すると<span class="math notranslate nohighlight">\(f(x)=a(x+\frac{b}{2a})^2 -\frac{b^2}{4a} +c\)</span>となり、<br />
@@ -56558,9 +56546,9 @@ f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(x&lt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&lt;0\)</span>で、<span class="math notranslate nohighlight">\(x&gt;-1\)</span>では<span class="math notranslate nohighlight">\(f'(x)&gt;0\)</span>となっている。</p>
-<p>これまでは、定義に即して微分の値を計算していましたが、毎回調べたい点で定義に立ち返るというのは面倒だ。
-関数が閉じた形で与えられているとき(つまり、<span class="math notranslate nohighlight">\(f(x)\)</span>が<span class="math notranslate nohighlight">\(x\)</span>の具体的な表式で与えられているとき)多くはその微分<span class="math notranslate nohighlight">\(f'(x)\)</span>も<span class="math notranslate nohighlight">\(x\)</span>の関数として書き下すことができる。そうすれば、<span class="math notranslate nohighlight">\(x\)</span>に特定の値を代入すれば好きな点での微分の値<span class="math notranslate nohighlight">\(f'(x)\)</span>を知ることができる。</p>
-<p>とりあえずは以下を公式的に抑えておけば問題は有りません。</p>
+<p>これまでは、定義に即して微分の値を計算していたが、毎回調べたい点で定義に立ち返るというのは面倒だ。</p>
+<p>関数が閉じた形で与えられているとき(つまり、<span class="math notranslate nohighlight">\(f(x)\)</span>が<span class="math notranslate nohighlight">\(x\)</span>の具体的な表式で与えられているとき)多くはその微分<span class="math notranslate nohighlight">\(f'(x)\)</span>も<span class="math notranslate nohighlight">\(x\)</span>の関数として書き下すことができる。そうすれば、<span class="math notranslate nohighlight">\(x\)</span>に特定の値を代入すれば好きな点での微分の値<span class="math notranslate nohighlight">\(f'(x)\)</span>を知ることができる。
+高校数学(一部は大学かも？)で習うような関数の微分のルールを覚えておくと、微分の値を式として書き下すことができるようになる。以下に代表的なものを挙げておこう。</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(x\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に対する微分は1</p></li>
 <li><p><span class="math notranslate nohighlight">\(a x^p\)</span>の<span class="math notranslate nohighlight">\(x\)</span>に対する微分は<span class="math notranslate nohighlight">\(apx^{p-1}\)</span> (<span class="math notranslate nohighlight">\(a\)</span>は非ゼロの定数)</p></li>
@@ -56629,7 +56617,8 @@ f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -56641,7 +56630,7 @@ f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 考えたい問題のイメージ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 最も基本的な最適化手法: 勾配法</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clubsuit">7.2.1. <span class="math notranslate nohighlight">\(\clubsuit\)</span>その他の最適化手法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span>目的関数の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.2. <span class="math notranslate nohighlight">\(\clubsuit\)</span> 目的関数の選択</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.3. 簡単な例でのプログラム</a></li>
 </ul>
 </li>
@@ -56696,8 +56685,8 @@ f'(a)=\lim_{\delta \to 0} \frac{f(a+\delta)-f(a)}{\delta}
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

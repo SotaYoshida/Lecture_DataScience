@@ -16,33 +16,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -62,6 +65,14 @@
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-F7NT8KLGKR');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_misc_python_environment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -69,6 +80,7 @@
     <link rel="prev" title="よくあるエラー集" href="Python_misc_Error.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,19 +96,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -104,7 +105,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -112,8 +112,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -129,7 +129,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -159,21 +160,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="プログラミング演習1・実践データサイエンス - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="プログラミング演習1・実践データサイエンス - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="プログラミング演習1・実践データサイエンス - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -234,9 +231,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -411,24 +413,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -545,34 +539,34 @@ document.write(`
 <p>Python3.11あたりを選び[入手]する。</p>
 <p><strong>インストールしたpythonの使い方</strong></p>
 <p>Windows　Terminal上で</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
 <p>もしくは</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python.exe
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">.</span><span class="n">exe</span>
 </pre></div>
 </div>
 <p>と実行すると対話モードでpythonが開く。スタートメニューからpythonを起動しても同じ。</p>
 <p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用することを推奨する。</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello World&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>や、</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i in range(5):
-    print(i)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>などを実行してみよう。</p>
 <p>Python(対話モード)を終了する際はCtrl+Z(もしくはCtrl+Cを実行後にCtrl+Z)→Enterを押すか、</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>exit()
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>と入力しEnterを押せば良い。</p>
 <p><strong>Python用のライブラリをインストールする方法</strong></p>
 <p>ターミナル上で</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install matplotlib
-pip install pandas
-pip install Selenium
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">Selenium</span>
 </pre></div>
 </div>
 <p>などとする。</p>
@@ -580,16 +574,16 @@ pip install Selenium
 <p>対話モードだと、長い処理を実現するのには向いていないので、<br />
 作業をソースコードとしてファイルに書き出し、それを実行したくなる。<br />
 実行したい場合は、コマンドプロンプト上で</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python hogehoge.py
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>などとすると<code class="docutils literal notranslate"><span class="pre">hogehoge.py</span></code>というファイルに書いた処理が実行される。</p>
 <p>例: デスクトップにあるソースコードを実行する場合</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chdir Desktop　
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chdir</span> <span class="n">Desktop</span>　
 </pre></div>
 </div>
 <p>などして、適宜カレント(現在いる)ディレクトリの変更をするか</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python Desktop/hogehoge.py
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>など実行するソースの(相対 or 絶対)パスの指定が必要になる。</p>
@@ -615,24 +609,24 @@ pip install Selenium
 <p>Launchpadにある[その他]から<strong>ターミナル</strong>を開き、<br />
 <code class="docutils literal notranslate"><span class="pre">python</span></code>と入力し、タブキーを2回押すと該当するものが表示される。<br />
 以下は一例:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python             python3.10-config  python3.12-config
-python-build       python3.10-gdb.py  python3.9
-python-config      python3.11         python3.9-config
-python3            python3.11-config  pythontex
-python3-config     python3.11-gdb.py  
-python3.10         python3.12     
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">config</span>  <span class="n">python3</span><span class="mf">.12</span><span class="o">-</span><span class="n">config</span>
+<span class="n">python</span><span class="o">-</span><span class="n">build</span>       <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  <span class="n">python3</span><span class="mf">.9</span>
+<span class="n">python</span><span class="o">-</span><span class="n">config</span>      <span class="n">python3</span><span class="mf">.11</span>         <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">config</span>
+<span class="n">python3</span>            <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">config</span>  <span class="n">pythontex</span>
+<span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  
+<span class="n">python3</span><span class="mf">.10</span>         <span class="n">python3</span><span class="mf">.12</span>     
 </pre></div>
 </div>
 <p>python3がある場合は、<code class="docutils literal notranslate"><span class="pre">$python3</span></code>と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く※。</p>
 <p>※初回起動時はXcodeの導入が必要かもしれない<br />
 その場合は、ターミナルに</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>xcode-select --install
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
 </pre></div>
 </div>
 <p>を打ち込みインストール作業を行う。<br />
 Xcodeのサイズがでかいので安定したネットワーク下で実行すること.</p>
 <p>Python(対話モード)が起動できたら</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello World&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>などと打って、エンターを押すと、文字列<code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>が表示されるので試してみよう。</p>
@@ -640,16 +634,16 @@ Xcodeのサイズがでかいので安定したネットワーク下で実行す
 今後のことも考えてMacにHomebrewと呼ばれるパッケージマネージャを導入しよう。
 <a class="reference external" href="https://qiita.com/zaburo/items/29fe23c1ceb6056109fd">参考</a></p>
 <p>Homebrewが導入できたら、</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>brew update
-brew upgrade
-brew upgrade python3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">update</span>
+<span class="n">brew</span> <span class="n">upgrade</span>
+<span class="n">brew</span> <span class="n">upgrade</span> <span class="n">python3</span>
 </pre></div>
 </div>
 <p>と順にターミナルで実行する(暫く掛かるかも).</p>
 <p>インストールに成功すれば、python用のパッケージマネージャ(pip)も使えるようになるはず。<br />
 以後は</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install matplotlib
-pip install pandas
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
 </pre></div>
 </div>
 <p>などとすると、python用のモジュールがインストールされ、pythonからいつでもインポートして使うことができる。</p>
@@ -660,7 +654,7 @@ pip install pandas
 <h2>Linuxの場合<a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
 <p>Linuxを使っている人が、pythonのインストールができないとは思いにくいが…</p>
 <p>ターミナルから</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt update -y
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update -y
 $sudo apt upgrade -y
 $sudo apt dist-upgrade -y
 $sudo apt autoremove -y
@@ -668,16 +662,16 @@ $sudo apt autoremove -y
 </div>
 <p>などを実行しパッケージマネージャのアップデート等を行った後<br />
 python3系がない場合は</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3
 </pre></div>
 </div>
 <p>ある場合は</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt upgrade python3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt upgrade python3
 </pre></div>
 </div>
 <p>などを実行すればよい。</p>
 <p>pipがない場合、</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip
 </pre></div>
 </div>
 <p>を実行する。</p>
@@ -695,7 +689,7 @@ python3系がない場合は</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> “現在地”を変更する</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd ./Desktop 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd ./Desktop 
 $cd ../ 
 $cd ~
 $cd -
@@ -708,7 +702,7 @@ $cd -
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code> ファイルやディレクトリなどを表示する.</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ls 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ls 
 $ls ../*.txt
 $ls Picutures/pic_*.png
 </pre></div>
@@ -718,7 +712,7 @@ $ls Picutures/pic_*.png
 3つめは現在ホームディレクトリにいると仮定して、その直下にあるPictures以下にあるpngファイルのうち、冒頭が<code class="docutils literal notranslate"><span class="pre">pic_</span></code>のものを全て表示</p>
 <ul>
 <li><p>mv　ファイル・ディレクトリの移動・リネーム</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$mv aa.txt ~/Desktop
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mv aa.txt ~/Desktop
 $mv bb.txt ../AdDS/cc.txt
 </pre></div>
 </div>
@@ -728,17 +722,17 @@ $mv bb.txt ../AdDS/cc.txt
 </li>
 <li><p>mkdir ディレクトリを作る</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$mkdir Desktop/AdDS2021
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mkdir Desktop/AdDS2021
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>rm ファイルやディレクトリを削除する</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$rm ./Desktop/report1.txt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm ./Desktop/report1.txt
 </pre></div>
 </div>
 <p>ディレクトリを消すときは-rオプションが必要</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$rm -r ./Desktop/AdDS2021
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm -r ./Desktop/AdDS2021
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**rmコマンドで削除したものはゴミ箱に入れられずに削除されるので注意** 
@@ -749,7 +743,7 @@ $mv bb.txt ../AdDS/cc.txt
 <ul class="simple">
 <li><p>grep 検索</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$grep &quot;Hello World&quot; Desktop/AdDS2021/*py
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep &quot;Hello World&quot; Desktop/AdDS2021/*py
 </pre></div>
 </div>
 <p><strong>タブ補完</strong></p>
@@ -760,11 +754,11 @@ $mv bb.txt ../AdDS/cc.txt
 というディレクトリがあり、<br />
 最初のものに移動したいとします。
 こんなとき、いちいち</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd AdDS2019
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd AdDS2019
 </pre></div>
 </div>
 <p>と打つのは面倒だし、打ち間違えたりします。</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cd Ad
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd Ad
 </pre></div>
 </div>
 <p>と打った時点でタブをポンポンと叩くと、<br />
@@ -774,8 +768,8 @@ Desktopに上記のフォルダ以外の”Ad”を含むディレクトリが�
 その後1を打って再びタブを叩くと、該当するものは一つですので<br />
 (ambiguityがなくなった時点で)最後まで入力が補完されます。</p>
 <p>ちなみにPython側からLinuxのコマンドを実行したければ</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-os.system(&quot;ls *.txt&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;ls *.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>などとすれば良い。</p>
@@ -796,18 +790,18 @@ os.system(&quot;ls *.txt&quot;)
 <li><p>Ubuntuターミナルから、管理者権限で<code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code>を開く<br />
 たとえば、emacsが入っていれば</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo emacs /etc/passwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo emacs /etc/passwd
 </pre></div>
 </div>
 <p>なければ</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$sudo vim /etc/passwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo vim /etc/passwd
 </pre></div>
 </div>
 <p>でファイルを開きます。</p>
 <ol class="arabic simple" start="2">
 <li><p>どこかに</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Ubuntuユーザ名:x:1000:1000:&quot;&quot;,,,:/home/ユーザ名:/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ubuntuユーザ名</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,,,:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ユーザ名</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
 </div>
 <p>といった欄があるので<code class="docutils literal notranslate"><span class="pre">/home/ユーザー名</span></code>部分を、<br />
@@ -823,7 +817,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <li><p>もともとのホームディレクトリにあった<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>(エイリアスなどの情報を書くファイル)を
 新しいホームディレクトリに移動させれば完了です。</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
 </pre></div>
 </div>
 </section>
@@ -842,7 +836,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <p><strong>.bashrc</strong> : bashの設定ファイル</p>
 <p>エイリアスの設定などを書くことができる. エイリアスとは、例えばコマンドでpythonを使う際、いちいち<code class="docutils literal notranslate"><span class="pre">python</span></code>とか<code class="docutils literal notranslate"><span class="pre">python3.9</span></code>などを
 指定しなくてもお目当てのpython環境を使用できるようにするためのもの. 例えば、.bashrcに</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>alias py=python3.9
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">py</span><span class="o">=</span><span class="n">python3</span><span class="mf">.9</span>
 </pre></div>
 </div>
 <p>などと書いておけば、<code class="docutils literal notranslate"><span class="pre">py</span></code>と打つだけでpython3.9が起動/使用できるようになる.</p>
@@ -851,7 +845,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <li><p>使用しているシェルによって、設定ファイルの名前が異なることがある. 例えば、bashの場合は<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>だが、zshの場合は<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>となる.</p></li>
 <li><p>設定ファイルを変更した場合は、<code class="docutils literal notranslate"><span class="pre">source</span></code>コマンドを実行することで、変更を反映させる必要がある. 例えば、<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>を変更した場合は、</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
 </pre></div>
 </div>
 <p>とするか、ターミナルを再起動する必要がある.</p>
@@ -883,7 +877,7 @@ Windows側に作成しておいた新しくLinuxのホームディレクトリ�
 <section id="id6">
 <h3>関連する事項<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>最近(2023年以降)、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">library-name</span></code>などとすると、</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
 
 × This environment is externally managed
 ╰─&gt; To install Python packages system-wide, try brew install
@@ -994,7 +988,8 @@ Jupyter環境などでPythonコードを実行する際にも、作成した仮�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1062,8 +1057,8 @@ Jupyter環境などでPythonコードを実行する際にも、作成した仮�
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
