@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pythonの環境構築 (Windows11版) &#8212; プログラミング演習1・実践データサイエンス</title>
+    <title>WSLとPython環境 &#8212; プログラミング演習1・実践データサイエンス</title>
   
   
   
@@ -221,7 +221,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_python_environment.html">Pythonの環境構築</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pythonの環境構築 (Windows11版)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">WSLとPython環境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_venv_pip.html">Pythonのモジュール/ライブラリの管理と仮想環境の構築</a></li>
 </ul>
@@ -449,7 +449,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pythonの環境構築 (Windows11版)</h1>
+    <h1>WSLとPython環境</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -459,10 +459,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl">WSLの導入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">WSL下でのPython環境の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">よくあるトラブル: WSLの導入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">その他の注</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-linux">Windows/Linux環境</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>
@@ -479,8 +480,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-windows11">
-<h1>Pythonの環境構築 (Windows11版)<a class="headerlink" href="#python-windows11" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="wslpython">
+<h1>WSLとPython環境<a class="headerlink" href="#wslpython" title="Link to this heading">#</a></h1>
+<p>このノートブックでは、Widows環境下でのWSL（Windows Subsystem for Linux）を使用してPython環境を構築する方法について説明します。</p>
 <p>いくつかの方針が考えられるが、下記の導入を推奨とする。</p>
 <ul class="simple">
 <li><p>Windowsターミナル</p></li>
@@ -488,35 +490,27 @@ document.write(`
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>授業の受講者で環境構築を希望される方は、事前に相談することを強く推奨します。
-とくにWindowsの場合、作成者(吉田)はWindowsユーザーではないので幾つかの情報が古い恐れがあります。</p>
+<p>授業の受講者で環境構築を希望される方は、事前の相談や資料の確認に加えて、作業前にバックアップ等を行うことを必須とします。
+また、作成者(吉田)はWindowsユーザーではないので幾つかの情報が古い恐れがありますのでご了承願います。</p>
 </div>
 <section id="windows">
-<h2>Windowsターミナルの導入<a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
-<p>ターミナルとは、CUI(Character User Interface)、つまり<br />
-コマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉です。</p>
-<p>CUIに対して、普段我々が使っているポインタやウィンドウなどは<br />
-GUI(Graphical User Interface)に相当します。</p>
-<p>Windows Terminalは、2019年にマイクロソフトがリリースしたターミナルで<br />
-コマンドプロンプトやPowerShellといったWindows独自のCUIに加えて<br />
-後述のWSLを統合的に扱うことができる環境となっています。</p>
-<p>Windows11以降標準で入っているのでWindowsボタンで
-開くメニューから、「ターミナル」「terminal」などと検索すると出てくる。</p>
-<p>開く際に右クリックすると管理者権限で開く事もできる(WSLのインストール時に必要)。</p>
+<h2>Windowsターミナル<a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
+<p>ターミナルとは、CUI(Character User Interface)、つまりコマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉です。
+CUIに対して、普段我々が使っているポインタやウィンドウなどはGUI(Graphical User Interface)に相当する。</p>
+<p>Windows Terminalは、2019年にマイクロソフトがリリースしたターミナルでコマンドプロンプトやPowerShellといったWindows独自のCUIに加えて後述のWSLを統合的に扱うことができる環境となっている。
+Windows11以降は標準で入っているのでWindowsボタンでメニューを開き、「ターミナル」「terminal」などと検索すると出てくる。</p>
+<p>開く際に右クリックすると <strong>管理者権限で開く</strong> 事もできる(WSLのインストール時に必要)。</p>
 </section>
-<section id="wsl2">
-<h2>WSL2の導入<a class="headerlink" href="#wsl2" title="Link to this heading">#</a></h2>
+<section id="wsl">
+<h2>WSLの導入<a class="headerlink" href="#wsl" title="Link to this heading">#</a></h2>
 <p>オペレーティングシステム(OS)の源流を遡ると、大まかには2つに大別される。<br />
 1つがUnix系で歴史が古い。そしてもう１つはお使いのWindowsである。</p>
 <p>Unixはあるところで枝分かれし、LinuxやMac OSなどもUnix系に含まれる。<br />
-サーバー用途のマシンや、スパコンなどの計算機環境では基本的にLinuxがOSとして採用されている。<br />
-コンピュータの”計算機”としての側面や歴史的経緯から<br />
-プログラミング言語・開発環境などもUnix/Linuxとともに発展してきた部分が大きい。</p>
+サーバー用途のマシンや、スパコンなどの計算機環境ではLinuxがOSとして採用されている事が多い。
+コンピュータの”計算機”としての側面や歴史的経緯から、プログラミング言語・開発環境などもUnix/Linuxとともに発展してきた部分が大きい。</p>
 <p>一方でWindowsは、一般家庭でのコンピュータの需要拡大とともに独自の進化を遂げてきた。</p>
-<p>Windowsユーザーが、プログラミング環境の構築やLinux-likeな作業をしたい場合<br />
-方法は幾つかあるが最近だとWindows Subsystem for Linux (通称WSL)を使うのが<br />
-最も簡単かつ安全な方法の１つとされている。</p>
-<p>この授業ではLinuxの中のUbuntuというディストリビューションを用意して使うことにしよう。</p>
+<p>Windowsユーザーが、プログラミング環境の構築やLinux-likeな作業をしたい場合、方法は幾つかあるが最近だとWindows Subsystem for Linux (通称WSL)を使うのが、最も簡単かつ安全な方法の１つとされている。</p>
+<p>この授業ではWSLを介して、Linuxの中のUbuntuというディストリビューションを使うことにする。</p>
 <ul>
 <li><p><strong>手順1. WSLと仮想マシンプラットフォームの有効化</strong></p>
 <p>スタートメニューから「コントロールパネル」を検索して開く
@@ -526,19 +520,15 @@ GUI(Graphical User Interface)に相当します。</p>
 <li><p>「Linux用Windowsサブシステム」</p></li>
 <li><p>「Virtual Machine Platform」または「仮想マシン プラットフォーム」(※日本語表記か英語表記のどちらか一つが存在するはず)</p></li>
 </ul>
-<p>の２つにチェックを入れて有効化する(再起動が必要)。<br />
+<p>の２つにチェックを入れて有効化する(再起動が必要)。
 その際、他は触らないこと。もし誤ってチェックをしたり外したりしてしまった場合は一度キャンセルを押してやり直そう。</p>
+<p>最近は、購入時からチェックが入っていることもある。</p>
 </li>
 <li><p><strong>手順2. Linuxカーネル更新プログラムの適用</strong></p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>この操作はもともとAMD RyzenのCPUを搭載したマシンでWSL2を使う場合に必要だったが、
-IntelのCPUを搭載したマシンでも必要になったようだ。</p>
-</aside>
-<p><a class="reference external" href="https://docs.microsoft.com/ja-jp/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">このページ</a>の手順4にあるリンクから
-「x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージ」をクリックし、
-ダウンロードしたファイルを実行する。
-Next→Windowsシステム側の警告「はい」を選択→Finishで完了する。</p>
+<p>※厳密に言うと、この作業が必要でないマシンもあるが、一度試してみよう。</p>
+<p><a class="reference external" href="https://docs.microsoft.com/ja-jp/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">このページ</a>の手順4にあるリンクから「x64 マシン用 WSL2 Linux カーネル更新プログラム パッケージ」をクリックし、ダウンロードしたファイルを実行する(パッケージはx64/Arm64の２つあるが、後者は文字通りArm64用で、これを読んでいる多くの人は該当しないと思われる)。</p>
+<p>Next→Windowsシステム側の警告「はい」を選択→Finishで完了する。</p>
+<p>必要ない/該当しない場合は、その旨が表示されるので、無視して次の手順に進む。</p>
 </li>
 <li><p><strong>手順3. Windows TerminalからWSLのインストール</strong></p>
 <p>スタートメニューからterminalなどと打ち込んでターミナルを開く。<br />
@@ -558,8 +548,7 @@ Next→Windowsシステム側の警告「はい」を選択→Finishで完了す
 </li>
 <li><p><strong>手順5. Ubuntuの初期設定</strong></p>
 <p>しばらくすると<code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">new</span> <span class="pre">UNIX</span> <span class="pre">username:</span> </code><br />
-とLinuxシステム用のusernameを求められるので<br />
-適当なものを入力してEnterを押す。<br />
+とLinuxシステム用のusernameを求められるので適当なものを入力してEnterを押す。<br />
 usernameは半角英数字にしよう。あとは…短い方があとあと便利。</p>
 <p>その後
 <code class="docutils literal notranslate"><span class="pre">NewPassword</span></code>
@@ -577,8 +566,8 @@ Ubuntuを選択すると(あるいはショートカットで)、Windows termina
 Windows terminalから開くと、Windows側のホームディレクトリにいる状態で開く</p>
 <img src="https://github.com/SotaYoshida/Lecture_DataScience/blob/main/notebooks/pic_for_notebook/wsl_4_2.png?raw=true" width=50%>   
 </section>
-<section id="wslpython">
-<h2>WSL下でのPython環境の構築<a class="headerlink" href="#wslpython" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>WSL下でのPython環境の構築<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>※以下では、直接/Windows TerminalのどちらでUbuntu環境を開いている場合も<br />
 便宜上”Ubuntuターミナル”と呼ぶことにしよう。</p>
 <p>WSL下にPython環境構築をする方法は以下の通り</p>
@@ -640,41 +629,72 @@ $pip3 install Selenium
 (ライブラリのimportはセッションごとに必要です)</p>
 </li>
 </ul>
-<p>その他、Linuxコマンドの使い方等については<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_environment.ipynb">環境構築の概要のノートブック</a>を参照</p>
 </section>
-<section id="id1">
-<h2>その他の注<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2>よくあるトラブル: WSLの導入<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>WSL導入時のよくある問題をまとめる。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>症状</p></th>
+<th class="head"><p>確認すること</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wsl</span></code> が見つからない</p></td>
+<td><p>Windows Update後、PowerShellを管理者として開く。古いWindowsではWSLの手動導入が必要な場合がある</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--install</span></code> がヘルプ表示になる</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--list</span> <span class="pre">--online</span></code> で一覧を見て、<code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--install</span> <span class="pre">-d</span> <span class="pre">&lt;DistroName&gt;</span></code> を使う</p></td>
+</tr>
+<tr class="row-even"><td><p>インストールが 0.0% で止まる</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--install</span> <span class="pre">--web-download</span> <span class="pre">-d</span> <span class="pre">&lt;DistroName&gt;</span></code> を試す</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">0x8007019e</span></code></p></td>
+<td><p>「Linux用Windowsサブシステム」が有効になっていない可能性がある</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0x80370102</span></code></p></td>
+<td><p>BIOS/UEFIで仮想化支援機能が無効、またはVirtual Machine Platformが無効の可能性がある</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ubuntuのパスワード入力で文字が出ない</p></td>
+<td><p>正常。何も表示されないまま入力してEnterを押す</p></td>
+</tr>
+<tr class="row-even"><td><p>Ubuntuのパスワードを忘れた</p></td>
+<td><p>PowerShellで <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">-u</span> <span class="pre">root</span></code>、Ubuntu内で <code class="docutils literal notranslate"><span class="pre">passwd</span> <span class="pre">ユーザー名</span></code> を実行する</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>現在のWSLの状態は次で確認できる。</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">wsl</span> <span class="p">-</span><span class="n">-status</span>
+<span class="n">wsl</span> <span class="p">-</span><span class="n">-list</span> <span class="p">-</span><span class="n">-verbose</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--unregister</span> <span class="pre">Ubuntu</span></code> はUbuntu環境を削除する命令であり、中のファイルも消える。
+環境をクリーンしたい場合や最終手段として扱う。</p>
+</section>
+<section id="id3">
+<h2>その他の注<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="windows-linux">
 <h3>Windows/Linux環境<a class="headerlink" href="#windows-linux" title="Link to this heading">#</a></h3>
-<p>Windows StoreからPythonのインストールを行い、WSLの環境構築をした場合、
-WSLのターミナルから、双方のシステムのPython/pipが見える。</p>
+<p>Windows StoreからPythonのインストールを行い、WSLの環境構築をした場合、WSLのターミナルから、双方のシステムのPython/pipが見える。</p>
 <p>実行する際は、Windows側とLinux側、どちらのターミナル/Python/pipを使うのかを意識しよう。
 Windows側のPython/pipには、python3.9.exeやpip3.9.exeなど実行ファイルを示す.exeがついているので、区別はしやすい。</p>
 </section>
 <section id="windowslinux">
 <h3>Windows環境のどこにLinuxのファイルが保存されるか<a class="headerlink" href="#windowslinux" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">C:\Users\XXX\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs</span></code></p>
-<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、<br />
-Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となります。<br />
-Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開きます。</p>
-<p>パスが上記と微妙に異なる場合は、<br />
-WindowsのユーザーフォルダからAppDataを開いて、<br />
-検索バーでUbuntuと検索すれば、<br />
-該当するディレクトリが見つけられるはずです。<br />
-(隠しフォルダを非表示にしていると見えないかも)</p>
-<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと<br />
-左側にLinuxのペンギンマークがあるので、そこから参照できます。</p>
+<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となります。Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開きます。</p>
+<p>パスが上記と微妙に異なる場合は、WindowsのユーザーフォルダからAppDataを開いて、検索バーでUbuntuと検索すれば、該当するディレクトリが見つけられるはずです。(隠しフォルダを非表示にしていると見えないかも)</p>
+<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと左側にLinuxのペンギンマークがあるので、そこから参照できます。</p>
 </section>
 <section id="linuxwindows">
 <h3>Linux側からWindows側のファイルにアクセスする<a class="headerlink" href="#linuxwindows" title="Link to this heading">#</a></h3>
 <p>WindowsのディスクはLinuxからみた<code class="docutils literal notranslate"><span class="pre">/mnt/</span></code>以下にマウントされている。<br />
 たとえば、<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Downloads</span></code>
 で、Windows側のダウンロードフォルダのパスを指定できる。</p>
-<p>OneDriveによるバックアップに含まれているフォルダは、<br />
-デフォルトパスから、OneDriveの下に変更されていることがあるので注意。</p>
-<p>(例: デスクトップはLinuxから見ると<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Desktop</span></code>のはずだが、<br />
-デスクトップフォルダがOneDriveのバックアップ対象になっていると、<br />
-<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/OneDrive/Desktop</span></code>などと変更されてしまうので注意。)</p>
+<p>OneDriveによるバックアップに含まれているフォルダはデフォルトパスから、OneDriveの下に変更されていることがあるので注意。
+(例: デスクトップはLinuxから見ると<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/Desktop</span></code>のはずだが、デスクトップフォルダがOneDriveのバックアップ対象になっていると、<code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/[ユーザー名]/OneDrive/Desktop</span></code>などと変更されてしまうので注意。)</p>
 </section>
 </section>
 </section>
@@ -743,10 +763,11 @@ WindowsのユーザーフォルダからAppDataを開いて、<br />
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナルの導入</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2">WSL2の導入</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wslpython">WSL下でのPython環境の構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">その他の注</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsターミナル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl">WSLの導入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">WSL下でのPython環境の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">よくあるトラブル: WSLの導入</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">その他の注</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-linux">Windows/Linux環境</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linuxwindows">Linux側からWindows側のファイルにアクセスする</a></li>

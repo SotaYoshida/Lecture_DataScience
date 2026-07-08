@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Python_misc_python_environment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pythonの環境構築 (Windows11版)" href="Python_misc_python_env_forWin11.html" />
+    <link rel="next" title="WSLとPython環境" href="Python_misc_python_env_forWin11.html" />
     <link rel="prev" title="よくあるエラー集" href="Python_misc_Error.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -221,7 +221,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_Error.html">よくあるエラー集</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pythonの環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">Pythonの環境構築 (Windows11版)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_misc_python_env_forWin11.html">WSLとPython環境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_misc_VScode.html">コードの編集環境とGitHub Copilot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Python_venv_pip.html">Pythonのモジュール/ライブラリの管理と仮想環境の構築</a></li>
 </ul>
@@ -459,24 +459,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsの場合</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.の方法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2-1. の方法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2-2.の方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">WSLでLinux仮想環境を作成する</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac">Macの場合</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linuxの場合</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-unix">Linux/Unix ターミナルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Linuxのホームディレクトリの変更</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-files">隠しファイル/隠しフォルダ(dot files)について</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関連する事項</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux環境下での環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本的なターミナル操作</a></li>
 </ul>
             </nav>
         </div>
@@ -490,77 +481,53 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python">
 <h1>Pythonの環境構築<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
-<p><strong>Windows11をお使いの方は<a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_env_forWin11.ipynb">こちらのノートブック</a>も参照してください</strong></p>
-<p>手元で作業がしたい、という方に向けてローカル環境にPythonを導入する方法をOSごとに紹介する。</p>
-<p>難易度としてはLinux &lt; Mac &lt;&lt; (壁)&lt;&lt;  Windowsといった感じ(私見).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#動画貼り付け用</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">base64</span><span class="w"> </span><span class="kn">import</span> <span class="n">b64encode</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="windows">
-<h2>Windowsの場合<a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
-<p>いくつかの方針が考えられる。</p>
-<ol class="arabic simple">
+<p>この資料では、ローカルマシンでのPython環境構築について説明する。</p>
+<p>最適な方法は、環境や各人の使用用途にも依るが、環境構築についての一般論から、代表的なPython環境構築の流れについて解説する。</p>
+<p>Windowsについてはトピックが多くなるため、適宜 <strong><a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_env_forWin11.ipynb">こちらの資料</a>も参照してほしい</strong></p>
+<section id="id1">
+<h2>環境構築とは何か・なぜ必要か？<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>環境構築とは、各種のソフトウェアやツールをインストールする作業を指す。</p>
+<p>これまで授業では、Google Colaboratoryを使ってPythonのプログラミングを行ってきた。
+それはある意味で、既に環境構築済みのPython環境を使っていることになる。</p>
+<p>今後、自分の手元のラップトップでたとえオフラインであっても作業をしたり、自作のプログラムを開発したりする際には、Pythonの環境構築が必須となる。</p>
+<p>Pythonに限らず、様々なソフトウェアはOS(Operating System)によって動作環境が異なるため、OSごとに適切な環境構築の手順を踏む必要がある。</p>
+</section>
+<section id="windowspython">
+<h2>Windows環境下でのPython環境構築<a class="headerlink" href="#windowspython" title="Link to this heading">#</a></h2>
+<p>WindowsでのPythonの環境構築には幾つかの考え方がある。その代表的なものとしては、以下の3つである。</p>
+<ol class="arabic">
 <li><p>Pythonのインストーラを用いてインストールする</p>
 <ul class="simple">
 <li><p>メリット: インストールが楽, GUI系のコード作成に向いている</p></li>
 <li><p>デメリット: 他のプログラミング言語などへの拡張性が低い</p></li>
 </ul>
 </li>
-<li><p>Linux環境を構築する（<strong>Python以外のプログラミング言語等を使用する予定がある場合こちらを推奨</strong>)</p>
+<li><p>Linux仮想環境を構築する</p>
+<p>WindowsにはWindows Subsystem for Linux(WSL)という仕組みが備わっており、Widowsマシンに簡単にLinuxの仮想環境を作ることができる。</p>
 <ul class="simple">
-<li><p>2-1.   Windows Subsystem for Linux(WSL)（<strong>推奨</strong>)</p>
-<ul>
-<li><p>メリット: Windows環境を汚さない, Linuxシェル環境・パッケージマネージャ(Pythonに限らず各種インストールが楽)</p></li>
+<li><p>メリット: Windows環境を汚さない, Linuxシェル環境・パッケージマネージャが使える(Pythonに限らず各種インストールが楽)</p></li>
 <li><p>デメリット: WSL特有の情報を調べる必要がある</p></li>
 </ul>
+<p><strong>将来的に、Python以外のプログラミング言語やローカルLLM等を使用したいという場合はこちらが推奨になる</strong></p>
 </li>
-<li><p>2-2.  デュアルブート</p>
-<ul>
-<li><p>メリット: Windowsとは別に好きなLinuxディストリビューションを共存させられる</p></li>
-<li><p>デメリット: ディスク領域の分割などが必要
-慣れないとデータを吹っ飛ばす危険あり<br />
-(外部ストレージ等でのバックアップ必須です)</p></li>
-</ul>
-</li>
-<li><p>2-3. その他 (Docker環境など)</p>
-<ul>
-<li><p>このノートブックでは説明しない</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Visual Studioなどの統合開発環境(IDE)を用いてインストールする (この資料では説明しない)</p></li>
+<li><p>Visual Studioなどの統合開発環境(IDE)を用いてインストールする (この講義の資料では説明しない)</p></li>
 </ol>
-<section id="id1">
-<h3>1.の方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/z2_nNvpgonY&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe width="560" height="315" src="https://www.youtube.com/embed/z2_nNvpgonY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
-</div>
+<section id="id2">
+<h3>1. Windows用のPythonを導入する<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>HTML(r’<iframe width="560" height="315" src="https://www.youtube.com/embed/z2_nNvpgonY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>’)</p>
 <p>メニューからMicrosoft Storeを開き、pythonと検索する。</p>
-<p>Python3.11あたりを選び[入手]する。</p>
+<p>検索の上位に出てくるバージョン(2026年現在なら3.12~3.14)を選び[入手]する。</p>
 <p><strong>インストールしたpythonの使い方</strong></p>
 <p>Windows　Terminal上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span>
 </pre></div>
 </div>
 <p>もしくは</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">.</span><span class="n">exe</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="o">.</span><span class="n">exe</span>
 </pre></div>
 </div>
 <p>と実行すると対話モードでpythonが開く。スタートメニューからpythonを起動しても同じ。</p>
-<p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用することを推奨する。</p>
+<p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用する方が現代的だろう、と思う。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -576,18 +543,11 @@ document.write(`
 </div>
 <p>と入力しEnterを押せば良い。</p>
 <p><strong>Python用のライブラリをインストールする方法</strong></p>
-<p>ターミナル上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">Selenium</span>
-</pre></div>
-</div>
-<p>などとする。</p>
+<p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>で詳しく解説する。</p>
 <p><strong>ソースファイルの編集と実行</strong></p>
-<p>対話モードだと、長い処理を実現するのには向いていないので、<br />
-作業をソースコードとしてファイルに書き出し、それを実行したくなる。<br />
+<p>対話モードだと、長い処理を実現するのには向いていないので、作業をソースコードとしてファイルに書き出し、それを実行したくなる。
 実行したい場合は、コマンドプロンプト上で</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>などとすると<code class="docutils literal notranslate"><span class="pre">hogehoge.py</span></code>というファイルに書いた処理が実行される。</p>
@@ -596,85 +556,56 @@ document.write(`
 </pre></div>
 </div>
 <p>などして、適宜カレント(現在いる)ディレクトリの変更をするか</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">Desktop</span><span class="o">/</span><span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>など実行するソースの(相対 or 絶対)パスの指定が必要になる。</p>
 </section>
-<section id="id2">
-<h3>2-1. の方法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>Windowsの中にLinux(とくにUbuntu)を入れる方法</p>
-<p><a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/2021/notebooks/Python_misc_python_env_forWin11.ipynb">Windows11用の資料</a>を参照すること。</p>
-</section>
-<section id="windowslinux">
-<h3>Windows環境のどこにLinuxのファイルが保存されるか<a class="headerlink" href="#windowslinux" title="Link to this heading">#</a></h3>
-</section>
-<section id="id3">
-<h3>2-2.の方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>バックアップや起動ディスク等の知識なくデュアルブート環境を構築しようとすると<br />
-最悪の場合すべてのデータを失いますので、こちらを選ぶ場合は予め相談してください。</p>
-<p>Linux環境を構築をすれば、あとはLinuxを起動し、以下のLinuxの場合の手順に従うだけ。</p>
+<section id="wsllinux">
+<h3>WSLでLinux仮想環境を作成する<a class="headerlink" href="#wsllinux" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_env_forWin11.html">こちらの資料</a>を参照。</p>
 </section>
 </section>
-<section id="mac">
-<h2>Macの場合<a class="headerlink" href="#mac" title="Link to this heading">#</a></h2>
-<p>python3.x (xは購入機種・時期によって違う)が元々入っている。</p>
-<p>Launchpadにある[その他]から<strong>ターミナル</strong>を開き、<br />
-<code class="docutils literal notranslate"><span class="pre">python</span></code>と入力し、タブキーを2回押すと該当するものが表示される。<br />
-以下は一例:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">config</span>  <span class="n">python3</span><span class="mf">.12</span><span class="o">-</span><span class="n">config</span>
-<span class="n">python</span><span class="o">-</span><span class="n">build</span>       <span class="n">python3</span><span class="mf">.10</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  <span class="n">python3</span><span class="mf">.9</span>
-<span class="n">python</span><span class="o">-</span><span class="n">config</span>      <span class="n">python3</span><span class="mf">.11</span>         <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">config</span>
-<span class="n">python3</span>            <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">config</span>  <span class="n">pythontex</span>
-<span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.11</span><span class="o">-</span><span class="n">gdb</span><span class="o">.</span><span class="n">py</span>  
-<span class="n">python3</span><span class="mf">.10</span>         <span class="n">python3</span><span class="mf">.12</span>     
+<section id="macos">
+<h2>MacOSの環境構築<a class="headerlink" href="#macos" title="Link to this heading">#</a></h2>
+<p>macOSはUNIXの系譜と言える。Linuxともコマンドを共通にするところが多い。
+python3.x (xは購入機種・時期によって違う)が元々入っている。</p>
+<p>Launchpadにある[その他]から<strong>ターミナル</strong>を開き、<code class="docutils literal notranslate"><span class="pre">python</span></code>と入力し、タブキーを2回押すと該当するものが表示される。以下は一例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>             <span class="n">python3</span><span class="o">-</span><span class="n">config</span>     <span class="n">python3</span><span class="mf">.12</span><span class="o">-</span><span class="n">config</span>  <span class="n">python3</span><span class="mf">.13</span><span class="o">-</span><span class="n">config</span>
+<span class="n">python3</span>            <span class="n">python3</span><span class="mf">.12</span>         <span class="n">python3</span><span class="mf">.13</span>         <span class="n">pythontex</span>
 </pre></div>
 </div>
-<p>python3がある場合は、<code class="docutils literal notranslate"><span class="pre">$python3</span></code>と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く※。</p>
-<p>※初回起動時はXcodeの導入が必要かもしれない<br />
-その場合は、ターミナルに</p>
+<p>python3がある場合は、<code class="docutils literal notranslate"><span class="pre">python3</span></code>と入力しエンターを押すと、pythonの対話モード(インタラクティブモードとも)が開く。</p>
+<p>※初回起動時はXcodeの導入が必要かもしれない。その場合は、ターミナルに</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
 </pre></div>
 </div>
-<p>を打ち込みインストール作業を行う。<br />
-Xcodeのサイズがでかいので安定したネットワーク下で実行すること.</p>
+<p>を打ち込みインストール作業を行う。Xcodeのサイズが大きいため、安定したネットワーク下で実行すること.</p>
 <p>Python(対話モード)が起動できたら</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>などと打って、エンターを押すと、文字列<code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>が表示されるので試してみよう。</p>
-<p>pythonの最新のバージョンやその他色々なものを導入したければ<br />
-今後のことも考えてMacにHomebrewと呼ばれるパッケージマネージャを導入しよう。
-<a class="reference external" href="https://qiita.com/zaburo/items/29fe23c1ceb6056109fd">参考</a></p>
-<p>Homebrewが導入できたら、</p>
+<p>pythonに限らずその他様々なソフトウェアを導入したければ、今後のことも考えてHomebrewと呼ばれるパッケージマネージャを導入しよう。その方法は、<a class="reference external" href="https://brew.sh">公式のページ</a>にかかれている。Homebrewが導入できたら、</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">update</span>
 <span class="n">brew</span> <span class="n">upgrade</span>
-<span class="n">brew</span> <span class="n">upgrade</span> <span class="n">python3</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">python</span><span class="o">@</span><span class="mf">3.12</span>
 </pre></div>
 </div>
-<p>と順にターミナルで実行する(暫く掛かるかも).</p>
-<p>インストールに成功すれば、python用のパッケージマネージャ(pip)も使えるようになるはず。<br />
-以後は</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
-</pre></div>
-</div>
-<p>などとすると、python用のモジュールがインストールされ、pythonからいつでもインポートして使うことができる。</p>
-<p>ただし、~3.11以降、Pythonのライブラリ管理方針が変わったため、仮想環境の作成が推奨されるようになった。
-詳しくは<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>を参照のこと。</p>
+<p>などと順番に実行する。最後の部分は、適宜、導入したいバージョンに置き換えると良い。</p>
 </section>
 <section id="linux">
-<h2>Linuxの場合<a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
-<p>Linuxを使っている人が、pythonのインストールができないとは思いにくいが…</p>
+<h2>Linux環境下での環境構築<a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
+<p>Linuxを使っている人が、pythonのインストールができないことは考えづらいが…。
+基本的な考え方は、OSに備わっているパッケージマネージャを用いる。
+この資料ではUbuntuを想定しているので、対応するパッケージマネージャは<code class="docutils literal notranslate"><span class="pre">apt</span></code>となる。</p>
 <p>ターミナルから</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update -y
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt update
 $sudo apt upgrade -y
-$sudo apt dist-upgrade -y
-$sudo apt autoremove -y
 </pre></div>
 </div>
-<p>などを実行しパッケージマネージャのアップデート等を行った後<br />
-python3系がない場合は</p>
+<p>などを実行しパッケージマネージャのアップデート等を行った後</p>
+<p>python3系がない場合は</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3
 </pre></div>
 </div>
@@ -688,261 +619,57 @@ python3系がない場合は</p>
 </pre></div>
 </div>
 <p>を実行する。</p>
+<p>とくにWSL環境では、Pythonは入っているがpipが入っていないことが殆どなので、上記の作業を要する。注意点としては、複数のバージョンのPythonが入っている場合、<code class="docutils literal notranslate"><span class="pre">python3</span></code>や<code class="docutils literal notranslate"><span class="pre">pip3</span></code>などのコマンドがどのバージョンを指すかは、環境変数PATHの設定に依存する。</p>
+<p>このときは、</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 --version
+$ pip3 --version
+</pre></div>
+</div>
+<p>などと打ち込み、バージョンを確認しておくと良い。
+また、システムがデフォルトで使うバージョンを変更したいときは、aliasを指定したり、<code class="docutils literal notranslate"><span class="pre">update-alternatives</span></code>コマンドを使うなどの方法があるので調べてみよう。</p>
 </section>
-<section id="linux-unix">
-<h2>Linux/Unix ターミナルの操作<a class="headerlink" href="#linux-unix" title="Link to this heading">#</a></h2>
-<p>Linux(WSL)やUnix(Mac)のCUI環境で必要な基本的な操作をまとめる</p>
-<ul class="simple">
-<li><p>Ctrl+C: 入力内容の消去・実行中の作業の中断</p></li>
-<li><p>Ctrl+D: ターミナル(タブ)を閉じる (Pythonの対話モードから出るときにも使う)</p></li>
-<li><p>Tab: 入力を補完してくれる</p></li>
-<li><p>*(半角アスタリスク): ワイルドカード記号</p></li>
-</ul>
-<p>基本的なコマンド</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> “現在地”を変更する</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd ./Desktop 
-$cd ../ 
-$cd ~
-$cd -
-</pre></div>
+<section id="id3">
+<h2>基本的なターミナル操作<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Linux・WSL・macOSでは、次のコマンドをよく使う。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>コマンド</p></th>
+<th class="head"><p>意味</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></td>
+<td><p>今いる場所を表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
+<td><p>ファイルやディレクトリを表示する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code></p></td>
+<td><p>隠しファイルも表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">ディレクトリ名</span></code></p></td>
+<td><p>場所を移動する</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code></p></td>
+<td><p>ホームディレクトリに移動する</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">名前</span></code></p></td>
+<td><p>ディレクトリを作る</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">元</span> <span class="pre">先</span></code></p></td>
+<td><p>ファイルをコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">元</span> <span class="pre">先</span></code></p></td>
+<td><p>ファイルを移動・リネームする</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">ファイル名</span></code></p></td>
+<td><p>ファイルを削除する</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>1つめはhomeディレクトリからデスクトップ(があれば)移動<br />
-2つめは1つ上の階層に移動する<br />
-3つめはホームディレクトリに移動<br />
-4つめは直前にいたディレクトリに移動</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code> ファイルやディレクトリなどを表示する.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ls 
-$ls ../*.txt
-$ls Picutures/pic_*.png
-</pre></div>
-</div>
-<p>1つめは現在いるディレクトリ以下のファイル等を表示<br />
-2つめは現在いるディレクトリの１つ上の階層にある.txt拡張子の全ファイルを表示<br />
-3つめは現在ホームディレクトリにいると仮定して、その直下にあるPictures以下にあるpngファイルのうち、冒頭が<code class="docutils literal notranslate"><span class="pre">pic_</span></code>のものを全て表示</p>
-<ul>
-<li><p>mv　ファイル・ディレクトリの移動・リネーム</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mv aa.txt ~/Desktop
-$mv bb.txt ../AdDS/cc.txt
-</pre></div>
-</div>
-<p>1つめ: カレントディレクトリにあるaa.txtというファイルをデスクトップに移動<br />
-2つめ: bb.txtを一つ上の階層にあるAdDSというディレクトリに移動し、cc.txtとリネームする。</p>
-<p>ワイルドカード*で複数ファイルを一気に移動させることもできる。ディレクトリの場合も同様。</p>
-</li>
-<li><p>mkdir ディレクトリを作る</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mkdir Desktop/AdDS2021
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>rm ファイルやディレクトリを削除する</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm ./Desktop/report1.txt
-</pre></div>
-</div>
-<p>ディレクトリを消すときは-rオプションが必要</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rm -r ./Desktop/AdDS2021
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**rmコマンドで削除したものはゴミ箱に入れられずに削除されるので注意** 
-特にワイルドカードを使って全て削除してしまうとバックアップを取っていないと復元は困難だし、誰も責任をとってくれない。
-(rmコマンドにエイリアスを貼って、ゴミ箱を経由する命令に置き換えたりrmtrash(や類似のもの)を使用するのがオススメ)
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>grep 検索</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep &quot;Hello World&quot; Desktop/AdDS2021/*py
-</pre></div>
-</div>
-<p><strong>タブ補完</strong></p>
-<p>Linux/Unixターミナルでは、タブによる入力補完が使えますので<br />
-ぜひ多用してください。</p>
-<p>ちなみに今Desktopにいて、そこに<br />
-<code class="docutils literal notranslate"><span class="pre">AdDS2019,</span> <span class="pre">AdDS2020,</span> <span class="pre">AdDS2021</span></code>
-というディレクトリがあり、<br />
-最初のものに移動したいとします。
-こんなとき、いちいち</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd AdDS2019
-</pre></div>
-</div>
-<p>と打つのは面倒だし、打ち間違えたりします。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cd Ad
-</pre></div>
-</div>
-<p>と打った時点でタブをポンポンと叩くと、<br />
-Desktopに上記のフォルダ以外の”Ad”を含むディレクトリがなければ<br />
-<code class="docutils literal notranslate"><span class="pre">AdDS20</span></code>まで入力が補完され、<br />
-該当する候補(上の全てのディレクトリ)がターミナル上で表示されます。<br />
-その後1を打って再びタブを叩くと、該当するものは一つですので<br />
-(ambiguityがなくなった時点で)最後まで入力が補完されます。</p>
-<p>ちなみにPython側からLinuxのコマンドを実行したければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;ls *.txt&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>などとすれば良い。</p>
-<section id="id4">
-<h3>Linuxのホームディレクトリの変更<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>WSLを使用する際、Windows側から見るとLinux(Ubuntu)は<code class="docutils literal notranslate"><span class="pre">C:\Users\username\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs</span></code><br />
-といった階層に入っている。</p>
-<p>Ubuntuを起動した際に開くターミナルの”位置”(これをホームディレクトリと呼ぶ)は、<br />
-上記のルートディレクトリ(rootfs)直下にあるhomeである。</p>
-<p>たとえばWindows側のホームディレクトリ <code class="docutils literal notranslate"><span class="pre">C:\Users\[username]</span></code>以下に<br />
-適当なディレクトリを作って、それをUbuntuのログイン(ホーム)ディレクトリとして設定することも出来る。</p>
-<p>※ 以下の操作では、emacsやvi(m)などのエディタに慣れていないうちは<br />
-システムファイルに余計な文字を書き込んでしまう危険性があるので<br />
-エディタの使い方を調べてから実行するなど、注意が必要です。<br />
-(不安な場合はZoomで画面を共有しながら一緒にやりましょう)</p>
-<p>ホームディレクトリの変更方法は、</p>
-<ol class="arabic simple">
-<li><p>Ubuntuターミナルから、管理者権限で<code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code>を開く<br />
-たとえば、emacsが入っていれば</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo emacs /etc/passwd
-</pre></div>
-</div>
-<p>なければ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo vim /etc/passwd
-</pre></div>
-</div>
-<p>でファイルを開きます。</p>
-<ol class="arabic simple" start="2">
-<li><p>どこかに</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ubuntuユーザ名</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,,,:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ユーザ名</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
-</pre></div>
-</div>
-<p>といった欄があるので<code class="docutils literal notranslate"><span class="pre">/home/ユーザー名</span></code>部分を、<br />
-Windows側に作成しておいた新しくLinuxのホームディレクトリとしたいディレクトリの<br />
-パスに置き換えて、passwdを上書き保存し、閉じる。</p>
-<ul class="simple">
-<li><p>Emacsの場合 編集は簡単. Ctrl+X -&gt; Ctrl +Sを押して上書き保存. Ctrl+X-&gt;Ctrl+Cで閉じる.</p></li>
-<li><p>vimの場合 iを押すとインサートモードに入り編集可能に. 編集モードから抜けるのはEsc. <code class="docutils literal notranslate"><span class="pre">:wq</span></code>で保存して終了</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Ubuntuを再起動し、エラー等が表示されず、<br />
-<code class="docutils literal notranslate"><span class="pre">pwd</span></code>コマンドで現在地を確認して設定したディレクトリになっているか確認しましょう。</p></li>
-<li><p>もともとのホームディレクトリにあった<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>(エイリアスなどの情報を書くファイル)を
-新しいホームディレクトリに移動させれば完了です。</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$cp -r /home/[user name]/.*  ~/
-</pre></div>
-</div>
-</section>
-<section id="dot-files">
-<h3>隠しファイル/隠しフォルダ(dot files)について<a class="headerlink" href="#dot-files" title="Link to this heading">#</a></h3>
-<p>Linuxでは、ファイル名の先頭に<code class="docutils literal notranslate"><span class="pre">.</span></code>がついているものは隠しファイルと呼ばれ、通常の<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドなどの表示対象外となる。
-隠しファイルを表示するには、<code class="docutils literal notranslate"><span class="pre">ls</span></code>コマンドに<code class="docutils literal notranslate"><span class="pre">-a</span></code>オプションをつければよい。</p>
-<p>とくに、ホームディレクトリには、特定のアプリケーションの設定ファイルなどが隠しファイルとして保存されていることが多く、
-数値計算ライブラリの開発や使用、ソースコードの編集・実行などの際には、隠しファイルを扱うこともある。</p>
-<p>これら隠しファイルや隠しフォルダは、dot filesと呼ばれることもあり、
-新しい端末を購入したときの設定ファイルの移行などにも使われる。</p>
-<p>特に複数台の端末を使用している人などは、GitHubなどのリポジトリに自身のdot filesをアップロードしておき、
-新しい端末を購入した際には、そのリポジトリからdot filesをダウンロードして使用することで、
-移行をスムーズにしているようである(私は割とイチから設定するのが好きだったりします)。</p>
-<p>以下では、代表的なものを少し紹介しておく:</p>
-<p><strong>.bashrc</strong> : bashの設定ファイル</p>
-<p>エイリアスの設定などを書くことができる. エイリアスとは、例えばコマンドでpythonを使う際、いちいち<code class="docutils literal notranslate"><span class="pre">python</span></code>とか<code class="docutils literal notranslate"><span class="pre">python3.9</span></code>などを
-指定しなくてもお目当てのpython環境を使用できるようにするためのもの. 例えば、.bashrcに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">py</span><span class="o">=</span><span class="n">python3</span><span class="mf">.9</span>
-</pre></div>
-</div>
-<p>などと書いておけば、<code class="docutils literal notranslate"><span class="pre">py</span></code>と打つだけでpython3.9が起動/使用できるようになる.</p>
-<p>注意としては</p>
-<ol class="arabic simple">
-<li><p>使用しているシェルによって、設定ファイルの名前が異なることがある. 例えば、bashの場合は<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>だが、zshの場合は<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>となる.</p></li>
-<li><p>設定ファイルを変更した場合は、<code class="docutils literal notranslate"><span class="pre">source</span></code>コマンドを実行することで、変更を反映させる必要がある. 例えば、<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>を変更した場合は、</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$source ~/.bashrc
-</pre></div>
-</div>
-<p>とするか、ターミナルを再起動する必要がある.</p>
-<p><strong>エディタの設定ファイル</strong></p>
-<p>CUI/GUIを問わず、エディタの設定ファイルもホームディレクトリ直下の隠しディレクトリとして保存されることが多い.</p>
-<p>例えば私の環境だと、<code class="docutils literal notranslate"><span class="pre">~/.emacs</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.vim</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.vscode</span></code>,<code class="docutils literal notranslate"><span class="pre">~/.atom</span></code>など、今は使っていないものも含めて、
-エディタの設定ファイルが保存されている。</p>
-<p><strong>sshの設定ファイル</strong></p>
-<p>SSHとは、スーパーサイエンスハイスクール…ではなく、Secure Shellの略で、ネットワーク上で安全にリモートコンピュータにログインしたり、
-ファイルを転送したりするためのプロトコルである。</p>
-<p>例えば研究室内に置かれたワークステーションやスパコンなど別の環境にログインして重い計算を回す、といったときには基本的にはssh公開鍵認証を用いてローカル環境からリモート環境にログインすることになるが、
-その際に使用する鍵や、リモート環境へのログインに必要な情報などが、ホームディレクトリ直下の隠しディレクトリ<code class="docutils literal notranslate"><span class="pre">~/.ssh</span></code>に保存される。</p>
-<p>例えば、(sshを使ったことがある場合は)<code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>に、接続先のホスト名やポート番号などが記載されたり、
-逆にリモート側では、<code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code>に、接続を許可する公開鍵が記載されていたりする。</p>
-<p>なお、公開鍵認証とは、リモート環境にログインする際に、公開鍵と秘密鍵のペアを用いて認証を行う方式で、
-秘密鍵はローカル環境に、公開鍵はリモート環境に置いておくことで、安全にログインを行うことができるものである。
-秘密鍵の取り扱いに注意が必要であることは言うまでもない。</p>
-</section>
-</section>
-<section id="id5">
-<h2>Pythonパッケージの管理<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>Pythonのパッケージは、上の一部でやったように<code class="docutils literal notranslate"><span class="pre">pip</span></code>と呼ばれるパッケージマネージャを用いてインストールすることができる。<br />
-一方で、書籍などによっては、<code class="docutils literal notranslate"><span class="pre">Anaconda</span></code>と呼ばれるパッケージマネージャを用いてインストールすることを推奨しているものもある。<br />
-<code class="docutils literal notranslate"><span class="pre">pip</span></code>と<code class="docutils literal notranslate"><span class="pre">Anaconda</span></code>(<code class="docutils literal notranslate"><span class="pre">conda</span></code>)は、それぞれ独自のパッケージ管理システムであり、
-双方を混在させてパッケージをインストールすると、パッケージのバージョンの競合などが発生し、Python環境が破壊されてしまい、ライブラリのインポート時などにエラーが発生することがある。</p>
-<p>そこで、パッケージの管理には、<code class="docutils literal notranslate"><span class="pre">pip</span></code>と<code class="docutils literal notranslate"><span class="pre">conda</span></code>の<strong>どちらか一方のみ</strong>を用いることを推奨する。<br />
-仮に<code class="docutils literal notranslate"><span class="pre">pip</span></code>を使うのであれば書籍等のライブラリのインストール作業で<code class="docutils literal notranslate"><span class="pre">conda</span></code>を<code class="docutils literal notranslate"><span class="pre">pip</span></code>に置き換えたり、
-<code class="docutils literal notranslate"><span class="pre">conda</span></code>を使うのであれば反対に、<code class="docutils literal notranslate"><span class="pre">pip</span></code>を<code class="docutils literal notranslate"><span class="pre">conda</span></code>に置き換えて使うと良い。</p>
-<section id="id6">
-<h3>関連する事項<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p>最近(2023年以降)、<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">library-name</span></code>などとすると、</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>error: externally-managed-environment
-
-× This environment is externally managed
-╰─&gt; To install Python packages system-wide, try brew install
-    xyz, where xyz is the package you are trying to
-    install.
-    
-    If you wish to install a Python library that isn&#39;t in Homebrew,
-    use a virtual environment:
-    
-    python3 -m venv path/to/venv
-    source path/to/venv/bin/activate
-    python3 -m pip install xyz
-    
-    If you wish to install a Python application that isn&#39;t in Homebrew,
-    it may be easiest to use &#39;pipx install xyz&#39;, which will manage a
-    virtual environment for you. You can install pipx with
-    
-    brew install pipx
-    
-    You may restore the old behavior of pip by passing
-    the &#39;--break-system-packages&#39; flag to pip, or by adding
-    &#39;break-system-packages = true&#39; to your pip.conf file. The latter
-    will permanently disable this error.
-    
-    If you disable this error, we STRONGLY recommend that you additionally
-    pass the &#39;--user&#39; flag to pip, or set &#39;user = true&#39; in your pip.conf
-    file. Failure to do this can result in a broken Homebrew installation.
-    
-    Read more about this behavior here: &lt;https://peps.python.org/pep-0668/&gt;
-
-note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
-hint: See PEP 668 for the detailed specification.
-</pre></div>
-</div>
-<p>などとエラーメッセージが出ることがある。(Macの場合は上の<code class="docutils literal notranslate"><span class="pre">apt</span></code>の部分が<code class="docutils literal notranslate"><span class="pre">brew</span></code>などに置き換わっていはず)
-これは、Python Enhancement Proposal (PEP)と呼ばれる提案に関するもので、とくにその<code class="docutils literal notranslate"><span class="pre">PEP668</span></code>に由来したメッセージとなる。</p>
-<p>要は、Pythonのためのパッケージマネージャである<code class="docutils literal notranslate"><span class="pre">pip</span></code>や<code class="docutils literal notranslate"><span class="pre">conda</span></code>と、
-OSのパッケージマネージャである<code class="docutils literal notranslate"><span class="pre">brew</span></code>(Mac)や<code class="docutils literal notranslate"><span class="pre">apt</span></code>(debian系 Linux)がときに依存関係でconflictを起こすので、
-「Pythonのパッケージもシステムのパッケージマネージャで管理をするか、仮想環境を作成するかしなさい」という趣旨のメッセージである。</p>
-<p>これに対処する方法は幾つかあり、</p>
-<ul class="simple">
-<li><p>警告を無視して強制オプションをつけてglobal環境でpipする<br />
-これはあまり推奨し辛い(急ぎだとやってしまうこともあるが…)</p></li>
-<li><p>brewやaptなどのシステム用パッケージマネージャでのinstallを試みる<br />
-但し、幾つかのPythonパッケージではうまく見つからないその場合は↓が選択肢筆頭となる。</p></li>
-<li><p>Python仮想環境を作成して使用する<br />
-エラーメッセージにもinstructionがあるように、pythonの仮想環境を作成し、activateした後pipを行う。<br />
-Jupyter環境などでPythonコードを実行する際にも、作成した仮想環境をカーネルに選べば良い。</p></li>
-</ul>
-<p>となるが、仮想環境を作成するのが最もトラブルが少なく良いように思う。
-詳細は<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">関連するページ</a>に譲る。</p>
-</section>
+<p><code class="docutils literal notranslate"><span class="pre">rm</span></code> で削除したファイルはゴミ箱に入らない。慣れないうちは <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-i</span> <span class="pre">ファイル名</span></code> のように確認つきで実行するとよい。</p>
+<p>途中でコマンドを止めたい場合は <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>、Pythonの対話モードやターミナル入力を終了したい場合は <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code> を使うことが多い。</p>
 </section>
 </section>
 
@@ -990,7 +717,7 @@ Jupyter環境などでPythonコードを実行する際にも、作成した仮�
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pythonの環境構築 (Windows11版)</p>
+        <p class="prev-next-title">WSLとPython環境</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1010,24 +737,15 @@ Jupyter環境などでPythonコードを実行する際にも、作成した仮�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsの場合</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.の方法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2-1. の方法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windowslinux">Windows環境のどこにLinuxのファイルが保存されるか</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2-2.の方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">WSLでLinux仮想環境を作成する</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac">Macの場合</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linuxの場合</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-unix">Linux/Unix ターミナルの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Linuxのホームディレクトリの変更</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-files">隠しファイル/隠しフォルダ(dot files)について</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pythonパッケージの管理</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">関連する事項</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux環境下での環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本的なターミナル操作</a></li>
 </ul>
   </nav></div>
 
