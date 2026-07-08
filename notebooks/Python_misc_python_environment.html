@@ -462,12 +462,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2. WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2.WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Python用のライブラリをインストールする方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソースファイルの編集と実行</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux環境下での環境構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本的なターミナル操作</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">基本的なターミナル操作</a></li>
 </ul>
             </nav>
         </div>
@@ -546,11 +548,15 @@ Pythonの対話環境が開いたら、</p>
 <p>と入力しEnterを押せば良い。</p>
 </section>
 <section id="wsllinux">
-<h3>2. WSLでLinux仮想環境を作成する<a class="headerlink" href="#wsllinux" title="Link to this heading">#</a></h3>
+<h3>2.WSLでLinux仮想環境を作成する<a class="headerlink" href="#wsllinux" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_env_forWin11.html">こちらの資料</a>を参照。</p>
-<p>###　Python用のライブラリをインストールする方法</p>
+</section>
+<section id="id3">
+<h3>Python用のライブラリをインストールする方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>で詳しく解説する。</p>
-<p>###　ソースファイルの編集と実行</p>
+</section>
+<section id="id4">
+<h3>ソースファイルの編集と実行<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>対話モードだと、長い処理を実現するのには向いていないので、作業をソースコードとしてファイルに書き出し、それを実行したくなる。
 実行したい場合は、コマンドプロンプト上で</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
@@ -630,9 +636,9 @@ $ pip3 --version
 <p>などと打ち込み、バージョンを確認しておくと良い。
 また、システムがデフォルトで使うバージョンを変更したいときは、aliasを指定したり、<code class="docutils literal notranslate"><span class="pre">update-alternatives</span></code>コマンドを使うなどの方法があるので調べてみよう。</p>
 </section>
-<section id="id3">
-<h2>基本的なターミナル操作<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>Linux・WSL・macOSでは、次のコマンドをよく使う。</p>
+<section id="id5">
+<h2>基本的なターミナル操作<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Linux（WSL含む）やmacOSでは、次のコマンドをよく使う。</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>コマンド</p></th>
@@ -742,12 +748,14 @@ $ pip3 --version
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2. WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2.WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Python用のライブラリをインストールする方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">ソースファイルの編集と実行</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux環境下での環境構築</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基本的なターミナル操作</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">基本的なターミナル操作</a></li>
 </ul>
   </nav></div>
 
