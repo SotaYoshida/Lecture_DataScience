@@ -462,7 +462,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2. WSLでLinux仮想環境を作成する</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
@@ -481,9 +481,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python">
 <h1>Pythonの環境構築<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
-<p>この資料では、ローカルマシンでのPython環境構築について説明する。</p>
-<p>最適な方法は、環境や各人の使用用途にも依るが、環境構築についての一般論から、代表的なPython環境構築の流れについて解説する。</p>
-<p>Windowsについてはトピックが多くなるため、適宜 <strong><a class="reference external" href="https://colab.research.google.com/github/SotaYoshida/Lecture_DataScience/blob/main/notebooks/Python_misc_python_env_forWin11.ipynb">こちらの資料</a>も参照してほしい</strong></p>
+<p>この資料では、ローカルマシンでのPython環境構築について説明する。
+最適な方法は、環境や各人の使用用途にも依るが、環境構築についての一般論から、代表的なPython環境構築の流れについて解説する。</p>
+<p>Windowsについてはトピックが多くなるため、資料を一部分けてある。
+WSLを用いた環境構築については <strong><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_env_forWin11.html">こちらの資料</a>も参照してほしい</strong></p>
 <section id="id1">
 <h2>環境構築とは何か・なぜ必要か？<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>環境構築とは、各種のソフトウェアやツールをインストールする作業を指す。</p>
@@ -527,7 +528,8 @@ document.write(`
 </pre></div>
 </div>
 <p>と実行すると対話モードでpythonが開く。スタートメニューからpythonを起動しても同じ。</p>
-<p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用する方が現代的だろう、と思う。</p>
+<p>上の動画はやや古く、コマンドプロンプトを使用しているが、Windows Terminalを使用する方が現代的だろう、と思う。
+Pythonの対話環境が開いたら、</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -542,9 +544,13 @@ document.write(`
 </pre></div>
 </div>
 <p>と入力しEnterを押せば良い。</p>
-<p><strong>Python用のライブラリをインストールする方法</strong></p>
+</section>
+<section id="wsllinux">
+<h3>2. WSLでLinux仮想環境を作成する<a class="headerlink" href="#wsllinux" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_env_forWin11.html">こちらの資料</a>を参照。</p>
+<p>###　Python用のライブラリをインストールする方法</p>
 <p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>で詳しく解説する。</p>
-<p><strong>ソースファイルの編集と実行</strong></p>
+<p>###　ソースファイルの編集と実行</p>
 <p>対話モードだと、長い処理を実現するのには向いていないので、作業をソースコードとしてファイルに書き出し、それを実行したくなる。
 実行したい場合は、コマンドプロンプト上で</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">hogehoge</span><span class="o">.</span><span class="n">py</span>
@@ -560,10 +566,6 @@ document.write(`
 </pre></div>
 </div>
 <p>など実行するソースの(相対 or 絶対)パスの指定が必要になる。</p>
-</section>
-<section id="wsllinux">
-<h3>WSLでLinux仮想環境を作成する<a class="headerlink" href="#wsllinux" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_misc_python_env_forWin11.html">こちらの資料</a>を参照。</p>
 </section>
 </section>
 <section id="macos">
@@ -740,7 +742,7 @@ $ pip3 --version
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">環境構築とは何か・なぜ必要か？</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windowspython">Windows環境下でのPython環境構築</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Windows用のPythonを導入する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">WSLでLinux仮想環境を作成する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wsllinux">2. WSLでLinux仮想環境を作成する</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOSの環境構築</a></li>
