@@ -494,7 +494,7 @@ document.write(`
 </div>
 <section id="windows">
 <h2>Windowsターミナル<a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
-<p>ターミナルとは、CUI(Character User Interface)、つまりコマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉です。
+<p>ターミナルとは、CUI(Character User Interface)、つまりコマンドなどの文字列のみを用いてコンピュータを操作する環境を指す言葉である。
 CUIに対して、普段我々が使っているポインタやウィンドウなどはGUI(Graphical User Interface)に相当する。</p>
 <p>Windows Terminalは、2019年にマイクロソフトがリリースしたターミナルでコマンドプロンプトやPowerShellといったWindows独自のCUIに加えて後述のWSLを統合的に扱うことができる環境となっている。
 Windows11以降は標準で入っているのでWindowsボタンでメニューを開き、「ターミナル」「terminal」などと検索すると出てくる。</p>
@@ -509,7 +509,7 @@ Windows11以降は標準で入っているのでWindowsボタンでメニュー�
 コンピュータの”計算機”としての側面や歴史的経緯から、プログラミング言語・開発環境などもUnix/Linuxとともに発展してきた部分が大きい。</p>
 <p>一方でWindowsは、一般家庭でのコンピュータの需要拡大とともに独自の進化を遂げてきた。</p>
 <p>Windowsユーザーが、プログラミング環境の構築やLinux-likeな作業をしたい場合、方法は幾つかあるが最近だとWindows Subsystem for Linux (通称WSL)を使うのが、最も簡単かつ安全な方法の１つとされている。</p>
-<p>この授業ではWSLを介して、Linuxの中のUbuntuというディストリビューションを使うことにする。</p>
+<p>この章ではWSLを介して、Linuxの中のUbuntuというディストリビューションを使うことにする。</p>
 <ul>
 <li><p><strong>手順1. WSLと仮想マシンプラットフォームの有効化</strong></p>
 <p>スタートメニューから「コントロールパネル」を検索して開く
@@ -532,7 +532,7 @@ Windows11以降は標準で入っているのでWindowsボタンでメニュー�
 <li><p><strong>手順3. Windows TerminalからWSLのインストール</strong></p>
 <p>スタートメニューからterminalなどと打ち込んでターミナルを開く。<br />
 <strong>ターミナルの上で右クリックして[管理者として実行]する</strong><br />
-このアプリがデバイスに変更を加えることを許可しますかというポップアップが出た場合、はいを選択すれば良い。</p>
+「このアプリがデバイスに変更を加えることを許可しますか」といったポップアップが出た場合、はいを選択すれば良い。</p>
 <p>次にターミナルに</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wsl</span> <span class="o">--</span><span class="n">install</span> <span class="o">-</span><span class="n">d</span> <span class="n">Ubuntu</span>
 </pre></div>
@@ -579,16 +579,16 @@ $sudo apt upgrade
 </div>
 <p>注:上の<code class="docutils literal notranslate"><span class="pre">$</span></code>は打ち込むのではなく、 Ubuntuターミナルの末尾にある<code class="docutils literal notranslate"><span class="pre">$</span></code>を指し<br />
 Pythonの対話モードなどで打ち込む場合と区別するための表記。</p>
-<p>sudoはコマンドの頭につけることで管理者権限で実行する、という命令を意味します。<br />
-実行時に、Ubuntu用に設定したパスワードが要求されます<br />
+<p>sudoはコマンドの頭につけることで管理者権限で実行する、という命令を意味する。<br />
+実行時に、Ubuntu用に設定したパスワードが要求される。<br />
 入力しても画面には表示されないので注意しながら打ち込んでEnterを押す。<br />
-(間違っても再度入力を求めてくれますし、やめたければCtrl+C)</p>
-<p>aptはLinux(Debian系)のパッケージ管理システムです。</p>
+(間違っても再度入力を求めてくれるし、やめたければCtrl+C)</p>
+<p>aptはLinux(Debian系)のパッケージ管理システムである。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install xxxx
 </pre></div>
 </div>
-<p>などとして、様々なものを簡単にインストールすることが出来ます。</p>
-<p>※PCの時刻設定がきちんと行われていないと、aptのupdateやupgradeに失敗することがあるので注意。</p>
+<p>などとして、様々なものを簡単にインストールすることが出来る。<br />
+※PCの時刻設定がきちんと行われていないと、aptのupdateやupgradeに失敗することがあるので注意。</p>
 </li>
 <li><p><strong>手順2. Pythonのインストール</strong></p>
 <p>Ubuntuには初めからPython3系が含まれている。Ubuntuのバージョンなどによってバージョンが異なるが、
@@ -597,18 +597,17 @@ Pythonの対話モードなどで打ち込む場合と区別するための表�
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt install python3-pip -y
 </pre></div>
 </div>
-<p>これでpython3.xとpython用のパッケージマネージャpipがインストールされます(手順1でaptのupdate/upgradeが終わっていないと失敗することがあるので注意)。</p>
+<p>これでpython3.xとpython用のパッケージマネージャpipがインストールされる(手順1でaptのupdate/upgradeが終わっていないと失敗することがあるので注意)。</p>
 </li>
 <li><p><strong>手順3. Pythonの対話モードに入ってみよう</strong></p>
 <p>インストールが終わったら<code class="docutils literal notranslate"><span class="pre">python3</span></code>と打ち込んでEnterを押すと<br />
-Pythonの対話モードに入ります(Pythonのバージョンも確認できる)。対話モードの中で</p>
+Pythonの対話モードに入る(Pythonのバージョンも確認できる)。対話モードの中で</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>などと打ち込んで実行してみましょう。</p>
-<p>打ちかけの作業を消したり、処理を中断する際はCtrl+Cを、<br />
-対話モードから抜けたければCtrl+Dを入力します<br />
-(書きかけのコードがあったり処理が実行されているときは先にCtrl+Cで中断してからCtrl+d)</p>
+<p>などと打ち込んで実行してみよう。</p>
+<p>打ちかけの作業を消したり、処理を中断する際は<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>を、対話モードから抜けたければ<code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>を入力する。
+(書きかけのコードがあったり処理が実行されているときは先に<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>で中断してから<code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>)</p>
 </li>
 <li><p><strong>手順4. ライブラリのインストール</strong></p>
 <p>ライブラリ・モジュールをインストールしたければUbuntuターミナルから</p>
@@ -617,7 +616,7 @@ $pip3 install pandas
 $pip3 install Selenium
 </pre></div>
 </div>
-<p>などを実行します。ただし、およそ3.11以降からライブラリの管理に関する指針が変更になったため、仮想環境の作成が推奨されるようになった。
+<p>などを実行する。ただし、およそ3.11以降からライブラリの管理に関する指針が変更になったため、仮想環境の作成が推奨されるようになった。
 詳しくは<a class="reference external" href="https://sotayoshida.github.io/Lecture_DataScience/notebooks/Python_venv_pip.html">こちらの資料</a>を参照のこと。</p>
 <p>Google Colab環境では毎度</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install japanize-matplotlib
@@ -625,7 +624,7 @@ $pip3 install Selenium
 </div>
 <p>などとしましたが、一度インストールしておけば<br />
 コードの実行のたびにpipでインストール作業を行う必要はありません。<br />
-(ライブラリのimportはセッションごとに必要です)</p>
+(ライブラリのimportはセッションごとに必要)</p>
 </li>
 </ul>
 </section>
@@ -683,9 +682,9 @@ Windows側のPython/pipには、python3.9.exeやpip3.9.exeなど実行ファイ�
 <section id="windowslinux">
 <h3>Windows環境のどこにLinuxのファイルが保存されるか<a class="headerlink" href="#windowslinux" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">C:\Users\XXX\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs</span></code></p>
-<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となります。Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開きます。</p>
-<p>パスが上記と微妙に異なる場合は、WindowsのユーザーフォルダからAppDataを開いて、検索バーでUbuntuと検索すれば、該当するディレクトリが見つけられるはずです。(隠しフォルダを非表示にしていると見えないかも)</p>
-<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと左側にLinuxのペンギンマークがあるので、そこから参照できます。</p>
+<p>のXXX部分(や場合によってはドライブ部分C:)を皆さんの環境に置き換えたものが、Windows内に構築されたLinuxのルートディレクトリ(最上位のディレクトリ)となる。Ubuntuを開くと、rootfs以下のhomeディレクトリにログインした状態でターミナルが開く。</p>
+<p>パスが上記と微妙に異なる場合は、WindowsのユーザーフォルダからAppDataを開いて、検索バーでUbuntuと検索すれば、該当するディレクトリが見つけられるはず。(隠しフォルダを非表示にしていると見えないかも)</p>
+<p>Windows11の場合は適当なフォルダ(エクスプローラー)を開くと左側にLinuxのペンギンマークがあるので、そこから参照できる。</p>
 </section>
 <section id="linuxwindows">
 <h3>Linux側からWindows側のファイルにアクセスする<a class="headerlink" href="#linuxwindows" title="Link to this heading">#</a></h3>
